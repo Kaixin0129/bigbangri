@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>G-Dragon2006</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;             /* ✅ 防止太窄 */
+      white-space: nowrap;          /* ✅ 不换行 */
+      text-align: center;           /* ✅ 内容居中 */
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .image-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 20px auto;
+      max-width: 1500px;
+    }
+
+    .image-row img {
+      width: auto;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="gd.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>G-Dragon 权志龙<br/>2006年</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="gd2007.html">2007</a>
+    </nav>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="gd2006-aug-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gd2006.html#gd2006-aug" class="jump-button">8月</a>
+    </div>
+    <div id="gd2006-nov-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gd2006.html#gd2006-nov" class="jump-button">11月</a>
+    </div>
+    <div id="gd2006-dec-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gd2006.html#gd2006-dec" class="jump-button">12月</a>
+    </div>
+  </div>
+  <br/><br/>
+  <hr class="full-width-line" />
+
+    <div id="gd2006-aug" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gd2006.html#gd2006-aug-jump" class="jump-button">8月</a>
+    </div>
+
+  <div style="text-align: center;">
+    <p><br/>2006年8月19日GD 18岁，5人以Bigbang命名的组合正式出道</p><br/>
+  <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/6d_cUb6wRxU?si=CY7iIFg7ptavkiCD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2006年8月29日</strong></p>
+        <p>This Love</p>
+        <p>GD个人solo在Bigbang First Single专辑</p><br/>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/XPpTgCho5ZA?si=7_hT-iRp-VH7_OAn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p>翻唱Maroon 5的This Love</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+    <div id="gd2006-nov" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gd2006.html#gd2006-nov-jump" class="jump-button">11月</a>
+    </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1ZFOlR5qi8U?si=BgqrzamL_TEknS-v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2006年11月1日</strong></p>
+        <p>参与SE7EN的专辑Se7olution<br/>演唱Can You Feel Me (Feat. G-Dragon)</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/GYCD2KUB3WQ?si=9QAbE2CzrfrtUXR6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2006年11月22日</strong></p>
+        <ul>
+          <li>Forever With U (Feat. Park Bom)</li>
+          <li>GD TOP和朴春合作在Bigbang 03专辑</li>
+        </ul>
+        <br/>
+        <div id="wutai9" style="scroll-margin-top: 100px;">
+          <a href="stage.html#stage9-jump" class="jump-button">更多打歌舞台视频指路</a>
+        </div>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+    <div id="gd2006-dec" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gd2006.html#gd2006-dec-jump" class="jump-button">12月</a>
+    </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/6d_cUb6wRxU?si=CY7iIFg7ptavkiCD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2006年12月22日</strong></p>
+        <p>This Love</p>
+        <p>GD个人solo第二次收录在BIGBANG Vol.1专辑</p><br/>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div><br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="gd.html">Back</a>
+    </nav>
+    <nav class="right-nav">
+      <a href="gd2007.html">2007</a>
+    </nav>
+  </div>
+
+</main>
+</body>
+</html>

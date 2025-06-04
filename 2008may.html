@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2008年5月</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .image-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 20px auto;
+      max-width: 1500px;
+    }
+
+    .image-row img {
+      width: auto;
+      height: 300px;
+      object-fit: cover;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;             /* ✅ 防止太窄 */
+      white-space: nowrap;          /* ✅ 不换行 */
+      text-align: center;           /* ✅ 内容居中 */
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="2008.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>2008年5月</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="2008june.html">6月</a>
+    </nav>
+  </div>
+  <br/>
+
+  <div style="text-align: center;">
+    <div id="080522ty-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="taeyang2008.html#080522ty" class="jump-button">太阳专辑歌曲Mv</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2008年5月22日</strong></p>
+        <p>太阳个人推出第一张迷你专辑Hot</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="080528album-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="album2008.html#080528album" class="jump-button">专辑歌曲Mv</a>
+    </div>
+  </div>
+  <div class="content-wrap">
+    <div class="photo-container">
+      <img src="withu.jpg" height="350" alt="Hot Issue" />     
+    </div>
+    <div class="text-button-container">
+      <div class="text-container">
+        <p><strong>With U</strong></p>
+        <p>2008年5月28日推出第二张日语迷你专辑</p>
+        <ul>
+          <li>Intro</li>
+          <li>With U</li>
+          <li>Baby Baby (Last Farewell English Version)</li>
+          <li>This Love (English Version)</li>
+          <li>Mad About You (Fool Japanese Ver.)胜利的声音真的好好听</li>
+          <li>We Belong Together (Feat. Park Bom) (English Version)</li>
+          <li>Shake It (Feat. Kim Ji Eun) English Version</li>
+          <li>Ma Girl (Japanese Version)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="2007.html">Back</a>
+    </nav>
+    <nav class="right-nav">
+      <a href="2007feb.html">2月</a>
+    </nav>
+  </div>
+
+</main>
+</body>
+</html>

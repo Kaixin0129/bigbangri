@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2007放送节目1-5月</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;             /* ✅ 防止太窄 */
+      white-space: nowrap;          /* ✅ 不换行 */
+      text-align: center;           /* ✅ 内容居中 */
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .image-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 20px auto;
+      max-width: 1500px;
+    }
+
+    .image-row img {
+      width: auto;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="show2007.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>2007放送节目1-5月</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="show2007julydec.html">7-12月</a>
+    </nav>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="show2007-jan-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="show2007janmay.html#show2007-jan" class="jump-button">1月</a>
+    </div>
+    <div id="show2007-feb-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="show2007janmay.html#show2007-feb" class="jump-button">2月</a>
+    </div>
+    <div id="show2007-mar-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="show2007janmay.html#show2007-mar" class="jump-button">3月</a>
+    </div>
+    <div id="show2007-apr-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="show2007janmay.html#show2007-apr" class="jump-button">4月</a>
+    </div>
+    <div id="show2007-may-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="show2007janmay.html#show2007-may" class="jump-button">5月</a>
+    </div>
+  </div><br/>
+  <hr class="full-width-line" />
+
+  <br/>
+  <div id="show2007-jan" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="show2007janmay.html#show2007-jan-jump" class="jump-button">1月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5549699&p=87" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年1月6日</strong></p>
+        <p>朴俊亨的人气歌谣 胜利cut</p>
+        <p>有中字</p>
+        <ul>
+          <li>03:54 最兴奋的成员是谁</li>
+        </ul>
+      </div>
+    </div>
+  <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5504161&p=15" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年1月7日</strong></p>
+        <p>朴明秀的Fun Radio</p>
+        <p>无中字</p>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>12:24 A Fool Of Tears</li>
+          <li>28:45 Big Boy</li>
+          <li>42:14 Next Day</li>
+          <li>1:04:47 BIGBANG</li>
+        </ul>
+      </div>
+    </div>
+  <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5546779&p=82" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年1月11日</strong></p>
+        <p>SS501 Young Street Radio</p>
+        <p>无中字</p>
+        <li>26:05 听语气 胜利又被哥哥们吐槽了</li>
+        <li>43:18 TOP抽象模仿</li><br/>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>11:25 BIGBANG</li>
+          <li>18:59 A Fool Of Tears</li>
+          <li>51:05 Dirty Cash</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113185155718988&bvid=BV1GKsmerERN&cid=25969297670&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年1月12日</strong></p>
+        <ul>
+          <li>《来玩吧》</li>
+          <li>GD个人做嘉宾</li>
+          <li>有中字</li>
+        </ul><br/>
+        <p><strong>GD个人说话环节：</strong></p>
+        <ul>
+          <li>35:51-38:46</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+  
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5489098&p=5" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年1月12日</strong></p>
+        <p>Kiss the radio</p>
+        <p>无中字</p>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>04:27 Dirty Cash</li>
+          <li>23:55 A Fool Of Tears</li>
+          <li>40:58 BIGBANG</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5504163&p=17" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年1月16日</strong></p>
+        <p>郑仙姬的Sunny Side</p>
+        <p>有中字</p>
+        <ul>
+          <li>01:13 胜利学霸全校第七名</li>
+          <li>19:08 GD相爱年龄</li>
+          <li>20:02 成员们的理想型</li>
+          <li>33:33 35:00 TOP又来模仿这个了</li>
+          <li>35:49 GD 胜利 模仿《王的男人》</li>
+          <li>42:08 全体笑胜利写字</li>
+          <li>43:10 胜利撒娇，TOP模仿</li>
+          <li>43:37 突然喊Bang（BIGBANG就是打破偶像框架的组合）</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div class="video-row">
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5546780&p=83" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/UKqynFGW0lA?si=VeaYLTwLowMEb4gb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2007年1月26日</strong></p>
+        <p>Nam Gong Yeon</p>
+        <p>目前未找到完整版视频</p>
+        <ul>
+          <li>第一个视频唱Dirty Cash</li>
+          <li>第二个视频唱Big Boy</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5544788&p=78" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年1月29日</strong></p>
+        <p>姜秀晶的Music Show</p>
+        <p>无中字</p>
+        <li>没有talk环节</li>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>00:00 BIGBANG</li>
+          <li>03:21 无缝衔接 Dirty Cash</li>
+          <li>06:33 无缝衔接 Shake It</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5504164&p=18" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年1月31日</strong></p>
+        <p>Maybe radio</p>
+        <p>无中字</p>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>15:33 A Fool Of Tears</li>
+          <li>43:00 Dirty Cash</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5544789&p=79" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年1月31日</strong></p>
+        <p>寻笑人电台</p>
+        <p>无中字</p>
+        <li>00:35 成员们撒娇</li><br/>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>01:54 清唱</li>
+          <li>02:29 Dirty Cash</li>
+          <li>05:40 无缝衔接 Ma Girl</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div id="show2007-feb" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="show2007janmay.html#show2007-feb-jump" class="jump-button">2月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5504165&p=19" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年2月14日</strong></p>
+        <p>郑仙姬的Sunny Side</p>
+        <p>有中字</p>
+        <ul>
+          <li>02:06 “抽风”外号</li>
+          <li>05:20 又提到了去看Justin Timberlake的演唱会</li>
+          <li>06:20 胜利在美国差点被告</li>
+          <li>12:20 13:23 TOP模仿秀又来了</li>
+          <li>25:17 28:05 胜利看p梗</li>
+          <li>43:22 胜利烤肉梗</li>
+          <li>46:08 胜利：GD你不要再喜欢我了</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5506301&p=67" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年2月16日</strong></p>
+        <p>SS501 Young Street</p>
+        <p>无中字</p>
+        <li>15:15 貌似在抽签</li>
+        <li>28:10 萌莉来袭</li>
+        <li>33:33 VI手势认证</li><br/>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>18:48 Dirty Cash</li>
+          <li>32:10 Sexy Back（胜利版）</li>
+          <li>42:00 Shake It</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113888876104402&bvid=BV1v3ffY2EeU&cid=28075098945&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年2月18日</strong></p>
+        <p>Gag Concert喜剧综艺</p>
+        <ul>
+          <li>在KBS2播出</li>
+          <li>有中字</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=34541134&bvid=BV1pt411d75D&cid=60510904&p=8" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年2月25日</strong></p>
+        <ul>
+          <li>New X-MAN</li>
+          <li>TOP个人做嘉宾</li>
+          <li>有中字</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+  
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5504166&p=20" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年2月26日</strong></p>
+        <p>Maybe radio</p>
+        <p>无中字</p>
+        <li>43:50 GD拍胜利脸，胜利烧烧的</li><br/>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>12:55 Dirty Cash</li>
+          <li>27:05 Shake It</li>
+          <li>43:15 翻唱Invitation</li>
+          <li>43:50 GD拍胜利脸，胜利烧烧的</li>
+          <li>49:13 唱HOT (1TYM)</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div id="show2007-mar" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="show2007janmay.html#show2007-mar-jump" class="jump-button">3月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113758601022250&bvid=BV1NA6BYoEmk&cid=27663142619&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年3月10日</strong></p>
+        <p>School Attack 校园突击</p>
+        <ul>
+          <li>有中字</li>
+          <li>第一集</li>
+          <li>14:08 打歌舞台</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5544790&p=80" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年3月23日</strong></p>
+        <p>Power FM许秀京的歌谣风景</p>
+        <p>无中字，没有talk环节</p>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>00:00 La La La</li>
+          <li>03:01 Shake It</li>
+          <li>06:42 A Fool Of Tears</li>
+          <li>10:40 Dirty Cash</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5546781&p=84" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年3月27日</strong></p>
+        <p>朴俊亨的人气歌谣</p>
+        <p>无中字，没有talk环节</p>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>00:00 GD rap</li>
+          <li>00:32 Shake It</li>
+          <li>04:14 Dirty Cash</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div id="show2007-apr" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="show2007janmay.html#show2007-apr-jump" class="jump-button">4月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <p>下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=13546852&bvid=BV1mx411J7ZL&cid=22174283&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年4月4日</strong></p>
+        <p>Idol World综艺第一集</p>
+        <p>有中字</p>
+        <ul>
+          <li>07:10 撕月历</li>
+          <li>08:44 太阳要笑死我了</li>
+          <li>20:05 胜利比赛炸酱面</li>
+          <li>23:11 大声劈叉</li>
+          <li>27:01 TOP憋笑挑战</li>
+          <li>30:05 GD眼泪挑战（环节开始在下一集）</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=13546852&bvid=BV1mx411J7ZL&cid=22174285&p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年4月11日</strong></p>
+        <p>Idol World综艺第二集</p>
+        <p>有中字</p>
+        <ul>
+          <li>01:17 GD眼泪挑战</li>
+          <li>06:43 太阳单杠游戏</li>
+          <li>08:44 飞镖</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=13546852&bvid=BV1mx411J7ZL&cid=22174279&p=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年4月18日</strong></p>
+        <p>Idol World综艺第三集</p>
+        <p>有中字</p>
+        <ul>
+          <li>02:50 音乐节奏游戏（弹额头，剪衣服惩罚）</li>
+          <li>06:43 太阳单杠游戏</li>
+          <li>08:44 飞镖</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=13546852&bvid=BV1mx411J7ZL&cid=22174281&p=4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年4月25日</strong></p>
+        <p>Idol World综艺第四集</p>
+        <p>有中字</p>
+        <ul>
+          <li>03:54 穿动物装抢巧克力</li>
+          <li>19:39 短剧出处（偶像世界－秘密同居女）</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="show2007-may" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="show2007janmay.html#show2007-may-jump" class="jump-button">5月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <p>下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=13546852&bvid=BV1mx411J7ZL&cid=22174287&p=5" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年5月2日</strong></p>
+        <p>Idol World综艺第五集</p>
+        <p>有中字</p>
+        <ul>
+          <li>27:13 短剧花絮出处（偶像世界－秘密同居女花絮）</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113712396634809&bvid=BV1fLCwYXEXr&cid=27523089283&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年5月26日</strong></p>
+        <p>School Attack 校园突击</p>
+        <ul>
+          <li>有中字</li>
+          <li>第二集</li>
+          <li>14:25：打歌舞台</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="show2007.html">Back</a>
+    </nav>
+    <nav class="right-nav">
+      <a href="show2007julydec.html">7-12月</a>
+    </nav>
+  </div>
+
+</main>
+</body>
+</html>

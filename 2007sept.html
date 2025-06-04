@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2007年9月</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .image-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 20px auto;
+      max-width: 1500px;
+    }
+
+    .image-row img {
+      width: auto;
+      height: 300px;
+      object-fit: cover;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;             /* ✅ 防止太窄 */
+      white-space: nowrap;          /* ✅ 不换行 */
+      text-align: center;           /* ✅ 内容居中 */
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="2007.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>2007年9月</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="2007oct.html">10月</a>
+    </nav>
+  </div>
+  <br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/KAe4t6WmUaA?si=q9uQONUwJgdMK2iT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月1日</strong></p>
+        <p>MBCkpop Music Core闭幕</p>
+        <ul>
+          <li>Bigbang在旁边，入镜了</li>
+        </ul>
+      </div>
+    </div>
+  <hr class="full-width-line" />  
+  </div>
+  
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 400px; text-align: left;">
+    <p><strong>2007年9月1日参与 MBCkpop Music Core</strong></p>
+      <ul>
+        <li>Lies</li>
+      </ul>
+    </div>
+    <div id="stage070901" style="padding-top: 100px; margin-top: -100px;">
+      <a href="stage2007augdec.html#stage070901-jump" class="jump-button">打歌舞台视频指路</a>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 400px; text-align: left;">
+    <p><strong>2007年9月2日参与 SBS Inkigayo人气歌谣</strong></p>
+      <ul>
+        <li>Lies</li>
+      </ul>
+    </div>
+    <div id="stage070902" style="padding-top: 100px; margin-top: -100px;">
+      <a href="stage2007augdec.html#stage070902-jump" class="jump-button">打歌舞台视频指路</a>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/HSMkHHPWL68?si=cG-aigi_V3gryyVZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月6日</strong></p>
+        <p>Always Showcase</p>
+        <p>Arirang采访视频</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5504169&p=23" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月6日</strong></p>
+        <p>南宫燕的Gorilla</p>
+        <ul>
+          <li>56:08 胜利被GD给一拳 高能<br/>太阳先是问胜利是不是哭了</li>
+          <li>56:57 太阳把胜利像小孩一样抱起来啊啊好可爱</li>
+          <li>1:00:50 GD不知道又笑什么</li>
+          <li>1:02:32 GD搭话失效 被胜利横一眼 转头找大声去了</li>
+          <li>1:02:55 谁懂啊坐在对面的俩大哥在吃瓜</li>
+          <li>1:03:19 GD又棒棒给两拳</li>
+          <li>1:05:39 GD开始解释了</li>
+          <li>1:05:55 胜利说他得奖太感动就哭了</li>
+          <li>1:06:05 GD后悔莫及</li><br/>
+        </ul>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>25:58 Always</li>
+          <li>38:29 Unknown Number</li>
+          <li>1:07:33 Pretended</li>
+          <li>1:27:13 Oh Ma Baby</li>
+          <li>1:31:53 胜利唱Justin Timberlake的LoveStoned</li>
+          <li>1:42:53 Lies</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/JDEG8g0Ckeo?si=ZFYahJWZqOsF_SxL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月6日 南宫燕的Gorilla</strong></p>
+        <p>又为胜利开一栏，我也很喜欢这首歌</p>
+        <p>Love Stoned</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5504168&p=22" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月6日</strong></p>
+        <p>崔华静的Power Time</p>
+        <p>有中字</p>
+        <p>全程高能啊，建议看完整版</p>
+        <ul>
+          <li>07:53 TOP去拍电视剧了（他的专区有完整版视频）</li>
+          <li>22:20 GD怕胜利</li>
+          <li>32:40 胜利kawaii</li>
+          <li>36:08 胜利真的在几年后真的演了公子</li>
+          <li>38:49 GD在同一天给了胜利几拳 现在又来哈哈哈</li>
+          <li>40:24 GD搭话一见钟情女生</li>
+          <li>40:12 谁叹了一口长长的气</li>
+          <li>45:01 身体的秘密</li>
+          <li>45:41 附赠胜利的白眼</li>
+          <li>46:38 太阳初吻</li>
+          <li>46:50 GD初吻</li>
+          <li>47:30 GD抱着胜利睡</li><br/>
+        </ul>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>15:22 Lies</li>
+          <li>23:42 Always</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 400px; text-align: left;">
+    <p><strong>2007年9月7日参与 KBS Music Bank</strong></p>
+      <ul>
+        <li>Lies</li>
+      </ul>
+    </div>
+    <div id="stage070907" style="padding-top: 100px; margin-top: -100px;">
+      <a href="stage2007augdec.html#stage070907-jump" class="jump-button">打歌舞台视频指路</a>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p>2007年9月7日 Bigbang在KBS Music Bank Lies的打歌舞台，已经获得27个一等奖</p>
+    <p>直到2013年是男子乐队和偶像团体中获得一等奖最多的记录，仅次于Wonder Girls</p>
+    <p>点击这里进入获奖详细资讯：<a href="https://foshobigbang.wordpress.com/bigbang-discography/awards-2/" 
+      target="_blank" style="color: #33FFFF;">Wordpress</a></p>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/HK1s0IBQml8?si=GjdC6ylTEgsp_qrb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月8日</strong></p>
+        <p>MBCkpop Music Core开场，入镜了</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 400px; text-align: left;">
+    <p><strong>2007年9月8日参与 MBCkpop Music Core</strong></p>
+      <ul>
+        <li>Lies</li>
+      </ul>
+    </div>
+    <div id="stage070908" style="padding-top: 100px; margin-top: -100px;">
+      <a href="stage2007augdec.html#stage070908-jump" class="jump-button">打歌舞台视频指路</a>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p>2007年9月9日 Bigbang在SBS Inkigayo人气歌谣Lies的打歌舞台，已经赢得了33项Mutizen奖和9次三冠王</p>
+    <p>直到2013年前都保持着人气歌谣历史上获得最多Mutizen奖和三冠王的记录</p>
+    <p>点击这里进入获奖详细资讯：<a href="https://foshobigbang.wordpress.com/bigbang-discography/awards-2/" 
+      target="_blank" style="color: #33FFFF;">Wordpress</a></p>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 400px; text-align: left;">
+    <p><strong>2007年9月9日参与 SBS Inkigayo人气歌谣</strong></p>
+      <ul>
+        <li>Lies</li>
+      </ul>
+    </div>
+    <div id="stage070909" style="padding-top: 100px; margin-top: -100px;">
+      <a href="stage2007augdec.html#stage070909-jump" class="jump-button">打歌舞台视频指路</a>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5504170&p=24" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月12日</strong></p>
+        <p>朴俊亨的FM人气歌谣</p>
+        <ul>
+          <li>05:19 05:35 GD捣乱</li>
+          <li>06:43 捣乱结束</li>
+          <li>09:04 09:36 胜利捣乱</li>
+          <li>10:30 主持人也来捣乱</li>
+          <li>15:00 16:14 GD禁止大喊大叫（好像TOP大叫的声音）</li><br/>
+        </ul>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>03:40 胜利大声太阳 唱코요태的 Pure Love 순정</li>
+          <li>08:38 大声GD 唱Clon클론的 First Love 초련</li>
+          <li>13:08 GD胜利太阳 唱S.E.S的 I love You 너를 사랑매</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/-p7u1vQ4KS4?si=v_lMbfETKjubuPU3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月12日 朴俊亨的FM人气歌谣</strong></p>
+        <p>GD饭拍视频 From YouTube by @ssol 0818</p>
+        <ul>
+          <li>GD胜利太阳 唱S.E.S的 I love You 너를 사랑매</li>
+          <li>没错就是三条刘海TOP唱的那个</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>2007年9月，Always专辑的Lies在Cyworld Digital Music Awards上获得"Song of the Month"奖项</p>
+    <p>点击这里进入获奖详细资讯：<a href="https://web.archive.org/web/20110725172645/http://music.cyworld.com/chart/chart_dma_list.asp?curMonth=200709" 
+      target="_blank" style="color: #33FFFF;">Cyworld</a></p>
+    <img src="200708.jpg" style="height: 250px;" />
+  </div>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/lcPUQReJuTY?si=qBrt8Ao4bWx3S-bC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月12日</strong></p>
+        <p>Thailand Interview</p>
+        <ul>
+          <li>泰国采访视频</li>
+        </ul>
+      </div>
+    </div>
+  <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/6fx0fPiI9fU?si=jWOC6LVODYqp8s4a" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月12日播出 Cyworld Digital Music Award</strong></p>
+        <p>Yonhap News Agency采访视频</p>
+        <p>获得"Song of the Month"奖项</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/pQidqK_xoJo?si=eO3HPBGNknQpCpel" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月12日播出 Cyworld Digital Music Award</strong></p>
+        <p>Yonhap News Agency采访视频（日翻）</p>
+        <p>获得"Song of the Month"奖项</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/Lc2iZhdrb28?si=kyBf78iPOkLhcMh3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/AF9DryxfOBg?si=5HThOhmSkGh8DcsO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2007年9月12日</strong></p>
+        <p>Cyworld Digital Music Award</p>
+        <p>左边视频官方频道播出 唱Lies，右边视频GD饭拍视频 From YouTube by @ssol0818</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/td2AEqLllsQ?si=R6dD9evh8_WApzHI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/_YEPTFlWM8g?si=wSZJI9r_oaEpeitA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2007年9月13日播出 AhaTv Korean台</strong></p>
+        <p>Cyworld Digital Music Award</p>
+        <p>左边视频唱Lies，右边采访视频</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 400px; text-align: left;">
+    <p><strong>2007年9月13日参与 Mnet MCD</strong></p>
+      <ul>
+        <li>Lies</li>
+      </ul>
+    </div>
+    <div id="stage070913" style="padding-top: 100px; margin-top: -100px;">
+      <a href="stage2007augdec.html#stage070913-jump" class="jump-button">打歌舞台视频指路</a>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114545318169223&bvid=BV1zvJBzrEzr&cid=30074602397&p=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月14日</strong></p>
+        <p>KM台 采访视频</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5507824&p=77" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月14日</strong></p>
+        <p>洪景京歌谣Kwang Jang Radio</p>
+        <ul>
+          <li>没有talk环节</li><br/>
+        </ul>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>00:00 Lies</li>
+          <li>03:22 Always</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 400px; text-align: left;">
+    <p><strong>2007年9月15日参与 MBCkpop Music Core</strong></p>
+      <ul>
+        <li>Lies</li>
+      </ul>
+    </div>
+    <div id="stage070915" style="padding-top: 100px; margin-top: -100px;">
+      <a href="stage2007augdec.html#stage070915-jump" class="jump-button">打歌舞台视频指路</a>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 400px; text-align: left;">
+    <p><strong>2007年9月15日参与 MTV Live Wow Sepcial</strong></p>
+      <ul>
+        <li>Lies</li>
+      </ul>
+    </div>
+    <div id="stage20070915" style="padding-top: 100px; margin-top: -100px;">
+      <a href="stage2007augdec.html#stage20070915-jump" class="jump-button">打歌舞台视频指路</a>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5546782&p=85" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月15日</strong></p>
+        <p>朴俊亨的人气歌谣</p>
+        <ul>
+          <li>TOP缺席</li>
+          <li>没有talk环节</li><br/>
+        </ul>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>00:00 Unknown Number</li>
+          <li>03:30 La La La</li>
+          <li>06:28 Oh Ma Baby</li>
+          <li>10:12 Lies</li>
+          <li>14:43 Always</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Xiz3sWZ4bdU?si=HXjV79KOvQkvf7BF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月16日</strong></p>
+        <p>KBS Cheon Kuk Concert</p>
+        <ul>
+          <li>唱Lies</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/-Aze1oPnMZI?si=opPNoi7IrB6NSqqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月18日</strong></p>
+        <p>MBC Korea Broadcasting Advertising Festival</p>
+        <ul>
+          <li>01:51 BIGBANG remix (CM song)</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5492933&p=10" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月18日</strong></p>
+        <p>池贤宇的我们开心过的日子</p>
+        <ul>
+          <li>03:29 TOP太好笑了大家快去看啊啊啊啊</li>
+          <li>没有现场打歌环节</li>
+        </ul>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=5986919&bvid=BV1es411k7uz&cid=9719753&p=9" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p>中字cut</p>
+        <ul>
+          <li>GD TOP演戏</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5504172&p=26" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月19日</strong></p>
+        <p>安在旭车太贤的MR广播</p>
+        <p>现场打歌环节：</p>
+        <ul>
+          <li>11:42 Always</li>
+          <li>26:27 翻唱MooGaDang的OAO</li>
+          <li>37:49 Lies</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+  
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/zFS2APaXr70?si=4TNxuQ7pD3kY6kCT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月21日</strong></p>
+        <p>Mnet Wonder Girls后台花絮cut</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>2007年9月27日 Bigbang在Mnet M!Countdown Lies的打歌舞台，已经赢得了36个一等奖和6个三冠王</p>
+    <p>直到2013年前都保持着M!Countdown历史上获得一等奖和三冠王次数最多的记录</p>
+    <p>点击这里进入获奖详细资讯：<a href="https://foshobigbang.wordpress.com/bigbang-discography/awards-2/" 
+      target="_blank" style="color: #33FFFF;">Wordpress</a></p>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 400px; text-align: left;">
+    <p><strong>2007年9月28日参与 KBS Music Bank</strong></p>
+      <ul>
+        <li>Lies</li>
+      </ul>
+    </div>
+    <div id="stage070928" style="padding-top: 100px; margin-top: -100px;">
+      <a href="stage2007augdec.html#stage070928-jump" class="jump-button">打歌舞台视频指路</a>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 400px; text-align: left;">
+    <p><strong>2007年9月29日参与 MBCkpop Music Core</strong></p>
+      <ul>
+        <li>Lies</li>
+      </ul>
+    </div>
+    <div id="stage070929" style="padding-top: 100px; margin-top: -100px;">
+      <a href="stage2007augdec.html#stage070929-jump" class="jump-button">打歌舞台视频指路</a>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p>下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=2661314&bvid=BV13s411m7AU&cid=4333966&p=53" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月</strong></p>
+        <p>万元的幸福</p>
+        <p>有中字</p>
+        <ul>
+          <li>02:35 胜利西兰花</li>
+          <li>08:50 GD喂食</li>
+          <li>12:51 GD睡胜利房间，房间13:30有龙tory 뇽토리的应援牌</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=2661314&bvid=BV13s411m7AU&cid=4451640&p=85" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2007年9月</strong></p>
+        <p>万元的幸福 补</p>
+        <p>有中字</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="2007.html">Back</a>
+    </nav>
+    <nav class="right-nav">
+      <a href="2007oct.html">10月</a>
+    </nav>
+  </div>
+
+</main>
+</body>
+</html>

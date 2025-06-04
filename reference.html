@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    nav {
+      background-color: #111;
+      padding: 20px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: transparent;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: white;
+      color: #111;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+
+    .right-image {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .right-image img {
+      width: 200px;
+      height: auto;
+    }
+
+    .image-caption {
+      margin-top: 10px;
+      color: #ccc;
+      font-size: 14px;
+      text-align: center;
+    }
+
+      .intro-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 60px;
+    flex-wrap: wrap; /* 允许换行 */
+  }
+
+  .intro-left,
+  .intro-right {
+    width: 300px;
+    color: white;
+  }
+
+  .intro-left {
+    text-align: left;
+    margin-right: 40px;
+    margin-top: -550px;
+  }
+
+  .intro-right {
+    text-align: center;
+    margin-left: 40px;
+    margin-top: -80px;
+  }
+
+  .intro-center {
+    max-width: 600px;
+    color: white;
+    text-align: center;
+    z-index: 1;
+  }
+
+  .intro-right img,
+  .intro-left img {
+    width: 50%;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .intro-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .intro-left,
+    .intro-right {
+      margin: 20px 0;
+      width: 30%;
+    }
+  }
+
+  nav a.highlight-button {
+    background-color: none;
+    color: white;
+    border: 2px solid #ff8dd3;
+  }
+  
+  nav a.highlight-button:hover {
+    background-color: none;
+    color: #ff8dd3;
+  }
+
+  nav a.highlight1-button {
+    background-color: none;
+    color: white;
+    border: 2px solid #33FFFF;
+  }
+  
+  nav a.highlight1-button:hover {
+    background-color: none;
+    color: #33FFFF;
+  }
+
+.two-column-wrapper {
+  display: flex;
+  justify-content: center; /* 整体居中 */
+  align-items: flex-start;
+  gap: 40px;
+  margin: 50px auto;
+  max-width: 1000px;
+  padding: 20px;
+}
+
+.column {
+  width: 45%;
+  text-align: left; /* 每一列的文字靠左 */
+  color: white;
+}
+
+.divider {
+  width: 2px;
+  background-color: white;
+  height: auto;
+}
+
+p {
+  margin-bottom: 10px; /* 设置段落之间的下间距 */
+  margin: 10px 0;
+  line-height: 1.8;
+}
+
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="schedule.html">完整时间线</a>
+    <a href="stage.html">打歌舞台</a>
+    <a href="concert.html">官拍演唱会</a>
+    <a href="solo.html">成员Solo</a>
+    <a href="teams.html">小分队</a>
+    <a href="album.html">专辑歌曲Mv</a>
+    <a href="fanmeeting.html">Fan Meeting</a>
+    <a href="collection.html">官方周边</a>
+    <a href="show.html">放送节目</a>
+    <a href="interview.html">采访</a>
+    <a href="behindthescenes.html">幕后花絮</a>
+    <a href="magazine.html">杂志拍摄</a>
+    <a href="endorsement.html">代言</a>
+    <a href="awardlist.html">颁奖典礼</a>
+    <a href="movie.html">电影电视剧短剧</a>
+    <a href="ygfamily.html" class="highlight-button">YGfamily</a>
+    <a href="cp.html" class="highlight1-button">CP向</a>
+  </nav>
+  <main>
+  <h1>参考资料Reference</h1><br/>
+  <h2>点击粉蓝色的字体即可进入网站链接</h2>
+
+  <div class="two-column-wrapper">
+    <div class="column left">
+      <p style="text-decoration: underline;">Bigbang媒体网站</p>
+      <p>1. Bigbang英文版本：<a href="https://en.wikipedia.org/wiki/BigBang_(South_Korean_band)" 
+        target="_blank" style="color: #ff8dd3;">WIKIPEDIA</a></p>
+      <p>2. Bigbang大陆版本：<a href="https://zh.wikipedia.org/wiki/BIGBANG" 
+        target="_blank" style="color: #33FFFF;">维基百科</a></p>
+      <p>3. Bigbang个人资料：<a href="https://kprofiles.com/big-bang-members-profile/" 
+        target="_blank" style="color: #ff8dd3;">Kpop Profiles</a></p>
+      <p>4. <a href="https://kpop.fandom.com/wiki/BIGBANG" 
+        target="_blank" style="color: #33FFFF;">Kpop Wiki</a></p>
+      <p>5. This website was designed by Celine May Salvino. For the class DAAT204 at The University of the Arts, Philadelphia, Pennsylvania. Spring, 2017. Revised in 2020.
+        <br/>简单来说是学生粉丝制作的网站：<a href="https://www.bigbang.vinlune.com/" 
+        target="_blank" style="color: #ff8dd3;">VINLUNE</a></p>
+        
+      <p style="text-decoration: underline;"><br/>Bigbang官方账号</p>
+      <p>1. <a href="https://www.youtube.com/bigbang" 
+        target="_blank" style="color: #ff8dd3;">YouTube</a></p>
+      <p>2. <a href="https://open.spotify.com/artist/4Kxlr1PRlDKEB0ekOCyHgX" 
+        target="_blank" style="color: #33FFFF;">Spotify</a></p>
+      <p>3. <a href="https://kprofiles.com/big-bang-members-profile/" 
+        target="_blank" style="color: #ff8dd3;">Facebook</a></p>
+      <p>4. YG Select：<a href="https://en.ygselect.com/category/bigbang/29/" 
+        target="_blank" style="color: #33FFFF;">官方周边</a></p>
+      <p>5. <a href="https://en.ygselect.com/category/x-bigbang/430/" 
+        target="_blank" style="color: #ff8dd3;">KRUNK</a></p>
+      <p>6. YG娱乐里Bigbang的专栏已经被踢出去了<br/>但是周边今年还在上新品继续卖....Ⅳ菊花你真的..没话说
+        <br/><a href="https://yg-family.com/artist/About.asp?LANGDIV=E&ATYPE=2&ARTIDX=3" 
+        target="_blank" style="color: #33FFFF;">YG ENTERTAINMENT</a>：是点不进去的哦
+      </p>
+
+      <p style="text-decoration: underline;"><br/>这些是我有参考的关于Bigbang</p>
+      <p>1. 粉丝买下的周边实体图片：<a href="https://www.mybigbangcollection.com/directory/" 
+        target="_blank" style="color: #ff8dd3;">My BIGBANG Collection</a></p>
+      <p>2. 演唱会列表：<a href="https://www.concertarchives.org/bands/bigbang" 
+        target="_blank" style="color: #33FFFF;">Concert Archives</a>：视频不符</p>
+      <p>3. 影视作品列表：<a href="https://zh.wikipedia.org/wiki/BIGBANG%E5%BD%B1%E8%A6%96%E4%BD%9C%E5%93%81%E5%88%97%E8%A1%A8?utm_source=chatgpt.com" 
+        target="_blank" style="color: #ff8dd3;">维基百科</a></p>
+      <p>4. 演唱会列表：<a href="https://en.wikipedia.org/wiki/List_of_BigBang_concert_tours" 
+        target="_blank" style="color: #33FFFF;">WIKIPEDIA</a></p>
+      <p>5. 内陆网站关于广告代言：<a href="https://m.digitaling.com/articles/23500.html?utm_source=chatgpt.com" 
+        target="_blank" style="color: #ff8dd3;">数英DIGITALING</a></p>
+      <p>6. 06-13年打歌舞台：<a href="https://bigbang-collection.blogspot.com/p/performances-by-year.html?m=1" 
+        target="_blank" style="color: #33FFFF;">BB Collection</a></p>    
+      <p>7. 领奖列表英文：<a href="https://en.wikipedia.org/wiki/List_of_awards_and_nominations_received_by_BigBang" 
+        target="_blank" style="color: #ff8dd3;">WIKIPEDIA</a></p>
+      <p>8. 领奖列表马来文：<a href="https://ms.wikipedia.org/wiki/Senarai_anugerah_dan_pencalonan_yang_diterima_oleh_Big_Bang" 
+        target="_blank" style="color: #33FFFF;">WIKIPEDIA</a></p>
+      <p>9. 领奖列表：<a href="https://foshobigbang.wordpress.com/bigbang-discography/awards-2/" 
+        target="_blank" style="color: #ff8dd3;">WORDPRESS</a></p>
+      </div>
+
+    <div class="column right">
+      <p style="text-decoration: underline;">维基百科成员的个人资料</p>
+      <p>1. <a href="https://zh.wikipedia.org/zh-cn/G-Dragon" 
+        target="_blank" style="color: #ff8dd3;">G-Dragon</a></p>
+      <p>2. ：<a href="https://zh.wikipedia.org/zh-cn/%E5%A4%AA%E9%99%BD_(%E6%AD%8C%E6%89%8B)" 
+        target="_blank" style="color: #33FFFF;">太阳</a></p>
+      <p>3. <a href="https://zh.wikipedia.org/zh-cn/T.O.P." 
+        target="_blank" style="color: #ff8dd3;">T.O.P崔胜铉</a></p>
+      <p>4. <a href="https://zh.wikipedia.org/zh-cn/%E5%A7%9C%E5%A4%A7%E8%81%B2" 
+        target="_blank" style="color: #33FFFF;">姜大声</a></p>
+      <p>5. <a href="https://zh.wikipedia.org/zh-cn/%E5%8B%9D%E5%88%A9_(%E6%AD%8C%E6%89%8B)" 
+        target="_blank" style="color: #ff8dd3;">李胜利</a></p>
+      <p>6. 个人巡回演唱会：<a href="https://zh.wikipedia.org/wiki/BIGBANG%E5%80%8B%E4%BA%BA%E5%B7%A1%E8%BF%B4%E6%BC%94%E5%94%B1%E6%9C%83%E5%88%97%E8%A1%A8#Taeyang_Hot_Concert" 
+        target="_blank" style="color: #ff8dd3;">维基百科</a></p>
+
+      <p style="text-decoration: underline;"><br/>bilibili站的up主们</p>
+      <p>1. <a href="https://space.bilibili.com/383266332?spm_id_from=333.337.search-card.all.click" 
+        target="_blank" style="color: #ff8dd3;">GRAY-loco的昇炫宝</a></p>
+      <p>2. <a href="https://space.bilibili.com/3255590?spm_id_from=333.337.search-card.all.click" 
+        target="_blank" style="color: #33FFFF;">微博后院懒人帮</a></p>
+      <p>3. <a href="https://space.bilibili.com/27700773?spm_id_from=333.337.search-card.all.click" 
+        target="_blank" style="color: #ff8dd3;">AGRI陪伴站</a></p>
+      <p>4. <a href="https://space.bilibili.com/10823717?spm_id_from=333.337.search-card.all.click" 
+        target="_blank" style="color: #33FFFF;">GDTOP百度知道团队</a></p>
+      <p>5. <a href="https://space.bilibili.com/6271191?spm_id_from=333.337.search-card.all.click" 
+        target="_blank" style="color: #ff8dd3;">龙TORY按头小分队</a></p>
+
+      <p style="text-decoration: underline;"><br/>bilibili站的up主们</p>
+      <p>1. <a href="https://space.bilibili.com/383266332?spm_id_from=333.337.search-card.all.click" 
+        target="_blank" style="color: #ff8dd3;">GRAY-loco的昇炫宝</a></p>
+      <p>2. <a href="https://space.bilibili.com/3255590?spm_id_from=333.337.search-card.all.click" 
+        target="_blank" style="color: #33FFFF;">微博后院懒人帮</a></p>
+      <p>3. <a href="https://space.bilibili.com/27700773?spm_id_from=333.337.search-card.all.click" 
+        target="_blank" style="color: #ff8dd3;">AGRI陪伴站</a></p>
+      <p>4. <a href="https://space.bilibili.com/10823717?spm_id_from=333.337.search-card.all.click" 
+        target="_blank" style="color: #33FFFF;">GDTOP百度知道团队</a></p>
+      <p>5. <a href="https://space.bilibili.com/6271191?spm_id_from=333.337.search-card.all.click" 
+        target="_blank" style="color: #ff8dd3;">龙TORY按头小分队</a></p>
+
+  </main>
+</body>
+</html>
