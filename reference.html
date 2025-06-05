@@ -127,18 +127,29 @@
     border-radius: 8px;
   }
 
-  @media (max-width: 768px) {
-    .intro-wrapper {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .intro-left,
-    .intro-right {
-      margin: 20px 0;
-      width: 30%;
-    }
+@media (max-width: 768px) {
+  .intro-wrapper {
+    flex-direction: column;
+    align-items: center;
   }
+
+  .intro-left,
+  .intro-right {
+    margin: 20px 0;
+    width: 30%;
+  }
+
+  /* ✅ 加上这段 */
+  .two-column-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .column {
+    width: 90%; /* 或 100%，看你美观偏好 */
+    text-align: center;
+  }
+}
 
   nav a.highlight-button {
     background-color: none;
@@ -162,33 +173,6 @@
     color: #33FFFF;
   }
 
-.two-column-wrapper {
-  display: flex;
-  justify-content: center; /* 整体居中 */
-  align-items: flex-start;
-  gap: 40px;
-  margin: 50px auto;
-  max-width: 1000px;
-  padding: 20px;
-}
-
-.column {
-  width: 45%;
-  text-align: left; /* 每一列的文字靠左 */
-  color: white;
-}
-
-.divider {
-  width: 2px;
-  background-color: white;
-  height: auto;
-}
-
-p {
-  margin-bottom: 10px; /* 设置段落之间的下间距 */
-  margin: 10px 0;
-  line-height: 1.8;
-}
 
   </style>
 </head>
