@@ -192,26 +192,19 @@
       text-align: center;
     }
 
-    nav a.highlight-button {
-      background-color: none;
-      color: white;
-      border: 2px solid #ff8dd3;
-    }
-  
-    nav a.highlight-button:hover {
-      background-color: none;
-      color: #ff8dd3;
+    @media only screen and (max-width: 768px) {
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+      }
     }
 
-    nav a.highlight1-button {
-      background-color: none;
-      color: white;
-      border: 2px solid #33FFFF;
-    }
-  
-    nav a.highlight1-button:hover {
-      background-color: none;
-      color: #33FFFF;
+    @media only screen and (max-width: 768px) {
+      .full-width-line {
+        transform: scaleX(1.6949);       /* 1 / 0.59 ≈ 1.6949 */
+        transform-origin: left;
+      }
     }
 
   </style>

@@ -236,15 +236,12 @@
         width: 169.5%;
       }
     }
-  
+
     @media only screen and (max-width: 768px) {
-    .full-width-line {
-      width: 90vw;
-      border: none;
-      border-top: 1px solid white;
-      margin-top: 10px; /* 控制和上方内容的距离 */
-      margin-bottom: 20px;
-    }
+      .full-width-line {
+        transform: scaleX(1.6949);       /* 1 / 0.59 ≈ 1.6949 */
+        transform-origin: left;
+      }
     }
 
   </style>

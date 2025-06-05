@@ -227,6 +227,22 @@
       border-top: 1px solid white;
       margin: 20px 0;
     }
+
+    @media only screen and (max-width: 768px) {
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      .full-width-line {
+        transform: scaleX(1.6949);       /* 1 / 0.59 ≈ 1.6949 */
+        transform-origin: left;
+      }
+    }
+
 </style>
 <main>
   <div class="header-container">
@@ -234,7 +250,7 @@
       <a href="gri.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>NyongTory<br/>2007年</h1>
+      <h1>龙tory2007年</h1>
     </div>
     <nav class="right-nav">
       <a href="index.html">Home</a>
@@ -998,6 +1014,15 @@
       </div>
     </div>
     <hr class="full-width-line" />
+  </div>
+
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="gri.html">Back</a>
+    </nav>
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
   </div>
 
 </main>

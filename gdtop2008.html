@@ -227,6 +227,22 @@
       border-top: 1px solid white;
       margin: 20px 0;
     }
+
+    @media only screen and (max-width: 768px) {
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      .full-width-line {
+        transform: scaleX(1.6949);       /* 1 / 0.59 ≈ 1.6949 */
+        transform-origin: left;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -236,7 +252,7 @@
       <a href="teams.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>忙内line<br/>李胜利 姜大声 小分队</h1>
+      <h1>GD & TOP小分队</h1>
     </div>
     <nav class="right-nav">
       <a href="index.html">Home</a>
