@@ -173,6 +173,41 @@
     color: #33FFFF;
   }
 
+.two-column-wrapper {
+  display: flex;
+  justify-content: center; /* 整体居中 */
+  align-items: flex-start;
+  gap: 40px;
+  margin: 50px auto;
+  max-width: 1000px;
+  padding: 20px;
+}
+
+.column {
+  width: 45%;
+  text-align: left; /* 每一列的文字靠左 */
+  color: white;
+}
+
+.divider {
+  width: 2px;
+  background-color: white;
+  height: auto;
+}
+
+p {
+  margin-bottom: 10px; /* 设置段落之间的下间距 */
+  margin: 10px 0;
+  line-height: 1.8;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    transform: scale(0.5);
+    transform-origin: top left;
+    width: 200%;
+  }
+}
 
   </style>
 </head>
