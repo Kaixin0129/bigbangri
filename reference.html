@@ -127,6 +127,30 @@
     border-radius: 8px;
   }
 
+@media (max-width: 768px) {
+  .intro-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .intro-left,
+  .intro-right {
+    margin: 20px 0;
+    width: 30%;
+  }
+
+  /* ✅ 加上这段 */
+  .two-column-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .column {
+    width: 90%; /* 或 100%，看你美观偏好 */
+    text-align: center;
+  }
+}
+
   nav a.highlight-button {
     background-color: none;
     color: white;
@@ -179,9 +203,9 @@ p {
 
     @media only screen and (max-width: 768px) {
       body {
-        transform: scale(0.25);
+        transform: scale(0.59);
         transform-origin: top left;
-        width: 250%;
+        width: 169.5%;
       }
     }
 
