@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>代言广告</title>
   <style>
     * {
@@ -211,6 +211,22 @@
       border-top: 1px solid white;
       margin: 20px 0;
     }
+
+@media screen and (max-width: 768px) {
+.full-width-line {
+		
+		    width: 100vw;
+		
+		    border: none;
+		
+		    border-top: 1px solid white;
+		
+		    margin: 20px 0;
+		
+		    margin-left: -40px;
+}
+}
+
 
     nav a.highlight-button {
       background-color: none;
