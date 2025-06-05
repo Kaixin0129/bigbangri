@@ -145,12 +145,15 @@
       scroll-behavior: smooth;
     }
 
-    .full-width-line {
-      width: 90vw;
-      border: none;
-      border-top: 1px solid white;
-      margin: 20px 0;
-    }
+.full-width-line {
+  width: 100vw;
+  border: none;
+  border-top: 1px solid white;
+  margin: 20px 0;
+
+  transform: scale(1.6949);       /* 1 / 0.59 ≈ 1.6949 */
+  transform-origin: left;
+}
 
     nav a {
       color: white;
