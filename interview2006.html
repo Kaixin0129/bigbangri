@@ -233,9 +233,9 @@
     transform: scale(0.59);
     transform-origin: top left;
     width: 169.5%;
-    height: 169.5vh;
-    overflow-x: hidden;
-    overflow-y: auto;
+    height: 169.5vh; /* ✅ 让页面内容高度配合缩放 */
+    overflow-x: hidden; /* ✅ 禁止横向滑动 */
+    overflow-y: auto;   /* ✅ 保持纵向正常滚动 */
   }
 }
 
