@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>幕后花絮2008</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
       margin: 0;
@@ -203,16 +204,21 @@
     }
 
     @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
+        height: calc(100vh / 0.59);
       }
-    }
 
-    @media only screen and (max-width: 768px) {
       .full-width-line {
-        transform: scaleX(1.6949);       /* 1 / 0.59 ≈ 1.6949 */
+        transform: scaleX(1.6949);
         transform-origin: left;
       }
     }
@@ -247,7 +253,7 @@
     </div><br/>
 
   <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <p style="margin: 0;">下面的视频来自@V-z-i 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=773960227&bvid=BV1v14y177KG&cid=1108048052&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
@@ -267,7 +273,7 @@
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="video-container">
-        <video src="skoolooksbhts1.mp4" controls width="500" height="400"></video>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/tLvMSItCXPM?si=KwTHPoGLGhSOx7b5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <div class="text-container">
         <p><strong>2008年10月24日</strong></p>
@@ -275,6 +281,16 @@
       </div>
     </div>
     <hr class="full-width-line" />
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="bhts.html">Back</a>
+    </nav>
+    <nav class="right-nav">
+      <a href="bhts2009.html">2009</a>
+    </nav>
   </div>
 
 </main>

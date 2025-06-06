@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>胜利出道前</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
       margin: 0;
@@ -229,16 +230,21 @@
     }
 
     @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
+        height: calc(100vh / 0.59);
       }
-    }
 
-    @media only screen and (max-width: 768px) {
       .full-width-line {
-        transform: scaleX(1.6949);       /* 1 / 0.59 ≈ 1.6949 */
+        transform: scaleX(1.6949);
         transform-origin: left;
       }
     }
@@ -252,12 +258,14 @@
       <a href="seungri.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>SEUNGRI 李胜利<br/>李胜贤Lee Seung Hyun<br/>出道前2004年到2006年</h1>
+      <h1>胜利出道前</h1>
     </div>
     <nav class="right-nav">
-      <a href="seungri2006.html">2006下半年出道后</a>
+      <a href="seungri2006.html">出道后</a>
     </nav>
   </div>
+
+  <p>出道前2004年到2006年</p><br/>
 
   <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
     <div id="seungripredebut2004-jump" style="display: flex; align-items: center; gap: 10px;">
@@ -311,7 +319,7 @@
         <p>其实是YouTube自带翻译出来的，翻译肯定不准</p>
       </div>
     </div>
-  </div>   
+  </div><br/>
 
     <img src="vi2.jpg" style="height: 400px;" />
     <img src="vi12.jpg" style="height: 400px;" />
@@ -321,6 +329,9 @@
     </div>
   <hr class="full-width-line" />
 
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@小猪搞快跑 点击进入观看完整视频</p>
+  </div>
   <div class="content-wrap">
     <div class="video-container">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3761747&bvid=BV16s411X7KZ&cid=6035071&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
@@ -459,7 +470,7 @@
       <a href="seungri.html">Back</a>
     </nav>
     <nav class="right-nav">
-      <a href="seungri2006.html">2006下半年出道后</a>
+      <a href="seungri2006.html">出道后</a>
     </nav>
   </div>
 

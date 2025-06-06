@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>成员Solo专辑</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
       margin: 0;
@@ -148,16 +149,21 @@
     }
 
     @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
+        height: calc(100vh / 0.59);
       }
-    }
 
-    @media only screen and (max-width: 768px) {
       .full-width-line {
-        transform: scaleX(1.6949);       /* 1 / 0.59 ≈ 1.6949 */
+        transform: scaleX(1.6949);
         transform-origin: left;
       }
     }
@@ -207,16 +213,6 @@
     </div>
     <div style="display: flex; align-items: center; gap: 10px;">
       <a href="albumseungri.html" class="jump-button">Seungri胜利</a>
-    </div>
-  </div>
-
-  <br/>
-  <div class="image-text-row">
-    <img src="y3.png" style="height: 230px; width: 240px;" />
-    <img src="yt2.png" style="height: 230px; width: 350px;" />
-    <div class="image-text-description">
-      <p style="color: #ffa3dc;"><br/>假如你加载出来的视频封面出现了这两张图片<br/>科普一下这样的情况是正常的！</p>
-      <p style="color: #33FFFF;">点开就是直接跳转到视频链接观看视频了<p><图片不符合视频></p></p>
     </div>
   </div>
 

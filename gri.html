@@ -14,8 +14,48 @@
     }
 
     body {
-      background-color: #111;
+      background-image: url(BB1.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
       color: white;
+    }
+
+    body {
+      color: white;
+      background-color: transparent;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url(BB1.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: -1;
+      opacity: 1;
+    }
+    
+    @media (max-width: 768px) {
+      body::before {
+        display: none;
+      }
+    }
+    
+    main p {
+      color: white;
+      text-shadow:
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px  1px 0 black,
+        1px  1px 0 black,
+        3px  3px 5px black;
     }
 
 .jump-button {
@@ -36,7 +76,7 @@
 }
 
     nav {
-      background-color: #111;
+      background-color: none;
       padding: 20px 40px;
       display: flex;
       flex-wrap: wrap;

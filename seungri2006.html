@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>胜利2006</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
       margin: 0;
@@ -229,16 +230,21 @@
     }
 
     @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
+        height: calc(100vh / 0.59);
       }
-    }
 
-    @media only screen and (max-width: 768px) {
       .full-width-line {
-        transform: scaleX(1.6949);       /* 1 / 0.59 ≈ 1.6949 */
+        transform: scaleX(1.6949);
         transform-origin: left;
       }
     }
@@ -252,12 +258,12 @@
       <a href="seungri.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>SEUNGRI 李胜利<br/>李胜贤Lee Seung Hyun<br/>2006年</h1>
+      <h1>胜利2006年</h1>
     </div>
     <nav class="right-nav">
       <a href="seungri2007.html">2007</a>
     </nav>
-    </div>
+  </div>
 
   <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
     <div id="seungri2006-aug-jump" style="display: flex; align-items: center; gap: 10px;">
@@ -281,7 +287,7 @@
 
     <div id="seungri2006-dec" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
       <a href="seungri2006.html#seungri2006-dec-jump" class="jump-button">12月</a>
-    </div>
+    </div><br/>
 
   <div style="text-align: center;">
     <p>2006年12月11日左右，接下来的一个星期胜利去学校考试了，但是放送节目上你还是会看到他的身影</p>

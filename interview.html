@@ -203,10 +203,22 @@
     }
 
     @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
       }
     }
 
@@ -244,6 +256,9 @@
     </div>
     <div style="display: flex; align-items: center; gap: 10px;">
       <a href="interview2007.html" class="jump-button">2007</a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2008.html" class="jump-button">2008</a>
     </div>
   </div>
 

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>专辑歌曲Mv</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
       margin: 0;
@@ -148,10 +149,22 @@
     }
 
     @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
       }
     }
 
@@ -199,6 +212,28 @@
     </div>
     <div style="display: flex; align-items: center; gap: 10px;">
       <a href="album2008.html" class="jump-button">2008</a>
+    </div>
+  </div><br/><br/>
+
+  <hr><br/><br/>
+  <h1>·成员个人Solo专辑·</h1><br/>
+  <p>不包括参演他人的专辑</p><br/><br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <a href="albumgd.html" class="jump-button">G-Dragon权志龙</a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <a href="albumtaeyang.html" class="jump-button">Taeyang东永裴</a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <a href="albumtop.html" class="jump-button">T.O.P崔胜铉</a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <a href="albumdaesung.html" class="jump-button">Daesung大声</a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <a href="albumseungri.html" class="jump-button">Seungri胜利</a>
     </div>
   </div>
 

@@ -6,27 +6,23 @@
   <title>BIGBANG OT5</title>
   <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Arial', sans-serif;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 
-    body {
-      background-image: url(BB1.jpg);
-          background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-      color: white;
-    }
-
-    body {
-  color: white;
-  background-color: transparent;
 }
 
+/* 默认设置：桌面版 */
+body {
+  color: white;
+  background-color: transparent;
+  position: relative;
+  z-index: 0;
+}
+
+/* 背景图设置：只在桌面版显示 */
 body::before {
   content: "";
   position: fixed;
@@ -34,27 +30,35 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url(BB1.jpg);
+  background-image: url('BB1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   z-index: -1;
   opacity: 1;
 }
+
+/* 手机版：取消背景图，用黑色背景 */
 @media (max-width: 768px) {
+  body {
+    background-color: #111; /* 设为黑色 */
+  }
+
   body::before {
-    display: none;
+    display: none; /* 取消背景图 */
   }
 }
+
+    
     main p {
-  color: white;
-  text-shadow:
-    -1px -1px 0 black,
-     1px -1px 0 black,
-    -1px  1px 0 black,
-     1px  1px 0 black,
-     3px  3px 5px black;
-}
+      color: white;
+      text-shadow:
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px  1px 0 black,
+        1px  1px 0 black,
+        3px  3px 5px black;
+    }
 
 main h1 {
   text-shadow: 1px 1px 0 black,
@@ -280,6 +284,73 @@ main h2 {
       }
     }
 
+.center-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;  /* 屏幕中间偏左 */
+  padding-left: 10%;            /* 控制靠左程度 */
+}
+
+/* icon + 文本组：横排 + 靠左对齐 */
+.icon-text-group {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  max-width: 90vw;
+}
+
+/* 图标样式 */
+.icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+/* 文本样式 */
+.text {
+  font-size: 20px;
+  color: white;
+}
+
+.two-column-wrapper-one {
+  display: flex;
+  justify-content: center; /* 整体居中 */
+  align-items: flex-start;
+  gap: 0px;
+  margin: 0px auto;
+  max-width: 1000px;
+  padding: 10px;
+}
+
+    main span {
+      color: white;
+      text-shadow:
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px  1px 0 black,
+        1px  1px 0 black,
+        3px  3px 5px black;
+    }
+
+.icon-text-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 整体居中在屏幕 */
+  padding: 20px;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+}
+
+.text {
+  text-align: left; /* 文字靠左 */
+  color: white;
+  max-width: 80vw; /* 避免太长 */
+}
+
   </style>
 </head>
 <body>
@@ -304,22 +375,71 @@ main h2 {
     <a href="cp.html" class="highlight1-button">CP向</a>
   </nav>
   <main>
-  <h1>Bigbang 2006-2025 物料完整合集</h1>
-  <h1 style="color: #ffa3dc; text-align: center;">建议用电脑网页版浏览（手机打开 排版会变形）</h1>       
-  <div style="text-align: center;">
-    <p style="color: #33FFFF;">"完整时间线" 如其名字，就是按照20年以来的时间顺序排列的完整行程（包括五位成员个人活动）</p>
-    <p style="color: #33FFFF;">其他的则是分支，大家想要看什么就直接点进去根据时间线找</p>
-    <p>完整时间线在其他分支里有大量的重复内容，建议观看（完整时间线）</p>
+  <h1 style="font-size: 28px">Bigbang 2006-2025 物料完整合集</h1>
+
+<div class="icon-text-wrapper">
+  <img src="1.png" alt="胜利" class="icon" />
+  <div class="text">
+    <p>我是ot5 胜利唯粉 龙特里<br/>ot4和黑粉禁止贴脸！！</p>
   </div>
-  <div style="text-align: center;">
-    <p style="color: #f2ff3b;">如果您是某位成员的唯粉，建议直接点击 "成员Solo"</p>
-    <p style="color: #f2ff3b;">...我是ot5 胜利唯粉 龙特里，ot4和黑粉禁止贴脸....</p>
+</div>
+
+  <div class="two-column-wrapper-one">
+    <div class="column left">
+      <div class="center-wrapper">
+        <div class="icon-text-group">
+          <img src="3.png" alt="TOP" class="icon" />
+          <span class="text" style="color: #ffa3dc; text-align: center; font-size: 26px">建议用电脑网页浏览</span>
+        </div>
+      </div>
+    </div>
+    <div class="column right">
+      <div class="center-wrapper">
+        <div class="icon-text-group">
+          <img src="4.png" alt="大声" class="icon" />
+          <span class="text" style="color: #33FFFF; text-align: center; font-size: 26px">手机打开会自动缩小</span>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <br/><br/>
+  <hr class="full-width-line" /><br/><br/>
+
   <div style="text-align: center;">
-    <h2 style="font-size: 28px; color: #ffa3dc;">做这个网站只是我的娱乐消遣，也给Bigbang总结完整行程</h2>
+    <p style="font-size: 20px; color: #ffa3dc;">"完整时间线" 如其名字，按照20年以来的时间顺序排列的完整行程（包括五位成员个人活动）</p>
+    <p style="color: #33FFFF;">完整时间线在其他分支里有大量的重复内容，建议观看 "完整时间线"</p>
+  </div>
+
+  <br/><br/><br/>
+
+  <div class="two-column-wrapper-one">
+    <div class="column left">
+      <div class="center-wrapper">
+        <div class="icon-text-group">
+          <img src="5.png" alt="太阳" class="icon" />
+          <span class="text" style="font-size: 18px;">嵌入原视频都会标注原出处</span>
+        </div>
+      </div>
+    </div>
+    <div class="column right">
+      <div class="center-wrapper">
+        <div class="icon-text-group">
+          <img src="2.png" alt="GD" class="icon" />
+          <span class="text" style="font-size: 18px;">如果您是某位成员的唯粉<br/>建议直接点击 "成员Solo"</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br/><br/>
+  <hr class="full-width-line" /><br/><br/>
+
+  <div style="text-align: center;">
+    <h2 style="font-size: 28px; color: #ffa3dc;">做这个网站只是我的娱乐消遣同时总结完整行程</h2>
     <p>这个网站不是文章！不是文章！是个包含全部物料图片和视频的大型网站</p>
     <h3 style="color: #33FFFF;">而且不用开VIP，因为我已经是VIP了👑</h3>
-    <p style="font-size: 28px;">如有任何侵权，请联系我进行删除，Weibo：肚子又响了</p>
+    <p style="font-size: 26px;">如有任何侵权 请联系我进行删除Weibo：肚子又响了</p>
   </div>
 
   <br/>
@@ -327,9 +447,12 @@ main h2 {
     <img src="y3.png" style="height: 230px; width: 240px;" />
     <div class="image-text-description">
       <p style="color: #ffa3dc;">假如你加载出来的视频封面出现了这两张图片<br/>科普一下这样的情况是正常的！</p>
-      <p style="color: #33FFFF;">点开就是直接跳转到视频链接观看视频了<p><图片不符合视频></p></p>
+      <p style="color: #33FFFF;">点开就是直接跳转到视频链接观看视频了<p><图片不符合视频></p>
     </div>
   </div>
+
+  <br/><br/>
+  <hr class="full-width-line" /><br/><br/>
 
   <div class="two-column-wrapper">
     <div class="column left">
@@ -343,16 +466,15 @@ main h2 {
         其次，中文翻译组都是从YouTube上搬运视频，进行翻译才会诞生出很多经典中字视频</h2><br/>
       <h2 style="margin-top: 10px; color: #33FFFF; font-size: 18px;">
         我比较注重原创 原出处 原po文，比较在意版权问题，所以更多的视频会使用来自YouTube的原作者</h2>
-
     </div>
 
     <div class="column right">
       <h2 style="margin-top: 10px; color: #ffa3dc; font-size: 18px;">
-        当有未确定可转载视频，会以链接<br/>（大多数是b站）形式展示，大家点击进入即可</h2>
+        视频大多以嵌入原视频形式展示<br/>（大多数是b站）点击进入即可</h2>
       <h2 style="margin-top: 10px; color: #33FFFF; font-size: 20px;">
-        VIP们不要担心语言问题，YouTube视频自带有翻译各国语言的功能</h2><br/>
+        因为这个网站会高达200GB以上，所以本网站会采用嵌入视频的方式</h2><br/>
       <p style="text-decoration: underline;">部分YouTube视频需要挂梯子才可以观看</p><br/>
-      <p style="margin-top: 10px; color: #ffa3dc; font-size: 22px;">因为这个网站会高达200GB以上，所以本网站会采用嵌入视频的方式</p><br/>
+      <h2 style="margin-top: 10px; color: #ffa3dc; font-size: 22px;">VIP们不要担心语言问题，YouTube视频自带有翻译各国语言的功能</h2><br/>
       <h2 style="margin-top: 10px; color: #33FFFF; font-size: 18px;">
         由于本人不是内陆人，我也考虑到部分内陆VIP们看不懂YouTube上的外语，
         所以我还是会优先考虑使用b站的中字视频呈现给大家</h2>      

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>忙内line</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
       margin: 0;
@@ -229,16 +230,21 @@
     }
 
     @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
+        height: calc(100vh / 0.59);
       }
-    }
 
-    @media only screen and (max-width: 768px) {
       .full-width-line {
-        transform: scaleX(1.6949);       /* 1 / 0.59 ≈ 1.6949 */
+        transform: scaleX(1.6949);
         transform-origin: left;
       }
     }
@@ -252,12 +258,12 @@
       <a href="teams.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>忙内line<br/>李胜利 姜大声 小分队</h1>
+      <h1>忙内line小分队</h1>
     </div>
     <nav class="right-nav">
       <a href="index.html">Home</a>
     </nav>
-    </div>
+  </div>
 
   <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
     <div id="srds2008-jump" style="display: flex; align-items: center; gap: 10px;">
@@ -272,7 +278,7 @@
     </div><br/>
 
   <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <p style="margin: 0;">下面的视频来自@refrain不剧透 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114350400474065&bvid=BV1SA5Yz8E4m&cid=29456402831&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
@@ -287,7 +293,7 @@
   </div>
 
   <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自 Bilibili 点击进入观看完整视频</p>
+    <p style="margin: 0;">下面的视频来自@yinying00 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=39333873&bvid=BV1Bt411z7N9&cid=69117891&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
@@ -313,6 +319,16 @@
     <p>2008年5月31日 MBCkpop Music Core</p>
     <p>忙内line主持开幕和闭幕</p>
     <hr class="full-width-line" />
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="teams.html">Back</a>
+    </nav>
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
   </div>
 
 </main>

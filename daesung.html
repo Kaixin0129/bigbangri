@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>大声solo</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
       margin: 0;
@@ -221,10 +222,22 @@
     }
 
     @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
       }
     }
 
@@ -252,7 +265,7 @@
     <a href="cp.html" class="highlight1-button">CP向</a>
   </nav>
   <main>
-    <h1>·大声 2006-2005完整时间线·</h1>
+    <h1>·大声个人solo完整时间线·</h1>
     <nav>
       <a href="solo.html">Back</a>
     </nav>
@@ -261,7 +274,8 @@
   <nav>
     <a href="daesungpredebut.html">出道前2004年至2006年7月</a>
     <a href="daesung2006.html">2006</a>
-    <a href="daesung2007.html">2007</a>    
+    <a href="daesung2007.html">2007</a>
+    <a href="daesung2008.html">2008</a>
   </nav>
 
   </main>  

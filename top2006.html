@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TOP2006</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
       margin: 0;
@@ -237,16 +238,21 @@
     }
 
     @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
+        height: calc(100vh / 0.59);
       }
-    }
 
-    @media only screen and (max-width: 768px) {
       .full-width-line {
-        transform: scaleX(1.6949);       /* 1 / 0.59 ≈ 1.6949 */
+        transform: scaleX(1.6949);
         transform-origin: left;
       }
     }
@@ -260,7 +266,7 @@
       <a href="top.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>TOP 崔胜铉<br/>2006年</h1>
+      <h1>TOP 2006年</h1>
     </div>
     <nav class="right-nav">
       <a href="top2007.html">2007</a>
@@ -310,7 +316,7 @@
           <a href="stage.html#stage9-jump" class="jump-button">更多打歌舞台视频指路</a>
         </div>
       </div>
-    </div>
+    </div><br/>
     <hr class="full-width-line" />
   </div>
 
@@ -359,18 +365,18 @@
   <hr class="full-width-line" />
 
   <div style="text-align: center;">
-    <p>下面的视频转载自Bilibili</p>
+    <p style="margin: 0;">下面的视频来自@叻仔叻仔 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=49383070&bvid=BV1wb411j78y&cid=86471373&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container">
-      <ul>
-        <li>童颜俱乐部</li>
-        <li>TOP个人参与</li>
-        <li><strong>2006年12月31日播出</strong></li>
-        <li>有中字</li>
-      </ul>
+        <p><strong>2006年12月31日播出</strong></p>
+        <p>童颜俱乐部</p>
+        <ul>
+          <li>TOP个人参与</li>
+          <li>有中字</li>
+        </ul>
       </div>
     </div>
     <hr class="full-width-line" />
