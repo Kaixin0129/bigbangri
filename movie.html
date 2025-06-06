@@ -41,7 +41,11 @@ body::before {
   z-index: -1;
   opacity: 1;
 }
-
+@media (max-width: 768px) {
+  body::before {
+    display: none;
+  }
+}
     main p {
   color: white;
   text-shadow:
