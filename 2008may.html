@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>2008年5月</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
       margin: 0;
@@ -230,16 +231,21 @@
     }
 
     @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
+        height: calc(100vh / 0.59);
       }
-    }
 
-    @media only screen and (max-width: 768px) {
       .full-width-line {
-        transform: scaleX(1.6949);       /* 1 / 0.59 ≈ 1.6949 */
+        transform: scaleX(1.6949);
         transform-origin: left;
       }
     }
@@ -327,8 +333,8 @@
     <div id="stage080531" style="padding-top: 100px; margin-top: -100px;">
       <a href="stage2008janjune.html#stage080531-jump" class="jump-button">打歌舞台视频指路</a>
     </div>
-    <hr class="full-width-line" />
   </div>
+  <hr class="full-width-line" />
 
   <br/><br/><br/>
   <div class="header-container">

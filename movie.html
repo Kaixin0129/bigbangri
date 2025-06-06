@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>电影电视剧短剧</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
       margin: 0;
@@ -11,6 +12,45 @@
       box-sizing: border-box;
       font-family: 'Arial', sans-serif;
     }
+
+    body {
+      background-image: url(bb11.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: white;
+    }
+
+    body {
+      color: white;
+      background-color: transparent;
+    }
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(bb11.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+  opacity: 1;
+}
+
+    main p {
+  color: white;
+  text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black,
+     3px  3px 5px black;
+}
 
     body {
       background-color: #111;
@@ -34,7 +74,7 @@
     }
 
     nav {
-      background-color: #111;
+      background-color: none;
       padding: 20px 40px;
       display: flex;
       flex-wrap: wrap;
@@ -221,10 +261,22 @@
     }
 
     @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
       }
     }
 
@@ -254,7 +306,7 @@
   </nav>
 <main>
   <h1>·Bigbang电影/电视剧/短剧·</h1><br/><br/>
-  <p>包括成员个人的部分哦</p><br/><br/>
+  <p>包括成员个人solo的部分</p><br/><br/>
 <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
   <div style="display: flex; align-items: center; gap: 10px;">
     <a href="tv.html" class="jump-button">电影</a>

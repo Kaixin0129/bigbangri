@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BIGBANG</title>
+  <title>参考资料</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
       margin: 0;
@@ -127,30 +128,6 @@
     border-radius: 8px;
   }
 
-@media (max-width: 768px) {
-  .intro-wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .intro-left,
-  .intro-right {
-    margin: 20px 0;
-    width: 30%;
-  }
-
-  /* ✅ 加上这段 */
-  .two-column-wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .column {
-    width: 90%; /* 或 100%，看你美观偏好 */
-    text-align: center;
-  }
-}
-
   nav a.highlight-button {
     background-color: none;
     color: white;
@@ -202,10 +179,22 @@ p {
 }
 
     @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
       }
     }
 

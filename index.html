@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BIGBANG</title>
+  <title>BIGBANG OT5</title>
   <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
@@ -14,7 +14,7 @@
     }
 
     body {
-      background-image: url(bb11.jpg);
+      background-image: url(BB1.jpg);
           background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -34,7 +34,7 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url(bb11.jpg);
+  background-image: url(BB1.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -257,10 +257,22 @@ main h2 {
 }
 
     @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
       }
     }
 

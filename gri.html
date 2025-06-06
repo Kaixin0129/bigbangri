@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>龙tory</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
       margin: 0;
@@ -157,10 +158,22 @@
     }
 
     @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
       }
     }
 
@@ -192,7 +205,7 @@
 
 
 <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-  <button onclick="checkAnswer('gri2006.html', '在出道前GD和胜利通过上面电视剧变得熟悉起来？\n（请输入电视剧名字）', '宫')" class="jump-button">2006</button>
+  <button onclick="checkAnswer('gri2006.html', '在出道前GD和胜利通过什么电视剧变得熟悉起来？\n（请输入电视剧名字）', '宫')" class="jump-button">2006</button>
   <button onclick="checkAnswer('gri2007.html', 'GD说他还会在几岁隔壁还住着胜利？\n（请输入数字上的年龄岁数）', '35')" class="jump-button">2007</button>
   <button onclick="checkAnswer('gri2008.html', '两个人一起睡觉时，GD和胜利开玩笑撕破了他的什么？\n（请输入一个物品）', '内裤')" class="jump-button">2008</button>
   <button onclick="checkAnswer('gri2009.html', 'GD送给胜利的歌叫什么？（请输入一首歌名字的英文字母小写）', 'strong baby')" class="jump-button">2009</button>  

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>YGfamily</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
       margin: 0;
@@ -268,16 +269,21 @@
     }
 
     @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
+        height: calc(100vh / 0.59);
       }
-    }
- 
-    @media only screen and (max-width: 768px) {
+
       .full-width-line {
-        transform: scaleX(1.6949);       /* 1 / 0.59 ≈ 1.6949 */
+        transform: scaleX(1.6949);
         transform-origin: left;
       }
     }
@@ -365,7 +371,6 @@
         <p>2006年10月21日美国洛杉矶演唱会 宣传片</p>
       </div>
     </div>
-    <hr class="full-width-line" />
   </div>
   <div style="text-align: center;">
     <div id="jump-2006" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
@@ -430,9 +435,6 @@
         <p>YG One Concert采访视频</p>
       </div>
     </div>
-    <hr class="full-width-line" />  
-  </div>
-  <div style="text-align: center;">
     <div class="content-wrap">
       <div class="video-container">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/ZmSXelrXQUc?si=UH101WNg2AcpACPY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
