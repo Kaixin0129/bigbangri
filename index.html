@@ -154,11 +154,13 @@ main h2 {
     z-index: 1;
   }
 
-  .intro-right img,
-  .intro-left img {
-    width: 50%;
-    border-radius: 8px;
-  }
+.intro-right img,
+.intro-left img {
+  width: 100%;
+  max-width: 300px; /* 限制最大宽度 */
+  height: auto;      /* 保持宽高比 */
+  border-radius: 8px;
+}
 
   @media (max-width: 768px) {
     .intro-wrapper {
@@ -239,13 +241,28 @@ main h2 {
   height: auto;
 }
 
-@media only screen and (max-width: 768px) {
-  body {
-    transform: scale(0.5);
-    transform-origin: top left;
-    width: 200%;
+@media (max-width: 768px) {
+  .intro-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .intro-left,
+  .intro-right {
+    width: 80%;
+    margin: 20px 0;
+    margin-top: 0;
+    text-align: center;
   }
 }
+
+    @media only screen and (max-width: 768px) {
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+      }
+    }
 
   </style>
 </head>
@@ -278,15 +295,15 @@ main h2 {
     <p style="color: #33FFFF;">其他的则是分支，大家想要看什么就直接点进去根据时间线找</p>
     <p>完整时间线在其他分支里有大量的重复内容，建议观看（完整时间线）</p>
   </div>
-  <div style="text-align: left;">
-    <p>如果您是某位成员的唯粉，建议直接点击 "成员Solo"</p>
-    <p>...我是ot5 胜利唯粉 龙特里，ot4和黑粉禁止贴脸....</p>
+  <div style="text-align: center;">
+    <p style="color: #f2ff3b;">如果您是某位成员的唯粉，建议直接点击 "成员Solo"</p>
+    <p style="color: #f2ff3b;">...我是ot5 胜利唯粉 龙特里，ot4和黑粉禁止贴脸....</p>
   </div>
   <div style="text-align: center;">
-    <h2 style="font-size: 28px; color: #ffa3dc;">做这个网站只是我的娱乐消遣，也给Bigbang总结出完整的行程</h2>
+    <h2 style="font-size: 28px; color: #ffa3dc;">做这个网站只是我的娱乐消遣，也给Bigbang总结完整行程</h2>
     <p>这个网站不是文章！不是文章！是个包含全部物料图片和视频的大型网站</p>
     <h3 style="color: #33FFFF;">而且不用开VIP，因为我已经是VIP了👑</h3>
-    <p>并不好笑（哥哥们埋怨胜利的语气）</p>
+    <p style="font-size: 28px;">如有任何侵权，请联系我进行删除，Weibo：肚子又响了</p>
   </div>
 
   <br/>
@@ -302,7 +319,7 @@ main h2 {
   <div class="two-column-wrapper">
     <div class="column left">
       <h2 style="margin-top: 10px; color: #ffa3dc; font-size: 20px;">
-        上面的图片均来自YouTube，为什么会用它呢？</h2>
+        部分视频均来自YouTube，为什么会用它呢？</h2>
       <h2 style="margin-top: 10px; color: #33FFFF; font-size: 18px;">
         首先，它是全世界第一个用户最多的大型视频网站，2005-2006年是迅速发展时期，
         Bigbang出道时期刚好赶上这个年代，所以全球的VIP会把他们的物料上传到YouTube</h2><br/>
@@ -319,7 +336,7 @@ main h2 {
         当有未确定可转载视频，会以链接<br/>（大多数是b站）形式展示，大家点击进入即可</h2>
       <h2 style="margin-top: 10px; color: #33FFFF; font-size: 20px;">
         VIP们不要担心语言问题，YouTube视频自带有翻译各国语言的功能</h2><br/>
-      <p style="text-decoration: underline;">如有任何侵权，请联系我进行删除，Weibo：肚子又响了</p><br/>
+      <p style="text-decoration: underline;">部分YouTube视频需要挂梯子才可以观看</p><br/>
       <p style="margin-top: 10px; color: #ffa3dc; font-size: 22px;">因为这个网站会高达200GB以上，所以本网站会采用嵌入视频的方式</p><br/>
       <h2 style="margin-top: 10px; color: #33FFFF; font-size: 18px;">
         由于本人不是内陆人，我也考虑到部分内陆VIP们看不懂YouTube上的外语，
