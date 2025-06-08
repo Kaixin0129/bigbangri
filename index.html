@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BIGBANG OT5</title>
   <link rel="icon" href="sli.ico" type="image/x-icon">
+  <link href="/pagefind/pagefind.css" rel="stylesheet">
   <style>
 * {
   margin: 0;
@@ -373,6 +374,8 @@ main h2 {
   <main>
   <h1 style="font-size: 28px">Bigbang 2006-2025 物料完整合集</h1>
 
+<div id="search"></div>
+
 <div class="icon-text-wrapper">
   <img src="1.png" alt="胜利" class="icon" />
   <div class="text">
@@ -477,12 +480,12 @@ main h2 {
     </div>
   </div>
 
-<div id="search"></div>
 <script src="/pagefind/pagefind.js"></script>
 <script>
   window.addEventListener('DOMContentLoaded', () => {
     new PagefindUI({
-      element: "#search"
+      element: "#search",  // 🔍 对应上面的 div id
+      showSubResults: true // ✅ 可选：显示子标题
     });
   });
 </script>
