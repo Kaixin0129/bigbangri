@@ -249,6 +249,26 @@
       }
     }
 
+    .jump-button-1 {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid #33FFFF;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;             /* ✅ 防止太窄 */
+      white-space: nowrap;          /* ✅ 不换行 */
+      text-align: center;           /* ✅ 内容居中 */
+    }
+
+    .jump-button-1:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
   </style>
 </head>
 <body>
@@ -271,16 +291,22 @@
       <a href="concert2008.html#global-jump" class="jump-button">Global Warning Tour</a>
     </div>
     <div id="gyeonggi" style="display: flex; align-items: center; gap: 10px;">
-      <a href="concert2008.html#gyeonggi-jump" class="jump-button">Gyeonggi</a>
+      <a href="concert2008.html#gyeonggi-jump" class="jump-button-1">Gyeonggi</a>
     </div>
     <div id="super" style="display: flex; align-items: center; gap: 10px;">
-      <a href="concert2008.html#super-jump" class="jump-button">Super Concert</a>
+      <a href="concert2008.html#super-jump" class="jump-button-1">Super Concert</a>
     </div>
     <div id="hot" style="display: flex; align-items: center; gap: 10px;">
       <a href="concert2008.html#hot-jump" class="jump-button">太阳的Hot Concert</a>
     </div>
+    <div id="lmj" style="display: flex; align-items: center; gap: 10px;">
+      <a href="concert2008.html#lmj-jump" class="jump-button-1">Hope Concert</a>
+    </div>
     <div id="standup" style="display: flex; align-items: center; gap: 10px;">
       <a href="concert2008.html#standup-jump" class="jump-button">Stand Up Tour</a>
+    </div>
+    <div id="love" style="display: flex; align-items: center; gap: 10px;">
+      <a href="concert2008.html#love-jump" class="jump-button-1">Love Concert</a>
     </div>
   </div>
   <br/>
@@ -441,7 +467,7 @@
   </div>
 
   <div id="gyeonggi-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="concert2008.html#gyeonggi" class="jump-button">Gyeonggi</a>
+    <a href="concert2008.html#gyeonggi" class="jump-button-1">Gyeonggi</a>
   </div><br/>
 
   <div style="text-align: center;">
@@ -464,7 +490,7 @@
   </div>
 
   <div id="super-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="concert2008.html#super" class="jump-button">Super Concert</a>
+    <a href="concert2008.html#super" class="jump-button-1">Super Concert</a>
   </div><br/>
 
   <div style="text-align: center;">
@@ -477,6 +503,20 @@
         <p><strong>2008年7月8日</strong></p>
         <p>Mnet M! Super Concert</p>
         <p>太阳个人 唱Only Look At Me</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/DyMBxmlftjU?si=xeKJeQs2J_zir8KG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2008年10月11日</strong></p>
+        <p>Mnet Super Concert KB B-Boy</p>
+        <p>唱Haru Haru + Lies</p>
       </div>
     </div>
     <hr class="full-width-line" />
@@ -516,6 +556,24 @@
             于2009年1与人16日 与Global Warning Tour一同发布
           </li>
         </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="lmj-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="concert2008.html#lmj" class="jump-button-1">Hope Concert</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/O-YobLB1BO0?si=HdX5KsyDfQE4V8PX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2008年10月17日</strong></p>
+        <p>MBC Lee Mi Ja's The Hope Concert</p>
+        <li>Haru Haru + Oh My Friend</li>
       </div>
     </div>
     <hr class="full-width-line" />
@@ -566,6 +624,24 @@
       </div>
     </div>
     <hr class="full-width-line" />
+  </div>
+
+  <div id="love-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="concert2008.html#love" class="jump-button-1">Love Concert</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/3ZvQz9YEPmA?si=SLkVpzot7ZHmqrnT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2008年11月9日</strong></p>
+        <p>SBS Love Concert</p>
+        <p>Number 1 + Sunset Glow</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
   </div>
 
   <br/><br/><br/>
