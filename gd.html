@@ -241,12 +241,32 @@
       }
     }
 
+    .jump-button-1 {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid #f5ed54;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;             /* ✅ 防止太窄 */
+      white-space: nowrap;          /* ✅ 不换行 */
+      text-align: center;           /* ✅ 内容居中 */
+    }
+
+    .jump-button-1:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
   </style>
 </head>
 <body>
   <nav>
     <a href="index.html">Home</a>    
-    <a href="schedule.html">完整时间线</a>
+    <a href="schedule.html" class="jump-button-1">完整时间线</a>
     <a href="stage.html">打歌舞台</a>
     <a href="concert.html">官拍演唱会</a>
     <a href="teams.html">小分队</a>
@@ -274,7 +294,8 @@
     <a href="gdpredebut.html">出道前</a>
     <a href="gd2006.html">2006</a>
     <a href="gd2007.html">2007</a>    
-    <a href="gd2008.html">2008</a>    
+    <a href="gd2008.html">2008</a>
+    <a href="gd2009.html">2009</a>
   </nav>
 
   </main>
