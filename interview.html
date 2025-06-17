@@ -62,61 +62,7 @@
       padding: 40px;
       text-align: center;
     }
-
-    .video-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
-
-    .video-item video {
-      width: 480px;
-      height: 300px;
-      border-radius: 10px;
-    }
-
-    .video-description {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      max-width: 300px;
-      text-align: left;
-      line-height: 1.5;
-      font-size: 18px;
-    }
-
-    .video-row {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-
-    .video-box {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      max-width: 600px;
-    }
-
-    .video-box video {
-      width: 400px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    video {
-      width: 300px;
-      height: 200px;
-      border-radius: 8px;
-    }
     
-
     html {
         scroll-behavior: smooth;
     }
@@ -127,13 +73,7 @@
         align-items: center;
         justify-content: center;
         gap: 30px;
-        margin-bottom: 40px;
-    }
-
-    .video-container video {
-        width: 400px;
-        height: 300px;
-        border-radius: 10px;
+        margin-bottom: 10px;
     }
 
     .text-container {
@@ -151,33 +91,14 @@
         padding-left: 0;
         margin-left: 0;
         list-style-position: inside;
-    }  
-
-    .image-row {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
-        margin: 20px auto;
-        max-width: 1500px;
-    }
-
-    .image-row img {
-        width: 220px;
-        height: auto;
-        border-radius: 8px;
-    }
-
-    .first-row {
-        justify-content: center; /* 让5个图铺满一排 */
-        max-width: 1180px; /* 根据图片宽度调节 */
     }
     
     .full-width-line {
       width: 90vw;
       border: none;
       border-top: 1px solid white;
-      margin: 20px 0;
+      margin-top: 10px; /* 控制和上方内容的距离 */
+      margin-bottom: 20px;
     }
 
     nav a.highlight-button {
@@ -231,9 +152,9 @@
       text-decoration: none;
       transition: all 0.3s ease;
       flex-shrink: 0;
-      min-width: 120px;             /* ✅ 防止太窄 */
-      white-space: nowrap;          /* ✅ 不换行 */
-      text-align: center;           /* ✅ 内容居中 */
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
     }
 
     .jump-button-1:hover {

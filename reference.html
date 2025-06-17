@@ -62,121 +62,66 @@
       padding: 40px;
       text-align: center;
     }
-
-    html, body {
-      height: 100%;
-      margin: 0;
+    
+    html {
+        scroll-behavior: smooth;
     }
 
-
-    .right-image {
-      width: 30%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .content-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 10px;
     }
 
-    .right-image img {
-      width: 200px;
-      height: auto;
+    .text-container {
+        max-width: 400px;
+        line-height: 1.6;
+        text-align: left;
     }
 
-    .image-caption {
-      margin-top: 10px;
-      color: #ccc;
-      font-size: 14px;
-      text-align: center;
+    .text-container li {
+        margin-left: 0;
+        padding-left: 0;
     }
 
-      .intro-wrapper {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin-top: 60px;
-    flex-wrap: wrap; /* 允许换行 */
-  }
+    .text-container ul {
+        padding-left: 0;
+        margin-left: 0;
+        list-style-position: inside;
+    }
+    
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px; /* 控制和上方内容的距离 */
+      margin-bottom: 20px;
+    }
 
-  .intro-left,
-  .intro-right {
-    width: 300px;
-    color: white;
-  }
-
-  .intro-left {
-    text-align: left;
-    margin-right: 40px;
-    margin-top: -550px;
-  }
-
-  .intro-right {
-    text-align: center;
-    margin-left: 40px;
-    margin-top: -80px;
-  }
-
-  .intro-center {
-    max-width: 600px;
-    color: white;
-    text-align: center;
-    z-index: 1;
-  }
-
-  .intro-right img,
-  .intro-left img {
-    width: 50%;
-    border-radius: 8px;
-  }
-
-  nav a.highlight-button {
-    background-color: none;
-    color: white;
-    border: 2px solid #ff8dd3;
-  }
+    nav a.highlight-button {
+      background-color: none;
+      color: white;
+      border: 2px solid #ff8dd3;
+    }
   
-  nav a.highlight-button:hover {
-    background-color: none;
-    color: #ff8dd3;
-  }
+    nav a.highlight-button:hover {
+      background-color: none;
+      color: #ff8dd3;
+    }
 
-  nav a.highlight1-button {
-    background-color: none;
-    color: white;
-    border: 2px solid #33FFFF;
-  }
+    nav a.highlight1-button {
+      background-color: none;
+      color: white;
+      border: 2px solid #33FFFF;
+    }
   
-  nav a.highlight1-button:hover {
-    background-color: none;
-    color: #33FFFF;
-  }
-
-.two-column-wrapper {
-  display: flex;
-  justify-content: center; /* 整体居中 */
-  align-items: flex-start;
-  gap: 40px;
-  margin: 50px auto;
-  max-width: 1000px;
-  padding: 20px;
-}
-
-.column {
-  width: 45%;
-  text-align: left; /* 每一列的文字靠左 */
-  color: white;
-}
-
-.divider {
-  width: 2px;
-  background-color: white;
-  height: auto;
-}
-
-p {
-  margin-bottom: 10px; /* 设置段落之间的下间距 */
-  margin: 10px 0;
-  line-height: 1.8;
-}
+    nav a.highlight1-button:hover {
+      background-color: none;
+      color: #33FFFF;
+    }
 
     @media only screen and (max-width: 768px) {
       html, body {
@@ -207,9 +152,9 @@ p {
       text-decoration: none;
       transition: all 0.3s ease;
       flex-shrink: 0;
-      min-width: 120px;             /* ✅ 防止太窄 */
-      white-space: nowrap;          /* ✅ 不换行 */
-      text-align: center;           /* ✅ 内容居中 */
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
     }
 
     .jump-button-1:hover {
@@ -218,6 +163,34 @@ p {
       cursor: pointer;
     }
 
+    .two-column-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 100px;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    .column {
+      width: 45%;
+      text-align: left;
+      color: white;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: white;
+      height: auto;
+    }
+
+    p {
+      margin-bottom: 10px;
+      margin: 10px 0;
+      line-height: 1.8;
+    }
+    
   </style>
 </head>
 <body>

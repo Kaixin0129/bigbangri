@@ -22,6 +22,7 @@
       padding: 40px;
       text-align: center;
     }
+
     .content-wrap {
       display: flex;
       justify-content: center;
@@ -125,6 +126,33 @@
       padding-left: 20px;
     }
 
+    .image-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 20px auto;
+      max-width: 1500px;
+    }
+
+    .image-row img {
+      width: auto;
+      height: 300px;
+      object-fit: cover;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
     nav a {
       color: white;
       text-decoration: none;
@@ -144,9 +172,9 @@
       text-decoration: none;
       transition: all 0.3s ease;
       flex-shrink: 0;
-      min-width: 120px;             /* ✅ 防止太窄 */
-      white-space: nowrap;          /* ✅ 不换行 */
-      text-align: center;           /* ✅ 内容居中 */
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
     }
 
     .jump-button:hover {
@@ -183,21 +211,6 @@
       right: 0;
     }
 
-    .image-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 20px auto;
-      max-width: 1500px;
-    }
-
-    .image-row img {
-      width: auto;
-      height: 300px;
-      object-fit: cover;
-    }
-
     .left-nav a,
     .right-nav a {
       padding: 18px 30px;
@@ -215,17 +228,6 @@
       background-color: white;
       color: #111;
       cursor: pointer;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .full-width-line {
-      width: 90vw;
-      border: none;
-      border-top: 1px solid white;
-      margin: 20px 0;
     }
 
     @media only screen and (max-width: 768px) {
