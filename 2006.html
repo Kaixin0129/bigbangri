@@ -203,6 +203,17 @@
     <a href="2006dec.html">12月</a>
   </nav>
 
+  
+<div id="footer"></div>
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+</script>
+
+
 </main>
 </body>
 </html>

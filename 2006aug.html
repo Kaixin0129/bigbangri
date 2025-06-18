@@ -346,10 +346,24 @@
     <nav class="left-nav">
       <a href="2006.html">Back</a>
     </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>
     <nav class="right-nav">
       <a href="2006sept.html">9月</a>
     </nav>
   </div>
+
+  
+  <div id="footer"></div>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+
 
 </main>
 </body>
