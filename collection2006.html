@@ -369,10 +369,22 @@
     <nav class="left-nav">
       <a href="collection.html">Back</a>
     </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
     <nav class="right-nav">
       <a href="collection2007.html">2007</a>
     </nav>
   </div>
 
+
 </main>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
 </body>
+</html>

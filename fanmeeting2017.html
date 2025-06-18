@@ -301,12 +301,23 @@
     <nav class="left-nav">
       <a href="fanmeeting.html">Back</a>
     </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
     <nav class="right-nav">
       <a href="fanmeeting2018.html">2018</a>
     </nav>
   </div>
   <br/>
 
+
 </main>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
 </body>
 </html>

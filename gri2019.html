@@ -283,11 +283,16 @@
     <nav class="left-nav">
       <a href="gri.html">Back</a>
     </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
     <nav class="right-nav">
       <nav onclick="checkAnswer('gri2020.html', 'PMO和NIKE合作，AF1联名款刮刮乐的鞋舌底下藏着哪两个字母？\n（请输入两个英文小写字母）', 'vi')" class="jump-button">2020</nav>  
     </nav>
   </div>
 
+
+</main>
 <script>
   function checkAnswer(targetPage, question, correctAnswer) {
     const answer = prompt(question);
@@ -297,8 +302,11 @@
       alert("回答错误，请再试一次！");
     }
   }
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
 </script>
-
-</main>
 </head>
 </html>

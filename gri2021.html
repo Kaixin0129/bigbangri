@@ -283,11 +283,16 @@
     <nav class="left-nav">
       <a href="gri.html">Back</a>
     </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
     <nav class="right-nav">
       <nav onclick="checkAnswer('gri2022.html', '胜利IG账号被粉丝举报封锁后，GD在story上发了什么歌曲？\n（请输入歌曲英文名字不包括标点符号）', 'rod')" class="jump-button">2022</nav>  
     </nav>
   </div>
 
+
+</main>
 <script>
   function checkAnswer(targetPage, question, correctAnswer) {
     const answer = prompt(question);
@@ -297,8 +302,11 @@
       alert("回答错误，请再试一次！");
     }
   }
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
 </script>
-
-</main>
 </head>
 </html>
