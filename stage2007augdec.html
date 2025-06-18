@@ -18,9 +18,176 @@
       color: white;
     }
 
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
     main {
       padding: 40px;
       text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
     }
 
     .content-wrap {
@@ -124,130 +291,6 @@
 
     ul {
       padding-left: 20px;
-    }
-
-    .image-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 20px auto;
-      max-width: 1500px;
-    }
-
-    .image-row img {
-      width: auto;
-      height: 300px;
-      object-fit: cover;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .full-width-line {
-      width: 90vw;
-      border: none;
-      border-top: 1px solid white;
-      margin: 20px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 15px 25px;
-      background-color: none;
-      border-radius: 5px 18px;
-      border: 2px solid white;
-      transition: background 0.3s ease;
-    }
-
-    .jump-button {
-      padding: 15px 25px;
-      background-color: #111;
-      color: white;
-      border: 2px solid white;
-      border-radius: 5px 18px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      min-width: 120px;
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    .jump-button:hover {
-      background-color: white;
-      color: black;
-      cursor: pointer;
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      margin-bottom: 20px;
-      height: 100px;
-    }
-
-    .title-group {
-      display: inline-block;
-    } 
-
-    .left-nav,
-    .right-nav {
-      position: absolute;
-      top: 10%;
-      transform: translateY(-50%);
-    }
-
-    .left-nav {
-      left: 0;
-    }
-
-    .right-nav {
-      right: 0;
-    }
-
-    .left-nav a,
-    .right-nav a {
-      padding: 18px 30px;
-      font-size: 18px;
-      border-radius: 5px 18px;
-      color: white;
-      text-decoration: none;
-      border: 2px solid white;
-      display: inline-block;
-      transition: background 0.3s ease;
-    }
-
-    .left-nav a:hover,
-    .right-nav a:hover {
-      background-color: white;
-      color: #111;
-      cursor: pointer;
-    }
-
-    @media only screen and (max-width: 768px) {
-      html, body {
-        height: 100vh;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
-
-      body {
-        transform: scale(0.59);
-        transform-origin: top left;
-        width: 169.5%;
-        height: calc(100vh / 0.59);
-      }
-
-      .full-width-line {
-        transform: scaleX(1.6949);
-        transform-origin: left;
-      }
     }
 
   </style>
@@ -619,13 +662,13 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/FvIsY-lcTs4?si=0xYd2SXcQhzTa1CX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>GD饭拍视频From YouTube by @ssol 0818</p>
       </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/NHFByUZVk9I?si=pD9kCB7ursNWLZ_c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>太阳饭拍视频From YouTube by @greenciel</p>
       </div>
     </div>
@@ -657,13 +700,13 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/7DIFGxcRJN8?si=M1pIqZDT3D7yqvq4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>Lies</p>
       </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/xMlmiOIFIik?si=3DVvfKANDfU7SYZr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>Lies（太阳站子饭拍）<br/>YouTube by @greenciel</p>
       </div>
     </div>
@@ -920,13 +963,13 @@
   <div class="video-row">
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=849837993&bvid=BV1XL4y1H7zE&cid=459083987&p=45" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>Last Farewell</p>
       </div>
     </div>
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=849837993&bvid=BV1XL4y1H7zE&cid=459079054&p=46" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>得第一位</p>
       </div>
     </div>
@@ -942,13 +985,13 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/qH58n5NnuNc?si=H4odl_3eTG79IT5f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>Crazy Dog</p>
       </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/rzyTU-x6QYc?si=o3SJAg2B-kOsAwKf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>Lies</p>
       </div>
     </div>
@@ -1020,13 +1063,13 @@
   <div class="video-row">
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=849837993&bvid=BV1XL4y1H7zE&cid=459395488&p=55" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>Last Farewell</p>
       </div>
     </div>
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=849837993&bvid=BV1XL4y1H7zE&cid=459392195&p=56" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>得第一位</p>
       </div>
     </div>
@@ -1041,14 +1084,14 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/LAIK595MBHE?si=4G5FHsaLlRnI3ubB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>Tell Me经典舞台 + Lies</p>
         <li>笑料太多了，细节点上面的2007时间线，有解释舞台乱的原因</li>
       </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/FAbTT6cDQeA?si=6y4Z0t22uKSiq6hJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>Dirty Cash + Last Farewell</p>
       </div>
     </div>
@@ -1056,13 +1099,13 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/ZSYxMsbtKb8?si=oCPAkQvC115oWFW7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>Dirty Cash GD饭拍视频From YouTube by @ssol 0818</p>
       </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/oSK1zUIF2Pc?si=0wXtP64P0iWYqOp-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>Tell Me GD饭拍视频From YouTube by @ssol 0818</p>
       </div>
     </div>
@@ -1077,14 +1120,14 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/xIkRiJ3fBtk?si=qm2AXlf_w-V1UYn2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>Lies</p>
         <p>TOP主持开幕和闭幕（点击上面跳转到 2007 时间线）</p>
       </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/Q8v5sPGEJdo?si=EGfJoxVyGplxjKxy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>Last Farewell</p>
         <p>胜利被烟花炸伤，所以缺席</p>
       </div>
@@ -1100,14 +1143,14 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/99GICy--Dqw?si=wj4obmhi5tDdKvsg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>Black Cat</p>
         <p>TOP缺席（疑似进院）</p>
       </div>
     </div>
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=719645087&bvid=BV1VQ4y1e7Uv&cid=457511772&p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      <div class="text-container">
+      <div class="video-description">
         <p>Lies</p>
         <p>Bigbang开场（点击上面跳转）</p>
       </div>

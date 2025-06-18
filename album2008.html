@@ -13,9 +13,14 @@
       font-family: 'Arial', sans-serif;
     }
 
-    body {
-      background-color: #111;
+    nav a {
       color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
     }
 
     .jump-button {
@@ -26,36 +31,16 @@
       border-radius: 5px 18px;
       text-decoration: none;
       transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
     }
 
     .jump-button:hover {
       background-color: white;
       color: black;
       cursor: pointer;
-    }
-
-    nav {
-      background-color: #111;
-      padding: 20px 40px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 15px 25px;
-      background-color: transparent;
-      border-radius: 5px 18px;
-      border: 2px solid white;
-      transition: background 0.3s ease;
-    }
-
-    nav a:hover {
-      background-color: white;
-      color: #111;
     }
 
     main {
