@@ -386,6 +386,19 @@
       color: black;
     }
 
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    }
+
   </style>
 </head>
 <body>
@@ -421,21 +434,21 @@
 
   <div class="social-container-1">
     <div class="social-button-1 wide">
-      <img src="seungri.png" alt="胜利胜利" onclick="openModal()">
+      <img src="seungri.png" alt="胜利胜利" onclick="openModal1()">
       <div class="social-label">
         <p>还有物料需要补充的：欢迎来留言</p>
         <p>（点击上面的图片进行投稿）</p>
       </div>
     </div>
-  </div>
+  </div><br/>
 
-  <div class="modal" id="modal">
+  <div class="modal" id="modal1">
     <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">×</span>
+      <span class="close-btn" onclick="closeModal1()">×</span>
       <h3>留言给我</h3>
       <form action="https://formspree.io/f/mdkzyedq" method="POST">
         <input type="text" name="name" placeholder="你的名字" required>
-        <input type="date" name="date" required>
+        <input type="date" name="date" placeholder="物料日期" required>
         <input type="file" name="image" accept="image/*" required>
         <input type="url" name="link" placeholder="视频或文章链接" required>
         <textarea name="message" rows="5" placeholder="留言你的投稿内容..." required></textarea>
@@ -444,13 +457,12 @@
     </div>
   </div>
 
-
   <div class="two-column-wrapper-one">
     <div class="column left">
       <div class="center-wrapper">
         <div class="icon-text-group">
           <img src="3.png" alt="TOP" class="icon" />
-          <span class="text" style="color: #ffa3dc; font-size: 18px">建议用电脑/ Pad端浏览</span>
+          <span class="text" style="color: #ffa3dc; font-size: 18px">建议使用电脑/ Pad端</span>
         </div>
       </div>
     </div>
@@ -622,9 +634,10 @@
     </div>
   </div>
 
-    <div class="title-group">
-      <div id="footer"></div>
-    </div>
+<p style="text-align: center; padding: 20px; color: rgb(242, 242, 242);">
+  Copyright © bigbangri.com All rights reserved.
+</p>
+
 </main>
   <script>
     function openModal() {
@@ -632,6 +645,12 @@
     }
     function closeModal() {
       document.getElementById('modal').style.display = 'none';
+    }
+    function openModal1() {
+      document.getElementById('modal1').style.display = 'block';
+    }
+    function closeModal1() {
+      document.getElementById('modal1').style.display = 'none';
     }
   </script>
 </body>
