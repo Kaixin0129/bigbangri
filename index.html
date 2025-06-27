@@ -290,6 +290,81 @@
       line-height: 1.6;
     }
 
+.social-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.social-button {
+  width: 80px;
+  height: 120px; /* ✅ 固定按钮整体高度 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* ✅ 图标贴上 */
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  line-height: 1.2;
+}
+
+.social-button img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.social-button img:hover {
+  transform: scale(1.1);
+}
+
+.social-label {
+  max-height: 40px; /* ✅ 限制最大高度 */
+  overflow: visible;     /* ✅ 不限制内容 */
+  white-space: normal;
+  word-break: break-word;
+}
+
+.social-button.wide {
+  width: auto;  /* ✅ 宽度根据文字撑开 */
+  max-width: 200px;
+}
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      max-width: 400px;
+      margin: 100px auto;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .modal-content input, .modal-content textarea {
+      width: 100%;
+      margin: 10px 0;
+      padding: 8px;
+    }
+
+    .close-btn {
+      float: right;
+      cursor: pointer;
+      font-weight: bold;
+      color: black;
+    }
+
   </style>
 </head>
 <body>
@@ -396,10 +471,10 @@
   <div class="two-column-wrapper">
     <div class="column left">
       <h2 style="color: #ffa3dc; font-size: 20px;">
-        部分视频均来自YouTube，为什么会用它呢？</h2>
+        部分视频均来自YouTube为什么会用它呢？</h2>
       <h2 style="color: #33FFFF; font-size: 18px;">
         首先，它是全世界第一个用户最多的大型视频网站，2005-2006年是迅速发展时期，
-        Bigbang出道时期刚好赶上这个年代，所以全球的VIP会把他们的物料上传到YouTube</h2>
+        Bigbang出道时期刚好赶上这个年代，所以全球的VIP会把他们的物料上传到YouTube</h2><br/>
       <p>补充：早在2006年初 YG娱乐的工作人员就曾上传了很多Bigbang未出道前的视频</p><br/>
       <h2 style="color: #ffa3dc; font-size: 18px;">
         其次，中文翻译组都是从YouTube上搬运视频，进行翻译才会诞生出很多经典中字视频</h2><br/>
@@ -409,7 +484,7 @@
 
     <div class="column right">
       <h2 style="color: #ffa3dc; font-size: 18px;">
-        视频大多以嵌入原视频形式展示<br/>（大多数是b站）点击进入即可</h2>
+        视频大多以嵌入原视频形式展示（大多数是b站）点击进入即可</h2>
       <h2 style="color: #33FFFF; font-size: 20px;">
         如果使用下载视频，这个网站将会高达200GB以上，所以本网站会采用嵌入视频的方式</h2><br/>
       <p style="text-decoration: underline;">YouTube视频需要挂梯子才可以观看</p><br/>
@@ -420,9 +495,97 @@
     </div>
   </div>
 
+  <div class="social-container">
+    <div class="social-button">
+      <a href="https://weibo.com/u/7521302020" target="_blank">
+        <img src="weibo.jpeg" alt="Weibo">
+      </a>
+      <div class="social-label">
+        <p>微博</p>
+      </div>
+    </div>
+
+    <div class="social-button">
+      <a href="https://www.instagram.com/kx_0902_/" target="_blank">
+        <img src="insta.webp" alt="Instagram">
+      </a>
+      <div class="social-label">
+        <p>Instagram</p>
+      </div>
+    </div>
+
+    <div class="social-button">
+      <a href="https://www.douyin.com/user/MS4wLjABAAAAqOi35Rzu6qTWy7oTw9SKtfHC4CeOARDBOWkcQnspKm0?from_tab_name=main" target="_blank">
+        <img src="douyin.jpeg" alt="抖音">
+      </a>
+      <div class="social-label">
+        <p>抖音</p>
+      </div>
+    </div>
+
+    <div class="social-button">
+      <a href="https://open.spotify.com/user/31k3se7frgp25lswacrqr4cvzltq?si=3OarRpzTTeec2y2k8mZrxA" target="_blank">
+        <img src="spotify.png" alt="Spotify">
+      </a>
+      <div class="social-label">
+        <p>Spotify</p>
+      </div>
+    </div>
+
+    <div class="social-button">
+      <a href="https://open.spotify.com/user/31k3se7frgp25lswacrqr4cvzltq?si=3OarRpzTTeec2y2k8mZrxA" target="_blank">
+        <img src="redbook.png" alt="小红书">
+      </a>
+      <div class="social-label">
+        <p>小红书</p>
+      </div>
+    </div>
+
+    <div class="social-button">
+      <a href="https://www.facebook.com/thamkaixin.moe" target="_blank">
+        <img src="fb.png" alt="Facebook">
+      </a>
+      <div class="social-label">
+        <p>Facebook</p>
+      </div>
+    </div>
+  </div>
+
+<div class="social-container">
+  <div class="social-button wide">
+    <img src="sky.webp" alt="留言" onclick="openModal()">
+    <div class="social-label">
+      <p>光遇（国服或国际服）</p>
+      <p>点击即可留言你的代码加好友</p>
+    </div>
+  </div>
+</div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">×</span>
+      <h3>留言给我</h3>
+      <form action="https://formspree.io/f/mdkzyedq" method="POST">
+        <input type="text" name="name" placeholder="你的名字" required>
+        <input type="social" name="social" placeholder="你的个人联系方式（可选）" required>
+        <input type="sky" name="section" placeholder="光遇国服还是国际服？" required>
+        <textarea name="message" rows="5" placeholder="在这里留言你的光遇好友代码..." required></textarea>
+        <button type="submit">发送</button>
+      </form>
+    </div>
+  </div>
+
     <div class="title-group">
       <div id="footer"></div>
     </div>
 </main>
+  <script>
+    function openModal() {
+      document.getElementById('modal').style.display = 'block';
+    }
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
