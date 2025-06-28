@@ -419,6 +419,7 @@
     <a href="awardlist.html">颁奖典礼</a>
     <a href="movie.html">电影电视剧短剧</a>
     <a href="ygfamily.html">YGfamily</a>
+    <a href="comment.html">留言区</a>
     <a href="reference.html" class="highlight-button">参考资料</a>
     <a href="cp.html" class="highlight1-button">CP向</a>
   </nav>
@@ -437,7 +438,7 @@
       <img src="seungri.png" alt="胜利胜利" onclick="openModal1()">
       <div class="social-label">
         <p>还有物料需要补充的：欢迎来留言</p>
-        <p>（点击上面的图片进行投稿）</p>
+        <p>（点击上面的胜利进行投稿）</p>
       </div>
     </div>
   </div><br/>
@@ -446,14 +447,19 @@
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal1()">×</span>
       <h3>留言给我</h3>
-      <form action="https://formspree.io/f/mdkzyedq" method="POST">
-        <input type="text" name="name" placeholder="你的名字" required>
-        <input type="date" name="date" placeholder="物料日期" required>
-        <input type="file" name="image" accept="image/*" required>
-        <input type="url" name="link" placeholder="视频或文章链接" required>
-        <textarea name="message" rows="5" placeholder="留言你的投稿内容..." required></textarea>
-        <button type="submit">发送</button>
-      </form>
+<form id="image-form" action="https://formspree.io/f/mdkzyedq" method="POST">
+  <input type="text" name="name" placeholder="你的名字" required>
+  <input type="date" name="date" placeholder="物料日期" required>
+  
+  <input type="file" id="image-upload" accept="image/*" required><br>
+  <img id="preview" style="display:none; max-width:100%;" />
+
+  <input type="hidden" name="image-url" id="image-url"> <!-- 自动填充图片链接 -->
+
+  <input type="url" name="link" placeholder="视频或文章链接（可选）">
+  <textarea name="message" rows="5" placeholder="留言你的投稿内容..." required></textarea>
+  <button type="submit">发送</button>
+</form>
     </div>
   </div>
 
@@ -652,6 +658,35 @@
     function closeModal1() {
       document.getElementById('modal1').style.display = 'none';
     }
+
+document.getElementById('image-upload').addEventListener('change', async function () {
+  const file = this.files[0];
+  if (!file) return;
+
+  const formData = new FormData();
+  formData.append('smfile', file);
+
+  try {
+    const res = await fetch('https://sm.ms/api/v2/upload', {
+      method: 'POST',
+      body: formData
+    });
+    const result = await res.json();
+
+    if (result.success) {
+      const imageUrl = result.data.url;
+      document.getElementById('image-url').value = imageUrl;
+      document.getElementById('preview').src = imageUrl;
+      document.getElementById('preview').style.display = 'block';
+    } else {
+      alert('图片上传失败：' + result.message);
+    }
+  } catch (e) {
+    alert('网络错误，无法上传图片');
+    console.error(e);
+  }
+});
+
   </script>
 </body>
 </html>
