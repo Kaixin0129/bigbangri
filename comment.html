@@ -359,6 +359,24 @@
 
   </style>
 </head>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyB1xOMQRikCjQiXoxPSPTNC1gXUTacbtZs",
+    authDomain: "bigbangri.firebaseapp.com",
+    projectId: "bigbangri",
+    storageBucket: "bigbangri.appspot.com", // ✅ 修正这里
+    messagingSenderId: "106865552451",
+    appId: "1:106865552451:web:fd79e565c63a5954c9f8f6",
+    measurementId: "G-35ES497X69"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  const commentsCollection = db.collection("comments");
+</script>
 <body>
 <main>
   <div class="header-container">
