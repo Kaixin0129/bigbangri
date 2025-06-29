@@ -327,6 +327,9 @@
       margin-top: 10px;
       padding-left: 20px;
     }
+.reply-btn:hover {
+  color: white;
+}
     .reply-form input,
     .reply-form textarea {
       background-color: #111;
@@ -474,11 +477,14 @@ function renderComments() {
 function createCommentElement(comment, index) {
   const div = document.createElement("div");
   div.className = "comment";
+  div.style.position = "relative";
 
+  // 评论文字内容
   const text = document.createElement("p");
   text.className = "comment-text";
   text.textContent = comment.message;
 
+  // 用户名 & 日期
   const infoRow = document.createElement("div");
   infoRow.className = "comment-meta-row";
 
@@ -493,6 +499,48 @@ function createCommentElement(comment, index) {
   infoRow.appendChild(name);
   infoRow.appendChild(date);
 
+  // 点赞按钮（右上角）
+  const likeBtn = document.createElement("span");
+  likeBtn.className = "reply-btn";
+  likeBtn.style.position = "absolute";
+  likeBtn.style.top = "12px";
+  likeBtn.style.right = "12px";
+
+  const likedKey = `liked_${comment.id}`;
+  let liked = localStorage.getItem(likedKey) === "true";
+  let currentLikes = comment.likes || 0;
+  likeBtn.textContent = `❤ ${currentLikes}`;
+
+likeBtn.onclick = async () => {
+  const commentRef = db.collection("comments").doc(comment.id);
+  const likedKey = `liked_${comment.id}`;
+  let liked = localStorage.getItem(likedKey) === "true";
+
+  try {
+    const doc = await commentRef.get();
+    if (!doc.exists) return;
+
+    let currentLikes = doc.data().likes || 0;
+
+    if (!liked) {
+      // 点赞
+      currentLikes += 1;
+      await commentRef.update({ likes: currentLikes });
+      localStorage.setItem(likedKey, "true");
+    } else {
+      // 取消点赞
+      currentLikes = Math.max(0, currentLikes - 1);
+      await commentRef.update({ likes: currentLikes });
+      localStorage.setItem(likedKey, "false");
+    }
+
+    likeBtn.textContent = `❤ ${currentLikes}`;
+  } catch (error) {
+    console.error("点赞失败", error);
+  }
+};
+
+  // 回复按钮
   const replyBtn = document.createElement("span");
   replyBtn.className = "reply-btn";
   replyBtn.textContent = "回复";
@@ -501,7 +549,9 @@ function createCommentElement(comment, index) {
   div.appendChild(text);
   div.appendChild(infoRow);
   div.appendChild(replyBtn);
+  div.appendChild(likeBtn);
 
+  // 管理员删除按钮
   if (isAdmin) {
     const deleteBtn = document.createElement("span");
     deleteBtn.className = "delete-btn";
@@ -514,6 +564,7 @@ function createCommentElement(comment, index) {
     div.appendChild(deleteBtn);
   }
 
+  // 如果有回复，显示回复列表
   if (comment.replies && comment.replies.length > 0) {
     const repliesDiv = document.createElement("div");
     repliesDiv.className = "replies";
