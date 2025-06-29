@@ -1,11 +1,9 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>留言区</title>
   <link rel="icon" href="sli.ico" type="image/x-icon">
-<link href="pagefind/pagefind.css" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -358,25 +356,21 @@
     }
 
   </style>
-</head>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-
 <script>
   const firebaseConfig = {
     apiKey: "AIzaSyB1xOMQRikCjQiXoxPSPTNC1gXUTacbtZs",
     authDomain: "bigbangri.firebaseapp.com",
     projectId: "bigbangri",
-    storageBucket: "bigbangri.appspot.com", // ✅ 修正这里
+    storageBucket: "bigbangri.appspot.com",
     messagingSenderId: "106865552451",
-    appId: "1:106865552451:web:fd79e565c63a5954c9f8f6",
-    measurementId: "G-35ES497X69"
+    appId: "1:106865552451:web:fd79e565c"
   };
-
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
-  const commentsCollection = db.collection("comments");
 </script>
+</head>
 <body>
 <main>
   <div class="header-container">
@@ -404,7 +398,38 @@
 </div>
 
 <script>
-let comments = JSON.parse(localStorage.getItem("comments") || "[]");
+
+function addComment() {
+  const name = document.getElementById("name").value.trim();
+  const message = document.getElementById("message").value.trim();
+  if (!name || !message) {
+    alert("请填写名字和评论内容");
+    return;
+  }
+
+  const comment = {
+    name,
+    message,
+    date: getChineseDate(),
+    replies: []
+  };
+
+  // 保存到 Firestore
+  db.collection("comments").add({
+    ...comment,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+  })
+  .then(() => {
+    document.getElementById("name").value = "";
+    document.getElementById("message").value = "";
+  })
+  .catch(error => {
+    console.error("添加评论失败：", error);
+    alert("添加评论失败，请稍后重试。");
+  });
+}
+
+let comments = [];
 let isAdmin = false;
 const adminPasswordHash = "48d5d9fb215fe9acb1c094a4ef3c2d7addeb114f9681b842c20a998e32281445";
 
@@ -412,11 +437,30 @@ function getChineseDate() {
   const now = new Date();
   const datePart = `${now.getFullYear()}年${String(now.getMonth()+1).padStart(2,'0')}月${String(now.getDate()).padStart(2,'0')}日`;
   const timePart = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
-  return `${datePart} ${timePart}`;  return `${datePart} ${timePart}`;
+  return `${datePart} ${timePart}`;
 }
 
-function saveComments() {
-  localStorage.setItem("comments", JSON.stringify(comments));
+function renderCommentsRealtime() {
+  db.collection("comments").orderBy("timestamp").onSnapshot(snapshot => {
+    comments = [];
+    snapshot.forEach(doc => {
+      comments.push({ id: doc.id, ...doc.data() });
+    });
+    renderComments();
+  });
+}
+
+function saveCommentToFirestore(comment) {
+  comment.timestamp = firebase.firestore.FieldValue.serverTimestamp();
+  db.collection("comments").add(comment);
+}
+
+function deleteCommentFromFirestore(id) {
+  db.collection("comments").doc(id).delete();
+}
+
+function updateRepliesToFirestore(id, replies) {
+  db.collection("comments").doc(id).update({ replies });
 }
 
 function renderComments() {
@@ -464,9 +508,7 @@ function createCommentElement(comment, index) {
     deleteBtn.textContent = "删除";
     deleteBtn.onclick = () => {
       if (confirm("确定要删除这条评论吗？")) {
-        comments.splice(index, 1);
-        saveComments();
-        renderComments();
+        deleteCommentFromFirestore(comment.id);
       }
     };
     div.appendChild(deleteBtn);
@@ -521,9 +563,9 @@ function createReplyElement(reply, parentIndex, replyIndex) {
     deleteBtn.textContent = "删除";
     deleteBtn.onclick = () => {
       if (confirm("确定要删除这条回复吗？")) {
-        comments[parentIndex].replies.splice(replyIndex, 1);
-        saveComments();
-        renderComments();
+        const updatedReplies = [...comments[parentIndex].replies];
+        updatedReplies.splice(replyIndex, 1);
+        updateRepliesToFirestore(comments[parentIndex].id, updatedReplies);
       }
     };
     div.appendChild(deleteBtn);
@@ -555,40 +597,22 @@ function showReplyForm(parentDiv, parentIndex) {
       return;
     }
 
-  const reply = {
-    name,
-    message,
-    date: getChineseDate()
+    const reply = {
+      name,
+      message,
+      date: getChineseDate()
+    };
+    const commentId = comments[parentIndex].id;
+    const updatedReplies = comments[parentIndex].replies || [];
+    updatedReplies.push(reply);
+    updateRepliesToFirestore(commentId, updatedReplies);
   };
-  if (!comments[parentIndex].replies) comments[parentIndex].replies = [];
-  comments[parentIndex].replies.push(reply);
-  saveComments();
-  renderComments();
-};
 
   form.appendChild(nameInput);
   form.appendChild(messageInput);
   form.appendChild(sendBtn);
 
   parentDiv.appendChild(form);
-}
-
-function addComment() {
-  const name = document.getElementById("name").value.trim();
-  const message = document.getElementById("message").value.trim();
-  if (!name || !message) return alert("请填写名字和评论内容");
-
-  const newComment = {
-    name,
-    message,
-    date: getChineseDate(),
-    replies: []
-  };
-  comments.push(newComment);
-  saveComments();
-  renderComments();
-  document.getElementById("name").value = "";
-  document.getElementById("message").value = "";
 }
 
 async function hashPassword(password) {
@@ -610,7 +634,7 @@ async function loginAdmin() {
   }
 }
 
-renderComments();
+renderCommentsRealtime();
 </script>
 </body>
 </html>
