@@ -279,17 +279,34 @@
       border: 1px solid white;
       box-sizing: border-box;
     }
-    .comment-form button,
-    #admin-login button {
-      margin-top: 10px;
-      padding: 12px 25px;
-      border-radius: 2px 15px;
-      border: 1px solid white;
-      background: #111;
-      color: white;
-      cursor: pointer;
-      font-size: 15px;
-    }
+.comment-form button {
+  margin-top: 10px;
+  padding: 12px 25px;
+  border-radius: 2px 15px;
+  border: 1px solid white;
+  background: #111;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+.comment-form button:hover {
+  border: 1px solid #111;
+  background: white;
+  color: #111;
+}
+.admin-btn {
+  margin-top: 10px;
+  padding: 12px 25px;
+  border-radius: 2px 15px;
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+.admin-btn:hover {
+  color: #00aaff;
+}
     .comment {
       background: #1e1e1e;
       padding: 12px;
@@ -314,7 +331,8 @@
     .comment-date {
       color: white;
     }
-    .reply-btn, .delete-btn {
+    .reply-btn,
+    .delete-btn {
       font-size: 12px;
       color: #00aaff;
       cursor: pointer;
@@ -327,9 +345,7 @@
       margin-top: 10px;
       padding-left: 20px;
     }
-.reply-btn:hover {
-  color: white;
-}
+
     .reply-form input,
     .reply-form textarea {
       background-color: #111;
@@ -357,7 +373,17 @@
       margin-bottom: 10px;
       text-align: right;
     }
-
+.reply-like-btn {
+  color: #00aaff;
+  font-size: 13px;
+  opacity: 1;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.reply-btn:hover,
+.reply-like-btn:hover {
+  color: white;
+}
   </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
@@ -387,9 +413,9 @@
   <p>请各位粉丝们注意言行，用词不当如用黑称或引战类的言论将被管理员删评</p>
 
 <div class="comment-box">
-  <div id="admin-login">
-    <button onclick="loginAdmin()">管理员</button>
-  </div>
+<div id="admin-login">
+  <button class="admin-btn" onclick="loginAdmin()">管理员</button>
+</div>
   <div class="comment-form">
     <div class="form-row">
       <input type="text" id="name" placeholder="你的名字" required>
@@ -580,6 +606,7 @@ likeBtn.onclick = async () => {
 function createReplyElement(reply, parentIndex, replyIndex) {
   const div = document.createElement("div");
   div.className = "comment";
+  div.style.position = "relative";
 
   const text = document.createElement("p");
   text.className = "comment-text";
@@ -604,9 +631,49 @@ function createReplyElement(reply, parentIndex, replyIndex) {
   replyBtn.textContent = "回复";
   replyBtn.onclick = () => showReplyForm(div, parentIndex);
 
+  // ✅ 添加楼中楼点赞按钮
+  const replyLikeBtn = document.createElement("span");
+  replyLikeBtn.className = "reply-like-btn";
+  replyLikeBtn.style.position = "absolute";
+  replyLikeBtn.style.top = "12px";
+  replyLikeBtn.style.right = "12px";
+
+  const replyLikedKey = `liked_reply_${comments[parentIndex].id}_${replyIndex}`;
+  let replyLiked = localStorage.getItem(replyLikedKey) === "true";
+  let replyLikes = reply.likes || 0;
+  replyLikeBtn.textContent = `❤ ${replyLikes}`;
+
+if (replyLiked) {
+  replyLikeBtn.classList.add("liked");
+}
+
+  replyLikeBtn.onclick = async () => {
+    const commentRef = db.collection("comments").doc(comments[parentIndex].id);
+    const doc = await commentRef.get();
+    if (!doc.exists) return;
+
+    let updatedReplies = doc.data().replies || [];
+    let currentLikes = updatedReplies[replyIndex].likes || 0;
+    replyLiked = localStorage.getItem(replyLikedKey) === "true";
+
+    if (!replyLiked) {
+      currentLikes += 1;
+      localStorage.setItem(replyLikedKey, "true");
+    } else {
+      currentLikes = Math.max(0, currentLikes - 1);
+      localStorage.setItem(replyLikedKey, "false");
+    }
+
+    updatedReplies[replyIndex].likes = currentLikes;
+    await commentRef.update({ replies: updatedReplies });
+    replyLikeBtn.textContent = `❤ ${currentLikes}`;
+    replyLikeBtn.style.color = localStorage.getItem(replyLikedKey) === "true" ? "#00aaff" : "white";
+  };
+
   div.appendChild(text);
   div.appendChild(infoRow);
   div.appendChild(replyBtn);
+  div.appendChild(replyLikeBtn);
 
   if (isAdmin) {
     const deleteBtn = document.createElement("span");
@@ -638,6 +705,11 @@ function showReplyForm(parentDiv, parentIndex) {
   messageInput.rows = 3;
   messageInput.placeholder = "回复内容...";
 
+  const buttonRow = document.createElement("div");
+  buttonRow.style.marginTop = "6px";
+  buttonRow.style.display = "flex";
+  buttonRow.style.gap = "10px";
+
   const sendBtn = document.createElement("button");
   sendBtn.textContent = "发送回复";
   sendBtn.onclick = () => {
@@ -651,7 +723,8 @@ function showReplyForm(parentDiv, parentIndex) {
     const reply = {
       name,
       message,
-      date: getChineseDate()
+      date: getChineseDate(),
+      likes: 0
     };
     const commentId = comments[parentIndex].id;
     const updatedReplies = comments[parentIndex].replies || [];
@@ -659,12 +732,23 @@ function showReplyForm(parentDiv, parentIndex) {
     updateRepliesToFirestore(commentId, updatedReplies);
   };
 
+  // ✅ 新增取消按钮
+  const cancelBtn = document.createElement("button");
+  cancelBtn.textContent = "取消";
+  cancelBtn.onclick = () => {
+    parentDiv.removeChild(form);
+  };
+
+  buttonRow.appendChild(sendBtn);
+  buttonRow.appendChild(cancelBtn);
+
   form.appendChild(nameInput);
   form.appendChild(messageInput);
-  form.appendChild(sendBtn);
+  form.appendChild(buttonRow);
 
   parentDiv.appendChild(form);
 }
+
 
 async function hashPassword(password) {
   const msgUint8 = new TextEncoder().encode(password);
