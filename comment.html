@@ -384,6 +384,37 @@
 .reply-like-btn:hover {
   color: white;
 }
+.filter-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  color: white;
+}
+
+.filter-btn.active {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+html {
+  scroll-behavior: auto !important;
+}
+.comments-placeholder {
+  visibility: hidden;
+}
   </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
@@ -423,10 +454,16 @@
     </div>
     <button onclick="addComment()">发送</button>
   </div>
+    <div class="filter-buttons">
+  <button class="filter-btn active" onclick="setFilterMode('all')">最旧</button>
+  <button class="filter-btn" onclick="setFilterMode('latest')">最新</button>
+  <button class="filter-btn" onclick="setFilterMode('hot')">最火</button>
+</div>
   <div id="comments"></div>
 </div>
 
 <script>
+let unsubscribeFirestore = null;
 
 function addComment() {
   const name = document.getElementById("name").value.trim();
@@ -470,13 +507,16 @@ function getChineseDate() {
 }
 
 function renderCommentsRealtime() {
-  db.collection("comments").orderBy("timestamp").onSnapshot(snapshot => {
-    comments = [];
-    snapshot.forEach(doc => {
-      comments.push({ id: doc.id, ...doc.data() });
+  if (unsubscribeFirestore) unsubscribeFirestore();
+  unsubscribeFirestore = db.collection("comments")
+    .orderBy("timestamp")
+    .onSnapshot(snapshot => {
+      comments = [];
+      snapshot.forEach(doc => {
+        comments.push({ id: doc.id, ...doc.data() });
+      });
+      renderComments();
     });
-    renderComments();
-  });
 }
 
 function saveCommentToFirestore(comment) {
@@ -765,11 +805,87 @@ async function loginAdmin() {
     alert("管理员验证成功，可删除评论");
     renderComments();
   } else {
-    alert("密码错误");
+    alert("错误");
   }
 }
 
 renderCommentsRealtime();
+
+function setFilterMode(mode) {
+  const container = document.getElementById("comments");
+
+  // 保存当前滚动位置
+  const currentScrollY = window.scrollY;
+
+  // 临时设置高度占位，防止跳动
+  const originalHeight = container.offsetHeight;
+  container.style.minHeight = originalHeight + "px";
+  container.classList.add("comments-placeholder");
+
+  // 切换按钮样式
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+  const labelMap = { all: '最旧', latest: '最新', hot: '最火' };
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    if (btn.textContent.trim() === labelMap[mode]) {
+      btn.classList.add('active');
+    }
+  });
+
+  // 清除监听
+  if (unsubscribeFirestore) unsubscribeFirestore();
+
+  // 延迟渲染以保持位置
+  setTimeout(() => {
+    if (mode === 'all') {
+      renderCommentsRealtime();
+    } else if (mode === 'latest') {
+      showLatestComments();
+    } else if (mode === 'hot') {
+      showMostLikedComments();
+    }
+
+    // 渲染后恢复高度和可见性
+    setTimeout(() => {
+      container.classList.remove("comments-placeholder");
+      container.style.minHeight = "0px";
+      window.scrollTo({ top: currentScrollY });
+    }, 0);
+  }, 0);
+}
+
+function showLatestComments() {
+  if (comments.length === 0) return alert("暂无评论");
+
+  const sorted = [...comments].sort((a, b) => (b.timestamp?.seconds || 0) - (a.timestamp?.seconds || 0));
+  const container = document.getElementById("comments");
+  container.innerHTML = "";
+  sorted.forEach((comment, index) => {
+    container.appendChild(createCommentElement(comment, comments.findIndex(c => c.id === comment.id)));
+  });
+}
+
+function showMostLikedComments() {
+  if (comments.length === 0) return alert("暂无评论");
+
+  const sorted = [...comments].sort((a, b) => (b.likes || 0) - (a.likes || 0));
+  const container = document.getElementById("comments");
+  container.innerHTML = "";
+  sorted.forEach((comment, index) => {
+    container.appendChild(createCommentElement(comment, comments.findIndex(c => c.id === comment.id)));
+  });
+}
+function renderCommentsRealtime() {
+  if (unsubscribeFirestore) unsubscribeFirestore();
+  unsubscribeFirestore = db.collection("comments")
+    .orderBy("timestamp")
+    .onSnapshot(snapshot => {
+      comments = [];
+      snapshot.forEach(doc => {
+        comments.push({ id: doc.id, ...doc.data() });
+      });
+      renderComments();
+    });
+}
 </script>
 </body>
 </html>
