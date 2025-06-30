@@ -311,7 +311,7 @@
   background: #1e1e1e;
   padding: 12px;
   border-radius: 8px;
-  margin-top: 10px; /* 原来是16px */
+  margin-top: 16px; /* 原来是16px */
   text-align: left;
 }
     .comment-text {
@@ -643,34 +643,35 @@ function createCommentElement(comment, index) {
     }
   };
 
-  const actionRow = document.createElement("div");
-  actionRow.style.display = "flex";
-  actionRow.style.alignItems = "center";
-  actionRow.style.gap = "4px";
-  actionRow.style.marginTop = "6px";
+const actionRow = document.createElement("div");
+actionRow.style.display = "flex";
+actionRow.style.alignItems = "center";
+actionRow.style.gap = "2px";
+actionRow.style.marginTop = "6px";
 
-  const replyBtn = document.createElement("span");
-  replyBtn.className = "reply-btn";
-  replyBtn.textContent = "回复";
-  replyBtn.onclick = () => showReplyForm(div, index);
-  actionRow.appendChild(replyBtn);
+const replyBtn = document.createElement("span");
+replyBtn.className = "reply-btn";
+replyBtn.textContent = "回复";
+replyBtn.onclick = () => showReplyForm(div, index);
+actionRow.appendChild(replyBtn);
+
+// ✅ 删除按钮也放在 actionRow 中
+if (isAdmin) {
+  const deleteBtn = document.createElement("span");
+  deleteBtn.className = "delete-btn";
+  deleteBtn.textContent = "删除";
+  deleteBtn.onclick = () => {
+    if (confirm("确定要删除这条评论吗？")) {
+      deleteCommentFromFirestore(comment.id);
+    }
+  };
+  actionRow.appendChild(deleteBtn);
+}
 
   div.appendChild(text);
   div.appendChild(infoRow);
   div.appendChild(actionRow);
   div.appendChild(likeBtn);
-
-  if (isAdmin) {
-    const deleteBtn = document.createElement("span");
-    deleteBtn.className = "delete-btn";
-    deleteBtn.textContent = "删除";
-    deleteBtn.onclick = () => {
-      if (confirm("确定要删除这条评论吗？")) {
-        deleteCommentFromFirestore(comment.id);
-      }
-    };
-    div.appendChild(deleteBtn);
-  }
 
   if (comment.replies && comment.replies.length > 0) {
     const repliesDiv = document.createElement("div");
@@ -742,29 +743,41 @@ function createReplyElement(reply, parentIndex, replyIndex) {
     replyLikeBtn.style.color = localStorage.getItem(replyLikedKey) === "true" ? "#00aaff" : "white";
   };
 
-  // 创建按钮行：回复按钮 + @用户名
 const replyRow = document.createElement("div");
 replyRow.style.display = "flex";
 replyRow.style.alignItems = "center";
-replyRow.style.gap = "4px";
+replyRow.style.gap = "5px";
 replyRow.style.marginTop = "6px";
 
+// 回复按钮
 const replyBtn = document.createElement("span");
 replyBtn.className = "reply-btn";
 replyBtn.textContent = "回复";
 replyBtn.onclick = () => showReplyForm(div, parentIndex, reply.name);
+replyRow.appendChild(replyBtn);
 
-// 判断是否回复的是楼主本人，如果不是再加 @用户名
+// 如果需要显示 @用户名
 if (reply.replyTo && reply.replyTo !== comments[parentIndex].name) {
-  replyRow.appendChild(replyBtn);
-
   const atTag = document.createElement("span");
   atTag.style.color = "white";
   atTag.style.fontSize = "13px";
   atTag.textContent = `··· ${reply.replyTo}`;
   replyRow.appendChild(atTag);
-} else {
-  replyRow.appendChild(replyBtn); // 仍保留回复按钮，但不加 @xxx
+}
+
+// ✅ 删除按钮放在 replyRow 中
+if (isAdmin) {
+  const deleteBtn = document.createElement("span");
+  deleteBtn.className = "delete-btn";
+  deleteBtn.textContent = "删除";
+  deleteBtn.onclick = () => {
+    if (confirm("确定要删除这条回复吗？")) {
+      const updatedReplies = [...comments[parentIndex].replies];
+      updatedReplies.splice(replyIndex, 1);
+      updateRepliesToFirestore(comments[parentIndex].id, updatedReplies);
+    }
+  };
+  replyRow.appendChild(deleteBtn);
 }
 
   // 渲染到页面
@@ -772,20 +785,6 @@ if (reply.replyTo && reply.replyTo !== comments[parentIndex].name) {
   div.appendChild(infoRow);
   div.appendChild(replyRow);
   div.appendChild(replyLikeBtn);
-
-  if (isAdmin) {
-    const deleteBtn = document.createElement("span");
-    deleteBtn.className = "delete-btn";
-    deleteBtn.textContent = "删除";
-    deleteBtn.onclick = () => {
-      if (confirm("确定要删除这条回复吗？")) {
-        const updatedReplies = [...comments[parentIndex].replies];
-        updatedReplies.splice(replyIndex, 1);
-        updateRepliesToFirestore(comments[parentIndex].id, updatedReplies);
-      }
-    };
-    div.appendChild(deleteBtn);
-  }
 
   return div;
 }
