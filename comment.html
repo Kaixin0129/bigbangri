@@ -482,22 +482,42 @@ function containsBlockedWords(text) {
   return blockedWords.some(word => text.toLowerCase().includes(word.toLowerCase()));
 }
 
-function addComment() {
-  let name = document.getElementById("name").value.trim();
+async function addComment() {
+  let nameInput = document.getElementById("name");
+  let name = nameInput ? nameInput.value.trim() : localStorage.getItem("comment_username");
   const message = document.getElementById("message").value.trim();
+
   if (!name || !message) {
     alert("请填写名字和评论内容");
     return;
   }
 
-  // ✅ 屏蔽词检查
+  // ✅ 屏蔽词过滤
   if (containsBlockedWords(message)) {
-    alert("你的评论内容包含违规词汇，请注意言行");
+    alert("你的评论内容包含违规词汇，请修改后再发送。");
     return;
   }
 
-  localStorage.setItem("comment_username", name); // 保存用户名
+  // ✅ 如果本地没有保存用户名，则检查是否重复
+  if (!localStorage.getItem("comment_username")) {
+    try {
+      const snapshot = await db.collection("comments").where("name", "==", name).limit(1).get();
+      if (!snapshot.empty) {
+        alert("该用户名已被使用，请更换一个名字");
+        return;
+      }
+    } catch (error) {
+      console.error("检查用户名重复出错：", error);
+      alert("无法验证用户名是否重复，请稍后再试");
+      return;
+    }
 
+    // ✅ 本地保存用户名（避免下次重复检查）
+    localStorage.setItem("comment_username", name);
+    if (nameInput) nameInput.style.display = "none";
+  }
+
+  // ✅ 构建评论对象并提交
   const comment = {
     name,
     message,
@@ -505,12 +525,16 @@ function addComment() {
     replies: []
   };
 
-  db.collection("comments").add({
-    ...comment,
-    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-  }).then(() => {
+  try {
+    await db.collection("comments").add({
+      ...comment,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
     document.getElementById("message").value = "";
-  });
+  } catch (e) {
+    console.error("发送评论失败", e);
+    alert("评论发送失败，请稍后再试");
+  }
 }
 
 let comments = [];
