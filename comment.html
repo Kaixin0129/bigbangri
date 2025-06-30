@@ -307,13 +307,13 @@
 .admin-btn:hover {
   color: #00aaff;
 }
-    .comment {
-      background: #1e1e1e;
-      padding: 12px;
-      border-radius: 8px;
-      margin-top: 16px;
-      text-align: left;
-    }
+.comment {
+  background: #1e1e1e;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 10px; /* 原来是16px */
+  text-align: left;
+}
     .comment-text {
       font-size: 19px;
       margin-bottom: 8px;
@@ -444,14 +444,15 @@ html {
   <p>请各位粉丝们注意言行，用词不当如用黑称或引战类的言论将被管理员删评</p>
 
 <div class="comment-box">
-<div id="admin-login">
-  <button class="admin-btn" onclick="loginAdmin()">管理员</button>
+<div id="admin-login" style="display: flex; justify-content: space-between;">
+  <button class="admin-btn left-btn" onclick="changeUsername()">修改名字</button>
+  <button class="admin-btn right-btn" onclick="loginAdmin()">管理员</button>
 </div>
   <div class="comment-form">
     <div class="form-row">
-      <input type="text" id="name" placeholder="你的名字" required>
-      <textarea id="message" placeholder="你的评论内容..." rows="4" required></textarea>
-    </div>
+      <input type="text" id="name" placeholder="你的名字（建议使用微博名字）" required>
+      <textarea id="message" rows="4"></textarea>
+    </div><br/>
     <button onclick="addComment()">发送</button>
   </div>
     <div class="filter-buttons">
@@ -462,16 +463,40 @@ html {
   <div id="comments"></div>
 </div>
 
+<br/><br/>
+<p style="text-align: center; padding: 20px; color: rgb(242, 242, 242);">
+  Copyright © bigbangri.com All rights reserved.
+</p>
+
 <script>
+  document.getElementById("message").placeholder = "你的评论内容...\n\n请大家谨慎发言（ot3 ot4 这辈子最大的敌人就是权志龙）";
+
 let unsubscribeFirestore = null;
 
+const blockedWords = [
+  "法制咖", "黄赌毒", "强奸", "下药", "吸毒", "李失败", "前夫哥", "拉皮条", "毒贩", "罪犯", "犯罪", "傻逼", "sb", "神经病"
+];
+
+// 屏蔽词检测函数
+function containsBlockedWords(text) {
+  return blockedWords.some(word => text.toLowerCase().includes(word.toLowerCase()));
+}
+
 function addComment() {
-  const name = document.getElementById("name").value.trim();
+  let name = document.getElementById("name").value.trim();
   const message = document.getElementById("message").value.trim();
   if (!name || !message) {
     alert("请填写名字和评论内容");
     return;
   }
+
+  // ✅ 屏蔽词检查
+  if (containsBlockedWords(message)) {
+    alert("你的评论内容包含违规词汇，请注意言行");
+    return;
+  }
+
+  localStorage.setItem("comment_username", name); // 保存用户名
 
   const comment = {
     name,
@@ -480,18 +505,11 @@ function addComment() {
     replies: []
   };
 
-  // 保存到 Firestore
   db.collection("comments").add({
     ...comment,
     timestamp: firebase.firestore.FieldValue.serverTimestamp()
-  })
-  .then(() => {
-    document.getElementById("name").value = "";
+  }).then(() => {
     document.getElementById("message").value = "";
-  })
-  .catch(error => {
-    console.error("添加评论失败：", error);
-    alert("添加评论失败，请稍后重试。");
   });
 }
 
@@ -545,12 +563,10 @@ function createCommentElement(comment, index) {
   div.className = "comment";
   div.style.position = "relative";
 
-  // 评论文字内容
   const text = document.createElement("p");
   text.className = "comment-text";
   text.textContent = comment.message;
 
-  // 用户名 & 日期
   const infoRow = document.createElement("div");
   infoRow.className = "comment-meta-row";
 
@@ -565,7 +581,6 @@ function createCommentElement(comment, index) {
   infoRow.appendChild(name);
   infoRow.appendChild(date);
 
-  // 点赞按钮（右上角）
   const likeBtn = document.createElement("span");
   likeBtn.className = "reply-btn";
   likeBtn.style.position = "absolute";
@@ -577,47 +592,50 @@ function createCommentElement(comment, index) {
   let currentLikes = comment.likes || 0;
   likeBtn.textContent = `❤ ${currentLikes}`;
 
-likeBtn.onclick = async () => {
-  const commentRef = db.collection("comments").doc(comment.id);
-  const likedKey = `liked_${comment.id}`;
-  let liked = localStorage.getItem(likedKey) === "true";
+  likeBtn.onclick = async () => {
+    const commentRef = db.collection("comments").doc(comment.id);
+    const likedKey = `liked_${comment.id}`;
+    let liked = localStorage.getItem(likedKey) === "true";
 
-  try {
-    const doc = await commentRef.get();
-    if (!doc.exists) return;
+    try {
+      const doc = await commentRef.get();
+      if (!doc.exists) return;
 
-    let currentLikes = doc.data().likes || 0;
+      let currentLikes = doc.data().likes || 0;
 
-    if (!liked) {
-      // 点赞
-      currentLikes += 1;
-      await commentRef.update({ likes: currentLikes });
-      localStorage.setItem(likedKey, "true");
-    } else {
-      // 取消点赞
-      currentLikes = Math.max(0, currentLikes - 1);
-      await commentRef.update({ likes: currentLikes });
-      localStorage.setItem(likedKey, "false");
+      if (!liked) {
+        currentLikes += 1;
+        await commentRef.update({ likes: currentLikes });
+        localStorage.setItem(likedKey, "true");
+      } else {
+        currentLikes = Math.max(0, currentLikes - 1);
+        await commentRef.update({ likes: currentLikes });
+        localStorage.setItem(likedKey, "false");
+      }
+
+      likeBtn.textContent = `❤ ${currentLikes}`;
+    } catch (error) {
+      console.error("点赞失败", error);
     }
+  };
 
-    likeBtn.textContent = `❤ ${currentLikes}`;
-  } catch (error) {
-    console.error("点赞失败", error);
-  }
-};
+  const actionRow = document.createElement("div");
+  actionRow.style.display = "flex";
+  actionRow.style.alignItems = "center";
+  actionRow.style.gap = "4px";
+  actionRow.style.marginTop = "6px";
 
-  // 回复按钮
   const replyBtn = document.createElement("span");
   replyBtn.className = "reply-btn";
   replyBtn.textContent = "回复";
   replyBtn.onclick = () => showReplyForm(div, index);
+  actionRow.appendChild(replyBtn);
 
   div.appendChild(text);
   div.appendChild(infoRow);
-  div.appendChild(replyBtn);
+  div.appendChild(actionRow);
   div.appendChild(likeBtn);
 
-  // 管理员删除按钮
   if (isAdmin) {
     const deleteBtn = document.createElement("span");
     deleteBtn.className = "delete-btn";
@@ -630,7 +648,6 @@ likeBtn.onclick = async () => {
     div.appendChild(deleteBtn);
   }
 
-  // 如果有回复，显示回复列表
   if (comment.replies && comment.replies.length > 0) {
     const repliesDiv = document.createElement("div");
     repliesDiv.className = "replies";
@@ -666,12 +683,7 @@ function createReplyElement(reply, parentIndex, replyIndex) {
   infoRow.appendChild(name);
   infoRow.appendChild(date);
 
-  const replyBtn = document.createElement("span");
-  replyBtn.className = "reply-btn";
-  replyBtn.textContent = "回复";
-  replyBtn.onclick = () => showReplyForm(div, parentIndex);
-
-  // ✅ 添加楼中楼点赞按钮
+  // 点赞按钮
   const replyLikeBtn = document.createElement("span");
   replyLikeBtn.className = "reply-like-btn";
   replyLikeBtn.style.position = "absolute";
@@ -682,10 +694,6 @@ function createReplyElement(reply, parentIndex, replyIndex) {
   let replyLiked = localStorage.getItem(replyLikedKey) === "true";
   let replyLikes = reply.likes || 0;
   replyLikeBtn.textContent = `❤ ${replyLikes}`;
-
-if (replyLiked) {
-  replyLikeBtn.classList.add("liked");
-}
 
   replyLikeBtn.onclick = async () => {
     const commentRef = db.collection("comments").doc(comments[parentIndex].id);
@@ -710,9 +718,35 @@ if (replyLiked) {
     replyLikeBtn.style.color = localStorage.getItem(replyLikedKey) === "true" ? "#00aaff" : "white";
   };
 
+  // 创建按钮行：回复按钮 + @用户名
+const replyRow = document.createElement("div");
+replyRow.style.display = "flex";
+replyRow.style.alignItems = "center";
+replyRow.style.gap = "4px";
+replyRow.style.marginTop = "6px";
+
+const replyBtn = document.createElement("span");
+replyBtn.className = "reply-btn";
+replyBtn.textContent = "回复";
+replyBtn.onclick = () => showReplyForm(div, parentIndex, reply.name);
+
+// 判断是否回复的是楼主本人，如果不是再加 @用户名
+if (reply.replyTo && reply.replyTo !== comments[parentIndex].name) {
+  replyRow.appendChild(replyBtn);
+
+  const atTag = document.createElement("span");
+  atTag.style.color = "white";
+  atTag.style.fontSize = "13px";
+  atTag.textContent = `··· ${reply.replyTo}`;
+  replyRow.appendChild(atTag);
+} else {
+  replyRow.appendChild(replyBtn); // 仍保留回复按钮，但不加 @xxx
+}
+
+  // 渲染到页面
   div.appendChild(text);
   div.appendChild(infoRow);
-  div.appendChild(replyBtn);
+  div.appendChild(replyRow);
   div.appendChild(replyLikeBtn);
 
   if (isAdmin) {
@@ -732,18 +766,24 @@ if (replyLiked) {
   return div;
 }
 
-function showReplyForm(parentDiv, parentIndex) {
+function showReplyForm(parentDiv, parentIndex, replyToName = null) {
   if (parentDiv.querySelector(".reply-form")) return;
 
   const form = document.createElement("div");
   form.className = "reply-form";
 
+  const savedName = localStorage.getItem("comment_username");
+
   const nameInput = document.createElement("input");
   nameInput.placeholder = "你的名字";
+  if (savedName) {
+    nameInput.value = savedName;
+    nameInput.style.display = "none";
+  }
 
   const messageInput = document.createElement("textarea");
-  messageInput.rows = 3;
-  messageInput.placeholder = "回复内容...";
+  messageInput.rows = 4;
+  messageInput.placeholder = "回复内容...\n\n请大家谨慎发言（ot3 ot4 这辈子最大的敌人就是权志龙）";
 
   const buttonRow = document.createElement("div");
   buttonRow.style.marginTop = "6px";
@@ -753,26 +793,32 @@ function showReplyForm(parentDiv, parentIndex) {
   const sendBtn = document.createElement("button");
   sendBtn.textContent = "发送回复";
   sendBtn.onclick = () => {
-    const name = nameInput.value.trim();
+    const name = savedName || nameInput.value.trim();
     const message = messageInput.value.trim();
+
     if (!name || !message) {
       alert("请填写名字和回复内容");
       return;
+    }
+
+    if (!savedName) {
+      localStorage.setItem("comment_username", name);
     }
 
     const reply = {
       name,
       message,
       date: getChineseDate(),
-      likes: 0
+      likes: 0,
+      replyTo: replyToName || comments[parentIndex].name // ✅ 记录被回复人名
     };
+
     const commentId = comments[parentIndex].id;
     const updatedReplies = comments[parentIndex].replies || [];
     updatedReplies.push(reply);
     updateRepliesToFirestore(commentId, updatedReplies);
   };
 
-  // ✅ 新增取消按钮
   const cancelBtn = document.createElement("button");
   cancelBtn.textContent = "取消";
   cancelBtn.onclick = () => {
@@ -810,6 +856,57 @@ async function loginAdmin() {
 }
 
 renderCommentsRealtime();
+
+function changeUsername() {
+  const oldName = localStorage.getItem("comment_username");
+  const newName = prompt("请输入新的名字：", oldName || "");
+
+  if (!newName || newName.trim() === "") {
+    alert("名字不能为空");
+    return;
+  }
+
+  if (newName === oldName) {
+    alert("新名字和旧名字不能相同");
+    return;
+  }
+
+  localStorage.setItem("comment_username", newName);
+
+  // 更新 Firestore 中所有该用户名的评论和回复
+  db.collection("comments").get().then(snapshot => {
+    const batch = db.batch();
+
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      let updated = false;
+
+      // 更新主评论的名字
+      if (data.name === oldName) {
+        doc.ref.update({ name: newName });
+        updated = true;
+      }
+
+      // 更新楼中楼回复的名字
+      const replies = data.replies || [];
+      let modified = false;
+      const updatedReplies = replies.map(reply => {
+        if (reply.name === oldName) {
+          modified = true;
+          return { ...reply, name: newName };
+        }
+        return reply;
+      });
+
+      if (modified) {
+        doc.ref.update({ replies: updatedReplies });
+        updated = true;
+      }
+    });
+
+    alert("名字已修改，评论也同步更新（不许随便改名字）");
+  });
+}
 
 function setFilterMode(mode) {
   const container = document.getElementById("comments");
@@ -886,6 +983,16 @@ function renderCommentsRealtime() {
       renderComments();
     });
 }
+window.addEventListener("DOMContentLoaded", () => {
+  const savedName = localStorage.getItem("comment_username");
+  if (savedName) {
+    const nameInput = document.getElementById("name");
+    if (nameInput) {
+      nameInput.value = savedName;
+      nameInput.style.display = "none"; // ✅ 隐藏输入框
+    }
+  }
+});
 </script>
 </body>
 </html>
