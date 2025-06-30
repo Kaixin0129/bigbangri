@@ -479,7 +479,7 @@ const blockedWords = [
 
 // 屏蔽词检测函数
 function containsBlockedWords(text) {
-  return blockedWords.some(word => text.toLowerCase().includes(word.toLowerCase()));
+  return blockedWords.some(word => text.includes(word));
 }
 
 async function addComment() {
