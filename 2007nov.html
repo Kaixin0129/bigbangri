@@ -18,9 +18,176 @@
       color: white;
     }
 
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
     main {
       padding: 40px;
       text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
     }
 
     .content-wrap {
@@ -126,130 +293,6 @@
       padding-left: 20px;
     }
 
-    .image-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 20px auto;
-      max-width: 1500px;
-    }
-
-    .image-row img {
-      width: auto;
-      height: 300px;
-      object-fit: cover;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .full-width-line {
-      width: 90vw;
-      border: none;
-      border-top: 1px solid white;
-      margin: 20px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 15px 25px;
-      background-color: none;
-      border-radius: 5px 18px;
-      border: 2px solid white;
-      transition: background 0.3s ease;
-    }
-
-    .jump-button {
-      padding: 15px 25px;
-      background-color: #111;
-      color: white;
-      border: 2px solid white;
-      border-radius: 5px 18px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      min-width: 120px;
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    .jump-button:hover {
-      background-color: white;
-      color: black;
-      cursor: pointer;
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      margin-bottom: 20px;
-      height: 100px;
-    }
-
-    .title-group {
-      display: inline-block;
-    } 
-
-    .left-nav,
-    .right-nav {
-      position: absolute;
-      top: 10%;
-      transform: translateY(-50%);
-    }
-
-    .left-nav {
-      left: 0;
-    }
-
-    .right-nav {
-      right: 0;
-    }
-
-    .left-nav a,
-    .right-nav a {
-      padding: 18px 30px;
-      font-size: 18px;
-      border-radius: 5px 18px;
-      color: white;
-      text-decoration: none;
-      border: 2px solid white;
-      display: inline-block;
-      transition: background 0.3s ease;
-    }
-
-    .left-nav a:hover,
-    .right-nav a:hover {
-      background-color: white;
-      color: #111;
-      cursor: pointer;
-    }
-
-    @media only screen and (max-width: 768px) {
-      html, body {
-        height: 100vh;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
-
-      body {
-        transform: scale(0.59);
-        transform-origin: top left;
-        width: 169.5%;
-        height: calc(100vh / 0.59);
-      }
-
-      .full-width-line {
-        transform: scaleX(1.6949);
-        transform-origin: left;
-      }
-    }
-
   </style>
 </head>
 
@@ -270,15 +313,22 @@
  
   <div style="text-align: center;">
     <p style="margin: 0;">下面的视频来自@陆豆纱 点击进入观看完整视频</p>
-  </div>
+  </div><br/>
   <div class="video-row">
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=677358556&bvid=BV1mU4y1K7Jc&cid=459012644&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>Lies</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=677358556&bvid=BV1mU4y1K7Jc&cid=459017788&p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>Wild Wild West</p>
+      </div>
     </div>
   </div>
+  <div class="video-row">
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="text-container">
@@ -287,7 +337,6 @@
         <ul>
           <li>未找到talk环节完整版</li>
         </ul>
-        <p>左边视频唱Lies，右边视频唱Wild Wild West</p>
       </div>
     </div>
   <hr class="full-width-line" />  
@@ -425,9 +474,6 @@
       <div class="text-container">
         <p><strong>2007年11月16日</strong></p>
         <p>Mnet KM音乐节（MKMF）彩排</p>
-        <ul>
-          <li>龙tory细节在专区</li>
-        </ul>
       </div>
     </div>
   <hr class="full-width-line" />  
@@ -560,7 +606,6 @@
         <ul>
           <li>小型演唱会</li>
           <li>无中字</li>
-          <li>龙tory细节在专区>
         </ul>
         </div>
       </div>
@@ -713,7 +758,7 @@
       </div>
       <div class="text-container">
         <p><strong>2007年11月25日</strong></p>
-        <p>Mnet 采访视频关于MFMK</p>
+        <p>Mnet 采访视频关于MKMF</p>
         <ul>
           <li>01:05 大声解释他哭</li>
         </ul>

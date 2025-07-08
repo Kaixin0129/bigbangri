@@ -18,9 +18,176 @@
       color: white;
     }
 
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
     main {
       padding: 40px;
       text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
     }
 
     .content-wrap {
@@ -126,130 +293,6 @@
       padding-left: 20px;
     }
 
-    .image-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 20px auto;
-      max-width: 1500px;
-    }
-
-    .image-row img {
-      width: auto;
-      height: 300px;
-      object-fit: cover;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .full-width-line {
-      width: 90vw;
-      border: none;
-      border-top: 1px solid white;
-      margin: 20px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 15px 25px;
-      background-color: none;
-      border-radius: 5px 18px;
-      border: 2px solid white;
-      transition: background 0.3s ease;
-    }
-
-    .jump-button {
-      padding: 15px 25px;
-      background-color: #111;
-      color: white;
-      border: 2px solid white;
-      border-radius: 5px 18px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      min-width: 120px;
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    .jump-button:hover {
-      background-color: white;
-      color: black;
-      cursor: pointer;
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      margin-bottom: 20px;
-      height: 100px;
-    }
-
-    .title-group {
-      display: inline-block;
-    } 
-
-    .left-nav,
-    .right-nav {
-      position: absolute;
-      top: 10%;
-      transform: translateY(-50%);
-    }
-
-    .left-nav {
-      left: 0;
-    }
-
-    .right-nav {
-      right: 0;
-    }
-
-    .left-nav a,
-    .right-nav a {
-      padding: 18px 30px;
-      font-size: 18px;
-      border-radius: 5px 18px;
-      color: white;
-      text-decoration: none;
-      border: 2px solid white;
-      display: inline-block;
-      transition: background 0.3s ease;
-    }
-
-    .left-nav a:hover,
-    .right-nav a:hover {
-      background-color: white;
-      color: #111;
-      cursor: pointer;
-    }
-
-    @media only screen and (max-width: 768px) {
-      html, body {
-        height: 100vh;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
-
-      body {
-        transform: scale(0.59);
-        transform-origin: top left;
-        width: 169.5%;
-        height: calc(100vh / 0.59);
-      }
-
-      .full-width-line {
-        transform: scaleX(1.6949);
-        transform-origin: left;
-      }
-    }
-
   </style>
 </head>
 
@@ -302,25 +345,25 @@
     <hr class="full-width-line" />
   </div>
 
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/rV1IOHxDXjA?si=ECYTmEDeYFymJNAq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2007年12月1日</strong></p>
-        <p>Human Rights Day Love Concert</p>
-        <p>唱Lies</p>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/rV1IOHxDXjA?si=ECYTmEDeYFymJNAq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Lies</p>
       </div>
     </div>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/0SGc5t3wW4I?si=YzCCNHhoVVhxt6o1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/0SGc5t3wW4I?si=YzCCNHhoVVhxt6o1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Last Farewell</p>
       </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
       <div class="text-container">
         <p><strong>2007年12月1日</strong></p>
         <p>Human Rights Day Love Concert</p>
-        <p>唱Last Farewell</p>
       </div>
     </div>
     <hr class="full-width-line" />  
@@ -330,13 +373,19 @@
     <div id="2-award" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
       <a href="awardlist2007.html#2-award-jump" class="jump-button">点击这里有很多饭拍视频</a>
     </div>
-  </div>
+  </div><br/>
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/jMJcdjn1JTI?si=Ngxhem87LFuH1EZR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Lies</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/kCasOLcq2Kw?si=wK48-RkdKNkHI1pk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>La La La</p>
+      </div>
     </div>
   </div>
   <div style="text-align: center;">
@@ -348,10 +397,7 @@
         <p><strong>2007年12月1日</strong></p>
         <p>Virgin Hitz Award 2007</p>
         <ul>
-          <li>TeroRadioChannel播出</li>
-          <li>第一个视频唱Lies</li>
-          <li>第二个视频唱La La La</li>
-          <li>第三个视频唱Shake It</li>
+          <li>Shake It</li>
         </ul>
       </div>
     </div>
@@ -483,17 +529,29 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/QVatbmjSm9g?si=rgouMYpI4Y0iX_8t" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>采访 1</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/H3gYqAyMODs?si=b87OjyuxwuAoIDab" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>采访 2</p>
+      </div>
     </div>
   </div>
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/oDoJiSpPoFc?si=nV1ebFjFPSw_twTF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>采访 3</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/qK1o5-dVZac?si=JVDqvECdFT_-9vOD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Lies</p>
+      </div>
     </div>
   </div>
   <div style="text-align: center;">
@@ -505,16 +563,12 @@
         <p><strong>2007年12月3日</strong></p>
         <p>Thailand (V) Play Zone by Fanta采访</p>
         <ul>
-          <li>泰国采访视频</li>
-          <li>高糊画质，泰语，无中字</li>
-          <li>前三个视频是正经采访</li>
-          <li>第四个视频唱Lies</li>
-          <li>第五个随机打电话给当地泰国粉丝</li>
+          <li>随机打电话给当地泰国粉丝</li>
         </ul>
       </div>
     </div>
     <hr class="full-width-line" /> 
-  </div>  
+  </div>
 
   <div style="text-align: center;">
     <p style="margin: 0;">下面的视频来自@bk1205 点击进入观看完整视频</p>
@@ -590,10 +644,25 @@
       <div class="text-container">
         <p><strong>2007年12月8日</strong></p>
         <p>TOP主持开幕，其他成员入境</p>
-        <p>开场前GD一直在摸胜利，视频在专区</p>
+        <p>开场前GD一直在...↓</p>
       </div>
     </div>
   <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+      <p style="margin: 0;">下面的视频来自@Maybeplayboy96 点击进入观看完整视频</p>
+      <div class="content-wrap">
+        <div class="video-container">
+          <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=2661314&bvid=BV13s411m7AU&cid=4471779&p=90" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="text-container">
+          <p><strong>2007年12月8日</strong></p>
+          <p>MBCkpop Music Core开场前饭拍视频</p>
+        </div>
+      </div>
+    </div>
+    <hr class="full-width-line" />
   </div>
 
   <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
@@ -737,9 +806,15 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/c4L5s8ROoVU?si=f7uY8YXzCQ_17RzS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Last Farewell</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/_Y6NDW_-kXw?si=-kKueuNh9B_w_I06" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Last Farewell彩排</p>
+      </div>
     </div>
   </div>
   <div style="text-align: center;">
@@ -751,13 +826,11 @@
         <p><strong>2007年12月14日</strong></p>
         <p>Golden Disk Awards</p>
         <ul>
-          <li>第一个视频是唱Last Farewell</li>
-          <li>第二个视频是Last Farewell彩排</li>
-          <li>第三个视频是太阳的粉丝站子From YouTube by @juckdo</li>
+          <li>太阳饭拍视频</li>
         </ul>
       </div>
     </div>
-  </div>  
+  </div><br/>
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/T86t7FnkD-8?si=FfQuOgysWFmTVpRJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -812,31 +885,33 @@
     </div>
   </div>
   <hr class="full-width-line" />  
-  
+
   <div style="text-align: center;">
     <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/V0NX0o2u-0g?si=vEusej4Gqeo0ZqON" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
       <div class="text-container">
-        <p><strong>2007年12月15日 MBCkpop Music Core</strong></p>
+        <p><strong>2007年12月15日</strong></p>
+        <p>MBCkpop Music Core</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/V0NX0o2u-0g?si=vEusej4Gqeo0ZqON" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
         <p>GD TOP 大声唱You in the fantasy徐太志和孩子们</p>
         <ul>
           <li>胜利缺席，GD顶替胜利</li>
         </ul>
       </div>
     </div>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/tfjgNadT12o?si=Dklv9eZnkNq09qGp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2007年12月15日 MBCkpop Music Core</strong></p>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/tfjgNadT12o?si=Dklv9eZnkNq09qGp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
         <p>GD 太阳唱Look back at me (DEUX)</p>
       </div>
     </div>
-    <hr class="full-width-line" />  
   </div>
+  <hr class="full-width-line" />  
 
   <div style="text-align: center;">
     <div class="content-wrap">
@@ -989,7 +1064,6 @@
           <li>09:18 咖啡王子二号店的花絮（咖啡王子一号店的恶搞版）</li>
           <li>12:58 胜利kawaii</li>
           <li>28:43 胜利被烟花炸伤片段</li>
-          <li>龙tory细节在专区</li>
         </ul>
       </div>
     </div>
@@ -1057,7 +1131,8 @@
     </div>
   </div>
   <div style="text-align: center;">
-    <p>左边TOP主持开幕，右边TOP主持闭幕</p>
+    <p>2007年12月29日 MBCkpop Music Core</p>
+    <p>TOP主持开幕和闭幕</p>
     <hr class="full-width-line" />
   </div>
 
@@ -1134,21 +1209,26 @@
 
   <div style="text-align: center;">
     <p style="margin: 0;">下面的视频来自@陆豆纱 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=977258758&bvid=BV1v44y1a7WT&cid=459287443&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2007年12月31日</strong></p>
-        <p>MBC Gayo Festival休息室采访</p>
+  </div><br/>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=977258758&bvid=BV1v44y1a7WT&cid=459287443&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>采访</p>
       </div>
     </div>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=977258758&bvid=BV1v44y1a7WT&cid=459291487&p=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=977258758&bvid=BV1v44y1a7WT&cid=459291487&p=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
         <p>群魔乱舞</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2007年12月31日</strong></p>
+        <p>MBC Gayo Festival休息室</p>
       </div>
     </div>
     <hr class="full-width-line" />  
@@ -1205,9 +1285,15 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/WifJf14rCn8?si=cm7-ZEPWoOUx4AFE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>演唱会彩排上放图片</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/jRcbZFPTQJc?si=SEaQRd3h825W0rsw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>唱BIGBANG</p>
+      </div>
     </div>
   </div>
   <div style="text-align: center;">
@@ -1217,9 +1303,7 @@
       </div>
       <div class="text-container">
         <ul>
-          <li>第一个视频是演唱会彩排上放图片</li>
-          <li>第二个视频是唱BIGBANG @IVIPmon5482</li>
-          <li>第三个视频是唱We Are The Champion（泪目）@ball00nz</li>
+          <li>唱We Are The Champion（泪目）</li>
         </ul>
       </div>
     </div>

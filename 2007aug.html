@@ -18,9 +18,176 @@
       color: white;
     }
 
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
     main {
       padding: 40px;
       text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
     }
 
     .content-wrap {
@@ -126,130 +293,6 @@
       padding-left: 20px;
     }
 
-    .image-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 20px auto;
-      max-width: 1500px;
-    }
-
-    .image-row img {
-      width: auto;
-      height: 300px;
-      object-fit: cover;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .full-width-line {
-      width: 90vw;
-      border: none;
-      border-top: 1px solid white;
-      margin: 20px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 15px 25px;
-      background-color: none;
-      border-radius: 5px 18px;
-      border: 2px solid white;
-      transition: background 0.3s ease;
-    }
-
-    .jump-button {
-      padding: 15px 25px;
-      background-color: #111;
-      color: white;
-      border: 2px solid white;
-      border-radius: 5px 18px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      min-width: 120px;
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    .jump-button:hover {
-      background-color: white;
-      color: black;
-      cursor: pointer;
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      margin-bottom: 20px;
-      height: 100px;
-    }
-
-    .title-group {
-      display: inline-block;
-    } 
-
-    .left-nav,
-    .right-nav {
-      position: absolute;
-      top: 10%;
-      transform: translateY(-50%);
-    }
-
-    .left-nav {
-      left: 0;
-    }
-
-    .right-nav {
-      right: 0;
-    }
-
-    .left-nav a,
-    .right-nav a {
-      padding: 18px 30px;
-      font-size: 18px;
-      border-radius: 5px 18px;
-      color: white;
-      text-decoration: none;
-      border: 2px solid white;
-      display: inline-block;
-      transition: background 0.3s ease;
-    }
-
-    .left-nav a:hover,
-    .right-nav a:hover {
-      background-color: white;
-      color: #111;
-      cursor: pointer;
-    }
-
-    @media only screen and (max-width: 768px) {
-      html, body {
-        height: 100vh;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
-
-      body {
-        transform: scale(0.59);
-        transform-origin: top left;
-        width: 169.5%;
-        height: calc(100vh / 0.59);
-      }
-
-      .full-width-line {
-        transform: scaleX(1.6949);
-        transform-origin: left;
-      }
-    }
-
   </style>
 </head>
 
@@ -352,18 +395,21 @@
   </div>
   <hr class="full-width-line" />
 
-  <div style="text-align: center;">
-    <div class="video-row">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=27485424&bvid=BV1zs411K7W2&cid=47413415&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=775345842&bvid=BV1U14y1H7kt&cid=896804845&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=27485424&bvid=BV1zs411K7W2&cid=47413415&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>Lies Making拍摄花絮</p>
       </div>
     </div>
-    <p>左边视频Lies Making拍摄花絮，右边视频Always拍摄花絮</p><br/>
-    <hr class="full-width-line" />  
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=775345842&bvid=BV1U14y1H7kt&cid=896804845&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>Always拍摄花絮</p>
+      </div>
+    </div>
   </div>
+  <hr class="full-width-line" />
 
   <div style="text-align: center;">
     <div class="content-wrap">
@@ -436,7 +482,7 @@
 
   <div id="show070819-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
     <a href="show2007julydec.html#show070819" class="jump-button">跳转到放送节目</a>
-  </div>
+  </div><br/>
   <div class="video-row">
     <div class="video-box">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/VnjwR6PDUmc?si=iglqemOrZLWq4HUF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -463,10 +509,16 @@
   
   <div class="video-row">
     <div class="video-box">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=7134431&bvid=BV15s411W791&cid=11637307&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=7134431&bvid=BV15s411W791&cid=11637307&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>准备开始</p>
+      </div>
     </div>
     <div class="video-box">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=7134431&bvid=BV15s411W791&cid=11637308&p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=7134431&bvid=BV15s411W791&cid=11637308&p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>准备食材</p>
+      </div>
     </div>
   </div>
   <div style="text-align: center;">
@@ -477,24 +529,28 @@
       <div class="text-container">
         <p>2007年8月19日 Mnet播出饭拍视频 Always Showcase</p>
         <ul>
-          <li>第一个视频 准备</li>
-          <li>第二个视频 五小只开始准备食材</li>
-          <li>第三个视频 喂粉丝吃 02:55 胜利好可爱！！！<br/>05:08 TOP又在抽象了</li>
+          <li>喂粉丝吃<br/>02:55 胜利好可爱！！！<br/>05:08 TOP又在抽象了</li>
         </ul>
       </div>
     </div>
     <hr class="full-width-line" />
   </div>
 
-  <div style="text-align: center;">
-    <div class="video-row">
-      <div class="video-box">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/KPeT359xKWE?si=O9LvyUnprruB4np7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="video-box">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=7134431&bvid=BV15s411W791&cid=11637311&p=5" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/KPeT359xKWE?si=O9LvyUnprruB4np7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>胜利为GD庆生<br/>（还有其他视角的视频，在专区）</p>
       </div>
     </div>
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=7134431&bvid=BV15s411W791&cid=11637311&p=5" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>Talk + 庆生完整版 无字幕</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
     <div class="content-wrap">
       <div class="video-container">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=7134431&bvid=BV15s411W791&cid=11637310&p=4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
@@ -502,9 +558,7 @@
       <div class="text-container">
         <p>2007年8月19日 Always Showcase</p>
         <ul>
-          <li>第一个视频 胜利为GD庆生<br/>（还有其他视角的视频，在专区）</li>
-          <li>第二个视频 Talk + 庆生完整版 无字幕</li>
-          <li>第三个视频 表演舞台</li>
+          <li>表演舞台</li>
         </ul>
       </div>
     </div>
@@ -728,9 +782,6 @@
       <div class="text-container">
         <p><strong>2007年8月31日</strong></p>
         <p>Mnet Interview采访</p>
-        <ul>
-          <li>龙tory细节在专区</li>
-        </ul>
       </div>
     </div>
   <hr class="full-width-line" />  

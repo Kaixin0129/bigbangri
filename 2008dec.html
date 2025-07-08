@@ -18,11 +18,178 @@
       color: white;
     }
 
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
     main {
       padding: 40px;
       text-align: center;
     }
- 
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
+    }
+
     .content-wrap {
       display: flex;
       justify-content: center;
@@ -124,130 +291,6 @@
 
     ul {
       padding-left: 20px;
-    }
-
-    .image-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 20px auto;
-      max-width: 1500px;
-    }
-
-    .image-row img {
-      width: auto;
-      height: 300px;
-      object-fit: cover;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .full-width-line {
-      width: 90vw;
-      border: none;
-      border-top: 1px solid white;
-      margin: 20px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 15px 25px;
-      background-color: none;
-      border-radius: 5px 18px;
-      border: 2px solid white;
-      transition: background 0.3s ease;
-    }
-
-    .jump-button {
-      padding: 15px 25px;
-      background-color: #111;
-      color: white;
-      border: 2px solid white;
-      border-radius: 5px 18px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      min-width: 120px;
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    .jump-button:hover {
-      background-color: white;
-      color: black;
-      cursor: pointer;
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      margin-bottom: 20px;
-      height: 100px;
-    }
-
-    .title-group {
-      display: inline-block;
-    } 
-
-    .left-nav,
-    .right-nav {
-      position: absolute;
-      top: 10%;
-      transform: translateY(-50%);
-    }
-
-    .left-nav {
-      left: 0;
-    }
-
-    .right-nav {
-      right: 0;
-    }
-
-    .left-nav a,
-    .right-nav a {
-      padding: 18px 30px;
-      font-size: 18px;
-      border-radius: 5px 18px;
-      color: white;
-      text-decoration: none;
-      border: 2px solid white;
-      display: inline-block;
-      transition: background 0.3s ease;
-    }
-
-    .left-nav a:hover,
-    .right-nav a:hover {
-      background-color: white;
-      color: #111;
-      cursor: pointer;
-    }
-
-    @media only screen and (max-width: 768px) {
-      html, body {
-        height: 100vh;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
-
-      body {
-        transform: scale(0.59);
-        transform-origin: top left;
-        width: 169.5%;
-        height: calc(100vh / 0.59);
-      }
-
-      .full-width-line {
-        transform: scaleX(1.6949);
-        transform-origin: left;
-      }
     }
 
   </style>
@@ -814,22 +857,22 @@
         </ul>
       </div>
     </div>
-  </div>
+  </div><br/>
   <div class="video-row">
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=549784251&bvid=BV1Ei4y1d76w&cid=459307486&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>Intro + Oh Ah Oh + Strong Baby + My Heaven</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/bUgBakg6RJM?si=irOBoHbgbHx0IXjE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>GD唱My Heaven饭拍视频</p>
+      </div>
     </div>
   </div>
   <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="text-container">
-        <p>左边视频唱Intro + Oh Ah Oh + Strong Baby + My Heaven</p>
-        <p>右边视频GD唱My Heaven饭拍视频</p>
-      </div>
-    </div>
     <div class="content-wrap">
       <div class="video-container">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=549784251&bvid=BV1Ei4y1d76w&cid=459312386&p=8" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
@@ -879,9 +922,15 @@
   <div class="video-row">
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=379868250&bvid=BV18Z4y1Q7AL&cid=459360199&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>Last Farewell</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=379868250&bvid=BV18Z4y1Q7AL&cid=459364305&p=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>Haru Haru</p>
+      </div>
     </div>
   </div>
   <div style="text-align: center;">
@@ -892,8 +941,6 @@
       <div class="text-container">
         <p><strong>2008年12月30日</strong></p>
         <p>KBS Gayo Festival</p>
-        <p>左边视频唱Last Farewell，右边视频唱Haru Haru</p>
-      </div>
     </div>
     <div class="content-wrap">
       <div class="video-container">

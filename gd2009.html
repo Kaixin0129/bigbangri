@@ -18,9 +18,176 @@
       color: white;
     }
 
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
     main {
       padding: 40px;
       text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
     }
 
     .content-wrap {
@@ -126,152 +293,6 @@
       padding-left: 20px;
     }
 
-    .image-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 20px auto;
-      max-width: 1500px;
-    }
-
-    .image-row img {
-      width: auto;
-      height: 300px;
-      object-fit: cover;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .full-width-line {
-      width: 90vw;
-      border: none;
-      border-top: 1px solid white;
-      margin: 20px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 15px 25px;
-      background-color: none;
-      border-radius: 5px 18px;
-      border: 2px solid white;
-      transition: background 0.3s ease;
-    }
-
-    .jump-button {
-      padding: 15px 25px;
-      background-color: #111;
-      color: white;
-      border: 2px solid white;
-      border-radius: 5px 18px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      min-width: 120px;
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    .jump-button:hover {
-      background-color: white;
-      color: black;
-      cursor: pointer;
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      margin-bottom: 20px;
-      height: 100px;
-    }
-
-    .title-group {
-      display: inline-block;
-    } 
-
-    .left-nav,
-    .right-nav {
-      position: absolute;
-      top: 10%;
-      transform: translateY(-50%);
-    }
-
-    .left-nav {
-      left: 0;
-    }
-
-    .right-nav {
-      right: 0;
-    }
-
-    .left-nav a,
-    .right-nav a {
-      padding: 18px 30px;
-      font-size: 18px;
-      border-radius: 5px 18px;
-      color: white;
-      text-decoration: none;
-      border: 2px solid white;
-      display: inline-block;
-      transition: background 0.3s ease;
-    }
-
-    .left-nav a:hover,
-    .right-nav a:hover {
-      background-color: white;
-      color: #111;
-      cursor: pointer;
-    }
-
-    @media only screen and (max-width: 768px) {
-      html, body {
-        height: 100vh;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
-
-      body {
-        transform: scale(0.59);
-        transform-origin: top left;
-        width: 169.5%;
-        height: calc(100vh / 0.59);
-      }
-
-      .full-width-line {
-        transform: scaleX(1.6949);
-        transform-origin: left;
-      }
-    }
-
-    .two-column-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 40px;
-      margin: 50px auto;
-      max-width: 1000px;
-      padding: 20px;
-    }
-
-    .column {
-      width: 45%;
-      text-align: left;
-      color: white;
-    }
-
-    .divider {
-      width: 2px;
-      background-color: white;
-      height: auto;
-    }
-
   </style>
 </head>
 <body>
@@ -330,9 +351,15 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/vrcMG3qQm4A?si=4Agh2z5FLzqXBpyN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>talk环节</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/ZeEpOz524Nw?si=u6UckU-KIlaQuXHp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Oh my friend + Always + Make Love</p>
+      </div>
     </div>
   </div>
   <div style="text-align: center;">
@@ -340,7 +367,6 @@
       <div class="text-container">
         <p>2009年1月30日</p>
         <p>Bigshow GD饭拍视频</p>
-        <p>左边视频 talk环节，右边视频唱Oh my friend + Always + Make Love</p>
       </div>
     </div>
     <hr class="full-width-line" />
@@ -349,9 +375,15 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/8JGagUABrtM?si=u54yPLld1J2oq1L0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>DJ + This Love</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/yAR43fD5Gmw?si=rNYLaBIAw5H-PDUD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Oh my friend + Lies</p>
+      </div>
     </div>
   </div>
   <div style="text-align: center;">
@@ -359,7 +391,6 @@
       <div class="text-container">
         <p>2009年1月31日</p>
         <p>Bigshow GD饭拍视频</p>
-        <p>左边视频 DJ + This Love，右边视频唱Oh my friend + Lies</p>
       </div>
     </div>
     <hr class="full-width-line" />
@@ -372,9 +403,15 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/SSKoeUcuDqM?si=4DFV88J5RZggMuCq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Lies</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/wYnrLv86ptw?si=hNdDHELMVYv-SnnL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Always</p>
+      </div>
     </div>
   </div>
   <div style="text-align: center;">
@@ -382,7 +419,6 @@
       <div class="text-container">
         <p>2009年2月1日</p>
         <p>Bigshow GD饭拍视频</p>
-        <p>左边视频唱Lies，右边视频唱Always</p>
       </div>
     </div>
     <hr class="full-width-line" />
@@ -990,9 +1026,15 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/nWVDs5kO4jY?si=gCjIqFEz6zOsy60I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Heartbreaker</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/eLFFAHifd2I?si=HkS_JXHN1MUsj5bk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Breathe</p>
+      </div>
     </div>
   </div>
   <div style="text-align: center;">
@@ -1001,7 +1043,6 @@
         <p><strong>2009年9月25日</strong></p>
         <p>SBS Super Model</p>
         <p>GD个人参与</p>
-        <p>左边视频Heartbreaker，右边饭拍视频Breathe</p>
       </div>
     </div>
     <hr class="full-width-line" />
@@ -1201,19 +1242,17 @@
       <div class="video-container">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=971620919&bvid=BV1xp4y1p7Eq&cid=294679646&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
-      <div class="content-wrap">
-        <div class="text-container">
-          <p><strong>2009年12月5-6日</strong></p>
-          <p>GD首次举行个人演唱会 Shine A Light演唱会</p>
-          <p>在韩国首尔</p>
-          <p>演唱会名称取自他的歌曲《A Boy》的歌词</p>
-          <ul>
-            <li>来补充知识点了后面会考：38:32</li>
-          </ul><br/>
-          <p>2010年3月30日：发行现场音源专辑</p>
-          <p>2010年4月20日：在韩国发行DVD</p>
-          <p>2010年4月24日：在日本发行DVD</p>
-        </div>
+      <div class="text-container">
+        <p><strong>2009年12月5-6日</strong></p>
+        <p>GD首次举行个人演唱会 Shine A Light演唱会</p>
+        <p>在韩国首尔</p>
+        <p>演唱会名称取自他的歌曲《A Boy》的歌词</p>
+        <ul>
+          <li>来补充知识点了后面会考：38:32</li>
+        </ul><br/>
+        <p>2010年3月30日：发行现场音源专辑</p>
+        <p>2010年4月20日：在韩国发行DVD</p>
+        <p>2010年4月24日：在日本发行DVD</p>
       </div>
     </div>
     <br/>
