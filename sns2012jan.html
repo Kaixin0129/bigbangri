@@ -335,6 +335,80 @@
     width: fit-content;
     margin: 30px auto 0;
   }
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.left-slider {
+  height: 500px; /* 👈 对齐右边竖图的高度 */
+}
+.image-slider-wrapper {
+  width: 500px;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.image-slider img {
+  width: 500px;
+  height: 350px;
+  flex-shrink: 0;
+  border-radius: 10px;
+}
+
+.image-slider-wrapper1 {
+  height: 500px;
+  width: 350px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.image-slider1 img {
+  height: 500px;
+  width: 350px;
+  flex-shrink: 0;
+  border-radius: 10px;
+}
+
+.image-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.image-slider1 {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.nav-button {
+  background-color: rgba(255,255,255,0.7);
+  border: none;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.nav-button:hover {
+  background-color: white;
+}
+
+.dual-slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 👈 垂直对齐中间 */
+  gap: 40px;
+  flex-wrap: wrap;
+  margin: 40px auto;
+}
+
+@media (max-width: 768px) {
+  .dual-slider-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
   </style>
 </head>
@@ -383,10 +457,33 @@
         </div>
       </div>
     </div>
-    <img src="joy5.jpg" style="width: 500px; height: 350px;"/>
-    <img src="joy6.png" style="width: 500px; height: 350px;"/>
-    <img src="joy7.png" style="width: 500px; height: 350px;"/>
-    <img src="joy8.png" style="width: 500px; height: 350px;"/>
+<div class="dual-slider-container">
+  <!-- 第一组滑动图片 -->
+  <div class="slider-container">
+    <button class="nav-button left" onclick="slideToCustom('imageSlider', 'prev', 500)">&#8592;</button>
+    <div class="image-slider-wrapper">
+      <div class="image-slider" id="imageSlider">
+        <img src="joy5.jpg" />
+        <img src="joy6.png" />
+        <img src="joy7.png" />
+        <img src="joy8.png" />
+      </div>
+    </div>
+    <button class="nav-button right" onclick="slideToCustom('imageSlider', 'next', 500)">&#8594;</button>
+  </div>
+
+  <!-- 第二组滑动图片 -->
+  <div class="slider-container">
+    <button class="nav-button left" onclick="slideToCustom('imageSlider1', 'prev', 350)">&#8592;</button>
+    <div class="image-slider-wrapper1">
+      <div class="image-slider1" id="imageSlider1">
+        <img src="3-071202.jpg" />
+        <img src="4-071202.jpg" />
+      </div>
+    </div>
+    <button class="nav-button right" onclick="slideToCustom('imageSlider1', 'next', 350)">&#8594;</button>
+  </div>
+</div>
     <hr class="full-width-line" />
   </div>
 
@@ -489,6 +586,39 @@ function filterSNS(member) {
   }
 }
 
+let currentIndex = 0;
+const imageWidth = 500; // 每张图片宽度
+const slider = document.getElementById("imageSlider");
+
+function slideTo(direction) {
+  const totalImages = slider.children.length;
+
+  if (direction === 'next') {
+    currentIndex = (currentIndex + 1) % totalImages;
+  } else if (direction === 'prev') {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+  }
+
+  slider.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+}
+
+function slideToCustom(sliderId, direction, imageWidth) {
+  const slider = document.getElementById(sliderId);
+  if (!slider) return;
+
+  // 初始化索引
+  let currentIndex = parseInt(slider.dataset.index || "0");
+  const totalImages = slider.children.length;
+
+  if (direction === 'next') {
+    currentIndex = (currentIndex + 1) % totalImages;
+  } else if (direction === 'prev') {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+  }
+
+  slider.dataset.index = currentIndex;
+  slider.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+}
 
   </script>
 </body>
