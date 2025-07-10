@@ -230,25 +230,25 @@
       cursor: pointer;
     }
 
-    @media only screen and (max-width: 768px) {
-      html, body {
-        height: 100vh;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
+@media only screen and (max-width: 768px) {
+  html, body {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 
-      body {
-        transform: scale(0.59);
-        transform-origin: top left;
-        width: 169.5%;
-        height: calc(100vh / 0.59);
-      }
+  body {
+    transform: scale(0.57); /* 缩小一点点 */
+    transform-origin: top left;
+    width: 175.44%;
+    height: calc(100vh / 0.57);
+  }
 
-      .full-width-line {
-        transform: scaleX(1.6949);
-        transform-origin: left;
-      }
-    }
+  .full-width-line {
+    transform: scaleX(1.7544);
+    transform-origin: left;
+  }
+}
 
     .video-description {
       display: flex;
@@ -258,6 +258,81 @@
       text-align: left;
       line-height: 1.5;
     }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 500px;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .img-portrait {
+    width: 350px;
+    height: 500px;
+    object-fit: cover;
+  }
 
   </style>
 </head>
@@ -289,11 +364,25 @@
           target="_blank" style="color: #33FFFF;">GQ Korea</a></p><br/>
       </div>
     </div>    
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slideUnified('prev')">&#8592;</button>
+      <div class="slider-wrapper" id="sliderWrapper">
+        <div class="slider" id="unifiedSlider">
+          <div class="slide-item">
+            <img src="tygq1.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="tygq2.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="tygq3.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slideUnified('next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
   </div>
-  <img src="tygq1.jpg" style="height: 500px;" />
-  <img src="tygq2.jpg" style="height: 500px;" />
-  <img src="tygq3.jpg" style="height: 500px;" />
-  <hr class="full-width-line" />
 
   <div style="text-align: center;">
     <p style="margin: 0;">下面的视频来自@陆豆纱 点击进入观看完整视频</p>
@@ -918,6 +1007,28 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+  let currentIndex = 0;
+  const slider = document.getElementById('unifiedSlider');
+  const slides = slider.querySelectorAll('.slide-item');
+
+  function updateSliderPosition() {
+    const slideWidth = 500;
+    const offset = currentIndex * slideWidth;
+    const slider = document.getElementById('unifiedSlider');
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+  function slideUnified(direction) {
+    if (direction === 'next') {
+      currentIndex = (currentIndex + 1) % slides.length;
+    } else if (direction === 'prev') {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    }
+    updateSliderPosition();
+  }
+
+  window.onload = updateSliderPosition;
+  window.onresize = updateSliderPosition;
   </script>
 </body>
 </html>

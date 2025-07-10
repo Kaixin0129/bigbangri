@@ -250,6 +250,81 @@
       }
     }
 
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 500px;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .img-portrait {
+    width: 350px;
+    height: 500px;
+    object-fit: cover;
+  }
+
   </style>
 </head>
 
@@ -536,13 +611,31 @@
           target="_blank" style="color: #33FFFF;">Mnet</a></p>
       </div>
     </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slideUnified('prev')">&#8592;</button>
+      <div class="slider-wrapper" id="sliderWrapper">
+        <div class="slider" id="unifiedSlider">
+          <div class="slide-item">
+            <img src="mnet20.webp" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1mnet20.webp" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="2mnet20.webp" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="3mnet20.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="4mnet20.webp" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slideUnified('next')">&#8594;</button>
+    </div>
   </div>
-  <img src="mnet20.webp" style="height: 400px;" />
-  <img src="1mnet20.webp" style="height: 400px;" />
-  <img src="2mnet20.webp" style="height: 400px;" />
-  <img src="3mnet20.webp" style="height: 400px;" />
-  <img src="4mnet20.webp" style="height: 400px;" />
-  <p><br/>我真的要笑死了GD这是什么衣服</p>
+  <p>我真的要笑死了GD这是什么衣服</p>
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="video-container">
@@ -772,6 +865,29 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+      
+  let currentIndex = 0;
+  const slider = document.getElementById('unifiedSlider');
+  const slides = slider.querySelectorAll('.slide-item');
+
+  function updateSliderPosition() {
+    const slideWidth = 500;
+    const offset = currentIndex * slideWidth;
+    const slider = document.getElementById('unifiedSlider');
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+  function slideUnified(direction) {
+    if (direction === 'next') {
+      currentIndex = (currentIndex + 1) % slides.length;
+    } else if (direction === 'prev') {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    }
+    updateSliderPosition();
+  }
+
+  window.onload = updateSliderPosition;
+  window.onresize = updateSliderPosition;
   </script>
 </body>
 </html>

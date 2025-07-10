@@ -335,80 +335,81 @@
     width: fit-content;
     margin: 30px auto 0;
   }
-.slider-container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.left-slider {
-  height: 500px; /* 👈 对齐右边竖图的高度 */
-}
-.image-slider-wrapper {
-  width: 500px;
-  height: 350px;
-  overflow: hidden;
-  border-radius: 10px;
-}
 
-.image-slider img {
-  width: 500px;
-  height: 350px;
-  flex-shrink: 0;
-  border-radius: 10px;
-}
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
 
-.image-slider-wrapper1 {
-  height: 500px;
-  width: 350px;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.image-slider1 img {
-  height: 500px;
-  width: 350px;
-  flex-shrink: 0;
-  border-radius: 10px;
-}
-
-.image-slider {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.image-slider1 {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.nav-button {
-  background-color: rgba(255,255,255,0.7);
-  border: none;
-  padding: 10px 15px;
-  font-size: 24px;
-  cursor: pointer;
-  border-radius: 10px;
-}
-
-.nav-button:hover {
-  background-color: white;
-}
-
-.dual-slider-container {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* 👈 垂直对齐中间 */
-  gap: 40px;
-  flex-wrap: wrap;
-  margin: 40px auto;
-}
-
-@media (max-width: 768px) {
-  .dual-slider-container {
-    flex-direction: column;
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
     align-items: center;
   }
-}
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 500px;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .img-portrait {
+    width: 350px;
+    height: 500px;
+    object-fit: cover;
+  }
 
   </style>
 </head>
@@ -440,8 +441,8 @@
     </div>
   </div>
 
-  <h1 id="currentFilter" style="text-align:center; margin-top: 30px; margin-bottom: 10px; color: #33FFFF; display: none;">
-  </h1><br/>
+  <h1 id="currentFilter" style="text-align:center; margin-top: 30px; margin-bottom: 10px; color: #33FFFF; display: none;"></h1>
+  <p id="currentFilter1" style="text-align:center; margin-top: 30px; margin-bottom: 10px; display: none;"></p><br/>
 
   <div class="sns-entry" data-member="seungri daesung gd">
     <div id="120120sns-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
@@ -457,33 +458,26 @@
         </div>
       </div>
     </div>
-<div class="dual-slider-container">
-  <!-- 第一组滑动图片 -->
-  <div class="slider-container">
-    <button class="nav-button left" onclick="slideToCustom('imageSlider', 'prev', 500)">&#8592;</button>
-    <div class="image-slider-wrapper">
-      <div class="image-slider" id="imageSlider">
-        <img src="joy5.jpg" />
-        <img src="joy6.png" />
-        <img src="joy7.png" />
-        <img src="joy8.png" />
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slideUnified('prev')">&#8592;</button>
+      <div class="slider-wrapper" id="sliderWrapper">
+        <div class="slider" id="unifiedSlider">
+          <div class="slide-item">
+            <img src="joy5.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="joy6.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="joy7.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="joy8.png" class="slide-img img-landscape" />
+          </div>
+        </div>
       </div>
+      <button class="nav-button right" onclick="slideUnified('next')">&#8594;</button>
     </div>
-    <button class="nav-button right" onclick="slideToCustom('imageSlider', 'next', 500)">&#8594;</button>
-  </div>
-
-  <!-- 第二组滑动图片 -->
-  <div class="slider-container">
-    <button class="nav-button left" onclick="slideToCustom('imageSlider1', 'prev', 350)">&#8592;</button>
-    <div class="image-slider-wrapper1">
-      <div class="image-slider1" id="imageSlider1">
-        <img src="3-071202.jpg" />
-        <img src="4-071202.jpg" />
-      </div>
-    </div>
-    <button class="nav-button right" onclick="slideToCustom('imageSlider1', 'next', 350)">&#8594;</button>
-  </div>
-</div>
     <hr class="full-width-line" />
   </div>
 
@@ -505,8 +499,7 @@
   </div>
 
 </main>
-  <script>
-
+<script>
   fetch("footer.html")
     .then(response => response.text())
     .then(data => {
@@ -537,89 +530,81 @@
     memberList.style.display = filterLocked ? 'flex' : 'none';
   }
 
-function filterSNS(member) {
-  const entries = document.querySelectorAll('.sns-entry');
-  const message = document.getElementById('noContentMessage');
-  const backButton = document.getElementById('backButton');
-  const nextButton = document.getElementById('nextButton');
-  const footer = document.getElementById('footer');
-  const currentFilter = document.getElementById('currentFilter');
+  function filterSNS(member) {
+    const entries = document.querySelectorAll('.sns-entry');
+    const message = document.getElementById('noContentMessage');
+    const backButton = document.getElementById('backButton');
+    const nextButton = document.getElementById('nextButton');
+    const footer = document.getElementById('footer');
+    const currentFilter = document.getElementById('currentFilter');
+    const currentFilter1 = document.getElementById('currentFilter1');
 
-  const memberNames = {
-    all: '全部',
-    gd: 'G-Dragon',
-    top: 'TOP',
-    taeyang: '太阳',
-    daesung: '大声',
-    seungri: '胜利'
-  };
+    const memberNames = {
+      all: '全部',
+      gd: 'G-Dragon',
+      top: 'TOP',
+      taeyang: '太阳',
+      daesung: '大声',
+      seungri: '胜利'
+    };
 
-  if (memberNames[member]) {
-    currentFilter.textContent = `当前筛选：${memberNames[member]}`;
-    currentFilter.style.display = 'block';
-  } else {
-    currentFilter.style.display = 'none';
-  }
-
-  let hasContent = false;
-
-  entries.forEach(entry => {
-    const members = entry.dataset.member.split(' ');
-    if (member === 'all' || members.includes(member)) {
-      entry.style.display = 'block';
-      hasContent = true;
+    if (memberNames[member]) {
+      currentFilter.textContent = `当前筛选：${memberNames[member]}`;
+      currentFilter1.textContent = `筛选出来的图片也包括成员与别人的合照贴文`;
+      currentFilter.style.display = 'block';
+      currentFilter1.style.display = 'block';
     } else {
-      entry.style.display = 'none';
+      currentFilter.style.display = 'none';
+      currentFilter1.style.display = 'none';
     }
-  });
 
-  if (!hasContent && member !== 'all') {
-    if (message) message.style.display = 'block';
-    if (backButton) backButton.style.display = 'none';
-    if (nextButton) nextButton.style.display = 'none';
-    if (footer) footer.style.display = 'none';
-  } else {
-    if (message) message.style.display = 'none';
-    if (backButton) backButton.style.display = 'inline-block';
-    if (nextButton) nextButton.style.display = 'inline-block';
-    if (footer) footer.style.display = 'block';
-  }
-}
+    let hasContent = false;
 
-let currentIndex = 0;
-const imageWidth = 500; // 每张图片宽度
-const slider = document.getElementById("imageSlider");
+    entries.forEach(entry => {
+      const members = entry.dataset.member.split(' ');
+      if (member === 'all' || members.includes(member)) {
+        entry.style.display = 'block';
+        hasContent = true;
+      } else {
+        entry.style.display = 'none';
+      }
+    });
 
-function slideTo(direction) {
-  const totalImages = slider.children.length;
-
-  if (direction === 'next') {
-    currentIndex = (currentIndex + 1) % totalImages;
-  } else if (direction === 'prev') {
-    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    if (!hasContent && member !== 'all') {
+      if (message) message.style.display = 'block';
+      if (backButton) backButton.style.display = 'none';
+      if (nextButton) nextButton.style.display = 'none';
+      if (footer) footer.style.display = 'none';
+    } else {
+      if (message) message.style.display = 'none';
+      if (backButton) backButton.style.display = 'inline-block';
+      if (nextButton) nextButton.style.display = 'inline-block';
+      if (footer) footer.style.display = 'block';
+    }
   }
 
-  slider.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
-}
+  let currentIndex = 0;
+  const slider = document.getElementById('unifiedSlider');
+  const slides = slider.querySelectorAll('.slide-item');
 
-function slideToCustom(sliderId, direction, imageWidth) {
-  const slider = document.getElementById(sliderId);
-  if (!slider) return;
-
-  // 初始化索引
-  let currentIndex = parseInt(slider.dataset.index || "0");
-  const totalImages = slider.children.length;
-
-  if (direction === 'next') {
-    currentIndex = (currentIndex + 1) % totalImages;
-  } else if (direction === 'prev') {
-    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+  function updateSliderPosition() {
+    const slideWidth = 500;
+    const offset = currentIndex * slideWidth;
+    const slider = document.getElementById('unifiedSlider');
+    slider.style.transform = `translateX(-${offset}px)`;
   }
 
-  slider.dataset.index = currentIndex;
-  slider.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
-}
+  function slideUnified(direction) {
+    if (direction === 'next') {
+      currentIndex = (currentIndex + 1) % slides.length;
+    } else if (direction === 'prev') {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    }
+    updateSliderPosition();
+  }
 
-  </script>
+  window.onload = updateSliderPosition;
+  window.onresize = updateSliderPosition;
+</script>
 </body>
 </html>

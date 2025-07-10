@@ -292,7 +292,7 @@
     ul {
       padding-left: 20px;
     }
-    
+
   .filter-dropdown-wrapper {
     display: flex;
     justify-content: flex-end;
@@ -334,6 +334,81 @@
     border-radius: 10px;
     width: fit-content;
     margin: 30px auto 0;
+  }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 500px;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .img-portrait {
+    width: 350px;
+    height: 500px;
+    object-fit: cover;
   }
 
   </style>
@@ -407,7 +482,6 @@
 
 </main>
   <script>
-
   fetch("footer.html")
     .then(response => response.text())
     .then(data => {
@@ -438,56 +512,81 @@
     memberList.style.display = filterLocked ? 'flex' : 'none';
   }
 
-function filterSNS(member) {
-  const entries = document.querySelectorAll('.sns-entry');
-  const message = document.getElementById('noContentMessage');
-  const backButton = document.getElementById('backButton');
-  const nextButton = document.getElementById('nextButton');
-  const footer = document.getElementById('footer');
-  const currentFilter = document.getElementById('currentFilter');
+  function filterSNS(member) {
+    const entries = document.querySelectorAll('.sns-entry');
+    const message = document.getElementById('noContentMessage');
+    const backButton = document.getElementById('backButton');
+    const nextButton = document.getElementById('nextButton');
+    const footer = document.getElementById('footer');
+    const currentFilter = document.getElementById('currentFilter');
+    const currentFilter1 = document.getElementById('currentFilter1');
 
-  const memberNames = {
-    all: '全部',
-    gd: 'G-Dragon',
-    top: 'TOP',
-    taeyang: '太阳',
-    daesung: '大声',
-    seungri: '胜利'
-  };
+    const memberNames = {
+      all: '全部',
+      gd: 'G-Dragon',
+      top: 'TOP',
+      taeyang: '太阳',
+      daesung: '大声',
+      seungri: '胜利'
+    };
 
-  if (memberNames[member]) {
-    currentFilter.textContent = `当前筛选：${memberNames[member]}`;
-    currentFilter.style.display = 'block';
-  } else {
-    currentFilter.style.display = 'none';
-  }
-
-  let hasContent = false;
-
-  entries.forEach(entry => {
-    const members = entry.dataset.member.split(' ');
-    if (member === 'all' || members.includes(member)) {
-      entry.style.display = 'block';
-      hasContent = true;
+    if (memberNames[member]) {
+      currentFilter.textContent = `当前筛选：${memberNames[member]}`;
+      currentFilter1.textContent = `筛选出来的图片也包括成员与别人的合照贴文`;
+      currentFilter.style.display = 'block';
+      currentFilter1.style.display = 'block';
     } else {
-      entry.style.display = 'none';
+      currentFilter.style.display = 'none';
+      currentFilter1.style.display = 'none';
     }
-  });
 
-  if (!hasContent && member !== 'all') {
-    if (message) message.style.display = 'block';
-    if (backButton) backButton.style.display = 'none';
-    if (nextButton) nextButton.style.display = 'none';
-    if (footer) footer.style.display = 'none';
-  } else {
-    if (message) message.style.display = 'none';
-    if (backButton) backButton.style.display = 'inline-block';
-    if (nextButton) nextButton.style.display = 'inline-block';
-    if (footer) footer.style.display = 'block';
+    let hasContent = false;
+
+    entries.forEach(entry => {
+      const members = entry.dataset.member.split(' ');
+      if (member === 'all' || members.includes(member)) {
+        entry.style.display = 'block';
+        hasContent = true;
+      } else {
+        entry.style.display = 'none';
+      }
+    });
+
+    if (!hasContent && member !== 'all') {
+      if (message) message.style.display = 'block';
+      if (backButton) backButton.style.display = 'none';
+      if (nextButton) nextButton.style.display = 'none';
+      if (footer) footer.style.display = 'none';
+    } else {
+      if (message) message.style.display = 'none';
+      if (backButton) backButton.style.display = 'inline-block';
+      if (nextButton) nextButton.style.display = 'inline-block';
+      if (footer) footer.style.display = 'block';
+    }
   }
-}
 
+  let currentIndex = 0;
+  const slider = document.getElementById('unifiedSlider');
+  const slides = slider.querySelectorAll('.slide-item');
 
-  </script>
+  function updateSliderPosition() {
+    const slideWidth = 500;
+    const offset = currentIndex * slideWidth;
+    const slider = document.getElementById('unifiedSlider');
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+  function slideUnified(direction) {
+    if (direction === 'next') {
+      currentIndex = (currentIndex + 1) % slides.length;
+    } else if (direction === 'prev') {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    }
+    updateSliderPosition();
+  }
+
+  window.onload = updateSliderPosition;
+  window.onresize = updateSliderPosition;
+</script>
 </body>
 </html>
