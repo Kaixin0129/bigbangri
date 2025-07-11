@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>采访2011</title>
+  <title>Taeyang2011</title>
   <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
@@ -250,149 +250,154 @@
       }
     }
 
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 500px;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .img-portrait {
+    width: 350px;
+    height: 500px;
+    object-fit: cover;
+  }
+
   </style>
 </head>
-
 <body>
 <main>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="interview.html">Back</a>
+      <a href="taeyang.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>采访2011年</h1>
+      <h1>TAEYANG 东永裴<br/>2011年</h1>
     </div>
     <nav class="right-nav">
-      <a href="interview2012.html">2012</a>
+      <a href="taeyang2012.html">2012</a>
     </nav>
   </div>
-  <br/>
 
   <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-    <div id="interview2011-sept-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="interview2011.html#interview2011-sept" class="jump-button">9月</a>
+    <div id="taeyang2011-jan-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="taeyang2011.html#taeyang2011-jan" class="jump-button">1月</a>
     </div>
-    <div id="interview2011-nov-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="interview2011.html#interview2011-nov" class="jump-button">11月</a>
-    </div>
-    <div id="interview2011-dec-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="interview2011.html#interview2011-dec" class="jump-button">12月</a>
+    <div id="taeyang2011-nov-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="taeyang2011.html#taeyang2011-nov" class="jump-button">11月</a>
     </div>
   </div>
-  <hr class="full-width-line" />  
-  <br/>
+  <br/><br/>
+  <hr class="full-width-line" />
 
-  <div id="interview2011-sept" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="interview2011.html#interview2011-sept-jump" class="jump-button">9月</a>
-  </div><br/>
+    <div id="taeyang2011-jan" style="display: flex; align-items: center; justify-content: center; justify-content: center; gap: 20px;">
+      <a href="taeyang2011.html#taeyang2011-jan-jump" class="jump-button">1月</a>
+    </div><br/>
 
   <div style="text-align: center;">
     <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/faX4bxoVjJk?si=9-CXOFU24UcCd3E-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
       <div class="text-container">
-        <p><strong>2011年9月20日</strong></p>
-        <p>MTV 采访</p>
-        <p>为自己拉票 采访</p>
+        <p><strong>2011年1月23日</strong></p>
+        <p>太阳在 Korean Music Awards 赢得：</p>
         <ul>
-          <li>MTV Europe Music Awards</li>
-        </ul>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div id="interview2011-nov" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="interview2011.html#interview2011-nov-jump" class="jump-button">11月</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/odKKgw4fkyE?si=eNTJp1UkPWq6tYdV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2011年11月6日</strong></p>
-        <p>MTV Europe Music Awards</p>
-        <p>红毯采访</p>
-      </div>
-    </div>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/_dUAheR-TzE?si=PT_yz05F5IhozGB4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p>MTV 采访</p>
-        <ul>
-          <li>感谢VIP</li>
-        </ul>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/hCUpeFNpNT8?si=erKnr9tapkcd0guc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2011年11月9日</strong></p>
-        <p>深夜TV演艺 采访</p>
-        <p>Vietsub</p>
-        <ul>
-          <li>MTV Europe</li>
-        </ul>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="text-container">
-        <p><strong>2011年11月29日</strong></p>
-        <p>10asia 采访</p>
-        <p>GD很在意自己身为音乐人的言行举止，他表示：公众对我的看法是我造成的，所以如果我出现失误了，那就是我的错</p>
-        <br/>
-        <p>点击这里进入详细资讯：<a href="https://web.archive.org/web/20111129124300/http://10.asiae.co.kr/Articles/new_view.htm?sec=ent0&a_id=2010122918181571944" 
-          target="_blank" style="color: #33FFFF;">10asia</a></p>
+          <li>Netizen's Choice: Male Artist of the Year</li>
+        </ul><br/>
+        <p>点击这里进入获奖详细资讯：<a href="https://www.indiefulrok.com/2011/02/8th-korean-music-awards-winners/" 
+          target="_blank" style="color: #33FFFF;">Indieful ROK</a></p>
       </div>
     </div>
     <hr class="full-width-line" />  
   </div>
 
-  <div id="interview2011-dec" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="interview2011.html#interview2011-dec-jump" class="jump-button">12月</a>
-  </div><br/>
+    <div id="taeyang2011-nov" style="display: flex; align-items: center; justify-content: center; justify-content: center; gap: 20px;">
+      <a href="taeyang2011.html#taeyang2011-nov-jump" class="jump-button">11月</a>
+    </div><br/>
 
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/zpm3RRoCYsU?si=A1vL16MhUa0I7KoE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/-zU4Mj9dpUI?si=5mr6nTZh1O55Zwtj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <div class="text-container">
-        <p><strong>2011年12月16日</strong></p>
-        <p>TVN News采访</p>
-        <ul>
-          <li>首尔分院</li>
-        </ul>
+        <p><strong>2011年11月1日</strong></p>
+        <p>太阳参与Tablo的专辑Fever's End (열꽃) Pt. 2 - EP<br/>演唱Tommorow</p>
       </div>
     </div>
-    <hr class="full-width-line" />
+    <hr class="full-width-line" />  
   </div>
 
   <br/><br/><br/>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="interview.html">Back</a>
+      <a href="taeyang.html">Back</a>
     </nav>
     <div class="title-group">
       <div id="footer"></div>
     </div>    
     <nav class="right-nav">
-      <a href="interview2012.html">2012</a>
+      <a href="taeyang2012.html">2012</a>
     </nav>
   </div>
 
@@ -404,6 +409,28 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+  let currentIndex = 0;
+  const slider = document.getElementById('unifiedSlider');
+  const slides = slider.querySelectorAll('.slide-item');
+
+  function updateSliderPosition() {
+    const slideWidth = 500;
+    const offset = currentIndex * slideWidth;
+    const slider = document.getElementById('unifiedSlider');
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+  function slideUnified(direction) {
+    if (direction === 'next') {
+      currentIndex = (currentIndex + 1) % slides.length;
+    } else if (direction === 'prev') {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    }
+    updateSliderPosition();
+  }
+
+  window.onload = updateSliderPosition;
+  window.onresize = updateSliderPosition;
   </script>
 </body>
 </html>
