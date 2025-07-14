@@ -18,9 +18,176 @@
       color: white;
     }
 
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
     main {
       padding: 40px;
       text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
     }
 
     .content-wrap {
@@ -126,130 +293,6 @@
       padding-left: 20px;
     }
 
-    .image-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 20px auto;
-      max-width: 1500px;
-    }
-
-    .image-row img {
-      width: auto;
-      height: 300px;
-      object-fit: cover;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .full-width-line {
-      width: 90vw;
-      border: none;
-      border-top: 1px solid white;
-      margin: 20px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 15px 25px;
-      background-color: none;
-      border-radius: 5px 18px;
-      border: 2px solid white;
-      transition: background 0.3s ease;
-    }
-
-    .jump-button {
-      padding: 15px 25px;
-      background-color: #111;
-      color: white;
-      border: 2px solid white;
-      border-radius: 5px 18px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      min-width: 120px;
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    .jump-button:hover {
-      background-color: white;
-      color: black;
-      cursor: pointer;
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      margin-bottom: 20px;
-      height: 100px;
-    }
-
-    .title-group {
-      display: inline-block;
-    } 
-
-    .left-nav,
-    .right-nav {
-      position: absolute;
-      top: 10%;
-      transform: translateY(-50%);
-    }
-
-    .left-nav {
-      left: 0;
-    }
-
-    .right-nav {
-      right: 0;
-    }
-
-    .left-nav a,
-    .right-nav a {
-      padding: 18px 30px;
-      font-size: 18px;
-      border-radius: 5px 18px;
-      color: white;
-      text-decoration: none;
-      border: 2px solid white;
-      display: inline-block;
-      transition: background 0.3s ease;
-    }
-
-    .left-nav a:hover,
-    .right-nav a:hover {
-      background-color: white;
-      color: #111;
-      cursor: pointer;
-    }
-
-    @media only screen and (max-width: 768px) {
-      html, body {
-        height: 100vh;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
-
-      body {
-        transform: scale(0.59);
-        transform-origin: top left;
-        width: 169.5%;
-        height: calc(100vh / 0.59);
-      }
-
-      .full-width-line {
-        transform: scaleX(1.6949);
-        transform-origin: left;
-      }
-    }
-
   </style>
 </head>
 
@@ -268,12 +311,121 @@
   </div>
 
   <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="bhts2011-jan" style="display: flex; align-items: center; gap: 10px;">
+      <a href="bhts2011.html#bhts2011-jan-jump" class="jump-button">1月</a>
+    </div>
+    <div id="bhts2011-feb" style="display: flex; align-items: center; gap: 10px;">
+      <a href="bhts2011.html#bhts2011-feb-jump" class="jump-button">2月</a>
+    </div>
+    <div id="bhts2011-apr" style="display: flex; align-items: center; gap: 10px;">
+      <a href="bhts2011.html#bhts2011-apr-jump" class="jump-button">4月</a>
+    </div>
     <div id="bhts2011-sept" style="display: flex; align-items: center; gap: 10px;">
       <a href="bhts2011.html#bhts2011-sept-jump" class="jump-button">9月</a>
+    </div>
+    <div id="bhts2011-nov" style="display: flex; align-items: center; gap: 10px;">
+      <a href="bhts2011.html#bhts2011-nov-jump" class="jump-button">11月</a>
+    </div>
+    <div id="bhts2011-dec" style="display: flex; align-items: center; gap: 10px;">
+      <a href="bhts2011.html#bhts2011-dec-jump" class="jump-button">12月</a>
     </div>
   </div>
   <br/>
   <hr class="full-width-line" />
+
+    <div id="bhts2011-jan-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="bhts2011.html#bhts2011-jan" class="jump-button">1月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/0fswro1MOxI?si=AKjb4D_qYAH6GNqv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p>未知时间</p>
+        <p>周边拍摄花絮</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQzPVGYNUFE?si=1l2eVVG3MwwlHs7s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p>V.V.I.P 花絮</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ZD_bVMkxe7g?si=3LNgVybhc6KQfRSh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p>What Can I Do 花絮</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+    <div id="bhts2011-feb-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="bhts2011.html#bhts2011-feb" class="jump-button">2月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@GRAY-loco的昇炫宝 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=540977340&bvid=BV17i4y1x7ma&cid=200821356&p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2011年2月27日</strong></p>
+        <p>Bigshow花絮</p>
+        <p>无中字</p>
+        <ul>
+          <li>04:15 太阳肘击GD</li>
+          <li>21:41 胜利吃冰淇淋好可爱啊啊啊</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+    <div id="bhts2011-apr-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="bhts2011.html#bhts2011-apr" class="jump-button">4月</a>
+    </div><br/>
+
+  <div class="video-row">
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=827680365&bvid=BV1Qg4y1P7Sm&cid=1175076845&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>Tonight 花絮</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/DrIqsCg_QFQ?si=lBiy8PRki18WfC8U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Love Song 花絮</p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />  
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/bbTLEyTLZuY?si=4J2RvKEdqGcCWmYR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2011年4月12日</strong></p>
+        <p>Bean Hole 拍摄花絮</p>
+        <p>GD个人代言</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
 
     <div id="bhts2011-sept-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
       <a href="bhts2011.html#bhts2011-sept" class="jump-button">9月</a>
@@ -291,6 +443,81 @@
       </div>
     </div>
     <hr class="full-width-line" />  
+  </div>
+
+    <div id="bhts2011-nov-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="bhts2011.html#bhts2011-nov" class="jump-button">11月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@GD喵 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=5704089&bvid=BV1Zs411C7qC&cid=9263204&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2011年11月拍摄</strong></p>
+        <p>Extraordinary 20's 花絮</p>
+        <p>笑死我了这个拍摄花絮，真的建议看完整版</p>
+        <ul>
+          <li>29:00 调皮的太阳来逗忙内转圈圈了</li>
+          <li>37:00 不是太阳也太好笑了救命哈哈哈</li>
+          <li>37:35 胜利被太阳转晕了在旁边站着</li>
+          <li>41:05 51:59 todae</li>
+          <li>44:34 抽象塔</li>
+          <li>49:33 上蹿下跳的太阳弄疼TOP了</li>
+          <li>50:20 TOP复仇失败</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+    <div id="bhts2011-dec-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="bhts2011.html#bhts2011-dec" class="jump-button">12月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@你像时光唯美我的殿下 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=423039398&bvid=BV1Q3411e7nH&cid=479878353&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2011年12月14日</strong></p>
+        <p>Love & Hope Tour</p>
+        <p>花絮</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@withgd0818 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=883964037&bvid=BV11K4y1e7Nq&cid=213796011&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p>幕后花絮</p>
+        <ul>16:11 TOP笑死我了</ul>
+        <li>30:38 GD没刮胡子</li>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/EOc9193acKA?si=iUZ2n9m0OgifrUHb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>YG于2012年1月20日，在Soompi发布</strong></p>
+        <p>YG Family Concert 2011</p>
+        <p>花絮</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
   </div>
 
   <br/><br/><br/>
