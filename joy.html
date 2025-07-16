@@ -293,6 +293,81 @@
       padding-left: 20px;
     }
 
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 500px;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .img-portrait {
+    width: 350px;
+    height: 500px;
+    object-fit: cover;
+  }
+
   </style>
 </head>
 <body>
@@ -611,7 +686,7 @@
         <iframe width="560" height="315" src="https://www.youtube.com/embed/z6dXczRcwmE?si=cf7ijFp4LV-ir9bc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <div class="text-container">
-        <p><strong>2012年3月18日</strong>></p>
+        <p><strong>2012年3月18日</strong></p>
         <p>胜利老师亲自教舞蹈</p>
         <ul>
           <li>Fantastic Baby</li>
@@ -627,7 +702,7 @@
         <iframe width="560" height="315" src="https://www.youtube.com/embed/QIOoKbHAwjU?si=ldTuxhUISazI0zHN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <div class="text-container">
-        <p><strong>2012年3月20日</strong>></p>
+        <p><strong>2012年3月20日</strong></p>
         <p>胜利老师亲自教舞蹈</p>
         <ul>
           <li>Bad Boy</li>
@@ -648,6 +723,9 @@
   </div>
 
   <div style="text-align: center;">
+    <div id="120120sns" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="sns2012jan.html#120120sns-jump" class="jump-button">社交媒体贴文</a>
+    </div>
     <div class="content-wrap">
       <div class="text-container">
         <p><strong>2012年1月20日</strong></p>
@@ -656,12 +734,8 @@
           target="_blank" style="color: #33FFFF;">Wordpress</a></p>
       </div>
     </div>
+    <hr class="full-width-line" />
   </div>
-  <img src="joy5.jpg" style="width: 500px; height: 350px;"/>
-  <img src="joy6.png" style="width: 500px; height: 350px;"/>
-  <img src="joy7.png" style="width: 500px; height: 350px;"/>
-  <img src="joy8.png" style="width: 500px; height: 350px;"/>
-  <hr class="full-width-line" />
 
   <div style="text-align: center;">
     <div class="content-wrap">
@@ -764,15 +838,30 @@
     <div class="content-wrap">
       <div class="text-container">
         <p><strong>2013年3月26日</strong></p>
-        <p>仁川分院 发招生帖子</p><br/>
+        <p>仁川分院 发招生帖子</p>
         <p>点击这里进入详细资讯：<a href="https://blog.naver.com/joyplugin" 
           target="_blank" style="color: #33FFFF;">Blog Naver</a></p>
       </div>
     </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slideUnified('prev')">&#8592;</button>
+      <div class="slider-wrapper" id="sliderWrapper">
+        <div class="slider" id="unifiedSlider">
+          <div class="slide-item">
+            <img src="joy1.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="joy2.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="joy3.png" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slideUnified('next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
   </div>
-  <img src="joy1.jpg" style="height: 500px; width: 350px;"/>
-  <img src="joy2.jpg" style="height: 500px; width: 350px;"/>
-  <img src="joy3.png" style="width: 500px;"/>
 
   <div style="text-align: center;">
     <div class="content-wrap">
@@ -786,12 +875,25 @@
         </ul>
       </div>
     </div>
-  </div><br/>
-  <img src="rc1.jpg" style="width: 500px; height: 350px;"/>
-  <img src="rc2.jpg" style="width: 500px; height: 350px;"/>
-  <img src="rc3.jpg" style="width: 500px; height: 350px;"/>
-
-  <hr class="full-width-line" />
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slideUnified('prev')">&#8592;</button>
+      <div class="slider-wrapper" id="sliderWrapper">
+        <div class="slider" id="unifiedSlider">
+          <div class="slide-item">
+            <img src="rc1.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="rc2.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="rc3.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slideUnified('next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
 
   <div style="text-align: center;">
     <div class="content-wrap">
@@ -845,12 +947,25 @@
         </ul>
       </div>
     </div>
-  </div><br/>
-  <img src="xb1.jpeg" style="height: 500px; width: 350px;"/>
-  <img src="xb2.jpeg" style="height: 500px; width: 350px;"/>
-  <img src="xb3.jpeg" style="height: 500px; width: 600px;"/>
-
-  <hr class="full-width-line" />
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slideUnified('prev')">&#8592;</button>
+      <div class="slider-wrapper" id="sliderWrapper">
+        <div class="slider" id="unifiedSlider">
+          <div class="slide-item">
+            <img src="xb1.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="xb2.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="xb3.jpeg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slideUnified('next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
 
   <div style="text-align: center;">
     <div class="content-wrap">
@@ -861,21 +976,49 @@
           target="_blank" style="color: #33FFFF;">Facebook</a></p>
       </div>
     </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slideUnified('prev')">&#8592;</button>
+      <div class="slider-wrapper" id="sliderWrapper">
+        <div class="slider" id="unifiedSlider">
+          <div class="slide-item">
+            <img src="j2.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="j1.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="j4.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="j3.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="j7.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="j10.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="j11.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="j5.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="j8.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="j9.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="joy12.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slideUnified('next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
   </div>
-  <img src="j2.jpg" style="height: 500px; width: 350px;"/>
-  <img src="j1.jpg" style="height: 500px; width: 350px;"/>
-  <img src="j4.jpg" style="height: 500px; width: 350px;"/>
-  <img src="j3.jpg" style="height: 500px; width: 350px;"/>
-  <img src="j7.jpg" style="height: 500px; width: 350px;"/>
-  <img src="j10.jpg" style="height: 500px; width: 350px;"/>
-  
-  <img src="j11.jpg" style="width: 500px; height: 350px;"/>
-  <img src="j5.jpg" style="width: 500px; height: 350px;"/>
-  <img src="j8.jpg" style="width: 500px; height: 350px;"/>
-  <img src="j9.jpg" style="width: 500px; height: 500px;"/>
-  <img src="joy12.jpg" style="width: 500px; height: 500px;"/>
-
-  <hr class="full-width-line" />
 
   <div id="joy2014" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
     <a href="joy.html#joy2014-jump" class="jump-button">2014</a>
@@ -1017,6 +1160,30 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+
+  let currentIndex = 0;
+  const slider = document.getElementById('unifiedSlider');
+  const slides = slider.querySelectorAll('.slide-item');
+
+  function updateSliderPosition() {
+    const slideWidth = 500;
+    const offset = currentIndex * slideWidth;
+    const slider = document.getElementById('unifiedSlider');
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+  function slideUnified(direction) {
+    if (direction === 'next') {
+      currentIndex = (currentIndex + 1) % slides.length;
+    } else if (direction === 'prev') {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    }
+    updateSliderPosition();
+  }
+
+  window.onload = updateSliderPosition;
+  window.onresize = updateSliderPosition;
+
   </script>
 </body>
 </html>

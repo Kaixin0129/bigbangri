@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>代言广告</title>
+  <title>YGfamily</title>
   <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
@@ -18,151 +18,6 @@
       color: white;
     }
 
-    main {
-      padding: 40px;
-      text-align: center;
-    }
-
-    .content-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-      margin: 40px auto 0;
-      max-width: 1000px;
-    }
-
-    .video-container {
-      flex: 1 1 800px;
-      max-width: 500px;
-    }
-
-    .video-container iframe {
-        width: 450px;
-        height: 350px;
-        border-radius: 10px;
-    }
-
-    .video-row {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-
-    .video-box {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      max-width: 600px;
-    }
-
-    .video-box iframe {
-      width: 450px;
-      height: 350px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    video {
-      width: 500px;
-      height: 400px;
-      border-radius: 8px;
-    }
-
-    .photo-container img {
-      height: 350px;
-      width: auto;
-      display: block;
-    }
-
-    iframe {
-      width: 100%;
-      height: 315px;
-      border: none;
-    }
-
-    .text-container {
-      flex: 1 1 400px;
-      max-width: 500px;
-      text-align: left;
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .text-button-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .button-container {
-      white-space: nowrap;
-      margin-top: 10px;
-    }
-    
-    @media (max-width: 768px) {
-    .text-button-container {
-      flex-direction: column;
-      align-items: flex-start;
-      }
-    }
-    
-    h1 {
-      margin-bottom: 20px;
-    }
-
-    p {
-      margin-bottom: 10px;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    .image-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 20px auto;
-      max-width: 1500px;
-    }
-
-    .image-row img {
-      width: auto;
-      height: 300px;
-      object-fit: cover;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .full-width-line {
-      width: 90vw;
-      border: none;
-      border-top: 1px solid white;
-      margin: 20px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 15px 25px;
-      background-color: none;
-      border-radius: 5px 18px;
-      border: 2px solid white;
-      transition: background 0.3s ease;
-    }
-
     .jump-button {
       padding: 15px 25px;
       background-color: #111;
@@ -171,10 +26,6 @@
       border-radius: 5px 18px;
       text-decoration: none;
       transition: all 0.3s ease;
-      flex-shrink: 0;
-      min-width: 120px;
-      white-space: nowrap;
-      text-align: center;
     }
 
     .jump-button:hover {
@@ -183,51 +34,93 @@
       cursor: pointer;
     }
 
-    .header-container {
+    nav {
+      background-color: #111;
+      padding: 20px 40px;
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
-      position: relative;
-      margin-bottom: 20px;
-      height: 100px;
+      gap: 20px;
     }
 
-    .title-group {
-      display: inline-block;
-    } 
-
-    .left-nav,
-    .right-nav {
-      position: absolute;
-      top: 10%;
-      transform: translateY(-50%);
-    }
-
-    .left-nav {
-      left: 0;
-    }
-
-    .right-nav {
-      right: 0;
-    }
-
-    .left-nav a,
-    .right-nav a {
-      padding: 18px 30px;
-      font-size: 18px;
-      border-radius: 5px 18px;
+    nav a {
       color: white;
       text-decoration: none;
+      padding: 15px 25px;
+      background-color: transparent;
+      border-radius: 5px 18px;
       border: 2px solid white;
-      display: inline-block;
       transition: background 0.3s ease;
     }
 
-    .left-nav a:hover,
-    .right-nav a:hover {
+    nav a:hover {
       background-color: white;
       color: #111;
-      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .content-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 10px;
+    }
+
+    .text-container {
+        max-width: 400px;
+        line-height: 1.6;
+        text-align: left;
+    }
+
+    .text-container li {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .text-container ul {
+        padding-left: 0;
+        margin-left: 0;
+        list-style-position: inside;
+    }
+    
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px; /* 控制和上方内容的距离 */
+      margin-bottom: 20px;
+    }
+
+    nav a.highlight-button {
+      background-color: none;
+      color: white;
+      border: 2px solid #ff8dd3;
+    }
+  
+    nav a.highlight-button:hover {
+      background-color: none;
+      color: #ff8dd3;
+    }
+
+    nav a.highlight1-button {
+      background-color: none;
+      color: white;
+      border: 2px solid #33FFFF;
+    }
+  
+    nav a.highlight1-button:hover {
+      background-color: none;
+      color: #33FFFF;
     }
 
     @media only screen and (max-width: 768px) {
@@ -250,759 +143,62 @@
       }
     }
 
+    .jump-button-1 {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid #f5ed54;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button-1:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+    
   </style>
 </head>
 <body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="schedule.html" class="jump-button-1">完整时间线</a>
+    <a href="stage.html">打歌舞台</a>
+    <a href="concert.html">官拍演唱会</a>
+    <a href="solo.html">成员Solo</a>
+    <a href="teams.html">小分队</a>
+    <a href="album.html">专辑歌曲Mv</a>
+    <a href="fanmeeting.html">Fan Meeting</a>
+    <a href="collection.html">官方周边</a>
+    <a href="show.html">放送节目</a>
+    <a href="interview.html">采访</a>
+    <a href="behindthescenes.html">幕后花絮</a>
+    <a href="magazine.html">杂志拍摄</a>
+    <a href="awardlist.html">颁奖典礼</a>
+    <a href="movie.html">电影电视剧短剧</a>
+    <a href="ygfamily.html">YGfamily</a>
+    <a href="sns.html">SNS</a>
+    <a href="comment.html">留言区</a>
+    <a href="reference.html" class="highlight-button">参考资料</a>
+    <a href="cp.html" class="highlight1-button">CP向</a>
+  </nav>
 <main>
-  <div class="header-container">
-    <nav class="left-nav">
-      <a href="index.html">Back</a>
-    </nav>
-    <div class="title-group">
-      <h1>代言广告</h1>
-    </div>
-  </div>
-  <br/><br/>
+  <h1>·代言广告·</h1><br/><br/>
+    <p>Select a section from the navigation bar below.</p><br/>
 
-  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-    <div id="issues-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#issues" class="jump-button">一些资讯</a>
-    </div>
-    <div id="skoolooks-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#skoolooks" class="jump-button">SKOOLOOKS</a>
-    </div>
-    <div id="sktelecon-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#sktelecon" class="jump-button">SKTELECON</a>
-    </div>    
-    <div id="bbbud-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#bbbud" class="jump-button">BB Bud</a>
-    </div>
-    <div id="nii-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#nii" class="jump-button">NII休闲服饰</a>
-    </div>
-    <div id="br-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#br" class="jump-button">Baskin Roobins</a>
-    </div>
-    <div id="fila-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#fila" class="jump-button">FILA休闲服饰</a>
-    </div>
-    <div id="lg-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#lg" class="jump-button">LG CYON EDGE</a>
-    </div>    
-    <div id="is-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#is" class="jump-button">I-Station</a>
-    </div>    
-    <div id="hite-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#hite" class="jump-button">HITE啤酒</a>
-    </div>
-    <div id="fc-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#fc" class="jump-button">Freid Chicken</a>
-    </div>
-    <div id="2%-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#2%" class="jump-button">2% Drink</a>
-    </div>
-    <div id="lotte-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#lotte" class="jump-button">Lotte Duty Free</a>
-    </div>
-    <div id="cafe-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#cafe" class="jump-button">Cafe Latte</a>
-    </div>
-    <div id="sa-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#sa" class="jump-button">Sudden Attack射击游戏</a>
-    </div>
-    <div id="elle-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#elle" class="jump-button">ELLE</a>
-    </div>    
-    <div id="eversense-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#eversense" class="jump-button">Eversense</a>
-    </div>    
-    <div id="bsx-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#bsx" class="jump-button">BSX</a>
-    </div>
-    <div id="gmarket-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="endorsement.html#gmarket" class="jump-button">G-Market</a>
-    </div>
-  </div>
-  <hr class="full-width-line" /> <br/><br/>
+  <nav>
+    <a href="endorsementsolo.html">成员个人</a>
+    <a href="endorsement1.html">上部分</a>
+    <a href="endorsement2.html">下部分</a>
+  </nav>
 
-  <div id="issues" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#issues-jump" class="jump-button">一些资讯</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="text-container">
-        <p><strong>2011年2月21日</strong></p>
-        <p>GD 和 Bigbang 是韩国代言收入最高的明星之一，据报道2011年每个代言的要价为100万至150万美元<br/>Big Bang以11亿韩元位居榜首</p>
-        <br/>
-        <p>点击这里进入详细资讯：<a href="https://web.archive.org/web/20140512215922/http://korea.cpc.people.com.cn/159463/15147620.html" 
-          target="_blank" style="color: #33FFFF;">CPC</a></p>
-      </div>
-    </div>
-    <hr class="full-width-line" />  
-  </div>
-
-  <div id="skoolooks" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#skoolooks-jump" class="jump-button">SKOOLOOKS</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/KQ3MZzTdsBs?si=u5ynL25fxxTLLV5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2006年12月22日发布</strong></p>
-        <p>和TONY AN的校服公司SKOOLOOKS<br/>签下为期6个月的广告代言合同</p>
-        <p>持续合作到2009年初</p>
-      </div>
-      <div class="video-row">
-        <div class="video-box">
-          <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5653362&p=5" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-        </div>
-        <div class="video-box">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/LnoYiII_h_U?si=MGJM2hnh5_piExJ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-      </div>
-      <p>左边视频是拍摄成片，右边是2006年11月2日拍摄花絮</p>
-    </div>  
-    <hr class="full-width-line" />  
-  </div>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="text-button-container">
-        <div class="text-container">
-          <p><strong>2008年3月31日</strong></p><br/>
-          <p>SKOOLOOKS海报宣传</p>
-          <p>点击这里：<a href="https://www.flickr.com/photos/21910381@N06/albums/72157604332927925/" target="_blank" style="color: #33FFFF;">SKOOLOOKS官方海报图片</a></p><br/>
-        </div>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/tLvMSItCXPM?si=KwTHPoGLGhSOx7b5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2008年10月24日</strong></p>
-        <p>SKOOLOOKS拍摄花絮</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div id="sktelecon" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#sktelecon-jump" class="jump-button">SKTELECON</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/3Vgk5QTNNRM?si=k9vhlm-T3DsNbdnX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2007年4月1日发行</strong></p>
-        <p>手机电信SKTELECOM广告</p>
-        <p>TOP个人的广告</p>
-      </div>
-    </div>
-  <hr class="full-width-line" />  
-  </div>
-
-  <div id="bbbud" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#bbbud-jump" class="jump-button">BB BUD</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <div id="collection4-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
-      <a href="collection2007.html#collection4" class="jump-button">更多BB Bud的详情</a>
-      <p style="margin: 0;">点击这里有很多官方卖品，附加图片</p>
-    </div>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5659690&p=4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2007年5月18日</strong></p>
-        <p>Bigbang推出BB Bud系列</p>
-        <p>这个宣传视频是2007年5月29日的</p>
-        <ul>
-          <li>BB Bud's My First Fragrance</li>
-          <li>Cosmetics "Magazine Advert"</li>
-          <li>Bigbang's Official Lip Gloss</li>
-        </ul>
-      </div>
-    </div>
-    <hr class="full-width-line" />  
-  </div>
-
-  <div id="nii" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#nii-jump" class="jump-button">NII休闲服饰</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5655375&p=7" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2008年1月12日</strong></p>
-        <p>NII休闲服饰 广告拍摄</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/MaWeYkmc7XA?si=K6xeYlmKzqgNy0mT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p>NII服饰</p>
-        <p>未知时间</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div id="br" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#br-jump" class="jump-button">Baskin Robbins</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5653359&p=8" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2008年3月10日</strong></p>
-        <p>Baskin Robbins冰淇淋</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5653360&p=9" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2008年3月20日</strong></p>
-        <p>Baskin Robbins冰淇淋</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div id="fila" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#fila-jump" class="jump-button">FILA休闲服饰</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <div id="collection1-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
-      <a href="collection2008.html#collection1" class="jump-button">点这里更多FILA服饰的详情</a>
-    </div>
-    <div style="text-align: center;">
-      <div class="content-wrap">
-        <div class="video-container">
-          <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5659689&p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-        </div>
-        <div class="text-container">
-          <p><strong>2008年9月11日公开宣布签约</strong></p>
-          <p>Bigbang X FILA服饰</p>
-          <p>合作应该是持续到2011年（不确定）<br/>因为还有发布合作产品</p>
-        </div>
-      </div>
-      <div class="video-row">
-        <div class="video-box">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/YpneQ-sAqtI?si=2H8V0vtLIvYeqaz5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <div class="video-box">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/Q5UzVRUayOU?si=i9dWUQpR5E6zGbdM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-      </div>
-      <p>左边是60秒FILA Limited Edition，右边是30秒FILA Limited Edition</p><br/>
-    </div>
-    <hr class="full-width-line" />  
-  </div>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="text-container">
-        <p><strong>从2006年签约后到2008年之间拍摄的</strong></p>
-        <p>时间线太乱了简直是ww</p>
-      </div>
-      <div class="video-row">
-        <div class="video-box">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/8y8Vq1qE8qM?si=pvUEi6T7wZbqjeKa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <div class="video-box">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/tLvMSItCXPM?si=PREXHzQ2d41nToFN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-      </div>
-      <p>左边视频是拍摄成片，右边是2008年10月24日拍摄花絮＋采访</p><br/>
-    </div>   
-    <hr class="full-width-line" />  
-  </div>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5659694&p=17" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2009年1月20日</strong></p>
-        <p>FILA服饰</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5660150&p=34" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p>FILA服饰</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-  
-  <div id="lg" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#lg-jump" class="jump-button">LG CYON EDGE</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/w4d1kuOvj3k?si=lIhCq4xyR6VyYOxh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2008年11月11日</strong></p>
-        <p>LG CYON EDGE 手机代言</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5654545&p=22" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2009年1月9日</strong></p>
-        <p>LG CYON代言</p>
-        <p>Crystal手机</p>
-      </div>
-    </div>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5654543&p=23" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p>Arena手机</p>
-      </div>
-    </div>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5654542&p=24" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p>Suit Phone</p>
-      </div>
-    </div>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5654546&p=25" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p>Ice Cream</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/SzAe9UhKcLU?si=HDQZ6p2lrUY3cMbw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p>Lollipop手机代言</p>
-        <p>和2NE1一起</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
-  </div><br/>
-  <div class="video-row">
-    <div class="video-box">
-      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5654547&p=28" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-    </div>
-    <div class="video-box">
-      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5654548&p=29" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-    </div>
-  </div>
-  <div style="text-align: center;">
-    <p>Lollipop手机</p>
-  </div>
-  <hr class="full-width-line" />
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/4v_Cj8hz2oU?si=G5MZYLO2ye3mQPOD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p>LG CYON Lollipop</p>
-        <p>花絮</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
-  </div><br/>
-  <div class="video-row">
-    <div class="video-box">
-      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5660147&p=30" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-    </div>
-    <div class="video-box">
-      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5660148&p=31" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-    </div>
-  </div>
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5660149&p=32" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2010年10月3日</strong></p>
-        <p>LG OPTIMUS ONE 手机</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div id="is" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#is-jump" class="jump-button">I-Station</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5653365&p=12" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2009年1月21日</strong></p>
-        <p>I-Station电子产品</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div id="hite" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#hite-jump" class="jump-button">HITE啤酒</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/4gjaF3WOsV8?si=XnuqFdRgfNIUdyuD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2009年4月3日</strong></p>
-        <p>HITE啤酒 代言</p>
-        <ul>
-          <li>胜利没有参与</li>
-        </ul>
-      </div>
-    </div>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/e8e1Uo-XW_U?si=ImhG2X5PT3qJcvr2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p>歌曲Mv</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div id="fc" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#fc-jump" class="jump-button">Fried Chicken</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/U2qob3uyV3Y?si=YJlWQuQbA_pQ0FZa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2009年4月29日左右</strong></p>
-        <p>Fried Chicken 炸鸡代言</p>
-        <ul>
-          <li>大声个人代言</li>
-        </ul>
-      </div>
-    </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div id="2%" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#2%-jump" class="jump-button">2% Drink</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5653801&p=16" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2009年5月14日</strong></p>
-        <p>2% Drink</p>
-        <p>"危险的爱情"</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div id="lotte" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#lotte-jump" class="jump-button">Lotte Duty Free</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5659693&p=15" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2009年5月15日</strong></p>
-        <p>Lotte Duty Free 乐天免税店</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5660909&p=43" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2011年10月30日</strong></p>
-        <p>Lotte Duty Free广告</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div id="cafe" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#cafe-jump" class="jump-button">Cafe Latte</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5653803&p=20" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2009年5月15日</strong></p>
-        <p>Caffe Latte</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div id="sa" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#sa-jump" class="jump-button">Sudden Attack射击游戏</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/OVBQxo5HX_s?si=ThvpFMb-lAjeMrRd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2009年7月21日</strong></p>
-        <p>Sudden Attack射击游戏</p>
-        <p>角色，语言正式上线</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/u3Ddrufr1-E?si=ndwZzOF6hclN2_Co&amp;start=20" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2010年4月16日</strong></p>
-        <p>Sudden Attack射击游戏</p>
-        <p>宣传片</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div id="elle" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#elle-jump" class="jump-button">ELLE</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/LVd0lfeSsOM?si=tB7ryWMKxHyl0v6p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2009年9月3日</strong></p>
-        <p>ELLE</p>
-        <p>TOP 个人代言</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div id="eversense" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#eversense-jump" class="jump-button">Eversense</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5654549&p=37" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p>2010年5月10日左右</p>
-        <p>泰国代言广告 Eversense</p>
-      </div>
-    </div>
-  </div><br/>
-  <img src="eversense.jpg" style="height: 500px; width: 500px;" />
-  <hr class="full-width-line" />
-
-  <div id="bsx" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#bsx-jump" class="jump-button">BSX</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/hFuSgtLozqQ?si=ApzUhdhznpHrxabE&amp;start=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2010年6月30日</strong></p>
-        <p>BSX 采访</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div class="video-row">
-    <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/SUQ7T_YGt1M?si=3IISydV_0hx3qkQG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-    <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/OVTvOZ5Fto0?si=kPoaoOCF7g8KfEDz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-  </div>
-  <div style="text-align: center;">
-    <p>左边视频2010年6月23日，右边视频2010年6月24日</p>
-  </div>
-  <hr class="full-width-line" />
-
-  <div class="video-row">
-    <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/oCZlR3frP-M?si=5FJYItbwppNJb1r1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-    <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/Bkdpozx6pTY?si=DzfRX1MEe_wry9sm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-  </div>
-  <div style="text-align: center;">
-    <p>左边视频2010年6月25日，右边视频2010年6月28日</p>
-  </div>
-  <hr class="full-width-line" />
-
-  <div class="video-row">
-    <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/49yh_nOgFdw?si=rzZr5XtXCl75dNbm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-    <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/K7D2kzY5qKc?si=az304bARdh3hErco" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-  </div>
-  <div style="text-align: center;">
-    <p>左边视频2010年6月28日，右边视频2010年6月29日</p>
-  </div>
-  <hr class="full-width-line" />
-
-  <div class="video-row">
-    <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/5njRa33yZ10?si=KUfImZb1wfieQJdU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-    <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/QU71Uwi1JBg?si=YMK3Ggvgdq2zGuxp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-  </div>
-  <div style="text-align: center;">
-    <p>左边视频2010年6月29日，右边视频2010年6月30日</p>
-  </div>
-  <hr class="full-width-line" />
-
-  <div id="gmarket" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="endorsement.html#gmarket-jump" class="jump-button">G-Market</a>
-  </div><br/>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/bhWJXIGb8ao?si=h3v5mf9cFCTwrgxe&amp;start=17" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2010年11月8日</strong></p>
-        <p>G-Market代言广告</p>
-        <p>GD个人代言</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-    <div class="title-group">
-      <div id="footer"></div>
-    </div>
 </main>
-  <script>
-    fetch("footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer").innerHTML = data;
-      });
-  </script>
 </body>
 </html>

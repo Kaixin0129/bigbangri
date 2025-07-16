@@ -293,6 +293,81 @@
       padding-left: 20px;
     }
 
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 500px;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .img-portrait {
+    width: 350px;
+    height: 500px;
+    object-fit: cover;
+  }
+
   </style>
 </head>
 
@@ -537,6 +612,22 @@
   </div>
 
   <div style="text-align: center;">
+    <div id="110322sns-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="gd2011.html#110322sns" class="jump-button">跳转到 GD 2011 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年3月22日</strong></p>
+        <p>GD 在me2day 发贴文</p>
+        <ul>
+          <li>忙内line睡觉</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
     <p style="margin: 0;">下面的视频来自@Maybeplayboy96 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
@@ -549,6 +640,89 @@
           <li>09:53</li>
         </ul>
       </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5660923&p=50" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2011年3月24日</strong></p>
+        <p>10 Corso Como代言</p>
+      </div>
+    </div>
+  </div><br/>
+
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/dx_E51uaNNI?si=KNIn8OdbUAmlgMCq&amp;start=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>GD侧面怼脸拍</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/QvKDHoGoPuY?si=Og7m-5wa4LwxkvX0&amp;start=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>正面视角</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/BvFdpOuF5-Q?si=KfcZ1-u6wG2e1wFE&amp;start=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p>发布会</p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slideUnified('prev')">&#8592;</button>
+      <div class="slider-wrapper" id="sliderWrapper">
+        <div class="slider" id="unifiedSlider">
+          <div class="slide-item">
+            <img src="1103241.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1103242.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1103243.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1103244.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1103245.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1103246.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="11032412.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1103247.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1103248.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1103249.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="11032410.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="11032411.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slideUnified('next')">&#8594;</button>
     </div>
     <hr class="full-width-line" />
   </div>
@@ -567,6 +741,22 @@
       </div>
     </div>
     <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div id="110326sns-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="gd2011.html#110326sns" class="jump-button">跳转到 GD 2011 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年3月26日</strong></p>
+        <p>GD 在me2day 发贴文</p>
+        <ul>
+          <li>代言广告</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
   </div>
 
   <div style="text-align: center;">
@@ -633,6 +823,19 @@
   </div>
 
   <div style="text-align: center;">
+    <div id="110330sns-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="gd2011.html#110330sns" class="jump-button">跳转到 GD 2011 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年3月30日</strong></p>
+        <p>GD 在me2day 发贴文</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
     <p style="margin: 0;">下面的视频来自@TtoG_ 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
@@ -663,6 +866,20 @@
     <hr class="full-width-line" />
   </div>
 
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/jHtk1QnEysc?si=kD_QUWwx9Y4hiUs3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2011年3月31日</strong></p>
+        <p>Nikon TV广告</p>
+        <p>YG Family一同参与</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
   <br/><br/><br/>
   <div class="header-container">
     <nav class="left-nav">
@@ -683,6 +900,30 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+
+  let currentIndex = 0;
+  const slider = document.getElementById('unifiedSlider');
+  const slides = slider.querySelectorAll('.slide-item');
+
+  function updateSliderPosition() {
+    const slideWidth = 500;
+    const offset = currentIndex * slideWidth;
+    const slider = document.getElementById('unifiedSlider');
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+  function slideUnified(direction) {
+    if (direction === 'next') {
+      currentIndex = (currentIndex + 1) % slides.length;
+    } else if (direction === 'prev') {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    }
+    updateSliderPosition();
+  }
+
+  window.onload = updateSliderPosition;
+  window.onresize = updateSliderPosition;
+
   </script>
 </body>
 </html>
