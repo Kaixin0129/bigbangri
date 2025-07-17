@@ -452,16 +452,16 @@
       <div class="content-wrap">
         <div class="text-container">
           <p><strong>2012年1月20日</strong></p>
-          <p>胜利带GD和大声来见胜利学院的学员</p><br/>
+          <p>胜利带GD和大声来见胜利学院的学员</p>
           <p>点击这里进入详细资讯：<a href="https://yeppopo.wordpress.com/2012/01/20/photos-seungri-g-dragon-daesung-with-students-from-seungri-academy/" 
             target="_blank" style="color: #33FFFF;">Wordpress</a></p>
         </div>
       </div>
     </div>
     <div class="slider-container">
-      <button class="nav-button left" onclick="slideUnified('prev')">&#8592;</button>
-      <div class="slider-wrapper" id="sliderWrapper">
-        <div class="slider" id="unifiedSlider">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
           <div class="slide-item">
             <img src="joy5.jpg" class="slide-img img-landscape" />
           </div>
@@ -476,7 +476,7 @@
           </div>
         </div>
       </div>
-      <button class="nav-button right" onclick="slideUnified('next')">&#8594;</button>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
     </div>
     <hr class="full-width-line" />
   </div>
@@ -583,28 +583,27 @@
     }
   }
 
-  let currentIndex = 0;
-  const slider = document.getElementById('unifiedSlider');
-  const slides = slider.querySelectorAll('.slide-item');
+  const sliderStates = {};
 
-  function updateSliderPosition() {
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
     const slideWidth = 500;
-    const offset = currentIndex * slideWidth;
-    const slider = document.getElementById('unifiedSlider');
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0; // 初始化 index
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
     slider.style.transform = `translateX(-${offset}px)`;
   }
 
-  function slideUnified(direction) {
-    if (direction === 'next') {
-      currentIndex = (currentIndex + 1) % slides.length;
-    } else if (direction === 'prev') {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    }
-    updateSliderPosition();
-  }
-
-  window.onload = updateSliderPosition;
-  window.onresize = updateSliderPosition;
 </script>
 </body>
 </html>

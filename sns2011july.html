@@ -445,25 +445,66 @@
 <h2 id="currentFilter1" style="text-align:center; margin-bottom: 30px; color: #33FFFF; display: none;"></h2>
 
   <div class="sns-entry" data-member="seungri">
+    <div id="110708sns-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="seungri2011.html#110708sns" class="jump-button">跳转到 胜利2011 时间线</a>
+    </div>
+    <div style="text-align: center;">
+      <div class="content-wrap">
+      <img src="1107082.jpeg" style="width: 600px; height: 100px;"/>
+        <div class="text-container">
+          <p><strong>2011年7月8日</strong></p>
+          <p>胜利 在me2day 发贴文</p>
+          <p>YG专属教练黄沙彬老师的减肥秘籍书已出版！在这个炎热的夏天，一起用这本书打造完美身材吧^^</p>
+          <p>点击这里进入详细资讯：<a href="https://tieba.baidu.com/p/1134448703?&share=9105&fr=sharewise&is_video=false&unique=63EC3440395051CEF823BBCB451D84BB&st=1752261447&client_type=1&client_version=12.85.1.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF;">李胜贤吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="1107081.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="seungri">
+    <div id="110721sns-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="seungri2011.html#110721sns" class="jump-button">跳转到 胜利2011 时间线</a>
+    </div>
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2011年7月21日</strong></p>
+          <p>胜利 在me2day 发贴文</p>
+          <p>GD被指控吸大麻</p>
+          <p>다섯명이고싶다^^ 평생<br/>想5个人在一起^^一辈子</p>
+          <p>点击这里进入详细资讯：<a href="https://tieba.baidu.com/p/1147830365?&share=9105&fr=sharewise&is_video=false&unique=89CE67057F82C3024D691FBFF4B60767&st=1752259687&client_type=1&client_version=12.85.1.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF;">李胜贤吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="1107211.jpeg" style="width: 400px; height: 300px;"/>
+    <img src="1107212.jpeg" style="width: 400px; height: 300px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="seungri top taeyang gd">
     <div id="110731sns-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
       <a href="seungri2011.html#110731sns" class="jump-button">跳转到 胜利2011 时间线</a>
     </div>
     <div style="text-align: center;">
       <div class="content-wrap">
+        <div class="video-container">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/PmJOsJLWxVk?si=0lnjefUO_VuXLzN5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
         <div class="text-container">
           <p><strong>2011年7月31日</strong></p>
           <p>胜利 在mw2day发 在新西兰雪山上拍摄广告The North Face</p>
-          <ul>
-            <li>TOP太傻了，胜利的笑声更更更傻</li>
-          </ul><br/>
-          <p>BIGBANG 뉴질랜드 노스페이스 광고촬영중 ㅡ 우리는 팥과 떡 그리고 시럽이 필요했다 거대한 빙수위에서있는기분 좋은추억만들어준 노스페이스 감사합니다.<br/>
-BIGBANG 新西兰 The North Face 广告拍摄中 —— 我们需要红豆、年糕和糖浆。在巨大的刨冰上的感觉，感谢 The North Face 为我们创造了美好的回忆。</p>
+          <p>TOP太傻了，胜利的笑声更更更傻</p>
+          <p>BIGBANG 新西兰 NORTH FACE摄影中 - 我们需要豆子,年糕还有糖浆 在巨大冰山的气氛中 有着美好的回忆 谢谢NORTH FACE <br/>TAG:韩国抵达 为了FAN的礼物 TOP 太阳 小可爱 胜影导演 胜利 魔戒 纳尼亚传奇 摄影地点</p>
           <p>点击这里进入详细资讯：<a href="https://yeppopo.wordpress.com/2011/05/26/seungri-dan-anak2-didiknya-di-seungris-academy/" 
             target="_blank" style="color: #33FFFF;">Wordpress</a></p>
         </div>
       </div>
     </div>
-    <img src="joy4.jpg" style="width: 500px; height: 350px;"/>
+    <img src="110731.jpeg" style="width: 400px; height: 300px;"/>
     <hr class="full-width-line" />
   </div>
 
@@ -569,28 +610,27 @@ BIGBANG 新西兰 The North Face 广告拍摄中 —— 我们需要红豆、年
     }
   }
 
-  let currentIndex = 0;
-  const slider = document.getElementById('unifiedSlider');
-  const slides = slider.querySelectorAll('.slide-item');
+  const sliderStates = {};
 
-  function updateSliderPosition() {
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
     const slideWidth = 500;
-    const offset = currentIndex * slideWidth;
-    const slider = document.getElementById('unifiedSlider');
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0; // 初始化 index
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
     slider.style.transform = `translateX(-${offset}px)`;
   }
 
-  function slideUnified(direction) {
-    if (direction === 'next') {
-      currentIndex = (currentIndex + 1) % slides.length;
-    } else if (direction === 'prev') {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    }
-    updateSliderPosition();
-  }
-
-  window.onload = updateSliderPosition;
-  window.onresize = updateSliderPosition;
 </script>
 </body>
 </html>
