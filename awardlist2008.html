@@ -421,7 +421,7 @@
         <div id="awardlist2008-dec-jump" style="display: flex; align-items: center; gap: 10px;">
       <a href="awardlist2008.html#awardlist2008-dec" class="jump-button">12月</a>
     </div>
-  </div>
+  </div><br/>
   <hr class="full-width-line" />  
   <br/>
 
@@ -569,8 +569,6 @@
       </div>
     </div>
   </div>
-  <img src="mtv.jpg" style="height: 250px;" />
-  <img src="mtv1.jpg" style="height: 300px;" />
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="video-container">
@@ -998,7 +996,7 @@
     <div class="content-wrap">
       <div class="text-container">
         <p><strong>2008年11月15日</strong></p>
-        <p>Haru Haru 在MAMA Awards上：</p>
+        <p>Haru Haru 在 MKMF Awards上：</p>
         <ul>
           <li>Best House and Electronic Song 被提名</li>
           <li>Best Male Group 获奖</li>
@@ -1020,19 +1018,6 @@
       </div>
     </div>
     <hr class="full-width-line" />  
-  </div>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/2rbQLYSkDLM?si=kmovWdoQ0hsAhpz0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p>MKMF 2008 完整版</p>
-        <p>长达三小时半</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
   </div>
 
   <div id="081115-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
@@ -1213,25 +1198,24 @@
       </div>
     </div>
     <div class="slider-container">
-      <button class="nav-button left" onclick="slideUnified('prev')">&#8592;</button>
-      <div class="slider-wrapper" id="sliderWrapper">
-        <div class="slider" id="unifiedSlider">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
           <div class="slide-item">
             <img src="gq3.jpg" class="slide-img img-portrait" />
           </div>
           <div class="slide-item">
-            <img src="gq1.png" class="slide-img img-portrait" />
+            <img src="gq1.jpg" class="slide-img img-portrait" />
           </div>
           <div class="slide-item">
-            <img src="gq2.png" class="slide-img img-portrait" />
+            <img src="gq2.jpg" class="slide-img img-portrait" />
           </div>
         </div>
       </div>
-      <button class="nav-button right" onclick="slideUnified('next')">&#8594;</button>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
     </div>
     <hr class="full-width-line" />
   </div>
-
 
   <div style="text-align: center;">
     <div class="content-wrap">
@@ -1527,28 +1511,28 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
-  let currentIndex = 0;
-  const slider = document.getElementById('unifiedSlider');
-  const slides = slider.querySelectorAll('.slide-item');
 
-  function updateSliderPosition() {
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
     const slideWidth = 500;
-    const offset = currentIndex * slideWidth;
-    const slider = document.getElementById('unifiedSlider');
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0; // 初始化 index
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
     slider.style.transform = `translateX(-${offset}px)`;
   }
 
-  function slideUnified(direction) {
-    if (direction === 'next') {
-      currentIndex = (currentIndex + 1) % slides.length;
-    } else if (direction === 'prev') {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    }
-    updateSliderPosition();
-  }
-
-  window.onload = updateSliderPosition;
-  window.onresize = updateSliderPosition;
-  </script>
+</script>
 </body>
 </html>

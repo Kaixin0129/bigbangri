@@ -682,28 +682,23 @@
       </div>
     </div>    
     <div class="slider-container">
-      <button class="nav-button left" onclick="slideUnified('prev')">&#8592;</button>
-      <div class="slider-wrapper" id="sliderWrapper">
-        <div class="slider" id="unifiedSlider">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
           <div class="slide-item">
-            <img src="mnet20.webp" class="slide-img img-landscape" />
+            <img src="gq3.jpg" class="slide-img img-portrait" />
           </div>
           <div class="slide-item">
-            <img src="1mnet20.webp" class="slide-img img-landscape" />
+            <img src="gq1.jpg" class="slide-img img-portrait" />
           </div>
           <div class="slide-item">
-            <img src="2mnet20.webp" class="slide-img img-landscape" />
-          </div>
-          <div class="slide-item">
-            <img src="3mnet20.webp" class="slide-img img-portrait" />
-          </div>
-          <div class="slide-item">
-            <img src="4mnet20.webp" class="slide-img img-portrait" />
+            <img src="gq2.jpg" class="slide-img img-portrait" />
           </div>
         </div>
       </div>
-      <button class="nav-button right" onclick="slideUnified('next')">&#8594;</button>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
     </div>
+    <hr class="full-width-line" />
   </div>
 
   <div style="text-align: center;">
@@ -742,28 +737,28 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
-  let currentIndex = 0;
-  const slider = document.getElementById('unifiedSlider');
-  const slides = slider.querySelectorAll('.slide-item');
 
-  function updateSliderPosition() {
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
     const slideWidth = 500;
-    const offset = currentIndex * slideWidth;
-    const slider = document.getElementById('unifiedSlider');
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0; // 初始化 index
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
     slider.style.transform = `translateX(-${offset}px)`;
   }
 
-  function slideUnified(direction) {
-    if (direction === 'next') {
-      currentIndex = (currentIndex + 1) % slides.length;
-    } else if (direction === 'prev') {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    }
-    updateSliderPosition();
-  }
-
-  window.onload = updateSliderPosition;
-  window.onresize = updateSliderPosition;
-  </script>
+</script>
 </body>
 </html>
