@@ -18,9 +18,176 @@
       color: white;
     }
 
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
     main {
       padding: 40px;
       text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
     }
 
     .content-wrap {
@@ -126,130 +293,6 @@
       padding-left: 20px;
     }
 
-    .image-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 20px auto;
-      max-width: 1500px;
-    }
-
-    .image-row img {
-      width: auto;
-      height: 300px;
-      object-fit: cover;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .full-width-line {
-      width: 90vw;
-      border: none;
-      border-top: 1px solid white;
-      margin: 20px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 15px 25px;
-      background-color: none;
-      border-radius: 5px 18px;
-      border: 2px solid white;
-      transition: background 0.3s ease;
-    }
-
-    .jump-button {
-      padding: 15px 25px;
-      background-color: #111;
-      color: white;
-      border: 2px solid white;
-      border-radius: 5px 18px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      min-width: 120px;
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    .jump-button:hover {
-      background-color: white;
-      color: black;
-      cursor: pointer;
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      margin-bottom: 20px;
-      height: 100px;
-    }
-
-    .title-group {
-      display: inline-block;
-    } 
-
-    .left-nav,
-    .right-nav {
-      position: absolute;
-      top: 10%;
-      transform: translateY(-50%);
-    }
-
-    .left-nav {
-      left: 0;
-    }
-
-    .right-nav {
-      right: 0;
-    }
-
-    .left-nav a,
-    .right-nav a {
-      padding: 18px 30px;
-      font-size: 18px;
-      border-radius: 5px 18px;
-      color: white;
-      text-decoration: none;
-      border: 2px solid white;
-      display: inline-block;
-      transition: background 0.3s ease;
-    }
-
-    .left-nav a:hover,
-    .right-nav a:hover {
-      background-color: white;
-      color: #111;
-      cursor: pointer;
-    }
-
-    @media only screen and (max-width: 768px) {
-      html, body {
-        height: 100vh;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
-
-      body {
-        transform: scale(0.59);
-        transform-origin: top left;
-        width: 169.5%;
-        height: calc(100vh / 0.59);
-      }
-
-      .full-width-line {
-        transform: scaleX(1.6949);
-        transform-origin: left;
-      }
-    }
-
   </style>
 </head>
 <body>
@@ -288,7 +331,7 @@
   <br/>
   <div style="text-align: center;">
     <div id="chudao" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
-      <p style="margin: 0;">下面的视频来自@GDTOP百度知道团队<br/>点击进入观看11集完整视频</p>
+      <p style="margin: 0;">下面的视频来自 @GDTOP百度知道团队</p>
       <a href="2006july.html#chudao-link" class="jump-button">跳转到 2006 时间线</a>
     </div>
     <div class="content-wrap">
@@ -309,48 +352,77 @@
           <li>最终 BIGBANG 五人阵容确定</li>
         </ul>
         <p>李胜利大约在2005年10月左右进入YG</p>
-        <p>视频集数跟顺序走（共11集）</p>
       </div>
     </div>
   </div>
   <div class="video-row">
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=553656539&bvid=BV1Xv4y1N7QZ&cid=589792466&p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>EP02</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=553656539&bvid=BV1Xv4y1N7QZ&cid=589796524&p=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>EP03</p>
+      </div>
     </div>
   </div>
   <div class="video-row">
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=553656539&bvid=BV1Xv4y1N7QZ&cid=589799881&p=4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>EP04</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=553656539&bvid=BV1Xv4y1N7QZ&cid=589800364&p=5" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>EP05</p>
+      </div>
     </div>
   </div>
   <div class="video-row">
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=553656539&bvid=BV1Xv4y1N7QZ&cid=589804402&p=6" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>EP06</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=553656539&bvid=BV1Xv4y1N7QZ&cid=589804073&p=7" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>EP07</p>
+      </div>
     </div>
   </div>
   <div class="video-row">
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=553656539&bvid=BV1Xv4y1N7QZ&cid=589809437&p=8" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>EP08</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=553656539&bvid=BV1Xv4y1N7QZ&cid=589809027&p=9" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>EP09</p>
+      </div>
     </div>
   </div>
   <div class="video-row">
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=553656539&bvid=BV1Xv4y1N7QZ&cid=589809361&p=10" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>EP10</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=553656539&bvid=BV1Xv4y1N7QZ&cid=710199357&p=11" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>EP11</p>
+      </div>
     </div>
   </div>
   <hr class="full-width-line" />
