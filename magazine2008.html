@@ -249,6 +249,81 @@
       }
     }
 
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 500px;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .img-portrait {
+    width: 350px;
+    height: 500px;
+    object-fit: cover;
+  }
+
   </style>
 </head>
 <body>
@@ -292,12 +367,46 @@
         <p>点击这里进入观看文章：<a href="https://www.gqkorea.co.kr/2008/12/09/2008%EB%85%84-gq%EA%B0%80-%EC%84%A0%EC%A0%95%ED%95%9C-%EC%98%AC%ED%95%B4%EC%9D%98-%EB%82%A8%EC%9E%90%EB%93%A4/" 
           target="_blank" style="color: #33FFFF;">包含采访对话</a></p><br/>
       </div>
-    </div>    
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
+          <div class="slide-item">
+            <img src="gq3.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="gq1.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="gq2.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
   </div>
-  <img src="gq3.jpg" style="height: 500px;" />
-  <img src="gq1.jpg" style="height: 500px;" />
-  <img src="gq2.jpg" style="height: 500px;" />
-  <hr class="full-width-line" />
+
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
+          <div class="slide-item">
+            <img src="gq3.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="gq1.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="gq2.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
 
   <br/><br/><br/>
   <div class="header-container">
@@ -320,6 +429,28 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
+    const slideWidth = 500;
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0; // 初始化 index
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
   </script>
 </body>
 </html>

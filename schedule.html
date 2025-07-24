@@ -204,7 +204,45 @@
     <a href="2011.html">2011</a>
     <a href="2012.html">2012</a>
   </nav>
+<link href="/_pagefind/pagefind.css" rel="stylesheet" />
 
+<!-- 搜索框 -->
+<input type="text" id="searchInput" placeholder="搜索关键词…" style="width: 100%; padding: 10px; font-size: 16px;" />
+
+<!-- 搜索结果显示区域 -->
+<div id="searchResults" style="margin-top: 20px;"></div>
   </main>
+<script src="/_pagefind/pagefind.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', async () => {
+    const searchInput = document.getElementById("searchInput");
+    const resultsContainer = document.getElementById("searchResults");
+    const pagefind = await window.pagefind();
+
+    searchInput.addEventListener("input", async () => {
+      const query = searchInput.value.trim();
+      resultsContainer.innerHTML = "";
+
+      if (query.length < 2) return;
+
+      const results = await pagefind.search(query);
+
+      for (const result of results.slice(0, 100)) {
+        const data = await result.data();
+
+        const resultDiv = document.createElement("div");
+        resultDiv.style = "border: 1px solid #ccc; margin-bottom: 10px; padding: 10px; background: #f0f8ff; cursor: pointer;";
+        resultDiv.innerHTML = `
+          <strong>${data.meta.title || "无标题页面"}</strong><br>
+          <div>${data.excerpt}</div>
+          <div style="font-size: 0.8em; color: gray;">${data.url}</div>
+        `;
+        resultDiv.onclick = () => location.href = data.url;
+
+        resultsContainer.appendChild(resultDiv);
+      }
+    });
+  });
+</script>
 </body>
 </html>
