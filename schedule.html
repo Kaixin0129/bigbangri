@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BIGBANG完整时间线</title>
   <link rel="icon" href="sli.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/pagefind/pagefind.css">
   <style>
     * {
       margin: 0;
@@ -162,7 +163,33 @@
       color: black;
       cursor: pointer;
     }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 20px;
+    }
 
+    .result-block {
+      background: #222;
+      border: 1px solid #555;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .result-block:hover {
+      background: #333;
+    }
+
+    .result-url {
+      color: #888;
+      font-size: 0.8em;
+    }
   </style>
 </head>
 <body>
@@ -205,44 +232,44 @@
     <a href="2012.html">2012</a>
   </nav>
 <link href="/_pagefind/pagefind.css" rel="stylesheet" />
-
-<!-- 搜索框 -->
-<input type="text" id="searchInput" placeholder="搜索关键词…" style="width: 100%; padding: 10px; font-size: 16px;" />
-
-<!-- 搜索结果显示区域 -->
-<div id="searchResults" style="margin-top: 20px;"></div>
+  <input type="text" id="searchInput" placeholder="请输入关键词后按回车…" />
+  <div id="searchResults"></div>
   </main>
-<script src="/_pagefind/pagefind.js"></script>
-<script>
-  window.addEventListener('DOMContentLoaded', async () => {
-    const searchInput = document.getElementById("searchInput");
-    const resultsContainer = document.getElementById("searchResults");
-    const pagefind = await window.pagefind();
+  <script src="/pagefind/pagefind.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", async () => {
+      const pagefind = await window.pagefind();
+      const input = document.getElementById("searchInput");
+      const resultsDiv = document.getElementById("searchResults");
 
-    searchInput.addEventListener("input", async () => {
-      const query = searchInput.value.trim();
-      resultsContainer.innerHTML = "";
+      input.addEventListener("keydown", async (e) => {
+        if (e.key === "Enter") {
+          const query = input.value.trim();
+          resultsDiv.innerHTML = "";
+          if (query.length < 1) return;
 
-      if (query.length < 2) return;
+          const results = await pagefind.search(query);
 
-      const results = await pagefind.search(query);
+          if (results.length === 0) {
+            resultsDiv.innerHTML = "<p>没有找到匹配内容。</p>";
+            return;
+          }
 
-      for (const result of results.slice(0, 100)) {
-        const data = await result.data();
-
-        const resultDiv = document.createElement("div");
-        resultDiv.style = "border: 1px solid #ccc; margin-bottom: 10px; padding: 10px; background: #f0f8ff; cursor: pointer;";
-        resultDiv.innerHTML = `
-          <strong>${data.meta.title || "无标题页面"}</strong><br>
-          <div>${data.excerpt}</div>
-          <div style="font-size: 0.8em; color: gray;">${data.url}</div>
-        `;
-        resultDiv.onclick = () => location.href = data.url;
-
-        resultsContainer.appendChild(resultDiv);
-      }
+          for (const result of results.slice(0, 100)) {
+            const data = await result.data();
+            const div = document.createElement("div");
+            div.className = "result-block";
+div.innerHTML = `
+  <strong>${data.meta.title || "无标题页面"}</strong><br/>
+  <div>${data.html}</div>
+  <div class="result-url">${data.url}</div>
+`;
+            div.onclick = () => location.href = data.url;
+            resultsDiv.appendChild(div);
+          }
+        }
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
