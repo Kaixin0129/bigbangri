@@ -231,45 +231,47 @@
     <a href="2011.html">2011</a>
     <a href="2012.html">2012</a>
   </nav>
-<link href="/_pagefind/pagefind.css" rel="stylesheet" />
   <input type="text" id="searchInput" placeholder="请输入关键词后按回车…" />
   <div id="searchResults"></div>
   </main>
-  <script src="/pagefind/pagefind.js"></script>
-  <script>
-    window.addEventListener("DOMContentLoaded", async () => {
-      const pagefind = await window.pagefind();
-      const input = document.getElementById("searchInput");
-      const resultsDiv = document.getElementById("searchResults");
+<script src="/pagefind/pagefind.js"></script>
+<script>
+  window.addEventListener("DOMContentLoaded", async () => {
+    const pagefind = await window.pagefind();
+    const input = document.getElementById("searchInput");
+    const resultsDiv = document.getElementById("searchResults");
 
-      input.addEventListener("keydown", async (e) => {
-        if (e.key === "Enter") {
-          const query = input.value.trim();
-          resultsDiv.innerHTML = "";
-          if (query.length < 1) return;
+    input.addEventListener("keydown", async (e) => {
+      if (e.key === "Enter") {
+        const query = input.value.trim();
+        resultsDiv.innerHTML = "";
+        if (query.length < 1) return;
 
-          const results = await pagefind.search(query);
+        const results = await pagefind.search(query);
 
-          if (results.length === 0) {
-            resultsDiv.innerHTML = "<p>没有找到匹配内容。</p>";
-            return;
-          }
-
-          for (const result of results.slice(0, 100)) {
-            const data = await result.data();
-            const div = document.createElement("div");
-            div.className = "result-block";
-div.innerHTML = `
-  <strong>${data.meta.title || "无标题页面"}</strong><br/>
-  <div>${data.html}</div>
-  <div class="result-url">${data.url}</div>
-`;
-            div.onclick = () => location.href = data.url;
-            resultsDiv.appendChild(div);
-          }
+        if (results.length === 0) {
+          resultsDiv.innerHTML = "<p>没有找到匹配内容。</p>";
+          return;
         }
-      });
+
+        for (const result of results.slice(0, 100)) {
+          const data = await result.data();
+          const div = document.createElement("div");
+          div.className = "result-block";
+          div.innerHTML = `
+            <strong>${data.meta.title || "无标题页面"}</strong><br/>
+            <div>${data.html}</div>
+            <div class="result-url">${data.url}</div>
+          `;
+          div.onclick = () => {
+            const base = window.location.origin + window.location.pathname.replace(/[^\/]*$/, '');
+            window.location.href = base + data.url;
+          };
+          resultsDiv.appendChild(div);
+        }
+      }
     });
-  </script>
+  });
+</script>
 </body>
 </html>
