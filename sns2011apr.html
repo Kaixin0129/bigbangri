@@ -170,25 +170,25 @@
       margin-bottom: 20px;
     }
 
-    @media only screen and (max-width: 768px) {
-      html, body {
-        height: 100vh;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
+@media only screen and (max-width: 768px) {
+  html, body {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 
-      body {
-        transform: scale(0.55);
-        transform-origin: top left;
-        width: 181.82%;
-        height: calc(100vh / 0.55);
-      }
+  body {
+    transform: scale(0.5);                  /* 页面缩小为原来的 50% */
+    transform-origin: top left;             /* 缩放从左上角开始 */
+    width: 200%;                            /* 抵消缩放影响，让内容不被压缩 */
+    height: calc(100vh / 0.5);              /* 适配缩放后的高度 */
+  }
 
-      .full-width-line {
-        transform: scaleX(1.8182);
-        transform-origin: left;
-      }
-    }
+  .full-width-line {
+    transform: scaleX(2);                   /* 横线元素横向放大 2 倍 */
+    transform-origin: left;                 /* 从左边起缩放 */
+  }
+}
 
     .content-wrap {
       display: flex;
