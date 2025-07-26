@@ -345,7 +345,7 @@
   .slide-item {
     flex-shrink: 0;
     width: 500px;
-    height: 500px;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -372,7 +372,7 @@
     position: relative;
     overflow: hidden;
     width: 500px;
-    height: 500px;
+    height: 400px;
   }
 
   .nav-button {
@@ -400,14 +400,14 @@
   }
 
   .img-landscape {
-    width: 500px;
-    height: 350px;
+    width: 400px;
+    height: 300px;
     object-fit: cover;
   }
 
   .img-portrait {
-    width: 350px;
-    height: 500px;
+    width: 300px;
+    height: 400px;
     object-fit: cover;
   }
 
@@ -464,8 +464,20 @@
         </div>
       </div>
     </div>
-    <img src="1108021.jpeg" style="width: 300px; height: 400px;"/>
-    <img src="1108022.jpeg" style="width: 400px; height: 300px;"/>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
+          <div class="slide-item">
+            <img src="1108021.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1108022.jpeg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
+    </div>
     <hr class="full-width-line" />
   </div>
 
@@ -478,7 +490,7 @@
         <div class="text-container">
           <p><strong>2011年8月9日</strong> me2day</p>
           <p style="color: #33FFFF;">胜利</p>
-          <p>P2 是朋友发的合照</p>
+          <p>P3 是朋友发的合照</p>
           <p>胜·亲·介为大家介绍胜利的朋友们! 为了VIP (BIGBANG粉丝)们早日脱单，我来介绍一下我的朋友们~</p>
           <p>详细资讯：<a href="https://tieba.baidu.com/p/1169416591?&share=9105&fr=sharewise&is_video=false&unique=178A662F6A8E41574F62564A06B27B94&st=1752132903&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
             target="_blank" style="color: #33FFFF;">bb唯饭后院吧</a></p>
@@ -664,8 +676,20 @@ My friend Seungil said to me“‘Thank you4the gift”,then G-D said “I’ll 
         </div>
       </div>
     </div>
-    <img src="1108251.jpeg" style="width: 400px; height: 350px;"/>
-    <img src="1108252.jpeg" style="width: 300px; height: 400px;"/>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider3', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider3">
+          <div class="slide-item">
+            <img src="1108251.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1108252.jpeg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider3', 'next')">&#8594;</button>
+    </div>
     <hr class="full-width-line" />
   </div>
 
@@ -756,25 +780,6 @@ My friend Seungil said to me“‘Thank you4the gift”,then G-D said “I’ll 
     <hr class="full-width-line" />
   </div>
 
-  <div class="sns-entry" data-member="seungri">
-    <div id="1108222sns-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-      <a href="seungri2011.html#1108222sns" class="jump-button">跳转到 胜利2011 时间线</a>
-    </div>
-    <div style="text-align: center;">
-      <div class="content-wrap">
-        <div class="text-container">
-          <p><strong>2011年8月22日</strong> Twitter</p>
-          <p>@Hwangssabu黄师傅 发<span style="color: #33FFFF;"> 胜利 </span>健身</p>
-          <p>Loneliness of Self-Discipline( ) 106!^^<br/>孤独的自我管理(106次^^)</p>
-          <p>详细资讯：<a href="https://tieba.baidu.com/p/1193438632?&share=9105&fr=sharewise&is_video=false&unique=6BE00F6941EF8C806AE0B1607C925BF5&st=1752139577&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
-            target="_blank" style="color: #33FFFF;">bb唯饭后院吧</a></p>
-        </div>
-      </div>
-    </div>
-    <img src="1108227.jpeg" style="width: 300px; height: 400px;"/>
-    <hr class="full-width-line" />
-  </div>
-
   <div class="sns-entry" data-member="gd seungri">
     <div id="110830sns-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
       <a href="2011aug.html#110830sns" class="jump-button">跳转到 2011 时间线</a>
@@ -790,8 +795,20 @@ My friend Seungil said to me“‘Thank you4the gift”,then G-D said “I’ll 
         </div>
       </div>
     </div>
-    <img src="1108301.jpeg" style="width: 300px; height: 400px;"/>
-    <img src="1108302.jpeg" style="width: 400px; height: 300px;"/>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider4', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider4">
+          <div class="slide-item">
+            <img src="1108301.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1108302.jpeg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider4', 'next')">&#8594;</button>
+    </div>
     <hr class="full-width-line" />
   </div>
 
@@ -811,8 +828,20 @@ My friend Seungil said to me“‘Thank you4the gift”,then G-D said “I’ll 
         </div>
       </div>
     </div>
-    <img src="1108303.jpeg" style="width: 400px; height: 300px;"/>
-    <img src="1108304.jpeg" style="width: 400px; height: 300px;"/>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider5', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider5">
+          <div class="slide-item">
+            <img src="1108303.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1108304.jpeg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider5', 'next')">&#8594;</button>
+    </div>
     <hr class="full-width-line" />
   </div>
 
