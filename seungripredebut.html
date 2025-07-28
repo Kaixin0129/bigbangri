@@ -250,6 +250,81 @@
       }
     }
 
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+  }
+
   </style>
 </head>
 <body>
@@ -297,13 +372,27 @@
   <hr class="full-width-line" />
   <br/>
 
-    <img src="vi5.jpg" style="height: 300px;" />
-    <img src="vi19.jpg" style="height: 300px;" />
-    <img src="vi18.jpg" style="height: 300px;" />
-    <div style="text-align: center;">
-      <p><br/>我是莉莉的兵，所以有很多他的照片，ot4不欢迎哈</p>
+  <div style="text-align: center;">
+    <p>我是莉莉的兵，所以有很多他的照片，ot4不欢迎哈</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
+          <div class="slide-item">
+            <img src="vi5.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="vi19.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="vi18.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
     </div>
-    <br/><br/><br/>
+    <hr class="full-width-line" />
+  </div>
 
   <div id="seungripredebut2004" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
     <a href="seungripredebut.html#seungripredebut2004-jump" class="jump-button">2004</a>
@@ -323,13 +412,27 @@
     </div>
   </div><br/>
 
-    <img src="vi2.jpg" style="height: 400px;" />
-    <img src="vi12.jpg" style="height: 400px;" />
-    <img src="vi13.jpg" style="height: 400px;" />
-    <div style="text-align: center;">
-        <p><br/>我第一次看到小学时期图片还以为不是胜利本人呢，到初中跳舞才瘦下去的</p>
+  <div style="text-align: center;">
+    <p>我第一次看到小学时期图片还以为不是胜利本人呢，到初中跳舞才瘦下去的</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider2', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider2">
+          <div class="slide-item">
+            <img src="vi2.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="vi12.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="vi13.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider2', 'next')">&#8594;</button>
     </div>
-  <hr class="full-width-line" />
+    <hr class="full-width-line" />
+  </div>
 
   <div style="text-align: center;">
     <p style="margin: 0;">下面的视频来自@小猪搞快跑 点击进入观看完整视频</p>
@@ -343,8 +446,8 @@
         <p>该团体活跃于2003年8月-2005年1月期间<br/>主要在光州地区的公共活动和街头表演中亮相</p>
       </div>
     </div>
-    <br/><img src="srhwali.jpg" style="height: 400px;" />
-    <img src="vi7.jpg" style="height: 400px;" />
+    <br/><img src="srhwali.jpg" style="height: 300px;" />
+    <img src="vi7.jpg" style="height: 300px;" />
 
   <div class="content-wrap">
     <div class="video-container">
@@ -366,19 +469,53 @@
   </div>
   <hr class="full-width-line" />
 
-    <img src="vi1.jpg" style="height: 350px;" />
-    <img src="vi4.jpg" style="height: 350px;" />
-    <img src="vi20.jpg" style="height: 350px;" />
-    <img src="vi21.jpg" style="height: 350px;" />
-    <img src="vi6.jpg" style="height: 350px;" />
-    <img src="vii.jpg" style="height: 350px;" />
-    <img src="vi8.jpg" style="height: 350px;" />
-    <img src="vi23.jpg" style="height: 350px;" />
-    <img src="vi9.jpg" style="height: 350px;" />
-    <img src="vi17.jpg" style="height: 350px;" />
-    <img src="vi22.jpg" style="height: 350px;" />
-    <img src="vi24.jpg" style="height: 350px;" />
-    <hr class="full-width-line" /><br/>
+  <div style="text-align: center;">
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider3', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider3">
+          <div class="slide-item">
+            <img src="vi1.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="vi4.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="vi20.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="vi21.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="vi6.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="vii.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="vi8.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="vi23.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="vi9.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="vi17.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="vi22.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="vi24.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider3', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
 
   <div id="seungripredebut2005" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
     <a href="seungripredebut.html#seungripredebut2005-jump" class="jump-button">2005</a>
@@ -404,13 +541,29 @@
         <p>From YouTube by @arashinhwa</p>
       </div>
     </div>
-  </div>    
+  </div>
 
-    <img src="vi14.jpg" style="height: 400px;" />
-    <img src="vi16.jpg" style="height: 400px;" />
-    <img src="vi15.jpg" style="height: 400px;" />
+  <div style="text-align: center;">
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider4', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider4">
+          <div class="slide-item">
+            <img src="vi14.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="vi16.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="vi15.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider4', 'next')">&#8594;</button>
+    </div>
     <hr class="full-width-line" />
-  
+  </div>
+
   <div id="seungripredebut2006" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
     <a href="seungripredebut.html#seungripredebut2006-jump" class="jump-button">2006</a>
   </div>
@@ -488,6 +641,27 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
+    const slideWidth = 500;
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0; // 初始化 index
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
   </script>
 </body>
 </html>

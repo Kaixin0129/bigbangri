@@ -250,13 +250,88 @@
       }
     }
 
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+  }
+
   </style>
 </head>
 <body>
 <main>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="solo.html">Back</a>
+      <a href="taeyang.html">Back</a>
     </nav>
     <div class="title-group">
       <h1>TAEYANG 东永裴<br/>出道前</h1>
@@ -291,13 +366,27 @@
   <p>2001年，两人以嘻哈二人组"GDYB"（G-Dragon & YB Taekwon）的身份参与了一些音乐作品和舞台演出</p><br/>
   <p>2005年，YG娱乐公司放弃该计划并选择组建偶像男团后，加入4名成员，再次组成6人团（准练习生TOP，大声，胜利，张贤胜）</p><br/>
   <p>后张贤胜被淘汰，5人组合以Bigbang命名，于2006年8月19日正式出道</p>
-  <hr class="full-width-line" />
 
-    <img src="yb1.jpg" style="height: 350px;" />
-    <img src="yb2.jpg" style="height: 350px;" />
-    <img src="yb3.jpg" style="height: 350px;" />
-    <br/><br/><br/>
-
+  <div style="text-align: center;">
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
+          <div class="slide-item">
+            <img src="yb1.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="yb2.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="yb3.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
   
   <div id="taeyangpredebut2001" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
     <a href="taeyangpredebut.html#taeyangpredebut2001-jump" class="jump-button">2001</a>
@@ -402,10 +491,26 @@
     <hr class="full-width-line" />
   </div>
 
-    <img src="yb4.jpg" style="height: 350px;" />
-    <img src="yb5.jpg" style="height: 350px;" />
-    <img src="yb6.jpg" style="height: 350px;" />
-    <br/><br/><br/>
+  <div style="text-align: center;">
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider2', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider2">
+          <div class="slide-item">
+            <img src="yb4.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="yb5.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="yb6.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider2', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
 
   <div id="taeyangpredebut2002" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
     <a href="taeyangpredebut.html#taeyangpredebut2002-jump" class="jump-button">2002</a>
@@ -551,6 +656,27 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
+    const slideWidth = 500;
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0; // 初始化 index
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
   </script>
 </body>
 </html>
