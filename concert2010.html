@@ -18,9 +18,176 @@
       color: white;
     }
 
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
     main {
       padding: 40px;
       text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
     }
 
     .content-wrap {
@@ -126,130 +293,6 @@
       padding-left: 20px;
     }
 
-    .image-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 20px auto;
-      max-width: 1500px;
-    }
-
-    .image-row img {
-      width: auto;
-      height: 300px;
-      object-fit: cover;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .full-width-line {
-      width: 90vw;
-      border: none;
-      border-top: 1px solid white;
-      margin: 20px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 15px 25px;
-      background-color: none;
-      border-radius: 5px 18px;
-      border: 2px solid white;
-      transition: background 0.3s ease;
-    }
-
-    .jump-button {
-      padding: 15px 25px;
-      background-color: #111;
-      color: white;
-      border: 2px solid white;
-      border-radius: 5px 18px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      min-width: 120px;
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    .jump-button:hover {
-      background-color: white;
-      color: black;
-      cursor: pointer;
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      margin-bottom: 20px;
-      height: 100px;
-    }
-
-    .title-group {
-      display: inline-block;
-    } 
-
-    .left-nav,
-    .right-nav {
-      position: absolute;
-      top: 10%;
-      transform: translateY(-50%);
-    }
-
-    .left-nav {
-      left: 0;
-    }
-
-    .right-nav {
-      right: 0;
-    }
-
-    .left-nav a,
-    .right-nav a {
-      padding: 18px 30px;
-      font-size: 18px;
-      border-radius: 5px 18px;
-      color: white;
-      text-decoration: none;
-      border: 2px solid white;
-      display: inline-block;
-      transition: background 0.3s ease;
-    }
-
-    .left-nav a:hover,
-    .right-nav a:hover {
-      background-color: white;
-      color: #111;
-      cursor: pointer;
-    }
-
-    @media only screen and (max-width: 768px) {
-      html, body {
-        height: 100vh;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
-
-      body {
-        transform: scale(0.59);
-        transform-origin: top left;
-        width: 169.5%;
-        height: calc(100vh / 0.59);
-      }
-
-      .full-width-line {
-        transform: scaleX(1.6949);
-        transform-origin: left;
-      }
-    }
-
     .jump-button-1 {
       padding: 15px 25px;
       background-color: #111;
@@ -308,6 +351,9 @@
     </div>
     <div id="sonic" style="display: flex; align-items: center; gap: 10px;">
       <a href="concert2010.html#sonic-jump" class="jump-button">Summer Sonic</a>
+    </div>
+    <div id="solar" style="display: flex; align-items: center; gap: 10px;">
+      <a href="concert2010.html#solar-jump" class="jump-button-1">太阳的Solar Concert</a>
     </div>
     <div id="pop" style="display: flex; align-items: center; gap: 10px;">
       <a href="concert2010.html#pop-jump" class="jump-button">Korean Pop Night</a>
@@ -468,7 +514,6 @@
         <p><strong>2010年3月6日</strong></p>
         <p>Lotte Duty Free Concert</p><br/>
         <p>Gara Gara Go</p>
-        <p>TOP饭拍视频（大哥Muslim？）</p>
       </div>
     </div>
     <div class="content-wrap">
@@ -477,7 +522,6 @@
       </div>
       <div class="text-container">
         <p>声をきかせて</p>
-        <p>TOP饭拍视频（大哥Muslim？）</p>
       </div>
     </div>
     <hr class="full-width-line" />
@@ -634,13 +678,16 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/VSlSew2BqwU?si=4dF1JHpDKAogojrk&amp;start=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Gara Gara Go</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/JOKW1fkzxZo?si=d78MN1armAydURQf&amp;start=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Talk环节</p>
+      </div>
     </div>
-  </div>
-  <div style="text-align: center;">
-    <p>左边饭拍视频Gara Gara Go，右边饭拍视频Talk环节</p>
   </div>
   <hr class="full-width-line" />
 
@@ -660,6 +707,110 @@
     </div>
     <hr class="full-width-line" />
   </div>
+
+  <div id="solar-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="concert2010.html#solar" class="jump-button-1">太阳的Solar Concert</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@宽叔赛高 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=8143344&bvid=BV14s411b7zT&cid=13391218&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2010年9月25-26日</strong></p>
+        <p>Solar Concert</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+  <div style="text-align: center;">
+    <div id="100925" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2010sept.html#100925-jump" class="jump-button">跳转到 2010 时间线</a>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <p>2010年9月25日 第一天</p>
+  </div><br/>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/Zi7Dzo4Z8cY?si=FJdk5PDZaZ4dzp5b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>半裸贝贝</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/hLmAHkLthbc?si=f18P03CSI0Jsk0QA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Wedding Dress</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/AYKCqf0mzPo?si=SA--5pPYdN-JW0y1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Baby I'm Sorry</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/2pfb_uHeOvA?si=Lx2p5RUnqKpmQikd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>My Girl</p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+  <div style="text-align: center;">
+    <p>2010年9月26日 第二天</p>
+  </div><br/>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/Mcpx_djVrkY?si=YgxTRhEvUhaV7DQr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Slow Jam</p>
+        <ul>
+          <li>IU当嘉宾</li>
+        </ul>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/fg29PHndljw?si=G1gXulUPdLtqpJLM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>IU 第二视角</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/6IY7HaVz0rU?si=9FJvaD6bpdeuiVCr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Only Look At Me</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/iMYfG1fdYxs?si=eaZEhckzRqkngQhO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Wedding Dress</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/d_ptKgvArrY?si=HKEccxfrFMvL6Isk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>After You Fall Asleep</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/2j3eMaXEXvs?si=zIK6NOqddJXjwL04" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Connection</p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
 
   <div id="pop-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
     <a href="concert2010.html#pop" class="jump-button">Korean Pop Night</a>
@@ -686,36 +837,43 @@
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/oumwLO1RpJA?si=wWiJZGjPYvtvdpEM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Gara Gara Go</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/sHr-IulYWpA?si=Y708Rcw10lFAJ0pn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Number 1</p>
+      </div>
     </div>
-  </div>
-  <div style="text-align: center;">
-    <p>左边GD饭拍视频Gara Gara Go，右边GD饭拍视频Number 1</p>
   </div>
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/uRCBVGk9UjA?si=FJzTNyXHvkc45neP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Lies</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/5rY2311oojs?si=4qlBMq5C4h0U7uXe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Last Farewell</p>
+      </div>
     </div>
-  </div>
-  <div style="text-align: center;">
-    <p>左边GD饭拍视频Lies，右边饭拍视频Last Farewell</p>
   </div>
   <div class="video-row">
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/iB6ZdgfntQU?si=aMoiKZq5pjej0aDB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>GD和TOP在舞台上被采访</p>
+      </div>
     </div>
     <div class="video-box">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/WfyhqAmIuSw?si=GV7-TRWxJc5iFHJ5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
   </div>
-  <div style="text-align: center;">
-    <p>左边视频GD和TOP在舞台上被采访，右边饭拍视频</p>
-  </div>
+  <hr class="full-width-line" />
 
   <br/><br/><br/>
   <div class="header-container">

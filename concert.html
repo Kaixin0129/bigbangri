@@ -163,6 +163,48 @@
       cursor: pointer;
     }
 
+    .jump-button-2 {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid #33FFFF;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button-2:hover {
+      background-color: white;
+      color: #33FFFF;
+      cursor: pointer;
+    }
+
+    .two-column-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 100px;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    .column {
+      width: 45%;
+      text-align: left;
+      color: white;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: white;
+      height: auto;
+    }
+
   </style>
 </head>
 <body>
@@ -193,7 +235,7 @@
   <h1 style="margin-bottom: 40px;">·官拍演唱会·</h1>
   <p>Select a year section from the navigation bar below.</p>
   <br/><br/>
-
+  <p>包含客串他人的演唱会</p>
     <nav>
       <a href="concert2006.html" class="jump-button">2006</a>
       <a href="concert2007.html" class="jump-button">2007</a>
@@ -204,8 +246,57 @@
       <a href="concert2012.html" class="jump-button">2012</a>
       <a href="concert2013.html" class="jump-button">2013</a>
     </nav>
-  <p style="color: #33FFFF;"><br/>蓝色边框是Bigbang自己举办的演唱会</p>
-  <p><br/>白色则是客串其他人的演唱会</p>
+
+  <hr class="full-width-line" /><br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="wantu" style="display: flex; align-items: center; gap: 10px;">
+      <a href="concert2007.html#wantu-jump" class="jump-button">Want U Concert</a>
+    </div>
+    <div id="thegreat" style="display: flex; align-items: center; gap: 10px;">
+      <a href="concert2007.html#thegreat-jump" class="jump-button">The Great Concert</a>
+    </div>
+    <div id="global" style="display: flex; align-items: center; gap: 10px;">
+      <a href="concert2008.html#global-jump" class="jump-button">Global Warning Tour</a>
+    </div>
+    <div id="standup" style="display: flex; align-items: center; gap: 10px;">
+      <a href="concert2008.html#standup-jump" class="jump-button">Stand Up Tour</a>
+    </div>
+    <div id="big" style="display: flex; align-items: center; gap: 10px;">
+      <a href="concert2009.html#big-jump" class="jump-button">Bigshow 2009</a>
+    </div>
+    <div id="bs" style="display: flex; align-items: center; gap: 10px;">
+      <a href="concert2010.html#bs-jump" class="jump-button">Bigshow 2010</a>
+    </div>
+    <div id="bs" style="display: flex; align-items: center; gap: 10px;">
+      <a href="concert2010.html#bs-jump" class="jump-button">Bigshow 2011</a>
+    </div>
+    <div id="love" style="display: flex; align-items: center; gap: 10px;">
+      <a href="concert2011.html#love-jump" class="jump-button">Love & Hope Tour</a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <a href="alive2012.html" class="jump-button-2">Alive Galaxy Tour 2012</a>
+    </div>
+  </div>
+
+  <div class="two-column-wrapper">
+    <div class="column left">
+      <p>GD solo</p><br/>
+      <div id="sal" style="display: flex; align-items: center; gap: 10px;">
+        <a href="concert2009.html#sal-jump" class="jump-button">Shine A Light</a>
+      </div>
+    </div>
+    <div class="column right">
+      <p>太阳 solo</p><br/>
+      <div id="hot" style="display: flex; align-items: center; gap: 10px;">
+        <a href="concert2008.html#hot-jump" class="jump-button">Hot Concert</a>
+      </div><br/>
+      <div id="solar" style="display: flex; align-items: center; gap: 10px;">
+        <a href="concert2010.html#solar-jump" class="jump-button">Solar Concert</a>
+      </div>
+    </div>
+  </div>
+
 </main>
 </body>
 </html>
