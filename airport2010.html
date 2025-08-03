@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GD & TOP 2012</title>
+  <title>机场照2010</title>
   <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
@@ -293,142 +293,138 @@
       padding-left: 20px;
     }
 
-  </style> 
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  </style>
 </head>
 <body>
 <main>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="gdtop.html">Back</a>
+      <a href="airport.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>GD & TOP小分队 2012年</h1>
+      <h1>机场照2010年</h1>
     </div>
     <nav class="right-nav">
-      <a href="gdtop2013.html">2013</a>
+      <a href="airport2011.html">2011</a>
     </nav>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-    <div id="gdtop2012-jan-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="gdtop2012.html#gdtop2012-jan" class="jump-button">1月</a>
+    <div id="airport2010-apr-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2010.html#airport2010-apr" class="jump-button">4月</a>
     </div>
-    <div id="gdtop2012-mar-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="gdtop2012.html#gdtop2012-mar" class="jump-button">3月</a>
-    </div>
-    <div id="gdtop2012-apr-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="gdtop2012.html#gdtop2012-apr" class="jump-button">4月</a>
-    </div>
-    <div id="gdtop2012-dec-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="gdtop2012.html#gdtop2012-dec" class="jump-button">12月</a>
+    <div id="airport2010-oct-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2010.html#airport2010-oct" class="jump-button">10月</a>
     </div>
   </div>
   <br/><br/>
   <hr class="full-width-line" />
 
-    <div id="gdtop2012-jan" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
-      <a href="gdtop2012.html#gdtop2012-jan-jump" class="jump-button">1月</a>
+    <div id="airport2010-apr" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2010.html#airport2010-apr-jump" class="jump-button">4月</a>
     </div><br/>
 
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/9DDpo7qQQDI?si=x1qbiYFBDCjw0Fly" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/fDSwHV9M0CE?si=xWK6GrcMLm_yw-In" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <div class="text-container">
-        <p><strong>2012年1月1日</strong></p>
-        <p>GD&TOP参与Pixie Lott的日语专辑Young Foolish Happy<br/>演唱Dancing On My Own (Feat. G-Dragon & TOP)</p>
+        <p><strong>2010年4月5日</strong></p>
+        <p>Suvarnabhumi Airport Thailand 离开泰国</p>
       </div>
     </div>
-    <hr class="full-width-line" />  
+    <hr class="full-width-line" />
   </div>
 
-    <div id="gdtop2012-mar" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
-      <a href="gdtop2012.html#gdtop2012-mar-jump" class="jump-button">3月</a>
-    </div><br/>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="text-container">
-        <p><strong>2012年3月22日</strong></p>
-        <p>GD & TOP专辑 被STEREOGUM评选为：</p>
-        <ul>
-          <li>20 Best K-Pop Videos赢得 第四名</li>
-        </ul><br/>
-        <p>详细资讯：<a href="https://www.stereogum.com/983191/the-20-best-k-pop-videos/lists/video-list/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
-            STEREOGUM</a></p>
-      </div>
-    </div>
-    <hr class="full-width-line" />  
-  </div>
-
-    <div id="gdtop2012-apr" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
-      <a href="gdtop2012.html#gdtop2012-apr-jump" class="jump-button">4月</a>
-    </div><br/>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@nagexiaohai 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=6319809&bvid=BV1Ms411t7Em&cid=10268532&p=73" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2012年4月21日</strong></p>
-        <p>SBS K-POP STAR 预告</p>
-        <ul>
-          <li>GD&TOP cut</li>
-        </ul>
-      </div>
-    </div>
-    <hr class="full-width-line" />  
-  </div>
-
-  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
-    <div class="text-container" style="max-width: 400px; text-align: left;">
-    <p><strong>2012年4月22日 GD&TOP 参与 SBS K-POP STAR</strong></p>
-      <ul>
-        <li>Oh Yeah</li>
-        <li>朴智敏合作舞台</li>
-      </ul>
-    </div>
-    <div id="stage120422" style="padding-top: 100px; margin-top: -100px;">
-      <a href="stage2012janjune.html#stage120422-jump" class="jump-button">打歌舞台视频指路</a>
-    </div>
-  </div>
-  <hr class="full-width-line" />
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@nagexiaohai 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=6319809&bvid=BV1Ms411t7Em&cid=10268534&p=75" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2012年4月24日 播出</strong></p>
-        <p>SBS K-POP STAR</p>
-        <p>彩排</p>
-        <ul>
-          <li>GD&TOP 与 朴智敏</li>
-        </ul>
-      </div>
-    </div>
-    <hr class="full-width-line" />  
-  </div>
-
-    <div id="gdtop2012-dec" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
-      <a href="gdtop2012.html#gdtop2012-dec-jump" class="jump-button">12月</a>
+    <div id="airport2010-oct" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2010.html#airport2010-oct-jump" class="jump-button">10月</a>
     </div><br/>
 
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114951863669460&bvid=BV15UhJzgE53&cid=31415603123&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/RULkSqeeeHQ?si=3yjKS2YlF8A9JwQ3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <div class="text-container">
-        <p><strong>2012年12月5日</strong></p>
-        <p>High High (Japanese Ver.)</p>
-        <p>收录在SPECIAL FINAL IN DOME MEMORIAL COLLECTION</p><br/>
+        <p><strong>2010年10月23日</strong></p>
+        <p>Singapore Korean Pop Night 2010</p>
+        <p>抵达新加坡Changi Airport</p>
       </div>
     </div>
     <hr class="full-width-line" />
@@ -437,13 +433,13 @@
   <br/><br/><br/>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="gdtop.html">Back</a>
+      <a href="airport.html">Back</a>
     </nav>
     <div class="title-group">
       <div id="footer"></div>
     </div>    
     <nav class="right-nav">
-      <a href="gdtop2013.html">2013</a>
+      <a href="airport2011.html">2011</a>
     </nav>
   </div>
 
@@ -455,6 +451,27 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
+    const slideWidth = 500;
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0;
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
   </script>
 </body>
 </html>
