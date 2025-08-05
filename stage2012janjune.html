@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>打歌舞台2012年1-6月</title>
+  <title>打歌舞台2012年1-4月</title>
   <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
@@ -293,6 +293,81 @@
       padding-left: 20px;
     }
 
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+  }
+
   </style>
 </head>
 <body>
@@ -302,10 +377,10 @@
       <a href="stage2012.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>打歌舞台2012年1-6月</h1>
+      <h1>打歌舞台2012年1-4月</h1>
     </div>
     <nav class="right-nav">
-      <a href="stage2012septdec.html">6-12月</a>
+      <a href="stage2012septdec.html">6-10月</a>
     </nav>
   </div>
 
@@ -318,9 +393,6 @@
     </div>
     <div id="stage2012-apr-jump" style="display: flex; align-items: center; gap: 10px;">
       <a href="stage2012janjune.html#stage2012-apr" class="jump-button">4月</a>
-    </div>
-    <div id="stage2012-june-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="stage2012janjune.html#stage2012-june" class="jump-button">6月</a>
     </div>
   </div>
   <br/>
@@ -487,7 +559,7 @@
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/MBEsIkOXXwg?si=qzqIRc36qn-S7U0m" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/MBEsIkOXXwg?si=4YyBj38czko7OAeH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <div class="text-container">
         <p>Fantastic Baby</p>
@@ -638,26 +710,6 @@
   </div>
   <hr class="full-width-line" />
 
-    <div id="stage2012-june" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-      <a href="stage2012janjune.html#stage2012-june-jump" class="jump-button">6月</a>
-    </div><br/>
-
-  <div id="stage120630-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <p style="margin: 0;">2012年6月30日 Happy Music</p>
-    <a href="2012june.html#stage120630" class="jump-button">跳转到 2012 时间线</a>
-  </div><br/>
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3372404&bvid=BV1As411o7Nu&cid=5635660&p=37" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p>Monster</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />  
-  </div>
-
   <br/><br/><br/>
   <div class="header-container">
     <nav class="left-nav">
@@ -667,7 +719,7 @@
       <div id="footer"></div>
     </div>    
     <nav class="right-nav">
-      <a href="stage2012septdec.html">6-12月</a>
+      <a href="stage2012septdec.html">6-10月</a>
     </nav>
   </div>
 
@@ -679,6 +731,28 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
+    const slideWidth = 500;
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0;
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
   </script>
 </body>
 </html>
