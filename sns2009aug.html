@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SNS 2009年8月</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.5);
+        transform-origin: top left;
+        width: 200%;
+        height: calc(100vh / 0.5);
+      }
+
+      .full-width-line {
+        transform: scaleX(2);
+        transform-origin: left;
+      }
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .filter-dropdown-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+    margin-top: -50px;
+  }
+
+  .filter-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .filter-button {
+    padding: 15px 25px;
+    background-color: #111;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px 18px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .member-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    margin-top: 5px;
+  }
+
+  .member-list button {
+    margin: 6px 0;
+  }
+
+  #noContentMessage {
+    padding: 15px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 30px auto 0;
+  }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+  }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="sns2009.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>SNS 2009年8月</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="sns2009sept.html">9月</a>
+    </nav>
+  </div>
+
+  <div class="filter-dropdown-wrapper">
+    <div class="filter-dropdown" id="filterDropdown" onclick="toggleFilterLock()" onmouseenter="showMemberList()" onmouseleave="hideMemberList()">
+      <div class="filter-button">筛选</div>
+      <div class="member-list" id="memberList">
+        <button class="jump-button" onclick="filterSNS('all')">全部</button>
+        <button class="jump-button" onclick="filterSNS('gd')">G-Dragon</button>
+        <button class="jump-button" onclick="filterSNS('top')">TOP</button>
+        <button class="jump-button" onclick="filterSNS('taeyang')">太阳</button>
+        <button class="jump-button" onclick="filterSNS('daesung')">大声</button>
+        <button class="jump-button" onclick="filterSNS('seungri')">胜利</button>
+      </div>
+    </div>
+  </div>
+
+  <h1 id="currentFilter" style="text-align:center; margin-top: 30px; margin-bottom: 10px; color: #33FFFF; display: none;"></h1>
+  <p id="currentFilter1" style="text-align:center; margin-bottom: 30px; color: white; display: none;"></p>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月5日</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>大家好，我是权志龙，吓了一跳吧？以后可以在Me2day更加近距离地见到我啦！那就再见啦～^^ </p>
+          <p>「GD开通了me2day、三天内粉丝关注超过19000人」</p>
+        </div>
+      </div>
+    </div>
+    <img src="090805.jpeg" style="width: 400px; height: 120px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月7日 00:27</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>나의비타민워러<br/>我的维他命water</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="090807.jpeg" style="width: 400px; height: 300px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月7日 01:52</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>이건진짜비타민워러;아까착각을해서그만우리집강아지사진을..흥<br/>
+这个是真的维他命water了;刚才不小心弄错把家里的狗狗照片...哼</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908071.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月7日 19:53</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>달나라G.T 자전거사면바로사라질꺼에요 훗
+            <br/>月球G.T 买自行车的话马上就会消失 呼</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908072.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月7日 20:03</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>새신을신고뛰어보자폴짝^^ 아 이거은근히중독인데요?ㅎㅎ
+<br/>穿新鞋跑跑 嗖^^啊 这个会暗暗中毒喔？呵呵</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908073.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月8日 03:24</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>이건과연무얼까∼요? 참고로저는뮤직비디오촬영중ㅠ맞추시는분께는cd가..헤헤
+<br/>这是怎么回事呢∼呢？提示一下，我正在拍摄mvㅠ答对的人会有cd哦..呵呵</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/1341216712?&share=9105&fr=sharewise&is_video=false&unique=0F2721D838CEAAC559C633573D54D191&st=1752073424&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            唯权志龙吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="090808.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月8日 12:10</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>굿모닝∼제가항상자고일어나는침대입니다ㅎㅎ신기하죠?자 그럼오늘도쥐투!스따트
+<br/>早上好~这就是我每天醒来的床哦 呵呵 是不是很神奇？好啦，那么今天也G2…start</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/1341216712?&share=9105&fr=sharewise&is_video=false&unique=0F2721D838CEAAC559C633573D54D191&st=1752073424&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            唯权志龙吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908081.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月8日 16:08</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>안녕하세요 빅뱅!!!ㅋㅋ <br/>
+你好,big bang !kk</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/1341216712?&share=9105&fr=sharewise&is_video=false&unique=0F2721D838CEAAC559C633573D54D191&st=1752073424&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            唯权志龙吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908082.jpeg" style="width: 400px; height: 300px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月8日 19:36</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>이곳은또어딜까요?ㅎㅎ아 힘들지만열심히하고있으니계속기대해주세요^^ 
+<br/>这里是哪里呢？哈哈，虽然有点累，但我会继续努力的，请继续期待吧^^</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/1341216712?&share=9105&fr=sharewise&is_video=false&unique=0F2721D838CEAAC559C633573D54D191&st=1752073424&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            唯权志龙吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908083.jpeg" style="width: 400px; height: 300px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月9日 06:25</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>R.I.P. M.J. 네 저는이제집에들어왔습니다 굉장히피곤했지만재밌게뮤직비디오를만들고있어요 어서자고내일또여러가지소식전할께요 쥐투는계속됩니다 모두잘자요^^
+<br/>R.I.P. M.J. 我回到家了,虽然非常的疲劳 但是这一天我在很开心的拍MV,我要赶紧睡觉了,明天再给大家传递消息吧 G2会一直继续的 大家都晚安</p>
+          <p>「G2是me2day原来的名字」</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="090809.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd seungri">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月9日 19:46</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>오늘의쥐투!!톰과제리라고들부르시지만글쎄..여기선톰이항상이긴답니다^^
+<br/>今天的G2!!虽然大家都叫我们汤姆和杰瑞..但是在这里汤姆才是天天赢的^^</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908091.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd taeyang">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月9日 21:21</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>영배랑가호∼보스는잘크고있나..ㅜ <br/>
+永裴和家虎～不知道BOSS过得好不好阿..T</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908092.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd daesung">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月9日 22:10</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>이번엔대성이몰카!!훗 <br/>
+这次 我偷拍了大成!! 哈</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908093.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd top">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月9日 22:34</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>오늘의몰카마지막주자 티오페이∼ㅋ <br/>
+最后偷拍的主人TOP∼ㅋ</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908094.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月9日 23:15</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>긴급속보입니다!제앨범이이제얼마안남았는데요 한곡을조금만먼저공개할까말까생각중이에요 반응보고결정할께요∼소문내요빨리^^
+<br/>以下是最新消息!我专辑的发行日已经不远了.所以 我的想法是先发布一首歌. 然后看大家的反响, 我再做其他决定. 快快把消息传开吧^^</p>
+          <p>「YG旧大楼的练习室」</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908095.jpeg" style="width: 400px; height: 300px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月10日 01:14</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>아 무슨노래부터공개할까..고민되네 흠 <br/>
+啊 从什么歌曲开始公开呢..真是苦恼啊 哎</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="090810.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月10日 17:21</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>그리고이신발도무척이나잘나왔다 저 뒷발에찍히면..와우!<br/>
+终于到了！！很满意的箱子和旱冰鞋~^^啊 真开心~~嘿嘿</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908101.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月10日 17:24</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>그리고이신발도무척이나잘나왔다 저 뒷발에찍히면..와우!<br/>
+还有这鞋子也很好看 要是脚后跟被戳一下的话...哇哦！</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908102.jpeg" style="width: 350px; height: 300px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月10日</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>이헤드폰도오늘도착! 다세상에하나밖에없는권지용에디션! 부럽죠?ㅎㅎ<br/>
+这个耳机也是今天到的！全世界独一无二的权志龙版！很羡慕吧？哈哈</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908103.jpeg" style="width: 300px; height: 400px;"/>
+    <img src="0908105.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月10日 17:45</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>아 그리고오늘밤에 다른한곡쥐투에서 또!!공개예정~~후훗 기대해주시고소문내러가요들∼바이바이
+<br/>啊 还有今天晚上 另一首歌会在G2上！！准备公开~~呼呼 请期待并且把消息传出去吧~~byebye</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908104.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月10日 22:40</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>오늘 쥐투!에서 공개하기로 한 노래…. is all set~ 두구두구두구둑.. ㅋ
+<br/>今天在G2!里打算公开的曲目...is all set~ du gu du gu(模仿鼓声)</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            路过的一只吧</a></p>
+        </div>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月11日</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>잘자고있어요? 전아직도열심히촬영중이랍니다 이 사진은일본에서무지개가너무예쁘길래ㅎ 아무튼모두굿나잇^^ 아 그리고오늘은타이틀곡공개하는거알죠? 그때까지 잘참아요^^ 히히
+<br/>睡得正香吗?我现在还在努力拍摄中这照片是在日本的彩虹很漂亮 呵 不管怎么样大家晚安^啊还有今天要公开主打歌都知道吧?在那之前忍忍吧^^嘻嘻</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/1457996880?&share=9105&fr=sharewise&is_video=false&unique=DB8A65402D54B40B69BACBF8FD2A251F&st=1752168044&client_type=1&client_version=12.85.1.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            g-dragon吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="090811.jpeg" style="width: 400px; height: 300px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月11日 10:53</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>여러분 드디어뮤직비디오촬영이끝났어요 정말열심히찍었답니다 비가오네요 우산챙기시고 오늘D-DAY 이따봐요 난좀잘래요 바이^ ^
+<br/>各位 MV拍摄终于结束了 真的很认真地拍摄了下雨了哎 要带雨伞喔 今天D-DAY待会见 我要睡一下 bye^ ^</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/1457996880?&share=9105&fr=sharewise&is_video=false&unique=DB8A65402D54B40B69BACBF8FD2A251F&st=1752168044&client_type=1&client_version=12.85.1.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            g-dragon吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="0908111.jpeg" style="width: 300px; height: 400px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月11日 15:53</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>아 자꾸 이런안되는데 타이틀곡 공개 카운트다운 들어갑니다 즐겨요~<br/>
+啊 其实我不能总这样的 主打歌公开倒计时开始 希望喜欢～</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/1457996880?&share=9105&fr=sharewise&is_video=false&unique=DB8A65402D54B40B69BACBF8FD2A251F&st=1752168044&client_type=1&client_version=12.85.1.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            g-dragon吧</a></p>
+        </div>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月11日 17:06</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>내가 가장 자신있는 스타일?!어때요 맘에들어요? HEARTBREKER<br/>
+我最有自信的Style？！怎么样 喜欢吗？HEARTBREAKER<br/>
+【更新音频 HEARTBREAKER325片段】</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/1457996880?&share=9105&fr=sharewise&is_video=false&unique=DB8A65402D54B40B69BACBF8FD2A251F&st=1752168044&client_type=1&client_version=12.85.1.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            g-dragon吧</a></p>
+        </div>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月17日</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>오랫만이에요 여러분D-DAY 1입니다!<br/>
+很久不见了 各位今天是D-DAY了！</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/1457996880?&share=9105&fr=sharewise&is_video=false&unique=DB8A65402D54B40B69BACBF8FD2A251F&st=1752168044&client_type=1&client_version=12.85.1.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            g-dragon吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="090817.jpeg" style="width: 400px; height: 300px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="sns-entry" data-member="gd">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2009年8月30日</strong> me2day</p>
+          <p style="color: #ff8dd3;">GD</p>
+          <p>디데이기념 본인인증샷!화이팅^^<br/>
+D-DAY纪念 本人认证shot！fighting ^ ^</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/1457996880?&share=9105&fr=sharewise&is_video=false&unique=DB8A65402D54B40B69BACBF8FD2A251F&st=1752168044&client_type=1&client_version=12.85.1.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            g-dragon吧</a></p>
+        </div>
+      </div>
+    </div>
+    <img src="090830.jpeg" style="width: 400px; height: 300px;"/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="noContentMessage" style="display:none; text-align:center; color: white; font-size: 40px; margin-top: 30px;">
+    此成员没有发过贴文
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="sns2009.html" id="backButton">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="sns2009sept.html" id="nextButton">9月</a>
+    </nav>
+  </div>
+
+</main>
+  <script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+
+  let filterLocked = false;
+
+  function toggleFilterLock() {
+    filterLocked = !filterLocked;
+    updateMemberListDisplay();
+  }
+
+  function showMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'flex';
+    }
+  }
+
+  function hideMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'none';
+    }
+  }
+
+  function updateMemberListDisplay() {
+    const memberList = document.getElementById('memberList');
+    memberList.style.display = filterLocked ? 'flex' : 'none';
+  }
+
+  function filterSNS(member) {
+    const entries = document.querySelectorAll('.sns-entry');
+    const message = document.getElementById('noContentMessage');
+    const backButton = document.getElementById('backButton');
+    const nextButton = document.getElementById('nextButton');
+    const footer = document.getElementById('footer');
+    const currentFilter = document.getElementById('currentFilter');
+    const currentFilter1 = document.getElementById('currentFilter1');
+
+    const memberNames = {
+      all: '全部',
+      gd: 'G-Dragon',
+      top: 'TOP',
+      taeyang: '太阳',
+      daesung: '大声',
+      seungri: '胜利'
+    };
+
+    if (memberNames[member]) {
+      currentFilter.textContent = `当前筛选：${memberNames[member]}`;
+      currentFilter1.textContent = `筛选出来的图片也包括成员与别人的合照贴文`;
+      currentFilter.style.display = 'block';
+      currentFilter1.style.display = 'block';
+    } else {
+      currentFilter.style.display = 'none';
+      currentFilter1.style.display = 'none';
+    }
+
+    let hasContent = false;
+
+    entries.forEach(entry => {
+      const members = entry.dataset.member.split(' ');
+      if (member === 'all' || members.includes(member)) {
+        entry.style.display = 'block';
+        hasContent = true;
+      } else {
+        entry.style.display = 'none';
+      }
+    });
+
+    if (!hasContent && member !== 'all') {
+      if (message) message.style.display = 'block';
+      if (backButton) backButton.style.display = 'none';
+      if (nextButton) nextButton.style.display = 'none';
+      if (footer) footer.style.display = 'none';
+    } else {
+      if (message) message.style.display = 'none';
+      if (backButton) backButton.style.display = 'inline-block';
+      if (nextButton) nextButton.style.display = 'inline-block';
+      if (footer) footer.style.display = 'block';
+    }
+  }
+
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
+    const slideWidth = 500;
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0;
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+</script>
+</body>
+</html>

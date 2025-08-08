@@ -486,8 +486,8 @@
       </div>
       <div class="text-container">
         <p>Bigbang参与的首个电台</p>
-        <p><strong>朴京林打破无聊</strong></p>
-        <p>2006年11月27日</p>
+        <p><strong>2006年11月27日</strong></p>
+        <p>朴京林打破无聊</p>
         <p>有中字</p>
         <p><strong>没有什么节目亮点：</strong></p>
         <ul>
@@ -499,6 +499,38 @@
     </div>
     <hr class="full-width-line" />
   </div>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="sns-heying12">
+        <a href="tag-sns-heying.html#sns-heying12" class="tag-link"># SNS合影</a>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2006年11月29日</strong></p>
+        <p>朴俊亨的FM人气歌谣</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/5012724311131480" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="slider-container">
+    <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+    <div class="slider-wrapper">
+      <div class="slider" id="slider1">
+        <div class="slide-item">
+          <img src="0611292.jpg" class="slide-img img-landscape" />
+        </div>
+        <div class="slide-item">
+          <img src="0611293.jpg" class="slide-img img-landscape" />
+        </div>
+      </div>
+    </div>
+    <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
+  </div>
+  <hr class="full-width-line" />
 
     <div id="gri2006-dec" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
       <a href="gri2006.html#gri2006-dec-jump" class="jump-button">12月</a>
@@ -596,6 +628,28 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+      
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
+    const slideWidth = 500;
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0;
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
   </script>
 </head>
 </html>
