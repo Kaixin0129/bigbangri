@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monsant Cafe</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="gdbusiness.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>Monsant Cafe</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="monsant2015-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="monsant.html#monsant2015" class="jump-button">2015</a>
+    </div>
+    <div id="monsant2016-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="monsant.html#monsant2016" class="jump-button">2016</a>
+    </div>
+    <div id="monsant2017-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="monsant.html#monsant2017" class="jump-button">2017</a>
+    </div>
+    <div id="monsant2018-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="monsant.html#monsant2018" class="jump-button">2018</a>
+    </div>
+  </div><br/>
+  <hr class="full-width-line" />
+
+  <div id="monsant2015" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="monsant.html#monsant2015-jump" class="jump-button">2015</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="monstant-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2015oct.html#monstant" class="jump-button">跳转到 2015 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>GD在济州岛开设咖啡馆<br/>名为 Cafe Mônsant De Aewol，简称 Monsant Cafe</p>
+        <p>是一家海滨餐厅位于涯月（Aewol），该地区是毗邻自然保护区</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2015年9月9日</strong></p>
+        <p>@064xy</p>
+        <p>三个想当潜水员的老头 #济州岛 #涯月 #日落 #石头爷爷房 #凸顶石 #带鱼 #鲍鱼 #黑猪 #海胆 #石章鱼 #胡萝卜 #牛都花生 #冰箱 #请</p>
+        <p>「GD 在咖啡店合照」</p>
+        <p>详细资讯：<a href="https://ameblo.jp/bigban-go/entry-12071403727.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Ameblo</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider9', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider9">
+          <div class="slide-item">
+            <img src="150911.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1509111.webp" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider9', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2015年9月26日</strong></p>
+        <p>咖啡馆装修中....</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/g-dragons-cafe-partially-opens-in-jeju-island/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
+          <div class="slide-item">
+            <img src="150926.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1509261.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1509262.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1509263.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1509264.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1509265.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1509266.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2015年9月27日</strong></p>
+        <p>@hyukoh_ 队长吴赫</p>
+        <p>济州岛的大家好。我将于下午6点在Monsant举行一场游击音乐会。一会儿见〜</p>
+        <p>详细资讯：<a href="https://weibo.com/6027850653/3891723295784484" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Ameblo</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="150927.jpg" height="400" width="300" />
+  <hr class="full-width-line" />
+
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/JaJLuyFdPgw?si=CsPNoYtDOG7z4WNU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/AWTjmdR4Dho?si=zG4RAzRt1Q1woNDj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/vF_38zZaQ4I?si=8yz4LESS3fERVOhZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/XHVSeIZGnKQ?si=I9YXK0sQg25SPFJd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2015年9月27日</strong></p>
+        <p>韩国独立乐队Hyukoh成为首位在咖啡馆演出</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2015年10月20日 开业</strong></p>
+        <p>目前咖啡馆未被关闭和改名</p>
+        <p>Mônsant, 25-4 Aewol-ro 1-gil, Aewol-eup, Jeju-si, Jeju-do, South Korea</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>咖啡馆占地200平方米，由隈研吾设计的玄武岩艺术家工作室群、文勋设计的雕塑住宅以及Mass Studies 设计的 Daun 互联网总部</p>
+        <p>建筑师Platform_a表示：我们的目标不是通过景观来强调建筑，而是通过建筑来凸显景观。我们希望这座建筑能够融入周围的景观，作为这个项目的起点。在这里，建筑只不过是维护和扩展现有环境的一种媒介</p>
+        <p>详细资讯：<a href="https://www.dezeen.com/2016/02/04/monsant-cafe-platform-a-jeju-island-south-korea/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            dezeen</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider2', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider2">
+          <div class="slide-item">
+            <img src="m2.gif" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="m3.gif" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="m4.gif" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="m5.gif" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="m6.gif" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider2', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>这玻璃设计太美了</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider3', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider3">
+          <div class="slide-item">
+            <img src="m17.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="m9.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="m7.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="m8.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="m.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider3', 'next')">&#8594;</button>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider8', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider8">
+          <div class="slide-item">
+            <img src="m18.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="m15.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="m16.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="m14.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider8', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2015年12月10日</strong></p>
+        <p>GD巡店</p>
+        <p>ig story：<a href="https://blog.naver.com/july75/220565045307" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Naver</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider4', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider4">
+          <div class="slide-item">
+            <img src="151210.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1512101.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1512102.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider4', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2015年12月19日</strong></p>
+        <p>@waitingpark 朴大基记者</p>
+        <p>据说是权志龙开设的 Monsant de Aewol。班尼迪克蛋很好吃。</p>
+        <p>详细资讯：<a href="https://ygpress.blogspot.com/2016/01/instiz-celebrities-visit-g-dragons-cafe.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            YG Press</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="151219.png" height="300" width="300" />
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2015年12月26日</strong></p>
+        <p>Dara来咖啡店</p>
+        <p>GD--SS：<a href="https://weibo.com/6027850653/3924114563541541" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            第一视角</a> 
+        <a href="https://weibo.com/1965204925/Dae8E8KWY" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            第三视角</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider6', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider6">
+          <div class="slide-item">
+            <img src="1512261.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="151226.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider6', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2015年12月26日</strong></p>
+        <p>GD姐姐来咖啡店</p>
+        <p>详细资讯：<a href="https://ygpress.blogspot.com/2016/01/instiz-celebrities-visit-g-dragons-cafe.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            YG Press</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider7', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider7">
+          <div class="slide-item">
+            <img src="1512262.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1512263.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider7', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2015年12月28日</strong></p>
+        <p>@junggigo 郑基高</p>
+        <p>「P2是Sistar的Dasom」</p>
+        <p>详细资讯：<a href="https://ygpress.blogspot.com/2016/01/instiz-celebrities-visit-g-dragons-cafe.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            YG Press</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170129.jpg" height="400" width="250" />
+  <img src="170130.jpg" height="400" width="250" />
+  <hr class="full-width-line" />
+
+  <div id="monsant2016" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="monsant.html#monsant2016-jump" class="jump-button">2016</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年4月2日</strong></p>
+        <p>GD巡店、李洙赫和经纪人陪同</p>
+        <p>详细资讯：<a href="https://weibo.com/6027850653/3959958180103269" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            唯权志龙吧</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider10', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider10">
+          <div class="slide-item">
+            <img src="160402.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1604021.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1604022.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1604023.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1604024.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider10', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年10月18日</strong></p>
+        <p>@real_pcy EXO朴灿烈</p>
+        <p>详细资讯：<a href="https://www.facebook.com/photo/?fbid=922512474520032&set=pb.100063905972660.-2207520000&locale=zh_TW" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Facebook</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="161019.jpg" height="400" width="250" />
+  <hr class="full-width-line" />
+
+  <div id="monsant2017" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="monsant.html#monsant2017-jump" class="jump-button">2017</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年1月4日</strong></p>
+        <p>@bg_liam EXO吴世勋</p>
+        <p>详细资讯：<a href="https://blog.naver.com/xcxvnnm34/220904157213" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Naver</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170104.jpg" height="400" width="250" />
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <p>接下来吃瓜：一男子砸碎GD价值26万美元的吊灯<br/>但对GD的慷慨大方吐口水，转头撞向太阳的怀抱的故事</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年10月2日</strong></p>
+        <p>起初一位男网友发文：</p>
+        <p>GD咖啡厅3亿韩元吊灯被砸的回顾…<br/>GD说零件费他会承担，还让我付人工费。这就是我更喜欢太阳的原因！！ㅋㅋ<br/>我损失了30万到50万韩元<br/>嗯……车险里有意外险……这个不也算意外险吗？</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/stories/man-spits-generosity-gdragon-break-chandelier/?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider5', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider5">
+          <div class="slide-item">
+            <img src="171002.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1710021.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="m11.JPG" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1710022.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider5', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <img src="1710023.jpg" height="400" width="300" />     
+      <p>他吹嘘自己多么富有，甚至不担心要支付全价</p>
+      <div class="text-container">
+        <p>网友：如果你损坏了别人的财物，你难道不应该赔偿吗？感觉就像你在责怪那个受害者要求你赔偿一样……而他只要求一小部分……我很好奇如果有人不小心弄弯了你的车的后视镜你会怎么说……ㅎㅎ</p>
+        <p>男网友回复：我没有车~我只是说我承认了那场事故，我只会唱太阳的歌~反应很搞笑~ㅋㅋ 而且我说我再也不去GD咖啡馆了..我不会再在那里花钱了...而且我要赔偿他们的损失..济州岛的日薪平均是12万韩元！！我只需要工作2天。如果我幸运的话，我可以得到20万韩元的报酬</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <img src="1710024.jpg" height="400" width="300" />
+      <div class="text-container">
+        <p>网友1：这是对一个刚把你从命里救出来的人说的话吗 ㅋㅋㅋㅋ</p>
+        <p>男网友回复：3亿韩元是会毁掉你一生的钱吗？</p>
+        <p>网友2：看他假装有3亿韩元</p>
+        <p>网友3：我看了你的评论，说你一天赚12万到20万韩元，你就声称你有3亿韩元？</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <img src="1710025.jpg" height="300" width="400" />
+      <div class="text-container">
+        <p><strong>2017年10月26日</strong></p>
+        <p>男网友的帖子走红后发文：</p>
+        <p>BIGBANG的太阳最棒了！就像《徐太志和孩子们》里的徐太志最棒一样！！！
+<br/>
+GD说唱很酷，但太阳唱歌才是王道！
+<br/>BIGBANG的存在，是因为太阳的存在！！<br/>
+徐太志和孩子们虽然解散了，但过得还不错吧？他们倾注了全部热情，打造出了BIGBANG，对吧？</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <img src="1710026.jpg" height="150" width="450" />
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>我们不会怪你说太阳比GD强。你把这个国家唯一的Baccarat吊灯弄坏了。它价值3亿韩元，但GD心怀善意，只让你赔了几百美元，你却抱怨说太阳比GD强，对吧？
+        <br/>问题是你嘲笑他。如果有人摔断了你的腿，你说没事，只要求他们支付一半的住院费，结果那个人却开始责怪你、咒骂你，你会感觉好受吗？因为你现在就是这么做的</p>
+          <p>网友辣评：我觉得他不正常……我建议你去精神病院看看</p>
+        <p>YG有回应此事件↓↓↓</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年10月22日</strong></p>
+        <p>@Heize</p>
+        <p>一直在想所以又回来了#Monsant #Aewol</p>
+        <p>详细资讯：<a href="https://sports.donga.com/ent/article/all/20171023/86911389/2" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Sports Donga</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="171022.jpg" height="400" width="300" />
+  <hr class="full-width-line" />
+
+  <div id="monsant2018" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="monsant.html#monsant2018-jump" class="jump-button">2018</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年1月11日</strong></p>
+        <p>一位房地产业内人士向 Edaily Starin 表示：GD已撤出Monsant Cafe的投资，双方已完全无关联</p>
+        <p>详细资讯：<a href="https://m.entertain.naver.com/home/article/018/0004010637" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Naver</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年1月13日</strong></p>
+        <p>YG表示：Monsant Aewol也就是GD的咖啡馆，已于去年年底出售。目前它由其他人以其他名称经营</p>
+        <p>YG回应到之前的吊灯事件：不久前在网上流传的吊灯损坏事件与GD无关。GD拥有的已安装艺术品早已在咖啡馆关闭销售时搬走</p>
+        <p>详细资讯：<a href="https://aminoapps.com/c/big-bang-amino/page/blog/yg-statement-on-monsant-sale-and-g-dragons-new-cafe-photos/aWNM_RqI0ugK3EXMrnXomjQVDbnJ2E1WjV" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Amino</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="gdbusiness.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+ 
+</main>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
+    const slideWidth = 500;
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0;
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+  </script>
+</body>
+</html>
