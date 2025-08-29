@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2020年</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    nav {
+      background-color: #111;
+      padding: 20px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: transparent;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: white;
+      color: #111;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .content-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 10px;
+    }
+
+    .text-container {
+        max-width: 400px;
+        line-height: 1.6;
+        text-align: left;
+    }
+
+    .text-container li {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .text-container ul {
+        padding-left: 0;
+        margin-left: 0;
+        list-style-position: inside;
+    }
+    
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px; /* 控制和上方内容的距离 */
+      margin-bottom: 20px;
+    }
+
+    nav a.highlight-button {
+      background-color: none;
+      color: white;
+      border: 2px solid #ff8dd3;
+    }
+  
+    nav a.highlight-button:hover {
+      background-color: none;
+      color: #ff8dd3;
+    }
+
+    nav a.highlight1-button {
+      background-color: none;
+      color: white;
+      border: 2px solid #33FFFF;
+    }
+  
+    nav a.highlight1-button:hover {
+      background-color: none;
+      color: #33FFFF;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
+    }
+
+    .jump-button-1 {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid #f5ed54;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button-1:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="jump-button-1">Home</a>
+    <a href="stage.html">打歌舞台</a>
+    <a href="concert.html">官拍演唱会</a>
+    <a href="solo.html">成员Solo</a>
+    <a href="teams.html">小分队</a>
+    <a href="album.html">专辑歌曲Mv</a>
+    <a href="fanmeeting.html">Fan Meeting</a>
+    <a href="collection.html">官方周边</a>
+    <a href="show.html">放送节目</a>
+    <a href="interview.html">采访</a>
+    <a href="behindthescenes.html">幕后花絮</a>
+    <a href="magazine.html">杂志拍摄</a>
+    <a href="endorsement.html">代言</a>
+    <a href="awardlist.html">获奖</a>
+    <a href="movie.html">电影电视剧短剧</a>
+    <a href="ygfamily.html">YG Family</a>
+    <a href="live.html">直播</a>
+    <a href="airport.html">机场照</a>
+    <a href="sns.html">SNS</a>
+    <a href="comment.html">留言区</a>
+    <a href="reference.html" class="highlight-button">参考资料</a>
+    <a href="cp.html" class="highlight1-button">CP向</a>
+  </nav>
+  <main>
+    <h1>·2020年·</h1><br/>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="schedule.html" class="jump-button">Back</a>
+    </div>
+    <br/>
+    <p>Select a month section from the navigation bar below.</p>
+  <nav>
+    <a href="2020jan.html">1月</a>
+    <a href="2020feb.html">2月</a>
+    <a href="2020mar.html">3月</a>
+    <a href="2020apr.html">4月</a>
+    <a href="2020may.html">5月</a>
+    <a href="2020june.html">6月</a>
+    <a href="2020july.html">7月</a>
+    <a href="2020aug.html">8月</a>
+    <a href="2020sept.html">9月</a>
+    <a href="2020oct.html">10月</a>
+    <a href="2020nov.html">11月</a>
+    <a href="2020dec.html">12月</a>
+  </nav>
+
+</main>
+</body>
+</html>
