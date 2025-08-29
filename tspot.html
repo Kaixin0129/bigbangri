@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>T'SPOT</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="top.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>T'SPOT</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+  <div style="text-align: center;">
+    <p>官方账号</p>
+    <p>T'SPOT：<a href="https://www.instagram.com/tspotwine/" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+        Instagram</a> - 
+      <a href="https://tspotwine.com/main" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+        tspotwine官网</a> - 
+      <a href="https://co.tspotwine.fr/collections/all" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+        葡萄酒商品</a></p>
+  </div><br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="tspot2022-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="tspot.html#tspot2022" class="jump-button">2022</a>
+    </div>
+    <div id="tspot2023-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="tspot.html#tspot2023" class="jump-button">2023</a>
+    </div>
+    <div id="tspot2024-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="tspot.html#tspot2024" class="jump-button">2024</a>
+    </div>
+    <div id="tspot2025-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="tspot.html#tspot2025" class="jump-button">2025</a>
+    </div>
+  </div><br/>
+  <hr class="full-width-line" />
+
+  <div id="tspot2022" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="tspot.html#tspot2022-jump" class="jump-button">2022</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="tspot-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2022apr.html#tspot" class="jump-button">跳转到 2022 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2022年4月8日</strong></p>
+        <p>TOP将成立厂牌 T'SPOT，与Thunevin合作在法国制作</p>
+        <p>瓶标由日本艺术家名和晃平 设计</p><br/>
+        <p>TOP接受香港Prestige杂志采访</p>
+        <p>TOP表示：这件事始于我经历一些艰难时期，为了回馈粉丝们的支持。我萌生了这个想法，想以合理的价格分享一些好酒。它不必只针对某些特定的人，我想与所有人分享</p>
+        <p>详细资讯：<a href="https://hypebae.com/2022/4/big-bang-top-wine-label-tspot-thunevin-france-launch-release-info" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Hypebae</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2022年6月13日</strong></p>
+        <p>TOP发ins宣传</p>
+        <p>详细资讯：<a href="https://weibo.com/6313595805/4779857051124338" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            BIGBANG佛系粉安利站</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
+          <div class="slide-item">
+            <img src="220613.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="2206131.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="2206132.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="2206133.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2022年11月16日</strong></p>
+        <p>T'SPOT官方宣布12月正式发售，首款为2018年的波尔多红</p>
+        <p>详细资讯：<a href="https://www.instagram.com/p/ClBhFG7P7by/?utm_source=ig_embed&ig_rid=e040f8b4-f6f0-4f9a-938e-366c8f7c86f3" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            tspotwine</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="221116.jpg" height="300" width="300" />
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/fQ1u_tbIipE?si=pWF49y2bOLvLv7EI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2022年12月20日</strong></p>
+        <p>Our vino, T'SPOT' (Prod. by TOP, JACK POT)</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p><strong>2022年6月13日</strong></p>
+    <p>正式发布两款葡萄酒</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>T'SPOT SPARKLING BRUT（白起泡 Brut）售价12欧元</p>
+        <p>详细资讯：<a href="https://co.tspotwine.fr/products/tspot-blanc-mousseux" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            T'SPOT</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider2', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider2">
+          <div class="slide-item">
+            <img src="brut1.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="brut4.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="brut2.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider2', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>BORDEAUX RED（波尔多红）售价14欧元</p>
+        <p>详细资讯：<a href="https://co.tspotwine.fr/products/tspot-blanc-mousseux" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            T'SPOT</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider3', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider3">
+          <div class="slide-item">
+            <img src="brut5.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="brut6.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="brut3.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider3', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>Paradise City × T’SPOT</p>
+        <p>韩国仁川 Paradise City 酒店集团宣传草莓自助季与 T’SPOT 的搭配进行合作</p>
+        <p>品牌在线下亮相</p>
+        <p>视频：<a href="https://www.facebook.com/watch/?v=926054468776079" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Facebook</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2024年8月9日</strong></p>
+        <p>T’SPOT Blanc 2023（白葡萄酒）售价17欧元</p>
+        <p>由金洋国际在韩国销售，在韩国GS25、Wine 25+ 和 GS The Fresh 购买<br/>在32个国家同步线上和线下销售</p>
+        <p>视频：<a href="https://tspotwine.com/blanc2023" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            tspotwine</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider4', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider4">
+          <div class="slide-item">
+            <img src="240809.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="240809.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="2408091.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="2408092.jpeg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider4', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2024年8月10日</strong></p>
+        <p>官方宣传</p>
+        <p>详细资讯：<a href="https://www.instagram.com/p/C-eUd94SiEk/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            tspotwine</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="240810.jpg" height="400" width="300" />
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2025年4月16日</strong></p>
+        <p>T’SPOT Rosé Brut NV（桃红起泡）</p>
+        <p>由BLACKEY®设计，由 Vino.P 直配</p>
+        <p>在韩国GS25 和 Wine 25+ 购买</p>
+        <p>视频：<a href="https://www.facebook.com/BlackeyBranding/posts/tspot-ros%C3%A9-brutdesigned-by-blackeytspot-%EB%A1%9C%EC%A0%9C-%EC%B6%9C%EC%8B%9C%EB%A1%9C-top%EC%9D%98-%EC%99%80%EC%9D%B8%EB%B8%8C%EB%9E%9C%EB%93%9Ctspot%EC%9D%98-4%EC%A2%85-quadrilogy%EA%B0%80-%EC%99%84/1254539459812548/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Facebook</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider5', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider5">
+          <div class="slide-item">
+            <img src="2504164.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="250416.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="2504161.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="2504162.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="2504163.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider5', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="top.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+ 
+</main>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
+    const slideWidth = 500;
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0;
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+  </script>
+</body>
+</html>
