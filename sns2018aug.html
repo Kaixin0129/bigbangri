@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>2018年1月</title>
+  <title>SNS 2018年8月</title>
   <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
@@ -178,14 +178,14 @@
       }
 
       body {
-        transform: scale(0.59);
+        transform: scale(0.5);
         transform-origin: top left;
-        width: 169.5%;
-        height: calc(100vh / 0.59);
+        width: 200%;
+        height: calc(100vh / 0.5);
       }
 
       .full-width-line {
-        transform: scaleX(1.6949);
+        transform: scaleX(2);
         transform-origin: left;
       }
     }
@@ -293,6 +293,49 @@
       padding-left: 20px;
     }
 
+  .filter-dropdown-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+    margin-top: -50px;
+  }
+
+  .filter-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .filter-button {
+    padding: 15px 25px;
+    background-color: #111;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px 18px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .member-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    margin-top: 5px;
+  }
+
+  .member-list button {
+    margin: 6px 0;
+  }
+
+  #noContentMessage {
+    padding: 15px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 30px auto 0;
+  }
+
   .slider {
     display: flex;
     flex-wrap: nowrap;
@@ -368,81 +411,174 @@
     object-fit: contain;
   }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
   </style>
 </head>
-
 <body>
 <main>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="2018.html">Back</a>
+      <a href="sns2018.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>2018年1月</h1>
+      <h1>SNS 2018年8月</h1>
     </div>
     <nav class="right-nav">
-      <a href="2018feb.html">2月</a>
+      <a href="sns2018sept.html">9月</a>
     </nav>
   </div>
 
-  <div style="text-align: center;">
-    <a href="sns2018jan.html" class="jump-button">跳转到 SNS 时间线</a>
-  </div><br/><br/>
-  <hr class="full-width-line" />  
-
-  <div style="text-align: center;">
-    <div id="liquid" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
-      <a href="liquid.html#liquid-jump" class="jump-button">更多详情</a>
-    </div>
-    <div class="content-wrap">
-      <div class="text-container">
-        <p><strong>2018年1月31日</strong></p>
-        <p>Sony Music 和 腾讯音乐集团 在香港宣布推出电子舞曲音乐厂牌 Liquid State</p>
-        <p>胜利担任韩国大使</p>
-        <p>详细资讯：<a href="https://www.sonymusic.me/news/sony-music-entertainment-tencent-music-entertainment-group-announce-new-label-liquid-state-east-meets-west-dancefloor/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
-            Sony Music</a></p>
+  <div class="filter-dropdown-wrapper">
+    <div class="filter-dropdown" id="filterDropdown" onclick="toggleFilterLock()" onmouseenter="showMemberList()" onmouseleave="hideMemberList()">
+      <div class="filter-button">筛选</div>
+      <div class="member-list" id="memberList">
+        <button class="jump-button" onclick="filterSNS('all')">全部</button>
+        <button class="jump-button" onclick="filterSNS('gd')">G-Dragon</button>
+        <button class="jump-button" onclick="filterSNS('top')">TOP</button>
+        <button class="jump-button" onclick="filterSNS('taeyang')">太阳</button>
+        <button class="jump-button" onclick="filterSNS('daesung')">大声</button>
+        <button class="jump-button" onclick="filterSNS('seungri')">胜利</button>
       </div>
     </div>
-    <hr class="full-width-line" />
   </div>
 
-  <div style="text-align: center;">
-    <div id="liquid1" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
-      <a href="liquid.html#liquid1-jump" class="jump-button">更多图片</a>
-    </div>
-    <div class="content-wrap">
-      <div class="text-container">
-        <p><strong>2018年1月31日</strong></p>
-        <p>胜利出席在香港红磡某酒店 Liquid State合作计划发布会</p>
-        <p>详细资讯：<a href="https://weibo.com/1731402347/G0Y16pdZX" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
-            魔方全媒</a></p>
+  <h1 id="currentFilter" style="text-align:center; margin-top: 30px; margin-bottom: 10px; color: #33FFFF; display: none;"></h1>
+  <p id="currentFilter1" style="text-align:center; margin-bottom: 30px; color: white; display: none;"></p>
+
+  <div class="sns-entry" data-member="seungri">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2018年8月17日</strong> Instagram</p>
+          <p style="color: #33FFFF;">胜利</p>
+          <p>很快在新加坡见 #liquid #liquidnight #zouksg @liquidstate_co</p>
+          <p>详细资讯：<a href="https://weibo.com/2837351320/Gv4IFfuwx" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+              李昇炫Vworld</a></p>
+        </div>
       </div>
+      <div class="slider-container">
+        <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+        <div class="slider-wrapper">
+          <div class="slider" id="slider1">
+            <div class="slide-item">
+              <img src="181817.jpg" class="slide-img img-portrait" />
+            </div>
+            <div class="slide-item">
+              <img src="1818171.jpg" class="slide-img img-portrait" />
+            </div>
+          </div>
+        </div>
+        <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
+      </div>
+      <hr class="full-width-line" />
     </div>
-    <hr class="full-width-line" />
+  </div>
+
+  <div id="noContentMessage" style="display:none; text-align:center; color: white; font-size: 40px; margin-top: 30px;">
+    此成员没有发过贴文
   </div>
 
   <br/><br/><br/>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="2018.html">Back</a>
+      <a href="sns2018.html" id="backButton">Back</a>
     </nav>
     <div class="title-group">
       <div id="footer"></div>
     </div>    
     <nav class="right-nav">
-      <a href="2018feb.html">2月</a>
+      <a href="sns2018sept.html" id="nextButton">9月</a>
     </nav>
   </div>
 
 </main>
   <script>
-    fetch("footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer").innerHTML = data;
-      });
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+
+  let filterLocked = false;
+
+  function toggleFilterLock() {
+    filterLocked = !filterLocked;
+    updateMemberListDisplay();
+  }
+
+  function showMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'flex';
+    }
+  }
+
+  function hideMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'none';
+    }
+  }
+
+  function updateMemberListDisplay() {
+    const memberList = document.getElementById('memberList');
+    memberList.style.display = filterLocked ? 'flex' : 'none';
+  }
+
+  function filterSNS(member) {
+    const entries = document.querySelectorAll('.sns-entry');
+    const message = document.getElementById('noContentMessage');
+    const backButton = document.getElementById('backButton');
+    const nextButton = document.getElementById('nextButton');
+    const footer = document.getElementById('footer');
+    const currentFilter = document.getElementById('currentFilter');
+    const currentFilter1 = document.getElementById('currentFilter1');
+
+    const memberNames = {
+      all: '全部',
+      gd: 'G-Dragon',
+      top: 'TOP',
+      taeyang: '太阳',
+      daesung: '大声',
+      seungri: '胜利'
+    };
+
+    if (memberNames[member]) {
+      currentFilter.textContent = `当前筛选：${memberNames[member]}`;
+      currentFilter1.textContent = `筛选出来的图片也包括成员与别人的合照贴文`;
+      currentFilter.style.display = 'block';
+      currentFilter1.style.display = 'block';
+    } else {
+      currentFilter.style.display = 'none';
+      currentFilter1.style.display = 'none';
+    }
+
+    let hasContent = false;
+
+    entries.forEach(entry => {
+      const members = entry.dataset.member.split(' ');
+      if (member === 'all' || members.includes(member)) {
+        entry.style.display = 'block';
+        hasContent = true;
+      } else {
+        entry.style.display = 'none';
+      }
+    });
+
+    if (!hasContent && member !== 'all') {
+      if (message) message.style.display = 'block';
+      if (backButton) backButton.style.display = 'none';
+      if (nextButton) nextButton.style.display = 'none';
+      if (footer) footer.style.display = 'none';
+    } else {
+      if (message) message.style.display = 'none';
+      if (backButton) backButton.style.display = 'inline-block';
+      if (nextButton) nextButton.style.display = 'inline-block';
+      if (footer) footer.style.display = 'block';
+    }
+  }
 
   const sliderStates = {};
 
@@ -465,6 +601,6 @@
     slider.style.transform = `translateX(-${offset}px)`;
   }
 
-  </script>
+</script>
 </body>
 </html>
