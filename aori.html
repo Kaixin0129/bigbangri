@@ -1,0 +1,3902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aori Ramen</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="seungribusiness.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>Aori Ramen</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+  <div style="text-align: center;">
+    <p>按开店的顺序分类....^^一个系列的东西会放在一起</p>
+  </div><br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="aori2016-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="aori.html#aori2016" class="jump-button">2016</a>
+    </div>
+    <div id="aori2017-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="aori.html#aori2017" class="jump-button">2017</a>
+    </div>
+    <div id="aori2018-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="aori.html#aori2018" class="jump-button">2018</a>
+    </div>
+    <div id="aori2019-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="aori.html#aori2019" class="jump-button">2019</a>
+    </div>
+    <div id="aori2020-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="aori.html#aori2020" class="jump-button">2020</a>
+    </div>
+    <div id="aori2024-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="aori.html#aori2024" class="jump-button">2024</a>
+    </div>
+  </div><br/>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>Yuri Holdings 作为投资与经营管理公司，持有 Aori Ramen 的部分股份</p>
+        <p>Aori FNB 是运营 Aori Ramen 连锁事业而成立的法人公司</p>
+        <p>「胜利不把日本算在"海外"区域」</p>
+      </div>
+    </div>
+  </div><br/><br/>
+
+  <div id="aori2016" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="aori.html#aori2016-jump" class="jump-button">2016</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年12月12日</strong></p>
+        <p>GD发ins story</p>
+        <p>和出生以来收到了最多生日祝福的拉面店社长胜利的晚餐 🍜HBDBRO 🎂✨💕#aori拉面</p>
+        <p>视频：<a href="https://weibo.com/2837351320/ElNO0bWcX" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第1家，韩国第1家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年12月16日 开业</strong></p>
+        <p>韩国首尔清潭洞</p>
+        <p>详细资讯：<a href="https://ameblo.jp/bigban-go/entry-12234024338.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Ameblo</a></p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年12月15日</strong></p>
+        <p>胜利在两个平台发一样的内容</p>
+        <p>aori拉面首尔清潭洞店这个月16号终于正式开业了。为了让女儿aori酱开心而充满诚意制作的爸爸拉面照原样再现了。是带来快乐的拉面。请多多来aori拉面店变得快乐吧！位置是清潭洞87-10 3层 会给把拉面照片拍的好看人回复哦】
+<br/>#AORI的神隐 AORI的神隐 AORI拉面 首尔清潭店会在明天开业 为了让女儿AORI酱开心而做出的拉面 就这么原封不动地奉上 希望大家也能在品尝后开心起来 東京 六本木店也会在12月内开业 敬请期待！ 把拉面照出美味感的用户 我会直接留言 请多多关照！</p>
+        <p>ig：<a href="https://weibo.com/2837351320/EaRLJz7w9" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p><br/>
+        <p>AORI拉面首尔清潭店即将在12月16日正式开业！这是日本的一位父亲为了让自己的女儿AORI开心而用心做的拉面。#AORI拉面，希望可以把这个美味和欢乐也带给大家。#AORI拉面 位于清潭洞87-10号3楼！ 如果大家附带话题#AORI拉面，在SNS上传AORI拉面的照片，我会选取好看的照片和各位进行互动！期待大家的光临！！</p>
+        <p>微博：<a href="https://weibo.com/2837351320/EaRLJz7w9" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            SEUNGRI胜利-YG</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
+          <div class="slide-item">
+            <img src="161212.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1612121.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1612122.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年12月15日</strong></p>
+        <p>@aoriramen</p>
+        <p>详细资讯：<a href="https://www.koreastardaily.com/sc/news/96062" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Korea Star Daily</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="161215.jpeg" height="300" width="380" />
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年8月8日</strong></p>
+        <p>@jinjoo.pearl</p>
+        <p>在胜利和钟勋 俊英 仁哲(音译) 尚赫(音译) 赫俊(音译) 善良的老鹰柳雄在(音译)努力的帮助下，推拉小铺有好好的经营，也积累了许多感情😂😂会以好的结尾营业到这周为止。虽然既高兴又遗憾，但是很爱大家！😘😘而且真的有好消息告诉你们呦！胜利经营的Aori拉面真的是一桩喜事😎 经营的太好了简直是大骚动呀不管是炎热的夏天还是寒冷的冬天因为客人们排队都会排到街上等着这件事苦恼了一段时间之后为了扩大开放决定向aori拉面的客人们转让推拉小铺，虽然大家对于推拉小铺都很可惜但是我们会马上又见面的！请多多关照ㅎㅎ🙆🙌 为了安抚因此感到可惜的推拉小铺的粉丝老顾客们，会营业到本周末，光临推拉小铺的每一位顾客一位也不要缺席的和大家一起享受最后一次就餐，会提供很多赠送服务的，还有和胜利一起经营的aori拉面也请大家多多关照哦🙈💃💙👍✌❤👄💕 #aori拉面#胜利拉面#赞赞面#aori的神隐 #清谭美食</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/Fg6Jx1RVi" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider14', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider14">
+          <div class="slide-item">
+            <img src="170808.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1708081.jpeg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider14', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年11月26日</strong></p>
+        <p>胜利发ig story</p>
+        <p>首尔清潭洞进行新菜单新品试吃会</p>
+        <p>视频：<a href="https://weibo.com/2837351320/FwS3EDvUs" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年11月29日</strong></p>
+        <p>@aoriramen发ig story</p>
+        <p>视频：<a href="https://weibo.com/2837351320/FxlUhzEYI" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            1</a> - 
+        <a href="https://weibo.com/2837351320/FxlUhzEYI" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            2</a></p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年12月1日</strong></p>
+        <p>首尔清潭洞推出新菜单</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/FxE5FlDWv" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider2', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider2">
+          <div class="slide-item">
+            <img src="171201.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1712011.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1712012.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1712013.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1712014.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider2', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年4月30日</strong></p>
+        <p>胜利发ig story</p>
+        <p>🎊5月2日 新菜单 全卖场上市🎊<br/>
+只在清潭本店卖出的#aori新菜单 #干拌拉面 和#味增拉面从5月2日 星期三开始 可以在全国所有aori卖场品尝！
+<br/>
+用炒牛肉做成的特别的酱汁搭配筋道的生面拌着吃的#干拌拉面是面吃完之后 拌着白饭吃是重点!
+<br/>
+用浓浓的日式味增浸泡的香喷喷的汤搭配弯弯曲曲的卷面口感很好的#味增拉面#和只用属于aori的秘制调料拌的#日式拌韭菜
+搭配起来特别好!
+
+5月2日 星期三！在全国#aori拉面 卖场 请享用新菜单吧!</p>
+        <p>视频：<a href="https://weibo.com/2837351320/GewXazNzY" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年12月28日</strong></p>
+        <p>胜利发Twitter</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/4057733172695865" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="161228.jpeg" height="400" width="250" />
+  <hr class="full-width-line" />
+
+  <div id="aori2017" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="aori.html#aori2017-jump" class="jump-button">2017</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <p>全球第2家，日本第1家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年3月11日 开业</strong></p>
+        <p>日本东京六本木</p>
+        <p>详细资讯：<a href="https://aminoapps.com/c/big-bang-amino/page/blog/more-photos-seungri-aori-ramen-in-roppongi-japan/6lrg_JbHzuK1lonGGJKB3LDe5gvZj2Gle" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Amino</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider3', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider3">
+          <div class="slide-item">
+            <img src="170311.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1703111.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1703112.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1703113.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1703114.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1703115.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider3', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年1月16日</strong></p>
+        <p>胜利发ins</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/4064576259431369" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider5', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider5">
+          <div class="slide-item">
+            <img src="170116.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1701161.jpeg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider5', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年8月24日</strong></p>
+        <p>胜利发ins宣布营业到9月末之后停止营业</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/Gw41K1qav" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider4', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider4">
+          <div class="slide-item">
+            <img src="180824.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1808241.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider4', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第3家，韩国第2家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年5月3日 开业</strong></p>
+        <p>韩国釜山西面</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年4月26日</strong></p>
+        <p>胜利发ins</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/F0mIXrd3E" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider6', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider6">
+          <div class="slide-item">
+            <img src="170426.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1704261.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider6', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年4月27日</strong></p>
+        <p>@이룸인테리어디자인(eroumdesign)NAVER BLOG</p>
+        <p>釜山店准备中时的照片</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/F0y8Nm0go" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider7', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider7">
+          <div class="slide-item">
+            <img src="170427.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1704274.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1704271.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1704272.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1704273.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider7', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第4家，韩国第3家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年5月15日 开业</strong></p>
+        <p>韩国首尔钟路</p>
+        <p>详细资讯：<a href="https://www.klook.com/activity/17897-aori-ramen-seoul/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+          klook</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年5月22日</strong></p>
+        <p>胜利发Twitter</p>
+        <p>bigbang胜利的拉面店，AORI拉面的所有配料食谱 吃放，裴滋xi（音译）下一次请挑战20碗吧^^</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/F4i6UCxLE" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+          李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年5月28日</strong></p>
+        <p>@s_ki_hyun</p>
+        <p>第一次去Aori拉面店 黑眼圈对决败北 哈哈 年龄变大这样那样的烦恼变多了的胜酱 果然和我有些像 但是我的头发好像蘑菇</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/F5fnrbLpR" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider8', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider8">
+          <div class="slide-item">
+            <img src="170528.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1705281.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider8', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年5月29日</strong></p>
+        <p>@_hi_shin</p>
+        <p>拉面吃得很美味 #Aori拉面##胜利#好久不见</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/F5jLNkuvO" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider9', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider9">
+          <div class="slide-item">
+            <img src="170529.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1705291.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider9', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年5月30日</strong></p>
+        <p>胜利发ins</p>
+        <p>AORI酱的徽章真是太可爱了wwwwww 要把它挂在我最近喜欢的背包上</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/F5uIatIKu" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider10', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider10">
+          <div class="slide-item">
+            <img src="170530.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1705301.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider10', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第5家，日本第2家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年6月2日 开业</strong></p>
+        <p>日本大阪</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年6月2日</strong></p>
+        <p>@k.s.i.0730neeyan</p>
+        <p>大阪AORI今天open 胜酱昨天来“肚子饿了”食堂了吧 …儿子发来了LINE的照片w #bigbangs #bigbanglive #胜酱 #肚子饿了 #肚子饿了食堂 #AORI的神隐</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/F5YW7EDq6" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider11', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider11">
+          <div class="slide-item">
+            <img src="170602.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1706021.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider11', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月17日</strong></p>
+        <p>@jeeejungyeol 和胜利发ins</p>
+        <p>胜利队很努力！辛苦了！庆功宴果然还是#aori拉面#大阪</p>
+        <p>「胜利结束柔术比赛庆祝胜利」</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/FcPcuuJdF" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider12', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider12">
+          <div class="slide-item">
+            <img src="1707174.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1707176.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1707175.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1707177.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider12', 'next')">&#8594;</button>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/JwRdmKEVOB8?si=gL_SgD_GOYFhRXvz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2017年9月21日</strong></p>
+        <p>胜利巡店</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第6家，韩国第4家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月1日 开业</strong></p>
+        <p>韩国首尔江南</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年6月30日</strong></p>
+        <p>胜利发ins</p>
+        <p>热烈祝贺首尔江南站Aori Ramen 7月1日盛大开业 欢迎大家来品尝～</p>
+        <p>详细资讯：<a href="https://weibo.com/3699928344/Fag2HugEQ" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170630.jpeg" height="300" width="400" />
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月8日</strong></p>
+        <p>胜利发ins</p>
+        <p>#AORI拉面 #江南站@ aoriramen</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/Fbt9Ah2hY" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider13', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider13">
+          <div class="slide-item">
+            <img src="170708.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1707081.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider13', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年8月17日</strong></p>
+        <p>胜利发ig story</p>
+        <p>晚餐是AORI</p>
+        <p>视频：<a href="https://weibo.com/2837351320/FEQiqyYUA" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p><br/>
+        <p>预感会大发，计划很快上市 AORI饺子</p>
+        <p>视频：<a href="https://weibo.com/2837351320/FEQj3fWhR" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第7家，韩国第5家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年8月25日 开业</strong></p>
+        <p>韩国京畿道高阳市日山</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年8月25日</strong></p>
+        <p>胜利发ins</p>
+        <p>aori日本拉面 收到大家向@ aoriramen 传达的爱和关心，韩国五号店日山店开业啦！在有着多样的看点，舒适的休息空间的复合购物mall western dom的2层266号就可以享受美味的aori日本拉面！8月25号周五也就是今天开业拜托大家多多关注！</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/FiKysBWqu" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider15', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider15">
+          <div class="slide-item">
+            <img src="170825.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1708251.jpeg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider15', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第8家，韩国第6家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年9月6日 开业</strong></p>
+        <p>韩国首尔林荫道</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年9月4日</strong></p>
+        <p>胜利发微博</p>
+        <p>Aori拉面8号分店要开业啦！<br/>
+Aori拉面即将在集文化与购物为一体的首尔时尚购物街-林荫道与大家见面。看着各种有趣、个性的风景，再来一碗香喷喷的Aori拉面吧～
+大家可在岛山大路15街11号2楼品尝美味。
+9月6号正式开业！</p>
+        <p>详细资讯：<a href="https://weibo.com/3699928344/FkfGtvb3h" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            SEUNGRI胜利-YG</a></p>
+      </div>
+    </div>
+    <img src="170904.png" height="300" width="400" />
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第9家，韩国第7家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年9月9日 开业</strong></p>
+        <p>韩国广津建大</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年9月8日</strong></p>
+        <p>胜利在两个平台发一样的内容</p>
+        <p>（猜猜胜酱在哪~~）</p>
+        <p>Aori拉面第9分店即将在建大开业！<br/>
+即将成为韩国第7分店的建大店紧靠着建大Common Ground购物中心。大家终于可以在充满青春气息的建大，品尝美味的拉面啦～
+广津区东一路20街55，9月9日正式开业！​</p>
+        <p>详细资讯：<a href="https://weibo.com/3699928344/FkS1w9sTk" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            SEUNGRI胜利-YG</a> - 
+        <a href="https://weibo.com/2837351320/FkRXv6YtL" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider16', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider16">
+          <div class="slide-item">
+            <img src="170908.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1709081.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider16', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第10家，韩国第8家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年9月15日 开业</strong></p>
+        <p>韩国釜山南浦洞</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年9月13日</strong></p>
+        <p>@aoriramen</p>
+        <p>Aori Ramen 全球第 10 家分店，韩国第 8 家分店将于 2017 年 9 月 15 日在釜山南浦洞开业​</p>
+        <p>详细资讯：<a href="https://x.com/GottaTalk2V1212/status/907916142584389632" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            GottaTalk2V1212</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider17', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider17">
+          <div class="slide-item">
+            <img src="170913.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1709131.jpeg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider17', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第11家，韩国第9家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年9月18日 开业</strong></p>
+        <p>韩国釜山海云台Centum City</p>
+        <p>详细资讯：<a href="https://m.ruliweb.com/hobby/board/300117/read/30583385" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            GottaTalk2V1212</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider18', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider18">
+          <div class="slide-item">
+            <img src="170918.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1709181.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider18', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第12家，韩国第10家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年9月25日 开业</strong></p>
+        <p>韩国首尔明洞</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年9月25日</strong></p>
+        <p>胜利发微博</p>
+        <p>🎊Aori拉面🍜第12分店即将在首尔明洞开业🎊<br/>
+Aori拉面第12分店🇰🇷国内第10分店即将在首尔购物文化胜地明洞与大家见面。
+大家即可在游客量较多的，代表韩国时尚的明洞品尝到美味的Aori拉面！ •首尔市中区明洞9街10,3楼 66666666666666 ​</p>
+        <p>详细资讯：<a href="https://weibo.com/3699928344/FnuggFJFr" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            SEUNGRI胜利-YG</a></p>
+      </div>
+    </div>
+    <img src="170925.png" height="350" width="300" />
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年7月8日</strong></p>
+        <p>胜利在两个平台发一样的内容</p>
+        <p>Aori拉面明洞店恢复营业通知:<br/>
+因火灾暂停营业的Aori拉面明洞店将于7月7日重新开业啦！<br/>
+大家可以在更宽敞的空间享受我们的Aori拉面了！
+感谢大家长时间以来的等待，Aori拉面明洞店位于首尔市中区明洞10路35-20，2层，明洞MPLAZA后侧</p>
+        <p>详细资讯：<a href="https://weibo.com/3699928344/4259538397628169" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            SEUNGRI胜利-YG</a> - 
+        <a href="https://weibo.com/2837351320/GoZ6i5xDh" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider51', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider51">
+          <div class="slide-item">
+            <img src="180708.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1807081.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1807082.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider51', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第13家，韩国第11家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年9月26日 开业</strong></p>
+        <p>韩国仁川富平</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年9月26日</strong></p>
+        <p>胜利发微博</p>
+        <p>🎊Aori拉面第13分店即将在仁川富平开业🎊<br/>
+基于大家对我们的支持，韩国第11分店终于要登陆仁川富平了！<br/>
+文化音乐之城富平每年都会举办各种活动，并拥有无数美食，之后大家即可在这里品尝到Aori拉面独有的美味！<br/>
+地址：仁川广域市富平区市场路12街20​</p>
+        <p>详细资讯：<a href="https://weibo.com/3699928344/FnAsC1qa2" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            SEUNGRI胜利-YG</a></p>
+      </div>
+    </div>
+    <img src="170926.png" height="300" width="400" />
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第14家，韩国第12家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年10月18日 开业</strong></p>
+        <p>韩国首尔梨泰院</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年10月18日</strong></p>
+        <p>胜利发微博</p>
+        <p>🎊Aori拉面第14分店即将在梨泰院开业🎊<br/>
+Aori拉面韩国第12分店即将在集多种文化与个性的首尔梨泰院开业！在充满各国美食与文化的首尔最具有异国风情的梨泰院，与Aori拉面一起享受幸福时光吧！
+首尔市龙山区梨泰院路189号3楼/梨泰院消防队正对面！​</p>
+        <p>详细资讯：<a href="https://weibo.com/3699928344/FqZuan7EY" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            SEUNGRI胜利-YG</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider19', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider19">
+          <div class="slide-item">
+            <img src="171018.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1710181.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider19', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年10月20日</strong></p>
+        <p>胜利发ins</p>
+        <p>mixnine MIXNINE JTBC 企划社tour最后 #晚餐 @ aoriramen #AORI拉面 #谢谢会长#谢谢洪哲哥 绝对绝对不要错过mixnine #アオリの神隠し​</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/Frdi09hIs" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider20', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider20">
+          <div class="slide-item">
+            <img src="171020.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1710201.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider20', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第15家，韩国第13家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年11月1日 开业</strong></p>
+        <p>韩国首尔弘大</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年10月31日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面第15分店即将在弘大开业.<br/>
+作为韩国第13分店的弘大店预计在11月1日星期五开业!大家即可在拥有多种活动和表演,并充满个性与活力的青春街道-弘大享受到美味的Aori拉面了! Aori拉面弘大店位于三岔路口苞茶旁边!首尔市麻浦区卧牛山路76号,不见不散.​</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/FsWtSj0Cp" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider22', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider22">
+          <div class="slide-item">
+            <img src="171031.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1710311.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider22', 'next')">&#8594;</button>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@百度李昇炫吧 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=12918971&bvid=BV1Zx411H7em&cid=21221740&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2017年8月3日</strong></p>
+        <p>韩国YouTuber胜利的朋友探店弘大的拉面店</p>
+        <ul>
+          <li>02:10 向胜利打电话询问推荐的食谱</li>
+          <li>14:17 展示与胜利的聊天记录</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@老弱病残字幕组_OFFICIAL 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=18048691&bvid=BV1mW411B7Ag&cid=29517552&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年1月6日</strong></p>
+        <p>Blackpink House EP01</p>
+        <p>Blackpink录团综来到了Aori Ramen弘大分店</p>
+        <ul>
+          <li>44:11 和胜利通话</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@GDTOP百度知道团队 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=22314163&bvid=BV1oW411V7EY&cid=36946318&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年4月18日</strong></p>
+        <p>胜利在弘大拉面店做吃播</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第16家，中国第1家，海外第1家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年11月24日 开业</strong></p>
+        <p>中国上海田子坊</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年9月19日</strong></p>
+        <p>胜利发微博</p>
+        <p>中国的粉丝们，我的拉面店终于要进入中国啦！喜欢AORI神隐拉面的粉丝，你们不用来韩国，我去中国见你们。@AORI神隐拉面 预计秋天在上海田子坊开业，这是第1家分店，也是中国旗舰店，想想就好激动啊，我已经迫不及待的想把美味带到你们身边了，你们再耐心等我一下 66666666666666666</p>
+        <p>详细资讯：<a href="https://weibo.com/3699928344/Fmycqcanj" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            SEUNGRI胜利-YG</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider25', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider25">
+          <div class="slide-item">
+            <img src="170919.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1709191.jpeg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider25', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年9月19日</strong></p>
+        <p>胜利发ins</p>
+        <p>CN 最近最开心的事,我的 AORI神隐拉面终于要进入中国啦!因为是 中国第一家,也是最大的一家,所以准备了 很长时间。今年秋天上海田子坊见,希望你 们会喜欢我的AORI神隐拉面! #AORI #아오리라멘 #アオリの神隠し #aoriramen</p>
+        <p>详细资讯：<a href="https://www.sohu.com/a/193130133_662731" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            搜狐</a></p>
+      </div>
+    </div>
+    <img src="1709192.jpeg" height="280" width="400" />
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年9月19日</strong></p>
+        <p>@AORI神隐拉面</p>
+        <p>我会替胜酱煮好每一碗#AORI神隐拉面#的，今年秋天见啦～</p>
+        <p>详细资讯：<a href="https://www.sohu.com/a/193130133_662731" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            搜狐</a></p>
+      </div>
+    </div>
+    <img src="1709193.jpeg" height="400" width="250" />
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年11月21日</strong></p>
+        <p>胜利发微博</p>
+        <p>AORI拉面中国第1分店——上海田子坊店11月24日正式开业！<br/>
+之前我来上海吃过3次了，味道非常棒！真的超级好吃！和韩国日本是一样的，因为拉面的食材和设备全都是从日本进口的。很多中国粉丝们爱吃辣，那么AORI秘制的辣油，你们肯定喜欢！
+我也学聪明了，上海田子坊店是所有AORI拉面分店里最大的，有113个座位，大家就不用排队了，还有露天阳台和lounge，不仅可以吃面还可以喝酒聊天谈谈心，希望大家喜欢。
+开业我还会赠送礼物给所有粉丝，只要吃一碗幸福的AORI拉面，就能在店里进行抽签。奖品是我亲手写上祝福的深夜留言薄和海报，千万不要错过哦！@AORI神隐拉面 地址在上海市黄浦区泰康路248弄23号二楼 （从田子坊2号门进来直走到底抬头就能看到AORI啦）</p>
+        <p>详细资讯：<a href="https://weibo.com/3699928344/Fwa6Nxikl" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            SEUNGRI胜利-YG</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider23', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider23">
+          <div class="slide-item">
+            <img src="171121.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1711211.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1711212.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1711213.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider23', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年11月21日</strong></p>
+        <p>胜利发ins</p>
+        <p>@ aoriramen #Aori拉面 #上海 #中国🇨🇳🐼 #Aori拉面中国一号店要开业啦！谢谢大家的喜欢 . #田子坊</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/FwaqxvQtL" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider24', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider24">
+          <div class="slide-item">
+            <img src="1711214.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1711215.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider24', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年11月23日</strong></p>
+        <p>胜利发ig story</p>
+        <p>11月24日，🇨🇳中国首家AORI拉面店要开业了！欢迎大家来品尝！！ 上海市黄浦区泰康路248弄23号二楼 @aoriramen #아오리라멘 #アオリの神隠し #중국진출 #상해1호점 #티엔지펑 I'm really happy to open first Aoriramen 🍜 store in shanghai china ! 🇨🇳】
+@SEUNGRI胜利-YG @AORI神隐拉面  明天11月24日，上海田子坊2号门进来直走到底左转抬头就能看见</p>
+        <p>视频：<a href="https://weibo.com/2837351320/FwsXMoeAk" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年11月24日</strong></p>
+        <p>胜利发微博</p>
+        <p>11月24日，中国首家AORI拉面店要开业了！欢迎大家来品尝！！ 上海市黄浦区泰康路248弄23号二楼 @AORI神隐拉面</p>
+        <p>视频：<a href="https://weibo.com/3699928344/FwsQSbijf" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            SEUNGRI胜利-YG</a></p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年11月24日</strong></p>
+        <p>李胜贤吧送花篮祝贺AORI拉面田子坊店开业</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/Fwxf1EfLW" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider26', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider26">
+          <div class="slide-item">
+            <img src="171121.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1711211.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1711212.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1711213.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1711214.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1711215.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider26', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年4月18日</strong></p>
+        <p>Aori Ramen 与上海彩虹妈妈家庭关爱中心一起进行自闭症群体关爱计划</p>
+        <p>在上海田子坊拉面店接待了十位自闭症孩子，孩子们与父母亲在店内品尝拉面，并在工作人员的指导下学习点餐和用餐</p>
+        <p>详细资讯：<a href="https://weibo.com/5318334107/4231234014237805" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider68', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider68">
+          <div class="slide-item">
+            <img src="180418.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1804181.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1804182.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1804183.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1804184.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider68', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第17家，韩国第14家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年11月24日 开业</strong></p>
+        <p>韩国光州尚武</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年11月23日</strong></p>
+        <p>@aoriramen</p>
+        <p>Aori拉面第16家店将于2017年11月24日在韩国光州开业</p>
+        <p>详细资讯：<a href="https://x.com/GottaTalk2V1212/status/933515021413335042" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            GottaTalk2V1212</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider27', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider27">
+          <div class="slide-item">
+            <img src="171123.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1711231.jpeg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider27', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第18家，韩国第15家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年12月8日 开业</strong></p>
+        <p>韩国大田广域</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年12月12日</strong></p>
+        <p>胜利发ins</p>
+        <p>#Aori拉面第17家店将在大田开业。Aori拉面在韩国的第15家店，大田，将于12月8日（周五）开业！大田是韩国五大行政中心城市之一，交通便利，庆典丰富多彩，文化氛围浓厚，欢迎大家来大田享用Aori拉面！Aori拉面大田店位于大田广域市西区屯山洞1015号1楼，毕加索大厦旁</p>
+        <p>详细资讯：<a href="https://www.topstarnews.net/news/articleView.html?idxno=336010" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            topstarnews</a></p>
+      </div>
+    </div>
+    <img src="171212.jpg" height="300" width="400" />
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年12月12日</strong></p>
+        <p>Aori FNB 向绿伞儿童基金会捐赠了1亿韩元，帮助低收入家庭儿童购买冬季生活必需品</p>
+        <p>胜利和父亲以及30名员工和20名 E-mart员工一同参与送煤炭</p>
+        <p>详细资讯：<a href="https://www.allkpop.com/article/2017/12/seungri-donates-100-million-krw-for-children-in-low-income-families" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Allkpop</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider63', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider63">
+          <div class="slide-item">
+            <img src="1712121.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1712122.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1712123.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1712124.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1712125.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1712126.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1712127.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1712128.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1712129.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="17121210.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="17121211.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="17121212.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider63', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/grGfueJ5SMo?si=3NRwWQyf6s7jM3bF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2017年12月13日</strong></p>
+        <p>粉丝在 Aori Ramen 中国分店 给胜利通话庆生</p>
+        <ul>
+          <li>啊啊胜利的狗狗眼和猫咪唇可爱死了</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第19家，韩国第16家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年12月15日 开业</strong></p>
+        <p>韩国首尔宫井洞</p>
+        <p>详细资讯：<a href="https://www.facebook.com/DaeguLive/posts/%EB%B9%85%EB%B1%85-%EC%8A%B9%EB%A6%AC-%EB%8C%80%EB%B0%95-%EB%A7%9B%EC%9E%88%EA%B8%B0%EB%A1%9C-%EC%86%8C%EB%AC%B8%EB%82%9C-%EC%95%84%EC%98%A4%EB%A6%AC%EB%9D%BC%EB%A9%98%EB%8F%99%EC%84%B1%EB%A1%9C%EC%A0%90-%EA%B0%80%EC%98%A4%ED%94%88-14%EC%9D%BC-%EC%A0%95%EC%8B%9D-%EC%98%A4%ED%94%88-16%EC%9D%BC-%EC%98%88%EC%A0%95%EC%8B%A4%EC%A0%9C%EB%A1%9C-%EC%98%A4%ED%94%88-%EA%B0%80%EB%A7%B9%EC%A0%90%EC%97%90-%EC%99%80%EC%84%9C-%EC%8A%B9%EB%A6%AC%EC%82%AC%EC%9E%A5%EB%8B%98-%ED%8C%AC%EC%82%AC%EC%9D%B8%ED%9A%8C%EB%8F%84%ED%96%88%EB%8B%A4%EA%B3%A0-%ED%95%98%EB%8D%98/713652265492578/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Facebook</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第20家，韩国第17家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年12月16日 开业</strong></p>
+        <p>韩国首尔东城路</p>
+        <p>详细资讯：<a href="https://www.facebook.com/watch/?v=890359311131442" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Facebook</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第21家，韩国第18家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年12月23日 开业</strong></p>
+        <p>韩国首尔永登浦</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年12月25日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面第20分店、韩国第18分店即将在12月23日韩国政治经济中心汝矣岛开业！<br/>
+Aori拉面汝矣岛店位于汝矣岛标志性建筑首尔国际金融中心（IFC Mall）。<br/>
+Aori拉面即将在拥有各种美食和看点的IFC Mall与大家见面～<br/>
+Aori拉面IFC Mall地址：首尔市永登浦区国际金融路10号，L楼144号（8秒对面）</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/FBh78joUQ" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider28', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider28">
+          <div class="slide-item">
+            <img src="171225.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1712251.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider28', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="aori2018" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="aori.html#aori2018-jump" class="jump-button">2018</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年1月26日</strong></p>
+        <p>胜利发ig story​</p>
+        <p>视频：<a href="https://weibo.com/2837351320/G0fTXnUtc" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年2月9日</strong></p>
+        <p>Aori Ramen 登上日本新闻​</p>
+        <p>视频：<a href="https://weibo.com/2837351320/G2k615eR7" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第22家，中国第2家，海外第2家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年2月9日 开业</strong></p>
+        <p>中国上海徐汇日月光</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年2月8日</strong></p>
+        <p>李胜贤吧送花篮庆祝上海徐汇日月光开业​</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/G290vqgyE" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider32', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider32">
+          <div class="slide-item">
+            <img src="180208.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1802081.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1802082.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider32', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年2月9日</strong></p>
+        <p>胜利发ins</p>
+        <p>2月8日，Aori神隐拉面中国上海2号店正式开业了！！！欢迎大家来品尝！ <br/>
+地址：上海市徐汇区漕宝路33号 L1-47-50<br/>
+22月8日 #AORI拉面中国上海2号店正式开业啦！！！来吃好吃的#AORI拉面吧: No.33 Caobao Road L1-47-50,Shanghai,China @ aoriramen</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/G2kwojDif" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider29', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider29">
+          <div class="slide-item">
+            <img src="180209.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1802091.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider29', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年2月9日</strong></p>
+        <p>胜利发微博</p>
+        <p>大家好，我的Aori神隐拉面在中国的第2家店上海徐汇日月光店已经开业啦666666 我已经去吃过了味道很棒。还有我们的新品“名古屋拌面”明天上市，真的超级超级好吃 
+<br/>地址在上海徐汇日月光（地铁12号线漕宝路站）@AORI神隐拉面 ​</p>
+        <p>详细资讯：<a href="https://weibo.com/3699928344/G2ktkl32J" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            SEUNGRI胜利-YG</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider30', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider30">
+          <div class="slide-item">
+            <img src="1802092.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="180209.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1802091.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1802093.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1802094.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1802095.jpeg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider30', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年2月15日</strong></p>
+        <p>胜利发ins</p>
+        <p>新年快乐 身体健康 万事如意. @aoriramen #aori拉面</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/G3egP753Y" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider31', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider31">
+          <div class="slide-item">
+            <img src="180215.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1802151.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider31', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第23家，海外第3家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月3日 开业</strong></p>
+        <p>越南河内</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年10月23日</strong></p>
+        <p>胜利发ins</p>
+        <p>@aoriramen #hanoi #越南即将开业 🍜😍 #AORI拉面#越南#河内#进军越南​</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/FrGHndr9V" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider21', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider21">
+          <div class="slide-item">
+            <img src="171023.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1710231.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider21', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月1日</strong></p>
+        <p>胜利发ins</p>
+        <p>3月3日 来越南寻找AORI拉面吧！河内一号店 [No.26b Ly Thai To St, Hoan Kiem Dist, Ha Noi] 现在也可以在越南享受AORI拉面啦​</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/G5pgzlKPK" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider33', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider33">
+          <div class="slide-item">
+            <img src="180301.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1803011.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider33', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月1日</strong></p>
+        <p>胜利发ins</p>
+        <p>@aoriramen.vietnam @aoriramen #刚开始做AORI拉面仿佛还是几天前 如今就已经进军了越南 ! 🇻🇳 心情不错 海报 100张签名中ㅎㅎ</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/G5pUOtWBD" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider34', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider34">
+          <div class="slide-item">
+            <img src="1803012.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1803013.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider34', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第24家，韩国第19家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月9日 开业</strong></p>
+        <p>韩国京畿道盆唐</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月8日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面24号分店即将在盆唐开业！<br/>
+Aori拉面国内19号分店盆唐店将与3/9（周五）开业！<br/>
+盆唐有着美丽的夜景，一年四季平和的氛围特别适合散步。
+在这便利设施齐全，居住环境良好的盆唐也可以品尝到美味的Aori拉面！<br/>
+Aori拉面盆唐店位于書峴站4号出口，書峴NTOWN大厦2楼（204,Hwangsaeul-ro 335-5,Bundang-gu,Seongnam-si,Gyeonggi-do)</p>
+        <p>详细资讯：<a href="https://weibo.com/3579155041/G6q73eDzm" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            怪蜀黍在我家吧</a></p>
+      </div>
+    </div>
+    <img src="180308.png" height="300" width="400" />
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月10日</strong></p>
+        <p>胜利发ig story</p>
+        <p>#aori拉面#aori神隐 @ aoriramen 我出来了 aori拉面也在放送里出来了 真忙啊 努力吧 我们 #经济杂志m aori登上#MBC 公共台</p>
+        <p>视频：<a href="https://weibo.com/2837351320/G1hS96z36" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月10日</strong></p>
+        <p>Economy magazine M 报道 Aori Ramen​</p>
+        <p>视频：<a href="https://weibo.com/2837351320/G6KHZfThQ" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第25家，韩国第20家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月20日 开业</strong></p>
+        <p>韩国蔚山广域</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月23日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面25号分店即将在蔚山开业！<br/>
+Aori拉面国内第20号店蔚山店将于3/20（星期二）在蔚山南区开业！
+蔚山是拥有艮绝岬、大王岩公园等百大景区的韩国代表性工业城市。
+大家也可以在这温暖且具有创造性的城市蔚山，品尝到美味的Aori拉面了！
+Aori拉面蔚山店位于蔚山广域市南区三山中路八十四号11-5 2楼</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/G8KJ4bLZw" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider35', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider35">
+          <div class="slide-item">
+            <img src="180323.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1803231.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider35', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第26家，韩国第21家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月24日 开业</strong></p>
+        <p>韩国忠清北道清州</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月27日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面26号分店即将在清州开业！<br/>
+Aori拉面国内第21号店清州店将于3/24（星期六）在忠清北道青州市开业。
+请在拥有千年历史和传统、美丽的自然风景、教育和文化悠久的城市清州，与Aori拉面共享美好时光！
+Aori拉面清州店位于忠清北道清州市兴德区大农路48号2楼</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/G9jXPer6K" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider36', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider36">
+          <div class="slide-item">
+            <img src="180327.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1803271.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider36', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第27家，韩国第22家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月30日 开业</strong></p>
+        <p>韩国安养市凡溪洞</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月28日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面第27号分店即将在凡溪开业！<br/>
+Aori拉面国内第22号店凡溪店将于3/30（星期五）在安养市凡溪洞开业！
+安养市以安养葡萄而闻名,并且拥有葡萄隧道和安养新水公园等旅游景点。
+请在这美丽的安养市凡溪洞与Aori拉面共享美好时光！
+Aori拉面凡溪店位于安养市东安区坪村大路217号路27，2层，位于凡溪站3号出口</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/G9rSn3mip" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider37', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider37">
+          <div class="slide-item">
+            <img src="180328.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1803281.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider37', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第28家，韩国第23家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月30日 开业</strong></p>
+        <p>韩国忠清南道天安</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月29日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面第28号分店即将在天安开业！ <br/>
+Aori拉面国内第23号店天安店将于3/30（星期五）在忠清南道天安市开业！
+天安市拥有柳宽顺烈士生前的故居以及独立纪念馆等历史氛围浓厚。
+而且还拥有被指定韩国最优秀节日之一的天安兴打令节。
+今后大家也可以在天安市品尝到美味的Aori拉面了！
+Aori拉面天安店位于32 Meokgeori 10-gil, Dongnam-gu, Cheonan-si, Chungcheongnam-do, 1层,
+新世界百货对面的小胡同里</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/G9BfFAYQS" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider38', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider38">
+          <div class="slide-item">
+            <img src="180329.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1803291.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider38', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年4月1日</strong></p>
+        <p>Aori Ramen 推出 AORI21周边</p>
+        <p>详细资讯：<a href="https://weibo.com/3579155041/G9XfTwtg0" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider64', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider64">
+          <div class="slide-item">
+            <img src="180331.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1803311.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1803312.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1803313.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider64', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年4月10日</strong></p>
+        <p>Aori Ramen 获得了风险投资认证<br/>（胜利拿的是拉面店的创业事业确认书）</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/Gbs0edbgy" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider65', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider65">
+          <div class="slide-item">
+            <img src="180410.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1804101.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider65', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第29家，韩国第24家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年4月11日 开业</strong></p>
+        <p>韩国忠清南道天安</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/0t5MgRahvRE?si=xCXdpkYWwo2WSLbV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年4月11日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面第29号分店即将在安山开业！<br/>
+Aori拉面国内第24号店安山店将于4/11（星期三）在安山开业！
+安山市有着多种文化和文化活动，并且是首都圈最好的海洋旅游观光城市，以后大家也可以在安山市品尝到美味的Aori拉面了！
+Aori拉面安山店位于京畿道安山市檀园区古栈洞534-3,A栋2层，中央站附近</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GbzTI6JPB" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider39', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider39">
+          <div class="slide-item">
+            <img src="180411.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1804111.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider39', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年4月16日</strong></p>
+        <p>Aori FNB 与 Happyfund Beans 合作，由胜利代言</p>
+        <p>参与者定期在储蓄罐中存钱，将有机会参加抽奖和获取胜利的签名礼品。筹集到的善款捐献给绿伞儿童基金会</p>
+        <p>详细资讯：<a href="https://www.instagram.com/p/BhqSe5TAODg/?img_index=4&igsh=MW1tc3o2ZWF6c2lwbg%3D%3D" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            mxx880818</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider66', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider66">
+          <div class="slide-item">
+            <img src="180416.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1804161.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1804162.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1804163.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider66', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年4月20日</strong></p>
+        <p>胜利发ins</p>
+        <p>立即搜索#NaverHappyBean，与胜利一起为孩子们创造一个幸福的世界！#HappyBean #RegularSavings #happybeen</p>
+        <p>详细资讯：<a href="https://www.industry.co.id/read/31615/ajak-masyarakat-peduli-seungri-bigbang-ikut-donasi-kemanusiaan" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            industrycoid</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="180420.jpg" height="250" width="400" />
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <p>全球第30家，韩国第25家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年4月19日 开业</strong></p>
+        <p>韩国京畿道富川</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年4月11日</strong></p>
+        <p>@wlehwnd</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GbA6BmwUg" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider40', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider40">
+          <div class="slide-item">
+            <img src="1804112.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1804113.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider40', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第31家，韩国第26家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年4月26日 开业</strong></p>
+        <p>韩国京畿道光明</p>
+        <p>详细资讯：<a href="https://www.siksinhot.com/P/1028378" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            siksinhot</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第32家，韩国第27家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年5月4日 开业</strong></p>
+        <p>韩国济州神话世界</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年5月4日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面第32号分店将在济州岛开业！<br/>
+Aori拉面国内第27号店将于5/4（星期五）在济州岛开业！
+在开业前期就因世界级的服务质量横扫了居多奖项。
+在“2018 Daily True Awards”评选为最优酒店，
+在国内最大的综合度假村济州神话世界也可以品尝到美味的Aori拉面啦！ 
+Aori拉面济州神话世界店位于济州岛西歸浦市安德面神话历史路304号98，济州神话世界</p>
+        <p>详细资讯：<a href="https://weibo.com/3579155041/Gf7pb82Vd" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            怪蜀黍在我家吧</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider41', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider41">
+          <div class="slide-item">
+            <img src="180609.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="180504.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1805041.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1805042.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1805043.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1805044.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider41', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第33家，韩国第28家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年5月5日 开业</strong></p>
+        <p>韩国江原道原州</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年5月7日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面第33号分店将在原州市开业！<br/>
+Aori拉面国内第28号店将于5/5（星期六）在原州市开业！
+原州市每年都会举办国际竞走大赛,而且被世界保健机构评选为健康城市。
+正飞速发展的原州，成为了江源地区第一经济首都。
+以后大家也可以在原州品尝美味的Aori拉面啦！
+Aori拉面原州店位于江原道原州市Neungnadong-gil70,207号武三公园对面路口</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GfzOtnKgf" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider42', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider42">
+          <div class="slide-item">
+            <img src="180507.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1805072.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1805071.jpeg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider42', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/zhK_pkVwrRc?si=cPf8TPVYd8syt1DE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年5月26日</strong></p>
+        <p>胜利巡店</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第34家，韩国第29家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年5月9日 开业</strong></p>
+        <p>韩国首尔蘆原</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年5月13日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面34号店将在首尔蘆原区开业！<br/>
+Aori拉面国内第29号店将于5/9（星期三）在蘆原区开业！
+蘆原区因拥有水落山、中浪川等美丽的自然景象以及大面积的住宅楼，
+被评选为最适合居住的自治区第一位!
+以后大家也可以在蘆原区品尝到美味的Aori拉面啦！
+Aori拉面蘆原区店位于首尔市蘆原区上溪路1号14-11，Hiwellbeing商铺A栋205~208号，蘆原站9号出口附近</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GguWczGnb" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider43', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider43">
+          <div class="slide-item">
+            <img src="1805136.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="180513.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1805131.jpeg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider43', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第35家，中国第3家，海外第4家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年5月11日 开业</strong></p>
+        <p>中国上海新天地</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年2月9日</strong></p>
+        <p>胜利发ig story</p>
+        <p>上海AORI3号店 coming soon​​​</p>
+        <p>视频：<a href="https://weibo.com/2837351320/G2nd1mcdu" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年5月13日</strong></p>
+        <p>胜利在两个平台发一样的内容</p>
+        <p>我的Aori拉面中国第3家分店5月11日上海新天地开张啦！新天地是上海的中心，上次去了人很多，大家都在非常努力的奋斗，希望大家在辛苦工作后可以吃到美味的拉面！<br/>
+地址在上海市黄浦区湖滨路168号无限极荟购物中心B1-W11
+（1号线黄陂南路站2号出口） ​​​</p>
+        <p>详细资讯：<a href="https://weibo.com/3699928344/GguVb6NsD" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a> - 
+        <a href="https://weibo.com/2837351320/Ggv2lbn3w" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            SEUNGRI胜利-YG</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider44', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider44">
+          <div class="slide-item">
+            <img src="1805132.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1805133.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1805134.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1805135.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider44', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年8月25日</strong></p>
+        <p>胜利在两个平台发一样的内容</p>
+        <p>Aori拉面中国第3家分店5月11日上海新天地开张啦！在上海的中心新天地，大家也可以品尝到美味的Aori拉面啦
+Aori拉面三号店地址在上海市黄浦区湖滨路168号无限极荟购物中心B1-W11
+（1号线黄陂南路站2号出口）
+四号店也即将在环球港开业，敬请期待！ ​​​</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GwhFkdu75" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a> - 
+        <a href="https://weibo.com/3699928344/4276891013858489" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            SEUNGRI胜利-YG</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider57', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider57">
+          <div class="slide-item">
+            <img src="180825.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1808252.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider57', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第36家，韩国第30家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年5月18日 开业</strong></p>
+        <p>韩国首尔大学路</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年6月14日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面36号店将在大学路开业！<br/>
+Aori拉面国内第30号店将于5/18（星期五）在大学路开业！
+大学路拥有需多丰富多彩的演出和活动，并且是韩国代表性的文化艺术街。
+以后大家也可以在大学路品尝到美味的Aori拉面啦！ 
+Aori拉面大学路店位于首尔市钟路区大学路143，2层，慧化站4号口</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GlkHwsjdS" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider45', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider45">
+          <div class="slide-item">
+            <img src="180614.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1806141.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider45', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第37家，韩国第31家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年5月25日 开业</strong></p>
+        <p>韩国釜山庆星大学</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年6月26日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面37号店在庆星大学开业啦！<br/>
+Aori拉面国内第31号店已于5/25（星期五）再庆星大学开业啦！
+釜山市拥有全世界唯一的UN纪念公园，而且是釜山市的教育于文华的中心地带。
+以后大家也可以在庆星大学品尝到美味的Aori拉面啦！
+Aori拉面庆星大学店位于釜山市南区龙沼路9，2层，庆星大学站3号出口附近</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/Gn7ccdxCL" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider46', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider46">
+          <div class="slide-item">
+            <img src="180826.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1808261.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider46', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第38家，韩国第32家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年6月4日 开业</strong></p>
+        <p>韩国首尔新林</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年6月15日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面第38号店在新林开业啦！<br/>
+Aori拉面国内第32号店已于6/4（星期一）在新林开业啦！
+大家可以在由波拉梅公园、道林川、将军峰近邻公园构成，并且是交通中心地区的新林，品尝到美味的Aori拉面啦！
+Aori拉面新林店位于首尔市官乐区南部环路1600 2层，新林站3号出口附近</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GlwvsChSI" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider47', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider47">
+          <div class="slide-item">
+            <img src="180615.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1806151.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider47', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第39家，韩国第33家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年6月7日 开业</strong></p>
+        <p>韩国首尔蚕室saenae</p>
+        <ul>
+          <li>崔钟训加盟这间拉面店</li>
+        </ul>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年6月13日</strong></p>
+        <p>胜利发ins</p>
+        <p>最近以主演身份而走红的 @guwon___ #和不久前 #成为aori加盟店店主的 @ftgtjhc #崔钟训 #funni 一起 #闪聚</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/Gl9QMkwUH" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider48', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider48">
+          <div class="slide-item">
+            <img src="180613.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1806131.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider48', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年6月18日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面第39号店已在蚕室saenae开业啦！<br/>
+Aori拉面国内第33号店已于6/7（星期四）在蚕室saenae（原 新川）开业啦!
+在拥有首尔标志性建筑乐天塔、乐天世界和石川湖的蚕室，大家也可以品尝到美味的Aori拉面啦
+Aori拉面蚕室saenae店位于首尔市松坡区百济古坟7路，32-8 2层，蚕室saenae站4号口</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GlUxzFNI8" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider49', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider49">
+          <div class="slide-item">
+            <img src="180618.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1806181.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1806182.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider49', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Eb27pdSjEkI?si=or-20zLFLZNrLe7r" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年6月9日</strong></p>
+        <p>在 Aori Ramen 与胜利通话</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第40家，海外第5家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年6月9日 开业</strong></p>
+        <p>马来西亚吉隆坡Pavilion KL</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年2月2日</strong></p>
+        <p>胜利发ins</p>
+        <p>@aoriramen #malaysia #kl opening soon can’t wait !! 🇲🇾 #아오리라멘</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/G1hR3di0D" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a> - 
+        <a href="https://weibo.com/2837351320/G1hS96z36" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            ig story</a></p><br/>
+        <p>@aoriramen_malaysia</p>
+        <p>Seungri surprise visit to Aori Ramen Malaysia ! #aoriramen #aoriramen_malaysia</p>
+        <p>详细资讯：<a href="https://www.instagram.com/p/BesRZhUjJaM/?igsh=bnoxN3JscGI5dnh5" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            1</a> - 
+        <a href="https://www.instagram.com/p/BesRZhUjJaM/?igsh=bnoxN3JscGI5dnh5" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            2</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider50', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider50">
+          <div class="slide-item">
+            <img src="180202.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1802021.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1802022.jpeg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1802023.jpeg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider50', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年6月9日</strong></p>
+        <p>@aoriramen_malaysia</p>
+        <p>
+🎊Aori Ramen第40家分店在马来西亚开业啦！🎊<br/>
+Aori Ramen第40家分店将于6月9日星期六在马来西亚吉隆坡开业！<br/>
+Aori Ramen即将入驻马来西亚吉隆坡热门购物胜地Pavilion。<br/>
+Aori Ramen吉隆坡店位于Pavilion六楼。<br/>
+Aori Ramen 吉隆坡分店位于 Lot 6.36, Level 6, Pavilion KL 168 Jalan bukit bintang, 55100 Kuala Lumpur, Malaysia。</p>
+        <p>详细资讯：<a href="https://www.instagram.com/p/BjySPHhF_NR/?igsh=MWNuZXAxaDJnZWxp" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            aoriramen_malaysia</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="1806091.jpeg" height="300" width="300" />
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@栗子的秘密基地 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=54678263&bvid=BV1a4411M764&cid=95647324&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年10月31日</strong></p>
+        <p>胜利巡店</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第41家，韩国第34家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年7月5日 开业</strong></p>
+        <p>韩国首尔麻浦</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年7月10日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面第41号店将在上岩开业啦！<br/>
+Aori拉面国内第34号店将于7月5日（星期四）在上岩开业啦！
+在国内IT技术与文化娱乐产业的中心地区上岩DMC，大家也可以品尝到美味的Aori拉面啦！
+Aori拉面上岩店位于首尔市麻浦区世界杯北路54路25，上岩DMC, PRUGIO CITY, S-CITY 203~204号，韩国住宅金融公社对面</p>
+        <p>详细资讯：<a href="https://weibo.com/3579155041/Gpg3YzaTg" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            怪蜀黍在我家吧</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="180710.png" height="300" width="400" />
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <p>全球第42家，韩国第35家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年7月13日 开业</strong></p>
+        <p>韩国京畿道平泽</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年8月25日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面第42号店将在平泽开业啦！<br/>
+Aori拉面国内第35号店将于7月13日（星期五）在平泽开业啦！
+平泽因牙山湾呈现出海洋自然环境，且拥有有着30多年历史的平泽港。
+大家以后在平泽也可以品尝到美味的Aori拉面啦！
+Aori拉面平泽店位于京畿道平泽市平泽2路12，2层 平泽站1号出口处</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GwisYE3Bn" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider53', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider53">
+          <div class="slide-item">
+            <img src="180825.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1808251.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider53', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第43家，韩国第36家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年7月20日 开业</strong></p>
+        <p>韩国京畿道议政府</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年8月16日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面第43号店将在议政府开业啦！<br/>
+Aori拉面国内第36号店将于7月20日星期五在议政府开业啦！
+议政府临近很多登山游客都喜欢造访的道峰山和水落山，
+是京畿道北部的交通、文化与教育的中心地区。
+大家以后也可以在议政府品尝到美味的Aori拉面了！
+Aori拉面议政府店位于京畿道议政府市平和路536，2层 议政府站5号出口对面</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GuX8V0WHh" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider54', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider54">
+          <div class="slide-item">
+            <img src="180816.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1808161.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider54', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第44家，海外第6家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年8月5日 开业</strong></p>
+        <p>越南胡志明</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月27日</strong></p>
+        <p>胜利发ins</p>
+        <p>🎊Aori Ramen 第 44 家分店在越南胡志明市开业🎊<br/>
+Aori Ramen 的第 44 家分店，也是第 7 家海外分店于 8 月 5 日开业。Aori Ramen 的第 44 家分店，也是第 7 家海外分店，胡志明市分店位于胡志明市最繁华的 CBD 第一区。Aori Ramen 胡志明市分店位于越南胡志明市第一郡 Ben Nghe 坊 Ho Tung Mau 街 66 号。
+@Aoriramen.vietnam<br/>
+Aori Ramen 越南第二家分店于 8 月 5 日在胡志明市开业。<br/>
+Aori Ramen 位于越南最大城市的 CBD 第一区。<br/>
+胡志明市人潮涌动，仿佛永不眠。由于这里汇聚了来自全国各地、拥有不同文化背景的人们，这里的生活方式总是充满新鲜有趣的事物。
+欢迎前往越南胡志明市第一区滨义坊胡同茂街66号享用Aori拉面。<br/>
+@Aoriramen.vietnam</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/H9ajAdh3h" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider55', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider55">
+          <div class="slide-item">
+            <img src="181227.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1812271.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider55', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第45家，韩国第37家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年8月9日 开业</strong></p>
+        <p>韩国首尔木洞</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年8月10日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面45号店将在木洞开业啦！<br/>
+Aori拉面国内第37号店将于8/9(星期四)在木洞开业啦！
+木洞不仅是教育中心区，还拥有首尔八景之一的龙王亭和巴黎公园。
+安养川生态公园等多样的近邻设施与超现代化建筑物形成协调，给人们提供了舒适的居住环境。
+大家以后也可以在木洞品尝美味的Aori拉面啦！
+Aori拉面木洞店位于首尔市阳川区木洞东路256，2层 现代百货商场对面的胡同</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GtYW2uEUR" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider56', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider56">
+          <div class="slide-item">
+            <img src="180810.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1808101.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider56', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年8月28日</strong></p>
+        <p>Aori Ramen 当 The Great Seungri Tour 的赞助方</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GwHjzgCcl" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider67', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider67">
+          <div class="slide-item">
+            <img src="180828.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1808281.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider67', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第46家，韩国第38家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年9月7日 开业</strong></p>
+        <p>韩国首尔宣陵</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年9月6日</strong></p>
+        <p>@090710ms</p>
+        <p>🎊Aori拉面第46家店即将入驻宣陵站🎊<br/>
+Aori拉面的第46家店，也是韩国第38家店，将于9月7日在宣陵站开业！
+您可以在位于首尔江南区宣陵路86街附近的宣陵站享用Aori拉面。宣陵站是首尔三大迷宫之一，交通便利，毗邻购物胜地COEX购物中心。
+Aori拉面宣陵站店位于首尔江南区宣陵路86街48号2楼，靠近宣陵站1号出口。</p>
+        <p>详细资讯：<a href="https://www.facebook.com/2junho85/posts/%EC%A1%B4%EC%9E%98-%EB%B0%95%EB%8C%80%ED%91%9C%EB%8B%98-090710ms-%EC%9D%B4-%EC%9A%B4%EC%98%81%ED%95%98%EB%8A%94%EC%95%84%EC%98%A4%EB%A6%AC%EB%9D%BC%EB%A9%98-%EC%84%A0%EB%A6%89%EC%A0%90-%EB%A7%8E%EC%9D%B4-%EC%B0%BE%EC%95%84%EC%A3%BC%EC%84%B8%EC%9A%94%EB%AF%BC%EC%84%B1%EC%95%84-%ED%90%88%EC%9D%B4%ED%8C%85-%EC%95%84%EC%98%A4%EB%A6%AC%EC%9D%98-%ED%96%89%EB%B0%A9%EB%B6%88%EB%AA%85%EC%97%B4%EC%8B%AC%ED%9E%88-%EC%A4%80%EB%B9%84%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4%EB%A7%8E%EC%9D%80-%EA%B4%80%EC%8B%AC%EA%B3%BC-%EC%82%AC%EB%9E%91-%EB%B6%80%ED%83%81/1902385706730781/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Facebook</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="180907.jpg" height="300" width="300" />
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年9月12日</strong></p>
+        <p>Aori Ramen 与 Kakao Talk 联动</p>
+        <p>2018年9月12至27日期间，选出五名参与者赠送Aori Ramen礼券</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GyZWBiRai" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="180912.jpg" height="300" width="300" />
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <p>全球第47家，韩国第39家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年9月20日 开业</strong></p>
+        <p>韩国首尔光化门</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年10月1日</strong></p>
+        <p>胜利发ins</p>
+        <p>🎊Aori拉面第47家分店在光化门开业啦！🎊<br/>
+Aori拉面第47家分店，也是韩国第39家分店，于9月20日（星期六）在光化门盛大开业！
+位于市中心的景福宫、光化门、清溪广场、光化门一带。
+Aori拉面真好吃！
+Aori拉面光化门店 地址：南韩柳州市秦路区五滨路39号新宇大厦2号楼</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GBUEGF4cC" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="181001.png" height="300" width="400" />
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <p>全球第48家，中国第4家，海外第7家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年10月1日 开业</strong></p>
+        <p>中国上海环球港</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年11月30日</strong></p>
+        <p>胜利在两个平台发一样的内容</p>
+        <p>Aori拉面48号店，海外7号店已于10月01日星期一在上海环球港开业啦！
+大家可以在上海最大的购物商城环球港品尝到美味的Aori拉面啦！
+Aori拉面上海4号店位于中山北路3300号环球港B1-278美食广场右侧通道内 @AORI神隐拉面 ​​​</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/H56134KEQ" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a> - 
+        <a href="https://weibo.com/3699928344/4312146005143027" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            SEUNGRI胜利-YG</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider58', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider58">
+          <div class="slide-item">
+            <img src="181130.jpeg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1811301.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider58', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第49家，韩国第40家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年10月15日 开业</strong></p>
+        <p>韩国江南大池洞</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>（不清楚图片来源）</p>
+        <p>详细资讯：<a href="https://sports.khan.co.kr/article/201907170000053" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Sports Khan</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="181015.webp" height="300" width="400" />
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <p>全球第50家，韩国第41家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年11月2日 开业</strong></p>
+        <p>韩国首尔千户</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年11月3日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面第50号店将在千户开业啦！<br/>
+Aori拉面国内第41号店将于11月02日星期五在千户开业啦！
+千户的西边有着首尔市象征的乐天塔，东边则有汉江。
+以后在江东区最为繁华的千户，大家也可以品尝到美味的Aori拉面了！
+Aori拉面千户店位于首尔市江东区千户大路159号22，2层201号</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/H0YlFcOFJ" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="181103.png" height="300" width="300" />
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <p>全球第51家，韩国第42家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年11月9日 开业</strong></p>
+        <p>韩国仁川松岛</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年11月9日</strong></p>
+        <p>胜利发ins</p>
+        <p>🎊Aori拉面第51家分店在松岛开业啦！🎊<br/>
+Aori拉面的第51家分店，也是韩国第42家分店，于11月9日（星期五）在松岛开业啦！这里毗邻中央公园、松灿公园和月光节公园，您可以尽情享受购物、餐饮和休闲等各种乐趣……</p>
+        <p>详细资讯：<a href="https://cl.pinterest.com/pin/305330049736217822/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Pinterest</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="181109.jpg" height="300" width="400" />
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <p>全球第52家，韩国第43家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年11月23日 开业</strong></p>
+        <p>韩国首尔延新川</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年11月26日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面第52号店将在延新川开业啦！<br/>
+Aori拉面第52号店，国内第43号店将于11月23日星期五在延新川开业啦！
+延新川临近各大购物商场并且拥有传统市场，聚集了各年龄层的人群。
+大家以后也可以在交通便利、商圈发达的延新川品尝到美味的Aori拉面啦！
+Aori拉面延新川店位于首尔市恩平区莲西露215-1，2层</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/H4rONbTDx" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider59', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider59">
+          <div class="slide-item">
+            <img src="181130.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1811302.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider59', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第53家，韩国第44家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月1日 开业</strong></p>
+        <p>韩国光州U·Square</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月11日</strong></p>
+        <p>胜利发ins</p>
+        <p>Aori拉面第53号店光州U•Square店已经开业啦!<br/>
+Aori拉面53号店，国内第44号店已于12月01日星期六在光州U•Square开业啦！
+光州拥有韩国最大规模的高速公交汽车站，也是全罗南道交通的中心，聚集着文化、购物等设施。
+以后大家也可以在光州U•Square品尝到美味的Aori拉面了！
+作为光州的2号店，U•Square店位于光州市光山区武珍大路904号，U•Square一层149号</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/H6L3zxrJw" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider60', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider60">
+          <div class="slide-item">
+            <img src="181211.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1812111.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider60', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月10日</strong></p>
+        <p>aoriramen</p>
+        <p>2018年12月1日至16日期间，在Aori Ramen实体店用餐将通过抽奖方式获得礼物</p>
+        <ul>
+          <li>MAC Book Pro</li>
+          <li>吹风机</li>
+          <li>Airpords</li>
+          <li>Kakao Mini C</li>
+          <li>电影票</li>
+          <li>价值1万韩元的Aori礼品卷</li>
+        </ul><br/>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/H6zYo0YA2" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider62', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider62">
+          <div class="slide-item">
+            <img src="1812112.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1812113.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1812114.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1812115.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider62', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月12日</strong></p>
+        <p>胜利发ins</p>
+        <p>AORI拉面的2018年末总会，和国内50几家加盟店主们在一起！2019年也要AORI拉面！# lemeridoen Seoul</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/H6UqJBgG2" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider70', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider70">
+          <div class="slide-item">
+            <img src="181212.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1812121.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1812122.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider70', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月12日</strong></p>
+        <p>Aori FNB 第二年向绿伞儿童基金会捐赠了1亿韩元</p>
+        <p>胜利父母和拉面店工作人员、Jinusean参与送煤炭</p>
+        <p>与E-mart合作发起“暖冬计划”，也捐赠了3千万韩元，整体捐款数额1.3亿韩元</p>
+        <p>详细资讯：<a href="https://www.allkpop.com/article/2018/12/big-bang-s-seungri-donates-100-million-won-to-childfund-korea-for-2-years-in-a-row" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Allkpop</a> - 
+        <a href="https://www.allkpop.com/article/2018/12/big-bang-s-seungri-donates-100-million-won-to-childfund-korea-for-2-years-in-a-row" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider71', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider71">
+          <div class="slide-item">
+            <img src="1812123.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1812124.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1812125.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1812126.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1812127.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1812128.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1812129.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="18121210.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider71', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月12日</strong></p>
+        <p>胜利发ins</p>
+        <p>今天过生日 #大韩民国上升1度 #煤炭银行 #绿色雨伞儿童财团 @ftgtjhc @jinusean3000 我的爸爸妈妈朋友们以及朋友们的父母 @aoriramen 家人们  AORI拉面辛苦啦 一起度过温暖的冬天吧</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/H6SZQC4Yg" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider72', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider72">
+          <div class="slide-item">
+            <img src="18121211.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="18121212.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider72', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月20日</strong></p>
+        <p>胜利发ins</p>
+        <p>与绿色雨伞儿童集团一起，aori也将一部分收入进行了捐赠，以后希望孩子们可以优秀的向着胜利前进，将这份力量传达给孩子们，很感谢一起参与的aori f&b的管理们以及各位工作人员</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/H86Ny81wG" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider73', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider73">
+          <div class="slide-item">
+            <img src="181220.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1812201.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider73', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="aori2019" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="aori.html#aori2019-jump" class="jump-button">2019</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年2月4日</strong></p>
+        <p>胜利辞去董事职务，并从​​Aori FNB的注册证书上删除名字</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/bigbang-seungri-resigns-aori-ramen/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年3月14日</strong></p>
+        <p>Aori FNB 将与胜利和 Yuri Holdings 切割关系，集团重组后店铺会进行转让</p>
+        <p>Aori FNB 表示：<br/>
+大家好，我们是Aori拉面的所属公司Aori FNB。对于在最近一系列事件中一直信赖Aori拉面的各位顾客和店主，首先我们深感抱歉，给您带来困扰。李承铉（胜利）因即将入伍而辞去代表理事职务后，公司总部进行了重组。为了确保加盟店的稳定运营，我们聘请了新的经营管理专家，并于3月7日与各位店主召开了计划会议，并进行了补偿。根据情况，我们计划后续进一步给予补偿。为了维护加盟店和Aori拉面的品牌形象，我们决定与胜利及Yuri Holdings断绝一切关系，重新开始。目前，我们正在商讨将经营权转让给一位对餐饮行业有深入理解，并能为加盟店提供良好领导力的新合作伙伴。43家Aori拉面专卖店并非全部由前任社长的亲朋好友经营。为了最大程度地减少对其他店铺的损害，我们决定关闭与其有关联的店铺。受此极端新闻的影响，那些辛勤工作且与新闻无关的店铺也遭受了损失。Aori拉面总公司将竭尽全力，确保将这些辛勤付出、无辜加盟店主的损失降至最低。再次恳请所有喜爱Aori拉面的顾客们的理解，我们将继续努力，提升口味和品质。</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/aori-ramen-breaks-ties-seungri/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/tGd7-MDU7P4?si=xG1isZ9iBM_rfxC0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2019年3月25日</strong></p>
+        <p>MTN今日财经广播 新闻报道</p>
+        <p>一针见血地说：胜利出事后营业主开始与他划清界限</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年6月19日</strong></p>
+        <p>Aori FNB 宣布胜利持有的5%股份已取消，Yuri Holdings所持的39%股份将被出售并捐赠给绿伞儿童基金会</p>
+        <p>Aori Ramen 完全转由私人投资者持有，公司与胜利无任何股份或关系</p>
+        <p>公司由新的 CEO 金勋泰接手负责，他表示：<br/>作为众多日本拉面爱好者之一，我目睹了Aori拉面所面临的不幸境况。现在我将竭尽全力让喜欢Aori拉面的顾客们再次信赖并享用它。全新起步的Aori FNB及其旗下加盟店将打造一个能够持续为社区贡献、创造价值的商业模式。我们即将发布一项计划，让我们和顾客能够与社会分享我们温暖的心意</p>
+        <p>详细资讯：<a href="https://www.allkpop.com/article/2019/06/more-information-on-aori-ramen-cutting-ties-with-seungri" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Allkpop</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年7月15日</strong></p>
+        <p>两名前特许经营商向首尔地方法院请求Aori FNB提起了169万韩元的索赔，要求赔偿他们因胜利卷入丑闻而遭受的损失</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/aori-ramen-seungri-lawsuit/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="aori2020" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="aori.html#aori2020-jump" class="jump-button">2020</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年6月19日</strong></p>
+        <p>胜利丑闻 + 2019年下半年爆发的”反日本“运动 + Covid-19疫情</p>
+        <p>导致公司的债务超过其资产总值，迫使Aori FNB向首尔破产法院申请破产，所有店铺将全面关闭</p>
+        <p>详细资讯：<a href="https://korea.stripes.com/food-drink/aori-ramen-closes-down-in-korea.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Korea Stripes</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>全球第54家，海外第8家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年8月13日 开业</strong></p>
+        <p>马来西亚亚庇Jesselton Mall</p>
+        <p>胜利与这间店无关</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年12月3日</strong></p>
+        <p>店面完成施工</p>
+        <p>详细资讯：<a href="https://rekatone.com/malaysia/projects/aori-ramen" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Rekatone</a></p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年3月11日</strong></p>
+        <p>@aoriramen_malaysia</p>
+        <p>敬请期待马来西亚神隐拉面的亚庇分行哟……即将营业！</p>
+        <p>详细资讯：<a href="https://www.instagram.com/p/B9lQU1_BVCw/?igsh=MW12aXc3d21nMWF4dg%3D%3D" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            aoriramen_malaysia</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="200311.jpg" height="300" width="400" />
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年8月11日</strong></p>
+        <p>@aoriramenkk</p>
+        <p>神隐拉面第二间店面即将在这个星期四，八月十三开幕营业！KK的朋友们，非常期待为您服务... 到时间！ 🥳🥳</p>
+        <p>详细资讯：<a href="https://www.instagram.com/p/CDvQu7Ypt-e/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            aoriramenkk</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="2008111.jpg" height="300" width="300" />
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2023年8月23日</strong></p>
+        <p>Aori Ramen 改名为 Ajitori Izakaya</p>
+        <p>不再提供猪肉，很难不怀疑是被本地伊斯兰教极端者举报而倒闭
+（本人肚子我有发言权，因为亚庇是马来人聚集地）</p>
+        <p>详细资讯：<a href="https://reviewbah.com/kota-kinabalu/restaurant/aji-tori-izakaya" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Reviewbah</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="aori2024" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="aori.html#aori2024-jump" class="jump-button">2024</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <p>全球第55家，海外第9家</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2024年3月13日 开业</strong></p>
+        <p>马来西亚吉隆坡Damansara Heights</p>
+        <p>胜利与这间店无关</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2024年3月11日</strong></p>
+        <p>@aoriramen_malaysia</p>
+        <p>吃货们，猜猜怎么着？Pavilion Damansara Heights 即将成为您最爱的拉面新去处。盛大的开业典礼定会为您的用餐体验锦上添花，敬请期待！</p>
+        <p>宣传片视频：<a href="https://www.instagram.com/reel/C4XPZwZvRKx/?igsh=bm82bTM5aHE4a2c1" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            aoriramen_malaysia</a></p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2024年3月13日</strong></p>
+        <p>@aoriramen_malaysia</p>
+        <p>兴奋到不行，快来尝尝吧！🍜 终于不用再等了——我们位于 Pavilion Damansara Heights 的新店正式开业了！🎊 今天就来尝尝，感受这份喜悦吧！😋</p>
+        <p>宣传片视频：<a href="https://www.instagram.com/reel/C4XPZwZvRKx/?igsh=bm82bTM5aHE4a2c1" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            aoriramen_malaysia</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="240313.jpg" height="400" width="300" />
+  <hr class="full-width-line" />
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2024年3月15日</strong></p>
+        <p>@aoriramen_malaysia</p>
+        <p>Aori Ramen 在 Pavilion Damansara Heights 的第二家分店开业时，大家的喜爱和支持令我们感动不已！感谢所有加入我们的朋友❤️ 希望很快能再次见到你们<br/>#paviliondamansaraheights #AoriRamen #Ramen</p>
+        <p>P4 马来西亚交通部部长陆兆福到访</p>
+        <p>详细资讯：<a href="https://www.instagram.com/p/C4iD-EgvtU1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            aoriramen_malaysia</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider61', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider61">
+          <div class="slide-item">
+            <img src="240315.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="2403151.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="2403152.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="2403153.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="2403154.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="2403155.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="2403156.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="2403157.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider61', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2025年</strong></p>
+        <p>韩国只剩下四间拉面店，而且招牌、口味、布局不再和从前胜利经营的一样，除了马来西亚的店面</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="seungribusiness.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+ 
+</main>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
+    const slideWidth = 500;
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0;
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+  </script>
+</body>
+</html>

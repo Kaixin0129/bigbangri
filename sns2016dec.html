@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SNS 2016年12月</title>
+  <link rel="icon" href="sli.ico" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.5);
+        transform-origin: top left;
+        width: 200%;
+        height: calc(100vh / 0.5);
+      }
+
+      .full-width-line {
+        transform: scaleX(2);
+        transform-origin: left;
+      }
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .filter-dropdown-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+    margin-top: -50px;
+  }
+
+  .filter-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .filter-button {
+    padding: 15px 25px;
+    background-color: #111;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px 18px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .member-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    margin-top: 5px;
+  }
+
+  .member-list button {
+    margin: 6px 0;
+  }
+
+  #noContentMessage {
+    padding: 15px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 30px auto 0;
+  }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="sns2016.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>SNS 2016年12月</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="sns2017.html">2017</a>
+    </nav>
+  </div>
+
+  <div class="filter-dropdown-wrapper">
+    <div class="filter-dropdown" id="filterDropdown" onclick="toggleFilterLock()" onmouseenter="showMemberList()" onmouseleave="hideMemberList()">
+      <div class="filter-button">筛选</div>
+      <div class="member-list" id="memberList">
+        <button class="jump-button" onclick="filterSNS('all')">全部</button>
+        <button class="jump-button" onclick="filterSNS('gd')">G-Dragon</button>
+        <button class="jump-button" onclick="filterSNS('top')">TOP</button>
+        <button class="jump-button" onclick="filterSNS('taeyang')">太阳</button>
+        <button class="jump-button" onclick="filterSNS('daesung')">大声</button>
+        <button class="jump-button" onclick="filterSNS('seungri')">胜利</button>
+      </div>
+    </div>
+  </div>
+
+  <h1 id="currentFilter" style="text-align:center; margin-top: 30px; margin-bottom: 10px; color: #33FFFF; display: none;"></h1>
+  <p id="currentFilter1" style="text-align:center; margin-bottom: 30px; color: white; display: none;"></p>
+
+  <div class="sns-entry" data-member="seungri">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2016年12月15日</strong> Instagram/微博</p>
+          <p style="color: #33FFFF;">胜利</p>
+          <p>胜利在两个平台发一样的内容</p>
+          <p>aori拉面首尔清潭洞店这个月16号终于正式开业了。为了让女儿aori酱开心而充满诚意制作的爸爸拉面照原样再现了。是带来快乐的拉面。请多多来aori拉面店变得快乐吧！位置是清潭洞87-10 3层 会给把拉面照片拍的好看人回复哦
+          <br/>#AORI的神隐 AORI的神隐 AORI拉面 首尔清潭店会在明天开业 为了让女儿AORI酱开心而做出的拉面 就这么原封不动地奉上 希望大家也能在品尝后开心起来 東京 六本木店也会在12月内开业 敬请期待！ 把拉面照出美味感的用户 我会直接留言 请多多关照！</p>
+          <p>ig：<a href="https://weibo.com/2837351320/EaRLJz7w9" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+              李昇炫Vworld</a></p><br/>
+          <p>AORI拉面首尔清潭店即将在12月16日正式开业！这是日本的一位父亲为了让自己的女儿AORI开心而用心做的拉面。#AORI拉面，希望可以把这个美味和欢乐也带给大家。#AORI拉面 位于清潭洞87-10号3楼！ 如果大家附带话题#AORI拉面，在SNS上传AORI拉面的照片，我会选取好看的照片和各位进行互动！期待大家的光临！！</p>
+          <p>微博：<a href="https://weibo.com/2837351320/EaRLJz7w9" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+              SEUNGRI胜利-YG</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="slider-container">
+        <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+        <div class="slider-wrapper">
+          <div class="slider" id="slider1">
+            <div class="slide-item">
+              <img src="161212.jpeg" class="slide-img img-portrait" />
+            </div>
+            <div class="slide-item">
+              <img src="1612121.jpeg" class="slide-img img-portrait" />
+            </div>
+            <div class="slide-item">
+              <img src="1612122.png" class="slide-img img-portrait" />
+            </div>
+          </div>
+        </div>
+        <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
+      </div>
+      <hr class="full-width-line" />
+    </div>
+  </div>
+
+  <div class="sns-entry" data-member="seungri">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2016年12月15日</strong> Instagram</p>
+          <p>@aoriramen</p>
+          <p>详细资讯：<a href="https://www.koreastardaily.com/sc/news/96062" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+              Korea Star Daily</a></p>
+          </div>
+        </div>
+      </div>
+      <img src="161215.jpeg" height="300" width="380" />
+      <hr class="full-width-line" />
+    </div>
+  </div>
+
+  <div class="sns-entry" data-member="seungri">
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2016年12月28日</strong> Twitter</p>
+          <p style="color: #33FFFF;">胜利</p>
+          <p>清潭洞的人气猪骨拉面店AORI拉面
+AORI拉面是2016年12月开业的日式猪骨拉面专门店。柜台座位是每一个位置都设有隔板，即便是一个人来品尝，也可以不必介意地来。点餐是以在点餐用的纸片上填写的形式，基本上是点拉面时，大蒜的量(无，一般，１勺)，葱的种类(无，细条葱，葱末)，秘传的辛辣酱的量(无，一般，辣，激辣)，其他的如打包和需要的小菜(另外加钱)等等的要求也可以写在上面，然后按铃把纸片交给服务员。AORI拉面是讲究使用1.1cm的极细面，因为嚼劲好，对于女性也很适合，和浓厚的猪骨汤也很搭。店里有日本的服务人员，所以即便不会韩语也可以安心来店。
+<br/>🍜
+<br/>店名：AORI的神隐
+<br/>主菜单：拉面
+<br/>电话：02-518-3767
+<br/>营业时间：11:00-23:00 （最晚接受叫餐时间22:30）
+<br/>休息日：周日，春节•中秋节的连休
+<br/>日语：可以
+<br/>其他外语：英语
+<br/>支付方式：韩元，卡（JCB，visa，master，amex）
+<br/>邮箱：无
+<br/>相关网址：www.instagram.com/aoriramen
+<br/>禁烟：全席禁止吸烟
+<br/>打包：可以
+<br/>预约方式：电话
+<br/>详细地址
+<br/>首尔特別市 江南区 清潭洞 87-10
+<br/>首尔特别市 江南区 岛山大路57路7 
+<br/>盆唐线 狎鸥亭罗德奥站
+<br/>四号出口 步行6分钟
+<br/>aori网址：http://www.konest.com/m/gourmet_detail.html?id=17461</p>
+          <p>详细资讯：<a href="https://weibo.com/2837351320/4057733172695865" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+              李昇炫Vworld</a></p>
+          </div>
+        </div>
+      </div>
+      <img src="161228.jpeg" height="400" width="250" />
+      <hr class="full-width-line" />
+    </div>
+  </div>
+
+  <div id="noContentMessage" style="display:none; text-align:center; color: white; font-size: 40px; margin-top: 30px;">
+    此成员没有发过贴文
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="sns2016.html" id="backButton">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="sns2017.html" id="nextButton">2016</a>
+    </nav>
+  </div>
+
+</main>
+  <script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+
+  let filterLocked = false;
+
+  function toggleFilterLock() {
+    filterLocked = !filterLocked;
+    updateMemberListDisplay();
+  }
+
+  function showMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'flex';
+    }
+  }
+
+  function hideMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'none';
+    }
+  }
+
+  function updateMemberListDisplay() {
+    const memberList = document.getElementById('memberList');
+    memberList.style.display = filterLocked ? 'flex' : 'none';
+  }
+
+  function filterSNS(member) {
+    const entries = document.querySelectorAll('.sns-entry');
+    const message = document.getElementById('noContentMessage');
+    const backButton = document.getElementById('backButton');
+    const nextButton = document.getElementById('nextButton');
+    const footer = document.getElementById('footer');
+    const currentFilter = document.getElementById('currentFilter');
+    const currentFilter1 = document.getElementById('currentFilter1');
+
+    const memberNames = {
+      all: '全部',
+      gd: 'G-Dragon',
+      top: 'TOP',
+      taeyang: '太阳',
+      daesung: '大声',
+      seungri: '胜利'
+    };
+
+    if (memberNames[member]) {
+      currentFilter.textContent = `当前筛选：${memberNames[member]}`;
+      currentFilter1.textContent = `筛选出来的图片也包括成员与别人的合照贴文`;
+      currentFilter.style.display = 'block';
+      currentFilter1.style.display = 'block';
+    } else {
+      currentFilter.style.display = 'none';
+      currentFilter1.style.display = 'none';
+    }
+
+    let hasContent = false;
+
+    entries.forEach(entry => {
+      const members = entry.dataset.member.split(' ');
+      if (member === 'all' || members.includes(member)) {
+        entry.style.display = 'block';
+        hasContent = true;
+      } else {
+        entry.style.display = 'none';
+      }
+    });
+
+    if (!hasContent && member !== 'all') {
+      if (message) message.style.display = 'block';
+      if (backButton) backButton.style.display = 'none';
+      if (nextButton) nextButton.style.display = 'none';
+      if (footer) footer.style.display = 'none';
+    } else {
+      if (message) message.style.display = 'none';
+      if (backButton) backButton.style.display = 'inline-block';
+      if (nextButton) nextButton.style.display = 'inline-block';
+      if (footer) footer.style.display = 'block';
+    }
+  }
+
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
+    const slideWidth = 500;
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0;
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+</script>
+</body>
+</html>
