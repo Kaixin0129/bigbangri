@@ -293,11 +293,86 @@
       padding-left: 20px;
     }
 
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
     .two-column-wrapper {
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      gap: 100px;
+      gap: 40px;
       margin: 50px auto;
       max-width: 1000px;
       padding: 20px;
@@ -313,12 +388,6 @@
       width: 2px;
       background-color: white;
       height: auto;
-    }
-
-    p {
-      margin-bottom: 10px;
-      margin: 10px 0;
-      line-height: 1.8;
     }
 
   </style>
@@ -1091,6 +1160,102 @@
         <p>MAMA 2009</p>
         <p>GD 太阳 舞台表演</p>
       </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/BGB_Vd1NiLY?si=e-Rpk2rHfax4btCm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年11月25日</strong></p>
+        <p>GD登上《Vogue Korea》十二月刊封面</p>
+        <p>详细资讯：<a href="https://oddnessweirdness.blogspot.com/2012/06/g-dragon-for-vogue-korea-09.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            ODDNESS/WEIRDNESS</a></p><br/>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
+          <div class="slide-item">
+            <img src="091125.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="0911251.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="0911252.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="0911253.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="0911254.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="0911255.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="0911256.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="0911257.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="0911258.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="0911259.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="09112510.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="09112511.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="09112512.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="09112513.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="09112514.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="09112515.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="09112516.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="09112517.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="09112518.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="09112519.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="09112520.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="09112521.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="09112522.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="09112523.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
     </div>
     <hr class="full-width-line" />
   </div>
