@@ -368,6 +368,22 @@
     object-fit: contain;
   }
 
+  .toggle-btn {
+    border: 2px solid #33FFFF;
+    color: #FFFFFF;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+  }
+  .toggle-btn:hover {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
   </style>
 </head>
 <body>
@@ -1291,20 +1307,22 @@
     <hr class="full-width-line" />
   </div>
 
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="text-container">
-        <p>全球明星都在抢购联名鞋</p>
-        <p>详细资讯：<a href="https://www.allkpop.com/article/2019/12/neymar-mbapp-j-balvin-more-celebrities-all-around-the-world-wearing-g-dragon-shoes" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
-            Allkpop</a></p>
-        <ul>
-					<li>Bigbang其他四位成员</li>
-					<li>P1 巴西职业足球运动员内马尔 - 
-          <a href="https://weibo.com/1864843627/Il8Iu8afH" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
-            AllAboutNeymar</a></li>
-					<li>P4 哥伦比亚雷鬼歌手 J Balvin</li>
+<div style="text-align: center;">
+  <div class="content-wrap">
+    <div class="text-container">
+      <p>（图片太太太多了，不放完整）</p>
+      <p>以下是全球明星抢购联名鞋的名单：</p>
+      <p>详细资讯：<a href="https://www.allkpop.com/article/2019/12/neymar-mbapp-j-balvin-more-celebrities-all-around-the-world-wearing-g-dragon-shoes" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+          Allkpop</a>
+        <button id="expandBtn" class="toggle-btn" onclick="toggleList(true)" style="margin-left:10px;">展开</button></p>
+        <ul id="celebrityList" style="display: none;">
+          <li>Bigbang其他四位成员</li>
+          <li>P1 巴西职业足球运动员内马尔 - 
+            <a href="https://weibo.com/1864843627/Il8Iu8afH" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+              AllAboutNeymar</a></li>
+          <li>P4 哥伦比亚雷鬼歌手 J Balvin</li>
           <li>挪威职业足球运动员哈兰德</li>
           <li>美国职业篮球运动员詹姆斯</li>
           <li>美国影帝杰米.福克斯</li>
@@ -1409,7 +1427,8 @@
 					<li>越南 YouTuber Phat To</li>
 					<li>越南职业足球运动员阮文全</li>
 					<li>越南歌手 Lou Hoang</li>
-					<li>越南歌手OnlyC</li>
+          <li>越南歌手OnlyC 
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(false)" style="margin-left:10px;">收回</button></li>          
         </ul>
       </div>
     </div>
@@ -1624,6 +1643,19 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+
+  function toggleList(show) {
+    const list = document.getElementById("celebrityList");
+    const expandBtn = document.getElementById("expandBtn");
+    if (show) {
+      list.style.display = "block";
+      expandBtn.style.display = "none";
+    } else {
+      list.style.display = "none";
+      expandBtn.style.display = "inline-block";
+      expandBtn.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
 
   const sliderStates = {};
 
