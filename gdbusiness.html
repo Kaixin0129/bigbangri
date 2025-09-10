@@ -163,6 +163,28 @@
       cursor: pointer;
     }
 
+    .two-column-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 100px;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    .column {
+      width: 45%;
+      text-align: left;
+      color: white;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: white;
+      height: auto;
+    }
+
   </style>
 </head>
 <body>
@@ -196,13 +218,33 @@
     <nav>
       <a href="gd.html">Back</a>
     </nav>
-    <p>Select a business section from the navigation bar below.</p><br/>
-  <nav>
-    <a href="vita.html">Dolce Vita Pension</a>
-    <a href="monsant.html">Monsant Cafe</a>
-    <a href="untitled.html">济州神话世界</a>
-    <a href="pmo.html">PEACEMINUSONE</a>
-  </nav>
+    <p>Select a business section from the navigation bar below.</p>
+
+  <div class="two-column-wrapper">
+    <div class="column left">
+      <p style="color: #33FFFF;">接待业</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="vita.html" class="jump-button">Dolce Vita Pension</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">餐饮类</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="monsant.html" class="jump-button">Monsant Cafe</a>
+      </div><br/>
+      <div id="untitled2018-jump" style="display: flex; align-items: center; gap: 10px;">
+        <a href="untitled.html#untitled2018" class="jump-button">Untitled，2017</a>
+      </div>
+    </div>
+    <div class="column right">
+      <p style="color: #33FFFF;">娱乐类</p><br/>
+      <div id="untitled20181-jump" style="display: flex; align-items: center; gap: 10px;">
+        <a href="untitled.html#untitled20181" class="jump-button">AC.III.T</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">服饰业</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="pmo.html" class="jump-button">PEACEMINUSONE</a>
+      </div>
+    </div>
+  </div>
 
   </main>
 </body>

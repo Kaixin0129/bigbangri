@@ -163,6 +163,28 @@
       cursor: pointer;
     }
 
+    .two-column-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 100px;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    .column {
+      width: 45%;
+      text-align: left;
+      color: white;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: white;
+      height: auto;
+    }
+
   </style>
 </head>
 <body>
@@ -196,23 +218,63 @@
     <nav>
       <a href="seungri.html">Back</a>
     </nav>
-    <p>Select a business section from the navigation bar below.</p><br/>
-  <nav>
-    <a href="joy.html">胜利学院</a>
-    <a href="waffer.html">And Here Cafe</a>
-    <a href="arena.html">Club Arena</a>
-    <a href="bc.html">BC Holdings Limited</a>
-    <a href="yuri.html">Yuri Holdings</a>
-    <a href="cubebio.html">CubeBio</a>
-    <a href="mm.html">Monkey Museum Club</a>
-    <a href="nhr.html">Natural High Records</a>
-    <a href="gloderm.html">Dr. Gloderm</a>
-    <a href="clubx.html">Club X</a>
-    <a href="bsb.html">Burning Sun</a>
-    <a href="liquid.html">Liquid State</a>
-    <a href="vr.html">HeadRock VR</a>
-    <a href="aori.html">Aori Ramen</a>
-  </nav>
+    <p>Select a business section from the navigation bar below.</p>
+
+  <div class="two-column-wrapper">
+    <div class="column left">
+      <p style="color: #33FFFF;">股份有限公司</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="bc.html" class="jump-button">BC Holdings Limited</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="yuri.html" class="jump-button">Yuri Holdings</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">夜店/俱乐部</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="arena.html" class="jump-button">Club Arena</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="mm.html" class="jump-button">Monkey Museum Club</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="clubx.html" class="jump-button">Club X</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="bsb.html" class="jump-button">Burning Sun</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">化妆品</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="gloderm.html" class="jump-button">Dr. Gloderm</a>
+      </div>
+    </div>
+    <div class="column right">
+      <p style="color: #33FFFF;">教育类</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="joy.html" class="jump-button">胜利学院</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">餐饮类</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="waffer.html" class="jump-button">And Here Cafe</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="aori.html" class="jump-button">Aori Ramen</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">娱乐类</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="nhr.html" class="jump-button">Natural High Records</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="liquid.html" class="jump-button">Liquid State</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="vr.html" class="jump-button">HeadRock VR</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">医疗领域</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="cubebio.html" class="jump-button">CubeBio</a>
+      </div>
+    </div>
+  </div>
 
   </main>
 </body>

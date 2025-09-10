@@ -315,6 +315,81 @@
       height: auto;
     }
 
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
   </style>
 </head>
 <body>
@@ -335,6 +410,15 @@
     <div id="091205concert" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
       <a href="2009dec.html#091205concert-jump" class="jump-button">跳转到 2009 时间线</a>
     </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/mrftoUmurLY?si=7WFB7tlEeeTYzUYb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p>（真的非常羞耻）</p>
+        <p>媒体辣评：GD比Janet Jackson在2004年2月1日和Justin Timberlake演出中露乳还过火</p>
+      </div>
+    </div>
   </div>
   <div class="two-column-wrapper">
     <div class="column left">
@@ -342,12 +426,13 @@
         <div class="content-wrap">
           <div class="text-container">
             <p style="color: #33FFFF;"><strong>2009年12月8日</strong></p>
-            <p>GD个人演唱会被投诉包含淫秽和暗示性内容而引发争议</p>
+            <p>GD个人演唱会被投诉包含淫秽和暗示性内容（GD干蹭女舞者）而引发争议</p>
             <p>详细资讯：<a href="https://web.archive.org/web/20110324221244/http://www.koreatimes.co.kr/www/news/art/2010/01/135_56865.html" 
               target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
                 The Korea Times</a></p>
           </div>
         </div>
+      <img src="091208.jpg" style="width: 300px; height: 400px;"/>
         <div class="content-wrap">
           <div class="text-container">
             <p style="color: #33FFFF;"><strong>2009年12月19日</strong></p>
@@ -371,6 +456,18 @@
     </div>
     <div class="column right">
       <div style="text-align: center;">
+        <div class="content-wrap">
+          <div class="text-container">
+            <p><span style="color: #33FFFF;"><strong>2010年1月23日</strong></span> 女舞者身份已被透露</p>
+            <p>被GD干蹭的女舞者Aimee Lee Lucas是菲律宾美国裔，曾经在Number One MV担任女主舞</p>
+            <p>Aimee看到负评后表示：当我听到发生的事情时我很震惊。我们在周六和周日表演了两场，所有的贵宾和大人物都在周六出现了。在排练期间，没有人告诉我们我们做得太过火了应该收敛一下</p><br/>
+            <p>最初网友针对女舞者：那个女孩这样做到底是怎么想的？<br/>但当知道Aimee的身份后，大多数负面评论就停止了，也没有面临任何指控、罚款或监禁</p>
+            <p>Aimee一针见血地说：我认为这是因为我是美国人。从一开始我就被告知，因为我是美国人，我会受到区别对待，事实也确实如此（韩国崇洋媚外）</p>
+            <p>详细资讯：<a href="http://omonatheydidnt.livejournal.com/2511026.html" 
+              target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+                omonatheydidnt</a></p>
+          </div>
+        </div>
         <div class="content-wrap">
           <div class="text-container">
             <p style="color: #33FFFF;"><strong>2010年3月15日</strong></p>
