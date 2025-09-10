@@ -536,6 +536,7 @@ html {
   </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-messaging-compat.js"></script>
 <script>
   const firebaseConfig = {
     apiKey: "AIzaSyB1xOMQRikCjQiXoxPSPTNC1gXUTacbtZs",
@@ -593,7 +594,7 @@ let unsubscribeFirestore = null;
 
 const blockedWords = [
   "法制咖", "黄赌毒", "强奸", "下药", "吸毒", "李失败", "前夫哥", "拉皮条", "毒贩", 
-  "罪犯", "犯罪", "傻逼", "sb", "神经病", "n号房", "赌博"
+  "罪犯", "犯罪", "傻逼", "sb", "神经病", "n号房", "赌博", "fzk", "lpt"
 ];
 
 // 屏蔽词检测函数
@@ -774,8 +775,9 @@ replyBtn.textContent = "回复";
 replyBtn.onclick = () => showReplyForm(div, index);
 actionRow.appendChild(replyBtn);
 
-// ✅ 删除按钮也放在 actionRow 中
-if (isAdmin) {
+// ✅ 只有自己能删除自己的评论
+const savedName = localStorage.getItem("comment_username");
+if (savedName && comment.name === savedName) {
   const deleteBtn = document.createElement("span");
   deleteBtn.className = "delete-btn";
   deleteBtn.textContent = "删除";
@@ -884,8 +886,8 @@ if (reply.replyTo && reply.replyTo !== comments[parentIndex].name) {
   replyRow.appendChild(atTag);
 }
 
-// ✅ 删除按钮放在 replyRow 中
-if (isAdmin) {
+const savedName = localStorage.getItem("comment_username");
+if (savedName && reply.name === savedName) {
   const deleteBtn = document.createElement("span");
   deleteBtn.className = "delete-btn";
   deleteBtn.textContent = "删除";
@@ -987,13 +989,15 @@ async function hashPassword(password) {
 
 async function loginAdmin() {
   const pwd = prompt("你是管理员吗你就点");
+  if (!pwd) return;
+
   const hashed = await hashPassword(pwd.trim());
   if (hashed === adminPasswordHash) {
+    alert("管理员登录成功！");
     isAdmin = true;
-    alert("管理员验证成功，可删除评论");
-    renderComments();
+    renderComments(); // ✅ 重新渲染，显示删除按钮
   } else {
-    alert("错误");
+    alert("密码错误");
   }
 }
 
