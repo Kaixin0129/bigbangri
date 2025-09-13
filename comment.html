@@ -686,12 +686,34 @@ function saveCommentToFirestore(comment) {
   db.collection("comments").add(comment);
 }
 
-function deleteCommentFromFirestore(id) {
-  db.collection("comments").doc(id).delete();
+function deleteCommentFromFirestore(commentId) {
+  db.collection("comments").doc(commentId).delete().then(() => {
+    console.log("删除成功");
+
+    // ✅ 1. 同步本地 comments 数组
+    comments = comments.filter(c => c.id !== commentId);
+
+    // ✅ 2. 清空并重新渲染
+    renderComments();
+
+  }).catch((error) => {
+    console.error("删除失败: ", error);
+  });
 }
 
-function updateRepliesToFirestore(id, replies) {
-  db.collection("comments").doc(id).update({ replies });
+
+function updateRepliesToFirestore(commentId, updatedReplies) {
+  db.collection("comments").doc(commentId).update({
+    replies: updatedReplies
+  }).then(() => {
+    console.log("回复删除成功");
+
+    // ✅ 重新渲染一次
+    renderComments();
+
+  }).catch((error) => {
+    console.error("回复删除失败: ", error);
+  });
 }
 
 function renderComments() {
@@ -775,9 +797,9 @@ replyBtn.textContent = "回复";
 replyBtn.onclick = () => showReplyForm(div, index);
 actionRow.appendChild(replyBtn);
 
-// ✅ 只有自己能删除自己的评论
 const savedName = localStorage.getItem("comment_username");
-if (savedName && comment.name === savedName) {
+// ✅ 本人或管理员都能删评论
+if ((savedName && comment.name === savedName) || isAdmin) {
   const deleteBtn = document.createElement("span");
   deleteBtn.className = "delete-btn";
   deleteBtn.textContent = "删除";
@@ -887,7 +909,8 @@ if (reply.replyTo && reply.replyTo !== comments[parentIndex].name) {
 }
 
 const savedName = localStorage.getItem("comment_username");
-if (savedName && reply.name === savedName) {
+// ✅ 本人或管理员都能删回复
+if ((savedName && reply.name === savedName) || isAdmin) {
   const deleteBtn = document.createElement("span");
   deleteBtn.className = "delete-btn";
   deleteBtn.textContent = "删除";
@@ -910,75 +933,59 @@ if (savedName && reply.name === savedName) {
   return div;
 }
 
-function showReplyForm(parentDiv, parentIndex, replyToName = null) {
-  if (parentDiv.querySelector(".reply-form")) return;
+  function showReplyForm(parentDiv, parentIndex, replyToName = null) {
+    if (parentDiv.querySelector(".reply-form")) return;
 
-  const form = document.createElement("div");
-  form.className = "reply-form";
+    const form = document.createElement("div");
+    form.className = "reply-form";
 
-  const savedName = localStorage.getItem("comment_username");
-
-  const nameInput = document.createElement("input");
-  nameInput.placeholder = "你的名字";
-  if (savedName) {
-    nameInput.value = savedName;
-    nameInput.style.display = "none";
-  }
-
-  const messageInput = document.createElement("textarea");
-  messageInput.rows = 4;
-  messageInput.placeholder = "回复内容...\n\n请大家谨慎发言（ot3 ot4 这辈子最大的敌人就是权志龙）";
-
-  const buttonRow = document.createElement("div");
-  buttonRow.style.marginTop = "6px";
-  buttonRow.style.display = "flex";
-  buttonRow.style.gap = "10px";
-
-  const sendBtn = document.createElement("button");
-  sendBtn.textContent = "发送回复";
-  sendBtn.onclick = () => {
-    const name = savedName || nameInput.value.trim();
-    const message = messageInput.value.trim();
-
-    if (!name || !message) {
-      alert("请填写名字和回复内容");
-      return;
+    const savedName = localStorage.getItem("comment_username");
+    const nameInput = document.createElement("input");
+    nameInput.placeholder = "你的名字";
+    if (savedName) {
+      nameInput.value = savedName;
+      nameInput.style.display = "none";
     }
 
-    if (!savedName) {
-      localStorage.setItem("comment_username", name);
-    }
+    const messageInput = document.createElement("textarea");
+    messageInput.rows = 3;
+    messageInput.placeholder = "回复内容...";
 
-    const reply = {
-      name,
-      message,
-      date: getChineseDate(),
-      likes: 0,
-      replyTo: replyToName || comments[parentIndex].name // ✅ 记录被回复人名
+    const sendBtn = document.createElement("button");
+    sendBtn.textContent = "发送回复";
+    sendBtn.onclick = async () => {
+      const name = savedName || nameInput.value.trim();
+      const message = messageInput.value.trim();
+      if (!name || !message) {
+        alert("请填写名字和回复内容");
+        return;
+      }
+      if (containsBlockedWords(message)) {
+        alert("回复内容包含违规词汇，请修改后再发。");
+        return;
+      }
+      if (!savedName) {
+        localStorage.setItem("comment_username", name);
+        nameInput.style.display = "none";
+      }
+
+      const reply = {
+        name,
+        message,
+        date: getChineseDate(),
+        replyTo: replyToName || comments[parentIndex].name,
+        likes: 0
+      };
+
+      const updatedReplies = [...comments[parentIndex].replies, reply];
+      await db.collection("comments").doc(comments[parentIndex].id).update({ replies: updatedReplies });
     };
 
-    const commentId = comments[parentIndex].id;
-    const updatedReplies = comments[parentIndex].replies || [];
-    updatedReplies.push(reply);
-    updateRepliesToFirestore(commentId, updatedReplies);
-  };
-
-  const cancelBtn = document.createElement("button");
-  cancelBtn.textContent = "取消";
-  cancelBtn.onclick = () => {
-    parentDiv.removeChild(form);
-  };
-
-  buttonRow.appendChild(sendBtn);
-  buttonRow.appendChild(cancelBtn);
-
-  form.appendChild(nameInput);
-  form.appendChild(messageInput);
-  form.appendChild(buttonRow);
-
-  parentDiv.appendChild(form);
-}
-
+    form.appendChild(nameInput);
+    form.appendChild(messageInput);
+    form.appendChild(sendBtn);
+    parentDiv.appendChild(form);
+  }
 
 async function hashPassword(password) {
   const msgUint8 = new TextEncoder().encode(password);
@@ -989,15 +996,13 @@ async function hashPassword(password) {
 
 async function loginAdmin() {
   const pwd = prompt("你是管理员吗你就点");
-  if (!pwd) return;
-
   const hashed = await hashPassword(pwd.trim());
   if (hashed === adminPasswordHash) {
-    alert("管理员登录成功！");
     isAdmin = true;
-    renderComments(); // ✅ 重新渲染，显示删除按钮
+    alert("管理员验证成功，可删除评论");
+    renderComments();
   } else {
-    alert("密码错误");
+    alert("错误");
   }
 }
 
