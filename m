@@ -458,7 +458,7 @@ https://www.soompi.com/article/1311394wpp/seungri-revealed-to-have-known-about-m
 首尔地方警察厅地方调查组私下传唤胜利进行问询
 https://www.soompi.com/article/1311372wpp/police-receive-testimony-regarding-seungris-alleged-drug-use-from-source-at-burning-sun
 
-？190320
+190320
 胜利原定于3月25日以现役身份入伍，以胜利现在的入伍状态将于6月25日再次决定
 官方发表声明：
 针对胜利提出的推迟入伍日期的请求，兵务厅（奇灿秀厅长）基于以下理由决定推迟入伍日期

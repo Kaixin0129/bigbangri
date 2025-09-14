@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>车祸</title>
+  <title>胜利车祸</title>
   <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
@@ -293,6 +293,81 @@
       padding-left: 20px;
     }
 
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
     .two-column-wrapper {
       display: flex;
       justify-content: center;
@@ -324,7 +399,7 @@
       <a href="seungricase.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>车祸</h1>
+      <h1>胜利车祸</h1>
     </div>
     <nav class="right-nav">
       <a href="index.html">Home</a>
@@ -337,6 +412,9 @@
     </div>
     <div id="seungricase-cc-2014-jump" style="display: flex; align-items: center; gap: 10px;">
       <a href="seungricase-cc.html#seungricase-cc-2014" class="jump-button">2014</a>
+    </div>
+    <div id="seungricase-cc-2015-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="seungricase-cc.html#seungricase-cc-2015" class="jump-button">2015（胜利躺枪）</a>
     </div>
   </div>
   <br/><br/>
@@ -386,20 +464,22 @@
       <a href="2014sept.html#140912sr-jump" class="jump-button">跳转到 2014 时间线</a>
     </div>
   </div>
-  <br/><br/><p style="margin: 0;">YG官方口径：胜利不是从俱乐部或派对回来，而是与熟人日常聚会后独自驾车回家</p>
   <div class="two-column-wrapper">
     <div class="column left">
       <div style="text-align: center;">
         <div class="content-wrap">
           <div class="text-container">
-            <p style="color: #33FFFF;"><strong>2014年9月12日</strong></p>
+            <p>YG官方口径：胜利不是从俱乐部或派对回来，而是与熟人日常聚会后独自驾车回家</p><br/>
+            <p><span style="color: #33FFFF;"><strong>2014年9月12日</strong></span> 凌晨3:34</p>
             <p>首尔江边北部长速公路，当时胜利驾驶保时捷高速行驶，疑因车速过快并企图跨车道超车，急速变道（急打方向盘）撞上前方一辆奔驰，随后车辆失控撞上护栏并翻车</p>
-            <p><span style="color: #33FFFF;">重点：</span>当时胜利没有上救护车、没有当成接受酒驾检测，而是上了公司的车辆离开现场，后来又被警方叫去检测。YG为了谨慎起见，在事故当天被送往医院进行全面检查和治疗</p>
-            <p>首尔警方及YG均确认事故并非酒驾，胜利的检查结果无骨折，但发现轻微肝部出血</p>
+            <p><span style="color: #33FFFF;">重点：</span>当时胜利没有上救护车、没有当场接受酒驾检测，而是上了公司的车辆离开现场，后来又被警方叫去检测<br/>（被怀疑包庇警察）</p><br/><br/>
+            <p>YG为了谨慎起见，在事故当天被送往医院进行全面检查和治疗<br/>胜利的检查结果无骨折，但发现轻微肝部出血</p>
             <p>警方表示：我们检查了现场，什么也没发现。问题出在他的车速上。他承认了自己的错误，并表示保险公司会妥善处理</p>
             <p>详细资讯：<a href="https://yg-life.com/archives/35613" 
               target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
                 YG Life</a></p>
+            <img src="140912.jpg" width="250" />
+            <img src="1409121.jpg" width="250" />
             <p><br/>网友抨击：当时事故现场有目击者称看见胜利在发生事故之前有喝酒。他甚至在救护车上自行下车，未被现场立即酒精测试</p>
           </div>
         </div>
@@ -409,16 +489,191 @@
       <div style="text-align: center;">
         <div class="content-wrap">
           <div class="text-container">
-            <p style="color: #33FFFF;"><strong>2009年9月21日</strong></p>
-            <p>MBC的新闻节目《Sisa Magazine》报道称：Sony Music的官员已向YG娱乐 发出了关于抄袭的警告信</p>
-            <p>详细资讯：<a href="https://www.allkpop.com/article/2009/09/sony-slams-yg-entertainment-for-plagiarism-issues" 
+            <p style="color: #33FFFF;"><strong>2014年9月22日</strong></p>
+            <p>龙山警察局代表表示：胜利事故的调查尚未结束。我们正在继续调查，但由于胜利仍在医院，调查日程已被推迟</p>
+            <p>详细资讯：<a href="https://www.hellokpop.com/news/seungri-hospitalised-for-a-week-after-car-accident/" 
               target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
-                Allkpop</a></p>
+                Hello Kpop</a></p>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="text-container">
+            <p style="color: #33FFFF;"><strong>2014年9月25日</strong></p>
+            <p>胜利在ICU待了一周后被调到普通病房</p>
+            <p>YG向Newsen表示：胜利今天已从住院的医院出院。出院后计划继续接受门诊治疗</p><br/>
+            <p>首尔警方及YG均确认事故并非酒驾</p>
+            <p>详细资讯：<a href="https://www.hellokpop.com/news/seungri-hospitalised-for-a-week-after-car-accident/" 
+              target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+                Hello Kpop</a></p>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="text-container">
+            <p style="color: #33FFFF;"><strong>2014年9月30日</strong></p>
+            <p>胜利为了配合警方调查和亚运排练而提前出院，因高烧至40°C再次入院急治</p>
+            <p>YG确定胜利缺席10月4日仁川亚运会闭幕式</p>
+            <p>医生指出他目前日常行动尚有困难</p>
+            <p>详细资讯：<a href="https://www.todayonline.com/entertainment/celebrity/big-bangs-seungri-readmitted-hospital-will-miss-asian-games-closing-ceremony" 
+              target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+                Today Online</a></p>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="text-container">
+            <p>没有找到哪个报道说胜利什么时候出院</p>
+            <p>猜测是2014年10月中旬</p>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="text-container">
+            <p style="color: #33FFFF;"><strong>2014年11月25日</strong></p>
+            <p>胜利穿着警服，并配文 “忠诚”</p>
+            <p>（不出所料）被网友抨击了~~</p>
+            <img src="141125.jpg" width="250" />
+          </div>
+        </div><br/><br/>
+        <div id="seungricase-police-2014-jump" style="padding-top: 100px; margin-top: -100px;">
+          <a href="seungricase-police.html#seungricase-police-2014" class="jump-button">穿警服争议经过</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p style="color: #33FFFF;"><strong>2014年9月16日</strong></p>
+        <p>@kongkaroon泰国亲故</p>
+        <p>希望你早日康复，叔叔@seungriseyo，From Kye宝宝<br/>向你在曼谷的所有朋友致以爱与支持，兄弟！#kyesoso #getwellsoon #bratha</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/BngnsemMj" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="140916.jpg" style="height: 400px; width: 300px;" />
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p style="color: #33FFFF;"><strong>2014年9月16日</strong></p>
+        <p>@condominium胜利亲故</p>
+        <p>兄弟，早日康复，比光速还快，很快再见！@seungriseyo #throwback</p>
+        <p>「<span style="color: #33FFFF;">胜利</span>车祸」</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/BnhvBhGQK" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
+          <div class="slide-item">
+            <img src="1409161.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1409162.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p style="color: #33FFFF;"><strong>2014年10月10日</strong></p>
+        <p>胜利妹妹汉娜发贴文</p>
+        <p>他的健康好了很多:)</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/BqWY5bPXU" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="141010.jpg" style="height: 80px;" />
+  <hr class="full-width-line" />
+
+    <div id="seungricase-cc-2015" style="display: flex; align-items: center; justify-content: center; justify-content: center; gap: 20px;">
+      <a href="seungricase-cc.html#seungricase-cc-2015-jump" class="jump-button">2015（胜利躺枪）</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div id="140912sr" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2014sept.html#140912sr-jump" class="jump-button">跳转到 2014 时间线</a>
+    </div>
+  </div>
+  <div class="two-column-wrapper">
+    <div class="column left">
+      <div style="text-align: center;">
+        <div class="content-wrap">
+          <div class="text-container">
+            <p style="color: #33FFFF;">前情提要：</p>
+            <p><strong>2015年6月26日</strong> 被韩网The Fact爆料</p>
+            <p>Harry Kim在2015年6年14日参加完Bigbang香港演唱会从香港返回后，在仁川国际机场被警方抓获携带可卡因</p>
+            <p>评论区抨击：<a href="https://www.asianfanfics.com/story/view/958386/607/ll--ll-----rend--ng---orea---ll--ll" 
+              target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+                Aminoapps</a></p>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="text-container">
+            <p style="color: #33FFFF;"><strong>2015年7月</strong></p>
+            <p>K记者撰写了一篇文章，报道了YG与Harry Kim的可疑关系：</p>
+            <p>K记者把YG描述成“药房”，暗示YG向艺人提供毒品，并对检察官能否挽回声誉提出质疑，希望查明YG艺人吸毒背后的真相</p>
+            <p>K记者还提出了胜利发生车祸的可能性：当时胜利经纪人来接他并没有接受酒驾检查，在去医院的路上就离开了救护车、K记者声称有目击证人排队作证，称他们都看到胜利在事故发生的当晚在一个夜店派对上喝酒，然后上车驾车离开</p>
+            <p>评论区抨击：<a href="https://www.koreaboo.com/article/netizens-claim-bigbangs-seungri-was-drunk-during-infamous-car-accident/" 
+              target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+                Koreaboo</a></p>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="text-container">
+            <p>YG否认与这起可卡因案有任何关联，也否认Harry Kim曾在YG做全职工作</p>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="text-container">
+            <p style="color: #33FFFF;"><strong>2015年8月18日</strong></p>
+            <p>YG表示：K记者通过编造和传播虚假信息诽谤了他们，并起诉K记者，要求赔偿2亿韩元</p><br/>
+            <p>但K记者坚称：YG只关注了那几句话，而我写这篇文章的本意是要求检察机关彻查</p>
+            <p>详细资讯：<a href="https://www.koreaboo.com/news/yg-entertainment-and-yang-hyun-suk-to-sue-reporter-for-200-million-won/" 
+              target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+                Hello Kpop</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column right">
+      <div style="text-align: center;">
+        <div class="content-wrap">
+          <div class="text-container">
+            <p style="color: #33FFFF;"><strong>2016年3月8日</strong></p>
+            <p>一审判决记者K无罪，YG败诉</p>
+            <p>韩国法院判决K记者：没有散布过分离谱的谣言</p><br/>
+            <p>由于K记者从朋友那里得知胜利当时正在喝酒，而且胜利在事故现场没有接受酒驾检查，因此对该记者的诽谤指控被撤销。基于这些原因，他们认为很难以编造谎言来构成诽谤罪起诉该记者</p>
+            <p>详细资讯：<a href="https://www.koreaboo.com/news/yg-loses-case-reporter-regarding-seungris-car-accident/" 
+              target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+                Koreaboo</a></p>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="text-container">
+            <p style="color: #33FFFF;"><strong>2016年8月22日</strong></p>
+            <p>二审中法院又做出反向判决：认为使用 “药房” 词语过于暗示，并有损YG声誉，判记者K需赔偿700万韩元</p>
+            <p style="color: #33FFFF;">申法官表示：两年前胜利的车祸发生时，警方经过多次检查和搜查，已经排除了酒驾的可能性</p>
+            <p>法官承认了诽谤记者的指控，并做出了有利于记者的全新判决，并表示：所有证人的证词可能都包含不准确的细节，以及纯粹的假设，但因为K记者在其多个SNS账号上以毫无根据且不存在的谣言诽谤艺术家，就好像证词是真的一样，所以我做出了这个最终判决</p>
+            <p>详细资讯：<a href="https://www.koreaboo.com/news/court-rules-in-favor-of-bigbangs-seungri-and-orders-reporter-to-pay-fine-for-reporting-false-claims/" 
+              target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+                Koreaboo</a></p>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <hr class="full-width-line" />
 
   <br/><br/><br/>
   <div class="header-container">
