@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Japan Dome Tour 2013</title>
+  <title>音乐节2010年</title>
   <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
@@ -293,79 +293,144 @@
       padding-left: 20px;
     }
 
-    .jump-button-1 {
-      padding: 15px 25px;
-      background-color: #111;
-      color: white;
-      border: 2px solid #33FFFF;
-      border-radius: 5px 18px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      min-width: 120px;
-      white-space: nowrap;
-      text-align: center;
-    }
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
 
-    .jump-button-1:hover {
-      background-color: white;
-      color: black;
-      cursor: pointer;
-    }
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
 
   </style>
 </head>
 <body>
-
 <main>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="jdt.html">Back</a>
+      <a href="festival.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>Japan Dome Tour 2013年</h1>
+      <h1>音乐节2010年</h1>
     </div>
     <nav class="right-nav">
-      <a href="jdt2014.html">2014</a>
+      <a href="festival2012.html">2012</a>
     </nav>
   </div>
 
   <div style="text-align: center;">
-    <h1>大多数日本场都不允许拍摄！<br/>日本饭拍视频你所看到的都是偷拍上传的！<br/>请勿模仿</h1>
-  </div><br/>
-
-  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
-    <div class="text-container" style="max-width: 400px; text-align: left;">
-      <p>Japan Dome Tour 2013年</p>
-      <table style="text-align: left; border-collapse: collapse; table-layout: fixed;">
-        <colgroup>
-          <col style="width: 200px;" />
-          <col />
-        </colgroup>
-        <tr><td>2013年11月16-17日</td><td>埼玉</td></tr>
-        <tr><td>2013年11月29日-12月1日</td><td>大阪</td></tr>
-        <tr><td>2013年12月7-8日</td><td>福冈</td></tr>
-        <tr><td>2013年12月14-15日</td><td>名古屋</td></tr>
-        <tr><td>2013年12月19-21日</td><td>东京</td></tr>
-      </table><br/>
-      <p>成为首位领衔六大巨蛋巡回演唱会的外国艺人</p>
-    </div>
-  </div>
-  <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <p>由于需求量大，因此增加了三场演出</p>
-    <a href="alpha.html" class="jump-button">BigBang+α</a>
-  </div><br/>
-  <hr class="full-width-line" />
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@Psycho-RV 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=17320782&bvid=BV16W411b7WJ&cid=28299492&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/rnW2_qX7xRg?si=c1Wm9V6wS9QfDHdZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <div class="text-container">
-        <p><strong>2013年12月20日</strong></p>
-        <p>日本东京（第二天）</p>
+        <p><strong>2010年5月13日</strong></p>
+        <p>Dankook Festival 檀国大学</p>
+        <p>唱Lies</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/wb-2f7rrgQw?si=3Xh0k8YXSkFkApWo&amp;start=17" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2010年12月29日</strong></p>
+        <p>SBS Gayo Festival</p>
+        <p>High High + Oh Yeah</p>
+        <p>Digital Bounce + Passion</p>
+        <p>with SE7EN 朴春</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/t57g8Lq40EQ?si=rqLYLOR3zkR1VLeU&amp;start=17" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2010年12月31日</strong></p>
+        <p>MBC Gayo Festival</p>
+        <p>High High + Oh Yeah</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/uYh5CQZjzmA?si=gCU3_uY5cRwG8e-9&amp;start=17" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p>采访</p>
       </div>
     </div>
     <hr class="full-width-line" />
@@ -374,17 +439,17 @@
   <br/><br/><br/>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="jdt.html">Back</a>
+      <a href="festival.html">Back</a>
     </nav>
     <div class="title-group">
       <div id="footer"></div>
     </div>    
     <nav class="right-nav">
-      <a href="jdt2014.html">2014</a>
+      <a href="festival2012.html">2012</a>
     </nav>
   </div>
 
-
+ 
 </main>
   <script>
     fetch("footer.html")

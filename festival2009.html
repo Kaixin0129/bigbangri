@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>2012官拍演唱会</title>
+  <title>音乐节2009年</title>
   <link rel="icon" href="sli.ico" type="image/x-icon">
   <style>
     * {
@@ -293,188 +293,213 @@
       padding-left: 20px;
     }
 
-    .jump-button-1 {
-      padding: 15px 25px;
-      background-color: #111;
-      color: white;
-      border: 2px solid #33FFFF;
-      border-radius: 5px 18px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      min-width: 120px;
-      white-space: nowrap;
-      text-align: center;
-    }
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
 
-    .jump-button-1:hover {
-      background-color: white;
-      color: black;
-      cursor: pointer;
-    }
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
 
   </style>
 </head>
 <body>
-
 <main>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="concert2012.html">Back</a>
+      <a href="festival.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>官拍演唱会2012年</h1>
+      <h1>音乐节2009年</h1>
     </div>
     <nav class="right-nav">
-      <a href="concert2013.html">2013</a>
+      <a href="festival2010.html">2010</a>
     </nav>
   </div>
 
-  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-    <div id="yamaha" style="display: flex; align-items: center; gap: 10px;">
-      <a href="concert20122.html#yamaha-jump" class="jump-button">Yamaha INVV</a>
-    </div>
-    <div id="sf" style="display: flex; align-items: center; gap: 10px;">
-      <a href="concert20122.html#sf-jump" class="jump-button">SoundFest Vietnam</a>
-    </div>
-    <div id="nf" style="display: flex; align-items: center; gap: 10px;">
-      <a href="concert20122.html#nf-jump" class="jump-button">North Face Concert</a>
-    </div>
-  </div>
-  <br/>
-  <hr class="full-width-line" />
-
-  <div id="yamaha-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="concert20122.html#yamaha" class="jump-button">Yamaha INVV</a>
-  </div><br/>
-
-  <div id="120328-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="2012mar.html#120328" class="jump-button">更多采访视频</a>
-  </div><br/>
   <div class="video-row">
     <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/xj53RB7zZeQ?si=9Neb1KPpZ3mugM0o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/C1H7cYMgQ3g?si=sAwNqibIhFVFgQZ_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       <div class="video-description">
-        <p>Fantastic Baby</p>
+        <p>Lies</p>
       </div>
     </div>
     <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/yuO8IR5DD-s?si=cCHzcDURKf1bOriJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/Kn6GX2J0UGU?si=uR7puTLke_q4Ne8J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       <div class="video-description">
-        <p>Hands Up</p>
+        <p>Gara Gara Go</p>
       </div>
     </div>
   </div>
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="text-container">
-        <p><strong>2012年3月28日</strong></p>
-        <p>泰国Yamaha INVV</p>
+        <p><strong>2009年9月25日</strong></p>
+        <p>Asian Song Festival</p>
       </div>
     </div>
     <hr class="full-width-line" />
   </div>
 
-  <div id="sf-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="concert20122.html#sf" class="jump-button">SoundFest Vietnam</a>
-  </div><br/>
-
-  <div id="120414" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <div  style="scroll-margin-top: 100px; margin-top: -80px; padding-top: 80px;"></div>
-    <a href="2012apr.html#120414-jump" class="jump-button">跳转到 2012 时间线</a>
-  </div><br/>
-  <div class="video-row">
-    <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/17OazVR3hSg?si=KWTlaOo527zD3dB0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="video-description">
-        <p>胜利beatbox</p>
-      </div>
-    </div>
-    <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/M7FxPm4AEPg?si=RZWCPzJ_mea1iSsb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="video-description">
-        <p>完整饭拍</p>
-      </div>
-    </div>
-  </div>
   <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@TtoG_ 点击进入观看完整视频</p>
     <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114880661162535&bvid=BV1hJudzJEmS&cid=31154047573&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
       <div class="text-container">
-        <p><strong>2012年4月14日</strong></p>
-        <p>SoundFest Vietnam</p>
+        <p><strong>2009年11月26日</strong></p>
+        <p>Bigbang在 Best Hits Song Festival 赢得：</p>
         <ul>
-          <li>Tonight官拍</li>
-        </ul>
+          <li>Gold Artist Award</li>
+        </ul><br/>
+        <p>详细资讯：<a href="https://en.wikipedia.org/wiki/Best_Hits_Kayosai#cite_note-4" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+            Wikipedia</a></p>
       </div>
     </div>
     <hr class="full-width-line" />  
   </div>
 
-  <div id="nf-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="concert20122.html#nf" class="jump-button">North Face Concert</a>
-  </div><br/>
-
-  <div id="110706-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <div  style="scroll-margin-top: 100px; margin-top: -80px; padding-top: 80px;"></div>
-    <a href="2012july.html#110706" class="jump-button">跳转到 2012 时间线</a>
-  </div><br/>
   <div style="text-align: center;">
-    <p style="margin: 0;">GD饭拍视频</p>
     <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/0EBwA7k1Gzc?si=DmpRROWTycGmMkiC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
       <div class="text-container">
-        <p><strong>2012年7月6日</strong></p>
-        <p>North Face Concert</p>
+        <p><strong>2009年11月26日</strong></p>
+        <p>Best Hit Song Festival</li>
+        <p>唱Gara Gara Go</p>
       </div>
     </div>
+    <hr class="full-width-line" />
   </div>
-  <div class="video-row">
-    <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/UZwdSsgNIAE?si=rD05lMc__nhZhuX7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="video-description">
-        <p>Talk环节</p>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@陆豆纱 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=218293780&bvid=BV138411b71t&cid=842190428&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年12月2日</strong></p>
+        <p>FNS Music Festival</p>
+        <p>唱 声をきかせて</p>
       </div>
     </div>
-    <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/eqpvkXSpDdk?si=ElpjjmU9SpfGqrIP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="video-description">
-        <p>Feeling</p>
-      </div>
-    </div>
+    <hr class="full-width-line" />
   </div>
-  <div class="video-row">
-    <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/hgd5f9f7_as?si=N0IjxtUdsteMoizi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="video-description">
-        <p>Fantastic Baby</p>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@陆豆纱 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=464747665&bvid=BV1TL411E7w4&cid=457412076&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2010年12月29日</strong></p>
+        <p>SBS Gayo Festival</p>
+        <p>The Leaders + Let's Go Party</p>
+        <p>和2NE1一起</p>
       </div>
     </div>
-    <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/9OMUZjryzFM?si=b6fHT5IrdeLVC1aL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="video-description">
-        <p>Lies</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=464747665&bvid=BV1TL411E7w4&cid=457437990&p=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p>Gossip Man + Only Look At Me + Wedding Dress + Lies + Korean Dream</p>
       </div>
     </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=464747665&bvid=BV1TL411E7w4&cid=457441987&p=4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p>You And I</p>
+        <p>朴春 + 太阳</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
   </div>
-  <hr class="full-width-line" />
 
   <br/><br/><br/>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="concert2012.html">Back</a>
+      <a href="festival.html">Back</a>
     </nav>
     <div class="title-group">
       <div id="footer"></div>
     </div>    
     <nav class="right-nav">
-      <a href="concert2013.html">2013</a>
+      <a href="festival2010.html">2010</a>
     </nav>
   </div>
 
-
+ 
 </main>
   <script>
     fetch("footer.html")
