@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>大声事件</title>
-  <link rel="icon" href="sli.ico" type="image/x-icon">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="bigbangri" />
+<link rel="manifest" href="/site.webmanifest" />
   <style>
     * {
       margin: 0;
@@ -163,6 +168,47 @@
       cursor: pointer;
     }
 
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      font-size: 18px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      color: black;
+      position: relative;
+    }
+
+    .popup-content .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      color: black;
+    }
+
+    .popup-content .close:hover {
+      color: white;
+    }
+
   </style>
 </head>
 <body>
@@ -192,6 +238,12 @@
     <a href="cp.html" class="highlight1-button">CP向</a>
   </nav>
   <main>
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <p>谣言止于智者，不信不传共守真</p>
+    </div>
+  </div>
     <h1>·大声事件·</h1>
     <nav>
       <a href="daesung.html">Back</a>
@@ -202,5 +254,14 @@
   </nav><br/>
     <p>事件都会找出韩网新闻报道、不信谣不传谣！</p>
   </main>
+  <script>
+    window.onload = function() {
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
 </body>
 </html>
