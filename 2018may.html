@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!DOCTYPE html><html lang="zh"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2018年5月</title>
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="bigbangri" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="bigbangri">
+  <link rel="manifest" href="/site.webmanifest">
   <style>
     * {
       margin: 0;
@@ -392,51 +390,51 @@
 
   <div style="text-align: center;">
     <a href="sns2018may.html" class="jump-button">跳转到 SNS 时间线</a>
-  </div><br/><br/>
-  <hr class="full-width-line" />  
+  </div><br><br>
+  <hr class="full-width-line">  
 
   <div style="text-align: center;">
-    <div class="content-wrap">
+    <div class="content-wrap" id="block0">
       <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/Az-mGR-CehY?si=_48bB-4CNdmOnI6a" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Az-mGR-CehY?si=_48bB-4CNdmOnI6a" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
       </div>
       <div class="text-container">
         <p><strong>2018年5月11日</strong></p>
         <p>胜利与Alan Walker和Liquid States旗下的音乐人K-391合作推出 Ignite</p>
       </div>
     </div>
-    <hr class="full-width-line" />
+    <hr class="full-width-line">
   </div>
 
   <div style="text-align: center;">
     <p style="margin: 0;">下面的视频来自@またあえる日まで 点击进入观看完整视频</p>
-    <div class="content-wrap">
+    <div class="content-wrap" id="block1">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=23320923&bvid=BV1EW411F7Lv&cid=38853259&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=23320923&amp;bvid=BV1EW411F7Lv&amp;cid=38853259&amp;p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container">
         <p><strong>2018年5月11日</strong></p>
         <p>三人歌曲Ignite采访互动</p>
       </div>
     </div>
-    <hr class="full-width-line" />
+    <hr class="full-width-line">
   </div>
 
   <div style="text-align: center;">
-    <div class="content-wrap">
+    <div class="content-wrap" id="block2">
       <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/geEPzq77csg?si=VitnF7UPbCHJW9vX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/geEPzq77csg?si=VitnF7UPbCHJW9vX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
       </div>
       <div class="text-container">
         <p><strong>2018年5月25日</strong></p>
-        <p>True or False Challenge (Alan Walker & Seungri)</p>
+        <p>True or False Challenge (Alan Walker &amp; Seungri)</p>
         <p>歌曲Ignite采访互动</p>
       </div>
     </div>
-    <hr class="full-width-line" />
+    <hr class="full-width-line">
   </div>
 
-  <br/><br/><br/>
+  <br><br><br>
   <div class="header-container">
     <nav class="left-nav">
       <a href="2018.html">Back</a>
@@ -456,6 +454,134 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        setTimeout(function() {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+            }
+        }, 300);
+    }
+});
+
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="#"]');
+    if (link && link.href.includes(window.location.hostname)) {
+        const href = link.getAttribute('href');
+        const hashIndex = href.indexOf('#');
+        
+        if (hashIndex !== -1) {
+            e.preventDefault();
+            const targetId = href.substring(hashIndex + 1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                setTimeout(function() {
+                    const elementRect = targetElement.getBoundingClientRect();
+                    const absoluteElementTop = elementRect.top + window.pageYOffset;
+                    
+                    const offset = window.innerHeight * 0.1;
+                    const targetPosition = absoluteElementTop - offset;
+                    
+                    window.scrollTo({
+                        top: Math.max(0, targetPosition),
+                        behavior: 'smooth'
+                    });
+                    
+                    window.history.pushState(null, null, '#' + targetId);
+                }, 50);
+            }
+        }
+    }
+});
+
+const style = document.createElement('style');
+style.textContent = `
+    html {
+        scroll-behavior: smooth;
+    }
+    .content-wrap {
+        scroll-margin-top: 10vh;
+    }
+`;
+document.head.appendChild(style);
+
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        setTimeout(function() {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+            }
+        }, 300);
+    }
+});
+
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="#"]');
+    if (link && link.href.includes(window.location.hostname)) {
+        const href = link.getAttribute('href');
+        const hashIndex = href.indexOf('#');
+        
+        if (hashIndex !== -1) {
+            e.preventDefault();
+            const targetId = href.substring(hashIndex + 1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                setTimeout(function() {
+                    const elementRect = targetElement.getBoundingClientRect();
+                    const absoluteElementTop = elementRect.top + window.pageYOffset;
+                    
+                    const offset = window.innerHeight * 0.1;
+                    const targetPosition = absoluteElementTop - offset;
+                    
+                    window.scrollTo({
+                        top: Math.max(0, targetPosition),
+                        behavior: 'smooth'
+                    });
+                    
+                    window.history.pushState(null, null, '#' + targetId);
+                }, 50);
+            }
+        }
+    }
+});
+
+const style = document.createElement('style');
+style.textContent = `
+    html {
+        scroll-behavior: smooth;
+    }
+    .content-wrap {
+        scroll-margin-top: 10vh;
+    }
+`;
+document.head.appendChild(style);
 
   const sliderStates = {};
 
@@ -479,5 +605,5 @@
   }
 
   </script>
-</body>
-</html>
+
+</body></html>

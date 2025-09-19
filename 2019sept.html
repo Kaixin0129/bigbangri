@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!DOCTYPE html><html lang="zh"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2019年9月</title>
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="bigbangri" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="bigbangri">
+  <link rel="manifest" href="/site.webmanifest">
   <style>
     * {
       margin: 0;
@@ -392,10 +390,10 @@
 
   <div style="text-align: center;">
     <a href="sns2019sept.html" class="jump-button">跳转到 SNS 时间线</a>
-  </div><br/><br/>
-  <hr class="full-width-line" />  
+  </div><br><br>
+  <hr class="full-width-line">  
 
-  <br/><br/><br/>
+  <br><br><br>
   <div class="header-container">
     <nav class="left-nav">
       <a href="2019.html">Back</a>
@@ -416,6 +414,134 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        setTimeout(function() {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+            }
+        }, 300);
+    }
+});
+
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="#"]');
+    if (link && link.href.includes(window.location.hostname)) {
+        const href = link.getAttribute('href');
+        const hashIndex = href.indexOf('#');
+        
+        if (hashIndex !== -1) {
+            e.preventDefault();
+            const targetId = href.substring(hashIndex + 1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                setTimeout(function() {
+                    const elementRect = targetElement.getBoundingClientRect();
+                    const absoluteElementTop = elementRect.top + window.pageYOffset;
+                    
+                    const offset = window.innerHeight * 0.1;
+                    const targetPosition = absoluteElementTop - offset;
+                    
+                    window.scrollTo({
+                        top: Math.max(0, targetPosition),
+                        behavior: 'smooth'
+                    });
+                    
+                    window.history.pushState(null, null, '#' + targetId);
+                }, 50);
+            }
+        }
+    }
+});
+
+const style = document.createElement('style');
+style.textContent = `
+    html {
+        scroll-behavior: smooth;
+    }
+    .content-wrap {
+        scroll-margin-top: 10vh;
+    }
+`;
+document.head.appendChild(style);
+
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        setTimeout(function() {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+            }
+        }, 300);
+    }
+});
+
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="#"]');
+    if (link && link.href.includes(window.location.hostname)) {
+        const href = link.getAttribute('href');
+        const hashIndex = href.indexOf('#');
+        
+        if (hashIndex !== -1) {
+            e.preventDefault();
+            const targetId = href.substring(hashIndex + 1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                setTimeout(function() {
+                    const elementRect = targetElement.getBoundingClientRect();
+                    const absoluteElementTop = elementRect.top + window.pageYOffset;
+                    
+                    const offset = window.innerHeight * 0.1;
+                    const targetPosition = absoluteElementTop - offset;
+                    
+                    window.scrollTo({
+                        top: Math.max(0, targetPosition),
+                        behavior: 'smooth'
+                    });
+                    
+                    window.history.pushState(null, null, '#' + targetId);
+                }, 50);
+            }
+        }
+    }
+});
+
+const style = document.createElement('style');
+style.textContent = `
+    html {
+        scroll-behavior: smooth;
+    }
+    .content-wrap {
+        scroll-margin-top: 10vh;
+    }
+`;
+document.head.appendChild(style);
 
   const sliderStates = {};
 
@@ -439,5 +565,5 @@
   }
 
   </script>
-</body>
-</html>
+
+</body></html>

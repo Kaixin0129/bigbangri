@@ -1,6 +1,26 @@
 {
   "dependencies": {
     "axios": "^1.12.2",
-    "cheerio": "^1.1.2"
-  }
+    "cheerio": "^1.1.2",
+    "debug": "^4.3.4",
+    "jsdom": "^27.0.0"
+  },
+  "name": "html",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000b\u0000i\u0000g\u0000b\u0000a\u0000n\u0000g\u0000r\u0000i\u0000\r\u0000 \u0000",
+  "main": "build-search-index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kaixin0129/bigbangri.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kaixin0129/bigbangri/issues"
+  },
+  "homepage": "https://github.com/Kaixin0129/bigbangri#readme"
 }

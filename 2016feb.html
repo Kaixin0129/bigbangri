@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!DOCTYPE html><html lang="zh"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2016年2月</title>
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="bigbangri" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="bigbangri">
+  <link rel="manifest" href="/site.webmanifest">
   <style>
     * {
       margin: 0;
@@ -392,24 +390,23 @@
 
   <div style="text-align: center;">
     <a href="sns2016feb.html" class="jump-button">跳转到 SNS 时间线</a>
-  </div><br/><br/>
-  <hr class="full-width-line" />  
+  </div><br><br>
+  <hr class="full-width-line">  
 
   <div style="text-align: center;">
-    <div class="content-wrap">
+    <div class="content-wrap" id="block0">
       <div class="text-container">
         <p><strong>2016年2月24日</strong></p>
         <p>Bigbang成为首个连续第三年举办巨蛋巡演的外国歌手</p>
         <p>Made日本巡演吸引了91万粉丝，成为有史以来参加人数最多的外国歌手巡演</p>
-        <p>详细资讯：<a href="https://barks.jp/news/762065/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
+        <p>详细资讯：<a href="https://barks.jp/news/762065/" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#33FFFF';">
             Barks</a></p>
       </div>
     </div>
-    <hr class="full-width-line" />  
+    <hr class="full-width-line">  
   </div>
 
-  <br/><br/><br/>
+  <br><br><br>
   <div class="header-container">
     <nav class="left-nav">
       <a href="2016.html">Back</a>
@@ -430,6 +427,134 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        setTimeout(function() {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+            }
+        }, 300);
+    }
+});
+
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="#"]');
+    if (link && link.href.includes(window.location.hostname)) {
+        const href = link.getAttribute('href');
+        const hashIndex = href.indexOf('#');
+        
+        if (hashIndex !== -1) {
+            e.preventDefault();
+            const targetId = href.substring(hashIndex + 1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                setTimeout(function() {
+                    const elementRect = targetElement.getBoundingClientRect();
+                    const absoluteElementTop = elementRect.top + window.pageYOffset;
+                    
+                    const offset = window.innerHeight * 0.1;
+                    const targetPosition = absoluteElementTop - offset;
+                    
+                    window.scrollTo({
+                        top: Math.max(0, targetPosition),
+                        behavior: 'smooth'
+                    });
+                    
+                    window.history.pushState(null, null, '#' + targetId);
+                }, 50);
+            }
+        }
+    }
+});
+
+const style = document.createElement('style');
+style.textContent = `
+    html {
+        scroll-behavior: smooth;
+    }
+    .content-wrap {
+        scroll-margin-top: 10vh;
+    }
+`;
+document.head.appendChild(style);
+
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        setTimeout(function() {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+            }
+        }, 300);
+    }
+});
+
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="#"]');
+    if (link && link.href.includes(window.location.hostname)) {
+        const href = link.getAttribute('href');
+        const hashIndex = href.indexOf('#');
+        
+        if (hashIndex !== -1) {
+            e.preventDefault();
+            const targetId = href.substring(hashIndex + 1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                setTimeout(function() {
+                    const elementRect = targetElement.getBoundingClientRect();
+                    const absoluteElementTop = elementRect.top + window.pageYOffset;
+                    
+                    const offset = window.innerHeight * 0.1;
+                    const targetPosition = absoluteElementTop - offset;
+                    
+                    window.scrollTo({
+                        top: Math.max(0, targetPosition),
+                        behavior: 'smooth'
+                    });
+                    
+                    window.history.pushState(null, null, '#' + targetId);
+                }, 50);
+            }
+        }
+    }
+});
+
+const style = document.createElement('style');
+style.textContent = `
+    html {
+        scroll-behavior: smooth;
+    }
+    .content-wrap {
+        scroll-margin-top: 10vh;
+    }
+`;
+document.head.appendChild(style);
 
   const sliderStates = {};
 
@@ -453,5 +578,5 @@
   }
 
   </script>
-</body>
-</html>
+
+</body></html>
