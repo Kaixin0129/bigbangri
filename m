@@ -672,12 +672,16 @@ https://www.soompi.com/article/1317486wpp/police-find-records-of-seungri-paying-
 
 190415
 警方透露刘仁硕与尹高级警司曾四次一起打高尔夫球非法下注，六次一起吃饭，胜利也参加了其中四次吃饭
-
 警方申请对李文浩的逮捕令，但逮捕令申请被首尔中央地方法院驳回，因为罪名的辩论余地较大
-
 安娜MD被检测出多种药物呈阳性，警方向安娜申请逮捕令
-
 https://www.soompi.com/article/1317673wpp/police-reveal-new-information-about-seungri-and-former-yuri-holdings-ceos-relationship-with-senior-superintendent-yoon
+
+190416
+胜利被警方怀疑在派对为海外投资者安排卖淫
+首尔地方警察厅地方特别侦缉科收到了证人证词，该派对存在邀请一些女性陪同人员参加
+但这些陪同人员的银行账户证实了她们收到了报酬。
+警方表示：胜利并没有安排性服务，但他确实在明知可能发生的情况下打电话给她们，结果发生了实际的性行为。这些女性是职业陪同人员，而非胜利的非名人熟人。她们仍在从事这一行业，此次事件很可能被视为拉皮条
+https://www.allkpop.com/article/2019/04/seungri-reported-to-have-negotiated-prostitution-for-overseas-investors-at-christmas-party-in-2015
 
 190422
 MBC《Straight》节目报道了 Burning Sun及其附属夜店Arena涉嫌非法活动的各种细节、金尚教也有参与
