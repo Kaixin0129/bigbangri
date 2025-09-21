@@ -271,24 +271,28 @@ function buildIndex() {
     // 找到所有 .content-wrap 区块
     const blocks = document.querySelectorAll(".content-wrap");
 
-blocks.forEach((block, i) => {
-  const textContainer = block.querySelector(".text-container");
-  
-  index.push({
-    title: page.replace(".html", ""),
-    url: "/" + page + "#block" + i,
-    html: textContainer ? textContainer.outerHTML : block.outerHTML, // 优先使用text-container
-    text: textContainer ? textContainer.textContent.trim() : block.textContent.trim()
-  });
+    // ✅ 新增逻辑：强制重新编号
+    blocks.forEach((block, i) => {
+      block.id = "block" + (i + 1); // 从 block1 开始递增
+    });
 
-  // 给每个 block 加 id，方便跳转
-  block.setAttribute("id", "block" + i);
-});
+    // ✅ 再次处理生成 search index
+    blocks.forEach((block) => {
+      const textContainer = block.querySelector(".text-container");
 
-    // 把加好 id 的页面另存（覆盖原文件）
+      index.push({
+        title: page.replace(".html", ""),
+        url: "/" + page + "#" + block.id,
+        html: textContainer ? textContainer.outerHTML : block.outerHTML, // 优先使用 text-container
+        text: textContainer ? textContainer.textContent.trim() : block.textContent.trim()
+      });
+    });
+
+    // 覆盖原文件，写入已重新编号的 HTML
     fs.writeFileSync(filePath, dom.serialize(), "utf8");
   }
 
+  // 保存搜索索引
   fs.writeFileSync("search_index.json", JSON.stringify(index, null, 2), "utf8");
   console.log(`✅ Wrote search_index.json with ${index.length} items`);
 }

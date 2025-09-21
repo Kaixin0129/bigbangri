@@ -403,6 +403,37 @@
       display: inline-block;
     }
 
+#searchInput {
+  padding: 18px 24px 18px 52px;
+  width: 800px;
+  border: 3px solid #33FFFF;
+  border-radius: 9999px;
+  background-color: #111;
+  color: white;
+  font-size: 20px;
+  outline: none;
+  transition: border-color 0.3s ease, width 0.3s ease;
+  cursor: pointer;
+
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjZmZmZmZmJyBzdHJva2Utd2lkdGg9JzInIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcg c3Ryb2tlLWxpbmVqb2luPSdyb3VuZCc+PGNpcmNsZSBjeD0nMTEnIGN5PScxMScgcj0nNyc+PC9jaXJjbGU+PGxpbmUgeDE9JzIxJyB5MT0nMjEnIHgyPScxNi42NScgeTI9JzE2LjY1Jz48L2xpbmU+PC9zdmc+");
+  background-repeat: no-repeat;
+  background-position: 20px center;
+  background-size: 22px 22px;
+}
+
+#searchInput:hover,
+#searchInput:focus {
+  border-color: #ff8dd3;
+}
+
+@media (max-width: 768px) {
+  #searchInput {
+    width: 90%;
+    padding-left: 48px;
+    font-size: 18px;
+  }
+}
+
   </style>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LT59M219NB"></script>
@@ -445,6 +476,18 @@
     <a href="cp.html" class="highlight1-button">CP向</a>
   </nav>
   <main>
+
+<div style="text-align: center; margin-bottom: 30px;">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="搜索 bigbangri 内容..."
+    onclick="window.location.href='search.html'"
+    readonly
+    aria-label="搜索 bigbangri 内容"
+  />
+</div>
+
   <h1 style="font-size: 28px">Bigbang 2006-2025年 物料完整合集</h1><br/>
 
   <div class="icon-text-wrapper">

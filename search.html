@@ -393,20 +393,26 @@
 }
 
 #searchInput {
-  padding: 18px 24px;              /* 内边距再大一点 */
-  width: 600px;                    /* 宽度加长 */
-  border: 3px solid #33FFFF;       /* 默认青色边框 */
-  border-radius: 9999px;           /* 超大圆角，保持圆形效果 */
+  padding: 18px 24px 18px 52px;    /* 左边留出空间放图标 */
+  width: 600px;                    
+  border: 3px solid #33FFFF;       
+  border-radius: 9999px;           
   background-color: #111;
   color: white;
-  font-size: 20px;                 /* 字体更大 */
+  font-size: 20px;                 
   outline: none;
   transition: border-color 0.3s ease, width 0.3s ease;
+
+  /* 放大镜图标 */
+  background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxMSIgY3k9IjExIiByPSI3Ii8+PGxpbmUgeDE9IjIxIiB5MT0iMjEiIHgyPSIxNi42NSIgeTI9IjE2LjY1Ii8+PC9zdmc+");
+  background-repeat: no-repeat;
+  background-position: 20px center; /* 图标在输入框里面的水平位置 */
+  background-size: 20px 20px;       /* 图标大小 */
 }
 
 #searchInput:hover,
 #searchInput:focus {
-  border-color: #ff8dd3;           /* 鼠标靠近或输入时变粉色 */
+  border-color: #ff8dd3;
 }
 
 html {
@@ -425,7 +431,8 @@ html {
     <div class="title-group">
       <h1>搜索</h1>
     </div>
-  </div><br/>
+  </div>
+<p>搜索范围只限于查找 "完整时间线" 内容，其余内容请移步至主页面查寻</p><br/>
 <input type="text" id="searchInput" placeholder="搜索关键词..." />
 <div id="searchResults"></div><br/><br/>
 </main>
