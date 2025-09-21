@@ -414,13 +414,21 @@
         document.getElementById("footer").innerHTML = data;
       });
 
-window.addEventListener('load', function() {
-    if (window.location.hash) {
-        setTimeout(function() {
-            const targetId = window.location.hash.substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="#"]');
+    if (link) {
+        const href = link.getAttribute('href');
+        
+        if (href.includes('.html')) {
+            return;
+        }
+        
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            setTimeout(function() {
                 const elementRect = targetElement.getBoundingClientRect();
                 const absoluteElementTop = elementRect.top + window.pageYOffset;
                 
@@ -431,52 +439,12 @@ window.addEventListener('load', function() {
                     top: Math.max(0, targetPosition),
                     behavior: 'smooth'
                 });
-            }
-        }, 300);
-    }
-});
-
-document.addEventListener('click', function(e) {
-    const link = e.target.closest('a[href*="#"]');
-    if (link && link.href.includes(window.location.hostname)) {
-        const href = link.getAttribute('href');
-        const hashIndex = href.indexOf('#');
-        
-        if (hashIndex !== -1) {
-            e.preventDefault();
-            const targetId = href.substring(hashIndex + 1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                setTimeout(function() {
-                    const elementRect = targetElement.getBoundingClientRect();
-                    const absoluteElementTop = elementRect.top + window.pageYOffset;
-                    
-                    const offset = window.innerHeight * 0.1;
-                    const targetPosition = absoluteElementTop - offset;
-                    
-                    window.scrollTo({
-                        top: Math.max(0, targetPosition),
-                        behavior: 'smooth'
-                    });
-                    
-                    window.history.pushState(null, null, '#' + targetId);
-                }, 50);
-            }
+                
+                window.history.pushState(null, null, '#' + targetId);
+            }, 50);
         }
     }
 });
-
-const style = document.createElement('style');
-style.textContent = `
-    html {
-        scroll-behavior: smooth;
-    }
-    .content-wrap {
-        scroll-margin-top: 10vh;
-    }
-`;
-document.head.appendChild(style);
 
 window.addEventListener('load', function() {
     if (window.location.hash) {
@@ -502,45 +470,35 @@ window.addEventListener('load', function() {
 
 document.addEventListener('click', function(e) {
     const link = e.target.closest('a[href*="#"]');
-    if (link && link.href.includes(window.location.hostname)) {
+    if (link) {
         const href = link.getAttribute('href');
-        const hashIndex = href.indexOf('#');
         
-        if (hashIndex !== -1) {
-            e.preventDefault();
-            const targetId = href.substring(hashIndex + 1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                setTimeout(function() {
-                    const elementRect = targetElement.getBoundingClientRect();
-                    const absoluteElementTop = elementRect.top + window.pageYOffset;
-                    
-                    const offset = window.innerHeight * 0.1;
-                    const targetPosition = absoluteElementTop - offset;
-                    
-                    window.scrollTo({
-                        top: Math.max(0, targetPosition),
-                        behavior: 'smooth'
-                    });
-                    
-                    window.history.pushState(null, null, '#' + targetId);
-                }, 50);
-            }
+        if (href.includes('.html')) {
+            return;
+        }
+        
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            setTimeout(function() {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+                
+                window.history.pushState(null, null, '#' + targetId);
+            }, 50);
         }
     }
 });
-
-const style = document.createElement('style');
-style.textContent = `
-    html {
-        scroll-behavior: smooth;
-    }
-    .content-wrap {
-        scroll-margin-top: 10vh;
-    }
-`;
-document.head.appendChild(style);
 
 window.addEventListener('load', function() {
     if (window.location.hash) {
@@ -566,45 +524,35 @@ window.addEventListener('load', function() {
 
 document.addEventListener('click', function(e) {
     const link = e.target.closest('a[href*="#"]');
-    if (link && link.href.includes(window.location.hostname)) {
+    if (link) {
         const href = link.getAttribute('href');
-        const hashIndex = href.indexOf('#');
         
-        if (hashIndex !== -1) {
-            e.preventDefault();
-            const targetId = href.substring(hashIndex + 1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                setTimeout(function() {
-                    const elementRect = targetElement.getBoundingClientRect();
-                    const absoluteElementTop = elementRect.top + window.pageYOffset;
-                    
-                    const offset = window.innerHeight * 0.1;
-                    const targetPosition = absoluteElementTop - offset;
-                    
-                    window.scrollTo({
-                        top: Math.max(0, targetPosition),
-                        behavior: 'smooth'
-                    });
-                    
-                    window.history.pushState(null, null, '#' + targetId);
-                }, 50);
-            }
+        if (href.includes('.html')) {
+            return;
+        }
+        
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            setTimeout(function() {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+                
+                window.history.pushState(null, null, '#' + targetId);
+            }, 50);
         }
     }
 });
-
-const style = document.createElement('style');
-style.textContent = `
-    html {
-        scroll-behavior: smooth;
-    }
-    .content-wrap {
-        scroll-margin-top: 10vh;
-    }
-`;
-document.head.appendChild(style);
 
 window.addEventListener('load', function() {
     if (window.location.hash) {
@@ -630,45 +578,57 @@ window.addEventListener('load', function() {
 
 document.addEventListener('click', function(e) {
     const link = e.target.closest('a[href*="#"]');
-    if (link && link.href.includes(window.location.hostname)) {
+    if (link) {
         const href = link.getAttribute('href');
-        const hashIndex = href.indexOf('#');
         
-        if (hashIndex !== -1) {
-            e.preventDefault();
-            const targetId = href.substring(hashIndex + 1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                setTimeout(function() {
-                    const elementRect = targetElement.getBoundingClientRect();
-                    const absoluteElementTop = elementRect.top + window.pageYOffset;
-                    
-                    const offset = window.innerHeight * 0.1;
-                    const targetPosition = absoluteElementTop - offset;
-                    
-                    window.scrollTo({
-                        top: Math.max(0, targetPosition),
-                        behavior: 'smooth'
-                    });
-                    
-                    window.history.pushState(null, null, '#' + targetId);
-                }, 50);
-            }
+        if (href.includes('.html')) {
+            return;
+        }
+        
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            setTimeout(function() {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+                
+                window.history.pushState(null, null, '#' + targetId);
+            }, 50);
         }
     }
 });
 
-const style = document.createElement('style');
-style.textContent = `
-    html {
-        scroll-behavior: smooth;
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        setTimeout(function() {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+            }
+        }, 300);
     }
-    .content-wrap {
-        scroll-margin-top: 10vh;
-    }
-`;
-document.head.appendChild(style);
+});
 
   const sliderStates = {};
 
