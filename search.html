@@ -375,9 +375,9 @@
 
 .result {
   display: flex;
-  justify-content: center;   /* 整体居中 */
-  align-items: center;       /* 上下居中 */
-  gap: 20px;                 /* 视频和文字之间的距离 */
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   margin: 20px auto;
   padding: 15px;
   border: 1px solid #333;
@@ -386,28 +386,26 @@
 }
 
 .result .text-container {
-  max-width: 500px;        /* 限制文字区域宽度，避免太宽 */
-  margin: 0 auto;          /* 整体居中 */
-  text-align: left;        /* 内部文字靠左 */
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
   color: white;
 }
 
 #searchInput {
-  padding: 18px 24px 18px 52px;    /* 左边留出空间放图标 */
-  width: 600px;                    
-  border: 3px solid #33FFFF;       
-  border-radius: 9999px;           
+  padding: 18px 24px 18px 52px;
+  width: 600px;
+  border: 3px solid #33FFFF;
+  border-radius: 9999px;
   background-color: #111;
   color: white;
-  font-size: 20px;                 
+  font-size: 20px;
   outline: none;
   transition: border-color 0.3s ease, width 0.3s ease;
-
-  /* 放大镜图标 */
   background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxMSIgY3k9IjExIiByPSI3Ii8+PGxpbmUgeDE9IjIxIiB5MT0iMjEiIHgyPSIxNi42NSIgeTI9IjE2LjY1Ii8+PC9zdmc+");
   background-repeat: no-repeat;
-  background-position: 20px center; /* 图标在输入框里面的水平位置 */
-  background-size: 20px 20px;       /* 图标大小 */
+  background-position: 20px center;
+  background-size: 20px 20px;
 }
 
 #searchInput:hover,
@@ -436,6 +434,19 @@ html {
     color: #000000;
   }
 
+  /* 新增样式 */
+  .results-info {
+    margin: 30px 0 20px;
+    font-size: 18px;
+    color: white;
+  }
+
+  .no-results {
+    margin-top: 40px;
+    font-size: 18px;
+    color: white;
+  }
+
   </style>
 </head>
 <body>
@@ -448,122 +459,123 @@ html {
       <h1>搜索</h1>
     </div>
   </div>
-<p>搜索范围只限于查找 "完整时间线" 内容，其余内容请移步至主页面查寻</p><br/>
-<input type="text" id="searchInput" placeholder="搜索关键词..." />
-<div id="searchResults"></div><br/><br/>
-</main>
-<script>
-  let index = [];
+  <p>搜索范围只限于查找 "完整时间线" 内容，其余内容请移步至主页面查寻</p><br/>
+  <input type="text" id="searchInput" placeholder="搜索关键词..." />
+  <div id="searchResults"></div><br/><br/>
+  </main>
+  <script>
+    let index = [];
 
-  // 加载搜索索引
-  fetch("search_index.json")
-    .then(res => res.json())
-    .then(data => {
-      index = data;
-      console.log("搜索索引加载完成，共", index.length, "条记录");
-    })
-    .catch(error => console.error("加载搜索索引失败:", error));
+    // 加载搜索索引
+    fetch("search_index.json")
+      .then(res => res.json())
+      .then(data => {
+        index = data;
+        console.log("搜索索引加载完成，共", index.length, "条记录");
+      })
+      .catch(error => console.error("加载搜索索引失败:", error));
 
-  // 判断浏览器是否支持 \p{L} Unicode 属性转义
-  function supportsUnicodePropertyEscapes() {
-    try { new RegExp('\\p{L}', 'u'); return true; }
-    catch (e) { return false; }
-  }
-
-  const PUNCT_RE = supportsUnicodePropertyEscapes()
-    ? /[^\p{L}\p{N}\s]+/gu      // 去掉所有标点（Unicode-safe）
-    : /[^A-Za-z0-9\u4e00-\u9fff\s]+/g; // fallback：保留中/英/数字/空格
-
-  // 规范化文本（小写、NFKD、去标点、合并空格）
-  function normalize(str) {
-    if (!str) return "";
-    return String(str)
-      .toLowerCase()
-      .normalize("NFKD")
-      .replace(PUNCT_RE, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-  }
-
-  // 监听 Enter（保留你原来的行为）；也可以打开 input 的实时搜索（注释里有提示）
-  const inputEl = document.getElementById("searchInput");
-  inputEl.addEventListener("keyup", function(e) {
-    if (e.key === "Enter") {
-      const keyword = this.value.trim();
-      if (keyword) search(keyword);
-    }
-  });
-
-  // 如果希望实时搜索（输入时就匹配），取消下面注释
-  // inputEl.addEventListener("input", function(){ if (this.value.trim().length >= 2) search(this.value.trim()); });
-
-  function search(keyword) {
-    const resultsDiv = document.getElementById("searchResults");
-    resultsDiv.innerHTML = "";
-
-    if (!keyword || !index.length) {
-      resultsDiv.innerHTML = "<p>没有找到结果</p>";
-      return;
+    // 判断浏览器是否支持 \p{L} Unicode 属性转义
+    function supportsUnicodePropertyEscapes() {
+      try { new RegExp('\\p{L}', 'u'); return true; }
+      catch (e) { return false; }
     }
 
-    const normalizedKeyword = normalize(keyword);
-    if (!normalizedKeyword) {
-      resultsDiv.innerHTML = "<p>没有找到结果</p>";
-      return;
+    const PUNCT_RE = supportsUnicodePropertyEscapes()
+      ? /[^\p{L}\p{N}\s]+/gu
+      : /[^A-Za-z0-9\u4e00-\u9fff\s]+/g;
+
+    // 规范化文本（小写、NFKD、去标点、合并空格）
+    function normalize(str) {
+      if (!str) return "";
+      return String(str)
+        .toLowerCase()
+        .normalize("NFKD")
+        .replace(PUNCT_RE, " ")
+        .replace(/\s+/g, " ")
+        .trim();
     }
 
-    const tokens = normalizedKeyword.split(" ").filter(Boolean);
-
-    // 过滤：每个 token 都必须出现在条目中（更稳妥）
-    const results = index.filter(item => {
-      const hay = normalize(item.text || item.html || "");
-      return tokens.every(t => hay.includes(t));
+    // 监听 Enter
+    const inputEl = document.getElementById("searchInput");
+    inputEl.addEventListener("keyup", function(e) {
+      if (e.key === "Enter") {
+        const keyword = this.value.trim();
+        if (keyword) search(keyword);
+      }
     });
 
-    if (results.length === 0) {
-      resultsDiv.innerHTML = "<p>没有找到结果</p>";
-      return;
-    }
+    function search(keyword) {
+      const resultsDiv = document.getElementById("searchResults");
+      resultsDiv.innerHTML = "";
 
-    // 渲染结果（显示视频预览（如果有） + 文本，文本为可点跳转）
-    results.forEach(item => {
-      const tempDiv = document.createElement("div");
-      tempDiv.innerHTML = item.html || "";
-
-      const videoContainer = tempDiv.querySelector(".video-container");
-      const textContainer = tempDiv.querySelector(".text-container");
-
-      const resultDiv = document.createElement("div");
-      resultDiv.className = "result";
-
-      let inner = "";
-
-      if (videoContainer) {
-        // 只插入内部内容，避免重复嵌套外层 .text-container 的 id 等
-        inner += `<div class="video-container">${videoContainer.innerHTML}</div>`;
+      if (!keyword || !index.length) {
+        resultsDiv.innerHTML = '<p class="no-results">没有找到结果</p>';
+        return;
       }
 
-      inner += `<div class="text-container">
-                  <a href="${item.url}" style="color: inherit; text-decoration: none;">
-                    ${textContainer ? textContainer.innerHTML : escapeHtml(item.text)}
-                  </a>
-                </div>`;
+      const normalizedKeyword = normalize(keyword);
+      if (!normalizedKeyword) {
+        resultsDiv.innerHTML = '<p class="no-results">没有找到结果</p>';
+        return;
+      }
 
-      resultDiv.innerHTML = inner;
-      resultsDiv.appendChild(resultDiv);
-    });
-  }
+      const tokens = normalizedKeyword.split(" ").filter(Boolean);
 
-  // 简单的 HTML 转义（如果 item.text 用在 innerHTML）
-  function escapeHtml(s) {
-    return String(s)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#39;");
-  }
+      // 过滤：每个 token 都必须出现在条目中
+      const results = index.filter(item => {
+        const hay = normalize(item.text || item.html || "");
+        return tokens.every(t => hay.includes(t));
+      });
 
-</script>
+      // 显示结果数量
+      const resultsInfo = document.createElement("p");
+      resultsInfo.className = "results-info";
+      resultsInfo.textContent = `总共 ${results.length} 个结果`;
+      resultsDiv.appendChild(resultsInfo);
+
+      if (results.length === 0) {
+        resultsDiv.innerHTML = '<p class="no-results">没有找到结果</p>';
+        return;
+      }
+
+      // 渲染结果
+      results.forEach(item => {
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = item.html || "";
+
+        const videoContainer = tempDiv.querySelector(".video-container");
+        const textContainer = tempDiv.querySelector(".text-container");
+
+        const resultDiv = document.createElement("div");
+        resultDiv.className = "result";
+
+        let inner = "";
+
+        if (videoContainer) {
+          inner += `<div class="video-container">${videoContainer.innerHTML}</div>`;
+        }
+
+        inner += `<div class="text-container">
+                    <a href="${item.url}" style="color: inherit; text-decoration: none;">
+                      ${textContainer ? textContainer.innerHTML : escapeHtml(item.text)}
+                    </a>
+                  </div>`;
+
+        resultDiv.innerHTML = inner;
+        resultsDiv.appendChild(resultDiv);
+      });
+    }
+
+    // 简单的 HTML 转义
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+  </script>
 </body>
 </html>

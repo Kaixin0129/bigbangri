@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>G-Dragon2017</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+    .two-column-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    .column {
+      width: 45%;
+      text-align: left;
+      color: white;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: white;
+      height: auto;
+    }
+
+  .toggle-btn {
+    border: 2px solid #33FFFF;
+    color: #FFFFFF;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+  }
+  .toggle-btn:hover {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="gd.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>GD 2017年</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="gd2018.html">2018</a>
+    </nav>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="gd2017-jan-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gd2017.html#gd2017-jan" class="jump-button">1月</a>
+    </div>
+    <div id="gd2017-feb-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gd2017.html#gd2017-feb" class="jump-button">2月</a>
+    </div>
+    <div id="gd2017-mar-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gd2017.html#gd2017-mar" class="jump-button">3月</a>
+    </div>
+    <div id="gd2017-apr-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gd2017.html#gd2017-apr" class="jump-button">4月</a>
+    </div>
+    <div id="gd2017-may-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gd2017.html#gd2017-may" class="jump-button">5月</a>
+    </div>
+    <div id="gd2017-june-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gd2017.html#gd2017-june" class="jump-button">6月</a>
+    </div>
+    <div id="gd2017-july-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gd2017.html#gd2017-july" class="jump-button">7月</a>
+    </div>
+    <div id="gd2017-aug-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gd2017.html#gd2017-aug" class="jump-button">8月</a>
+    </div>
+    <div id="gd2017-sept-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gd2017.html#gd2017-sept" class="jump-button">9月</a>
+    </div>
+    <div id="gd2017-oct-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gd2017.html#gd2017-oct" class="jump-button">10月</a>
+    </div>
+    <div id="gd2017-nov-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gd2017.html#gd2017-nov" class="jump-button">11月</a>
+    </div>
+    <div id="gd2017-dec-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gd2017.html#gd2017-dec" class="jump-button">12月</a>
+    </div>
+  </div>
+  <br/><br/>
+  <hr class="full-width-line" />
+
+    <div id="gd2017-jan" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gd2017.html#gd2017-jan-jump" class="jump-button">1月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div id="170124-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017jan.html#170124" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ntSqn5-X3Eg?si=PM6_p16EzAui87Bk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2017年1月24日</strong></p>
+        <p>GD出席在巴黎的 Chanel 2017 春夏高级定制秀</p>
+        <p>详情资讯：<a href="https://www.koreaboo.com/stories/g-dragon-proves-king-high-fashion-2017-chanel-haute-couture/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider6', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider6">
+          <div class="slide-item">
+            <img src="1701241.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1701242.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1701243.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1701244.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1701245.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1701246.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1701247.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1701247.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1701248.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1701249.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="17012410.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="17012411.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="17012412.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="17012413.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider6', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+    <div id="gd2017-feb" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gd2017.html#gd2017-feb-jump" class="jump-button">2月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/vLzgATepxzg?si=GsCAgX-7Ki3KTBCx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2017年2月1日</strong></p>
+        <p>GD参与Zion.T的专辑OO<br/>演唱Complex (Feat. G_DRAGON)</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="170212-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017feb.html#170212" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年2月12日</strong></p>
+        <p>GD担任中国的沙宣美发品牌代言人</p>
+        <p>详情资讯：<a href="https://web.archive.org/web/20170908064412/https://m.nownews.com/news/2401799" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            NOW News</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
+          <div class="slide-item">
+            <img src="170212.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1702121.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年2月27日</strong></p>
+        <p>GD 在 Korean Hip-Hop Awards 被提名：</p>
+        <ul>
+          <li>Best Collaboration: ₩ 1,000,000</li>
+        </ul><br/>
+        <p>详细资讯：<a href="https://www.koreanhiphopawards.com/nominees.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Korean HipHop Awards</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+    <div id="gd2017-mar" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gd2017.html#gd2017-mar-jump" class="jump-button">3月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div id="170326-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017mar.html#170326" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/FcubjLGwelQ?si=UbzkYaq-wLZaNWIY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2017年3月26日</strong></p>
+        <p>GD参加Nike的 Air Max Day 全球活动</p>
+        <p>代言Vapormax鞋，导致韩国网上商店的商品瞬间售罄</p>
+        <p>详情资讯：<a href="https://hypebeast.com/2017/3/nike-2017-air-max-day-g-dragon-neymar-campaign" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Hyperbeast</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider2', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider2">
+          <div class="slide-item">
+            <img src="170326.avif" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1703262.avif" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1703263.avif" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1703261.avif" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider2', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+    <div id="gd2017-apr" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gd2017.html#gd2017-apr-jump" class="jump-button">4月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/d9IxdwEFk1c?si=yISlYQzJ4hFVmktN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2017年4月21日</strong></p>
+        <p>GD参与IU的专辑Palette<br/>演唱Palette (feat. G-DRAGON)</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年4月25日</strong></p>
+        <p>Act III，MOTTE演唱会是韩国艺人在美国和欧洲规模最大的巡演</p>
+        <p>也是韩国个人艺人有史以来规模最大的巡回演唱会（截至2025年）</p>
+        <p>详细资讯：<a href="https://www.billboard.com/pro/g-dragon-2017-act-iii-motte-world-tour/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Billboard</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+    <div id="gd2017-may" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gd2017.html#gd2017-may-jump" class="jump-button">5月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/XbEBEiJP72M?si=yNrRNbJAh5nVOpky" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2017年5月10日</strong></p>
+        <p>GD参与PSY的专辑PSY 8th 4×2=8<br/>演唱Fact</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+    <div id="gd2017-june" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gd2017.html#gd2017-june-jump" class="jump-button">6月</a>
+    </div><br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="170608gd" style="display: flex; align-items: center; gap: 10px;">
+      <a href="2017june.html#170608gd-jump" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div id="170608album" style="display: flex; align-items: center; gap: 10px;">
+      <a href="albumgd.html#170608album-jump" class="jump-button">专辑歌曲Mv</a>
+    </div>
+  </div>
+  <div class="content-wrap">
+    <div class="photo-container">
+      <img src="kjy.jpg" height="350" />     
+    </div>
+    <div class="text-button-container">
+      <div class="text-container">
+        <p><strong>권지용 (KWON JI YONG)</strong></p>
+        <p>2017年6月8日 推出第二张迷你专辑</p>
+        <ol style="list-style-position: inside; color: white;">
+          <li>INTRO.권지용 (Middle Fingers-Up)</li>
+          <li>개소리 (BULLSHIT)</li>
+          <li>SUPER STAR</li>
+          <li>무제(無題) (Untitled, 2014)</li>
+          <li>OUTRO. 신곡(神曲) (Divina Commedia)</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <p>专辑《Kwon Ji Yong》的小小争议</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年6月8日</strong></p>
+        <p>6月初YG曾宣布主打歌为《Bullshit》</p>
+        <p>由于TOP的大麻丑闻和挑衅性的名字，为了避免引发争议将其改为《Untittled, 2014》</p>
+        <p>详细资讯：<a href="https://web.archive.org/web/20170611044531/http://english.yonhapnews.co.kr/news/2017/06/08/0200000000AEN20170608007051315.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            YONHAP NEWS</a></p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>GD放弃了以CD发行音乐的传统方式，改为USB闪存盘的形式发行</p>
+        <p>却招到Gaon的批评，并GD拒绝视为正式专辑</p>
+        <br/>
+        <p><strong>2017年12月26日</strong></p>
+        <p>Gaon撤销了决定，承认这种非传统的格式是合法的</p>
+        <p>详细资讯：<a href="https://www.koreaherald.com/article/1544288" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            The Korea Herald</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年6月8日</strong></p>
+        <p>专辑《Kwon Ji Yong》首天发行荣登Billboard榜单</p>
+        <p>在Heatseeksers专辑榜上排名第一</p>
+        <p>详细资讯：<a href="https://www.billboard.com/pro/g-dragon-kwon-ji-yong-album-billboard-200-sales/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Billboard</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年6月9日</strong></p>
+        <p>Billboard 将《Unittled，2014》描述为令人回味的、简单的钢琴民谣，展现了他最脆弱的一面</p>
+        <p>详细资讯：<a href="https://www.billboard.com/music/music-news/g-dragon-personal-kwon-ji-yong-ep-7825585/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Billboard</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="motte-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="motte.html#motte" class="jump-button">演唱会视频</a>
+    </div>
+  </div><br/>
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 400px; text-align: left;">
+      <p>Act III: M.O.T.T.E World Tour</p>
+      <table style="text-align: left; border-collapse: collapse; table-layout: fixed;">
+        <colgroup>
+          <col style="width: 200px;" />
+          <col />
+        </colgroup>
+	    <tr><td>2017年6月10日</td><td>首尔</td></tr>
+	    <tr><td>2017年6月17-18日</td><td>澳门</td></tr>
+	    <tr><td>2017年6月24-25日</td><td>新加坡</td></tr>
+	    <tr><td>2017年7月7-8日</td><td>曼谷</td></tr>
+	    <tr><td>2017年7月11日</td><td>美国西雅图</td></tr>
+	    <tr><td>2017年7月14日</td><td>美国圣何塞</td></tr>
+	    <tr><td>2017年7月16日</td><td>美国英格尔伍德</td></tr>
+	    <tr><td>2017年7月19日</td><td>美国休斯顿</td></tr>
+	    <tr><td>2017年7月21日</td><td>美国芝加哥</td></tr>
+	    <tr><td>2017年7月25日</td><td>美国迈阿密</td></tr>
+	    <tr><td>2017年7月27日</td><td>美国布鲁克林</td></tr>
+	    <tr><td>2017年7月30日</td><td>加拿大多伦多</td></tr>
+	    <tr><td>2017年8月5日</td><td>澳大利亚悉尼</td></tr>
+	    <tr><td>2017年8月8日</td><td>澳大利亚布里斯班</td></tr>
+	    <tr><td>2017年8月12日</td><td>澳大利亚墨尔本</td></tr>
+	    <tr><td>2017年8月16日</td><td>新西兰奥克兰</td></tr>
+	    <tr><td>2017年8月19日</td><td>日本福冈</td></tr>
+	    <tr><td>2017年8月22-23日</td><td>日本大阪</td></tr>
+	    <tr><td>2017年8月25-26日</td><td>香港</td></tr>
+	    <tr><td>2017年9月1日</td><td>菲律宾奎松城</td></tr>
+	    <tr><td>2017年9月3日</td><td>印尼雅加达</td></tr>
+	    <tr><td>2017年9月17日</td><td>马来西亚吉隆坡</td></tr>
+	    <tr><td>2017年9月19-20日</td><td>日本东京</td></tr>
+	    <tr><td>2017年9月23日</td><td>英国伯明翰</td></tr>
+	    <tr><td>2017年9月24日</td><td>英国伦敦</td></tr>
+	    <tr><td>2017年9月26日</td><td>荷兰阿姆斯特丹</td></tr>
+	    <tr><td>2017年9月28日</td><td>法国巴黎</td></tr>
+	    <tr><td>2017年9月30日</td><td>德国柏林</td></tr>
+	    <tr><td>2017年10月7-8日</td><td>台湾台北</td></tr>
+      </table>
+    </div>
+  </div>
+  <hr class="full-width-line" />  
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年6月10日</strong></p>
+        <p>GD成为历史上第二位在首尔世界杯体育场举行演唱会的个人艺人</p>
+        <p>详细资讯：<a href="https://web.archive.org/web/20170731213411/http://news.chosun.com/site/data/html_dir/2017/04/05/2017040501903.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            chosun.com</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年6月12日</strong></p>
+        <p>专辑《Kwon Ji Yong》首天发行在QQ音乐上一天内售出超过76万张</p>
+        <p>详细资讯：<a href="https://web.archive.org/web/20170618203007/http://news.joins.com/article/21657777" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            中央日报</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年6月14日</strong></p>
+        <p>专辑《Kwon Ji Yong》成为第一个韩国歌手连续数周位居第一</p>
+        <p>是Billboard世界专辑榜首的专辑（权威）</p>
+        <p>详细资讯：<a href="http://www.billboard.com/articles/columns/k-town/7825936/g-dragon-kwon-ji-yong-album-billboard-200-sales" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Billboard</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年6月15日</strong></p>
+        <p>专辑《Kwon Ji Yong》发布六天后在QQ音乐累计100万张</p>
+        <p>成为2017年专辑销量最多的专辑</p>
+        <p>详细资讯：<a href="https://www.koreaherald.com/article/1359785" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            The Korea Herald</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170615.jpg" style="height: 150px; width: 400px;">
+  <hr class="full-width-line">
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年6月21日</strong></p>
+        <p>专辑《Kwon Ji Yong》登顶46个国家的iTunes排行榜</p>
+        <p>同时荣登iTunes全球专辑排行榜和欧洲iTunes排行榜的榜首</p>
+        <p>成为第一位做到这一点的韩国独唱歌手</p>
+        <p>权威！！（GD哥都不需要闯美就可以做到）</p>
+        <p>详细资讯：<a href="https://www.billboard.com/pro/g-dragon-kwon-ji-yong-no-1-world-albums-two-weeks/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Billboard</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="170621-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017june.html#170621" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/AE89dE_xZ9I?si=A4SOEzgPeHQuF1jk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2017年6月21日</strong></p>
+        <p>GD出席在首尔的 Chanel展览 Mademoiselle Privé</p>
+        <p>详情资讯：<a href="https://i-d.co/article/korean-style-is-about-moving-fast-g-dragon-discusses-the-sound-of-koreas-future/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            i-D</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider4', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider4">
+          <div class="slide-item">
+            <img src="170621.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1706211.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1706212.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1706122.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1706123.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1706124.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider4', 'next')">&#8594;</button>
+    </div>
+  </div>
+
+<div style="text-align: center;">
+  <div class="content-wrap">
+    <div class="text-container">
+      <p>GD接受 iD France的采访</p>
+      <p>详细资讯：<a href="https://i-d.co/article/korean-style-is-about-moving-fast-g-dragon-discusses-the-sound-of-koreas-future/" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          i-D</a></p>
+      <ol style="list-style-position: inside; color: white;">
+        <li><span style="color: #33FFFF;">问：</span>你好，G Dragon！你穿的是香奈儿，你刚刚在首尔为他们表演过，香奈儿对你来说意味着什么？<br/>
+        <span style="color: #33FFFF;">GD：</span>香奈儿就是香奈儿，它不是一个品牌。世界上没有任何东西能比得上香奈儿。无论你走到哪里，人们都知道它。你无法解释香奈儿，它是一个动词<br/><br/><button id="expandBtn" class="toggle-btn" onclick="toggleList(true)" style="margin-left:10px;">展开</button></li>
+        <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+        <br/><li><span style="color: #33FFFF;">问：</span>你的演出是为一群小观众准备的。和你以前在体育场演出相比，感觉怎么样？<br/>
+        <span style="color: #33FFFF;">GD：</span>说实话，我更喜欢小型演出。这样更有趣。每次登台的感觉都不一样。能量永远不一样，观众也不同，氛围也一直在变化</li>
+        <br/><li><span style="color: #33FFFF;">问：</span>上台前感觉怎么样？<br/>
+        <span style="color: #33FFFF;">GD：</span>我挺冷静的。说实话，我已经很习惯了。我六岁开始音乐生涯。Bigbang出道的时候，我十九岁，韩国年龄。如果我没记错的话，你们应该是十七岁吧</li>
+        <br/><li><span style="color: #33FFFF;">问：</span>韩国的年龄制度不一样？<br/>
+        <span style="color: #33FFFF;">GD：</span>是啊！其实韩国是世界上唯一一个这么规定的国家。问问我们的总统就知道了！我不知道为什么，真希望知道。我今天28岁。但在韩国，我已经30岁了。我知道，这很糟心……</li>
+        <br/><li><span style="color: #33FFFF;">问：</span>你在亚洲算是超级巨星，在西方国家也相当有名。成为这样的偶像感觉如何？<br/>
+        <span style="color: #33FFFF;">GD：</span>听到你这么说，我感到很荣幸！你知道，这就是21世纪的时代：每个人都联系在一起，世界瞬息万变。这看起来很特别，但同时又很自然。如果我发布新内容，世界上的每个人都会在同一时刻知道我在做什么。就像我与人联系的方式一样，我觉得现在的社交媒体将时尚与音乐、艺术与流行音乐等等紧密地联系在一起</li>
+        <br/><li><span style="color: #33FFFF;">问：</span>你曾带着你的品牌 Peaceminusone 在巴黎举办过展览。你把自己定义为设计师吗？<br/>
+        <span style="color: #33FFFF;">GD：</span>我不认为自己是设计师，而是一位艺术家——一位有很多作品的艺术家。我的品牌不仅仅是一个时尚品牌。两三年前，我在首尔市立美术馆举办了一场展览，支持韩国年轻新锐艺术家。我想让人们知道，韩国艺术家也能创作出伟大的作品</li>
+        <br/><li><span style="color: #33FFFF;">问：</span>韩国时尚每一季都越来越火爆，很多人都把它当成一种新现象来谈论。你也有同样的感受吗？<br/>
+        <span style="color: #33FFFF;">GD：</span>它确实越来越火爆，但这不仅仅是时尚。整个韩国市场都在变大：无论是时尚、音乐还是韩流——无论什么。这是一种整体的文化，而我就是其中的一部分</li>
+        <br/><li><span style="color: #33FFFF;">问：</span>你开始做音乐的时候有没有预料到这种转变？<br/>
+        <span style="color: #33FFFF;">GD：</span>我刚开始做音乐的时候并没有想着出名。我的意思是，那不是我最初的目标。当然，我看到越来越多的人对韩国文化感兴趣，我为此感到非常自豪。某种程度上，我感到很荣幸。我热爱我的国家，所以看到它闪耀光芒我感到无比高兴。它发展得非常快，有好的一面，也有坏的一面，但我努力从中汲取精华。我仍然想尝试新事物，这样我就能了解它们，然后把这些东西教给年轻人</li>
+        <br/><li><span style="color: #33FFFF;">问：</span>您如何描述韩国风格？<br/>
+        <span style="color: #33FFFF;">GD：</span> 我年轻的时候，对日本的文化、风格和生活方式非常着迷。我也喜欢中国电影。我想说的是，我们过去常常向不同的亚洲国家学习，甚至向美国和欧洲学习。相信我：韩国人学得很快。最重要的是不断学习，否则你就只是在抄袭。所以，如果你想成为一名艺术家，那就创造属于你自己的东西。基本上，韩国风格就是快速行动。欧洲曾经对日本着迷，但如今，许多人的目光都集中在韩国。我们欣赏的不再是极简主义或美学，而是韩国的活力</li>
+        <br/><li><span style="color: #33FFFF;">问：</span>这种能量从何而来？<br/>
+        <span style="color: #33FFFF;">GD：</span>你知道吗，因为我们有一颗渴望的心灵。我们已经名声显赫，备受认可，但我们仍然渴望更多。我们依然渴望。韩国人，包括我在内，都渴望进步得越来越快。在音乐、时尚、艺术领域也是如此。一击必杀：这就是我的心态</li>
+        <br/><li><span style="color: #33FFFF;">问：</span>做音乐的意义究竟是什么？<br/>
+        <span style="color: #33FFFF;">GD：</span>这是一个非常大的问题。我并没有确切的答案，所以我会谈谈我的新专辑《权志龙》  ——我的真名。这张专辑是我30岁人生中迈出的新一步。所以我决定将我的巡演命名为《第三幕》（Motte）。这是我职业生涯的第三幕。《Motte》讲述了我的出身。这张专辑让我回归本源。我们都生活在数字世界，但我把我的专辑放在U盘里，每个U盘上都用手绘的红色划线来代表DNA。其中一些是我自己画的</li>
+        <br/><li><span style="color: #33FFFF;">问：</span>如果你可以许个愿望，你会许什么？
+        <span style="color: #33FFFF;">GD：</span>你是说我的愿望？iD 的封面！<button id="collapseBtn" class="toggle-btn" onclick="toggleList(false)" style="margin-left:10px;">收回</button></li>
+      </ol>
+    </div>
+  </div><br/>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div id="170626-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017june.html#170626" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/l4YzMQGkgM8?si=UNmlTiaTELyXBreM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2017年6月26日</strong></p>
+        <p>GD参与在澳门的 Chanel Gabrielle包袋宣传活动</p>
+        <p>详情资讯：<a href="https://hypebeast.com/zh/2017/6/g-dragon-chanel-gabrielle-bag-campaign-video" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Hyperbeast</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider3', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider3">
+          <div class="slide-item">
+            <img src="1706264.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1706263.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1706268.avif" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="170626.avif" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1706261.avif" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1706262.avif" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1706267.webp" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1706265.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider3', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年6月27日</strong></p>
+        <p>《iD》将GD与迈克尔·杰克逊相提并论，称GD为千禧一代的迈克尔·杰克逊</p>
+        <p>详细资讯：<a href="https://web.archive.org/web/20171020084021/https://i-d.vice.com/en_uk/article/3k9km8/ama-interview-2018" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            iD</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+    <div id="gd2017-july" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gd2017.html#gd2017-july-jump" class="jump-button">7月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月18日</strong></p>
+        <p>《迈阿密新时报》的 Douglas Markowitz 表示：在多年的歌坛生涯中，超级巨星G-Dragon只需凭借钢琴和歌声就能在竞争中脱颖而出</p>
+        <p>详细资讯：<a href="https://web.archive.org/web/20181108065727/https://www.miaminewtimes.com/music/ten-kpop-songs-to-get-you-ready-for-g-dragons-american-airlines-arena-show-9502740/2" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Miami New Times</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月19日</strong></p>
+        <p>《纽约时报》的 Joe Coscarelli 称GD为：时尚偶像，一条变色龙，经常让巅峰时期的Lady Gaga显得古板</p>
+        <p>详细资讯：<a href="https://www.nytimes.com/2017/07/19/arts/music/23pop-week.html?search-input=g-dragon" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            The New York Times</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+    <div id="gd2017-aug" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gd2017.html#gd2017-aug-jump" class="jump-button">8月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年8月5日</strong></p>
+        <p>《One of a Kind》被韩国音乐评论家金奉铉收录于其著作</p>
+        <p>《1989年至2016年最具影响力的韩国嘻哈歌曲》中，并被评为塑造该流派的28首歌曲之一</p>
+        <p>详细资讯：<a href="http://news.donga.com/3/07/20170805/85691260/1?" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            DONGA</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+    <div id="gd2017-sept" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gd2017.html#gd2017-sept-jump" class="jump-button">9月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div id="170909-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017sept.html#170909" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年9月9日</strong></p>
+        <p>出席在香港的 Vidal Sassoon 活动</p>
+        <p><br/>图源来自：Getty Images</p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider8', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider8">
+          <div class="slide-item">
+            <img src="170909.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1709091.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1709092.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1709093.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider8', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+    <div id="gd2017-oct" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gd2017.html#gd2017-oct-jump" class="jump-button">10月</a>
+    </div><br/>
+
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/7ei_4f6uchU?si=KdrSSoTj5Wxnb3lo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>官方视频</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/dyYhSkGrv4A?si=mRjXO-fYXkJsclFM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>饭拍</p>
+      </div>
+    </div>
+  </div><br/>
+  <div style="text-align: center;">
+    <div id="171003-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017oct.html#171003" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年10月3日</strong></p>
+        <p>GD出席在巴黎的 Chanel春夏巴黎时装周女装发布会</p>
+        <ul>
+          <li>遇到曹世镐名场面</li>
+        </ul><br/>
+        <p><br/>图源来自：Getty Images</p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider5', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider5">
+          <div class="slide-item">
+            <img src="171003.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1710031.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1710032.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1710033.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1710034.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1710035.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider5', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="1710031-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017oct.html#1710031" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年10月3日</strong></p>
+        <p>GD出席在巴黎的 Chanel #CodeCoco 手表发布派对</p>
+        <p><br/>图源来自：Alamy</p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider7', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider7">
+          <div class="slide-item">
+            <img src="1710036.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1710037.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1710038.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1710039.webp" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider7', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+    <div id="gd2017-nov" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gd2017.html#gd2017-nov-jump" class="jump-button">11月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/etbRAi9U8IA?si=i7nQpOQRvx4-9xe4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2017年11月1日</strong></p>
+        <p>GD参与w-inds.的专辑Rain Is Fallin' / Hybrid Dream (Standard Edition) 演唱Rain Is Fallin'</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年11月25日</strong></p>
+        <p>GD 在 MAMA Award 被提名：</p>
+        <ul>
+          <li>Artist of the Year</li>
+          <li>Best Male Artist</li>
+        </ul><br/>
+        <p>详细资讯：<a href="https://en.wikipedia.org/wiki/2017_Mnet_Asian_Music_Awards" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Wikipedia</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年11月25日</strong></p>
+        <p>GD 在 Philippine K-pop Awards 赢得：</p>
+        <ul>
+          <li>Best Male Solo Artist</li>
+        </ul><br/>
+        <p>详细资讯：<a href="https://web.archive.org/web/20190603100046/http://www.kstreetmanila.com/2017/12/kpopcon9-goes-carnival-for-pinoy-k-pop-fans-this-year/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Kstreet Manila</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+    <div id="gd2017-dec" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gd2017.html#gd2017-dec-jump" class="jump-button">12月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年12月2日</strong></p>
+        <p>在 Melon Music Awards 被提名：</p>
+        <ul>
+          <li>Kakao Hot Star Award</li>
+          <li>Best Album Award: Kwon Ji Yong</li>
+          <li>Best Song Award: Untitled, 2014</li>
+          <li>Best R&B/Soul Award: Untitled, 2014</li>
+        </ul><br/>
+        <p>详细资讯：<a href="https://web.archive.org/web/20171113120503/http://www.melon.com/mma/vote/fresult.htm" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Melon</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年12月8日</strong></p>
+        <p>GD 在 Hyperbeast 入选：</p>
+        <ul>
+          <li>100 Most Influential People in Fashion</li>
+        </ul><br/>
+        <p>详细资讯：<a href="https://hypebeast.com/hb100/2017/g-dragon" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Hyperbeast</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="171213gd" style="display: flex; align-items: center; gap: 10px;">
+      <a href="2017dec.html#171213gd-jump" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div id="171213album" style="display: flex; align-items: center; gap: 10px;">
+      <a href="albumgd.html#171213album-jump" class="jump-button">专辑歌曲Mv</a>
+    </div>
+  </div>
+  <div class="content-wrap">
+    <div class="photo-container">
+      <img src="motte.webp" height="350" />     
+    </div>
+    <div class="text-button-container">
+      <div class="text-container">
+        <p><strong>2017 G-DRAGON CONCERT ACT III, M.O.T.T.E IN SEOUL</strong></p>
+        <p>2017年12月13日 推出第五张现场音源单曲专辑</p>
+        <ol style="list-style-position: inside; color: white;">
+          <li>Heartbreaker</li>
+          <li>Breathe</li>
+          <li>A Boy</li>
+          <li>But I Love U</li>
+          <li>Obsession</li>
+          <li>미치GO</li>
+          <li>One Of A Kind</li>
+          <li>R.O.D</li>
+          <li>That XX</li>
+          <li>The Leaders</li>
+          <li>Black</li>
+          <li>Missing You</li>
+          <li>YOU DO_OUTRO</li>
+          <li>Who You?</li>
+          <li>I Love It</li>
+          <li>Today</li>
+          <li>Crayon</li>
+          <li>INTRO.권지용 (Middle Fingers-Up)</li>
+          <li>개소리 (BULLSHIT)</li>
+          <li>SUPER STAR</li>
+          <li>This Love</li>
+          <li>Crooked</li>
+          <li>Untitled, 2014</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年12月21日</strong></p>
+        <p>Vulture网站将巴克莱中心的这场演唱会评选为2017年十大最佳演唱会排名第三</p>
+        <p>称赞GD：表演时展现出非凡的气场，意识到自己并非普通男人，在三幕演出中，他多次更换服装，编排精妙，舞台灯光和布景奢华，以及他一贯在女性气质和男性气质之间摇摆不定的俏皮风格。GD打破了第四面墙，向观众展示了他仍在不断进步，但他不再害怕让粉丝见证这种转变</p>
+        <p>详细资讯：<a href="https://www.vulture.com/2017/12/the-10-best-concerts-of-2017.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Vulture</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年12月31日</strong></p>
+        <p>《Unittled，2014》在 Circle Chart Cart 年榜榜单，排名第16</p>
+        <p>详细资讯：<a href="https://circlechart.kr/page_chart/onoff.circle?nationGbn=T&serviceGbn=ALL&targetTime=2017&hitYear=2017&termGbn=year&yearTime=3" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Circle Chart</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="gd.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="gd2018.html">2018</a>
+    </nav>
+  </div>
+
+
+</main>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+  function toggleList(show) {
+    const list = document.getElementById("celebrityList");
+    const expandBtn = document.getElementById("expandBtn");
+    if (show) {
+      list.style.display = "block";
+      expandBtn.style.display = "none";
+    } else {
+      list.style.display = "none";
+      expandBtn.style.display = "inline-block";
+      expandBtn.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
+    const slideWidth = 500;
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0;
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+  </script>
+</body>
+</html>
