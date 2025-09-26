@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2017专辑歌曲Mv</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="album.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>2017专辑歌曲Mv</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="album2018.html">2018</a>
+    </nav>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="170208-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="album2017.html#170208" class="jump-button">BIGBANG10 THE CONCERT 0.TO.10 IN SEOUL</a>
+    </div>
+    <div id="170215-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="album2017.html#170215" class="jump-button">MADE</a>
+    </div>
+    <div id="170329-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="album2017.html#170329" class="jump-button">BIGBANG10 THE CONCERT 0.TO.10 -THE FINAL-</a>
+    </div>
+    <div id="170525-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="album2017.html#170525" class="jump-button">BIGBANG10 THE CONCERT 0.TO.10 FINAL IN SEOUL</a>
+    </div>
+  </div><br/>
+  <br/>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div id="170208" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="album2017.html#170208-jump" class="jump-button">BIGBANG10 THE CONCERT 0.TO.10 IN SEOUL</a>
+    </div>
+  </div><br/>
+  <div id="170208album" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <p style="margin: 0;">2017年2月8日 推出第十九张现场音源单曲专辑<br/>BIGBANG10 THE CONCERT 0.TO.10 IN SEOUL</p>
+    <a href="2017feb.html#170208album-jump" class="jump-button">跳转到 2017 时间线</a>
+  </div><br/>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>HEAVEN</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>WE LIKE 2 PARTY</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>HANDS UP</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>BAD BOY</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LOSER</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>FEELING</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LET'S TALK ABOUT LOVE</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>STRONG BABY</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>WINGS</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LOOK AT ME, GWISUN</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>CROOKED</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>HEARTBREAKER</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>CRAYON</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>HIGH HIGH</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>GOOD BOY</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>PRETENDED</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>DOOM DADA</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>EYES, NOSE, LIPS</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>ONLY LOOK AT ME</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>RINGA LINGA</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>IF YOU</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>HARU HARU</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>BANG BANG BANG</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>FANTASTIC BABY</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>SOBER</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LAST FAREWELL</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>SUNSET GLOW</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LIES</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>ALWAYS</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>BAE BAE</p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div id="170215" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="album2017.html#170215-jump" class="jump-button">MADE</a>
+    </div>
+  </div><br/>
+  <div id="170215album" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <p style="margin: 0;">2017年2月15日 推出第六张日语正规专辑<br/>MADE</p>
+    <a href="2017feb.html#170215album-jump" class="jump-button">跳转到 2017 时间线</a>
+  </div><br/>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LOSER (JPN Ver.)</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>BANG BANG BANG (JPN Ver.)</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>IF YOU (JPN Ver.)</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/rFJGzysu7WM?si=K5qZ7hVpNHkC2ZQh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>FXXK IT</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HaOz1PhGXhs?si=cKUUFbSIp6Jn_XID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LAST DANCE</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/LNIQ57mxvGA?si=IeIf2m07uxd5DTtM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>GIRLFRIEND</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/_HYasVIbzc0?si=D6S_Q5Xr1Psw-Fju" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Let's Not Fall In Love</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/Apz7syqDV8o?si=UP9yCGMwBXJdnrTX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LOSER</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/IIZVe2cvhv4?si=QRu-n2a0AzDG-y2Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>BAE BAE</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/r_6ekIR_OQo?si=pHIihHfQDb67XSol" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>BANG BANG BANG</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/zT3VfvAjvtk?si=p4b7B0QpP8J09c5I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>SOBER</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/h9hdorPqukU?si=Yvqika5fv0pb_J_T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>IF YOU</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/XNQGlHFoXKw?si=rHlloBEzkKsM0Tb5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>ZUTTER</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/Zz29jMvpwp4?si=A39Y2UWj-RQidNxX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>WE LIKE 2 PARTY</p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div id="170329" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="album2017.html#170329-jump" class="jump-button">BIGBANG10 THE CONCERT 0.TO.10 -THE FINAL-</a>
+    </div>
+  </div><br/>
+  <div id="170329album" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <p style="margin: 0;">2017年3月29日 推出第二十张现场音源单曲专辑<br/>BIGBANG10 THE CONCERT 0.TO.10 -THE FINAL-</p>
+    <a href="2017mar.html#170329album-jump" class="jump-button">跳转到 2017 时间线</a>
+  </div><br/>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/8LVuUb_vXGE?si=FnsR-TkOAIUx383z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>MY HEAVEN</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/Oj5GgU4YlGE?si=yAUFZ2c3u-a5XoVC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>WE LIKE 2 PARTY</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ctBvw5qL6RA?si=sQtn0x0DpL4LFXfP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>HANDS UP</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/imTNnWfJp0E?si=dhwQ2UJ5E1l_k5bV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>BAD BOY</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/5eV90Co9W0I?si=cRlxjF56r_pCUqrg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LOSER</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/G877mQ8sJCU?si=FXnt_SjNWRQxcXQq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>ガラガラ GO!!</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/RLCliSsJn8Y?si=qdQm5WNhiKygUDgB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LET'S TALK ABOUT LOVE + STRONG BABY</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/GgiNUvxFx9Q?si=PXvh7dQxrtz4CKvX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>古い日記 + LOOK AT ME, GWISUN</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/m6exQ_kUPa0?si=ft4MVbd0Ul_m5zJ4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>じょいふる</p>
+        <ul>
+          <li>忙内line</li>
+        </ul>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/JJGSTDbyqZI?si=E5Yn9ma-mxomCqJV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>HEARTBREAKER + CRAYON</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/cCZJdIV6s6g?si=RzMssz4GdssZoDXY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>HIGH HIGH</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/e73I7zgitgE?si=Hh03zYWBxahoDZFL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>GOOD BOY</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/yQod0WSJ5mI?si=Z95sng_IdchlGEQK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>PRETENDED + DOOM DADA</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/yw9w9JOAAiE?si=z7zHNvoqSqjq9G3w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>EYES, NOSE, LIPS</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/cwAFW-Zfy6A?si=SqovoRKx0O2_h2PT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>ONLY LOOK AT ME + RINGA LINGA</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/veXiE6YHXMc?si=m3Wo4jiA2zbdhAWO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>IF YOU</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/VaDLOiFsEUU?si=feE_2e53jAbhSdQ3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>HARU HARU</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/j7TF5SrMHLg?si=n5gEJl6zVzPkgx_D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>BANG BANG BANG</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/gTHtlOKZ9QQ?si=FrX-FK46c_7LzKGk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>FANTASTIC BABY</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/Zjd_JGmfdaA?si=Ml1TdHrePtGcAK5U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>SOBER</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/0o3iCWiatCA?si=dPqQSzRxXreW8jkG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LAST FAREWELL + FEELING + LIES</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/qw1uKY2gD6s?si=1r1d0LX4Yb7QkrwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>声をきかせて</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/yD5NZacXUVM?si=UGzvqhUhPMeSC110" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>BAE BAE</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/QYBSWypaOi0?si=3ivknRL9knmTmhA0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LAST DANCE</p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div id="170525" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="album2017.html#170525-jump" class="jump-button">BIGBANG10 THE CONCERT 0.TO.10 FINAL IN SEOUL</a>
+    </div>
+  </div><br/>
+  <div id="170525album" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <p style="margin: 0;">2017年5月25日 推出第二十一张现场音源单曲专辑<br/>BIGBANG10 THE CONCERT 0.TO.10 FINAL IN SEOUL</p>
+    <a href="2017may.html#170525album-jump" class="jump-button">跳转到 2017 时间线</a>
+  </div><br/>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>HEAVEN</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>WE LIKE 2 PARTY</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>HANDS UP</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>BAD BOY</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LOSER</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>FXXK IT</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LET'S TALK ABOUT LOVE</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>STRONG BABY</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>WINGS</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LOOK AT ME, GWISUN</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>HEARTBREAKER</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>CRAYON</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>HIGH HIGH</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>GOOD BOY</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>PRETENDED</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>DOOM DADA</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>EYES, NOSE, LIPS</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>ONLY LOOK AT ME</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>RINGA LINGA</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>IF YOU</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LAST DANCE</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>BANG BANG BANG</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>FANTASTIC BABY</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>SOBER</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LAST FAREWELL</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>FEELING</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ADt5YTJ80MA?si=1r4PqQ7z79ULiwUa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>LIES</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/sIC8oVsyNUI?si=u5FDFSMJIrcNlkwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>ALWAYS</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>BAE BAE</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HsGCFu1xo5w?si=hnJROEK1t-WmaLd2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>GIRLFRIEND</p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="album.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="album2018.html">2018</a>
+    </nav>
+  </div>
+
+
+</main>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
+    const slideWidth = 500;
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0;
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+  </script>
+</body>
+</html>

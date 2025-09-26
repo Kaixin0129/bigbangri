@@ -1,13 +1,15 @@
-<!DOCTYPE html><html lang="zh"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2017年9月</title>
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <meta name="apple-mobile-web-app-title" content="bigbangri">
-  <link rel="manifest" href="/site.webmanifest">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>大声2018</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
   <style>
     * {
       margin: 0;
@@ -371,95 +373,138 @@
     object-fit: contain;
   }
 
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
   </style>
 </head>
-
 <body>
 <main>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="2017.html">Back</a>
+      <a href="daesung.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>2017年9月</h1>
+      <h1>大声2018年</h1>
     </div>
     <nav class="right-nav">
-      <a href="2017oct.html">10月</a>
+      <a href="daesung2019.html">2019</a>
     </nav>
   </div>
 
-  <div style="text-align: center;">
-    <a href="sns2017sept.html" class="jump-button">跳转到 SNS 时间线</a>
-  </div><br><br>
-  <hr class="full-width-line">  
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/t6ntZEJ4ADs?si=DAHI5zzJtnl4CnJa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
-      </div>
-      <div class="text-container" id="block1">
-        <p><strong>2017年9月4日</strong></p>
-        <p>太阳参与PEEJAY的专辑WALKIN',Vol.2<br>演唱Warigari</p>
-      </div>
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="daesung2018-jan-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="daesung2018.html#daesung2018-jan" class="jump-button">1月</a>
     </div>
-    <hr class="full-width-line">  
   </div>
+  <br/><br/>
+  <hr class="full-width-line" />
+
+    <div id="daesung2018-jan" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="daesung2018.html#daesung2018-jan-jump" class="jump-button">1月</a>
+    </div><br/>
 
   <div style="text-align: center;">
-    <div id="170906ds-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
-      <a href="daesung2017.html#170906ds" class="jump-button">跳转到 大声2017 时间线</a>
+    <div id="dshow1-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="dshow.html#dshow1" class="jump-button">演唱会视频</a>
     </div>
-    <div class="content-wrap">
-      <div class="text-container" id="block2">
-        <p><strong>2017年9月6日</strong></p>
-        <p>大声个人推出第三张现场音源单曲专辑<br>D-LITE JAPAN DOME TOUR 2017 ～D-Day～</p>
-      </div>
+  </div><br/>
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 400px; text-align: left;">
+      <p>DなSHOW Vol.1 THE FINAL in HAWAII</p>
+      <table style="text-align: left; border-collapse: collapse; table-layout: fixed;">
+        <colgroup>
+          <col style="width: 200px;" />
+          <col />
+        </colgroup>
+        <tr><td>2018年1月6-7日</td><td>美国夏威夷州</td></tr>
+      </table>
     </div>
-    <hr class="full-width-line">
   </div>
+  <hr class="full-width-line" />  
 
-  <div style="text-align: center;">
-    <div id="170909" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
-      <a href="2017sept.html#170909-jump" class="jump-button">更多图片</a>
-    </div>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/ozfEQ3-irlA?si=DjNrKxb1LIBnQHZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
-      </div>
-      <div class="text-container" id="block3">
-        <p><strong>2017年9月9日</strong></p>
-        <p>GD出席在香港的 Vidal Sassoon 活动</p>
-      </div>
-    </div>
-    <hr class="full-width-line">  
-  </div>
-
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="text-container" id="block4">
-        <p><strong>2017年9月11日</strong></p>
-        <p>Bigbang在 IFPI Hong Kong Top Sales Music Award 2016 赢得：</p>
-        <ul>
-          <li>Ten Best Sales Digital Releases: Loser</li>
-        </ul><br>
-        <p>详细资讯：<a href="https://www.ifpihk.org/en/hong-kong-digital-music-award-presented#2016" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
-            ifpi</a></p>
-      </div>
-    </div>
-    <hr class="full-width-line">  
-  </div>
-
-  <br><br><br>
+  <br/><br/><br/>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="2017.html">Back</a>
+      <a href="daesung.html">Back</a>
     </nav>
     <div class="title-group">
       <div id="footer"></div>
     </div>    
     <nav class="right-nav">
-      <a href="2017oct.html">10月</a>
+      <a href="daesung2019.html">2019</a>
     </nav>
   </div>
 
@@ -471,60 +516,6 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
-
-document.addEventListener('click', function(e) {
-    const link = e.target.closest('a[href*="#"]');
-    if (link) {
-        const href = link.getAttribute('href');
-        
-        if (href.includes('.html')) {
-            return;
-        }
-        
-        e.preventDefault();
-        const targetId = href.substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-            setTimeout(function() {
-                const elementRect = targetElement.getBoundingClientRect();
-                const absoluteElementTop = elementRect.top + window.pageYOffset;
-                
-                const offset = window.innerHeight * 0.1;
-                const targetPosition = absoluteElementTop - offset;
-                
-                window.scrollTo({
-                    top: Math.max(0, targetPosition),
-                    behavior: 'smooth'
-                });
-                
-                window.history.pushState(null, null, '#' + targetId);
-            }, 50);
-        }
-    }
-});
-
-window.addEventListener('load', function() {
-    if (window.location.hash) {
-        setTimeout(function() {
-            const targetId = window.location.hash.substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                const elementRect = targetElement.getBoundingClientRect();
-                const absoluteElementTop = elementRect.top + window.pageYOffset;
-                
-                const offset = window.innerHeight * 0.1;
-                const targetPosition = absoluteElementTop - offset;
-                
-                window.scrollTo({
-                    top: Math.max(0, targetPosition),
-                    behavior: 'smooth'
-                });
-            }
-        }, 300);
-    }
-});
 
   const sliderStates = {};
 
@@ -548,5 +539,5 @@ window.addEventListener('load', function() {
   }
 
   </script>
-
-</body></html>
+</body>
+</html>

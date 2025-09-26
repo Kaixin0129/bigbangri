@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>粉丝见面会2014</title>
+  <title>DなSHOW</title>
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
@@ -298,262 +298,139 @@
       padding-left: 20px;
     }
 
-  .slider {
-    display: flex;
-    flex-wrap: nowrap;
-    transition: transform 0.5s ease;
-  }
+    .jump-button-1 {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid #33FFFF;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
 
-  .slide-item {
-    flex-shrink: 0;
-    width: 500px;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .slide-img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
-    display: block;
-    margin: auto;
-  }
-
-  .slider-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px auto;
-    max-width: fit-content;
-  }
-
-  .slider-wrapper {
-    position: relative;
-    overflow: hidden;
-    width: 500px;
-    height: 400px;
-  }
-
-  .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.7);
-    border: none;
-    padding: 10px 15px;
-    font-size: 24px;
-    cursor: pointer;
-    border-radius: 10px;
-    z-index: 10;
-    transition: background-color 0.3s;
-  }
-
-  .nav-button.left {
-    right: 100%;
-    margin-right: 10px
-  }
-
-  .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
-  }
-
-  .slider {
-    display: flex;
-    flex-wrap: nowrap;
-    transition: transform 0.5s ease;
-  }
-
-  .slide-item {
-    flex-shrink: 0;
-    width: 500px;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .slide-img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
-    display: block;
-    margin: auto;
-  }
-
-  .slider-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px auto;
-    max-width: fit-content;
-  }
-
-  .slider-wrapper {
-    position: relative;
-    overflow: hidden;
-    width: 500px;
-    height: 400px;
-  }
-
-  .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.7);
-    border: none;
-    padding: 10px 15px;
-    font-size: 24px;
-    cursor: pointer;
-    border-radius: 10px;
-    z-index: 10;
-    transition: background-color 0.3s;
-  }
-
-  .nav-button.left {
-    right: 100%;
-    margin-right: 10px
-  }
-
-  .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
-  }
+    .jump-button-1:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
 
   </style>
 </head>
 <body>
-<main>
 
+<main>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="fanmeeting.html">Back</a>
+      <a href="concert.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>Fan Meeting 2014年</h1>
+      <h1>DなSHOW</h1>
     </div>
     <nav class="right-nav">
-      <a href="fanmeeting2016.html">2016</a>
+      <a href="index.html">Home</a>
     </nav>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-    <div id="fb-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="fanmeeting2014.html#fanmeeting2012-bb" class="jump-button">Fantastic Babys</a>
+    <div id="japan" style="display: flex; align-items: center; gap: 10px;">
+      <a href="dshow.html#japan-jump" class="jump-button">日本</a>
     </div>
-    <div id="gdybsr-jump" style="display: flex; align-items: center; gap: 10px;">
-      <a href="fanmeeting2014.html#gdybsr" class="jump-button">G太胜</a>
+    <div id="hawaii" style="display: flex; align-items: center; gap: 10px;">
+      <a href="dshow.html#hawaii-jump" class="jump-button">美国</a>
     </div>
   </div>
-  <br/><br/>
+  <br/>
   <hr class="full-width-line" />
 
-  <div id="fb" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="fanmeeting2014.html#fb-jump" class="jump-button">Fantastic Babys</a>
+  <div id="japan-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="dshow.html#japan" class="jump-button">日本</a>
   </div><br/>
-
-  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
-    <div class="text-container" style="max-width: 400px; text-align: left;">
-      <p>Bigbang Fanclub Event 2014 Fantastic Babys</p>
-      <table style="text-align: left; border-collapse: collapse; table-layout: fixed;">
-        <colgroup>
-          <col style="width: 200px;" />
-          <col />
-        </colgroup>
-        <tr><td>2014年2月11日</td><td>福冈（两场）</td></tr>
-        <tr><td>2014年2月18日</td><td>横滨（两场）</td></tr>
-        <tr><td>2014年2月19日</td><td>横滨（两场）</td></tr>
-        <tr><td>2014年2月22日</td><td>神户（两场）</td></tr>
-        <tr><td>2014年2月23日</td><td>神户（两场）</td></tr>
-        <tr><td>2014年2月25日</td><td>名古屋（两场）</td></tr>
-        <tr><td>2014年2月26日</td><td>名古屋（两场）</td></tr>
-      </table>
-    </div>
-  </div>
-  <hr class="full-width-line" />
 
   <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@工藤伊萱 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=15591095&bvid=BV1qx411M7ws&cid=25368879&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2014年2月19日</strong></p>
-        <p>日本横滨</p>
-      </div>
+    <div id="dshow" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="daesung2017.html#dshow-jump" class="jump-button">跳转到 大声2017 时间线</a>
     </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div id="gdybsr" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-    <a href="fanmeeting2014.html#gdybsr-jump" class="jump-button">G太胜</a>
   </div><br/>
-
   <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
     <div class="text-container" style="max-width: 400px; text-align: left;">
-      <p>G太胜 2014 Fan Meeting</p>
+      <p>DなSHOW Vol.1</p>
       <table style="text-align: left; border-collapse: collapse; table-layout: fixed;">
         <colgroup>
           <col style="width: 200px;" />
           <col />
         </colgroup>
-	    <tr><td>2014年2月15日</td><td>香港湾仔</td></tr>
-	    <tr><td>2014年3月8日</td><td>台湾桃园</td></tr>
-	    <tr><td>2014年3月15日</td><td>加冷</td></tr>
-	    <tr><td>2014年3月16日</td><td>马来西亚</td></tr>
-	    <tr><td>2014年5月31日</td><td>中国广州</td></tr>
-	    <tr><td>2014年6月7日</td><td>韩国釜山</td></tr>
-	    <tr><td>2014年6月14日</td><td>中国成都</td></tr>
-	    <tr><td>2014年7月29日</td><td>香港</td></tr>
-	    <tr><td>2014年10月18日</td><td>韩国首尔</td></tr>
-	    <tr><td>2014年12月13日</td><td>中国武汉</td></tr>
+        <tr><td>2017年8月11-12日</td><td>千叶县</td></tr>
+        <tr><td>2017年8月16日</td><td>福冈县</td></tr>
+        <tr><td>2017年8月17日</td><td>福冈县（两场）</td></tr>
+        <tr><td>2017年8月25日</td><td>大阪府（两场）</td></tr>
+        <tr><td>2017年8月30日</td><td>宫城县</td></tr>
+        <tr><td>2017年9月6日</td><td>爱知县</td></tr>
+        <tr><td>2017年9月7日</td><td>爱知县（两场）</td></tr>
+        <tr><td>2017年9月9日</td><td>埼玉县（两场）</td></tr>
+        <tr><td>2017年9月17-18日</td><td>北海道</td></tr>
+        <tr><td>2017年9月22日</td><td>广岛县</td></tr>
+        <tr><td>2017年9月23日</td><td>大分县</td></tr>
+        <tr><td>2017年9月25日</td><td>鹿儿岛县</td></tr>
+        <tr><td>2017年9月27日</td><td>长崎县</td></tr>
+        <tr><td>2017年9月30日</td><td>滋贺县（两场）</td></tr>
+        <tr><td>2017年10月1日</td><td>冈山县</td></tr>
+        <tr><td>2017年10月3日</td><td>兵库县</td></tr>
+        <tr><td>2017年10月6日</td><td>大阪府（两场）</td></tr>
+        <tr><td>2017年10月8日</td><td>大阪府（两场）</td></tr>
+        <tr><td>2017年10月9日</td><td>大阪府</td></tr>
+        <tr><td>2017年10月13日</td><td>千叶县</td></tr>
+        <tr><td>2017年10月14日</td><td>千叶县（两场）</td></tr>
+        <tr><td>2017年10月17日</td><td>新潟县</td></tr>
+        <tr><td>2017年10月19日</td><td>石川县</td></tr>
+        <tr><td>2017年10月22日</td><td>大阪府</td></tr>
+        <tr><td>2017年10月25日</td><td>东京都（两场）</td></tr>
+        <tr><td>2017年10月27日</td><td>神奈川县</td></tr>
+        <tr><td>2017年10月31日</td><td>神户市（两场）</td></tr>
+      </table><br/>
+      <p>成为在日本最大规模的巡回演唱会</p>
+    </div>
+  </div>
+  <hr class="full-width-line" />  
+
+  <div id="hawaii-jump" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="dshow.html#hawaii" class="jump-button">美国</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="dshow1" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="daesung2018.html#dshow1-jump" class="jump-button">跳转到 大声2017 时间线</a>
+    </div>
+  </div><br/>
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 400px; text-align: left;">
+      <p>DなSHOW Vol.1 THE FINAL in HAWAII</p>
+      <table style="text-align: left; border-collapse: collapse; table-layout: fixed;">
+        <colgroup>
+          <col style="width: 200px;" />
+          <col />
+        </colgroup>
+        <tr><td>2018年1月6-7日</td><td>美国夏威夷州</td></tr>
       </table>
     </div>
   </div>
-  <hr class="full-width-line" />
+  <hr class="full-width-line" />  
 
   <br/><br/><br/>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="fanmeeting.html">Back</a>
+      <a href="concert.html">Back</a>
     </nav>
     <div class="title-group">
       <div id="footer"></div>
     </div>    
     <nav class="right-nav">
-      <a href="fanmeeting2016.html">2016</a>
+      <a href="index.html">Home</a>
     </nav>
   </div>
-
 
 
 </main>

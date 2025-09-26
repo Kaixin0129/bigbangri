@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>大声2017</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+      }
+
+      .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+      }
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  .toggle-btn {
+    border: 2px solid #33FFFF;
+    color: #FFFFFF;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+  }
+  .toggle-btn:hover {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="daesung.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>大声2017年</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="daesung2018.html">2018</a>
+    </nav>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="daesung2017-mar-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="daesung2017.html#daesung2017-mar" class="jump-button">3月</a>
+    </div>
+    <div id="daesung2017-apr-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="daesung2017.html#daesung2017-apr" class="jump-button">4月</a>
+    </div>
+    <div id="daesung2017-july-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="daesung2017.html#daesung2017-july" class="jump-button">7月</a>
+    </div>
+    <div id="daesung2017-sept-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="daesung2017.html#daesung2017-sept" class="jump-button">9月</a>
+    </div>
+    <div id="daesung2017-oct-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="daesung2017.html#daesung2017-oct" class="jump-button">10月</a>
+    </div>
+    <div id="daesung2017-dec-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="daesung2017.html#daesung2017-dec" class="jump-button">12月</a>
+    </div>
+  </div>
+  <br/><br/>
+  <hr class="full-width-line" />
+
+    <div id="daesung2017-mar" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="daesung2017.html#daesung2017-mar-jump" class="jump-button">3月</a>
+    </div><br/>
+
+<div style="text-align: center;">
+    <div id="170313-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017mar.html#170313" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+  <div class="content-wrap">
+    <div class="text-container">
+      <p><strong>2017年3月13日</strong></p>
+      <p>大声接受日本《Barks》由东条芳江主持的长篇采访</p>
+        <p>详细资讯：<a href="https://barks.jp/news/785613/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            BARKS</a></p>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #33FFFF;">问：</span>首先，BIGBANG十周年纪念企划结束了，您有什么感想吗？<br/>
+<span style="color: #33FFFF;">大声：</span>是的。现在回想起来，那段时间真的很有趣，最难忘的是感激之情。我觉得过去十年来我们一直深受粉丝们的喜爱，也非常感谢一直以来支持我们的所有工作人员。最近我一直对大家心怀感激
+        <br/><br/><button id="expandBtn" class="toggle-btn" onclick="toggleList(true)" style="margin-left:10px;">展开</button></li>
+        <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #33FFFF;">问：</span>那么问题来了，如果没有被选为BIGBANG成员的话，你觉得现在你会在做什么呢？<br/>
+<span style="color: #33FFFF;">大声：</span>现在？在家玩游戏。我猜我妈会一边玩游戏一边打我（笑）。啊，我可能当时想成为一名SP。因为我和我爸都喜欢运动，所以我在这方面很努力</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>大声被选为BIGBANG成员后，生活发生了巨大的变化吗？<br/>
+<span style="color: #33FFFF;">大声：</span>当然变了。我本来的目标是当歌手，也非常努力，但没想到自己会成为一个十年不落歌迷的歌手，还能在海外巡演开演唱会</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>什么时候感受到BIGBANG有多么厉害的呢？<br/>
+<span style="color: #33FFFF;">大声：</span>当我们进行世界巡演时，有时会觉得即使在南美这样遥远的地方，人们也在听我们的音乐。我们在美国开演唱会时，很多美国人会来看我们，但另一方面，我们一直以来都在听美国音乐，并立志成为歌手。即使是现在，我们仍然会从聆听美国流行音乐中获得灵感，所以想想也挺奇怪的</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>大声，是美国音乐启发了您成为一名歌手吗？<br/>
+<span style="color: #33FFFF;">大声：</span>不，是家人让我开始唱歌的。我家里人都喜欢音乐，所以我们经常一起去卡拉OK。后来我上中学的时候，学校举办了一个校庆，班主任偷偷推荐了我（笑）。我知道我必须去表演，所以就去了。当时在舞台上唱歌的经历给我留下了深刻的印象，至今仍未忘记。从那时起，我开始认真考虑成为一名歌手，研究如何成为一名歌手，并为此努力</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>你一定很感谢你的班主任吧。从在学园祭舞台上表演，到和BIGBANG一起走向世界，大声也实现了跨越，成为了能够举办个人巨蛋巡演的歌手。<br/>
+<span style="color: #33FFFF;">大声：</span>我本来根本没想过要单飞（笑）。性格上来说，我不太喜欢主动出击。即使在BIGBANG的时候，我也只是在幕后默默地照顾其他成员，所以从来没有想过要单飞。所以这也不是我自己想做的事情，是我日本经纪公司的社长先问我是否想出一张个人专辑。他说：“翻唱J-POP歌曲怎么样？”就这样，我的个人事业就此开启</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>翻唱专辑《D'scover》的solo表演实际上感觉如何？<br/>
+<span style="color: #33FFFF;">大声：</span>非常有趣。和BIGBANG的音乐有点不一样</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>然后出道后就马上开始了第一次个人巡演。独自进行现场演出会不会很困难呢？<br/>
+<span style="color: #33FFFF;">大声：</span>当然很艰难。压力很大。我记得我们第一次巡演（D-LITE D'scover Tour 2013 in Japan ~D Live~）的第一天是在神户，当时我认真地想过要偷偷溜走（笑）。我当时没什么信心，也没什么勇气</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>如果BIGBANG进行巨蛋巡演或者世界巡演会怎样呢？<br/>
+<span style="color: #33FFFF;">大声：</span>是的。当时我并没有意识到自己是BIGBANG的一员，反而担心自己能否独自巡演。我没有勇气。我没有独自巡演的经验，所以压力很大。但当我在神户第一次尝试的时候，一切都很顺利。我非常开心。我想，正是因为那些回忆，我现在才能继续以SOLO艺人的身份继续工作。当然，这份工作不是每天玩得开心就能完成的。有时候，你必须努力工作，不断尝试，才能在享受乐趣的同时做到最好。我克服那些艰难困苦的力量源泉，很大程度上就来自于我对那些现场​​演出的记忆</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>现场演出的回忆是大声前进的动力。<br/>
+<span style="color: #33FFFF;">大声：</span>没错</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>那么，为了享受即将到来的巨蛋巡演，您现在做了哪些努力呢？<br/>
+<span style="color: #33FFFF;">大声：</span>（采访时）我们还在录音。现在我专注于完成这张专辑，全力以赴。我不再像以前那样想“逃避”。我想做好一张专辑，然后尽快开始具体考虑巡演的事情</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>那么，我们来谈谈你目前正在制作的迷你专辑吧。专辑名延续了“D”系列。这张新专辑的标题“D-Day”是什么意思呢？<br/>
+<span style="color: #33FFFF;">大声：</span>“D-Day”这个词在韩国是“重要的日子”的意思。在日本似乎不太常用，但它最初源于美国。它可以表示倒计时到某个重要的日子，也可以指当天本身，还可以理解为“大声的日子”，所以我想用“D-Day”这个词</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>继J-POP翻唱的《D'scover》、以情歌为主题的《D'slove》、为派对增添气氛的《D'light》之后，这张专辑的主题是什么？<br/>
+<span style="color: #33FFFF;">大声：</span>如果说《D'slove》是一张讲述成熟爱情的专辑，那么这张专辑感觉就像我20岁左右？我带着同样的年轻感觉录制的（笑）。音乐是一样的。它不像《D'slove》那么沉重，总的来说，这次有很多令人耳目一新的歌曲。我制作这张专辑是因为我想制作一张每个人都能喜欢的专辑</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>原来如此。这张专辑收录了绫香、秦基博、水野芳树（Ikimonogakari）作曲的歌曲，不过大声是想把歌曲贡献给这三个人的吗？<br/>
+<span style="color: #33FFFF;">大声：</span>对。顺便说一下，这张专辑的制作人龟田（诚二）和其他三位成员都参与过《D'scover》的制作，我在那张专辑里翻唱了他们的歌。从那时起，我就一直想，如果有机会，请他们为我写一首原创歌曲。所以我在这个时候提出了这个建议……</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>大家都写歌了。<br/>
+<span style="color: #33FFFF;">大声：</span>没错，我很感激</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>之前和你一起出演过音乐节目的畑，与其说是抒情曲，不如说是充满活力、轻快的曲调《D-Day》。<br/>
+<span style="color: #33FFFF;">大声：</span>是的。听畑的专辑的时候，抒情曲当然很棒，但我特别喜欢那些节奏感很强的歌曲，觉得“太棒了”。所以，关于这次的形象，就像我之前说的，我想做一首大家能喜欢的清爽歌曲，所以当我告诉畑的时候，他说“是的，我明白”。他很好地理解了我的形象，并创作了歌曲，所以工作进展得很顺利</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>畑本人在歌名和歌曲中加入了“D-Day”这个词吗？<br/>
+<span style="color: #33FFFF;">大声：</span>那是我们提的建议。歌曲完成后，畑先生问我：“你想要什么样的歌词？”我觉得如果专辑名和专辑里的歌曲能联系起来就好了，就给他发了封邮件，畑先生就写了下来</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>水野作曲的《VENUS》与生物恵的《Joyful》一样，是一首让人忍不住想要舞动身体的Funky曲调，至今在生物恵的个人演唱会和BIGBANG演唱会上都大受欢迎。<br/>
+<span style="color: #33FFFF;">大声：</span>没错。我非常喜欢这个</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>这首歌唱起来不是很困难吗？<br/>
+<span style="color: #33FFFF;">大声：</span>没错，节奏太快，快到喘不过气来（笑）。我练习唱了好多次。自从收到demo之后，我就一直很喜欢这首歌。听过一遍之后，我脑子里立刻浮现出“这样就很好听了”的画面，所以这首歌很早就确定了。我一直很喜欢Ikimonogakari的歌，听过很多遍，这首歌里有我喜欢的所有元素。如果要我唱这首歌，我有很多想法可以让它变得更有趣。比如怎么唱，怎么保持节奏</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>好像有很多不同的玩法，比如“1、2、3、4”或“摇一摇，摇一摇”。<br/>
+<span style="color: #33FFFF;">大声：</span>没错！这首歌应该会跟我原来的歌《Joyful》很像吧（笑）</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>你喜欢这种有节奏的律动吗？<br/>
+<span style="color: #33FFFF;">大声：</span>我喜欢时髦的歌曲</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>另一方面，《Anymore》是大声用情感演唱的一首悲伤的抒情歌曲。<br/>
+<span style="color: #33FFFF;">大声：</span>这首歌是韩国歌手赵成华（Sung Hwak Cho）创作的，他参与了《D'slove》的几首歌的创作。为了平衡这张专辑，我想加入一首抒情歌曲。这首歌的摇滚风格强劲有力，我很喜欢，但我也想创作一些略带悲伤的歌曲。这首歌也是我非常喜欢的</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>很适合大声。你很擅长唱这种抒情歌曲。<br/>
+<span style="color: #33FFFF;">大声：</span>就这首？如果我唱这首歌，我会死的（笑）。这歌调很高</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>我觉得Funky歌曲和抒情歌曲的演唱方式是不同的。<br/>
+<span style="color: #33FFFF;">大声：</span>没错。抒情歌曲比Funky歌曲需要更细致的表达，也需要更精准地调整嗓音，所以为了唱好，压力很大。不过我很高兴录音很顺利。这张专辑里的所有歌曲里，这首是我最担心的。我当时会想，“我能唱好吗？”不过，我很高兴录音很顺利</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>在演唱技巧上，您故意不运用假声，对吗？<br/>
+<span style="color: #33FFFF;">大声：</span>我不擅长假声（笑）。我觉得假声不太适合这首歌。我更想用自然的声音，用力地呐喊。我觉得这样更符合这首歌的情感，所以我就这么做了</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>大声，你觉得自己擅长唱什么样的歌曲呢？<br/>
+<span style="color: #33FFFF;">大声：</span>大家都说想让我唱轻柔的抒情歌（笑）。我喜欢像《Anymore》这样充满力量、悲伤、忧郁的抒情歌，也喜欢Funky的歌……我都喜欢，但我更喜欢唱Funky的。唱完之后，我能感受到歌迷的感受，唱抒情歌的时候，我的心也会跟着颤动。当我全心全意地唱抒情歌的时候，歌迷们会认真聆听，不是吗？那种氛围和唱Funky歌时的能量是不同的。我们的喜好方向不同</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>绫香送给你什么样的歌曲呢？<br/>
+<span style="color: #33FFFF;">大声：</span>这是一首中速歌曲，融合了 Ayaka 的风格和我自己的一些风格</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>我再问你一下，你唱J-POP和K-POP的时候觉得最大的区别是什么？<br/>
+<span style="color: #33FFFF;">大声：</span>嗯（苦笑）。啊，但它们确实有微妙的不同。听的时候，它们相似又略有不同。不同却又相似。这就是我的感受。我觉得K-POP和J-POP里都有一些难以言喻却又能打动人心的点。我觉得《D-Day》就是要找到那个看不见的点，并把它融入其中。所以我绝对希望你们听一听</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>专辑发行后，巨蛋巡演终于要开始了。BIGBANG演唱会和单独演唱会的制作有什么不同呢？<br/>
+<span style="color: #33FFFF;">大声：</span>如果说BIGBANG的现场表演很吸引人，那么我认为我的个人表演是我和粉丝们共同创造的</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>大声演唱会的一大特点就是和粉丝的距离很近。<br/>
+<span style="color: #33FFFF;">大声：</span>我喜欢给出反馈（笑）</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>啊。所以你最后还是和观众说话了？<br/>
+<span style="color: #33FFFF;">大声：</span>是的。我也觉得说话很有趣。因为我是在和观众说话，我不知道该讲什么。所以才很有趣。我觉得现场表演的乐趣之一就是根据当时的情况创造一种节奏。这真的很有趣</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>所以，大声现场演出的一个特点就是，一旦进入即兴演奏的开关，演唱会就会越来越长。<br/>
+<span style="color: #33FFFF;">大声：</span>哈哈哈（笑）。这确实有点问题。不过如果没那么好玩，我也不会做。希望大家喜欢，我自己也喜欢，所以篇幅会稍微长一点……这次是的……我会注意不要写得太长（笑）</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>虽然和BIGBANG一起演出已经很常见了，但这是你作为SOLO歌手的第一次巨蛋巡演。你觉得会是怎样的现场演出呢？<br/>
+<span style="color: #33FFFF;">大声：</span>场地越大，一对一的沟通就越困难，这是显而易见的。所以对于巨蛋演唱会，我们会从更广阔的视角来思考，思考大家会如何享受它。虽然这是我们的第一次巨蛋演出，但我并不特别紧张。我们正在努力确保这场演唱会不会让到场的歌迷后悔</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>这次鼓要怎么办呢？<br/>
+<span style="color: #33FFFF;">大声：</span>啊。我也很担心这个。我还没决定要不要去</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>大声 在《Intro (To You)》中演奏了行进鼓，这让专辑的开头显得很有戏剧性，对吗？<br/>
+<span style="color: #33FFFF;">大声：</span>不，一点也不（坚定地）</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>我以为演唱会的开场是敲着鼓从下面升起的。真可惜（笑）。BIGBANG的其他成员有没有提到巨蛋巡演的事呢？<br/>
+<span style="color: #33FFFF;">大声：</span>TOP对我说：“祝贺你的个人巨蛋巡演圆满成功。我为你感到高兴，我会为你加油的”</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>入伍前和TOP见过面吗？<br/>
+<span style="color: #33FFFF;">大声：</span>香港演唱会结束后我们见过面。他入伍前一天我给他打了电话。“保重，加油。” 他回复说：“Solo，我也会支持你的。” 你知道吗，当时的气氛一点也不悲伤。韩国男人从出生起就注定要入伍。当时的气氛很明亮</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>是什么让大声开始照顾BIGBANG中的T.O.P呢？<br/>
+<span style="color: #33FFFF;">大声：</span>可能是因为我心胸宽广吧（众笑）。我觉得能接受TOP那个玩笑的人不多（笑）</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>自从大声被录取之后，他最终成为了TOP的照顾者吗？<br/>
+<span style="color: #33FFFF;">大声：</span>哈哈哈（笑）。我觉得应该没错。TOP是老大，但他也很敏感。我开玩笑说他“像个婴儿”，但他真的很纯真，对待自己的情绪也像婴儿一样坦诚。其他成员一直说我是个“冷漠的人”（笑）。所以我从TOP那里受到了很好的影响，我也想成为他的好朋友，也想和他保持良好的关系。不知不觉中，我们就发展成了现在这样的关系（笑）</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>大声在BIGBANG整体中扮演着什么样的角色呢？<br/>
+<span style="color: #33FFFF;">大声：</span>我觉得我的职责就是在长辈和小辈之间保持平衡。这样TAEYANG、G-DRAGON、TOP和VI就不会打架了</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>（笑）看来要这么用心，工作量可不小啊。所以，说实话，单独工作真的更容易吗？<br/>
+<span style="color: #33FFFF;">大声：</span>很放松（笑）。因为一个人，所以体力上有点吃力。不过和BIGBANG不一样，我可以创造自己的世界观，所以很有趣。Solo有它自己的乐趣，BIGBANG有它自己的乐趣，有些事只有BIGBANG才能做到，所以两者都很有趣</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>那么，您希望这次巡演对粉丝们来说成为怎样的“D-Day”呢？<br/>
+<span style="color: #33FFFF;">大声：</span>首先我想到的是，我想创造美好的回忆。我的现场演出最重要的关键词就是把这样的回忆作为礼物送给大家。所以，我希望听到大家说：“这是他们看过的最棒的一场现场演出。” 我也想创造最美好的回忆。这样，这一天就会成为他们永远难忘的一天。我计划让这一天成为他们永远难忘的一天</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>最后，请给我们的读者留言。<br/>
+<span style="color: #33FFFF;">大声：</span>是的。大家好吗？请多保重。春天快到了，相信大家在2017年一定都在努力，充实地过好每一天。我制作这张专辑是为了给你们的日常生活带来更多正能量。如果你们能从我的音乐中获得哪怕一丝力量，我就很满足了。如果你们爱上我，希望我们能在演唱会上一起创造许多美好的回忆。大家加油，我也会加油</li>
+          <br/><li><span style="color: #33FFFF;">问：</span>你的日语回答很完美。话说，最近学的最难的日语单词是什么？<br/>
+<span style="color: #33FFFF;">大声：</span>很难，所以我记住了，然后马上就忘了（大家笑）
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(false)" style="margin-left:10px;">收回</button></li>          
+        </ol>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <p>大声好可爱呀 ´͈ ᵕ `͈.</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
+          <div class="slide-item">
+            <img src="170313.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1703131.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1703132.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1703133.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1703134.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1703135.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1703136.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1703137.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1703138.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1703139.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+    <div id="daesung2017-apr" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="daesung2017.html#daesung2017-apr-jump" class="jump-button">4月</a>
+    </div><br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="170412ds" style="display: flex; align-items: center; gap: 10px;">
+      <a href="2017apr.html#170412ds-jump" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div id="170412solo" style="display: flex; align-items: center; gap: 10px;">
+      <a href="albumdaesung.html#170412solo-jump" class="jump-button">专辑歌曲Mv</a>
+    </div>
+  </div>
+  <div class="content-wrap">
+    <div class="photo-container">
+      <img src="dday.jpg" height="350" />     
+    </div>
+    <div class="text-button-container">
+      <div class="text-container">
+        <p><strong>D-Day</strong></p>
+        <p>2017年4月12日 推出第四张日语正规专辑</p>
+        <ol style="list-style-position: inside; color: white;">
+          <li>Intro (君へ)</li>
+          <li>D-Day</li>
+          <li>VENUS</li>
+          <li>The sign</li>
+          <li>ハルカゼメロディ</li>
+          <li>近未来</li>
+          <li>Anymore</li>
+        </ol><br/>
+        <p>收录了日本顶级艺术家创作和填词的七首歌曲，包括绫香、秦基博、龟田诚二</p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div id="dlite-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="dlite.html#dlite" class="jump-button">演唱会视频</a>
+    </div>
+  </div><br/>
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 400px; text-align: left;">
+      <p>D-lite Japan Dome Tour 2017</p>
+      <table style="text-align: left; border-collapse: collapse; table-layout: fixed;">
+        <colgroup>
+          <col style="width: 200px;" />
+          <col />
+        </colgroup>
+	    <tr><td>2017年4月15-16日</td><td>西武</td></tr>
+	    <tr><td>2017年4月22-23日</td><td>大阪</td></tr>
+      </table>
+    </div>
+  </div>
+  <hr class="full-width-line" />  
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年4月24日</strong></p>
+        <p>专辑《D-Day》在 Oricon专辑榜 和 Billboard日本专辑榜上排名第一</p>
+        <p>详细资讯：<a href="https://web.archive.org/web/20200621231441/http://www.billboard-japan.com/charts/detail?a=hot_albums&year=2017&month=04&day=24" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Billboard</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+    <div id="daesung2017-july" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="daesung2017.html#daesung2017-july-jump" class="jump-button">7月</a>
+    </div><br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="170707ds" style="display: flex; align-items: center; gap: 10px;">
+      <a href="2017july.html#170707ds-jump" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div id="170707solo" style="display: flex; align-items: center; gap: 10px;">
+      <a href="albumdaesung.html#170707solo-jump" class="jump-button">专辑歌曲Mv</a>
+    </div>
+  </div>
+  <div class="content-wrap">
+    <div class="photo-container">
+      <img src="xiao.jpeg" height="350" />     
+    </div>
+    <div class="text-button-container">
+      <div class="text-container">
+        <p><strong>笑顔の行方</strong></p>
+        <p>2017年7月7日 推出第五张日语单曲专辑</p>
+        <ol style="list-style-position: inside; color: white;">
+          <li>笑顔の行方</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+
+    <div id="daesung2017-sept" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="daesung2017.html#daesung2017-sept-jump" class="jump-button">9月</a>
+    </div><br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="170906ds" style="display: flex; align-items: center; gap: 10px;">
+      <a href="2017sept.html#170906ds-jump" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div id="170906solo" style="display: flex; align-items: center; gap: 10px;">
+      <a href="albumdaesung.html#170906solo-jump" class="jump-button">专辑歌曲Mv</a>
+    </div>
+  </div>
+  <div class="content-wrap">
+    <div class="photo-container">
+      <img src="dlite.jpeg" height="350" />     
+    </div>
+    <div class="text-button-container">
+      <div class="text-container">
+        <p><strong>D-LITE JAPAN DOME TOUR 2017 ～D-Day～</strong></p>
+        <p>2017年9月6日 推出第三张现场音源单曲专辑</p>
+        <ol style="list-style-position: inside; color: white;">
+          <li>Intro (君へ)</li>
+          <li>VENUS</li>
+          <li>D-Day</li>
+          <li>全力少年</li>
+          <li>陽のあたる坂道</li>
+          <li>Anymore</li>
+          <li>The sign</li>
+          <li>SHUT UP</li>
+          <li>醒めて､眠れ</li>
+          <li>近未来</li>
+          <li>ハルカゼメロディ</li>
+          <li>Rainy Rainy</li>
+          <li>DRESS</li>
+          <li>WINGS</li>
+          <li>じょいふる</li>
+          <li>Hello</li>
+          <li>どうにもとまらない</li>
+          <li>古い日記</li>
+          <li>ナルバキスン (Look at me, Gwisun)</li>
+          <li>じょいふる (DOUBLE ENCORE)</li>
+          <li>VENUS (DOUBLE ENCORE)</li>
+          <li>D-Day (DOUBLE ENCORE)</li>
+          <li>歌うたいのバラッド (DOUBLE ENCORE)</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+
+    <div id="daesung2017-oct" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="daesung2017.html#daesung2017-oct-jump" class="jump-button">10月</a>
+    </div><br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="171012ds" style="display: flex; align-items: center; gap: 10px;">
+      <a href="2017oct.html#171012ds-jump" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div id="171012solo" style="display: flex; align-items: center; gap: 10px;">
+      <a href="albumdaesung.html#171012solo-jump" class="jump-button">专辑歌曲Mv</a>
+    </div>
+  </div>
+  <div class="content-wrap">
+    <div class="photo-container">
+      <img src="ep.jpg" height="350" />     
+    </div>
+    <div class="text-button-container">
+      <div class="text-container">
+        <p><strong>でぃらいと 2 - EP</strong></p>
+        <p>2017年10月12日 推出第二张日语迷你专辑</p>
+        <ol style="list-style-position: inside; color: white;">
+          <li>あ・ぜ・ちょ！</li>
+          <li>違う、そうじゃない</li>
+          <li>また逢う日まで</li>
+          <li>笑顔の行方</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年10月14日</strong></p>
+        <p>专辑《Delight 2》在iTunes综合专辑排行榜、Recochoku每日专辑排行榜、mu-mo每日专辑下载排行榜上均位居第一</p>
+        <p>太太权威了（横扫日本的音源榜单）</p>
+        <p>详细资讯：<a href="https://web.archive.org/web/20171025073608/http://sports.chosun.com/news/ntype.htm?id=201710140100085030006993&servicedate=20171014" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            CHOSUN</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+    <div id="daesung2017-dec" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="daesung2017.html#daesung2017-dec-jump" class="jump-button">12月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年12月20日</strong></p>
+        <p>专辑《Delight 2》由于太火爆</p>
+        <p>原本计划仅发售限定版音源改为正式专辑在线下销售</p>
+        <p>详细资讯：<a href="https://yg-life.com/archives/94311?lang=zh" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            YG Life</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="171220ds" style="display: flex; align-items: center; gap: 10px;">
+      <a href="2017dec.html#171220ds-jump" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div id="171220solo" style="display: flex; align-items: center; gap: 10px;">
+      <a href="albumdaesung.html#171220solo-jump" class="jump-button">专辑歌曲Mv</a>
+    </div>
+  </div>
+  <div class="content-wrap">
+    <div class="photo-container">
+      <img src="delight.jpg" height="350" />     
+    </div>
+    <div class="text-button-container">
+      <div class="text-container">
+        <p><strong>でぃらいと 2 (Delight 2)</strong></p>
+        <p>2017年12月20日 推出第五张日语正规专辑</p>
+        <ol style="list-style-position: inside; color: white;">
+          <li>そばにいてよ</li>
+          <li>Dear Friends</li>
+          <li>あ・ぜ・ちょ！</li>
+          <li>違う、そうじゃない</li>
+          <li>笑顔の行方</li>
+          <li>また逢う日まで</li>
+          <li>IT HURTS -KR Ver.- (SPECIAL TRACK)</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="daesung.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="daesung2017.html">2017</a>
+    </nav>
+  </div>
+
+
+</main>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+  function toggleList(show) {
+    const list = document.getElementById("celebrityList");
+    const expandBtn = document.getElementById("expandBtn");
+    if (show) {
+      list.style.display = "block";
+      expandBtn.style.display = "none";
+    } else {
+      list.style.display = "none";
+      expandBtn.style.display = "inline-block";
+      expandBtn.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
+    const slideWidth = 500;
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0;
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+  </script>
+</body>
+</html>
