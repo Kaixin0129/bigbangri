@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>胜利门</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.5);
+        transform-origin: top left;
+        width: 200%;
+        height: calc(100vh / 0.5);
+      }
+
+      .full-width-line {
+        transform: scaleX(2);
+        transform-origin: left;
+      }
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 510px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .filter-dropdown-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+    margin-top: -50px;
+  }
+
+  .filter-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .filter-button {
+    padding: 15px 25px;
+    background-color: #111;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px 18px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .member-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    margin-top: 5px;
+  }
+
+  .member-list button {
+    margin: 6px 0;
+  }
+
+  #noContentMessage {
+    padding: 15px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 30px auto 0;
+  }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="seungricase.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>Burning Sun丑闻</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+  <div class="filter-dropdown-wrapper">
+    <div class="filter-dropdown" id="filterDropdown" onclick="toggleFilterLock()" onmouseenter="showMemberList()" onmouseleave="hideMemberList()">
+      <div class="filter-button">筛选</div>
+      <div class="member-list" id="memberList">
+        <button class="jump-button" onclick="filterSNS('all')">全部</button>
+        <button class="jump-button" onclick="filterSNS('bs')">Burning Sun</button>
+        <button class="jump-button" onclick="filterSNS('jsj')">金尚教</button>
+        <button class="jump-button" onclick="filterSNS('wg')">无辜受害者</button>
+      </div>
+    </div>
+  </div>
+
+  <p>所有非法犯罪行为合并：形成了这起重大案件的丑闻</p>
+  <p><span style="color: #33FFFF">主角：胜利</span>、其他人的事件会回避</p><br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="bs2018-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="bs.html#bs2018" class="jump-button">2018</a>
+    </div>
+    <div id="bs2019-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="bs.html#bs2019" class="jump-button">2019</a>
+    </div>
+  </div><br/>
+  <hr class="full-width-line" />
+
+  <h1 id="currentFilter" style="text-align:center; margin-top: 30px; margin-bottom: 10px; color: #33FFFF; display: none;"></h1><br/>
+
+  <div id="bs2018" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="bs.html#bs2018-jump" class="jump-button">2018</a>
+  </div><br/>
+
+<div class="sns-entry" data-member="bs jsj">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月14日</strong></p>
+        <p>金尚教在韩网论坛BobaeDream发帖文</p>
+        <p>标题为《这就是警察袭警事件和Burning Sun团伙殴打事件》</p>
+        <p>详细资讯：<a href="https://m.bobaedream.co.kr/board/bbs_view/politic/308536" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            BobaeDream</a></p>
+      </div>
+    </div>
+    <h3>这家伙到现在还没删帖哦！</h3>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider1">
+          <div class="slide-item">
+            <img src="181214.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1812141.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1812142.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1812143.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1812144.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1812145.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
+    </div>
+    <p>这家伙详细地为您指路他被暴打的地点</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider2', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider2">
+          <div class="slide-item">
+            <img src="1812146.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1812147.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1812148.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="18121410.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="18121411.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="18121412.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="18121413.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="18121414.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider2', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>PS：监控录像于2019年1月28日放出</p>
+        <p>金尚教称：2018年11月24日为了庆祝朋友的生日去了Burning Sun夜店。在逗留期间，<span style="color: #33FFFF">他看到一名疑似吸毒的女子躲避一名试图抓住她的男子</span>。他抓住了那个男人的手，结果他被反打。于是他向保安（张某）求助，结果换来的却是他被拖到走廊被集体殴打。他在早上7:02报警，但是警察于7:10抵达现场后没有逮捕袭击者，反而逮捕了金尚教</p>
+      </div>
+    </div>
+  </div>
+  <img src="181124.gif" style="width: 500px;">
+  <img src="1811241.gif" style="width: 500px;">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>尽管金尚教试图<span style="color: #33FFFF">向警方澄清自己才是真正的受害者</span>，但再次遭到警察的粗暴对待。他声称自己出血是由于警察的袭击造成的，但警方公布的监控录像并未显示涉嫌袭击发生的地点。警方随后否认有任何不当行为，声称金的鼻子流血是由于摔倒造成的。警方对金尚教提出了七项指控，包括刑事殴打、猥亵行为、妨碍公务执行和诽谤</p>
+      </div>
+    </div>
+  </div>
+  <img src="1811242.gif" style="width: 500px;">
+  <img src="1811243.gif" style="width: 500px;">
+  <hr class="full-width-line">
+</div>
+
+<div class="sns-entry" data-member="jsj">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月21日</strong></p>
+        <p>金尚教在青瓦台请愿网站上发布了一份请愿书</p>
+        <p>他不仅抱怨袭击，还提出了Burning Sun与警方勾结的怀疑</p>
+        <p>详细资讯：<a href="https://threadreaderapp.com/thread/1593343640574857218.html" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Threadreader</a></p>
+      </div>
+    </div>
+    <h3>最重要的是他一直把Burning Sun描述为“胜利的夜店”</h3>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider3', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider3">
+          <div class="slide-item">
+            <img src="181221.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1812211.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider3', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line">
+  </div>
+</div>
+
+<div class="sns-entry" data-member="jsj">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月21日</strong></p>
+        <p>两名自称受害者的女性向警方报案，称金尚教向她们强暴性侵</p>
+        <p>详细资讯：<a href="https://n.news.naver.com/mnews/article/003/0009041181?sid=001" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Naver</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+</div>
+
+<div class="sns-entry" data-member="bs">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月30日</strong></p>
+        <p>Burning Sun 浴室视频在帖子上疯传</p>
+        <p>详细资讯：<a href="https://news.nate.com/view/20190131n45441?mid=n1008" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Nate</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="181221b.png" style="width: 400px;">
+  <hr class="full-width-line">
+</div>
+
+  <div id="bs2019" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="bs.html#bs2019-jump" class="jump-button">2019</a>
+  </div><br/>
+
+<div class="sns-entry" data-member="bs">
+  <div style="text-align: center;">
+    <p>录像拍摄于2018年12月1日</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/2mRz0BC4qKQ?si=NeaopnkyXaRdCyAZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2019年1月14日</strong></p>
+        <p>Burning Sun一名前员工将窃取的监控录像泄露到Instagram，录像显示一名女子疑似遭到Burning Sun员工的性骚扰、殴打并被拖走</p>
+        <p>详细资讯：<a href="https://kpoppersguide.wordpress.com/2019/03/07/burningsun-timeline/" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            KPOPPER'S GUIDE</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="190114b.webp" style="height: 200px;">
+  <hr class="full-width-line">
+</div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年1月14日</strong></p>
+        <p>首尔表演艺术学校（SOPA）是聚集了众多韩国明星的一所学校</p>
+        <p>首尔市教育厅指控SOPA校长利用学生举办私人聚会，并挪用非法活动所得资金</p>
+        <p>教育厅已要求学校基金会和执法部门调查此事，但SOPA校长否认指控</p>
+        <p>详细资讯：<a href="https://www.koreatimes.co.kr/southkorea/society/20190128/art-students-forced-to-perform-at-principals-private-parties" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            The Korea Times</a></p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line">
+
+<div class="sns-entry" data-member="bs jsj">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/uGQgA0vlZzg?si=qHmiOIOMn_wBQkhS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2019年1月28日</strong></p>
+        <p>《MBC新闻台》报道了金尚教在Burning Sun遭到袭击的监控录像</p>
+        <p>请注意此视频金尚教的行为：</p>
+        <ul>
+          <li>01:19-02:09 他一直坐在绿色衣服女士的后面并拿水瓶敲她的背后</li>
+          <li>02:56 他把手放在另一个女士的腰上</li>
+          <li>03:45 他走过去绿色衣服女士的旁边后开始发生争执</li>
+        </ul><br/>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/burning-sun-assault-victim-charged-sexual-harassment-woman/" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="190128.gif" style="width: 500px;">
+  <img src="1901281.gif" style="width: 500px;">
+  <hr class="full-width-line">
+</div>
+
+<div class="sns-entry" data-member="bs jsj">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/M0jB-4M14P8?si=wa-E5h8vSFu03Wvc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2019年1月28日</strong></p>
+        <p>MBC报道当天金尚教就被锤爆了，金尚教才是那个“性骚扰”的人</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+</div>
+
+<div class="sns-entry" data-member="bs jsj">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/2mRz0BC4qKQ?si=NeaopnkyXaRdCyAZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2019年1月28日</strong></p>
+        <p>KBS报道补充警方到达现场后的录像：</p>
+        <ul>
+          <li>4:51 警方抵达现场</li>
+          <li>6:22 注意看是金尚教先动手撂倒警察的</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+</div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年1月28日</strong></p>
+        <p>理智的粉丝都猜测是韩国媒体捏造了所谓的“胜利的夜店殴打事件”，以此来掩盖SOPA丑闻</p>
+        <p>详细资讯：<a href="https://kpoppersguide.wordpress.com/2019/03/07/burningsun-timeline/" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            KPOPPER'S GUIDE</a></p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line">
+
+<div class="sns-entry" data-member="bs">
+  <div style="text-align: center;">
+    <p>为什么胜利会成为Burning Sun俱乐部殴打事件的舆论中心人物呢？</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>因为2018年11月24日那天胜利和李孝渊在场</p>
+        <p>胜利在Burning Sun只待到凌晨3点，而金尚教的事情发生在早上6点之后</p>
+        <p>你点开每个韩媒报道的标题都写：Seungris Club（胜利的俱乐部）</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/proof-seungri-present-burning-sun-assault/" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a> - 
+        <a href="https://weibo.com/2837351320/H4aEpvAH6" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <p>网友批评：当凌晨警察被叫来时，主人不可能不知道……ㅋㅋ</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider4', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider4">
+          <div class="slide-item">
+            <img src="181124.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="190128.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1901281.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider4', 'next')">&#8594;</button>
+    </div>
+  </div>
+  <hr class="full-width-line">
+</div>
+
+<div class="sns-entry" data-member="jsj">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年1月29日</strong></p>
+        <p>金尚教发起了第二次青瓦台请愿，收集了31万个签名</p>
+        <p>呼吁知情人士或曾遭受过GHB（强奸药）侵害的人向SBS举报，还敦促当局调查该夜店涉嫌强奸女性和贿赂警方等行为</p>
+        <p>详细资讯：<a href="https://threadreaderapp.com/thread/1593343640574857218.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Thread reader</a></p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line">
+</div>
+
+<div class="sns-entry" data-member="jsj">
+  <div style="text-align: center;">
+    <h3>注意分辨真实性</h3>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年1月29日</strong></p>
+        <p>金尚教在Instagram分享一些聊天记录</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/burning-sun-assault-victim-date-rape-drug-club/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <p>一位女性兴奋剂销售员和顾客的对话</p>
+  </div>
+  <img src="1901291.png" style="width: 300px;">
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>客户询问女子被下药是否合法，销售员却声称没事，因为一切都已经和“上级”谈妥了</p>
+      </div>
+    </div>
+  </div>
+  <img src="1901292.png" style="width: 300px;">
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>销售人员和客户之间一些药物的效果，会使受害者昏倒并失去所有记忆</p>
+      </div>
+    </div>
+  </div>
+  <img src="1901293.png" style="width: 300px;">
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>金尚教还分享了一位自称是Burning Sun员工受害者的女子的故事：讲述了自己如何遭到一名员工性侵，但由于俱乐部删除了监控录像，最终无法报警</p>
+      </div>
+    </div>
+  </div>
+  <img src="1901294.jpg" style="width: 300px;">
+  <hr class="full-width-line">
+</div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="seungricase.html" id="backButton">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+</main>
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+
+  let filterLocked = false;
+
+  function toggleFilterLock() {
+    filterLocked = !filterLocked;
+    updateMemberListDisplay();
+  }
+
+  function showMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'flex';
+    }
+  }
+
+  function hideMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'none';
+    }
+  }
+
+  function updateMemberListDisplay() {
+    const memberList = document.getElementById('memberList');
+    memberList.style.display = filterLocked ? 'flex' : 'none';
+  }
+
+  function filterSNS(member) {
+    const entries = document.querySelectorAll('.sns-entry');
+    const message = document.getElementById('noContentMessage');
+    const backButton = document.getElementById('backButton');
+    const nextButton = document.getElementById('nextButton');
+    const footer = document.getElementById('footer');
+    const currentFilter = document.getElementById('currentFilter');
+    const currentFilter1 = document.getElementById('currentFilter1');
+
+    const memberNames = {
+      all: '全部',
+      bs: 'Burning Sun',
+      jsj: '金尚教',
+      wg: '无辜受害者'
+    };
+
+    if (memberNames[member]) {
+      currentFilter.textContent = `当前筛选：${memberNames[member]}`;
+      currentFilter.style.display = 'block';
+    } else {
+      currentFilter.style.display = 'none';
+    }
+
+    let hasContent = false;
+
+    entries.forEach(entry => {
+      const members = entry.dataset.member.split(' ');
+      if (member === 'all' || members.includes(member)) {
+        entry.style.display = 'block';
+        hasContent = true;
+      } else {
+        entry.style.display = 'none';
+      }
+    });
+
+    if (!hasContent && member !== 'all') {
+      if (message) message.style.display = 'block';
+      if (backButton) backButton.style.display = 'none';
+      if (nextButton) nextButton.style.display = 'none';
+      if (footer) footer.style.display = 'none';
+    } else {
+      if (message) message.style.display = 'none';
+      if (backButton) backButton.style.display = 'inline-block';
+      if (nextButton) nextButton.style.display = 'inline-block';
+      if (footer) footer.style.display = 'block';
+    }
+  }
+
+  const sliderStates = {};
+
+  function slide(id, direction) {
+    const slider = document.getElementById(id);
+    const slides = slider.querySelectorAll('.slide-item');
+    const slideWidth = 500;
+
+    if (!sliderStates[id]) {
+      sliderStates[id] = 0;
+    }
+
+    if (direction === 'next') {
+      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
+    } else {
+      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
+    }
+
+    const offset = sliderStates[id] * slideWidth;
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+
+</script>
+</body>
+</html>

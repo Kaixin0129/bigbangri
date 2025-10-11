@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>胜利事件</title>
+  <title>胜利门</title>
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
@@ -168,106 +168,53 @@
       cursor: pointer;
     }
 
-    .popup {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+.question-box {
+  border: 2px solid white;
+  border-radius: 10px 25px;
+  padding: 40px 30px;
+  width: 450px;
+  margin: 60px auto 0 auto;
+  background-color: #111;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
 
-    .popup-content {
-      background-color: white;
-      padding: 20px;
-      border-radius: 12px;
-      width: 80%;
-      max-width: 400px;
-      text-align: center;
-      font-size: 18px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      color: black;
-      position: relative;
-    }
+.question-box h1 {
+  font-size: 25px;
+  margin-bottom: 35px;
+  line-height: 1.5;
+}
 
-    .popup-content .close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 24px;
-      font-weight: bold;
-      cursor: pointer;
-      color: black;
-    }
-
-    .popup-content .close:hover {
-      color: white;
-    }
+.button-area {
+  display: flex;
+  justify-content: space-between;
+}
 
   </style>
 </head>
 <body>
-
-  <nav>
-    <a href="index.html">Home</a>    
-    <a href="schedule.html" class="jump-button-1">完整时间线</a>
-    <a href="stage.html">打歌舞台</a>
-    <a href="concert.html">演唱会</a>
-    <a href="teams.html">小分队</a>
-    <a href="album.html">专辑歌曲Mv</a>
-    <a href="fanmeeting.html">Fan Meeting</a>
-    <a href="collection.html">官方周边</a>
-    <a href="show.html">放送节目</a>
-    <a href="interview.html">采访</a>
-    <a href="behindthescenes.html">幕后花絮</a>
-    <a href="magazine.html">杂志拍摄</a>
-    <a href="endorsement.html">代言</a>
-    <a href="awardlist.html">获奖</a>
-    <a href="movie.html">电影电视剧短剧</a>
-    <a href="ygfamily.html">YG Family</a>
-    <a href="live.html">直播</a>
-    <a href="more.html">更多</a>
-    <a href="sns.html">SNS</a>
-    <a href="comment.html">留言区</a>
-    <a href="reference.html" class="highlight-button">参考资料</a>
-    <a href="cp.html" class="highlight1-button">CP向</a>
-  </nav>
-  <main>
-  <div id="popup" class="popup">
-    <div class="popup-content">
-      <span class="close" onclick="closePopup()">&times;</span>
-      <p>谣言止于智者，不信不传共守真</p>
-      <p>善语结善缘，恶言伤人心</p>
+<main>
+  <h2>Seungri VS The World</h2>
+  <div class="question-box">
+    <h1>是否相信胜利是替罪羊？</h1>
+    <div class="button-area">
+      <a class="jump-button" onclick="goNo()">否</a>
+      <a class="jump-button" onclick="goBelieve()">相信</a>
     </div>
   </div>
-    <h1>·胜利事件·</h1>
-    <nav>
-      <a href="seungri.html">Back</a>
-    </nav>
-    <p>Select a case section from the navigation bar below.</p><br/>
-  <nav>
-    <a href="seungricase-beat.html">被GD肘击事件</a>
-    <a href="seungricase-sex.html">床照事件</a>
-    <a href="seungricase-cc.html">车祸</a>
-    <a href="seungricase-gt.html">高铁事件</a>
-    <a href="seungricase-police.html">穿警服</a>
-    <a href="seungricase-bs.html">Burning Sun</a>
-  </nav><br/>
-    <p>事件都会找出韩网新闻报道、不信谣不传谣！</p>
-  </main>
-  <script>
-    window.onload = function() {
-      document.getElementById("popup").style.display = "flex";
-    }
+  <br/><br/>
+  <p>只会截取胜利在Burning Sun丑闻风波的部分而已</p><br/>
+  <p>我不会选边站，也不会指责任何人是受害者或有罪，我们只是整理事件</p><br/><br/>
+  <img src="kk.jpg" style="height: 150px;">
+</main>
+<script>
+  function goBelieve() {
+    window.location.href = atob("YnMuaHRtbA==");
+  }
 
-    function closePopup() {
-      document.getElementById("popup").style.display = "none";
-    }
-  </script>
+  function goNo() {
+    window.location.href = atob("c2V1bmdyaWNhc2UuaHRtbA==");
+  }
+</script>
 </body>
 </html>
