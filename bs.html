@@ -322,7 +322,6 @@
   position: relative;
   display: flex;
   justify-content: flex-end;
-  margin-right: 40px;
   margin-top: -50px;
   z-index: 10;
 }
@@ -330,15 +329,21 @@
   position: relative;
 }
 
-  .filter-button {
-    padding: 15px 25px;
-    background-color: #111;
-    color: white;
-    border: 2px solid white;
-    border-radius: 5px 18px;
-    cursor: pointer;
-    text-align: center;
-  }
+.filter-button {
+  padding: 15px 25px;
+  background-color: #111; /* 原本的深色背景 */
+  color: white;
+  border: 2px solid #33FFFF; /* 青蓝色边框 */
+  border-radius: 5px 18px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+  background-color: white; /* 悬停时背景变白 */
+  color: black; /* 文字变黑 */
+}
 
 .member-list {
   display: none;
@@ -474,6 +479,7 @@
       <div class="filter-columns">
         <div class="filter-col">
           <button class="jump-button" onclick="filterSNS('ph')">菲律宾生日派对</button>
+          <button class="jump-button" onclick="filterSNS('kk')">Kakaotalk</button>
         </div>
         <div class="filter-col">
           <button class="jump-button" onclick="filterSNS('jc')">警匪勾结</button>
@@ -482,7 +488,7 @@
         </div>
         <div class="filter-col">
           <button class="jump-button" onclick="filterSNS('sr')">胜利发声</button>
-          <button class="jump-button" onclick="filterSNS('dc')">被警方传唤调查</button>
+          <button class="jump-button" onclick="filterSNS('dc')">警方传唤调查</button><br/>
           <button class="jump-button" onclick="filterSNS('yx')">丑闻的负面影响</button>
         </div>
         <div class="filter-col">
@@ -524,7 +530,7 @@
         <p>金尚教在韩网论坛BobaeDream发帖文</p>
         <p>标题为《这就是警察袭警事件和Burning Sun团伙殴打事件》</p>
         <p>详细资讯：<a href="https://m.bobaedream.co.kr/board/bbs_view/politic/308536" 
-        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             BobaeDream</a></p>
       </div>
     </div>
@@ -617,7 +623,7 @@
         <p>金尚教在青瓦台请愿网站上发布了一份请愿书</p>
         <p>他不仅抱怨袭击，还提出了Burning Sun与警方勾结的怀疑</p>
         <p>详细资讯：<a href="https://threadreaderapp.com/thread/1593343640574857218.html" 
-        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Threadreader</a></p>
       </div>
     </div>
@@ -647,7 +653,7 @@
         <p><strong>2018年12月21日</strong></p>
         <p>两名自称受害者的女性向警方报案，称金尚教向她们强暴性侵</p>
         <p>详细资讯：<a href="https://n.news.naver.com/mnews/article/003/0009041181?sid=001" 
-        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Naver</a></p>
       </div>
     </div>
@@ -662,7 +668,7 @@
         <p><strong>2018年12月30日</strong></p>
         <p>Burning Sun 浴室视频在帖子上疯传</p>
         <p>详细资讯：<a href="https://news.nate.com/view/20190131n45441?mid=n1008" 
-        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Nate</a></p>
       </div>
     </div>
@@ -686,7 +692,7 @@
         <p><strong>2019年1月14日</strong></p>
         <p>Burning Sun一名前员工将窃取的监控录像泄露到Instagram，录像显示一名女子疑似遭到Burning Sun员工的性骚扰、殴打并被拖走</p>
         <p>详细资讯：<a href="https://kpoppersguide.wordpress.com/2019/03/07/burningsun-timeline/" 
-        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             KPOPPER'S GUIDE</a></p>
       </div>
     </div>
@@ -703,7 +709,7 @@
         <p>首尔市教育厅指控SOPA校长利用学生举办私人聚会，并挪用非法活动所得资金</p>
         <p>教育厅已要求学校基金会和执法部门调查此事，但SOPA校长否认指控</p>
         <p>详细资讯：<a href="https://www.koreatimes.co.kr/southkorea/society/20190128/art-students-forced-to-perform-at-principals-private-parties" 
-        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             The Korea Times</a></p>
       </div>
     </div>
@@ -726,7 +732,7 @@
           <li>03:45 B女士试图让他离开时开始发生了争执</li>
         </ul><br/>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/burning-sun-assault-victim-charged-sexual-harassment-woman/" 
-        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a></p>
       </div>
     </div>
@@ -759,7 +765,7 @@
         <p><strong>2019年1月28日</strong></p>
         <p>理智的粉丝都猜测是韩国媒体捏造了所谓的“胜利的夜店殴打事件”，以此来掩盖SOPA丑闻</p>
         <p>详细资讯：<a href="https://kpoppersguide.wordpress.com/2019/03/07/burningsun-timeline/" 
-        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             KPOPPER'S GUIDE</a></p>
       </div>
     </div>
@@ -775,10 +781,10 @@
         <p>胜利在Burning Sun只待到凌晨3点，而金尚教的事情发生在早上6点之后</p>
         <p>你点开每个韩媒报道的标题都写：Seungris Club（胜利的俱乐部）</p>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/proof-seungri-present-burning-sun-assault/" 
-        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a> - 
         <a href="https://weibo.com/2837351320/H4aEpvAH6" 
-        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             李昇炫Vworld</a></p>
       </div>
     </div>
@@ -812,7 +818,7 @@
         <p>金尚教发起了第二次青瓦台请愿，收集了31万个签名</p>
         <p>呼吁知情人士或曾遭受过GHB（强奸药）侵害的人向SBS举报，还敦促当局调查该夜店涉嫌强奸女性和贿赂警方等行为</p>
         <p>详细资讯：<a href="https://threadreaderapp.com/thread/1593343640574857218.html" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Thread reader</a></p>
       </div>
     </div>
@@ -828,7 +834,7 @@
         <p><strong>2019年1月29日</strong></p>
         <p>金尚教在Instagram分享一些聊天记录</p>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/burning-sun-assault-victim-date-rape-drug-club/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a></p>
       </div>
     </div>
@@ -886,7 +892,7 @@
         <p>江南的李在勋警司表示：</p>
         <p>举报人金尚教和俱乐部工作人员张某均已因相互袭击的罪名被立案调查，暴力犯罪部门正在对此进行彻底调查</p>
         <p>详细资讯：<a href="https://www.sisajournal.com/news/articleView.html?idxno=181321" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Sisa Journal</a></p>
       </div>
     </div>
@@ -901,7 +907,7 @@
         <p><strong>2019年1月29日</strong></p>
         <p>Burning Sun官方表示：此次事件发生时，一名俱乐部员工正在处理一名女性顾客提出的性骚扰投诉。我们代表俱乐部管理层，对俱乐部员工殴打该员工引发争议的行为表示诚挚的歉意和遗憾。我们已追究涉事员工的责任，并对其采取了纪律处分和解雇措施。我们将采取措施防止此类事件再次发生，例如对员工进行教育并完善安全保卫指南</p>
         <p>详细资讯：<a href="https://www.sisajournal.com/news/articleView.html?idxno=181321" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Sisa Journal</a></p>
       </div>
     </div>
@@ -913,7 +919,7 @@
         <p>非常眼尖的网友察觉到官方声明中也没有出现胜利的名字，而是写着李成铉和李文浩作为公司CEO</p>
         <p>网友批评：自从媒体报道了这件事之后，他像蛇一样想溜走。我对他了解越多，就越觉得他烦透了</p>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-burning-sun-resignation-netizen-criticism/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a></p>
       </div>
     </div>
@@ -929,7 +935,7 @@
         <p>YG拒绝为胜利发表声明：</p>
         <p>由于我们艺人的私事与YG无关，因此对于发表声明犹豫不决，也很难确认事实</p>
         <p>详细资讯：<a href="https://www.allkpop.com/article/2019/01/yg-entertainment-refuses-to-give-official-statement-on-assault-controversy-surrounding-seungris-club-burning-sun" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Allkpop</a></p>
       </div>
     </div>
@@ -942,7 +948,7 @@
       <div class="text-container">
         <p>随着舆论越演越烈，网友鼓励其他人抵制YG</p>
         <p>详细资讯：<a href="https://lh3.googleusercontent.com/PkSTn8GtCntR33uLRUJHGzG4M6l_gm-um_P27gXCY69-7m91cAm2o0Ou0x7mOsc_yrWGTIP5FipITBepaoih5qzgVXWkaeip=nu-e365-rj-q80-w925" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             评论区</a></p>
       </div>
     </div>
@@ -973,7 +979,7 @@
         <p><strong>2019年1月30日</strong></p>
         <p>Burning Sun相关人士向《京乡新闻》表示：胜利确实是Burning Sun的经纪人，但他并非真正的老板。Burning Sun目前有另一位老板。当时我们正在进行酒店内夜店的室内设计，听说胜利正在寻找管理夜店的机会，所以就提议让他一起管理。每个人都认为胜利是首席执行官。胜利确实参与了俱乐部的管理，但他实际上并不是俱乐部的老板</p>
         <p>详细资讯：<a href="https://www.soompi.com/article/1300134wpp/burning-sun-club-issues-statements-in-response-to-controversies" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Soompi</a></p>
       </div>
     </div>
@@ -988,7 +994,7 @@
         <p><strong>2019年1月30日</strong></p>
         <p>警方表示：将指定广域搜查大队作为Burning Sun案件的专门调查组。我们通过彻底的内部调查来明确Burning Sun嫌疑所在</p>
         <p>详细资讯：<a href="https://news.nate.com/view/20190131n45441?mid=n1008" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Nate</a></p>
       </div>
     </div>
@@ -1004,7 +1010,7 @@
         <p>Burning Sun员工透露：大约在2018年12月的最后一周，我们快要关门的时候，三名没有穿制服的警察来到俱乐部。他们说他们来调查，因为有人在里面被迫吸食大麻</p>
         <p>VIP室是一个封闭区域，只有顾客在营业时间内才能进入。俱乐部没有对VIP顾客进行任何包袋检查，因此无法得知房间内的情况。俱乐部员工即使看到了什么，也可能保持沉默，因为他们的工作岌岌可危</p>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-club-police-marijuana/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a></p>
       </div>
     </div>
@@ -1018,7 +1024,7 @@
         <p>此外，在VIP室内配有独立卫生间</p>
         <p>Burning Sun员工回应：视频里的卫生间灯和Burning Sun贵宾室卫生间的灯是一样的，视频刚发布的时候，工作人员也说是贵宾室的卫生间，不过看起来好像对视频发布并没有太过在意</p>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/woman-allegedly-filmed-sexually-assaulted-restroom-seungris-club/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a></p>
       </div>
     </div>
@@ -1034,7 +1040,7 @@
         <p>被网友抨击（逃避责任）后的YG发表声明</p>
         <p>YG表示：公司难以核实事实，胜利告诉我事发当天他在夜店只待到凌晨3点，而金尚教的事情发生在早上6点之后。胜利辞去俱乐部高级主管一职仅仅是因为他必须为几个月后开始的义务兵役做准备。他对那些担心此事的粉丝们感到非常抱歉，并想写信道歉，但我告诉他要等等。我觉得等事件真相调查清楚后再正式发表评论才是明智之举</p>
         <p>完整声明：<a href="https://www.koreaboo.com/news/yg-entertainment-burning-sun-assault-response-statement/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a></p>
       </div>
     </div>
@@ -1081,7 +1087,7 @@
         <p>金尚教否认了女子的指控，并以身体虚弱无法接受讯问为由停止了讯问</p>
         <p>警方表示：将指定广域搜查大队作为Burning Sun案件的专门调查组。我们通过彻底的内部调查来明确Burning Sun嫌疑所在</p>
         <p>详细资讯：<a href="https://n.news.naver.com/mnews/article/003/0009041181?sid=001" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Naver</a></p>
       </div>
     </div>
@@ -1096,7 +1102,7 @@
         <p><strong>2019年1月31日</strong></p>
         <p>首尔地方警察厅SMPA已接手调查，调查内容包括江南区当地警方腐败以及与夜店老板勾结的指控，并已指派一个小组调查该夜店关于性暴力、吸毒、金尚教被捕以及与当地警察局的任何关联的指控</p>
         <p>详细资讯：<a href="https://www.koreaherald.com/article/1905658" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaherald</a></p>
       </div>
     </div>
@@ -1113,7 +1119,7 @@
         <p>员工A：一名看似被下药的女子在与一名男子发生性关系时全身赤裸<br/>员工B：我每月大约看到2至3次主桌的顾客吸毒。去年十月，一名男子给一​​名女子喝酒。后来，她口吐白沫，倒下了。她没有喝醉，但眼神完全失焦了</p>
         <p>Burning Sun前经理否认：俱乐部里有人吸毒，简直荒谬。如果真有这种事，我们早就举报了</p>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/burning-sun-employee-witnessing-women-raped-unconscious-vip-bathrooms/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a></p>
       </div>
     </div>
@@ -1130,7 +1136,7 @@
         <p>员工A：一名看似被下药的女子在与一名男子发生性关系时全身赤裸<br/>员工B：我每月大约看到2至3次主桌的顾客吸毒。去年十月，一名男子给一​​名女子喝酒。后来，她口吐白沫，倒下了。她没有喝醉，但眼神完全失焦了</p>
         <p>Burning Sun前经理否认：俱乐部里有人吸毒，简直荒谬。如果真有这种事，我们早就举报了</p>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/burning-sun-employee-witnessing-women-raped-unconscious-vip-bathrooms/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a></p>
       </div>
     </div>
@@ -1170,7 +1176,7 @@ MD 1：帮我打个本垒打</p>
         <br/>
         <p>当贵宾成功强奸女性后，他们更有可能再次光顾这家俱乐部。因此，医生们经常会给贵宾提供约会强奸药，帮助他们“本垒打”</p>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/shocking-disturbing-burning-sun-staff-group-chat-surfaced/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a></p>
       </div>
     </div>
@@ -1187,7 +1193,7 @@ MD 1：帮我打个本垒打</p>
         <p>胜利在Instagram上发布了一封道歉信</p>
         <p>他声称自己与俱乐部的管理关系不大。最初是以DJ的身份加入俱乐部，后来晋升成为了俱乐部的常务董事和宣传总监，并主动承担起了向公众宣传俱乐部的责任</p>
         <p>详细资讯：<a href="https://weibo.com/2837351320/HeQCRqcBa" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             李昇炫Vworld</a></p>
       </div>
     </div>
@@ -1207,7 +1213,7 @@ MD 1：帮我打个本垒打</p>
 - 不承认GHB<br/>
 - 阐述了 Burning Sun 计划如何解决问题（例如关闭VIP室、通过增加闭路电视监控来减少盲点）</p>
         <p>详细资讯：<a href="https://www.instagram.com/p/BtbT6dzAOm5/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Instagram</a></p>
       </div>
     </div>
@@ -1223,7 +1229,7 @@ MD 1：帮我打个本垒打</p>
         <p>Burning Sun俱乐部首席执行官李文浩正式向胜利道歉，并已解雇了殴打金尚教的俱乐部负责人张某</p>
         <p>随着舆论越演越烈，Burning Sun宣布永久关闭</p>
         <p>详细资讯：<a href="https://www.soompi.com/article/1301372wpp/ceo-of-burning-sun-releases-official-statement-and-apologizes-to-bigbangs-seungri" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Soompi</a></p>
       </div>
     </div>
@@ -1239,7 +1245,7 @@ MD 1：帮我打个本垒打</p>
         <p><strong>2019年2月6日</strong></p>
         <p>色情网站Pornhub热搜词条出现了Burning Sun几段性行为视频，以及一段女性在VIP卫生间内遭受性侵的视频</p>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/burning-sun-vip-bathroom-porn-website/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a></p>
       </div>
     </div>
@@ -1294,7 +1300,7 @@ MD 1：帮我打个本垒打</p>
         <p>胜利表示：我当时在夜店，她约我合影，我就答应了。我不记得我们什么时候拍的，也不记得她是谁。在网上、社交媒体和线上社区里有无数我和粉丝的合影。我在夜店的时候，很多人会主动上前要求合影，我通常都会答应</p>
         <p><br/>警方表示计划对安娜进行调查，但目前无法联系到她。她去年因涉嫌吸食大麻而面临指控，但已获缓刑。她的护照已过期，她现在是以非法入境在韩国</p>
         <p>详细资讯：<a href="https://www.soompi.com/article/1303589wpp/bigbangs-seungri-responds-to-photo-of-him-with-former-club-employee-suspected-of-dealing-drugs" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Soompi</a></p>
       </div>
     </div>
@@ -1311,7 +1317,7 @@ MD 1：帮我打个本垒打</p>
         <p>并搜查了俱乐部附近的驿三警署，以查获涉嫌存在腐败关系的嫌疑</p>
         <p>搜查时长长达6小时</p>
         <p>详细资讯：<a href="https://www.soompi.com/article/1303589wpp/bigbangs-seungri-responds-to-photo-of-him-with-former-club-employee-suspected-of-dealing-drugs" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Soompi</a></p>
       </div>
     </div>
@@ -1348,7 +1354,7 @@ MD 1：帮我打个本垒打</p>
         <p>她否认了所有指控，警方还搜查了她的家</p>
         <p>随后她走进首尔东部警察厅毒品调查部门的办公室，就其涉嫌在俱乐部贩卖毒品一事接受讯问</p>
         <p>详细资讯：<a href="https://www.koreatimes.co.kr/southkorea/law-crime/20190217/burning-sun-probe-expands-to-all-gangnam-clubs" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             The Korea Times</a></p>
       </div>
     </div>
@@ -1365,7 +1371,7 @@ MD 1：帮我打个本垒打</p>
         <p>胜利在首尔演唱会开始前向粉丝道歉：</p>
         <p>我想谈谈最近的争议。我觉得如果我不说，今天到场的观众会感到不舒服。我向所有关心我的人表示深深的歉意。我很抱歉让这么多人失望，我正在反思。尽管存在争议，但我的行为并不负责任。尽管争议发生在我公开谈论过的地点，但我的行为并不负责任，为此我感到羞愧和后悔。这一切都源于我的疏忽。作为艺人，我以后会更加谨慎思考和行动。对于之前的不谦虚和鲁莽行为，我深感抱歉。过去一年，我一直竭尽全力为大家带来幸福，却让大家失望了，我深感惭愧。再次向大家道歉，我会铭记在心。我为此做了很多准备，如果大家能喜欢这场演唱会，我将不胜感激。我想这会让我感到所有的努力都值得</p>
         <p>详细资讯：<a href="https://www.soompi.com/article/1304245wpp/bigbangs-seungri-opens-up-about-burning-sun-controversy-sincerely-apologizes-to-fans-at-concert" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Soompi</a></p>
       </div>
     </div>
@@ -1394,7 +1400,7 @@ MD 1：帮我打个本垒打</p>
         <p><strong>2019年2月17日</strong></p>
         <p>Burning Sun宣布立即拆除（被警方怀疑在销毁证据）</p>
         <p>详细资讯：<a href="https://www.koreaherald.com/article/1926258" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Korea Herald</a></p>
       </div>
     </div>
@@ -1410,7 +1416,7 @@ MD 1：帮我打个本垒打</p>
         <p>金尚教被怀疑第三次被控性侵，被他性侵的女性已增至四人</p>
         <p>一位不愿透露姓名的女性声称，她被金尚教下了药</p>
         <p>详细资讯：<a href="https://www.allkpop.com/article/2019/03/timeline-from-burning-sun-controversy-to-seungris-retirement-and-beyond" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Allkpop</a></p>
       </div>
     </div>
@@ -1425,7 +1431,7 @@ MD 1：帮我打个本垒打</p>
         <p><strong>2019年2月20日</strong></p>
         <p>警方以保护证据为由叫停了Burning Sun的拆除工作</p>
         <p>详细资讯：<a href="https://www.koreatimes.co.kr/southkorea/law-crime/20190221/police-halt-clearing-out-of-burning-sun-to-stop-evidence-loss" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             The Korea Times</a></p>
       </div>
     </div>
@@ -1471,7 +1477,7 @@ MD 1：帮我打个本垒打</p>
         <p><strong>2019年2月25日</strong></p>
         <p>金尚教因为Burning Sun袭击事件，他的母亲受到了疑似黑帮分子的威胁</p>
         <p>详细资讯：<a href="https://www.instagram.com/p/BuTtdcSjLcf/?utm_source=ig_embed&ig_rid=c01114d2-cac1-4a26-b6d1-4dbb871e26c7&img_index=4" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Instagram</a></p>
       </div>
     </div>
@@ -1481,7 +1487,7 @@ MD 1：帮我打个本垒打</p>
 
 <div class="sns-entry" data-member="myzj">
   <div style="text-align: center;">
-    <p><span style="color: #ff3e3e; font-size: 20px;">假</span> 聊天记录</p>
+    <p><span style="color: #FF66CC; font-size: 20px;">假</span> 聊天记录</p>
     <div class="content-wrap">
       <div class="text-container">
         <p><strong>2019年2月25日</strong></p>
@@ -1489,7 +1495,7 @@ MD 1：帮我打个本垒打</p>
         <p>胜利涉嫌计划在Club Arena用妓女（A女士）贿赂外国投资者</p>
         <p>首尔警察局已对卖淫指控展开调查，胜利已被列为重点调查对象</p>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-prostitute-rich-investors-club-arena/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a></p>
       </div>
     </div>
@@ -1516,7 +1522,7 @@ MD 1：帮我打个本垒打</p>
       <div class="text-container">
         <p>首尔警察局已对卖淫指控展开调查，胜利已被列为重点调查对象</p>
         <p>详细资讯：<a href="https://www.koreaherald.com/article/1930368" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Korea Herald</a>
       </div>
     </div>
@@ -1532,12 +1538,12 @@ MD 1：帮我打个本垒打</p>
         <p>Yuri Holdings否认群聊中的招募妓女贿赂投资者的报道</p>
         <p>YG表示：经与胜利本人核实，报道中的短信内容纯属捏造，不属实。我们将秉持一贯立场，严厉打击一切散播、转载谣言包括虚假新闻的行为</p>
         <p>详细资讯：<a href="https://www.koreatimes.co.kr/entertainment/k-pop/20190227/yg-denies-sex-for-favor-allegation-involving-bigbangs-seungri" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             The Korea Times</a></p>
         <br/>
         <p>《SBS funE》主持人姜庆允反驳：我没有理由捏造这些文字，除了淡化一些严重粗俗的表达方式外，绝对没有任何纂改或编辑，全部都是事实</p>
         <p>详细资讯：<a href="https://sports.hankooki.com/news/articleView.html?idxno=6386853" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             The Korea Times</a></p>
       </div>
     </div>
@@ -1552,7 +1558,7 @@ MD 1：帮我打个本垒打</p>
         <p><strong>2019年2月26日</strong></p>
         <p>YG股价下跌2350至45150韩元，跌幅4.95%</p>
         <p>详细资讯：<a href="https://www.soompi.com/article/1306390wpp/yg-entertainment-stocks-fall-following-reports-about-g-dragon-and-seungri" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Soompi</a></p>
       </div>
     </div>
@@ -1567,7 +1573,7 @@ MD 1：帮我打个本垒打</p>
         <p>TenAsia报道了I.O.I的重组传闻</p>
         <p>网友们对此完全不予理会，并立即认定这是YG编造的假新闻，目的是转移人们对关于GD入伍事件和胜利丑闻的关注</p>
         <p>详细资讯：<a href="https://news.nate.com/view/20190226n35241?mid=n1008" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Nate</a></p>
       </div>
     </div>
@@ -1581,7 +1587,7 @@ MD 1：帮我打个本垒打</p>
         <p>朴韩星（刘仁硕的妻子）的经纪公司代表她发表声明</p>
         <p>她与胜利划清界限，解释她的丈夫只是伪隐名合伙人，所以请不要打扰他们</p>
         <p>详细资讯：<a href="https://news.nate.com/view/20190226n35241?mid=n1008" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Nate</a></p>
       </div>
     </div>
@@ -1596,7 +1602,7 @@ MD 1：帮我打个本垒打</p>
         <p><strong>2019年2月26日</strong></p>
         <p>图片中的胜利疑似在旁边女性的帮助下吸食笑气<br/>（尽管在2017年7月26日前吸食合法）</p>
         <p>详细资讯：<a href="https://www.soompi.com/article/1306390wpp/yg-entertainment-stocks-fall-following-reports-about-g-dragon-and-seungri" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Soompi</a></p>
       </div>
     </div>
@@ -1628,7 +1634,7 @@ MD 1：帮我打个本垒打</p>
         <p>警方私下传唤胜利调查</p>
         <p>警方表示：我们将彻底审查媒体报道的内容、短信聊天室中出现的人员姓名、胜利涉嫌向外国投资者提供卖淫服务。胜利承诺将全力积极配合调查，洗清所有不实传闻</p>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/bigbang-seungri-police-investigation-prostitution-scandal/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a></p>
       </div>
     </div>
@@ -1644,7 +1650,7 @@ MD 1：帮我打个本垒打</p>
         <p>YG昨晚收到胜利的声明：我对过去几个月卷入的所有丑闻表示歉意</p>
         <p>YG警告称：如果胜利所有指控被认定有罪，他们将对散布这些荒谬故事的人采取严格的法律行动</p>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-statement-scandal-investigation-yg/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a></p>
       </div>
     </div>
@@ -1659,7 +1665,7 @@ MD 1：帮我打个本垒打</p>
         <p><strong>2019年2月27日</strong></p>
         <p>YG否认胜利吸食笑气：经向胜利确认，照片拍摄角度存在误导。胜利表示自己从未吸入过笑气。越南方面的报道明显是虚假报道，他感到自己受到了莫大的诬告，在夜店这样的公共场所吸入笑气是没有道理的</p>
         <p>详细资讯：<a href="https://www.soompi.com/article/1306626wpp/yg-denies-resurfaced-reports-of-seungri-inhaling-nitrous-oxide-in-2017" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Soompi</a></p>
       </div>
     </div>
@@ -1680,10 +1686,10 @@ MD 1：帮我打个本垒打</p>
         <p>韩国时间晚上9点，胜利到达首尔市钟路区内子洞首尔地方警察厅</p>
         <p>他主动接受尿液和卵泡检查，在警察局待了大约8小时30分钟</p>
         <p>详细资讯：<a href="https://www.soompi.com/article/1311744wpp/seungri-booked-and-questioned-regarding-illegal-operations-of-club-monkey-museum" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Soompi</a> - 
         <a href="https://news.nate.com/view/20190227n42971" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Nate</a></p>
       </div>
     </div>
@@ -1747,7 +1753,7 @@ MD 1：帮我打个本垒打</p>
         <p>警方因涉嫌贩毒而突击搜查了他的住所</p>
         <p>他的毒品检测呈阳性</p>
         <p>详细资讯：<a href="https://www.koreaherald.com/article/1930594" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Korea Herald</a></p>
       </div>
     </div>
@@ -1764,10 +1770,258 @@ MD 1：帮我打个本垒打</p>
         <p>姜庆允（爆料聊天室的主持人）做客SBS《恋爱FM李在益的政治秀》</p>
         <p>她表示：如果我捏造了它，我失去的（比得到的）会更多。我会失去一切，这就是事实。作为一名娱乐记者，我不能让自己在公众面前显得那样，所以我会克制自己</p>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/reporter-seungri-prostitution-followup-report/" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#ff8dd3';" onmouseout="this.style.color='#33FFFF';">
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a></p>
       </div>
     </div>
+  </div>
+  <hr class="full-width-line">  
+</div>
+
+<div class="sns-entry" data-member="ph">
+  <div style="text-align: center;">
+    <p>2017年12月9日菲律宾巴拉望岛的生日派对</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年2月27日</strong></p>
+        <p>胜利在度假村住三天，总共花费了444083美元，原价504570美元的折扣价</p>
+      </div>
+    </div>
+  </div>
+  <img src="190227ph.jpg" style="width: 300px;">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>除了这笔费用外，警方发现胜利向派对的女伴支付了超过旅行费用金额</p>
+        <p>：机票、DJ出场费、酒的费用、生日倒计时期间燃放的烟花的费用</p>
+        <p>这意味着这笔额外的钱可能是用来换取卖淫的（提供性工作者）</p>
+      </div>
+    </div>
+  </div>
+  <img src="190227ph1.jpg" style="width: 300px;">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>女伴：胜利为贵宾提供商务舱机票。女客人则坐经济舱，她们夸耀自己花了大约45万到55万美元</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/reporter-seungri-prostitution-followup-report/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line">  
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年2月27日</strong></p>
+        <p>YG再次否认胜利参与皮条客活动，声称他们曾询问过他，但胜利表示这不是事实</p>
+        <p>详细资讯：<a href="https://www.koreatimes.co.kr/entertainment/k-pop/20190227/yg-denies-sex-for-favor-allegation-involving-bigbangs-seungri" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            The Korea Times</a></p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line">  
+</div>
+
+  <div style="text-align: center;">
+    <p>报道的tag加了#Burning Sun #胜利（指名道姓、不必多说）</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/_OhtdNHcIxc?si=iK4j2fPg3skCtMnq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2019年2月27日</strong></p>
+        <p>《朝鲜日报》抓拍到YG员工在早上6点将数十个箱子送入碎纸机<br/>（通常是早上9点）</p>
+        <p>现场记者声称：仅在两个小时内就处理了大约4吨垃圾，他们不得不再开一辆处理卡车回来。你们在一个月甚至几个月内就产生了超过4吨的垃圾。他们都准备了什么样的文件？处理电脑就更加可疑了。YG会声称他们也经常这样做吗？对于一家财务状况不佳的公司来说，重新利用会是更好的选择。除非你害怕硬盘里的东西。我不是说YG违反了任何法律，但他们肯定没有帮助他们的案件显得不那么可疑</p>
+      </div>
+    </div>
+    <p>YG反驳：文件粉碎工作只是季度例行公事</p>
+  </div>
+  <img src="1902278.jpg" style="width: 450px;">
+  <hr class="full-width-line">  
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年2月28日</strong></p>
+        <p>胜利取消了大阪和雅加达的演唱会</p>
+        <p>大家好，这里是YG娱乐。胜利遗憾地取消了原定于3月9日、10日在大阪、17日在雅加达举行的演唱会，恳请等待演唱会的各位朋友给予谅解。胜利昨天晚上9点左右主动来到警察局，在约8小时30分钟的时间里认真参与了警方对嫌疑的调查。胜利恳请警方特别严密调查卖淫活动的嫌疑。不仅演唱会，胜利还将暂停所有其他预定的活动，并积极配合警方即将开展的所有调查。由于这些都是很多人好奇的疑点，我们希望通过警方迅速而严谨的调查，尽快揭开所有疑点和真相</p>
+        <p>详细资讯：<a href="https://www.soompi.com/article/1306944wpp/seungri-cancels-all-scheduled-activities-including-upcoming-concerts" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Soompi</a></p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line">  
+</div>
+
+<div class="sns-entry" data-member="dc">
+  <div style="text-align: center;">
+    <p>#第3次传唤</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年2月28日</strong></p>
+        <p>警方私下传唤胜利，对他进行药物检查</p>
+        <p>检测结果呈阴性，但毛囊测试除外（因为测试需要更长时间才能确认）</p>
+        <p>详细资讯：<a href="https://m.entertain.naver.com/home/article/609/0000067896" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Naver</a></p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line">  
+</div>
+
+<div class="sns-entry" data-member="jsj">
+  <div style="text-align: center;">
+    <p style="color: #FF66CC; font-size: 20px;">谣 言</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年2月30日</strong></p>
+        <p>前Burning Sun员工告诉KBS，在1月28日MBC报道的两周前，胜利曾在夜店里拿金尚教被BS员工殴打的事开玩笑</p>
+        <p>详细资讯：<a href="https://www.sportsseoul.com/news/read/725645" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Sport Seoul</a></p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line">  
+</div>
+
+<div class="sns-entry" data-member="kk">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年3月1日</strong></p>
+        <p>《SBS funE》透露举报人已向反腐败和公民权利委员会提交胜利订购性陪同服务的短信，他怀疑胜利与警方有着深厚的联系</p>
+        <p>但首尔地方警察厅表示：我们尚未获得KakaoTalk信息的原件。我们正在联系相关人员，以确认原件的存在。我们不仅没有确认其存在，而且还收到了此类信息不存在的证词</p>
+        <p>详细资讯：<a href="https://www.soompi.com/article/1307677wpp/original-copy-of-messages-tied-to-seungri-procured-by-the-anti-corruption-and-civil-rights-commission" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Soompi</a></p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line">  
+</div>
+
+  <div style="text-align: center;">
+    <p>这标签打得、意义不明！</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年3月1日</strong></p>
+        <p>Be.A 成员 Yeongkyun 疑似公开内涵胜利</p>
+        <p>你告诉我，你会作为我的前辈，当着所有工作人员的面给我建议。你不是和我同龄吗？你告诉我，如果我已经这么努力了却仍然没有结果，我最好学一门手艺，因为我应该赚钱孝敬父母。你说那是建议，但那更像是把匕首刺进我的心脏。现在，你在公众面前把这一切都拿回来了，而且更多。我一直对父母很好 =) 有时候，回报他们并不总是用金钱 ㅎ 谢谢你让我明白，一个人应该永远保持谦逊 =) <span style="color: #33FFFF">#burningsun</span> #dater*pedrugs #prostitution</p>
+      </div>
+    </div>
+  </div>
+  <img src="190301.jpg" style="width: 450px;">
+  <hr class="full-width-line">  
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年3月4日</strong></p>
+        <p>YG再次声称他们没有销毁与胜利相关的证据，称这是每三个月（每季度一次）例行公事，并且他们按照惯例提前10天（2月18日）通知了员工</p>
+        <p>详细资讯：<a href="https://m.entertain.naver.com/now/article/112/0003137472" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Naver</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年3月4日</strong></p>
+        <p>网友担心记者吴赫镇（第一批揭露Burning Sun中的政治和警察腐败）会因卷入丑闻而受到生命威胁，担心他会因舆论而自杀</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/burning-sun-scandal-reporter-life-suicide-worry/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider13', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider13">
+          <div class="slide-item">
+            <img src="190304.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1903041.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1903042.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider13', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+<div class="sns-entry" data-member="kk">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年3月4日</strong></p>
+        <p>首尔警方确认：Kakaotalk信息已将根据反腐败和公民权利委员会内部讨论的结果转发给警方</p>
+        <p>举报人已将这些文件提交给该委员会位于首尔的办公室，目前正在将其转交给世宗市办公室</p>
+        <p>详细资讯：<a href="https://www.soompi.com/article/1307677wpp/original-copy-of-messages-tied-to-seungri-procured-by-the-anti-corruption-and-civil-rights-commission" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Soompi</a></p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line">  
+</div>
+
+<div class="sns-entry" data-member="jc bs">
+  <p>这意味着从今天起这件事正在演变成一个比胜利本人更大的事件</p>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年3月5日</strong></p>
+        <p>韩国总理李洛渊在国会发表评论：江南区一家Burning Sun夜店发生的一起袭击案，目前正被揭露涉嫌贩毒、性侵以及警方与夜店老板之间的腐败行为。我希望警方将此视为对其自身荣誉的侮辱，并依法进行彻底调查。我希望调查人员在调查过程中，能够牢记，如果这些非法活动的嫌疑得不到彻底解决，将会带来怎样的后果</p>
+        <p>详细资讯：<a href="https://www.reddit.com/r/kpop/comments/azczdb/comment/ei6zn5d/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            r/kpop</a></p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line">  
+</div>
+
+<div class="sns-entry" data-member="bs">
+  <div style="text-align: center;">
+    <p>❗这个片段在全球的热度高达100万以上哦❗</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115355473156650&bvid=BV1nD4AzFEXi&cid=32995215073&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2019年3月7日</strong></p>
+        <p>BIGBANG 2017 CONCERT LAST DANCE IN SEOUL</p>
+        <p>胜利做MC期间哥哥们怼胜利的一些“玩笑”，被有心人做文章了~~</p>
+      </div>
+    </div>
+    <p>GDTOP百度知道团队 翻译得不准确....</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>胜利：我们跟VIP粉丝们约定一下，不要把胶鞋穿反了。Bigbang也是由五个韩国男人组成的团体，（军队）是每个人都会去的地方，所以我们都会去，也会回来</p>
+        <p>其他成员：你能不能别再说这个了？别说了</p>
+        <p>胜利：如果你们敢作弊，我会把我的孩子们叫来。我认识的清潭洞有很多可怕的孩子，江南站也有认识几个</p>
+        <p>详细资讯：<a href="https://www.insight.co.kr/news/215001" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Insight</a></p>
+      </div>
+    </div>
+    <p>网友辣评：他无意识地暴露了自己的人际关系<br/>现在看来，哈哈，那真是一个威胁，哈哈</p>
   </div>
   <hr class="full-width-line">  
 </div>
@@ -1836,7 +2090,8 @@ function filterSNS(member) {
     jc: '警匪勾结',
     myzj: '卖淫中介',
     xd: '吸毒',
-    dc: '被警方传唤调查'
+    dc: '被警方传唤调查',
+    kk: 'Kakaotalk'
   };
 
   if (memberNames[member]) {
