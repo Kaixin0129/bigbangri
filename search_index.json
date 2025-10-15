@@ -15302,8 +15302,20 @@
   {
     "title": "2019jan",
     "url": "/2019jan.html#block1",
-    "html": "<div class=\"text-container\" id=\"block1\">\n        <p><strong>2019年1月13日</strong></p>\n        <p>Monkey Museum 在中国武汉正式开业</p>\n        <p>视频：<a href=\"https://weibo.com/3699928344/4328112365676141\" target=\"_blank\" style=\"color: #33FFFF; text-decoration: none;\" onmouseover=\"this.style.color='#FF66CC';\" onmouseout=\"this.style.color='#33FFFF';\">\n            SEUNGRI胜利-YG</a></p>\n      </div>",
+    "html": "<div class=\"text-container\" id=\"block1\">\n        <p><strong>2019年1月7日</strong></p>\n        <p>胜利向首尔地方警察厅报名参加了义务警察选拔考试</p>\n        <p>详细资讯：<a href=\"https://www.soompi.com/article/1308673wpp/yg-responds-to-conflicting-reports-of-seungris-enlistment-plans-and-confirms-date\" target=\"_blank\" style=\"color: #33FFFF; text-decoration: none;\" onmouseover=\"this.style.color='#FF66CC';\" onmouseout=\"this.style.color='#33FFFF';\">\n            Soompi</a></p>\n      </div>",
+    "text": "2019年1月7日\n        胜利向首尔地方警察厅报名参加了义务警察选拔考试\n        详细资讯：\n            Soompi"
+  },
+  {
+    "title": "2019jan",
+    "url": "/2019jan.html#block2",
+    "html": "<div class=\"text-container\" id=\"block2\">\n        <p><strong>2019年1月13日</strong></p>\n        <p>Monkey Museum 在中国武汉正式开业</p>\n        <p>视频：<a href=\"https://weibo.com/3699928344/4328112365676141\" target=\"_blank\" style=\"color: #33FFFF; text-decoration: none;\" onmouseover=\"this.style.color='#FF66CC';\" onmouseout=\"this.style.color='#33FFFF';\">\n            SEUNGRI胜利-YG</a></p>\n      </div>",
     "text": "2019年1月13日\n        Monkey Museum 在中国武汉正式开业\n        视频：\n            SEUNGRI胜利-YG"
+  },
+  {
+    "title": "2019mar",
+    "url": "/2019mar.html#block1",
+    "html": "<div class=\"text-container\" id=\"block1\">\n        <p><strong>2019年3月22日</strong></p>\n        <p>胜利接受《朝鲜日报》的采访</p>\n      </div>",
+    "text": "2019年3月22日\n        胜利接受《朝鲜日报》的采访"
   },
   {
     "title": "2019july",
@@ -15334,6 +15346,12 @@
     "url": "/2020jan.html#block3",
     "html": "<div class=\"text-container\" id=\"block3\">\n        <p><strong>2020年1月31日</strong></p>\n        <p>Air Force 1 被 Stute 选为2019年最佳鞋款 排名第九名</p>\n        <p>详细资讯：<a href=\"https://thestute.com/2020/01/31/top-shoes-of-2019/\" target=\"_blank\" style=\"color: #33FFFF; text-decoration: none;\" onmouseover=\"this.style.color='#FF66CC';\" onmouseout=\"this.style.color='#33FFFF';\">\n            The Stute</a></p>\n      </div>",
     "text": "2020年1月31日\n        Air Force 1 被 Stute 选为2019年最佳鞋款 排名第九名\n        详细资讯：\n            The Stute"
+  },
+  {
+    "title": "2020mar",
+    "url": "/2020mar.html#block1",
+    "html": "<div class=\"text-container\" id=\"block1\">\n        <p><strong>2020年3月9日</strong></p>\n        <p>胜利入伍</p>\n      </div>",
+    "text": "2020年3月9日\n        胜利入伍"
   },
   {
     "title": "2020dec",

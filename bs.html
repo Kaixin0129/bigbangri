@@ -498,14 +498,17 @@
         <div class="filter-col">
           <button class="jump-button" onclick="filterSNS('ps')">非法拍摄</button>
           <button class="jump-button" onclick="filterSNS('myzj')">卖淫中介</button>
-          <button class="jump-button" onclick="filterSNS('db')">赌博 + 外汇</button>
-          <button class="jump-button" onclick="filterSNS('sp')">食品卫生法</button>
-          <button class="jump-button" onclick="filterSNS('ny')">挪用公款 + 贪污罪</button>
+          <button class="jump-button" onclick="filterSNS('db')">赌博 + 非法外汇</button>
+          <button class="jump-button" onclick="filterSNS('spws')">食品卫生法</button>
+          <button class="jump-button" onclick="filterSNS('ny')">贪污罪 = 挪用公款</button>
+          <button class="jump-button" onclick="filterSNS('my')">本人卖淫</button>
+          <button class="jump-button" onclick="filterSNS('wx')">教唆特殊袭击罪</button>
         </div>
         <div class="filter-col">
           <button class="jump-button" onclick="filterSNS('sr')">胜利发声</button>
-          <button class="jump-button" onclick="filterSNS('dc')">警方传唤调查</button>
-          <button class="jump-button" onclick="filterSNS('daibu')">逮捕</button>
+          <button class="jump-button" onclick="filterSNS('dc')">警方传唤</button>
+          <button class="jump-button" onclick="filterSNS('daibu')">检察阶段</button>
+          <button class="jump-button" onclick="filterSNS('sp')">审判阶段</button>
           <br/>
           <button class="jump-button" onclick="filterSNS('kk')">聊天室</button>
           <button class="jump-button" onclick="filterSNS('golf')">高尔夫球</button>
@@ -530,12 +533,69 @@
   <p>所有非法犯罪行为合并：形成了这起重大案件的丑闻</p>
   <p><span style="color: #33FFFF">主角：胜利</span>、其他人的事件会回避</p><br/>
 
+<div style="text-align: center;">
+  <div class="content-wrap">
+    <div class="text-container">
+      <p>被涉及到Burning Sun丑闻的人员：
+        <button id="expandBtn3" class="toggle-btn" onclick="toggleList(3, true)" style="margin-left:10px;">展开</button></p>
+        <ol id="celebrityList3" style="display: none;">
+<li>李胜利</li>
+<li>金尚教</li>
+<li>郑俊英、崔钟训（性侵犯）</li>
+<li>金先生、李宗泫、李弘基、龙俊亨（聊天室涉黄）</li>
+<li>刘仁硕、李文浩、李承炫（Burning Sun高层）</li>
+<li>安娜MD（提供药品）</li>
+<li>杨贤硕（掩盖丑闻）</li>
+<li>尹圭根、江南警察局多名警员、前警察总长姜信明（包庇俱乐部）</li>
+<li>Roy Kim、Eddy Kim（非法拍摄）</li>
+<li>林太佑（Yuri Holdings CEO）</li>
+<li>张雅英（林太佑妻子）</li>
+<li>金学义（Burning Sun常客）</li>
+<li>林女士（台湾投资人）</li>
+<li>朴有天（涉嫌吸毒）</li>
+<li>PSY、梁朝伟（陷入丑闻）</li>
+<li>金正恩、Kim Lim（被媒体造谣）</li>
+<li>具荷拉（被恶意谣言牵扯到偷拍群聊）</li>
+<li>李孝利（丈夫李尚顺与涉案人员有松散关系）</li>
+<li>李孝渊（在Burning Sun受邀DJ表演被恶意造谣）</li>
+<li>韩孝周（被造谣涉毒）</li>
+<li>高俊熙、朴志效（被牵连为群聊中提及的女演员）</li>
+<li>郑恩彩、金高恩、韩艺瑟（被造谣毒品相关派对）</li>
+<li>池昌旭（曾与林女士合影）</li>
+<li>强仁、郑珍云、李哲宇、ZICO（被媒体联想涉案）</li>
+<li>黄荷娜、高俊熙（聊天室）</li>
+<li>吴世勋（疑似支持胜利被恶意造谣）</li>
+<li>车太铉（牵扯到郑俊英）</li>
+<li>权赫俊（证人）<button id="collapseBtn3" class="toggle-btn" onclick="toggleList(3, false)" style="margin-left:10px;">收回</button></li>
+        </ol>
+    </div>
+  </div>
+</div><br/>
+
   <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
     <div id="bs2018-jump" style="display: flex; align-items: center; gap: 10px;">
       <a href="bs.html#bs2018" class="jump-button">2018</a>
     </div>
     <div id="bs2019-jump" style="display: flex; align-items: center; gap: 10px;">
       <a href="bs.html#bs2019" class="jump-button">2019</a>
+    </div>
+    <div id="bs2020-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="bs.html#bs2020" class="jump-button">2020</a>
+    </div>
+    <div id="bs2021-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="bs.html#bs2021" class="jump-button">2021</a>
+    </div>
+    <div id="bs2022-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="bs.html#bs2022" class="jump-button">2022</a>
+    </div>
+    <div id="bs2023-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="bs.html#bs2023" class="jump-button">2023</a>
+    </div>
+    <div id="bs2024-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="bs.html#bs2024" class="jump-button">2024</a>
+    </div>
+    <div id="bs2025-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="bs.html#bs2025" class="jump-button">2025</a>
     </div>
   </div><br/>
   <hr class="full-width-line" />
@@ -544,7 +604,7 @@
 
   <div id="bs2018" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
     <a href="bs.html#bs2018-jump" class="jump-button">2018</a>
-  </div><br/>
+  <br/></div>
 
 <div class="sns-entry" data-member="bs jsj jc">
   <div style="text-align: center;">
@@ -703,7 +763,7 @@
 
   <div id="bs2019" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
     <a href="bs.html#bs2019-jump" class="jump-button">2019</a>
-  </div><br/>
+  <br/></div>
 
 <div class="sns-entry" data-member="bs">
   <div style="text-align: center;">
@@ -2042,7 +2102,7 @@ MD 1：帮我打个本垒打</p>
       </div>
     </div>
     <p>网友辣评：他无意识地暴露了自己的人际关系<br/>现在看来，哈哈，那真是一个威胁，哈哈</p>
-  </div><br/>
+  <br/></div>
   <hr class="full-width-line">  
 </div>
 
@@ -2482,7 +2542,7 @@ MD 1：帮我打个本垒打</p>
     </div>
     <p>我微博主页有P1无水印图<span style="color: #33FFFF"> #生无可恋</span></p>
     <p>这俩图真绝了、哪家媒体拍的？出来挨夸！</p>
-  </div><br/>
+  <br/></div>
   <hr class="full-width-line">  
 </div>
 
@@ -3008,7 +3068,7 @@ MD 1：帮我打个本垒打</p>
   <hr class="full-width-line">  
 </div>
 
-<div class="sns-entry" data-member="sp">
+<div class="sns-entry" data-member="spws">
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="text-container">
@@ -3044,7 +3104,7 @@ MD 1：帮我打个本垒打</p>
   </div>
 </div>
 
-<div class="sns-entry" data-member="sp dc">
+<div class="sns-entry" data-member="spws dc ph myzj">
   <div style="text-align: center;">
     <p>#第10次传唤</p>
     <div class="content-wrap">
@@ -3056,14 +3116,9 @@ MD 1：帮我打个本垒打</p>
             Chosun</a></p>
       </div>
     </div>
-    <hr class="full-width-line" />
-  </div>
-</div>
-<div class="sns-entry" data-member="ph myzj">
-  <div style="text-align: center;">
     <div class="content-wrap">
       <div class="text-container">
-        <p>同时警方调查了胜利在菲律宾的生日派对里的两名涉嫌提供性服务的女性</p>
+        <p>同时警方调查了胜利在菲律宾生日派对里的两名涉嫌提供性服务的女性</p>
         <p style="color: #33FFFF">但警方表示：胜利他虽然在场，但并没有招揽性服务</p>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/bigbang-seungri-scandal-prostitution-club-charges-confession-testimony-police-yuri-holdings-ceo-yoo/" 
           target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
@@ -3608,7 +3663,7 @@ MD 1：帮我打个本垒打</p>
 
 <div class="sns-entry" data-member="kk dc">
   <div style="text-align: center;">
-    <p>第14次传唤</p>
+    <p>#第14次传唤</p>
     <div class="content-wrap">
       <div class="text-container">
         <p><strong>2019年4月4日</strong></p>
@@ -4056,13 +4111,14 @@ MD 1：帮我打个本垒打</p>
   </div>
 </div>
 
-<div class="sns-entry" data-member="ny">
+<div class="sns-entry" data-member="ny dc">
   <div style="text-align: center;">
+    <p>#第17次传唤</p>
     <div class="content-wrap">
       <div class="text-container">
         <p><strong>2019年5月2日</strong></p>
-        <p>首尔地方警察厅智能犯罪搜查队掌握了去年Burning Sun账户中流出的资金流入了Monkey Museum账户</p>
-        <p>挪用了Burning Sun 的 5.28亿韩元资金，并以员工律师费为名，挪用了 Yuri Holdings 公司的 2200 万韩元资金</p>
+        <p>首尔地方警察厅智能犯罪搜查队掌握了去年Burning Sun账户中流出的资金流入了Monkey Museum账户，挪用了Burning Sun的5.28亿韩元资金</p>
+        <p>并以员工律师费为名，挪用了Yuri Holdings公司的2200万韩元资金</p>
         <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-investigation-embezzlement-charge-burning-sun/" 
           target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Koreaboo</a></p>
@@ -4071,6 +4127,1568 @@ MD 1：帮我打个本垒打</p>
     <hr class="full-width-line" />
   </div>
 </div>
+
+<div class="sns-entry" data-member="daibu">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年5月8日</strong></p>
+        <p>首尔地方警察厅已正式向胜利申请逮捕令</p>
+        <p>警方以两项主要指控申请逮捕令：为外国投资者招揽性服务以及挪用Burning Sun资金</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/police-officially-request-seungris-arrest-warrant/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="my">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年5月9日</strong></p>
+        <p>胜利涉嫌自己卖淫，将妓女带到自己家</p>
+        <p>警方发现胜利三次在家中招揽妓女，其中包括一名在妓院或类似场所工作的女性</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-charged-bringing-prostitute-home/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="my">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年5月13日</strong></p>
+        <p>警方已获得财务记录和证据，证明妓女曾到胜利的家中卖淫</p>
+        <p>胜利否认：我识这名女子，而且她不是妓女</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/police-report-seungri-solicited-prostitutes-three-occasions/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF; font-size: 20px;">造 谣</span> 演都不演了</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年5月13日</strong></p>
+        <p>Newsen报道胜利曾在私人场合声称一旦赚到4000亿韩元就会退出娱乐圈</p>
+        <p>虽然这个说法尚未被证实，但Newsen怀疑他是否因为急于脱离演艺圈、想尽快赚到目标金额，而采取了一些非法或不当的手段</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/stories/seungri-newsen-friend-confession-industry-money-retirement-dreams-goals/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+<div class="sns-entry" data-member="dc daibu">
+  <div style="text-align: center;">
+    <p>#第18次传唤</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/9nJuAhHkk_c?si=VAa2UAx4cALgtrII" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2019年5月14日</strong></p>
+        <p>韩国时间上午10:30，胜利抵达首尔瑞草地方法院出席逮捕令听证会</p>
+        <p>首尔中央地方法院法官申钟烈<span style="color: #33FFFF">驳回对胜利的拘留令请求</span></p>
+        <p>逮捕令无效的理由是尚无确凿证据证明胜利挪用资金的用途以及胜利是否应对这些罪行负责</p>
+        <p>胜利罪名：提供卖淫、违反食品卫生法、传播非法视频、挪用公款</p>
+        <p>详细资讯：<a href="https://www.soompi.com/article/1324423wpp/court-dismisses-pretrial-detention-warrant-requests-for-seungri-and-yoo-in-suk" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Soompi</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider28', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider28">
+          <div class="slide-item">
+            <img src="1903148.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="190514.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1903149.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="19031410.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="19031411.png" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider28', 'next')">&#8594;</button>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>下午1:15，结束后胜利戴着手铐出来，两名警察将他护送到一辆货车上前往中浪警察署看守所</p>
+        <p>晚上10:50，胜利出狱回家</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-leaves-seoul-district-court-tied-handcuffed/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <p>够了！！我心疼 (>﹏<)</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider29', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider29">
+          <div class="slide-item">
+            <img src="1905141.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1905142.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1905143.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1905144.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1905145.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider29', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div style="text-align: center;">
+    <p style="color: #33FFFF; font-size: 20px;"><br/>到这里的第一轮闹剧结束了！接下来请收看胜利这个倒霉熊的三年</p>
+    <br/><hr class="full-width-line" />
+  </div>
+
+<div class="sns-entry" data-member="myzj">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年5月15日</strong></p>
+        <p>MBC获得了胜利的逮捕令副本</p>
+        <p>根据逮捕令，胜利被指控在2015年12月至2016年1月期间积极招揽卖淫</p>
+        <p>从2015年12月开始，胜利开始为台湾投资者安排女性招待。​​刘仁硕请来了两名女性，并向一名经纪人支付了360万韩元</p>
+        <p>几天后，9名日本投资者抵达韩国，刘仁硕再次进行招妓活动。日本投资者的3700万韩元的酒店费用由胜利用YG公司信用卡支付</p>
+        <p>警方确认共发生12起卖淫案件，共计收取43百万韩元作为服务报酬</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-yoo-arrest-warrant-reveal-details-prostitution-solicitation/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年5月15日</strong></p>
+        <p>韩国时间晚上10:30，胜利被发现在健身房锻炼</p>
+        <p>媒体辣评：胜利才被释放24小时，他就像没事人一样，好像丑闻不关他的事</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-gym-workout-less-24-hours-uncuffed/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider30', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider30">
+          <div class="slide-item">
+            <img src="190515.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1905151.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1905152.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1905153.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider30', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+<div class="sns-entry" data-member="yx">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年5月23日</strong></p>
+        <p>由于胜利和YG逃税的丑闻让YG面临财务困境</p>
+        <p>市场分析的KTB证券研究员表示：YG的股价不太可能在短期内恢复</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/yg-stock-shares-plummet-massive-shorting-seungri-scandal/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <img src="190523.jpg" style="width: 300px;">
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="my">
+  <div style="text-align: center;">
+    <p>刘仁硕你下辈子能不能对我们胜利好一点！</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年5月23日</strong></p>
+        <p>刘仁硕自爆：我于2015年12月23日雇佣了两名妓女来到胜利的公寓</p>
+        <p>他说：我打电话给这些妓女，测试她们的质量，然后在第二天雇用她们给日本商业伙伴</p>
+        <p>涉嫌妓女：我们按照老板娘给的地址去了，发现胜利和刘先生在那里。他们各自选了房间，然后我们两人一组，各自进了房间</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/yoo-insuk-seungri-slept-prostitutes-test-quality-hiring-business-partners/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="bs">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年5月25日</strong></p>
+        <p>Burning Sun改名为Label在同一街区重新营业，并提供相同的服务</p>
+        <p>Burning Sun和Arena的前员工都被发现在Label工作</p>
+        <p>MBC推测Label可能仍在进行同样的非法服务</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/new-club-label-burning-sun/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <img src="190525.jpg" style="width: 300px;">
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="bs">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年5月27日</strong></p>
+        <p>MBC《Straight》节目采访李小姐，她声称自己于2018年12月15日在Burning Sun参加派对时被胜利的泰国商业伙伴Bob下药、强奸和威胁</p>
+        <p>李小姐认为整晚的演出都与YG和胜利有关，因为当晚和Bob在一起的还有一名韩国人，他是YGX的一名董事（YGX由胜利经营）。她认为是YGX的员工允许Bob的行为，他们负责照顾泰国人，有点像礼宾员？</p>
+        <p>MBC和李小姐都表示：黄毒与胜利的多重联系过于复杂，不可能是巧合</p><br/>
+        <p>Bob在泰国新闻上否认：我与胜利没有任何关系，我根本不认识胜利</p>
+        <p>完整经过详情：<a href="https://www.koreaboo.com/news/yoo-insuk-seungri-slept-prostitutes-test-quality-hiring-business-partners/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>一名曾在江南区夜店担任未成年妓女的B揭露了Burning Sun的真实情况</p>
+        <p>未成年的妓女与一名顾客发生性关系能得到30-50万的报酬，她们会由俱乐部的MD安排，并被要求在当晚招待某位VIP。然后把她们带到办公酒店给她们下药，并拍摄自己性侵她们的过程。焚烧队则会到事后现场进行清理证据</p>
+        <p><span style="color: #33FFFF">总结：</span>Burning Sun只把贵宾的安全放在性侵犯和人身侵犯受害者之上。一旦接到贵宾强奸的举报，俱乐部优先保护顾客</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/burning-sun-underage-prostitution-vvip/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="jsj">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年6月10日</strong></p>
+        <p>金尚教：三个月以来他一直不断被警察问及自己的所作所为。他表示自己接到这些电话以及看到警车停在他家门口让他感到不安</p>
+        <p>韩国人认为警方在向金尚教施压，要求他停止针对他们的行动</p>
+        <p>详细资讯：<a href="https://www.asiae.co.kr/article/2019061114044752135&mobile=Y" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Asiae</a></p>
+      </div>
+    </div>
+    <img src="190610.jpg" style="width: 400px;">
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="yx">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年6月12日</strong></p>
+        <p>加密货币公司Nupay Korea因涉嫌诈骗被投资者起诉</p>
+        <p>2018年11月胜利与Nupay Korea签订了广告模特合同，吸引了投资者，但在Burning Sun事件爆发后，合作受阻</p>
+        <p>Nupay曾要求YG退还已支付的模特费，但双方仅部分达成协议</p>
+        <p>尽管合约未正式生效，Nupay仍继续以胜利与YG的名义募资，最终引发投资者诉讼</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-cryptocurrency-company-nupay-model-lawsuit-fraud/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="yx">
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@TayToe 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=50443027&bvid=BV1F4411h7g9&cid=88306532&p=8" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2019年6月24日</strong></p>
+        <p>YG战姿又被网友拉出来批评：剧情存在卖淫行为，应不容轻视</p>
+        <ul>
+          <li>09:58 胜利与外国投资者见面，她要求和模特拍色情直播，模特拒绝，但胜利说她是上司应该服从</li>
+        </ul><br/>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungris-encounter-model-yg-future-strategy-office-resurfaces/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年6月25日</strong></p>
+        <p>韩国时间下午6点，胜利出现在论岘洞的一家水疗中心</p>
+        <p>媒体辣评：当天正在进行案件移交检察机关，胜利则在享受</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-spa-case-forwarded-prosecution/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider31', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider31">
+          <div class="slide-item">
+            <img src="190625.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1906251.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider31', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年7月1日</strong></p>
+        <p>首尔警察厅网络犯罪调查科警司郭正基宣布辞职</p>
+        <p>他被怀疑是Burning Sun与警方勾结的问题才辞职</p>
+        <p>郭正基与《首尔新闻》的电话交谈回应：16年的警察生涯，我从未真正放松过，所以我计划开启人生的第二篇章。在处理Burning Sun/Arena案期间，我连续三个月夜以继日地工作，没有周末休息，甚至把工作带回家。我的家人鼓励我（辞职），我也觉得必须抓紧时间开始新的工作。我并不是因为Burning Sun与警方勾结的问题才辞职的，但也不能说它没有影响。我接到了很多周围人的电话，他们对（举报人的）片面说法表示担忧</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/police-officer-charge-burning-sun-scandal-announces-resignation/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+<div class="sns-entry" data-member="bs ps">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/TXtjtikUykY?si=icoFksn_4B928qPQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2019年7月10日</strong></p>
+        <p>警察厅警长闵甲龙表示：我们通过视频中VIP室的客人和俱乐部工作人员的身份进行了调查，但还未能确认是否存在性侵或吸毒行为</p>
+        <p style="color: #33FFFF">但是最终我们逮捕了42名非法拍摄浴室性行为并发布到海外网站的嫌疑人，并拘留了其中3人</p>
+        <p>详细资讯：<a href="https://m.news.nate.com/view/20190710n42280" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Nate</a></p>
+      </div>
+    </div>
+    <p>一些所谓的澄清图片，是掐头去尾，没有观看完整版.....</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider34', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider34">
+          <div class="slide-item">
+            <img src="190710.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1907101.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider34', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="yx">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年7月27日</strong></p>
+        <p>在韩国首尔举行的集会上，女权主义者高呼口号举着“韩国从上到下就是强奸集团”的标语</p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider32', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider32">
+          <div class="slide-item">
+            <img src="190727.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1907271.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1907272.png" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider32', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="dc db">
+  <div style="text-align: center;">
+    <p>#第19次传唤</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/-g0qp2r4hVE?si=zlQBrdx0zr1Obb6z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2019年8月27日</strong></p>
+        <p>韩国时间上午9:56，胜利抵达首尔警察局</p>
+        <p>胜利被指控在外国赌博并违反韩国法律获取资金</p>
+        <p style="color: #33FFFF">他承认非法赌博，但否认向政府隐瞒海外交易的指控</p>
+        <p>审讯长达约12小时，晚上10:20左右被释放</p>
+        <p>详细资讯：<a href="https://www.allkpop.com/article/2019/08/seungri-attends-police-summons-looking-haggard-states-hell-diligently-undergo-investigation" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Allkpop</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider33', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider33">
+          <div class="slide-item">
+            <img src="190828.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="190828.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1908281.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1908282.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1908283.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1908281.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1908282.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1908283.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1908284.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1908285.png" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider33', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="yx">
+  <div style="text-align: center;">
+    <p>没错就是被全球人鄙视那个以Burning Sun事件“真事改编”的电影</p>
+    <p>这个电影还拿过很多大奖哦😜</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年9月25日</strong></p>
+        <p>电影《量子物理学：夜生活冒险》上映</p>
+        <p style="color: #33FFFF">什么叫“一语成谶”？我想这就是答案</p>
+        <p>2018年7月30日（袭击事件前）曾租用了Burning Sun的场地，并已拍摄了大部分场景</p>
+        <p>网友都在猜测这部电影似乎是在模仿胜利的Burning Sun丑闻，甚至大声在江南的一栋建筑也是拍摄地</p>
+        <p>电影相关人士<span style="color: #33FFFF">辟谣：</span>我们在丑闻爆发之前在Burning Sun拍摄的。直到今年年初丑闻爆发，我们才知道拍摄期间这家夜店发生了一些不愉快的事情。也借鉴了德克·金特利的《整体侦探社》的故事</p>
+        <p>详细资讯：<a href="https://www.allkpop.com/article/2019/07/quantum-physics-a-movie-about-celebrity-drug-scandals-filmed-at-club-burning-sun-to-air-in-september" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Allkpop</a></p>
+      </div>
+    </div>
+  </div>
+  <p>请大家理性观看此电影！求不要代入李胜利</p>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://geo.dailymotion.com/player.html?video=x8ik4cc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>完整电影</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113219330901847&bvid=BV1zDxregEzZ&cid=26056984395&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>电影解说</p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="yx">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年10月10日</strong></p>
+        <p>YG向LVMH返还647亿韩元</p>
+        <p>2014年10月15日，LVMH投资了YG的可赎回可转换优先股（RCPS）</p>
+        <p>投资时，LVMH设定了五年后以每股43574韩元的价格转换为普通股或偿还670亿韩元的选项（包括年利率2%的利息）</p>
+        <p>如果YG的股价高于每股43574韩元，LVMH就能通过将其股票转换为普通股获利。但是由于Burning Sun丑闻，股价持续下跌至每股23550韩元</p>
+        <p>所以，LVMH选择要YG偿还670亿韩元</p>
+        <p>详细资讯：<a href="https://www.soompi.com/article/1358066wpp/yg-entertainment-to-pay-lvmh-over-64-billion-won-following-investment-maturity-date" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Soompi</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="kk">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年12月3日</strong></p>
+        <p>郑俊英判决文件</p>
+        <p>其中包含他被起诉的聊天记录的详细信息</p>
+        <p>胜利名字只被提及一次</p>
+        <p>详细资讯：<a href="https://x.com/BB_VIP5ever95/status/1201894283927678976?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1201894283927678976%7Ctwgr%5E1cb796d21cf1ff2257363a7c48212a7431e27dde%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fwww.koreaboo.com%2Fnews%2Fapologize-seungri-hashtag-worldwide-trending%2F" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            X</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider35', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider35">
+          <div class="slide-item">
+            <img src="1912032.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="1912031.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider35', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div style="text-align: center;">
+    <p>最难绷的是许多韩媒嘲讽此举</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年12月3日</strong></p>
+        <p>国外的莉粉在推特上发带有 #ApologizeToSeungri</p>
+        <p>粉丝们要求记者和媒体向胜利道歉：“胜利是无辜的，他是被陷害的”</p>
+        <p>如今已有超过5万以上的贴文</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/apologize-seungri-hashtag-worldwide-trending/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <img src="191203.jpg" style="height: 200px;">
+    <hr class="full-width-line" />
+  </div>
+
+<div class="sns-entry" data-member="yx">
+  <div style="text-align: center;">
+    <p>不要再乱传胜利登顶2019年热搜榜了！</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年12月11日</strong></p>
+        <p>韩国年度热搜榜</p>
+        <p>人物：郑俊英排名第一（谷歌）排名第三（Naver）<br/>胜利甚至没有上榜前十</p>
+        <p>社会新闻：Burning Sun排名第三</p>
+        <p>详细资讯：<a href="https://trends.withgoogle.com/year-in-search/2019/kr/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Google</a> - 
+            <a href="https://www.civicnews.com/news/articleView.html?idxno=27146" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Civic News</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider36', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider36">
+          <div class="slide-item">
+            <img src="191211.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1912111.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="1912112.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider36', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div id="bs2020" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="bs.html#bs2020-jump" class="jump-button">2020</a>
+  <br/></div>
+
+<div class="sns-entry" data-member="dc daibu">
+  <div style="text-align: center;">
+    <p>#第20次传唤</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年1月13日</strong></p>
+        <p>胜利抵达首尔警察局</p>
+        <p>此次庭审旨在决定是否对胜利发出逮捕令，8项罪名包括：本人卖淫、卖淫中介、习惯性赌博、非法外汇交易、违反食品卫生法、非法拍摄、挪用公款、贪污罪</p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider38', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider38">
+          <div class="slide-item">
+            <img src="200113.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="2001131.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="2001132.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="2001133.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="2001134.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="2001135.png" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider38', 'next')">&#8594;</button>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="https://drive.google.com/file/d/1v9y3P6eheOJw43IlEcaJggGyycIKfAF6/preview" width="100%" height="480" allow="autoplay" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p>胜利没有哭！他只是抹脸而已啦</p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider37', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider37">
+          <div class="slide-item">
+            <img src="200113.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="2001131.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider37', 'next')">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="daibu">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年1月30日</strong></p>
+        <p>胜利以8项罪名：贪污罪、挪用公款、违反《食品卫生法》、非法拍摄、卖淫中介、习惯性赌博、违反《外汇交易法》、本人卖淫，<span style="color: #33FFFF">被不予拘留起诉</span></p>
+        <p>详细资讯：<a href="https://www.billboard.com/pro/seungri-indicted-prostitution-charges/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Billboard</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="daibu">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年5月15日</strong></p>
+        <p>首尔中央地方法院第26刑事部决定将胜利案件移交给军事法院管辖</p>
+        <p>详细资讯：<a href="https://www.newsen.com/news_view.php?uid=202005190853560410" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Newsen</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp">
+  <div style="text-align: center;">
+    <p>#第1次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年9月16日</strong></p>
+        <p>胜利在龙仁市军事法院接受了首次审判</p>
+        <p>胜利被指八项罪名：本人卖淫、招妓、习惯性赌博、非法外汇交易、贪污罪、违反食品卫生法、非法拍摄、挪用公款</p>
+        <p>胜利否认了八项刑事指控中的七项，仅承认了非法外汇交易的指控</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-bigbang-trial-embezzlement-charges-court-prostitution/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a> - 
+        <a href="https://www.allkpop.com/article/2020/09/seungri-denies-7-out-of-8-criminal-charges-including-soliciting-prostitution-illegal-gambling-etc-during-first-military-court-hearing" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Allkpop</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp">
+  <div style="text-align: center;">
+    <p>#第2次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年10月14日</strong></p>
+        <p>胜利否认所有拍摄等其他指控</p>
+        <p>胜利解释拍摄指控：照片是新加坡酒吧的一名员工通过微信发给他的。但他承认这张照片后来发送到了郑俊英和金仁哲的聊天室</p>
+        <p>于2020年11月12日起每周进行审理</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/bigbang-seungri-trial-denies-charges-made-illegal-filming-witnesses/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp my ps">
+  <div style="text-align: center;">
+    <p>#第3次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年11月19日</strong></p>
+        <p>胜利的多年好友、Club Arena前总经理金某在服刑期间作为证人出庭</p>
+        <p>他表示：我从未见过胜利与妓女发生性关系，也从未见过他非法拍摄任何东西</p>
+        <p>于2020年11月12日起每周进行审理</p>
+        <p>详细资讯：<a href="https://m.entertain.naver.com/home/article/108/0002911078" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Naver</a></p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>郑俊英和刘仁硕作为证人拒绝出席胜利的审判</p>
+        <p>司法部透露无法出庭的理由：郑俊英因身心俱疲导致健康状况恶化、刘仁硕即将宣判及其他个人原因</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/jung-joon-young-seungri-trial-miss-health/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp myzj">
+  <div style="text-align: center;">
+    <p>#第4次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年12月9日</strong></p>
+        <p>胜利交往10年的好友A某出庭作证</p>
+        <p>A某承认自己引导妓女为日本投资者服务，但<span style="color: #33FFFF">否认胜利参与其中，并表示是刘仁硕的指示</span></p>
+        <p>详细资讯：<a href="https://www.starnewskorea.com/music/2020/12/09/2020120918341930624" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            StarNews Korea</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp myzj">
+  <div style="text-align: center;">
+    <p>#第5次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年12月29日</strong></p>
+        <p>作为证人出庭的Burning Sun群聊成员朴某作证</p>
+        <p>他表示外国商人<span style="color: #33FFFF">提供性服务的指令是刘仁硕，而不是胜利</span>。是刘仁硕下令将女性送往日本商人A某团伙（从事卖淫活动），他从未与胜利谈论过卖淫事宜</p>
+        <p>详细资讯：<a href="https://www.mk.co.kr/news/hot-issues/9670579" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            MK</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div id="bs2021" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="bs.html#bs2021-jump" class="jump-button">2021</a>
+  <br/></div>
+
+<div class="sns-entry" data-member="sp db">
+  <div style="text-align: center;">
+    <p>#第6次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年1月7日</strong></p>
+        <p>就上次的开庭对证人进行延续讯问</p>
+        <p>胜利仍然保持立场，否认8项罪名，仅承认违反《外汇交易法》</p>
+        <p>详细资讯：<a href="https://www.mk.co.kr/news/hot-issues/9670579" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            MK</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="jsj">
+  <div style="text-align: center;">
+    <p>金尚教性骚扰事件因证据不足，没有被判刑</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年1月13日</strong></p>
+        <p>金尚教在Instagram发文，疑似挑衅胜利</p>
+        <p>光州的儿子，胜利。我等着你退伍。我的笔记本里有你们所有人的名单。除非你想让我一一揭晓，否则我就等着你的道歉和请求原谅。这是你的选择。青瓦台接受的所有训练都用在了你们这些Burning Sun人身上。#howdareyourunawaylikelittleras #ifyoustarteditletsfinishit</p>
+        <p>详细资讯：<a href="https://www.reddit.com/r/kpop/comments/kwugsm/burning_sun_whistleblower_criticises_snsds/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Reddit</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp myzj">
+  <div style="text-align: center;">
+    <p>#第7次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年1月14日</strong></p>
+        <p>胜利涉嫌安排卖淫一事对证人进行讯问</p>
+        <p>胜利坚称他不知道刘仁硕的参与，也没有理由安排卖淫</p>
+        <p>详细资讯：<a href="https://www.chosun.com/entertainments/entertain_photo/2021/01/14/CVFBATF6JPAKNYOL6H6AKO2SMM/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Chosun</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="wx">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年1月16日</strong></p>
+        <p>记者金永浩透露：胜利在2015年12月30日利用帮派成员威胁一名误闯入胜利的酒吧房间的人，他是JYP的员工</p>
+        <p>起因是因为胜利差点被那名JYP员工撞到，他比胜利高大，胜利以为他瞧不起自己于是发短信向刘仁硕等所在的群聊室召唤帮派成员。刘仁硕随后将帮派成员叫到酒吧后巷，对那名JYP员工进行谩骂和威胁</p>
+        <p>更多细节：<a href="https://www.koreaboo.com/news/reporter-claims-seungri-threatened-jyp-entertainment-employee-gang-members-jy-park-involvement/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp">
+  <div style="text-align: center;">
+    <p>#第8次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年1月28日</strong></p>
+        <p>非公开庭审</p>
+        <p>未有庭审的更多详情</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp">
+  <div style="text-align: center;">
+    <p>#第9次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年2月5日</strong></p>
+        <p>非公开庭审</p>
+        <p>未有庭审的更多详情</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp wx">
+  <div style="text-align: center;">
+    <p>#第10次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年2月19日</strong></p>
+        <p>关于胜利召唤黑帮成员威胁他人的证据审查</p>
+        <p>军事检察机关出示了胜利一行人到访的酒吧内外闭路电视录像作为证据</p>
+        <p>胜利拒绝接受检方提供的大量证据，并否认教唆特殊袭击的嫌疑</p><br/>
+        <p>此次庭审后增加了一项新罪名：教唆特殊袭击罪，共有9项罪名</p>
+        <p>更多细节：<a href="https://enews.imbc.com/News/RetrieveNewsInfo/306775" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            iMBC</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp myzj wx">
+  <div style="text-align: center;">
+    <p>#第11次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年2月26日</strong></p>
+        <p>郑俊英作为证人出庭</p>
+        <p>他承认是通过胜利认识刘仁硕，也知道刘仁硕提供卖淫服务，而不是胜利</p>
+        <p>对于胜利被指控教唆特殊袭击，郑俊英表示：“具体情况我不清楚。”在观看监控录像时，他说：“我记得在停车场听到过脏话”，但在回答其他问题时却说：“我对此不太了解。”</p>
+        <p>胜利方面坚称：他们并非黑社会成员，而是一直负责保护艺人的人员，是受胜利以外人士的邀请而来，与胜利没有任何关系</p>
+        <p>详细资讯：<a href="https://www.seoul.co.kr/news/society/2021/02/26/20210226500196" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Seoul</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp spwx">
+  <div style="text-align: center;">
+    <p>#第12次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年3月11日</strong></p>
+        <p>将就《违反特别经济法》及食品卫生等罪名对证人进行讯问</p>
+        <p>详细资讯：<a href="https://www.mbn.co.kr/news/society/4445657" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            MBN</a></p>
+      </div>
+    </div>
+    <p style="color: #33FFFF">科普：</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>胜利案件中的挪用公款升级为《特定经济犯罪加重处罚法》</p>
+        <p>这不是一种罪名，而是一个加强惩罚的特别法律</p>
+        <p>因为胜利触及的金额（超过5亿韩元）特别大、影响严重，所以就会用《特定经济犯罪加重处罚法》来加重刑罚</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp myzj ny">
+  <div style="text-align: center;">
+    <p>#第13次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年3月25日</strong></p>
+        <p>C女士就2015年12月24日前后发生的为日本投资者提供性服务一事作证</p>
+        <p>她否认胜利与她有牵连，并称警方捏造了她的陈述</p>
+        <p>胜利的律师表示：很多证人不断反映警方的讯问记录与自己的实际证言存在差异。在调查期间，双方就调动检警双方的调查权进行了讨论。国会和青瓦台必须彻底调查Burning Sun案并予以处罚，所以警方应该有一个结果。但实际上，对胜利的拘留令两次被驳回，警方需要有一个结果。似乎这就是为什么调查过程中的压力比必要的压力更大，并被指控了过多的指控/罪名。我们有几位证人，但他们都可能撒谎吗？我似乎有理由告诉法庭，警方的询问记录与实际陈述不符</p>
+        <p>C女士证词的细节详情：<a href="https://www.koreaboo.com/news/witness-denies-bigbang-seungri-involvement-police-allegedly-fabricated-statement/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp">
+  <div style="text-align: center;">
+    <p>#第14次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年4月2日</strong></p>
+        <p>因涉嫌违反特别经济法（挪用公款）而出庭作证的A某声称：自己在Monkey Museum只是一名员工，实际代表是李文浩。后来他接手Monkey娱乐，是因为认为可以通过削减开支来经营，并得到了Yuri控股和胜利在租约和押金上的帮助。他强调自己的财务与Yuri控股是独立的。然而警方认为胜利挪用了Yuri Holdings的资金，并根据《特定犯罪处罚特别法》指控胜利犯有挪用公款罪。因为这些资金被用于向A先生提供Monkey Museum的创立资金和租赁押金</p>
+        <p>详细资讯：<a href="https://www.chosun.com/entertainments/entertain_photo/2021/04/02/53F3WAXCKNEK7XKRVGKI34RZPA/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Chosun</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp wx">
+  <div style="text-align: center;">
+    <p>#第15次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年4月16日</strong></p>
+        <p>胜利承认与JYP员工有争执，但否认了召唤黑帮成员并威胁的指控</p>
+        <p>JYP员工承认：我当时在找一起去的熟人，但打开了胜利房间的门。胜利一脸嫌弃地问：‘干嘛瞪我？’。我就训斥了他，确实是我先挑起的争执。当时胜利戴着帽子，所以我一开始没认出他。他一直低着头，我就说：‘不行，那样不行’、‘你得挨打’，他才抬起头，我这才知道是胜利。之后我们互相道了歉，握手拥抱和好了。后来我在房间外面与熟人通话时，被歹徒拖进了小巷</p>
+        <p>胜利表示他完全不知道现场有犯罪组织成员，并坚称自己没有参与有组织犯罪</p>
+        <p>更多细节详情：<a href="https://www.mk.co.kr/news/hot-issues/9835065" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            MK</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp wx">
+  <div style="text-align: center;">
+    <p>#第16次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年4月29日</strong></p>
+        <p>崔钟训作为胜利涉嫌教唆特殊袭击出庭作证</p>
+        <p>崔钟训表示：时间太久了，记不清细节了，我记得刘仁硕和胜利说要打电话给某人。胜利确实打电话给了A（熟人）。当时我以为A打电话给了B（黑帮）。但在接受调查的过程中，我发现事实并非如此。我以为B和A（胜利打电话的人）是一伙的，结果发现他们是不同的人。当时在酒会上发生了争执，胜利很生气，但我当时只想着趁事情还没恶化赶紧离开。A到达后，我和胜利、郑俊英一起离开了现场，所以之后在酒馆外面发生了什么我并不知道。我当时并不知道那里真的有黑帮。如果他们打电话过来，我肯定会记得，但我只是把它当成酒会事件，所以什么记忆都没有</p>
+        <p>律师：你认为明星会有动机叫黑帮来解决问题吗？<br/>
+崔钟训：我认为没有<br/>
+律师：被告（胜利）曾经叫黑帮来解决问题吗？<br/>
+崔钟训：一次也没有</p>
+        <p>详细资讯：<a href="https://news.nate.com/view/20210429n28949" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Nate</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp myzj wx">
+  <div style="text-align: center;">
+    <p>#第17次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年5月7日</strong></p>
+        <p>三名证人出庭接受军事检察官、律师和法官的讯问关于胜利卖淫中介和特殊袭击教唆罪</p>
+        <p>详细资讯：<a href="https://isplus.com/article/view/isp202105070068" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            isplus</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp db">
+  <div style="text-align: center;">
+    <p>#第18次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年5月13日</strong></p>
+        <p>胜利仍然保持立场，否认8项罪名，仅承认违反《外汇交易法》</p>
+        <p>详细资讯：<a href="https://www.starnewskorea.com/music/2021/05/08/2021050712332146086" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            StarNews Korea</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp">
+  <div style="text-align: center;">
+    <p>#第19次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年5月17日</strong></p>
+        <p>一些胜利的证人由于种种原因未能出庭</p>
+        <p>考虑到被告人（胜利）的讯问和量刑等剩余程序，庭审预计将持续到6月就结案</p>
+        <p>详细资讯：<a href="https://www.mk.co.kr/news/hot-issues/9874736" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            MK</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp myzj wx">
+  <div style="text-align: center;">
+    <p>#第20次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年5月20日</strong></p>
+        <p>崔钟训就卖淫中介罪和特殊袭击罪的指控继续进行证人审查</p>
+        <p>详细资讯：<a href="https://v.daum.net/v/20210508080003761" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Daum</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp myzj wx">
+  <div style="text-align: center;">
+    <p>#第21次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年5月25日</strong></p>
+        <p>Yuri Holdings会计职员A某作为证人出庭，就挪用公款的嫌疑继续接受讯问</p>
+        <p>详细资讯：<a href="https://news.nate.com/view/20210525n35281" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Nate</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp myzj wx">
+  <div style="text-align: center;">
+    <p>#第22次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年6月4日</strong></p>
+        <p>刘仁硕原定作为证人再次出庭，但最终未能出庭（第二次缺席）</p>
+        <p>大多数出席胜利庭审的证人都表示，卖淫安排是“在刘仁硕的指示下进行的”，教唆特殊袭击的指控也揭示了刘仁硕深度参与组织犯罪，而非胜利</p>
+        <p>当所有人的目光都集中在刘仁硕作为证人会作何证词，但他最终没有出庭。刘仁硕表示：我与胜利共同受审的教唆特殊袭击罪而出庭，但我感到出庭负担沉重，所以我决定缺席为胜利做证人</p>
+        <p>详细资讯：<a href="https://news.nate.com/view/20210604n11170" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Nate</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp">
+  <div style="text-align: center;">
+    <p>#第23次庭审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年6月9日</strong></p>
+        <p>法院曾三次要求刘仁硕出庭作证，但刘仁硕当天都未能出庭</p>
+        <p>刘仁硕在庭审前提交给法院的理由书中表示除了重要的工作原因外，出庭作证会给他带来负担</p>
+        <p>法庭将他视为就胜利面临的多项指控作证的关键证人，法院最终采纳了警方和检察机关对刘仁硕的调查记录作为相关证据</p>
+        <p>详细资讯：<a href="https://www.mk.co.kr/news/hot-issues/9905741" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            MK</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp sr kk my myzj">
+  <div style="text-align: center;">
+    <p>#第24次庭审（长达17小时审讯）</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年6月30日</strong></p>
+        <p>胜利否认一系列指控</p><br/>
+        <p>胜利声称在法庭上提交的其中一条有罪的KakaoTalk通讯信息中出现了拼写错误：“女孩？找那些付出多的女孩”</p>
+        <p>胜利否认卖淫指控：我之前不知道，只是在调查过程中才发现的。这些信息是7年前发的，我记得当时发的信息是“和玩得好的人一起去”。我猜是因为iPhone的自动更正功能，把信息写成了“和善于付出的人一起去”。虽然很抱歉，但我记得的就是这样</p>
+        <p>胜利否认雇用妓女接待日本商人：临近年底的生日，为了回报青山浩二夫妇等各国朋友的祝福，我特意安排了一场盛大的圣诞派对，邀请了多位外国朋友。由于我忙着照顾自己的朋友，所以在调查过程中才得知他们竟然叫来了女孩子</p>
+        <p>胜利否认自己知晓刘仁硕的卖淫行为</p>
+        <p>胜利否认自己在家中提供卖淫服务：我的父母和妹妹就住在我隔壁。他们知道我的密码，经常来访。由于我无法知道他们什么时候来访，所以我不可能在家里提供卖淫服务。而且当时我正忙于宣传工作，我既没有能力花钱雇人和我发生这种关系，也没有必要这么做</p>
+        <p>胜利声称他无法查看郑俊英聊天室里发给他的每条消息：那个KakaoTalk聊天室的内容并非我的全部生活。我加入了10多个群聊，除此之外，我还运营着大约5个其他社交媒体。短短一个多小时，我收到了500多条消息。我无法仅仅因为收到了那条消息就逐一查看并确认。而且，那个KakaoTalk聊天室是朋友聚会的地方，所以发生了一些不雅的言语交流。我并不知道这些内容会被公开。我向公众道歉</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/bigbang-seungri-text-message-burningsun-trial/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp sr ps">
+  <div style="text-align: center;">
+    <p>#第25次庭审（长达17小时审讯）</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年7月1日</strong></p>
+        <p>胜利创下了在韩国连续两天接受长达17小时审讯的记录<br/>（这是什么很好的记录吗..）</p><br/>
+        <p style="color: #33FFFF">军事检察机关以卖淫罪名请求判处胜利5年监禁</p>
+        <p>胜利否认了使用摄像机拍摄性侵犯或卖淫行为的指控：虽然他们确实分享了来自广告信息的照片，但并没有亲自拍摄任何内容。虽然郑俊英和崔钟训承认分享此类照片，违反了信息通信法并被判有罪，但胜利与此事完全无关</p>
+        <p>对于逃往军队的指控，胜利表示：据说我逃入了军队，但因为需要协助调查，我申请了延长服役期限。即使在入伍前一周，我也接受了警方的调查。我是一个想要证明自己清白的人</p><br/>
+        <p>军事检察官表示：这些犯罪行为持续了数年，他利用韩国女性提供性服务，并通过赌博维持友谊，以谋取私利。他的罪行性质严重，包括卖淫和习惯性赌博。这源于他扭曲的成年人观。胜利从这些犯罪中获益，但他拒绝承认，声称是涉案人员所为</p>
+        <p>军事检察官意思就是让胜利快点认罪🤷‍♀️</p><br/>
+        <p>胜利在最后的辩论中<span style="color: #33FFFF">落泪</span>，说：我保证重生。我向曾经的同事、曾经的经纪公司以及因为我而经历过艰难时期的家人道歉</p>
+        <p>详细资讯：<a href="https://news.nate.com/view/20210701n41145" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Nate</a> - 
+        <a href="https://www.koreaboo.com/news/seungri-charges-prostitution-jailtime-burning-sun/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp">
+  <div style="text-align: center;">
+    <p>#一审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年8月12日</strong></p>
+        <p>龙仁军事法院对胜利进行了庭审：他被控犯有9项罪名。尽管胜利一直否认大部分指控，但检察机关和警方调查认定，由于他不断推翻供述，其供述中缺乏前后矛盾和说服力</p>
+        <p>最终胜利在当天的上诉量刑听证会上，胜利<span style="color: #33FFFF">承认9项罪名指控</span>，并表示悔意</p>
+        <p>上诉考虑到胜利有悔意，也考虑到胜利没有前科，且是最大股东先要求分红，导致其他股东也分红，所以将他的刑期减半</p><br/>
+        <p>一审中，胜利被判处3年有期徒刑，并被处以总计11亿韩元的罚款</p>
+        <p>胜利现已被依法拘留，被转移到第55师宪兵营</p>
+        <p>根据兵役法第137条规定，现役军人被判处一年半以上有期徒刑的，应当转为战时劳动</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-former-bigbang-prison-sentence/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            1</a> - 
+        <a href="https://www.koreaboo.com/news/bigbang-seungri-court-case-sentence-details/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            2</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年8月19日</strong></p>
+        <p>胜利本人和军检察官都向大法院提起上诉</p>
+        <p>该案已移交军事高等法院进行二审，具体日期尚未确定</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungris-military-discharge-currently-delayed-due-burning-sun-trials/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="bs2022" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="bs.html#bs2022-jump" class="jump-button">2022</a>
+  <br/></div>
+
+<div class="sns-entry" data-member="sp db">
+  <div style="text-align: center;">
+    <p>#二审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2022年1月27日</strong></p>
+        <p>国防部高等军事法院推翻了7项罪名（本人卖淫、招妓、贪污罪、违反食品卫生法、非法拍摄、挪用公款、教唆特殊袭击罪），受审的胜利3年有期徒刑、11.569亿韩元罚金的原判</p>
+        <p style="color: #33FFFF">除了习惯性赌博、非法外汇交易罪，其余的罪名一律不成立</p>
+        <p>二审中，胜利被判处1年6个月有期徒刑</p>
+        <p>详细资讯：<a href="https://www.chosun.com/national/court_law/2022/01/27/S25ZDHQQI5B3ZNBGK2ND53BGHE/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Chosun</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sp db">
+  <div style="text-align: center;">
+    <p>#终审</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2022年5月26日</strong></p>
+        <p>最高法院认为二审的判决没有法律错误，一致习惯性赌博和非法外汇交易都有罪</p>
+        <p><span style="color: #33FFFF">最终维持原判</span>（除了习惯性赌博、非法外汇交易罪，其余的罪名一律不成立）</p>
+        <p>判决书：<a href="https://www.scourt.go.kr/portal/news/NewsViewAction.work?gubun=2&pageIndex=1&searchOption=&searchWord=&seqnum=4523" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Scourt PDF</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide('slider39', 'prev')">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider" id="slider39">
+          <div class="slide-item">
+            <img src="220526.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="2205261.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="2205262.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide('slider39', 'next')">&#8594;</button>
+    </div>
+    <p>判决书第二页的大致翻译：</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>检察官主张：应当没收或追缴胜利在国外赌场使用的筹码（视为外汇）</p>
+        <p>但大法院认定：赌场筹码不是外汇交易法第30条所规定的没收或追缴对象，所以不追缴筹码金额</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2022年12月13日</strong></p>
+        <p>在临时服兵役之前，胜利已经服完了1.5年的部分刑期（2022年6月临时服兵役被暂停，以便他能够完成服刑期）</p>
+        <p>因此他只剩下8个月的刑期要服完，因此他将于2023年2月11日获释</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-netizens-stunned-realize-released-prison-months-now/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="bs2023" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="bs.html#bs2023-jump" class="jump-button">2023</a>
+  <br/></div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2023年2月9日</strong></p>
+        <p>胜利提前两天从骊州惩教所获释（原定2023年2月11日）</p>
+        <p>媒体似乎对发布日期进行了误导性报道，这可能是为了避免人群聚集和关注而故意为之</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-upcoming-release-prison-sparks-negative-reaction-netizens/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+  
+  <div id="bs2024" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="bs.html#bs2024-jump" class="jump-button">2024</a>
+  <br/></div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2024年1月22日</strong></p>
+        <p>胜利提前两天从骊州惩教所获释（原定2023年2月11日）</p>
+        <p>媒体似乎对发布日期进行了误导性报道，这可能是为了避免人群聚集和关注而故意为之</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-upcoming-release-prison-sparks-negative-reaction-netizens/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="color: #33FFFF; font-size: 20px;"><br/>！全世界的黑稿即将吻上来 ！</p>
+    <p>媒体报道胜利一天内就可以突破1万+浏览</p>
+    <p>玻璃心的莉粉真的建议别往后看了 :( 全是负面评论</p>
+    <br/><hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2024年1月22日</strong></p>
+        <p>胜利在柬埔寨Prince Brewing举办了一场生日活动</p>
+        <p>胜利喝醉了在现场口出狂言，并承诺将GD带来柬埔寨</p>
+        <p>莉粉对胜利的公开亮相都感到兴奋；<span style="color: #33FFFF">但韩国网民却不这么认为</span>，甚至对他出狱感到震惊</p>
+        <p>评论区锐评：<a href="https://www.koreaboo.com/news/seungri-crowded-cambodia-fanmeet-fans-bring-bigbang-gdragon/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/9EEp1q_iMYc?si=hnJHqKd5_8YQx6xv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2024年5月19日</strong></p>
+        <p>BBC发布了一部关于Burning Sun的伪纪录片</p>
+        <p>详细资讯：<a href="https://www.bbc.co.uk/mediacentre/2024/bbc-eye-burning-sun-women-who-exposed-secret-kpop-chatgroups" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBC</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2024年5月22日</strong></p>
+        <p>自从BBC纪录片发布后，全世界都在传 “胜利拖拽一名女性实施侵犯”</p>
+        <p>这些丑闻视频都是被BBC重新报道出来的.. :)</p>
+        <p>详细资讯：<a href="https://www.bbc.co.uk/mediacentre/2024/bbc-eye-burning-sun-women-who-exposed-secret-kpop-chatgroups" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBC</a></p>
+      </div>
+    </div>
+    <img src="240522.gif" style="width: 500px;">
+  </div>
+  <div style="text-align: center;">
+    <p>还有YG战姿，胜利与Blackpink一同演的情景剧</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=33390644&bvid=BV1AW41117N7&cid=58448634&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p>17:32 情景剧！！！不明白这个意思吗？</p>
+      </div>
+    </div>
+    <p><br/>真的不夸张，外网全部人都在说胜利“本性出演”</p><br/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>删除的不是关于李胜利的丑闻！！</p>
+    <p>也不是向李胜利道歉、求大家看清</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2024年5月22日</strong></p>
+        <p>BBC纪录片中有片段称“KBS律师联系并向郑俊英事件受害者施压”的内容</p>
+        <p>BBC承认该片段为虚假信息，向KBS正式道歉并删除该片段</p>
+        <p>详细资讯：<a href="https://mylovekbs.kbs.co.kr/index.html?source=mylovekbs&sname=mylovekbs&stype=magazine&contents_id=70000000401566" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            KBS</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>非常想吐槽：这位小姐很像在为了流量炒作</p>
+    <p>她到现在也还没删除喔~</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2024年5月22日</strong></p>
+        <p>香港网友爆料胜利似乎仍在寻求建立一家新的夜店</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-allegedly-new-nightclub-burning-sun/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p><br/>
+        <p>这家伙真是命大得很（怎么都倒不了），前阵子在香港的 Creamfields 音乐节，有朋友在那里工作看到他🙂<br/>
+又听一些在夜场（夜店）工作的朋友说，他现在定居在香港，还在那边做生意，在尖沙咀尖东那一带🙂<br/>
+你能不能不要来香港混饭吃🙂<br/>
+在香港碰到他的人，麻烦帮我问他一句：<br/>
+「你什么时候死？？？？」<br/>
+大家要先做好心理准备再去看（BBC纪录片）</p>
+      </div>
+    </div>
+    <img src="2405221.png" style="width: 350px;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>是的，他一直在和酒类经销商和俱乐部的老板们交往<br/>看起来是生意上的<br/>有很多整容过的女人和拜金女跟他搭讪</p>
+      </div>
+    </div>
+    <img src="2405222.webp" style="width: 500px;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>她帖子的留言区惨不忍睹，真的很难不怀疑是带节奏</p>
+        <p>详细资讯：<a href="https://www.threads.com/@sophiee1116/post/C7N4eRAyPcR?xmt=AQF02EW54r7tquh7kD4S3S99V07eTq9FF0Xg38pCKp9L8Us" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Threads</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="bs2025" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="bs.html#bs2025-jump" class="jump-button">2025</a>
+  <br/></div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2025年4月3日</strong></p>
+        <p>胜利接受《一贯体育》采访回应最近的言论</p>
+        <p>首先，关于我离开韩国的说法是不实的。我目前住在韩国，大多数出国旅行都是因为受邀参加朋友的婚礼或休假。除此之外，我没有参加任何商务会议，也没有在其他地方安排任何事。有人说我对娱乐圈还挺有兴趣的，其实我根本没这方面的打算。最近我跟娱乐圈的人唯一的互动，就是跟以前一起工作的人一起吃饭，聊聊以前的点点滴滴。都是些谣言和闲话。因为我在海外有很多熟人，所以人们似乎以为我在国外有什么计划，但事实并非如此——我没有任何商业计划。我最近去中国不是为了参加俱乐部活动，也不是为了在那里创业。我去中国纯粹是为了参加一个朋友的婚礼，我无意再创业。我大部分时间都和家人在一起，只是生活，什么也不做。</p>
+        <p>好像人们喜欢批评和嘲笑我。就像一个梗——他们不再叫我“胜利”，而是叫我“失败”，也许他们觉得这很有趣。我只是想纠正错误信息。我知道人们已经厌倦了听关于我的故事。</p>
+        <p>在电话采访结束时再次道歉，并承诺 “更加负责任”</p>
+        <p>详细资讯：<a href="https://isplus.com/article/view/isp202504030002" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            isplus</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2025年5月27日</strong></p>
+        <p>曾与TOP约会过的Kira在播客《Above The Influence》谈到胜利的Burning Sun丑闻</p>
+        <p>Kira声称TOP和她说胜利要为这场争议承担责任，因为他们的经纪公司选择他来做这件事，因为他是“最不受欢迎的成员”。胜利是收了钱入狱的，尽管所有成员都“参与其中”</p>
+        <p>Kira：BIGBANG 陷入了争议，因为胜利承担了责任。据新闻媒体报道，他是所有事情的罪魁祸首，所以他进了监狱。他直接解约了，但当时 BIGBANG 的其他成员还在活跃。他说：“是啊，因为他是组合里最不受欢迎的，所以我们的经纪公司一致决定让他承担责任，尽管我们都参与其中。他应该承担责任。”然后他们付钱让他坐牢，说：“嘿，既然你的事业发展得这么好，那你来承担所有责任怎么样？坐几年牢，等你出来我们会给你一笔好钱。”</p>
+        <p>这个片段在当日的观看次数约为30万次，网友对她的言论表示怀疑</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/top-alleged-ex-girlfriend-claims-bigbang-members-involved-in-burning-sun-scandal/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="https://drive.google.com/file/d/1z2dNdo7cUH-KSB19Xa0MAVpMMmln2tve/preview" width="560" height="315" allow="autoplay" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p>这个片段在当日的观看次数约为30万次，网友对她的言论表示怀疑</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="color: #33FFFF; font-size: 20px;"><br/>迄今为止胜利所有出现过的场合，媒体报道、韩国人、评论区都被骂爆了🤷‍♀️</p>
+    <p>想让胜利的名声好转只能买通全世界的媒体的通稿<br/>因为这一切的丑闻风波不就是媒体报道出来的吗？</p>
+    <br/><hr class="full-width-line" />
+  </div>
 
   <br/><br/><br/>
   <div class="header-container">
@@ -4133,15 +5751,18 @@ function filterSNS(member) {
     jc: '警匪勾结',
     myzj: '卖淫中介',
     xd: '吸毒',
-    dc: '警方传唤调查',
-    db: '赌博 + 外汇',
+    dc: '警方传唤',
+    db: '赌博 + 非法外汇',
     golf: '高尔夫球',
-    sp: '食品卫生法',
+    spws: '食品卫生法',
     ph: '菲律宾派对',
     ps: '非法拍摄',
     scb: '胜茨比派对',
-    daibu: '逮捕',
-    ny: '挪用公款 + 贪污罪',
+    daibu: '检察阶段',
+    sp: '审判阶段',
+    my: '本人卖淫',
+    wx: '教唆特殊袭击罪',
+    ny: '贪污罪 = 挪用公款',
     kk: '聊天室'
   };
 
@@ -4208,20 +5829,40 @@ function filterSNS(member) {
 }
 
 
+// 用于保存每个 item 的滚动位置
+const listScrollPositions = {};
+
 function toggleList(itemIndex, show) {
   const list = document.getElementById("celebrityList" + itemIndex);
   const expandBtn = document.getElementById("expandBtn" + itemIndex);
   const collapseBtn = document.getElementById("collapseBtn" + itemIndex);
+
   if (show) {
+    // 展开时记录当前滚动位置
+    listScrollPositions[itemIndex] = window.scrollY;
+
     list.style.display = "block";
     expandBtn.style.display = "none";
     collapseBtn.style.display = "inline-block";
+
+    // 平滑滚动到展开的部分
+    list.scrollIntoView({ behavior: "smooth", block: "start" });
+
   } else {
     list.style.display = "none";
     expandBtn.style.display = "inline-block";
     collapseBtn.style.display = "none";
+
+    // 收回时滚动回原位置
+    if (listScrollPositions[itemIndex] !== undefined) {
+      window.scrollTo({
+        top: listScrollPositions[itemIndex],
+        behavior: "smooth"
+      });
+    }
   }
 }
+
 
   const sliderStates = {};
 
