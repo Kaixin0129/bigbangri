@@ -12,11 +12,10 @@
   "name": "html",
   "version": "1.0.0",
   "description": "音乐应用",
-  "main": "server.js",
-  "type": "module",
+  "main": "build-search-index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js",
+    "dev": "live-server --port=5500",
+    "start": "live-server --port=5500",
     "server": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,7 +23,11 @@
     "type": "git",
     "url": "git+https://github.com/Kaixin0129/bigbangri.git"
   },
-  "keywords": ["music", "react", "express"],
+  "keywords": [
+    "music",
+    "react",
+    "express"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -32,6 +35,7 @@
   },
   "homepage": "https://github.com/Kaixin0129/bigbangri#readme",
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
   }
 }
