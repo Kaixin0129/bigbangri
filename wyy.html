@@ -66,7 +66,7 @@ body {
 
 .album-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 0px 5px #33FFFF;
 }
 
 .album-cover {
@@ -331,21 +331,6 @@ body {
     background: #5a6fd8;
 }
 
-.back-button {
-    background: #6c757d;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-bottom: 20px;
-    transition: background 0.2s;
-}
-
-.back-button:hover {
-    background: #5a6268;
-}
-
 .loading {
     text-align: center;
     color: white;
@@ -589,7 +574,7 @@ function AlbumList({ onAlbumSelect, onPlaySong }) {
                     <a href="album.html">Back</a>
                 </nav>
                 <div className="title-group">
-                    <h1>BIGBANG 专辑歌曲</h1>
+                    <h1>&nbsp;</h1>  {/* 使用 &nbsp; 保持空间 */}
                 </div>
             </div>
             <div className="album-grid">
