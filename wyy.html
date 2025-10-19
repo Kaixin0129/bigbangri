@@ -16,7 +16,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #111;
     min-height: 100vh;
     padding-bottom: 80px;
 }
@@ -52,8 +52,10 @@ body {
 }
 
 .album-card {
-    background: white;
-    border-radius: 15px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  color: white;
     padding: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     cursor: pointer;
@@ -79,32 +81,18 @@ body {
     font-size: 1.1rem;
     font-weight: bold;
     margin-bottom: 5px;
-    color: #333;
+    color: white;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .album-year {
-    color: #999;
+    color: #cdcdcd;
     font-size: 0.8rem;
 }
 
-/* 平板样式 - 3列 */
-@media (max-width: 1024px) {
-    .album-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-/* 小平板样式 - 2列 */
-@media (max-width: 900px) {
-    .album-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* 手机版样式 */
+/* 手机版样式 - 只针对专辑列表页面 */
 @media (max-width: 768px) {
     .album-grid {
         grid-template-columns: 1fr;
@@ -113,7 +101,7 @@ body {
     
     .album-card {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         gap: 15px;
         padding: 15px;
         text-align: left;
@@ -129,10 +117,9 @@ body {
     .album-info {
         flex: 1;
         min-width: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 80px;
+        display: block;
+        height: auto;
+        padding: 0;
     }
     
     .album-title {
@@ -141,23 +128,48 @@ body {
         white-space: normal;
         overflow: visible;
         margin-bottom: 8px;
-        color: #333;
+        color: white;
         line-height: 1.3;
+        display: block;
+        width: 100%;
     }
     
     .album-year {
         font-size: 0.9rem;
-        color: #666;
+        color: #cdcdcd;
         margin-top: 0;
+        display: block;
+        width: 100%;
+    }
+    
+    /* 专辑详情页手机版布局 */
+    .album-detail .album-header {
+        flex-direction: column;
+        text-align: left;
+        gap: 20px;
+    }
+    
+    .album-detail .album-cover-large {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+    
+    .album-detail .album-meta {
+        text-align: left;
+    }
+    
+    .album-detail .album-meta h1 {
+        font-size: 1.8rem;
+    }
+    
+    .album-detail .album-meta p {
+        font-size: 1rem;
     }
 }
 
 /* 小屏手机优化 */
 @media (max-width: 480px) {
-    .container {
-        padding: 15px;
-    }
-    
     .album-card {
         gap: 12px;
         padding: 12px;
@@ -165,10 +177,6 @@ body {
     
     .album-cover {
         width: 70px;
-        height: 70px;
-    }
-    
-    .album-info {
         height: 70px;
     }
     
@@ -180,11 +188,25 @@ body {
     .album-year {
         font-size: 0.85rem;
     }
+    
+    /* 小屏手机专辑详情页优化 */
+    .album-detail .album-cover-large {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .album-detail .album-meta h1 {
+        font-size: 1.5rem;
+    }
+    
+    .album-detail .album-meta p {
+        font-size: 0.9rem;
+    }
 }
 
 /* 其他样式保持不变 */
 .album-detail {
-    background: white;
+    background: #111;
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -209,12 +231,12 @@ body {
 .album-meta h1 {
     font-size: 2rem;
     margin-bottom: 10px;
-    color: #333;
+    color: white;
 }
 
 .album-meta p {
     font-size: 1.1rem;
-    color: #666;
+    color: #cdcdcd;
     margin-bottom: 8px;
 }
 
@@ -224,8 +246,8 @@ body {
 
 .songs-list h2 {
     margin-bottom: 20px;
-    color: #333;
-    border-bottom: 2px solid #667eea;
+    color: white;
+    border-bottom: 2px solid #33FFFF;
     padding-bottom: 10px;
 }
 
@@ -240,8 +262,14 @@ body {
 }
 
 .song-item:hover {
-    background: #f8f9fa;
+    background: white;
+    color: #111;
     border-radius: 8px;
+}
+
+.song-item:hover .song-title,
+.song-item:hover .song-duration {
+    color: #111;
 }
 
 .song-item:last-child {
@@ -250,11 +278,11 @@ body {
 
 .song-title {
     font-size: 1.1rem;
-    color: #333;
+    color: white;
 }
 
 .song-duration {
-    color: #999;
+    color: white;
     font-size: 0.9rem;
 }
 
@@ -333,6 +361,105 @@ body {
     border-radius: 10px;
     margin: 20px 0;
 }
+.title-group {
+    display: inline-block;
+} 
+
+.jump-button:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100px;
+}
+
+@media (min-width: 769px) {
+    .header-container {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        margin: 0;
+    }
+    
+    .container {
+        margin-top: 100px;
+    }
+}
+
+.title-group {
+    display: inline-block;
+} 
+
+.left-nav,
+.right-nav {
+    position: absolute;
+    top: 20%; /* 调整位置 */
+    transform: translateY(-50%);
+}
+
+.left-nav {
+    left: 0;
+}
+
+@media (min-width: 769px) {
+    .left-nav {
+        top: 30%;
+        left: 10px; /* 调整这个值来控制距离左边的间距 */
+    }
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    background-color: none;
+    border-radius: 5px 18px;
+    border: 2px solid white;
+    transition: background 0.3s ease;
+    font-size: 18px; /* 统一字体大小 */
+}
+
+.jump-button {
+    padding: 15px 25px;
+    background-color: #111;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px 18px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    min-width: 120px;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 18px; /* 确保 jump-button 也有相同字体 */
+}
+
+.left-nav a,
+.right-nav a {
+    padding: 13px 30px;
+    font-size: 18px; /* 确保字体大小 */
+    border-radius: 5px 14px;
+    color: white;
+    text-decoration: none;
+    border: 2px solid white;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
+
+.left-nav a:hover,
+.right-nav a:hover {
+    background-color: white;
+    color: #111;
+    cursor: pointer;
+}
+
     </style>
 </head>
 <body>
@@ -345,7 +472,7 @@ body {
         const bigbangAlbums = [
             {
                 id: 1,
-                title: 'MADE',
+                title: 'BIGBANG10 THE CONCERT: 0.TO.10 IN JAPAN + BIGBANG10 THE MOVIE BIGBANG MADE',
                 cover_url: 'https://picsum.photos/300/300?random=1',
                 release_year: 2016,
                 description: 'BIGBANG正规专辑《MADE》',
@@ -451,88 +578,101 @@ body {
             );
         }
 
-        // AlbumList 组件
-        function AlbumList({ onAlbumSelect, onPlaySong }) {
-            const [albums] = useState(bigbangAlbums); // 直接使用本地数据
+// AlbumList 组件
+function AlbumList({ onAlbumSelect, onPlaySong }) {
+    const [albums] = useState(bigbangAlbums);
 
-            return (
-                <div className="container">
-                    <div className="header">
-                        <h1>BIGBANG 专辑歌曲</h1>
-                    </div>
-                    <div className="album-grid">
-                        {albums.map(album => (
-                            <div 
-                                key={album.id} 
-                                className="album-card"
-                                onClick={() => onAlbumSelect(album.id)}
-                            >
-                                <img 
-                                    src={album.cover_url} 
-                                    alt={album.title}
-                                    className="album-cover"
-                                />
-                                <div className="album-title">{album.title}</div>
-                                <div className="album-year">{album.release_year}</div>
-                            </div>
-                        ))}
-                    </div>
+    return (
+        <div className="container">
+            <div className="header-container">
+                <nav className="left-nav">
+                    <a href="album.html">Back</a>
+                </nav>
+                <div className="title-group">
+                    <h1>BIGBANG 专辑歌曲</h1>
                 </div>
-            );
-        }
-
-        // AlbumDetail 组件
-        function AlbumDetail({ albumId, onBack, onPlaySong }) {
-            const album = bigbangAlbums.find(a => a.id === albumId); // 直接从本地数据查找
-
-            if (!album) return <div className="error">专辑不存在</div>;
-
-            const formatDuration = (seconds) => {
-                const mins = Math.floor(seconds / 60);
-                const secs = seconds % 60;
-                return `${mins}:${secs.toString().padStart(2, '0')}`;
-            };
-
-            return (
-                <div className="container">
-                    <button className="back-button" onClick={onBack}>
-                        ← 返回专辑列表
-                    </button>
-                    
-                    <div className="album-detail">
-                        <div className="album-header">
-                            <img 
-                                src={album.cover_url} 
-                                alt={album.title}
-                                className="album-cover-large"
-                            />
-                            <div className="album-meta">
-                                <h1>{album.title}</h1>
-                                <p>艺术家：{album.artist}</p>
-                                <p>发行年份：{album.release_year}</p>
-                                <p>描述：{album.description}</p>
-                            </div>
-                        </div>
-
-                        <div className="songs-list">
-                            <h2>歌曲列表 ({album.songs.length} 首)</h2>
-                            {album.songs.map(song => (
-                                <div 
-                                    key={song.id} 
-                                    className="song-item"
-                                    onClick={() => onPlaySong(song)}
-                                >
-                                    <span className="song-title">{song.title}</span>
-                                    <span className="song-duration">
-                                        {formatDuration(song.duration)}
-                                    </span>
-                                </div>
-                            ))}
+            </div>
+            <div className="album-grid">
+                {albums.map(album => (
+                    <div 
+                        key={album.id} 
+                        className="album-card"
+                        onClick={() => onAlbumSelect(album.id)}
+                    >
+                        <img 
+                            src={album.cover_url} 
+                            alt={album.title}
+                            className="album-cover"
+                        />
+                        <div className="album-info">
+                            <div className="album-title">{album.title}</div>
+                            <div className="album-year">{album.release_year}</div>
                         </div>
                     </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+// AlbumDetail 组件
+function AlbumDetail({ albumId, onBack, onPlaySong }) {
+    const album = bigbangAlbums.find(a => a.id === albumId);
+
+    if (!album) return <div className="error">专辑不存在</div>;
+
+    const formatDuration = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    };
+
+    return (
+        <div className="container">
+            <div className="header-container">
+                <nav className="left-nav">
+                    <a href="#" onClick={(e) => { e.preventDefault(); onBack(); }}>
+                        Back
+                    </a>
+                </nav>
+                <div className="title-group">
+                    <h1>&nbsp;</h1>  {/* 使用 &nbsp; 保持空间 */}
                 </div>
-            );
-        }
+            </div>
+            
+            <div className="album-detail">
+                <div className="album-header">
+                    <img 
+                        src={album.cover_url} 
+                        alt={album.title}
+                        className="album-cover-large"
+                    />
+                    <div className="album-meta">
+                        <h1>{album.title}</h1>
+                        <p>发行年份：{album.release_year}</p>
+                        <p>{album.description}</p>
+                    </div>
+                </div>
+
+                <div className="songs-list">
+                    <h2>歌曲列表 <span style={{color: '#cdcdcd', fontSize: '0.9em'}}>{album.songs.length} 首</span></h2>
+                    {album.songs.map(song => (
+                        <div 
+                            key={song.id} 
+                            className="song-item"
+                            onClick={() => onPlaySong(song)}
+                        >
+                            <span className="song-title">{song.title}</span>
+                            <span className="song-duration">
+                                {formatDuration(song.duration)}
+                            </span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
 
         // 主 App 组件
         function App() {
