@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>音乐播放器 - 类似网易云音乐</title>
+    <title>BIGBANG 音乐播放器</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -248,6 +248,61 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
+        // BIGBANG 音乐数据
+        const bigbangAlbums = [
+            {
+                id: 1,
+                title: 'MADE',
+                cover_url: 'https://picsum.photos/300/300?random=1',
+                artist: 'BIGBANG',
+                release_year: 2016,
+                description: 'BIGBANG正规专辑《MADE》',
+                songs: [
+                    { id: 101, title: 'BANG BANG BANG', duration: 231, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' },
+                    { id: 102, title: 'LOSER', duration: 223, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' },
+                    { id: 103, title: 'BAE BAE', duration: 156, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' },
+                    { id: 104, title: 'IF YOU', duration: 264, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' }
+                ]
+            },
+            {
+                id: 2,
+                title: 'ALIVE',
+                cover_url: 'https://picsum.photos/300/300?random=2',
+                artist: 'BIGBANG',
+                release_year: 2012,
+                description: 'BIGBANG迷你专辑《ALIVE》',
+                songs: [
+                    { id: 201, title: 'FANTASTIC BABY', duration: 229, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' },
+                    { id: 202, title: 'BLUE', duration: 236, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' },
+                    { id: 203, title: 'BAD BOY', duration: 234, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' }
+                ]
+            },
+            {
+                id: 3,
+                title: 'STILL ALIVE',
+                cover_url: 'https://picsum.photos/300/300?random=3',
+                artist: 'BIGBANG',
+                release_year: 2012,
+                description: 'BIGBANG特别专辑《STILL ALIVE》',
+                songs: [
+                    { id: 301, title: 'MONSTER', duration: 234, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' },
+                    { id: 302, title: 'STILL ALIVE', duration: 204, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' }
+                ]
+            },
+            {
+                id: 4,
+                title: 'TONIGHT',
+                cover_url: 'https://picsum.photos/300/300?random=4',
+                artist: 'BIGBANG',
+                release_year: 2011,
+                description: 'BIGBANG特别迷你专辑《TONIGHT》',
+                songs: [
+                    { id: 401, title: 'TONIGHT', duration: 234, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' },
+                    { id: 402, title: 'HANDS UP', duration: 203, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' }
+                ]
+            }
+        ];
+
         // Player 组件
         function Player({ currentSong }) {
             const [isPlaying, setIsPlaying] = useState(false);
@@ -298,44 +353,13 @@
 
         // AlbumList 组件
         function AlbumList({ onAlbumSelect, onPlaySong }) {
-            const [albums, setAlbums] = useState([]);
-            const [loading, setLoading] = useState(true);
-            const [error, setError] = useState(null);
-
-            useEffect(() => {
-                console.log('开始获取专辑数据...');
-                fetch('/api/albums')
-                    .then(response => {
-                        console.log('响应状态:', response.status);
-                        if (!response.ok) {
-                            throw new Error('HTTP错误: ' + response.status);
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        console.log('收到数据:', data);
-                        if (data.success) {
-                            setAlbums(data.data);
-                        } else {
-                            setError('获取专辑列表失败: ' + (data.message || '未知错误'));
-                        }
-                        setLoading(false);
-                    })
-                    .catch(err => {
-                        console.error('请求错误:', err);
-                        setError('网络错误: ' + err.message);
-                        setLoading(false);
-                    });
-            }, []);
-
-            if (loading) return <div className="loading">加载中...</div>;
-            if (error) return <div className="error">{error}</div>;
+            const [albums] = useState(bigbangAlbums); // 直接使用本地数据
 
             return (
                 <div className="container">
                     <div className="header">
                         <h1>BIGBANG 音乐专辑</h1>
-                        <p>发现好音乐，享受每一刻</p>
+                        <p>发现BIGBANG的音乐世界</p>
                     </div>
                     <div className="album-grid">
                         {albums.map(album => (
@@ -361,40 +385,8 @@
 
         // AlbumDetail 组件
         function AlbumDetail({ albumId, onBack, onPlaySong }) {
-            const [album, setAlbum] = useState(null);
-            const [loading, setLoading] = useState(true);
-            const [error, setError] = useState(null);
+            const album = bigbangAlbums.find(a => a.id === albumId); // 直接从本地数据查找
 
-            useEffect(() => {
-                if (albumId) {
-                    setLoading(true);
-                    console.log('获取专辑详情:', albumId);
-                    fetch(`/api/albums/${albumId}`)
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('HTTP错误: ' + response.status);
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            console.log('专辑详情数据:', data);
-                            if (data.success) {
-                                setAlbum(data.data);
-                            } else {
-                                setError('获取专辑详情失败: ' + (data.message || '未知错误'));
-                            }
-                            setLoading(false);
-                        })
-                        .catch(err => {
-                            console.error('请求错误:', err);
-                            setError('网络错误: ' + err.message);
-                            setLoading(false);
-                        });
-                }
-            }, [albumId]);
-
-            if (loading) return <div className="loading">加载专辑详情...</div>;
-            if (error) return <div className="error">{error}</div>;
             if (!album) return <div className="error">专辑不存在</div>;
 
             const formatDuration = (seconds) => {
