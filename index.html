@@ -165,25 +165,153 @@
       height: auto;
     }
 
-    @media only screen and (max-width: 768px) {
-      html, body {
+@media only screen and (max-width: 768px) {
+    html, body {
         height: 100vh;
         overflow-x: hidden;
         overflow-y: auto;
-      }
+    }
 
-      body {
+    body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
         height: calc(100vh / 0.59);
-      }
+    }
 
-      .full-width-line {
+    .full-width-line {
         transform: scaleX(1.6949);
         transform-origin: left;
-      }
     }
+
+    /* 播放器完全固定在视口底部 */
+    #global-player {
+        transform: scale(1.5) !important;
+        transform-origin: bottom center !important;
+        width: 66.67% !important;
+        left: 50% !important;
+        margin-left: -33.33% !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        z-index: 10000 !important;
+        /* 确保播放器始终在视口底部，不随页面滚动 */
+    }
+
+    /* 确保播放器内容不被缩放影响 */
+    #global-player * {
+        transform: none !important;
+    }
+
+    /* 调整播放器内部布局 */
+    #global-player > div:first-child {
+        max-width: 42% !important;
+    }
+
+    #global-player > div:last-child > div:nth-child(2) {
+        width: 130px !important;
+    }
+
+    #player-title {
+        font-size: 15px !important;
+    }
+
+    #player-prev,
+    #player-play-pause,
+    #player-next {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 17px !important;
+    }
+
+    #player-cover {
+        width: 46px !important;
+        height: 46px !important;
+    }
+
+    #current-time, #duration-time {
+        font-size: 13px !important;
+        min-width: 46px !important;
+    }
+
+    /* 为内容区域添加底部内边距，避免被播放器遮挡 */
+    .container {
+        padding-bottom: 100px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 100px !important;
+    }
+}
+
+/* 小屏手机进一步调整 */
+@media (max-width: 480px) {
+    #global-player {
+        width: 70% !important;
+        margin-left: -35% !important;
+    }
+
+    #global-player > div:first-child {
+        max-width: 48% !important;
+    }
+
+    #global-player > div:last-child > div:nth-child(2) {
+        width: 110px !important;
+    }
+
+    #player-title {
+        font-size: 13px !important;
+    }
+
+    #player-prev,
+    #player-play-pause,
+    #player-next {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 15px !important;
+    }
+
+    #player-cover {
+        width: 42px !important;
+        height: 42px !important;
+    }
+
+    /* 小屏手机的内容底部内边距 */
+    .container {
+        padding-bottom: 90px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 90px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    #global-player {
+        width: 75% !important;
+        margin-left: -37.5% !important;
+    }
+
+    #global-player > div:first-child {
+        max-width: 52% !important;
+    }
+
+    #global-player > div:last-child > div:nth-child(2) {
+        width: 95px !important;
+    }
+
+    #player-title {
+        font-size: 11px !important;
+    }
+
+    /* 超小屏手机的内容底部内边距 */
+    .container {
+        padding-bottom: 80px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 80px !important;
+    }
+}
 
     .center-wrapper {
       display: flex;

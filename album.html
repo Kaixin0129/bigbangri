@@ -128,25 +128,54 @@
       color: #33FFFF;
     }
 
-    @media only screen and (max-width: 768px) {
-      html, body {
+@media only screen and (max-width: 768px) {
+    html, body {
         height: 100vh;
         overflow-x: hidden;
         overflow-y: auto;
-      }
+    }
 
-      body {
+    body {
         transform: scale(0.59);
         transform-origin: top left;
         width: 169.5%;
         height: calc(100vh / 0.59);
-      }
+    }
 
-      .full-width-line {
+    .full-width-line {
         transform: scaleX(1.6949);
         transform-origin: left;
-      }
     }
+
+    /* 播放器固定定位，使用内联样式的小尺寸 */
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 10000 !important;
+        /* 尺寸已经在 player.js 中设置好了 */
+    }
+
+    /* 确保播放器不被 body 的缩放影响 */
+    #global-player,
+    #global-player * {
+        transform: none !important;
+    }
+
+    /* 为内容区域添加底部内边距 */
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
 
     .jump-button-1 {
       padding: 15px 25px;
@@ -167,10 +196,6 @@
       color: black;
       cursor: pointer;
     }
-
-#global-player {
-    display: flex !important;
-}
 
   </style>
 </head>

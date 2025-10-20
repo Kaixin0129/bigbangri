@@ -467,7 +467,7 @@ class GlobalPlayer {
             </style>
         `;
         
-        document.body.insertAdjacentHTML('beforeend', playerHTML);
+        document.documentElement.insertAdjacentHTML('beforeend', playerHTML);
         console.log('播放器DOM创建完成');
         this.playerCreated = true;
         
