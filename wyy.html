@@ -24,6 +24,11 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.container1 {
+    max-width: 2000px;
+    margin: 0 auto;
     padding: 20px;
 }
 
@@ -92,6 +97,35 @@ body {
     font-size: 0.8rem;
 }
 
+@media (min-width: 769px) {
+    .album-header {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 30px;
+        align-items: flex-start;
+        height: 200px; /* 与封面图片高度一致 */
+    }
+    
+    .album-meta {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%; /* 继承父容器高度 */
+    }
+    
+    .album-meta h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: white;
+    }
+    
+    .album-meta p {
+        font-size: 1.1rem;
+        color: #cdcdcd;
+        margin-bottom: 8px;
+    }
+}
+
 /* 手机版样式 - 只针对专辑列表页面 */
 @media (max-width: 768px) {
     .album-grid {
@@ -120,13 +154,15 @@ body {
         display: block;
         height: auto;
         padding: 0;
+        overflow: hidden; /* 添加这行 */
     }
     
     .album-title {
         font-size: 1.2rem;
         font-weight: bold;
-        white-space: normal;
-        overflow: visible;
+        white-space: nowrap; /* 改为 nowrap */
+        overflow: hidden; /* 改为 hidden */
+        text-overflow: ellipsis; /* 添加省略号 */
         margin-bottom: 8px;
         color: white;
         line-height: 1.3;
@@ -147,6 +183,7 @@ body {
         flex-direction: column;
         text-align: left;
         gap: 20px;
+        height: auto;
     }
     
     .album-detail .album-cover-large {
@@ -157,6 +194,7 @@ body {
     
     .album-detail .album-meta {
         text-align: left;
+        height: auto;
     }
     
     .album-detail .album-meta h1 {
@@ -287,49 +325,44 @@ body {
 }
 
 .player {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 15px 20px;
-    border-top: 1px solid #ddd;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #111;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-top: 1px solid #333;
 }
 
 .player-info {
-    flex: 1;
+  display: flex;
+  align-items: center;
 }
 
-.player-title {
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.player-artist {
-    color: #666;
-    font-size: 0.9rem;
+.player-cover {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  margin-right: 10px;
 }
 
 .player-controls button {
-    background: #667eea;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.2s;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  margin: 0 5px;
+  cursor: pointer;
 }
 
-.player-controls button:hover {
-    background: #5a6fd8;
+.player-progress input {
+  width: 200px;
 }
+
 
 .loading {
     text-align: center;
@@ -366,15 +399,12 @@ body {
 
 @media (min-width: 769px) {
     .header-container {
-        position: fixed;
-        top: 20px;
-        left: 20px;
         z-index: 1000;
         margin: 0;
     }
     
     .container {
-        margin-top: 100px;
+        margin-top: 0; /* 也删除这个，因为不需要为固定定位留空间了 */
     }
 }
 
@@ -382,15 +412,18 @@ body {
     display: inline-block;
 } 
 
-.left-nav,
-.right-nav {
-    position: absolute;
-    top: 20%; /* 调整位置 */
-    transform: translateY(-50%);
+.left-nav {
+  position: absolute;
+  left: 0px; /* 根据 container 的 margin 调整 */
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.left-nav {
-    left: 0;
+.right-nav {
+  position: absolute;
+  right: 0px; /* 根据 container 的 margin 调整 */
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 @media (min-width: 769px) {
@@ -398,6 +431,24 @@ body {
         top: 30%;
         left: 10px; /* 调整这个值来控制距离左边的间距 */
     }
+    .right-nav {
+        top: 30%;
+        right: 10px; /* 调整这个值来控制距离右边的间距 */
+    }
+}
+
+.left-nav {
+  position: absolute;
+  left: 5px; /* 根据 container 的 margin 调整 */
+  top: 25%;
+  transform: translateY(-50%);
+}
+
+.right-nav {
+  position: absolute;
+  right: 5px; /* 根据 container 的 margin 调整 */
+  top: 25%;
+  transform: translateY(-50%);
 }
 
 nav a {
@@ -411,25 +462,75 @@ nav a {
     font-size: 18px; /* 统一字体大小 */
 }
 
-.jump-button {
-    padding: 15px 25px;
-    background-color: #111;
-    color: white;
-    border: 2px solid white;
-    border-radius: 5px 18px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    min-width: 120px;
-    white-space: nowrap;
-    text-align: center;
-    font-size: 18px; /* 确保 jump-button 也有相同字体 */
+/* 完全复制留言区的 filter-buttons 样式 */
+.filter-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-bottom: 10px;
 }
 
-.left-nav a,
-.right-nav a {
+.filter-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  color: white;
+}
+
+.filter-btn.active {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 修改 right-nav 布局，与 filter-btn 风格一致 */
+.right-nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sort-button {
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+}
+
+.sort-button:hover {
+    color: white;
+}
+
+.sort-button.active {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 分隔符样式 */
+.sort-separator {
+    color: #666;
+    font-size: 15px;
+    user-select: none;
+}
+
+.left-nav a {
     padding: 13px 30px;
-    font-size: 18px; /* 确保字体大小 */
+    font-size: 18px;
     border-radius: 5px 14px;
     color: white;
     text-decoration: none;
@@ -438,11 +539,38 @@ nav a {
     transition: background 0.3s ease;
 }
 
-.left-nav a:hover,
-.right-nav a:hover {
+.left-nav a:hover {
     background-color: white;
     color: #111;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .left-nav {
+    transform: scale(0.79);
+    transform-origin: top left;
+    width: auto;
+    height: calc(100vh / 0.79);
+    left: 0px;
+    top: -8%;
+  }
+
+  .right-nav {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    transform: scale(0.79);
+    transform-origin: top right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .full-width-line {
+    transform: scaleX(1.6949);
+    transform-origin: left;
+  }
 }
 
     </style>
@@ -457,12 +585,13 @@ nav a {
         const bigbangAlbums = [
             {
                 id: 1,
-                title: 'BIGBANG10 THE CONCERT: 0.TO.10 IN JAPAN + BIGBANG10 THE MOVIE BIGBANG MADE',
-                cover_url: 'https://picsum.photos/300/300?random=1',
-                release_year: 2016,
-                description: 'BIGBANG正规专辑《MADE》',
+                title: 'Bigbang First Single',
+                cover_url: 'BIGBANG2006.jpg',
+                release_year: '2006年8月29日',
+                description: '推出首张单曲专辑',
+                jump_id: 'album-jump',
                 songs: [
-                    { id: 101, title: 'BANG BANG BANG', duration: 231, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' },
+                    { id: 101, title: 'BANG BANG BANG', duration: 231, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' },
                     { id: 102, title: 'LOSER', duration: 223, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' },
                     { id: 103, title: 'BAE BAE', duration: 156, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' },
                     { id: 104, title: 'IF YOU', duration: 264, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' }
@@ -501,100 +630,166 @@ nav a {
                     { id: 401, title: 'TONIGHT', duration: 234, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' },
                     { id: 402, title: 'HANDS UP', duration: 203, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' }
                 ]
-            },
-            {
-                id: 5,
-                title: 'TONIGHT',
-                cover_url: 'https://picsum.photos/300/300?random=4',
-                release_year: 2011,
-                description: 'BIGBANG特别迷你专辑《TONIGHT》',
-                songs: [
-                    { id: 501, title: 'TONIGHT', duration: 234, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' },
-                    { id: 502, title: 'HANDS UP', duration: 203, file_url: 'https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav' }
-                ]
             }
         ];
 
         // Player 组件
-        function Player({ currentSong }) {
-            const [isPlaying, setIsPlaying] = useState(false);
-            const audioRef = useRef(null);
+function Player({ currentSong, playlist, onPlayNext, onPlayPrev }) {
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [progress, setProgress] = useState(0);
+    const audioRef = useRef(null);
 
-            useEffect(() => {
-                if (currentSong && audioRef.current) {
-                    audioRef.current.src = currentSong.file_url;
-                    if (isPlaying) {
-                        audioRef.current.play();
-                    }
-                }
-            }, [currentSong, isPlaying]);
-
-            const togglePlayPause = () => {
-                if (audioRef.current) {
-                    if (isPlaying) {
-                        audioRef.current.pause();
-                    } else {
-                        audioRef.current.play();
-                    }
-                    setIsPlaying(!isPlaying);
-                }
-            };
-
-            if (!currentSong) return null;
-
-            return (
-                <div className="player">
-                    <div className="player-info">
-                        <div className="player-title">{currentSong.title}</div>
-                        <div className="player-artist">{currentSong.artist}</div>
-                    </div>
-                    <div className="player-controls">
-                        <button onClick={togglePlayPause}>
-                            {isPlaying ? '暂停' : '播放'}
-                        </button>
-                    </div>
-                    <audio
-                        ref={audioRef}
-                        onEnded={() => setIsPlaying(false)}
-                        onPause={() => setIsPlaying(false)}
-                        onPlay={() => setIsPlaying(true)}
-                    />
-                </div>
-            );
+    useEffect(() => {
+        if (currentSong && audioRef.current) {
+            audioRef.current.src = currentSong.file_url;
+            audioRef.current.load();
+            if (isPlaying) {
+                audioRef.current.play();
+            }
         }
+    }, [currentSong]);
+
+    const togglePlayPause = () => {
+        if (!audioRef.current) return;
+        if (isPlaying) {
+            audioRef.current.pause();
+        } else {
+            audioRef.current.play();
+        }
+        setIsPlaying(!isPlaying);
+    };
+
+    const handleTimeUpdate = () => {
+        const current = audioRef.current.currentTime;
+        const duration = audioRef.current.duration || 0;
+        setProgress((current / duration) * 100);
+    };
+
+    const handleSeek = (e) => {
+        const newTime = (e.target.value / 100) * audioRef.current.duration;
+        audioRef.current.currentTime = newTime;
+        setProgress(e.target.value);
+    };
+
+    if (!currentSong) return null;
+
+    return (
+        <div className="player">
+            <div className="player-info">
+                <img
+                    src={currentSong.cover_url || 'default-cover.jpg'}
+                    alt="cover"
+                    className="player-cover"
+                />
+                <div className="player-meta">
+                    <div className="player-title">{currentSong.title}</div>
+                    <div className="player-artist">{currentSong.artist || 'BIGBANG'}</div>
+                </div>
+            </div>
+
+            <div className="player-controls">
+                <button onClick={onPlayPrev}>⏮</button>
+                <button onClick={togglePlayPause}>
+                    {isPlaying ? '⏸️' : '▶️'}
+                </button>
+                <button onClick={onPlayNext}>⏭</button>
+            </div>
+
+            <div className="player-progress">
+                <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={progress}
+                    onChange={handleSeek}
+                />
+            </div>
+
+            <audio
+                ref={audioRef}
+                onTimeUpdate={handleTimeUpdate}
+                onEnded={() => {
+                    setIsPlaying(false);
+                    onPlayNext(); // 自动播放下一首
+                }}
+            />
+        </div>
+    );
+}
+
 
 // AlbumList 组件
 function AlbumList({ onAlbumSelect, onPlaySong }) {
     const [albums] = useState(bigbangAlbums);
+    const [sortOrder, setSortOrder] = useState('all');
+
+    const sortedAlbums = [...albums].sort((a, b) => {
+        if (sortOrder === 'latest') {
+            return b.id - a.id;
+        } else {
+            return a.id - b.id;
+        }
+    });
+
+    const handleSortChange = (order) => {
+        setSortOrder(order);
+    };
+
+    // 修改这里：返回到 album.html 而不是 index.html
+    const handleBackToAlbum = () => {
+        window.location.href = 'album.html';
+    };
 
     return (
-        <div className="container">
-            <div className="header-container">
-                <nav className="left-nav">
-                    <a href="album.html">Back</a>
-                </nav>
-                <div className="title-group">
-                    <h1>&nbsp;</h1>  {/* 使用 &nbsp; 保持空间 */}
+        <div>
+            <div className="container1">
+                <div className="header-container">
+                    <nav className="left-nav">
+                        {/* 修改这里：返回到 album.html */}
+                        <a href="#" onClick={(e) => { e.preventDefault(); handleBackToAlbum(); }}>
+                            Back
+                        </a>
+                    </nav>
+                    <div className="title-group">
+                        <h1>&nbsp;</h1>
+                    </div>
+                    <nav className="right-nav">
+                        <button 
+                            className={`sort-button ${sortOrder === 'all' ? 'active' : ''}`}
+                            onClick={() => handleSortChange('all')}
+                        >
+                            最旧
+                        </button>
+                        <span className="sort-separator">|</span>
+                        <button 
+                            className={`sort-button ${sortOrder === 'latest' ? 'active' : ''}`}
+                            onClick={() => handleSortChange('latest')}
+                        >
+                            最新
+                        </button>
+                    </nav>
                 </div>
             </div>
-            <div className="album-grid">
-                {albums.map(album => (
-                    <div 
-                        key={album.id} 
-                        className="album-card"
-                        onClick={() => onAlbumSelect(album.id)}
-                    >
-                        <img 
-                            src={album.cover_url} 
-                            alt={album.title}
-                            className="album-cover"
-                        />
-                        <div className="album-info">
-                            <div className="album-title">{album.title}</div>
-                            <div className="album-year">{album.release_year}</div>
+            <div className="container">
+                <div className="album-grid">
+                    {sortedAlbums.map(album => (
+                        <div 
+                            key={album.id} 
+                            className="album-card"
+                            onClick={() => onAlbumSelect(album.id)}
+                        >
+                            <img 
+                                src={album.cover_url} 
+                                alt={album.title}
+                                className="album-cover"
+                            />
+                            <div className="album-info">
+                                <div className="album-title">{album.title}</div>
+                                <div className="album-year">{album.release_year}</div>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </div>
     );
@@ -613,97 +808,136 @@ function AlbumDetail({ albumId, onBack, onPlaySong }) {
     };
 
     return (
-        <div className="container">
-            <div className="header-container">
-                <nav className="left-nav">
-                    <a href="#" onClick={(e) => { e.preventDefault(); onBack(); }}>
-                        Back
-                    </a>
-                </nav>
-                <div className="title-group">
-                    <h1>&nbsp;</h1>  {/* 使用 &nbsp; 保持空间 */}
-                </div>
-            </div>
-            
-            <div className="album-detail">
-                <div className="album-header">
-                    <img 
-                        src={album.cover_url} 
-                        alt={album.title}
-                        className="album-cover-large"
-                    />
-                    <div className="album-meta">
-                        <h1>{album.title}</h1>
-                        <p>发行年份：{album.release_year}</p>
-                        <p>{album.description}</p>
+        <div id="album-jump">  {/* 在这里添加跳转ID */}
+            <div className="container1">
+                <div className="header-container">
+                    <nav className="left-nav">
+                        <a href="#" onClick={(e) => { e.preventDefault(); onBack(); }}>
+                            Back
+                        </a>
+                    </nav>
+                    <div className="title-group">
+                        <h1>&nbsp;</h1>
                     </div>
                 </div>
-
-                <div className="songs-list">
-                    <h2>歌曲列表 <span style={{color: '#cdcdcd', fontSize: '0.9em'}}>{album.songs.length} 首</span></h2>
-                    {album.songs.map(song => (
-                        <div 
-                            key={song.id} 
-                            className="song-item"
-                            onClick={() => onPlaySong(song)}
-                        >
-                            <span className="song-title">{song.title}</span>
-                            <span className="song-duration">
-                                {formatDuration(song.duration)}
-                            </span>
+            </div>
+            <div className="container">
+                <div className="album-detail">
+                    <div className="album-header">
+                        <img 
+                            src={album.cover_url} 
+                            alt={album.title}
+                            className="album-cover-large"
+                        />
+                        <div className="album-meta">
+                            <h1>{album.title}</h1>
+                            <p>发行年份：{album.release_year}</p>
+                            <p>{album.description}</p>
                         </div>
-                    ))}
+                    </div>
+
+                    <div className="songs-list">
+                        <h2>歌曲列表 <span style={{color: '#cdcdcd', fontSize: '0.9em'}}>{album.songs.length} 首</span></h2>
+                        {album.songs.map(song => (
+                            <div 
+                                key={song.id} 
+                                className="song-item"
+                                onClick={() => onPlaySong(song)}
+                            >
+                                <span className="song-title">{song.title}</span>
+                                <span className="song-duration">
+                                    {formatDuration(song.duration)}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
     );
 }
 
-        // 主 App 组件
-        function App() {
-            const [currentView, setCurrentView] = useState('albumList');
-            const [selectedAlbumId, setSelectedAlbumId] = useState(null);
-            const [currentSong, setCurrentSong] = useState(null);
+// 主 App 组件
+function App() {
+    const [currentView, setCurrentView] = useState('albumList');
+    const [selectedAlbumId, setSelectedAlbumId] = useState(null);
+    const [currentSong, setCurrentSong] = useState(null);
 
-            const handleAlbumSelect = (albumId) => {
-                setSelectedAlbumId(albumId);
+    // 检查URL hash并自动跳转到对应专辑
+    useEffect(() => {
+        const hash = window.location.hash.substring(1); // 去掉#号
+        if (hash) {
+            const targetAlbum = bigbangAlbums.find(album => album.jump_id === hash);
+            if (targetAlbum) {
+                setSelectedAlbumId(targetAlbum.id);
                 setCurrentView('albumDetail');
-            };
-
-            const handleBackToList = () => {
-                setCurrentView('albumList');
-                setSelectedAlbumId(null);
-            };
-
-            const handlePlaySong = (song) => {
-                setCurrentSong(song);
-            };
-
-            return (
-                <div>
-                    {currentView === 'albumList' && (
-                        <AlbumList 
-                            onAlbumSelect={handleAlbumSelect}
-                            onPlaySong={handlePlaySong}
-                        />
-                    )}
-                    
-                    {currentView === 'albumDetail' && (
-                        <AlbumDetail 
-                            albumId={selectedAlbumId}
-                            onBack={handleBackToList}
-                            onPlaySong={handlePlaySong}
-                        />
-                    )}
-                    
-                    <Player currentSong={currentSong} />
-                </div>
-            );
+            }
         }
+    }, []);
+
+    const handleAlbumSelect = (albumId) => {
+        setSelectedAlbumId(albumId);
+        setCurrentView('albumDetail');
+    };
+
+    const handleBackToList = () => {
+        setCurrentView('albumList');
+        setSelectedAlbumId(null);
+        // 注意：这里不清除URL hash，保持播放器状态
+    };
+
+// 在专辑详情页点击歌曲时
+const handlePlaySong = (song) => {
+    // 使用全局播放器
+    if (window.playSong) {
+        window.playSong(song);
+    }
+};
+
+    return (
+        <div>
+            {currentView === 'albumList' && (
+                <AlbumList 
+                    onAlbumSelect={handleAlbumSelect}
+                    onPlaySong={handlePlaySong}
+                />
+            )}
+            
+            {currentView === 'albumDetail' && (
+                <AlbumDetail 
+                    albumId={selectedAlbumId}
+                    onBack={handleBackToList}
+                    onPlaySong={handlePlaySong}
+                />
+            )}
+            
+            {/* 播放器始终显示，不受页面切换影响 */}
+            <Player
+                currentSong={currentSong}
+                playlist={currentSong ? bigbangAlbums.flatMap(album => album.songs) : []}
+                onPlayNext={() => {
+                    if (!currentSong) return;
+                    const allSongs = bigbangAlbums.flatMap(album => album.songs);
+                    const index = allSongs.findIndex(s => s.id === currentSong.id);
+                    const nextIndex = (index + 1) % allSongs.length;
+                    setCurrentSong(allSongs[nextIndex]);
+                }}
+                onPlayPrev={() => {
+                    if (!currentSong) return;
+                    const allSongs = bigbangAlbums.flatMap(album => album.songs);
+                    const index = allSongs.findIndex(s => s.id === currentSong.id);
+                    const prevIndex = (index - 1 + allSongs.length) % allSongs.length;
+                    setCurrentSong(allSongs[prevIndex]);
+                }}
+            />
+        </div>
+    );
+}
 
         // 渲染应用
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
+    <script src="player.js"></script>
 </body>
 </html>
