@@ -148,7 +148,6 @@
         transform-origin: left;
     }
 
-    /* 播放器放在 html 下，不受 body 缩放影响 */
     #global-player {
         position: fixed !important;
         bottom: 0 !important;
@@ -162,16 +161,13 @@
         padding: 4px 6px !important;
         box-sizing: border-box !important;
         min-height: 35px !important;
-        /* 确保不被任何父元素影响 */
         transform: none !important;
     }
 
-    /* 确保播放器内部元素正常 */
     #global-player * {
         transform: none !important;
     }
 
-    /* 为内容区域添加底部内边距 */
     .container {
         padding-bottom: 45px !important;
     }
