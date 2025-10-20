@@ -133,6 +133,7 @@
         height: 100vh;
         overflow-x: hidden;
         overflow-y: auto;
+        position: relative;
     }
 
     body {
@@ -147,18 +148,25 @@
         transform-origin: left;
     }
 
-    /* 播放器固定定位，使用内联样式的小尺寸 */
+    /* 播放器放在 html 下，不受 body 缩放影响 */
     #global-player {
         position: fixed !important;
         bottom: 0 !important;
         left: 0 !important;
         right: 0 !important;
+        width: 100vw !important;
         z-index: 10000 !important;
-        /* 尺寸已经在 player.js 中设置好了 */
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        /* 确保不被任何父元素影响 */
+        transform: none !important;
     }
 
-    /* 确保播放器不被 body 的缩放影响 */
-    #global-player,
+    /* 确保播放器内部元素正常 */
     #global-player * {
         transform: none !important;
     }
@@ -196,6 +204,10 @@
       color: black;
       cursor: pointer;
     }
+
+#global-player {
+    display: flex !important;
+}
 
   </style>
 </head>
