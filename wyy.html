@@ -1249,13 +1249,88 @@ function AlbumDetail({ albumId, onBack, onPlaySong }) {
 }
 
 // 主 App 组件
+// 在 App 组件外添加全局引用
+let globalSetSelectedAlbumId = null;
+let globalSetCurrentView = null;
+
+// 修改 App 组件，在 useEffect 中设置全局引用
+// 修改 App 组件，添加全局引用
 function App() {
     const [currentView, setCurrentView] = useState('albumList');
     const [selectedAlbumId, setSelectedAlbumId] = useState(null);
     const [currentSong, setCurrentSong] = useState(null);
 
-    // 检查URL hash并自动跳转到对应专辑
+    // 设置全局引用，让外部可以访问这些状态函数
     useEffect(() => {
+        window.globalSetSelectedAlbumId = setSelectedAlbumId;
+        window.globalSetCurrentView = setCurrentView;
+        window.globalSetCurrentSong = setCurrentSong;
+        
+        return () => {
+            // 清理时移除引用
+            window.globalSetSelectedAlbumId = null;
+            window.globalSetCurrentView = null;
+            window.globalSetCurrentSong = null;
+        };
+    }, []);
+
+    // 检查URL参数和hash并自动跳转到对应专辑
+    useEffect(() => {
+        // 处理 URL 参数（从其他页面跳转过来）
+        const urlParams = new URLSearchParams(window.location.search);
+        const albumId = urlParams.get('album');
+        const songId = urlParams.get('song');
+        
+        console.log('URL 参数 - album:', albumId, 'song:', songId);
+        
+        if (albumId) {
+            console.log('从URL参数获取专辑ID:', albumId);
+            const album = bigbangAlbums.find(album => album.id === parseInt(albumId));
+            if (album) {
+                console.log('找到对应专辑:', album.title);
+                setSelectedAlbumId(album.id);
+                setCurrentView('albumDetail');
+                
+                // 滚动到专辑详情区域
+                setTimeout(() => {
+                    const albumJump = document.getElementById('album-jump');
+                    if (albumJump) {
+                        albumJump.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 100);
+                
+                // 清除URL参数
+                const newUrl = window.location.pathname;
+                window.history.replaceState({}, '', newUrl);
+            }
+        }
+        
+        if (songId) {
+            console.log('从URL参数获取歌曲ID:', songId);
+            // 根据歌曲ID找到对应的专辑
+            const album = bigbangAlbums.find(album => 
+                album.songs.some(song => song.id === parseInt(songId))
+            );
+            if (album) {
+                console.log('通过歌曲找到对应专辑:', album.title);
+                setSelectedAlbumId(album.id);
+                setCurrentView('albumDetail');
+                
+                // 滚动到专辑详情区域
+                setTimeout(() => {
+                    const albumJump = document.getElementById('album-jump');
+                    if (albumJump) {
+                        albumJump.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 100);
+                
+                // 清除URL参数
+                const newUrl = window.location.pathname;
+                window.history.replaceState({}, '', newUrl);
+            }
+        }
+        
+        // 原有的hash处理逻辑
         const hash = window.location.hash.substring(1);
         if (hash) {
             const targetAlbum = bigbangAlbums.find(album => album.jump_id === hash);
@@ -1342,6 +1417,103 @@ function App() {
 // 渲染应用
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
+
+// 在 wyy.html 末尾添加全局函数
+window.showAlbum = function(albumId) {
+    console.log('showAlbum 被调用，专辑ID:', albumId);
+    
+    if (!albumId) {
+        console.log('专辑ID为空');
+        return;
+    }
+    
+    // 使用全局引用的状态函数
+    if (window.globalSetSelectedAlbumId && window.globalSetCurrentView) {
+        console.log('使用全局状态函数跳转到专辑');
+        window.globalSetSelectedAlbumId(parseInt(albumId));
+        window.globalSetCurrentView('albumDetail');
+        
+        // 滚动到专辑详情区域
+        setTimeout(() => {
+            const albumJump = document.getElementById('album-jump');
+            if (albumJump) {
+                albumJump.scrollIntoView({ behavior: 'smooth' });
+                console.log('已滚动到专辑详情区域');
+            }
+        }, 100);
+    } else {
+        console.log('全局状态函数未初始化，尝试直接查找专辑');
+        // 备用方案：直接查找并滚动到专辑
+        const albumElement = document.querySelector(`[data-album-id="${albumId}"]`);
+        if (albumElement) {
+            console.log('找到专辑元素，执行点击');
+            albumElement.click();
+        } else {
+            console.log('未找到专辑元素，专辑ID:', albumId);
+        }
+    }
+};
+
+// 只保留一个 showSongAlbum 函数定义
+window.showSongAlbum = function(song) {
+    console.log('showSongAlbum 被调用，歌曲:', song);
+    
+    if (!song) {
+        console.log('歌曲信息为空');
+        return;
+    }
+    
+    // 根据歌曲信息找到对应的专辑
+    const album = bigbangAlbums.find(album => 
+        album.songs.some(s => s.id === song.id)
+    );
+    
+    if (album) {
+        console.log('找到歌曲对应的专辑:', album.title);
+        // 调用 showAlbum 函数
+        window.showAlbum(album.id);
+    } else {
+        console.log('未找到歌曲对应的专辑，歌曲ID:', song.id);
+    }
+};
+
+// 更新事件监听器，使用新的函数
+window.addEventListener('showSongAlbum', function(event) {
+    console.log('收到 showSongAlbum 事件:', event.detail);
+    const song = event.detail.song;
+    // 直接调用全局函数，不使用旧的全局引用
+    if (window.showSongAlbum) {
+        window.showSongAlbum(song);
+    }
+});
+
+// 页面加载完成后初始化
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('wyy.html 页面加载完成，专辑显示功能已初始化');
+    
+    // 处理 URL 参数（备用方案）
+    const urlParams = new URLSearchParams(window.location.search);
+    const albumId = urlParams.get('album');
+    const songId = urlParams.get('song');
+    
+    if (albumId) {
+        console.log('检测到URL专辑参数，延迟处理:', albumId);
+        setTimeout(() => {
+            window.showAlbum(albumId);
+        }, 500);
+    }
+    
+    if (songId) {
+        console.log('检测到URL歌曲参数，延迟处理:', songId);
+        setTimeout(() => {
+            const song = window.allSongs.find(s => s.id === parseInt(songId));
+            if (song) {
+                window.showSongAlbum(song);
+            }
+        }, 500);
+    }
+});
+
     </script>
     <script src="player.js"></script>
 </body>

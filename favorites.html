@@ -81,6 +81,34 @@
             transition: background 0.3s ease;
         }
 
+        .edit-btn {
+            padding: 10px 25px;
+            font-size: 16px;
+            border-radius: 5px 14px;
+            color: white;
+            text-decoration: none;
+            border: 2px solid #33FFFF;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .edit-btn:hover {
+            background-color: white;
+            color: #111;
+        }
+
+        .edit-btn.done {
+            border-color: #111;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .edit-btn.done:hover {
+            border-color: white;
+            color: #111;
+        }
+
         nav a:hover {
             background-color: white;
             color: #111;
@@ -109,6 +137,59 @@
             background: #2a2a2a;
             transform: translateX(5px);
             border-color: #33FFFF;
+        }
+
+        /* 编辑模式样式 */
+        .edit-mode .favorite-song-item {
+            cursor: grab;
+        }
+
+        .edit-mode .favorite-song-item:active {
+            cursor: grabbing;
+        }
+
+        .edit-mode .favorite-song-item:hover {
+            transform: none;
+            border-color: #33FFFF;
+        }
+
+        .drag-handle {
+            margin-right: 15px;
+            color: #33FFFF;
+            font-size: 18px;
+            cursor: grab;
+            padding: 8px;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+
+        .drag-handle:active {
+            cursor: grabbing;
+            transform: scale(1.1);
+        }
+
+        .edit-mode .drag-handle {
+            display: block;
+        }
+
+        .drag-handle {
+            display: none;
+        }
+
+        .favorite-song-item.dragging {
+            opacity: 0.6;
+            transform: rotate(5deg);
+        }
+
+        .favorite-song-item.drag-over {
+            border-top: 2px solid #33FFFF;
+        }
+
+        .edit-hint {
+            text-align: center;
+            color: white;
+            margin: 10px 0;
+            font-size: 14px;
         }
 
         .favorite-song-cover {
@@ -244,6 +325,11 @@
             .song-controls {
                 flex-shrink: 0;
             }
+
+            .drag-handle {
+                margin-right: 10px;
+                padding: 6px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -271,6 +357,11 @@
                 height: 28px;
                 font-size: 14px;
             }
+
+            .drag-handle {
+                margin-right: 8px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -284,18 +375,22 @@
                 <h1>我的收藏 <span class="favorites-count" id="favorites-count">(0)</span></h1>
             </div>
             <nav class="right-nav">
-                <!-- 可以在这里添加其他按钮 -->
+                <button class="edit-btn" id="edit-btn">编辑</button>
             </nav>
         </div>
     </div>
     
     <div class="container">
+        <div class="edit-hint" id="edit-hint" style="display: none;">长按 ⋮⋮ 符号拖动歌曲重新排序</div>
         <div class="favorites-list" id="favorites-list">
             <div class="empty-state">暂无收藏歌曲</div>
         </div>
     </div>
 
     <script>
+        let isEditMode = false;
+        let dragSrcElement = null;
+
         function goBack() {
             window.history.back();
         }
@@ -311,21 +406,226 @@
             
             if (favorites.length === 0) {
                 favoritesList.innerHTML = '<div class="empty-state">暂无收藏歌曲</div>';
+                // 如果没有收藏歌曲，禁用编辑按钮
+                const editBtn = document.getElementById('edit-btn');
+                if (editBtn) {
+                    editBtn.style.display = 'none';
+                }
                 return;
+            }
+
+            // 如果有收藏歌曲，确保编辑按钮显示
+            const editBtn = document.getElementById('edit-btn');
+            if (editBtn) {
+                editBtn.style.display = 'block';
             }
             
             favoritesList.innerHTML = favorites.map(song => `
-                <div class="favorite-song-item" onclick="playSongFromFavorites(${song.id})">
+                <div class="favorite-song-item" data-song-id="${song.id}">
+                    <div class="drag-handle">⋮⋮</div>
                     <img src="${song.cover_url || 'default-cover.jpg'}" alt="${song.title}" class="favorite-song-cover">
                     <div class="favorite-song-info">
                         <div class="favorite-song-title">${song.title}</div>
                         <div class="favorite-song-album">${song.album_title || ''}</div>
                     </div>
                     <div class="song-controls">
-                        <button class="remove-favorite" onclick="event.stopPropagation(); removeFavorite(${song.id})" title="取消收藏">✕</button>
+                        <button class="remove-favorite" title="取消收藏">✕</button>
                     </div>
                 </div>
             `).join('');
+
+            // 重新绑定事件
+            bindSongEvents();
+        }
+
+        function bindSongEvents() {
+            const songItems = document.querySelectorAll('.favorite-song-item');
+            
+            songItems.forEach(item => {
+                const songId = parseInt(item.dataset.songId);
+                const removeBtn = item.querySelector('.remove-favorite');
+                const dragHandle = item.querySelector('.drag-handle');
+                
+                // 歌曲点击事件 - 只在非编辑模式下有效
+                item.addEventListener('click', function(e) {
+                    if (!isEditMode && !e.target.closest('.remove-favorite') && !e.target.closest('.drag-handle')) {
+                        playSongFromFavorites(songId);
+                    }
+                });
+                
+                // 移除按钮事件
+                removeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    removeFavorite(songId);
+                });
+                
+                // 拖拽手柄事件 - 只在编辑模式下有效
+                if (isEditMode) {
+                    initDragEvents(item, dragHandle);
+                }
+            });
+        }
+
+        function initDragEvents(item, dragHandle) {
+            let isDragging = false;
+            let startY = 0;
+            let initialIndex = 0;
+
+            dragHandle.addEventListener('mousedown', startDrag);
+            dragHandle.addEventListener('touchstart', startDrag);
+
+            function startDrag(e) {
+                if (!isEditMode) return;
+                
+                e.preventDefault();
+                isDragging = true;
+                startY = e.type === 'mousedown' ? e.clientY : e.touches[0].clientY;
+                
+                const favoritesList = document.getElementById('favorites-list');
+                const items = Array.from(favoritesList.querySelectorAll('.favorite-song-item'));
+                initialIndex = items.indexOf(item);
+                
+                item.classList.add('dragging');
+                document.body.style.userSelect = 'none';
+                
+                // 绑定移动和结束事件
+                document.addEventListener('mousemove', onDragMove);
+                document.addEventListener('touchmove', onDragMove);
+                document.addEventListener('mouseup', endDrag);
+                document.addEventListener('touchend', endDrag);
+            }
+
+            function onDragMove(e) {
+                if (!isDragging) return;
+                
+                e.preventDefault();
+                const currentY = e.type === 'mousemove' ? e.clientY : e.touches[0].clientY;
+                const deltaY = currentY - startY;
+                
+                if (Math.abs(deltaY) > 10) {
+                    const favoritesList = document.getElementById('favorites-list');
+                    const items = Array.from(favoritesList.querySelectorAll('.favorite-song-item'));
+                    const currentIndex = items.indexOf(item);
+                    
+                    // 计算新的位置
+                    const itemHeight = item.offsetHeight;
+                    const moveCount = Math.round(deltaY / itemHeight);
+                    const newIndex = Math.max(0, Math.min(items.length - 1, initialIndex + moveCount));
+                    
+                    if (newIndex !== currentIndex) {
+                        // 移除所有drag-over类
+                        items.forEach(it => it.classList.remove('drag-over'));
+                        
+                        // 移动元素
+                        if (newIndex > currentIndex) {
+                            favoritesList.insertBefore(item, items[newIndex].nextSibling);
+                        } else {
+                            favoritesList.insertBefore(item, items[newIndex]);
+                        }
+                        
+                        // 添加视觉反馈
+                        items.forEach((it, index) => {
+                            if (index === newIndex) {
+                                it.classList.add('drag-over');
+                            }
+                        });
+                    }
+                }
+            }
+
+            function endDrag() {
+                if (!isDragging) return;
+                
+                isDragging = false;
+                item.classList.remove('dragging');
+                document.body.style.userSelect = '';
+                
+                // 移除所有drag-over类
+                document.querySelectorAll('.favorite-song-item').forEach(it => {
+                    it.classList.remove('drag-over');
+                });
+                
+                // 移除事件监听器
+                document.removeEventListener('mousemove', onDragMove);
+                document.removeEventListener('touchmove', onDragMove);
+                document.removeEventListener('mouseup', endDrag);
+                document.removeEventListener('touchend', endDrag);
+                
+                // 自动保存新顺序
+                saveNewOrder();
+            }
+        }
+
+        function toggleEditMode() {
+            const editBtn = document.getElementById('edit-btn');
+            const editHint = document.getElementById('edit-hint');
+            const favoritesList = document.getElementById('favorites-list');
+            
+            isEditMode = !isEditMode;
+            
+            if (isEditMode) {
+                // 进入编辑模式
+                editBtn.textContent = '完成';
+                editBtn.classList.add('done');
+                editHint.style.display = 'block';
+                favoritesList.classList.add('edit-mode');
+                
+                // 显示所有拖拽手柄
+                document.querySelectorAll('.drag-handle').forEach(handle => {
+                    handle.style.display = 'block';
+                });
+                
+                // 重新绑定拖拽事件
+                bindSongEvents();
+            } else {
+                // 退出编辑模式
+                editBtn.textContent = '编辑';
+                editBtn.classList.remove('done');
+                editHint.style.display = 'none';
+                favoritesList.classList.remove('edit-mode');
+                
+                // 隐藏所有拖拽手柄
+                document.querySelectorAll('.drag-handle').forEach(handle => {
+                    handle.style.display = 'none';
+                });
+                
+                // 重新绑定事件（移除拖拽事件）
+                bindSongEvents();
+            }
+        }
+
+        function saveNewOrder() {
+            const favoritesList = document.getElementById('favorites-list');
+            const items = favoritesList.querySelectorAll('.favorite-song-item');
+            const currentFavorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+            
+            const newOrder = [];
+            
+            items.forEach(item => {
+                const songId = parseInt(item.dataset.songId);
+                const song = currentFavorites.find(s => s.id === songId);
+                if (song) {
+                    newOrder.push(song);
+                }
+            });
+            
+            // 更新本地存储
+            if (newOrder.length === currentFavorites.length) {
+                localStorage.setItem('musicFavorites', JSON.stringify(newOrder));
+                
+                // 更新全局播放器
+                if (window.globalPlayer) {
+                    window.globalPlayer.favorites = newOrder;
+                    window.globalPlayer.saveFavorites();
+                    
+                    // 如果当前正在播放收藏列表中的歌曲，更新播放列表
+                    if (window.globalPlayer.currentPlaylist === 'favorites') {
+                        window.globalPlayer.updatePlaylist(newOrder);
+                    }
+                }
+                
+                console.log('收藏顺序已更新');
+            }
         }
 
         function playSongFromFavorites(songId) {
@@ -333,6 +633,12 @@
             const song = favorites.find(s => s.id === songId);
             
             if (song) {
+                // 设置当前播放列表为收藏列表
+                if (window.globalPlayer) {
+                    window.globalPlayer.currentPlaylist = 'favorites';
+                    window.globalPlayer.playlist = favorites;
+                }
+                
                 if (window.playSong) {
                     window.playSong(song);
                 } else if (window.globalPlayer) {
@@ -363,6 +669,10 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            // 初始化编辑按钮事件
+            const editBtn = document.getElementById('edit-btn');
+            editBtn.addEventListener('click', toggleEditMode);
+            
             loadFavorites();
             
             document.addEventListener('visibilitychange', () => {
