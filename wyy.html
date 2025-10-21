@@ -24,6 +24,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 15px;
 }
 
 .container1 {
@@ -70,8 +71,9 @@ body {
 }
 
 .album-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0px 5px #33FFFF;
+    background: #2a2a2a;
+    transform: translateX(5px);
+    border-color: #33FFFF;
 }
 
 .album-cover {
@@ -103,14 +105,14 @@ body {
         gap: 30px;
         margin-bottom: 30px;
         align-items: flex-start;
-        height: 200px; /* 与封面图片高度一致 */
+        height: 200px;
     }
     
     .album-meta {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 100%; /* 继承父容器高度 */
+        height: 100%;
     }
     
     .album-meta h1 {
@@ -128,54 +130,69 @@ body {
 
 /* 手机版样式 - 只针对专辑列表页面 */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 12px;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
     .album-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 12px;
+        margin-top: 20px;
+        width: 100%;
     }
     
     .album-card {
         display: flex;
         align-items: center;
-        gap: 15px;
-        padding: 15px;
+        gap: 12px;
+        padding: 12px;
         text-align: left;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
     }
     
     .album-cover {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
         margin-bottom: 0;
         flex-shrink: 0;
+        min-width: 70px;
     }
     
     .album-info {
         flex: 1;
         min-width: 0;
-        display: block;
-        height: auto;
-        padding: 0;
-        overflow: hidden; /* 添加这行 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+        width: calc(100% - 82px);
     }
     
     .album-title {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: bold;
-        white-space: nowrap; /* 改为 nowrap */
-        overflow: hidden; /* 改为 hidden */
-        text-overflow: ellipsis; /* 添加省略号 */
-        margin-bottom: 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 4px;
         color: white;
         line-height: 1.3;
-        display: block;
         width: 100%;
+        display: block;
     }
     
     .album-year {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         color: #cdcdcd;
-        margin-top: 0;
-        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         width: 100%;
+        display: block;
     }
     
     /* 专辑详情页手机版布局 */
@@ -208,23 +225,32 @@ body {
 
 /* 小屏手机优化 */
 @media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+    
     .album-card {
-        gap: 12px;
-        padding: 12px;
+        gap: 10px;
+        padding: 10px;
     }
     
     .album-cover {
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+    }
+    
+    .album-info {
+        width: calc(100% - 70px);
     }
     
     .album-title {
-        font-size: 1.1rem;
-        margin-bottom: 6px;
+        font-size: 1rem;
+        margin-bottom: 3px;
     }
     
     .album-year {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
     
     /* 小屏手机专辑详情页优化 */
@@ -246,7 +272,7 @@ body {
 .album-detail {
     background: #111;
     border-radius: 15px;
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     margin-top: 20px;
 }
@@ -294,24 +320,28 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #333;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: all 0.3s ease;
+    border: 1px solid #333;
+    border-radius: 10px;
+    margin-bottom: 5px;
 }
 
 .song-item:hover {
-    background: white;
-    color: #111;
-    border-radius: 8px;
+    background: #111;
+    transform: translateX(5px);
+    border-color: #33FFFF;
 }
 
 .song-item:hover .song-title,
 .song-item:hover .song-duration {
-    color: #111;
+    color: white;
 }
 
 .song-item:last-child {
     border-bottom: none;
+    margin-bottom: 0;
 }
 
 .song-title {
@@ -322,6 +352,43 @@ body {
 .song-duration {
     color: white;
     font-size: 0.9rem;
+}
+
+/* 新增爱心按钮样式 */
+.favorite-btn {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 16px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin-right: 8px;
+}
+
+.favorite-btn:hover {
+    background: rgba(255, 71, 87, 0.1);
+    transform: scale(1.1);
+}
+
+.favorite-btn.active {
+    color: #ff4757;
+    background: rgba(255, 71, 87, 0.1);
+}
+
+.favorite-btn.active:hover {
+    transform: scale(1.1);
+}
+
+.song-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .player {
@@ -363,7 +430,6 @@ body {
   width: 200px;
 }
 
-
 .loading {
     text-align: center;
     color: white;
@@ -404,7 +470,7 @@ body {
     }
     
     .container {
-        margin-top: 0; /* 也删除这个，因为不需要为固定定位留空间了 */
+        margin-top: 0;
     }
 }
 
@@ -414,14 +480,14 @@ body {
 
 .left-nav {
   position: absolute;
-  left: 0px; /* 根据 container 的 margin 调整 */
+  left: 0px;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .right-nav {
   position: absolute;
-  right: 0px; /* 根据 container 的 margin 调整 */
+  right: 0px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -429,24 +495,24 @@ body {
 @media (min-width: 769px) {
     .left-nav {
         top: 30%;
-        left: 10px; /* 调整这个值来控制距离左边的间距 */
+        left: 10px;
     }
     .right-nav {
         top: 30%;
-        right: 10px; /* 调整这个值来控制距离右边的间距 */
+        right: 10px;
     }
 }
 
 .left-nav {
   position: absolute;
-  left: 5px; /* 根据 container 的 margin 调整 */
+  left: 5px;
   top: 25%;
   transform: translateY(-50%);
 }
 
 .right-nav {
   position: absolute;
-  right: 5px; /* 根据 container 的 margin 调整 */
+  right: 5px;
   top: 25%;
   transform: translateY(-50%);
 }
@@ -459,7 +525,7 @@ nav a {
     border-radius: 5px 18px;
     border: 2px solid white;
     transition: background 0.3s ease;
-    font-size: 18px; /* 统一字体大小 */
+    font-size: 18px;
 }
 
 /* 完全复制留言区的 filter-buttons 样式 */
@@ -591,10 +657,38 @@ nav a {
                 description: '推出首张单曲专辑',
                 jump_id: 'album-jump',
                 songs: [
-                    { id: 101, title: 'BANG BANG BANG', duration: 231, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' },
-                    { id: 102, title: 'LOSER', duration: 223, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' },
-                    { id: 103, title: 'BAE BAE', duration: 156, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' },
-                    { id: 104, title: 'IF YOU', duration: 264, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' }
+                    { 
+                        id: 101, 
+                        title: 'BANG BANG BANG', 
+                        duration: 231, 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                        cover_url: 'BIGBANG2006.jpg',
+                        album_title: 'Bigbang First Single'
+                    },
+                    { 
+                        id: 102, 
+                        title: 'LOSER', 
+                        duration: 223, 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                        cover_url: 'BIGBANG2006.jpg',
+                        album_title: 'Bigbang First Single'
+                    },
+                    { 
+                        id: 103, 
+                        title: 'BAE BAE', 
+                        duration: 156, 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                        cover_url: 'BIGBANG2006.jpg',
+                        album_title: 'Bigbang First Single'
+                    },
+                    { 
+                        id: 104, 
+                        title: 'IF YOU', 
+                        duration: 264, 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                        cover_url: 'BIGBANG2006.jpg',
+                        album_title: 'Bigbang First Single'
+                    }
                 ]
             },
             {
@@ -604,9 +698,30 @@ nav a {
                 release_year: 2012,
                 description: 'BIGBANG迷你专辑《ALIVE》',
                 songs: [
-                    { id: 201, title: 'FANTASTIC BABY', duration: 229, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' },
-                    { id: 202, title: 'BLUE', duration: 236, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' },
-                    { id: 203, title: 'BAD BOY', duration: 234, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' }
+                    { 
+                        id: 201, 
+                        title: 'FANTASTIC BABY', 
+                        duration: 229, 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                        cover_url: 'https://picsum.photos/300/300?random=2',
+                        album_title: 'ALIVE'
+                    },
+                    { 
+                        id: 202, 
+                        title: 'BLUE', 
+                        duration: 236, 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                        cover_url: 'https://picsum.photos/300/300?random=2',
+                        album_title: 'ALIVE'
+                    },
+                    { 
+                        id: 203, 
+                        title: 'BAD BOY', 
+                        duration: 234, 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                        cover_url: 'https://picsum.photos/300/300?random=2',
+                        album_title: 'ALIVE'
+                    }
                 ]
             },
             {
@@ -616,8 +731,22 @@ nav a {
                 release_year: 2012,
                 description: 'BIGBANG特别专辑《STILL ALIVE》',
                 songs: [
-                    { id: 301, title: 'MONSTER', duration: 234, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' },
-                    { id: 302, title: 'STILL ALIVE', duration: 204, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' }
+                    { 
+                        id: 301, 
+                        title: 'MONSTER', 
+                        duration: 234, 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                        cover_url: 'https://picsum.photos/300/300?random=3',
+                        album_title: 'STILL ALIVE'
+                    },
+                    { 
+                        id: 302, 
+                        title: 'STILL ALIVE', 
+                        duration: 204, 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                        cover_url: 'https://picsum.photos/300/300?random=3',
+                        album_title: 'STILL ALIVE'
+                    }
                 ]
             },
             {
@@ -627,56 +756,47 @@ nav a {
                 release_year: 2011,
                 description: 'BIGBANG特别迷你专辑《TONIGHT》',
                 songs: [
-                    { id: 401, title: 'TONIGHT', duration: 234, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' },
-                    { id: 402, title: 'HANDS UP', duration: 203, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' }
+                    { 
+                        id: 401, 
+                        title: 'TONIGHT', 
+                        duration: 234, 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                        cover_url: 'https://picsum.photos/300/300?random=4',
+                        album_title: 'TONIGHT'
+                    },
+                    { 
+                        id: 402, 
+                        title: 'HANDS UP', 
+                        duration: 203, 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                        cover_url: 'https://picsum.photos/300/300?random=4',
+                        album_title: 'TONIGHT'
+                    }
                 ]
             },
             {
                 id: 5,
-                title: 'Bigbang First Single',
+                title: 'Bigbang Second Single',
                 cover_url: 'BIGBANG2006.jpg',
-                release_year: '2006年8月29日',
-                description: '推出首张单曲专辑',
-                jump_id: 'album-jump',
+                release_year: '2007年8月29日',
+                description: '推出第二张单曲专辑',
                 songs: [
-                    { id: 101, title: 'BANG BANG BANG', duration: 231, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' },
-                    { id: 102, title: 'LOSER', duration: 223, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' },
-                    { id: 103, title: 'BAE BAE', duration: 156, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' },
-                    { id: 104, title: 'IF YOU', duration: 264, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' }
-                ]
-            },
-            {
-                id: 6,
-                title: 'ALIVE',
-                cover_url: 'https://picsum.photos/300/300?random=2',
-                release_year: 2012,
-                description: 'BIGBANG迷你专辑《ALIVE》',
-                songs: [
-                    { id: 201, title: 'FANTASTIC BABY', duration: 229, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' },
-                    { id: 202, title: 'BLUE', duration: 236, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' },
-                    { id: 203, title: 'BAD BOY', duration: 234, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' }
-                ]
-            },
-            {
-                id: 7,
-                title: 'STILL ALIVE',
-                cover_url: 'https://picsum.photos/300/300?random=3',
-                release_year: 2012,
-                description: 'BIGBANG特别专辑《STILL ALIVE》',
-                songs: [
-                    { id: 301, title: 'MONSTER', duration: 234, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' },
-                    { id: 302, title: 'STILL ALIVE', duration: 204, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' }
-                ]
-            },
-            {
-                id: 8,
-                title: 'TONIGHT',
-                cover_url: 'https://picsum.photos/300/300?random=4',
-                release_year: 2011,
-                description: 'BIGBANG特别迷你专辑《TONIGHT》',
-                songs: [
-                    { id: 401, title: 'TONIGHT', duration: 234, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' },
-                    { id: 402, title: 'HANDS UP', duration: 203, file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3' }
+                    { 
+                        id: 501, 
+                        title: 'BANG BANG BANG 2', 
+                        duration: 231, 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                        cover_url: 'BIGBANG2006.jpg',
+                        album_title: 'Bigbang Second Single'
+                    },
+                    { 
+                        id: 502, 
+                        title: 'LOSER 2', 
+                        duration: 223, 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                        cover_url: 'BIGBANG2006.jpg',
+                        album_title: 'Bigbang Second Single'
+                    }
                 ]
             }
         ];
@@ -686,8 +806,8 @@ window.bigbangAlbums = bigbangAlbums;
 window.allSongs = bigbangAlbums.flatMap(album => 
     album.songs.map(song => ({
         ...song,
-        album_title: album.title,
-        cover_url: song.cover_url || album.cover_url
+        cover_url: song.cover_url || album.cover_url,
+        album_title: album.title
     }))
 );
 
@@ -738,10 +858,13 @@ function Player({ currentSong, playlist, onPlayNext, onPlayPrev }) {
                     src={currentSong.cover_url || 'default-cover.jpg'}
                     alt="cover"
                     className="player-cover"
+                    onError={(e) => {
+                        e.target.src = 'default-cover.jpg';
+                    }}
                 />
                 <div className="player-meta">
                     <div className="player-title">{currentSong.title}</div>
-                    <div className="player-artist">{currentSong.artist || 'BIGBANG'}</div>
+                    <div className="player-artist">{currentSong.album_title || 'BIGBANG'}</div>
                 </div>
             </div>
 
@@ -768,13 +891,12 @@ function Player({ currentSong, playlist, onPlayNext, onPlayPrev }) {
                 onTimeUpdate={handleTimeUpdate}
                 onEnded={() => {
                     setIsPlaying(false);
-                    onPlayNext(); // 自动播放下一首
+                    onPlayNext();
                 }}
             />
         </div>
     );
 }
-
 
 // AlbumList 组件
 function AlbumList({ onAlbumSelect, onPlaySong }) {
@@ -793,7 +915,6 @@ function AlbumList({ onAlbumSelect, onPlaySong }) {
         setSortOrder(order);
     };
 
-    // 修改这里：返回到 album.html 而不是 index.html
     const handleBackToAlbum = () => {
         window.location.href = 'album.html';
     };
@@ -803,7 +924,6 @@ function AlbumList({ onAlbumSelect, onPlaySong }) {
             <div className="container1">
                 <div className="header-container">
                     <nav className="left-nav">
-                        {/* 修改这里：返回到 album.html */}
                         <a href="#" onClick={(e) => { e.preventDefault(); handleBackToAlbum(); }}>
                             Back
                         </a>
@@ -812,20 +932,20 @@ function AlbumList({ onAlbumSelect, onPlaySong }) {
                         <h1>&nbsp;</h1>
                     </div>
 <nav className="right-nav">
-    <button 
-        className="sort-button"
-        onClick={() => window.open('favorites.html', 'favorites', 'width=600,height=700')}
-        style={{
-            background: 'none', 
-            border: 'none', 
-            color: '#aaa', 
-            cursor: 'pointer', 
-            fontSize: '20px',
-            padding: '8px 12px'
-        }}
-    >
-        ❤️
-    </button>
+<button 
+    className="sort-button"
+    onClick={() => window.location.href = 'favorites.html'}
+    style={{
+        background: 'none', 
+        border: 'none', 
+        color: '#33FFFF', 
+        cursor: 'pointer', 
+        fontSize: '20px',
+        padding: '8px 12px'
+    }}
+>
+    我的收藏
+</button>
     <button 
         className={`sort-button ${sortOrder === 'all' ? 'active' : ''}`}
         onClick={() => handleSortChange('all')}
@@ -854,6 +974,9 @@ function AlbumList({ onAlbumSelect, onPlaySong }) {
                                 src={album.cover_url} 
                                 alt={album.title}
                                 className="album-cover"
+                                onError={(e) => {
+                                    e.target.src = 'default-cover.jpg';
+                                }}
                             />
                             <div className="album-info">
                                 <div className="album-title">{album.title}</div>
@@ -867,16 +990,132 @@ function AlbumList({ onAlbumSelect, onPlaySong }) {
     );
 }
 
+// 检查歌曲是否在收藏中
+function isSongInFavorites(songId) {
+    const favorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+    return favorites.some(song => song.id === songId);
+}
+
+// 切换歌曲收藏状态
+function toggleFavorite(song) {
+    const favorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+    const existingIndex = favorites.findIndex(fav => fav.id === song.id);
+    
+    if (existingIndex === -1) {
+        // 添加到收藏
+        favorites.push({
+            ...song,
+            addedAt: new Date().toISOString()
+        });
+    } else {
+        // 从收藏中移除
+        favorites.splice(existingIndex, 1);
+    }
+    
+    localStorage.setItem('musicFavorites', JSON.stringify(favorites));
+    
+    // 同步更新全局播放器的收藏列表
+    if (window.globalPlayer) {
+        window.globalPlayer.favorites = favorites;
+        window.globalPlayer.saveFavorites();
+    }
+    
+    // 触发存储事件，让其他页面也能收到更新
+    window.dispatchEvent(new StorageEvent('storage', {
+        key: 'musicFavorites',
+        newValue: JSON.stringify(favorites)
+    }));
+    
+    return existingIndex === -1; // 返回是否添加了收藏
+}
+
 // AlbumDetail 组件
 function AlbumDetail({ albumId, onBack, onPlaySong }) {
     const album = bigbangAlbums.find(a => a.id === albumId);
+    const [favorites, setFavorites] = useState([]);
 
     if (!album) return <div className="error">专辑不存在</div>;
+
+    // 加载收藏列表
+    const loadFavorites = () => {
+        const savedFavorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+        setFavorites(savedFavorites);
+    };
+
+    // 初始化加载收藏
+    useEffect(() => {
+        loadFavorites();
+    }, []);
+
+    // 监听收藏变化
+    useEffect(() => {
+        const handleStorageChange = () => {
+            loadFavorites();
+        };
+
+        // 监听本地存储变化
+        window.addEventListener('storage', handleStorageChange);
+        
+        // 监听自定义的收藏更新事件
+        window.addEventListener('favoritesUpdated', handleStorageChange);
+
+        return () => {
+            window.removeEventListener('storage', handleStorageChange);
+            window.removeEventListener('favoritesUpdated', handleStorageChange);
+        };
+    }, []);
 
     const formatDuration = (seconds) => {
         const mins = Math.floor(seconds / 60);
         const secs = seconds % 60;
         return `${mins}:${secs.toString().padStart(2, '0')}`;
+    };
+
+    // 检查歌曲是否在收藏中
+    const isSongInFavorites = (songId) => {
+        return favorites.some(song => song.id === songId);
+    };
+
+    // 处理爱心按钮点击
+    const handleFavoriteClick = (e, song) => {
+        e.stopPropagation();
+        const currentFavorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+        const existingIndex = currentFavorites.findIndex(fav => fav.id === song.id);
+        
+        let newFavorites;
+        if (existingIndex === -1) {
+            // 添加到收藏
+            newFavorites = [...currentFavorites, {
+                ...song,
+                addedAt: new Date().toISOString()
+            }];
+        } else {
+            // 从收藏中移除
+            newFavorites = currentFavorites.filter(fav => fav.id !== song.id);
+        }
+        
+        // 更新本地存储
+        localStorage.setItem('musicFavorites', JSON.stringify(newFavorites));
+        
+        // 同步更新全局播放器的收藏列表
+        if (window.globalPlayer) {
+            window.globalPlayer.favorites = newFavorites;
+            window.globalPlayer.saveFavorites();
+        }
+        
+        // 更新本地状态
+        setFavorites(newFavorites);
+        
+        // 触发自定义事件，让其他组件知道收藏状态变化
+        window.dispatchEvent(new CustomEvent('favoritesUpdated', {
+            detail: newFavorites
+        }));
+        
+        // 触发存储事件，让其他页面也能收到更新
+        window.dispatchEvent(new StorageEvent('storage', {
+            key: 'musicFavorites',
+            newValue: JSON.stringify(newFavorites)
+        }));
     };
 
     return (
@@ -892,21 +1131,21 @@ function AlbumDetail({ albumId, onBack, onPlaySong }) {
                         <h1>&nbsp;</h1>
                     </div>
                     <nav className="right-nav">
-    <button 
-        className="sort-button"
-        onClick={() => window.open('favorites.html', 'favorites', 'width=600,height=700')}
-        style={{
-            background: 'none', 
-            border: 'none', 
-            color: '#aaa', 
-            cursor: 'pointer', 
-            fontSize: '20px',
-            padding: '8px 12px'
-        }}
-    >
-        ❤️
-    </button>
-</nav>
+                        <button 
+                            className="sort-button"
+                            onClick={() => window.location.href = 'favorites.html'}
+                            style={{
+                                background: 'none', 
+                                border: 'none', 
+                                color: '#33FFFF', 
+                                cursor: 'pointer', 
+                                fontSize: '20px',
+                                padding: '8px 12px'
+                            }}
+                        >
+                            我的收藏
+                        </button>
+                    </nav>
                 </div>
             </div>
             <div className="container">
@@ -916,6 +1155,9 @@ function AlbumDetail({ albumId, onBack, onPlaySong }) {
                             src={album.cover_url} 
                             alt={album.title}
                             className="album-cover-large"
+                            onError={(e) => {
+                                e.target.src = 'default-cover.jpg';
+                            }}
                         />
                         <div className="album-meta">
                             <h1>{album.title}</h1>
@@ -926,66 +1168,79 @@ function AlbumDetail({ albumId, onBack, onPlaySong }) {
 
                     <div className="songs-list">
                         <h2>歌曲列表 <span style={{color: '#cdcdcd', fontSize: '0.9em'}}>{album.songs.length} 首</span></h2>
-                        {album.songs.map(song => (
-                            <div 
-                                key={song.id} 
-                                className="song-item"
-                                onClick={() => onPlaySong(song)}
-                            >
-                                <span className="song-title">{song.title}</span>
-                                <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
-                                    <span className="song-duration">
-                                        {formatDuration(song.duration)}
-                                    </span>
-                                    <button 
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            if (window.globalPlayer) {
-                                                window.globalPlayer.addToPlaylist(song);
-                                                // 添加点击反馈
-                                                const button = e.target;
-                                                const originalText = button.innerHTML;
-                                                button.innerHTML = '✓';
-                                                button.style.color = '#33FFFF';
-                                                button.style.transform = 'scale(1.2)';
-                                                
-                                                setTimeout(() => {
-                                                    button.innerHTML = originalText;
+                        {album.songs.map(song => {
+                            const isFavorited = isSongInFavorites(song.id);
+                            
+                            return (
+                                <div 
+                                    key={song.id} 
+                                    className="song-item"
+                                    onClick={() => onPlaySong(song)}
+                                >
+                                    <span className="song-title">{song.title}</span>
+                                    <div className="song-controls">
+                                        {/* 爱心收藏按钮 */}
+                                        <button 
+                                            className={`favorite-btn ${isFavorited ? 'active' : ''}`}
+                                            onClick={(e) => handleFavoriteClick(e, song)}
+                                            title={isFavorited ? '取消收藏' : '添加到收藏'}
+                                        >
+                                            {isFavorited ? '❤️' : '🤍'}
+                                        </button>
+                                        
+                                        <span className="song-duration">
+                                            {formatDuration(song.duration)}
+                                        </span>
+                                        <button 
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                if (window.globalPlayer) {
+                                                    window.globalPlayer.addToPlaylist(song);
+                                                    // 添加点击反馈
+                                                    const button = e.target;
+                                                    const originalText = button.innerHTML;
+                                                    button.innerHTML = '✓';
                                                     button.style.color = '#33FFFF';
-                                                    button.style.transform = 'scale(1)';
-                                                }, 1000);
-                                            }
-                                        }}
-                                        style={{
-                                            background: 'none',
-                                            border: 'none',
-                                            color: '#33FFFF',
-                                            cursor: 'pointer',
-                                            fontSize: '18px',
-                                            width: '28px',
-                                            height: '28px',
-                                            borderRadius: '50%',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            transition: 'all 0.3s ease',
-                                            fontWeight: 'bold'
-                                        }}
-                                        onMouseOver={(e) => {
-                                            e.target.style.background = 'rgba(51, 255, 255, 0.1)';
-                                            e.target.style.transform = 'scale(1.1)';
-                                        }}
-                                        onMouseOut={(e) => {
-                                            e.target.style.background = 'none';
-                                            e.target.style.transform = 'scale(1)';
-                                        }}
-                                        title="添加到播放列表"
-                                    >
-                                        +
-                                    </button>
+                                                    button.style.transform = 'scale(1.2)';
+                                                    
+                                                    setTimeout(() => {
+                                                        button.innerHTML = originalText;
+                                                        button.style.color = '#33FFFF';
+                                                        button.style.transform = 'scale(1)';
+                                                    }, 1000);
+                                                }
+                                            }}
+                                            style={{
+                                                background: 'none',
+                                                border: 'none',
+                                                color: '#33FFFF',
+                                                cursor: 'pointer',
+                                                fontSize: '18px',
+                                                width: '28px',
+                                                height: '28px',
+                                                borderRadius: '50%',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                transition: 'all 0.3s ease',
+                                                fontWeight: 'bold'
+                                            }}
+                                            onMouseOver={(e) => {
+                                                e.target.style.background = 'rgba(51, 255, 255, 0.1)';
+                                                e.target.style.transform = 'scale(1.1)';
+                                            }}
+                                            onMouseOut={(e) => {
+                                                e.target.style.background = 'none';
+                                                e.target.style.transform = 'scale(1)';
+                                            }}
+                                            title="添加到播放列表"
+                                        >
+                                            +
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </div>
@@ -1001,7 +1256,7 @@ function App() {
 
     // 检查URL hash并自动跳转到对应专辑
     useEffect(() => {
-        const hash = window.location.hash.substring(1); // 去掉#号
+        const hash = window.location.hash.substring(1);
         if (hash) {
             const targetAlbum = bigbangAlbums.find(album => album.jump_id === hash);
             if (targetAlbum) {
@@ -1019,16 +1274,30 @@ function App() {
     const handleBackToList = () => {
         setCurrentView('albumList');
         setSelectedAlbumId(null);
-        // 注意：这里不清除URL hash，保持播放器状态
     };
 
-// 在专辑详情页点击歌曲时
-const handlePlaySong = (song) => {
-    // 使用全局播放器
-    if (window.playSong) {
-        window.playSong(song);
-    }
-};
+    // 在专辑详情页点击歌曲时
+    const handlePlaySong = (song) => {
+        console.log('播放歌曲:', song);
+        console.log('歌曲封面:', song.cover_url);
+        
+        // 确保歌曲有封面信息
+        if (!song.cover_url) {
+            const album = bigbangAlbums.find(a => a.id === selectedAlbumId);
+            if (album) {
+                song.cover_url = album.cover_url;
+            }
+        }
+        
+        // 使用全局播放器
+        if (window.playSong) {
+            window.playSong(song);
+        } else {
+            console.error('全局播放器未加载');
+            // 备用方案：使用内置播放器
+            setCurrentSong(song);
+        }
+    };
 
     return (
         <div>
@@ -1070,9 +1339,9 @@ const handlePlaySong = (song) => {
     );
 }
 
-        // 渲染应用
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+// 渲染应用
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
     </script>
     <script src="player.js"></script>
 </body>

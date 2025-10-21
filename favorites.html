@@ -19,40 +19,35 @@
             padding-bottom: 80px;
         }
 
+        .container1 {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        .header {
+        .header-container {
             display: flex;
+            justify-content: center;
             align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #33FFFF;
+            position: relative;
+            height: 100px;
         }
 
-        .back-button {
-            background: none;
-            border: 2px solid white;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px 14px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-right: 20px;
-            transition: all 0.3s ease;
-        }
+        .title-group {
+            display: inline-block;
+            text-align: center;
+        } 
 
-        .back-button:hover {
-            background: white;
-            color: #111;
-        }
-
-        .header h1 {
-            font-size: 2rem;
+        .title-group h1 {
+            font-size: 2.5rem;
             color: #33FFFF;
+            margin: 0;
         }
 
         .favorites-count {
@@ -61,10 +56,42 @@
             font-size: 1rem;
         }
 
+        .left-nav {
+            position: absolute;
+            left: 5px;
+            top: 25%;
+            transform: translateY(-50%);
+        }
+
+        .right-nav {
+            position: absolute;
+            right: 5px;
+            top: 25%;
+            transform: translateY(-50%);
+        }
+
+        .left-nav a {
+            padding: 13px 30px;
+            font-size: 18px;
+            border-radius: 5px 14px;
+            color: white;
+            text-decoration: none;
+            border: 2px solid white;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: white;
+            color: #111;
+            cursor: pointer;
+        }
+
         .favorites-list {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            margin-top: 30px;
         }
 
         .favorite-song-item {
@@ -100,7 +127,7 @@
 
         .favorite-song-title {
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1rem;
             margin-bottom: 5px;
             white-space: nowrap;
             overflow: hidden;
@@ -115,20 +142,32 @@
             text-overflow: ellipsis;
         }
 
+        .song-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         .remove-favorite {
             background: none;
             border: none;
-            color: #666;
+            color: #33FFFF;
             cursor: pointer;
             padding: 8px;
             border-radius: 6px;
             transition: all 0.3s ease;
             font-size: 16px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .remove-favorite:hover {
             color: #ff4757;
             background: rgba(255, 71, 87, 0.1);
+            transform: scale(1.1);
         }
 
         .empty-state {
@@ -139,37 +178,118 @@
         }
 
         @media (max-width: 768px) {
+            .container1 {
+                padding: 20px;
+            }
+
+            .header-container {
+                height: 80px;
+            }
+
+            .left-nav {
+                transform: scale(0.79);
+                transform-origin: top left;
+                left: 0px;
+                top: -8%;
+            }
+
+            .right-nav {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                transform: scale(0.79);
+                transform-origin: top right;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 8px;
+            }
+
             .container {
                 padding: 15px;
+                margin-top: 0;
             }
             
-            .header h1 {
-                font-size: 1.5rem;
+            .title-group h1 {
+                font-size: 1.8rem;
             }
             
             .favorite-song-item {
                 padding: 12px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
             }
             
             .favorite-song-cover {
                 width: 50px;
                 height: 50px;
-                margin-right: 15px;
+                margin-right: 12px;
+                flex-shrink: 0;
             }
             
             .favorite-song-title {
-                font-size: 1.1rem;
+                font-size: 0.95rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .favorite-song-info {
+                flex: 1;
+                min-width: 0;
+                overflow: hidden;
+            }
+
+            .song-controls {
+                flex-shrink: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title-group h1 {
+                font-size: 1.5rem;
+            }
+            
+            .favorite-song-item {
+                gap: 10px;
+                padding: 10px;
+            }
+            
+            .favorite-song-cover {
+                width: 45px;
+                height: 45px;
+                margin-right: 10px;
+            }
+            
+            .favorite-song-title {
+                font-size: 0.9rem;
+            }
+
+            .remove-favorite {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <button class="back-button" onclick="goBack()">返回</button>
-            <h1>我的收藏 <span class="favorites-count" id="favorites-count">(0)</span></h1>
+    <div class="container1">
+        <div class="header-container">
+            <nav class="left-nav">
+                <a href="#" onclick="goBack()">Back</a>
+            </nav>
+            <div class="title-group">
+                <h1>我的收藏 <span class="favorites-count" id="favorites-count">(0)</span></h1>
+            </div>
+            <nav class="right-nav">
+                <!-- 可以在这里添加其他按钮 -->
+            </nav>
         </div>
-        
+    </div>
+    
+    <div class="container">
         <div class="favorites-list" id="favorites-list">
             <div class="empty-state">暂无收藏歌曲</div>
         </div>
@@ -185,6 +305,8 @@
             const favoritesList = document.getElementById('favorites-list');
             const favoritesCount = document.getElementById('favorites-count');
             
+            console.log('加载收藏列表，数量:', favorites.length);
+            
             favoritesCount.textContent = `(${favorites.length})`;
             
             if (favorites.length === 0) {
@@ -193,48 +315,88 @@
             }
             
             favoritesList.innerHTML = favorites.map(song => `
-                <div class="favorite-song-item" onclick="playSong(${song.id})">
+                <div class="favorite-song-item" onclick="playSongFromFavorites(${song.id})">
                     <img src="${song.cover_url || 'default-cover.jpg'}" alt="${song.title}" class="favorite-song-cover">
                     <div class="favorite-song-info">
                         <div class="favorite-song-title">${song.title}</div>
-                        <div class="favorite-song-album">${song.album_title || 'BIGBANG'}</div>
+                        <div class="favorite-song-album">${song.album_title || ''}</div>
                     </div>
-                    <button class="remove-favorite" onclick="removeFavorite(event, ${song.id})">✕</button>
+                    <div class="song-controls">
+                        <button class="remove-favorite" onclick="event.stopPropagation(); removeFavorite(${song.id})" title="取消收藏">✕</button>
+                    </div>
                 </div>
             `).join('');
         }
 
-function playSong(songId) {
-    if (window.opener) {
-        // 从父窗口获取所有歌曲数据
-        const allSongs = window.opener.bigbangAlbums ? 
-            window.opener.bigbangAlbums.flatMap(album => album.songs) : [];
-        
-        const song = allSongs.find(s => s.id === songId);
-        if (song) {
-            // 调用父窗口的播放函数
-            window.opener.playSong(song);
-            window.close(); // 关闭收藏页面
-        } else {
-            alert('歌曲播放失败，请确保在原页面打开收藏功能');
-        }
-    } else {
-        alert('歌曲播放失败，请确保在原页面打开收藏功能');
-    }
-}
-
-        function removeFavorite(event, songId) {
-            event.stopPropagation();
+        function playSongFromFavorites(songId) {
+            const favorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+            const song = favorites.find(s => s.id === songId);
             
+            if (song) {
+                if (window.playSong) {
+                    window.playSong(song);
+                } else if (window.globalPlayer) {
+                    window.globalPlayer.play(song);
+                } else {
+                    console.error('全局播放器未初始化');
+                }
+            }
+        }
+
+        function removeFavorite(songId) {
             const favorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
             const updatedFavorites = favorites.filter(song => song.id !== songId);
+            
             localStorage.setItem('musicFavorites', JSON.stringify(updatedFavorites));
+            
+            if (window.globalPlayer) {
+                window.globalPlayer.favorites = updatedFavorites;
+                window.globalPlayer.saveFavorites();
+            }
+            
+            window.dispatchEvent(new StorageEvent('storage', {
+                key: 'musicFavorites',
+                newValue: JSON.stringify(updatedFavorites)
+            }));
             
             loadFavorites();
         }
 
-        // 页面加载时显示收藏列表
-        document.addEventListener('DOMContentLoaded', loadFavorites);
+        document.addEventListener('DOMContentLoaded', () => {
+            loadFavorites();
+            
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) {
+                    loadFavorites();
+                }
+            });
+            
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'musicFavorites') {
+                    console.log('检测到收藏列表变化，重新加载');
+                    loadFavorites();
+                }
+            });
+
+            window.addEventListener('pageshow', function(e) {
+                console.log('页面显示，重新加载收藏列表');
+                loadFavorites();
+            });
+
+            let lastFavoritesCount = 0;
+            setInterval(function() {
+                const currentFavorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+                const currentCount = currentFavorites.length;
+                
+                if (currentCount !== lastFavoritesCount) {
+                    console.log('检测到收藏数量变化，重新加载', { before: lastFavoritesCount, after: currentCount });
+                    lastFavoritesCount = currentCount;
+                    loadFavorites();
+                }
+            }, 1000);
+        });
     </script>
+
+    <script src="player.js"></script>
 </body>
 </html>
