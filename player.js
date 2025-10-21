@@ -359,6 +359,21 @@ createPlayerDOM() {
             transition: transform 0.3s ease;
             cursor: grab;
         ">
+            <!-- 手机版专辑名字显示 - 第一排 -->
+            <div id="mobile-song-title" style="
+                display: none;
+                text-align: center;
+                font-size: 13px;
+                font-weight: bold;
+                color: white;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100%;
+                padding: 0 10px;
+                margin-bottom: 5px;
+            ">${this.currentSong?.title || ''}</div>
+            
             <!-- 左侧：封面和歌曲信息 -->
             <div style="display: flex; align-items: center; flex: 1; min-width: 0; max-width: 40%;">
                 <img id="player-cover" src="${this.currentSong?.cover_url || 'default-cover.jpg'}" style="width: 40px; height: 40px; border-radius: 6px; margin-right: 15px; flex-shrink: 0;">
@@ -367,7 +382,7 @@ createPlayerDOM() {
                 </div>
             </div>
             
-            <!-- 中间：控制按钮 -->
+            <!-- 中间：控制按钮 - 第二排 -->
             <div style="
                 display: flex; 
                 align-items: center; 
@@ -456,7 +471,7 @@ createPlayerDOM() {
                 ">≡</button>
             </div>
             
-            <!-- 右侧：进度条和时间显示 -->
+            <!-- 右侧：进度条和时间显示 - 第三排 -->
             <div style="
                 display: flex; 
                 align-items: center; 
@@ -603,52 +618,72 @@ createPlayerDOM() {
                     left: 50% !important;
                     transform: translateX(-50%) !important;
                 }
+                
+                /* 隐藏手机版专辑名字 */
+                #mobile-song-title {
+                    display: none !important;
+                }
             }
 
-/* 手机版：调整布局 */
+/* 手机版：三排布局 */
 @media (max-width: 768px) {
-    /* 隐藏总时长显示 */
-    #duration-time {
+    #global-player {
+        flex-direction: column !important;
+        padding: 8px 10px !important;
+        min-height: 90px !important;
+        justify-content: center !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 10000 !important;
+    }
+    
+    /* 隐藏左侧专辑封面区域 */
+    #global-player > div:nth-child(2) {
         display: none !important;
     }
     
-    /* 调整左侧信息区域布局 */
-    #global-player > div:first-child {
-        max-width: 35% !important;
+    /* 第一排：专辑名字 */
+    #mobile-song-title {
+        display: block !important;
+        order: 1 !important;
+        margin-bottom: 5px !important;
     }
     
-    /* 调整控制按钮位置 - 确保以播放/暂停键为中心 */
-    #global-player > div:nth-child(2) {
-        position: absolute !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
+    /* 第二排：控制按钮 + 右侧按钮 */
+    #global-player > div:nth-child(3) {
+        position: static !important;
+        transform: none !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        gap: 15px !important;
         margin: 0 !important;
-        gap: 8px !important; /* 保持整体间距 */
+        order: 2 !important;
     }
     
-    /* 调整整体布局 */
-    #global-player {
-        justify-content: space-between;
-        padding: 8px 15px !important;
+    /* 第三排：进度条和时间显示 */
+    #global-player > div:nth-child(4) {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        gap: 8px !important;
+        margin-top: 5px !important;
+        order: 3 !important;
     }
     
-    /* 专辑封面在手机上缩小 */
-    #player-cover {
-        width: 35px !important;
-        height: 35px !important;
-        margin-right: 12px !important;
+    /* 进度条在手机上 - 与按钮宽度一致 */
+    #player-progress {
+        width: 120px !important;
+        flex-shrink: 0 !important;
     }
     
-    #player-title {
-        font-size: 13px !important;
-    }
-    
-    /* 进度条在手机上缩小 */
-    #global-player > div:last-child > div:nth-child(2) {
-        width: 80px !important;
-    }
-    
-    #current-time {
+    /* 手机版显示时间 */
+    #current-time, #duration-time {
+        display: block !important;
         font-size: 11px !important;
         min-width: 35px !important;
     }
@@ -657,39 +692,12 @@ createPlayerDOM() {
     #playlist-panel {
         width: 280px !important;
         right: 10px !important;
-        bottom: 65px !important;
+        bottom: 100px !important;
     }
     
-    /* 手机版：重新排列按钮顺序，确保播放/暂停在中心 */
-    #global-player > div:nth-child(2) {
-        display: flex !important;
-        align-items: center !important;
-        gap: 8px !important;
-    }
-    
-    /* 按钮顺序：爱心 ← 上一首 ← 播放/暂停 → 下一首 → 播放列表 */
-    #player-favorite {
-        order: 1 !important;
-        margin-right: 0 !important;
-        margin-left: -8px !important; /* 爱心向中心靠近更多 */
-    }
-    
-    #player-prev {
-        order: 2 !important;
-    }
-    
-    #player-play-pause {
-        order: 3 !important;
-    }
-    
-    #player-next {
-        order: 4 !important;
-    }
-    
-    #player-playlist {
-        order: 5 !important;
-        margin-left: 0 !important;
-        margin-right: -8px !important; /* 播放列表向中心靠近更多 */
+    /* 调整按钮间距 */
+    #player-favorite, #player-playlist {
+        margin: 0 !important;
     }
 }
         </style>
@@ -702,7 +710,7 @@ createPlayerDOM() {
     this.bindEvents();
     this.updateTimeDisplay();
     this.loadFavorites();
-    this.loadPlaylist(); // 加载播放列表
+    this.loadPlaylist();
 }
 
     // 格式化时间显示
@@ -965,22 +973,35 @@ createPlayerDOM() {
         this.updateTimeDisplay();
     }
 
-    updateUI() {
-        const player = document.getElementById('global-player');
-        const playBtn = document.getElementById('player-play-pause');
-        const title = document.getElementById('player-title');
-        const cover = document.getElementById('player-cover');
-        
-        if (player && this.currentSong) {
-            player.style.display = 'flex';
+
+// 在 updateUI 方法中更新手机版的专辑名字显示
+updateUI() {
+    const player = document.getElementById('global-player');
+    const playBtn = document.getElementById('player-play-pause');
+    const title = document.getElementById('player-title');
+    const mobileTitle = document.getElementById('mobile-song-title');
+    const cover = document.getElementById('player-cover');
+    
+    if (player && this.currentSong) {
+        player.style.display = 'flex';
+        // 设置手机版的专辑名字
+        if (mobileTitle) {
+            mobileTitle.textContent = this.currentSong.title;
         }
-        
-        if (playBtn) playBtn.textContent = this.isPlaying ? '⏸' : '▶';
-        if (title && this.currentSong) title.textContent = this.currentSong.title;
-        if (cover && this.currentSong) cover.src = this.currentSong.cover_url || 'default-cover.jpg';
-        
-        this.updateTimeDisplay();
+    } else if (player && !this.currentSong) {
+        // 如果没有当前歌曲，清除专辑名字
+        if (mobileTitle) {
+            mobileTitle.textContent = '';
+        }
     }
+    
+    if (playBtn) playBtn.textContent = this.isPlaying ? '⏸' : '▶';
+    if (title && this.currentSong) title.textContent = this.currentSong.title;
+    if (cover && this.currentSong) cover.src = this.currentSong.cover_url || 'default-cover.jpg';
+    
+    this.updateTimeDisplay();
+}
+
 
     saveState() {
         const state = {
