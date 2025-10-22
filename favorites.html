@@ -628,26 +628,30 @@
             }
         }
 
-        function playSongFromFavorites(songId) {
-            const favorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
-            const song = favorites.find(s => s.id === songId);
+function playSongFromFavorites(songId) {
+    const favorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+    const songIndex = favorites.findIndex(s => s.id === songId);
+    
+    if (songIndex !== -1) {
+        console.log('播放收藏列表:', {
+            currentSong: favorites[songIndex].title,
+            currentIndex: songIndex,
+            totalSongs: favorites.length,
+            fullPlaylist: favorites.map(s => s.title)
+        });
+        
+        if (window.globalPlayer) {
+            // 传递 playlistType 参数，告诉播放器使用收藏列表
+            window.globalPlayer.play(favorites[songIndex], 'favorites');
             
-            if (song) {
-                // 设置当前播放列表为收藏列表
-                if (window.globalPlayer) {
-                    window.globalPlayer.currentPlaylist = 'favorites';
-                    window.globalPlayer.playlist = favorites;
-                }
-                
-                if (window.playSong) {
-                    window.playSong(song);
-                } else if (window.globalPlayer) {
-                    window.globalPlayer.play(song);
-                } else {
-                    console.error('全局播放器未初始化');
-                }
-            }
+            console.log('播放器播放列表状态:', {
+                playlistLength: window.globalPlayer.playlist.length,
+                currentIndex: window.globalPlayer.currentIndex,
+                currentPlaylistType: window.globalPlayer.currentPlaylistType
+            });
         }
+    }
+}
 
         function removeFavorite(songId) {
             const favorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
