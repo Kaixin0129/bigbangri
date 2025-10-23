@@ -611,6 +611,7 @@ nav a {
     cursor: pointer;
 }
 
+/* 修复手机版按钮字体大小问题 */
 @media only screen and (max-width: 768px) {
   .left-nav {
     transform: scale(0.79);
@@ -625,17 +626,69 @@ nav a {
     position: absolute;
     right: 10px;
     top: 10px;
-    transform: scale(0.79);
+    transform: none; /* 移除缩放变换 */
     transform-origin: top right;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 8px;
+    gap: 4px; /* 减少间隙 */
   }
 
   .full-width-line {
     transform: scaleX(1.6949);
     transform-origin: left;
+  }
+
+  /* 修复按钮字体大小 */
+  .sort-button {
+    font-size: 11px !important;
+    padding: 4px 6px !important;
+    white-space: nowrap;
+  }
+
+  .sort-separator {
+    font-size: 11px !important;
+  }
+
+  /* 我的收藏按钮在手机版也调整 */
+  .right-nav .sort-button[style*="color: #33FFFF"] {
+    font-size: 11px !important;
+    padding: 4px 6px !important;
+  }
+}
+
+/* 针对小屏手机进一步优化 */
+@media (max-width: 480px) {
+  .right-nav {
+    gap: 2px;
+  }
+
+  .sort-button {
+    font-size: 10px !important;
+    padding: 3px 4px !important;
+  }
+
+  .sort-separator {
+    font-size: 10px !important;
+  }
+
+  .right-nav .sort-button[style*="color: #33FFFF"] {
+    font-size: 10px !important;
+    padding: 3px 4px !important;
+  }
+}
+
+/* 针对超小屏手机的额外优化 */
+@media (max-width: 360px) {
+  .right-nav {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 120px;
+  }
+
+  .sort-button {
+    font-size: 9px !important;
+    padding: 2px 3px !important;
   }
 }
 
@@ -647,7 +700,7 @@ nav a {
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-// BIGBANG 音乐数据 - 新的分层结构
+// BIGBANG 音乐数据 - 修复专辑ID映射，添加MV链接
 const bigbangData = {
     group: {
         name: "BIGBANG",
@@ -670,7 +723,10 @@ const bigbangData = {
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                         cover_url: 'BIGBANG2006.jpg',
                         album_title: 'Bigbang First Single',
-                        artist: 'BIGBANG'
+                        artist: 'BIGBANG',
+                        album_id: 1,
+                        album_type: 'group',
+                        mv_url: 'https://www.youtube.com/embed/2ips2mM7Zqw' // 添加MV链接
                     },
                     { 
                         id: 102, 
@@ -679,7 +735,10 @@ const bigbangData = {
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                         cover_url: 'BIGBANG2006.jpg',
                         album_title: 'Bigbang First Single',
-                        artist: 'BIGBANG'
+                        artist: 'BIGBANG',
+                        album_id: 1,
+                        album_type: 'group',
+                        mv_url: 'https://www.youtube.com/embed/vz1VmB3nK9I' // 添加MV链接
                     }
                 ]
             },
@@ -698,11 +757,13 @@ const bigbangData = {
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                         cover_url: 'https://picsum.photos/300/300?random=2',
                         album_title: 'ALIVE',
-                        artist: 'BIGBANG'
+                        artist: 'BIGBANG',
+                        album_id: 2,
+                        album_type: 'group',
+                        mv_url: 'https://www.youtube.com/embed/AAbokV76tkU' // 添加MV链接
                     }
                 ]
             }
-            // 可以继续添加更多团体专辑...
         ]
     },
     members: [
@@ -714,7 +775,7 @@ const bigbangData = {
             description: 'BIGBANG队长、主rapper',
             albums: [
                 {
-                    id: 1001,
+                    id: 100,
                     title: "COUP D'ETAT",
                     cover_url: 'coup.jpg',
                     release_year: '2013年9月5日',
@@ -728,7 +789,10 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'coup.jpg',
                             album_title: "COUP D'ETAT",
-                            artist: 'G-DRAGON'
+                            artist: 'G-DRAGON',
+                            album_id: 100,
+                            album_type: 'member',
+                            mv_url: 'https://www.youtube.com/embed/OiCcgJ-KLBw' // 添加MV链接
                         },
                         { 
                             id: 10002, 
@@ -737,7 +801,9 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'coup.jpg',
                             album_title: "COUP D'ETAT",
-                            artist: 'G-DRAGON'
+                            artist: 'G-DRAGON',
+                            album_id: 100,
+                            album_type: 'member'
                         },
                         { 
                             id: 10003, 
@@ -746,7 +812,9 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'coup.jpg',
                             album_title: "COUP D'ETAT",
-                            artist: 'G-DRAGON'
+                            artist: 'G-DRAGON',
+                            album_id: 100,
+                            album_type: 'member'
                         },
                         { 
                             id: 10004, 
@@ -755,7 +823,63 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'coup.jpg',
                             album_title: "COUP D'ETAT",
-                            artist: 'G-DRAGON'
+                            artist: 'G-DRAGON',
+                            album_id: 100,
+                            album_type: 'member'
+                        }
+                    ]
+                },
+                {
+                    id: 101,
+                    title: "OOAK",
+                    cover_url: 'coup.jpg',
+                    release_year: '2013年9月5日',
+                    description: 'G-DRAGON第二张正规专辑',
+                    jump_id: '130905album-jump-2',
+                    songs: [
+                        { 
+                            id: 10005, 
+                            title: 'CROOKED2', 
+                            duration: 229, 
+                            file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                            cover_url: 'coup.jpg',
+                            album_title: "OOAK",
+                            artist: 'G-DRAGON',
+                            album_id: 101,
+                            album_type: 'member'
+                        },
+                        { 
+                            id: 10006, 
+                            title: 'Black2', 
+                            duration: 229, 
+                            file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                            cover_url: 'coup.jpg',
+                            album_title: "OOAK",
+                            artist: 'G-DRAGON',
+                            album_id: 101,
+                            album_type: 'member'
+                        },
+                        { 
+                            id: 10007, 
+                            title: 'COUP DETAT2', 
+                            duration: 229, 
+                            file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                            cover_url: 'coup.jpg',
+                            album_title: "OOAK",
+                            artist: 'G-DRAGON',
+                            album_id: 101,
+                            album_type: 'member'
+                        },
+                        { 
+                            id: 10008, 
+                            title: 'ROD2', 
+                            duration: 213, 
+                            file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                            cover_url: 'coup.jpg',
+                            album_title: "OOAK",
+                            artist: 'G-DRAGON',
+                            album_id: 101,
+                            album_type: 'member'
                         }
                     ]
                 }
@@ -769,7 +893,7 @@ const bigbangData = {
             description: 'BIGBANG主唱',
             albums: [
                 {
-                    id: 2001,
+                    id: 200,
                     title: "WHITE NIGHT",
                     cover_url: 'wn.jpeg',
                     release_year: '2017年8月16日',
@@ -783,7 +907,9 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'wn.jpeg',
                             album_title: "WHITE NIGHT",
-                            artist: 'TAEYANG'
+                            artist: 'TAEYANG',
+                            album_id: 200,
+                            album_type: 'member'
                         },
                         { 
                             id: 20002, 
@@ -792,7 +918,10 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'wn.jpeg',
                             album_title: "WHITE NIGHT",
-                            artist: 'TAEYANG'
+                            artist: 'TAEYANG',
+                            album_id: 200,
+                            album_type: 'member',
+                            mv_url: 'https://www.youtube.com/embed/6uG9gYp7K_4' // 添加MV链接
                         },
                         { 
                             id: 20003, 
@@ -801,7 +930,9 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'wn.jpeg',
                             album_title: "WHITE NIGHT",
-                            artist: 'TAEYANG'
+                            artist: 'TAEYANG',
+                            album_id: 200,
+                            album_type: 'member'
                         },
                         { 
                             id: 20004, 
@@ -810,7 +941,9 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'wn.jpeg',
                             album_title: "WHITE NIGHT",
-                            artist: 'TAEYANG'
+                            artist: 'TAEYANG',
+                            album_id: 200,
+                            album_type: 'member'
                         }
                     ]
                 }
@@ -824,7 +957,7 @@ const bigbangData = {
             description: 'BIGBANG主唱',
             albums: [
                 {
-                    id: 3001,
+                    id: 300,
                     title: "D'scover",
                     cover_url: 'dscover.jpg',
                     release_year: '2013年2月27日',
@@ -838,7 +971,9 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'dscover.jpg',
                             album_title: "D'scover",
-                            artist: 'DAESUNG'
+                            artist: 'DAESUNG',
+                            album_id: 300,
+                            album_type: 'member'
                         },
                         { 
                             id: 30002, 
@@ -847,7 +982,9 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'dscover.jpg',
                             album_title: "D'scover",
-                            artist: 'DAESUNG'
+                            artist: 'DAESUNG',
+                            album_id: 300,
+                            album_type: 'member'
                         },
                         { 
                             id: 30003, 
@@ -856,7 +993,9 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'dscover.jpg',
                             album_title: "D'scover",
-                            artist: 'DAESUNG'
+                            artist: 'DAESUNG',
+                            album_id: 300,
+                            album_type: 'member'
                         },
                         { 
                             id: 30004, 
@@ -865,7 +1004,9 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'dscover.jpg',
                             album_title: "D'scover",
-                            artist: 'DAESUNG'
+                            artist: 'DAESUNG',
+                            album_id: 300,
+                            album_type: 'member'
                         }
                     ]
                 }
@@ -879,7 +1020,7 @@ const bigbangData = {
             description: 'BIGBANG主rapper',
             albums: [
                 {
-                    id: 4001,
+                    id: 400,
                     title: "DOOM DADA",
                     cover_url: 'dd.jpg',
                     release_year: '2013年11月15日',
@@ -893,7 +1034,10 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'dd.jpg',
                             album_title: "DOOM DADA",
-                            artist: 'T.O.P'
+                            artist: 'T.O.P',
+                            album_id: 400,
+                            album_type: 'member',
+                            mv_url: 'https://www.youtube.com/embed/6uG9gYp7K_4' // 添加MV链接
                         },
                         { 
                             id: 40002, 
@@ -902,7 +1046,9 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'dd.jpg',
                             album_title: "DOOM DADA",
-                            artist: 'T.O.P'
+                            artist: 'T.O.P',
+                            album_id: 400,
+                            album_type: 'member'
                         }
                     ]
                 }
@@ -916,7 +1062,7 @@ const bigbangData = {
             description: 'BIGBANG主唱、忙内',
             albums: [
                 {
-                    id: 5001,
+                    id: 500,
                     title: "1st Mini Album V.V.I.P",
                     cover_url: 'vvip.jpeg',
                     release_year: '2011年1月20日',
@@ -930,7 +1076,9 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'vvip.jpeg',
                             album_title: "1st Mini Album V.V.I.P",
-                            artist: 'SEUNGRI'
+                            artist: 'SEUNGRI',
+                            album_id: 500,
+                            album_type: 'member'
                         },
                         { 
                             id: 50002, 
@@ -939,7 +1087,9 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'vvip.jpeg',
                             album_title: "1st Mini Album V.V.I.P",
-                            artist: 'SEUNGRI'
+                            artist: 'SEUNGRI',
+                            album_id: 500,
+                            album_type: 'member'
                         },
                         { 
                             id: 50003, 
@@ -948,7 +1098,9 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'vvip.jpeg',
                             album_title: "1st Mini Album V.V.I.P",
-                            artist: 'SEUNGRI'
+                            artist: 'SEUNGRI',
+                            album_id: 500,
+                            album_type: 'member'
                         },
                         { 
                             id: 50004, 
@@ -957,7 +1109,9 @@ const bigbangData = {
                             file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
                             cover_url: 'vvip.jpeg',
                             album_title: "1st Mini Album V.V.I.P",
-                            artist: 'SEUNGRI'
+                            artist: 'SEUNGRI',
+                            album_id: 500,
+                            album_type: 'member'
                         }
                     ]
                 }
@@ -975,7 +1129,9 @@ window.allSongs = [
             ...song,
             cover_url: song.cover_url || album.cover_url,
             album_title: album.title,
-            artist: 'BIGBANG'
+            artist: 'BIGBANG',
+            album_id: album.id,
+            album_type: 'group'
         }))
     ),
     ...bigbangData.members.flatMap(member =>
@@ -984,11 +1140,14 @@ window.allSongs = [
                 ...song,
                 cover_url: song.cover_url || album.cover_url,
                 album_title: album.title,
-                artist: member.stage_name
+                artist: member.stage_name,
+                album_id: album.id,
+                album_type: 'member'
             }))
         )
     )
 ];
+
         // Player 组件
 function Player({ currentSong, playlist, onPlayNext, onPlayPrev }) {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -1097,18 +1256,15 @@ function AlbumList({ onAlbumSelect, onPlaySong, currentMember, onMemberSelect, o
         window.location.href = 'album.html';
     };
 
-    // 返回上一级视图 - 修改返回逻辑
+    // 返回上一级视图
     const handleBack = () => {
         if (currentView === 'member' && currentMember) {
-            // 从成员专辑列表返回到成员选择页面，而不是团体专辑
             setCurrentView('members');
-            setCurrentMember(null); // 清除当前成员，回到成员选择页面
+            setCurrentMember(null);
         } else if (currentView === 'members') {
-            // 从成员选择页面返回到团体页面
             setCurrentView('group');
-            onBackToGroup(); // 清除成员状态
+            onBackToGroup();
         } else if (currentView === 'group') {
-            // 从团体专辑列表返回到专辑页面
             handleBackToAlbum();
         }
     };
@@ -1225,7 +1381,7 @@ function AlbumList({ onAlbumSelect, onPlaySong, currentMember, onMemberSelect, o
         return '专辑列表';
     };
 
-    // 获取返回按钮文本 - 修改文本显示
+    // 获取返回按钮文本
     const getBackButtonText = () => {
         if (currentView === 'member' && currentMember) {
             return 'Back';
@@ -1326,46 +1482,7 @@ function AlbumList({ onAlbumSelect, onPlaySong, currentMember, onMemberSelect, o
     );
 }
 
-// 检查歌曲是否在收藏中
-function isSongInFavorites(songId) {
-    const favorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
-    return favorites.some(song => song.id === songId);
-}
-
-// 切换歌曲收藏状态
-function toggleFavorite(song) {
-    const favorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
-    const existingIndex = favorites.findIndex(fav => fav.id === song.id);
-    
-    if (existingIndex === -1) {
-        // 添加到收藏
-        favorites.push({
-            ...song,
-            addedAt: new Date().toISOString()
-        });
-    } else {
-        // 从收藏中移除
-        favorites.splice(existingIndex, 1);
-    }
-    
-    localStorage.setItem('musicFavorites', JSON.stringify(favorites));
-    
-    // 同步更新全局播放器的收藏列表
-    if (window.globalPlayer) {
-        window.globalPlayer.favorites = favorites;
-        window.globalPlayer.saveFavorites();
-    }
-    
-    // 触发存储事件，让其他页面也能收到更新
-    window.dispatchEvent(new StorageEvent('storage', {
-        key: 'musicFavorites',
-        newValue: JSON.stringify(favorites)
-    }));
-    
-    return existingIndex === -1; // 返回是否添加了收藏
-}
-
-// 在 AlbumDetail 组件中添加歌曲高亮
+// AlbumDetail 组件 - 修复收藏同步问题
 function AlbumDetail({ album, onBack, onPlaySong, currentMember }) {
     const [favorites, setFavorites] = useState([]);
     const [highlightedSongId, setHighlightedSongId] = useState(null);
@@ -1374,7 +1491,45 @@ function AlbumDetail({ album, onBack, onPlaySong, currentMember }) {
     const loadFavorites = () => {
         const savedFavorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
         setFavorites(savedFavorites);
+        console.log('加载收藏列表:', savedFavorites.length);
     };
+
+    // 监听收藏状态变化事件
+    useEffect(() => {
+        const handleFavoriteStatusChange = (event) => {
+            console.log('AlbumDetail 收到收藏状态变化:', event.detail);
+            const { songId, isFavorite } = event.detail;
+            
+            // 更新本地收藏状态
+            loadFavorites();
+            
+            // 如果当前页面有对应的歌曲，更新UI
+            if (album.songs.some(song => song.id === songId)) {
+                console.log('更新当前页面的收藏状态:', songId, isFavorite);
+            }
+        };
+
+        // 监听播放器发送的收藏状态变化
+        window.addEventListener('favoriteStatusChanged', handleFavoriteStatusChange);
+        
+        // 监听存储事件（跨标签页同步）
+        const handleStorageChange = (event) => {
+            if (event.key === 'musicFavorites') {
+                console.log('检测到收藏列表存储变化');
+                loadFavorites();
+            }
+        };
+        
+        window.addEventListener('storage', handleStorageChange);
+
+        // 初始加载收藏列表
+        loadFavorites();
+
+        return () => {
+            window.removeEventListener('favoriteStatusChanged', handleFavoriteStatusChange);
+            window.removeEventListener('storage', handleStorageChange);
+        };
+    }, [album]);
 
     // 监听 URL 参数变化，高亮指定歌曲
     useEffect(() => {
@@ -1388,8 +1543,6 @@ function AlbumDetail({ album, onBack, onPlaySong, currentMember }) {
                 setHighlightedSongId(null);
             }, 3000);
         }
-        
-        loadFavorites();
     }, [album]);
 
     const formatDuration = (seconds) => {
@@ -1403,44 +1556,62 @@ function AlbumDetail({ album, onBack, onPlaySong, currentMember }) {
         return favorites.some(song => song.id === songId);
     };
 
-    // 处理爱心按钮点击
+    // 处理爱心按钮点击 - 修复同步问题
     const handleFavoriteClick = (e, song) => {
         e.stopPropagation();
+        
         const currentFavorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
         const existingIndex = currentFavorites.findIndex(fav => fav.id === song.id);
         
         let newFavorites;
+        let isNowFavorite;
+        
         if (existingIndex === -1) {
             // 添加到收藏
+            isNowFavorite = true;
             newFavorites = [...currentFavorites, {
                 ...song,
                 addedAt: new Date().toISOString()
             }];
         } else {
             // 从收藏中移除
+            isNowFavorite = false;
             newFavorites = currentFavorites.filter(fav => fav.id !== song.id);
         }
         
+        console.log('歌曲详情页收藏操作:', song.id, isNowFavorite ? '添加收藏' : '取消收藏');
+        
         // 更新本地存储
         localStorage.setItem('musicFavorites', JSON.stringify(newFavorites));
+        
+        // 更新本地状态
+        setFavorites(newFavorites);
+        
+        // 发送全局收藏状态变化事件，通知播放器和其他页面
+        const favoriteStatusChangedEvent = new CustomEvent('favoriteStatusChanged', {
+            detail: {
+                songId: song.id,
+                isFavorite: isNowFavorite,
+                song: song
+            }
+        });
+        window.dispatchEvent(favoriteStatusChangedEvent);
+        console.log('发送收藏状态变化事件到播放器:', song.id, isNowFavorite);
         
         // 同步更新全局播放器的收藏列表
         if (window.globalPlayer) {
             window.globalPlayer.favorites = newFavorites;
             window.globalPlayer.saveFavorites();
+            console.log('同步更新全局播放器收藏列表');
         }
         
-        // 更新本地状态
-        setFavorites(newFavorites);
-        
-        // 触发事件
+        // 触发其他事件保持兼容性
         window.dispatchEvent(new CustomEvent('favoritesUpdated', {
-            detail: newFavorites
-        }));
-        
-        window.dispatchEvent(new StorageEvent('storage', {
-            key: 'musicFavorites',
-            newValue: JSON.stringify(newFavorites)
+            detail: {
+                favorites: newFavorites,
+                updatedSong: song,
+                action: isNowFavorite ? 'added' : 'removed'
+            }
         }));
     };
 
@@ -1497,8 +1668,9 @@ function AlbumDetail({ album, onBack, onPlaySong, currentMember }) {
                     <div className="songs-list">
                         <h2>歌曲列表 <span style={{color: '#cdcdcd', fontSize: '0.9em'}}>{album.songs.length} 首</span></h2>
                         {album.songs.map(song => {
-                            const isFavorited = favorites.some(fav => fav.id === song.id);
+                            const isFavorited = isSongInFavorites(song.id);
                             const isHighlighted = highlightedSongId === song.id;
+                            const hasMV = song.mv_url; // 检查是否有MV
                             
                             return (
                                 <div 
@@ -1512,7 +1684,22 @@ function AlbumDetail({ album, onBack, onPlaySong, currentMember }) {
                                         transform: isHighlighted ? 'translateX(10px)' : 'none'
                                     }}
                                 >
-                                    <span className="song-title">{song.title}</span>
+                                    <span className="song-title">
+                                        {song.title}
+                                        {hasMV && (
+                                            <span 
+                                                style={{
+                                                    color: '#33FFFF',
+                                                    fontSize: '12px',
+                                                    marginLeft: '8px',
+                                                    fontWeight: 'bold'
+                                                }}
+                                                title="有MV视频"
+                                            >
+                                                MV
+                                            </span>
+                                        )}
+                                    </span>
                                     <div className="song-controls">
                                         {/* 爱心收藏按钮 */}
                                         <button 
@@ -1584,11 +1771,6 @@ function AlbumDetail({ album, onBack, onPlaySong, currentMember }) {
 }
 
 // 主 App 组件
-// 在 App 组件外添加全局引用
-let globalSetSelectedAlbumId = null;
-let globalSetCurrentView = null;
-
-// 在 App 组件中修改成员状态管理
 function App() {
     const [currentView, setCurrentView] = useState('albumList');
     const [selectedAlbum, setSelectedAlbum] = useState(null);
@@ -1619,94 +1801,92 @@ function App() {
         
         window.globalSetCurrentView = setCurrentView;
         window.globalSetCurrentSong = setCurrentSong;
+        window.globalSetCurrentMember = setCurrentMember;
         
         return () => {
-            window.setCurrentMember = null;
             window.globalSetSelectedAlbumId = null;
             window.globalSetCurrentView = null;
             window.globalSetCurrentSong = null;
+            window.globalSetCurrentMember = null;
         };
     }, []);
 
-// 在 App 组件的 useEffect 中修复专辑详情显示逻辑
-useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const albumId = urlParams.get('album');
-    const memberId = urlParams.get('member');
-    const songId = urlParams.get('song');
-    
-    console.log('URL参数:', { albumId, memberId, songId });
-    
-    // 如果有专辑ID，显示专辑详情
-    if (albumId) {
-        const allAlbums = [
-            ...window.bigbangData.group.albums,
-            ...window.bigbangData.members.flatMap(member => member.albums)
-        ];
+    // 处理URL参数 - 修复URL参数处理逻辑
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const albumId = urlParams.get('album');
+        const songId = urlParams.get('song');
+        const type = urlParams.get('type');
         
-        const album = allAlbums.find(a => a.id === parseInt(albumId));
+        console.log('URL参数:', { albumId, songId, type });
         
-        if (album) {
-            console.log('找到专辑，显示详情:', album.title);
-            setSelectedAlbum(album);
-            setCurrentView('albumDetail');
+        // 如果有专辑ID，显示专辑详情
+        if (albumId) {
+            const allAlbums = [
+                ...window.bigbangData.group.albums,
+                ...window.bigbangData.members.flatMap(member => member.albums)
+            ];
             
-            // 优先使用URL中的成员参数
-            if (memberId) {
-                const member = window.bigbangData.members.find(m => m.id === memberId);
-                if (member) {
-                    setCurrentMember(member);
-                    console.log('通过URL参数设置成员:', member.stage_name);
-                }
-            } else {
-                // 自动检测成员
-                const member = window.bigbangData.members.find(m => 
-                    m.albums.some(a => a.id === album.id)
-                );
-                if (member) {
-                    setCurrentMember(member);
-                    console.log('自动检测到成员:', member.stage_name);
-                }
-            }
+            const album = allAlbums.find(a => a.id === parseInt(albumId));
             
-            // 延迟滚动到专辑位置
-            setTimeout(() => {
-                const jumpId = album.jump_id || 'album-jump';
-                const albumJump = document.getElementById(jumpId);
-                if (albumJump) {
-                    albumJump.scrollIntoView({ behavior: 'smooth' });
-                    
-                    // 如果有具体歌曲ID，滚动到该歌曲
-                    if (songId) {
-                        setTimeout(() => {
-                            const songElement = document.querySelector(`[data-song-id="${songId}"]`);
-                            if (songElement) {
-                                songElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                songElement.style.background = 'rgba(51, 255, 255, 0.1)';
-                                setTimeout(() => {
-                                    songElement.style.background = '';
-                                }, 2000);
-                            }
-                        }, 1000);
+            if (album) {
+                console.log('找到专辑，显示详情:', album.title);
+                setSelectedAlbum(album);
+                setCurrentView('albumDetail');
+                
+                // 根据类型或自动检测成员
+                if (type === 'group') {
+                    setCurrentMember(null);
+                    console.log('团体专辑，不设置成员');
+                } else if (type === 'member') {
+                    const member = window.bigbangData.members.find(m => 
+                        m.albums.some(a => a.id === album.id)
+                    );
+                    if (member) {
+                        setCurrentMember(member);
+                        console.log('成员专辑，设置成员:', member.stage_name);
+                    }
+                } else {
+                    // 自动检测成员
+                    const member = window.bigbangData.members.find(m => 
+                        m.albums.some(a => a.id === album.id)
+                    );
+                    if (member) {
+                        setCurrentMember(member);
+                        console.log('自动检测到成员:', member.stage_name);
+                    } else {
+                        console.log('团体专辑，不设置成员');
+                        setCurrentMember(null);
                     }
                 }
-            }, 500);
-        } else {
-            console.log('未找到专辑，专辑ID:', albumId);
-            // 如果没有找到专辑但有成员参数，显示该成员的专辑列表
-            if (memberId) {
-                const member = window.bigbangData.members.find(m => m.id === memberId);
-                if (member) {
-                    setCurrentMember(member);
-                    setCurrentView('albumList');
-                    console.log('显示成员专辑列表:', member.stage_name);
-                }
+                
+                // 延迟滚动到专辑位置
+                setTimeout(() => {
+                    const jumpId = album.jump_id || 'album-jump';
+                    const albumJump = document.getElementById(jumpId);
+                    if (albumJump) {
+                        albumJump.scrollIntoView({ behavior: 'smooth' });
+                        
+                        // 如果有具体歌曲ID，滚动到该歌曲
+                        if (songId) {
+                            setTimeout(() => {
+                                const songElement = document.querySelector(`[data-song-id="${songId}"]`);
+                                if (songElement) {
+                                    songElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                    songElement.style.background = 'rgba(51, 255, 255, 0.1)';
+                                    setTimeout(() => {
+                                        songElement.style.background = '';
+                                    }, 2000);
+                                }
+                            }, 1000);
+                        }
+                    }
+                }, 500);
+            } else {
+                console.log('未找到专辑，专辑ID:', albumId);
             }
         }
-    } 
-    // 重要：如果只有成员参数没有专辑ID，不要显示专辑列表，保持当前状态
-    // 移除 else if (memberId) 的逻辑，这样就不会自动显示成员专辑列表
-}, []);
+    }, []);
 
     // 处理专辑选择
     const handleAlbumSelect = (album, member = null) => {
@@ -1727,12 +1907,11 @@ useEffect(() => {
         }
     };
 
-    // 处理返回操作 - 简化逻辑
+    // 处理返回操作
     const handleBackToList = () => {
         if (currentMember) {
             // 如果是成员专辑，返回到成员专辑列表
             setCurrentView('albumList');
-            // 保持成员状态，AlbumList 组件会处理显示
         } else {
             // 如果是团体专辑，返回到团体专辑列表
             setCurrentView('albumList');
@@ -1741,19 +1920,17 @@ useEffect(() => {
         setSelectedAlbum(null);
     };
 
-    // 处理返回到团体 - 修改为清除成员状态
+    // 处理返回到团体
     const handleBackToGroup = () => {
         setCurrentMember(null);
-        // 这里不需要改变视图，AlbumList 会根据 currentMember 为 null 自动显示团体视图
     };
 
     // 处理成员选择
     const handleMemberSelect = (member) => {
         setCurrentMember(member);
-        // 不需要改变 currentView，AlbumList 会根据 currentMember 自动显示成员专辑列表
     };
 
-    // 其他函数保持不变...
+    // 处理播放歌曲
     const handlePlaySong = (song) => {
         console.log('播放歌曲:', song);
         
@@ -1816,11 +1993,19 @@ useEffect(() => {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 
-// 更新全局函数
-window.showAlbum = function(albumId) {
-    console.log('showAlbum 被调用，专辑ID:', albumId);
+// 全局函数 - 修复专辑显示函数
+window.showAlbum = function(albumId, type = null) {
+    console.log('showAlbum 被调用，专辑ID:', albumId, '类型:', type);
     
     if (!albumId) return;
+    
+    // 更新URL但不刷新页面
+    let newUrl = `wyy.html?album=${albumId}`;
+    if (type) {
+        newUrl += `&type=${type}`;
+    }
+    window.history.replaceState({}, '', newUrl);
+    console.log('更新URL为:', newUrl);
     
     if (window.globalSetSelectedAlbumId && window.globalSetCurrentView) {
         console.log('使用全局状态函数跳转到专辑');
@@ -1843,88 +2028,66 @@ window.showAlbum = function(albumId) {
             }
         }, 500);
     } else {
-        console.log('全局状态函数未初始化，备用方案');
-        // 备用方案：直接导航到专辑页面
-        window.location.href = `wyy.html?album=${albumId}`;
+        console.log('全局状态函数未初始化，重新加载页面');
+        // 重新加载页面以确保状态正确
+        window.location.href = newUrl;
     }
 };
 
-// 更新全局函数
-window.showAlbum = function(albumId) {
-    console.log('showAlbum 被调用，专辑ID:', albumId);
-    
-    if (!albumId) return;
-    
-    if (window.globalSetSelectedAlbumId) {
-        window.globalSetSelectedAlbumId(parseInt(albumId));
-        window.globalSetCurrentView('albumDetail');
-        
-        setTimeout(() => {
-            const albumJump = document.getElementById('album-jump');
-            if (albumJump) {
-                albumJump.scrollIntoView({ behavior: 'smooth' });
-            }
-        }, 100);
-    }
-};
-
-// 改进全局函数，支持成员参数
+// 改进全局函数
 window.showSongAlbum = function(song) {
     console.log('showSongAlbum 被调用，歌曲:', song);
     
     if (!song) return;
     
-    // 在所有专辑中查找
-    const allAlbums = [
-        ...window.bigbangData.group.albums,
-        ...window.bigbangData.members.flatMap(member => member.albums)
-    ];
-    
-    const album = allAlbums.find(album => 
-        album.songs.some(s => s.id === song.id)
-    );
-    
-    if (album) {
-        // 查找专辑对应的成员
-        const member = window.bigbangData.members.find(m => 
-            m.albums.some(a => a.id === album.id)
-        );
+    // 直接使用歌曲中的 album_id 和 album_type
+    if (song.album_id) {
+        console.log('使用歌曲中的专辑ID:', song.album_id, '类型:', song.album_type);
+        
+        // 更新URL但不刷新页面
+        let newUrl = `wyy.html?album=${song.album_id}&song=${song.id}`;
+        if (song.album_type) {
+            newUrl += `&type=${song.album_type}`;
+        }
+        window.history.replaceState({}, '', newUrl);
+        console.log('更新URL为:', newUrl);
         
         if (window.globalSetSelectedAlbumId && window.globalSetCurrentView) {
-            window.globalSetSelectedAlbumId(album.id);
+            window.globalSetSelectedAlbumId(song.album_id);
             window.globalSetCurrentView('albumDetail');
             
-            // 设置成员状态 - 关键修复
-            if (member) {
-                // 确保设置当前成员状态
-                if (typeof window.setCurrentMember === 'function') {
-                    window.setCurrentMember(member);
-                }
-                // 同时更新 React 状态
-                const rootComponent = window.reactRoot?._internalRoot?.current?.stateNode;
-                if (rootComponent && rootComponent.setState) {
-                    rootComponent.setState({ currentMember: member });
-                }
-            }
-            
             setTimeout(() => {
-                const jumpId = album.jump_id || 'album-jump';
+                const allAlbums = [
+                    ...window.bigbangData.group.albums,
+                    ...window.bigbangData.members.flatMap(member => member.albums)
+                ];
+                const album = allAlbums.find(a => a.id === song.album_id);
+                const jumpId = album ? (album.jump_id || 'album-jump') : 'album-jump';
+                
                 const albumJump = document.getElementById(jumpId);
                 if (albumJump) {
                     albumJump.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // 滚动到具体歌曲
+                    setTimeout(() => {
+                        const songElement = document.querySelector(`[data-song-id="${song.id}"]`);
+                        if (songElement) {
+                            songElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            songElement.style.background = 'rgba(51, 255, 255, 0.1)';
+                            setTimeout(() => {
+                                songElement.style.background = '';
+                            }, 2000);
+                        }
+                    }, 1000);
                 }
             }, 500);
         } else {
-            // 备用方案：使用URL导航 - 确保传递成员参数
-            let url = `wyy.html?album=${album.id}&song=${song.id}`;
-            if (member) {
-                url += `&member=${member.id}`;
-            }
-            console.log('使用URL导航:', url);
-            window.location.href = url;
+            console.log('全局状态函数未初始化，重新加载页面');
+            // 重新加载页面以确保状态正确
+            window.location.href = newUrl;
         }
     } else {
-        console.log('未找到歌曲所属专辑:', song);
+        console.log('歌曲没有专辑ID，无法导航');
     }
 };
 
@@ -1936,11 +2099,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const albumId = urlParams.get('album');
     const songId = urlParams.get('song');
+    const type = urlParams.get('type');
     
     if (albumId) {
-        console.log('检测到URL专辑参数，延迟处理:', albumId);
+        console.log('检测到URL专辑参数，延迟处理:', albumId, '类型:', type);
         setTimeout(() => {
-            window.showAlbum(albumId);
+            window.showAlbum(albumId, type);
         }, 500);
     }
     
@@ -1953,60 +2117,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 500);
     }
-});
-
-// 在 wyy.html 的 JavaScript 部分添加以下代码
-
-// 处理URL参数和导航状态
-function handleNavigationState() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const albumId = urlParams.get('album');
-    const songId = urlParams.get('song');
-    const memberId = urlParams.get('member');
-    const from = urlParams.get('from');
-    
-    // 保存导航状态到sessionStorage
-    if (from === 'member' && memberId) {
-        sessionStorage.setItem('lastMemberPage', memberId);
-        sessionStorage.setItem('navigationSource', 'member');
-    } else if (from === 'group') {
-        sessionStorage.setItem('navigationSource', 'group');
-    }
-    
-    // 如果有专辑ID，直接显示专辑详情
-    if (albumId && songId) {
-        showAlbumDetail(albumId, songId);
-    }
-}
-
-// 修改返回按钮逻辑
-function setupBackButton() {
-    const backBtn = document.getElementById('back-button'); // 假设你的返回按钮有这个ID
-    
-    if (backBtn) {
-        backBtn.addEventListener('click', function() {
-            const navigationSource = sessionStorage.getItem('navigationSource');
-            const lastMemberPage = sessionStorage.getItem('lastMemberPage');
-            
-            if (navigationSource === 'member' && lastMemberPage) {
-                // 从成员专辑详情返回成员专辑列表
-                showMemberAlbums(lastMemberPage);
-            } else {
-                // 默认返回行为（回到团体页面或其他）
-                showGroupAlbums();
-            }
-            
-            // 清除导航状态
-            sessionStorage.removeItem('navigationSource');
-            sessionStorage.removeItem('lastMemberPage');
-        });
-    }
-}
-
-// 初始化导航状态
-document.addEventListener('DOMContentLoaded', function() {
-    handleNavigationState();
-    setupBackButton();
 });
 
     </script>
