@@ -1285,49 +1285,6 @@ class GlobalPlayer {
                         margin-right: 5px;
                     ">🤍</button>
                     
-                    <button id="player-prev" style="
-                        background: none; 
-                        border: none; 
-                        color: white; 
-                        font-size: 16px; 
-                        cursor: pointer; 
-                        width: 30px; 
-                        height: 30px; 
-                        display: flex; 
-                        align-items: center; 
-                        justify-content: center; 
-                        padding: 0;
-                        line-height: 1;
-                    ">⏮</button>
-                    <button id="player-play-pause" style="
-                        background: none; 
-                        border: none; 
-                        color: white; 
-                        font-size: 16px; 
-                        cursor: pointer; 
-                        width: 30px; 
-                        height: 30px; 
-                        display: flex; 
-                        align-items: center; 
-                        justify-content: center; 
-                        padding: 0;
-                        line-height: 1;
-                    ">${this.isPlaying ? '⏸' : '▶'}</button>
-                    <button id="player-next" style="
-                        background: none; 
-                        border: none; 
-                        color: white; 
-                        font-size: 16px; 
-                        cursor: pointer; 
-                        width: 30px; 
-                        height: 30px; 
-                        display: flex; 
-                        align-items: center; 
-                        justify-content: center; 
-                        padding: 0;
-                        line-height: 1;
-                    ">⏭</button>
-                    
                     <!-- 新增：随机播放按钮 -->
                     <button id="player-shuffle" style="
                         background: none; 
@@ -1343,7 +1300,50 @@ class GlobalPlayer {
                         padding: 0;
                         line-height: 1;
                         margin-left: 5px;
-                    " title="随机播放">🔀</button>
+                    " title="随机播放">⇄</button>
+                    
+                    <button id="player-prev" style="
+                        background: none; 
+                        border: none; 
+                        color: white; 
+                        font-size: 16px; 
+                        cursor: pointer; 
+                        width: 30px; 
+                        height: 30px; 
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        padding: 0;
+                        line-height: 1;
+                    ">&lt;</button>
+                    <button id="player-play-pause" style="
+                        background: none; 
+                        border: none; 
+                        color: white; 
+                        font-size: 16px; 
+                        cursor: pointer; 
+                        width: 30px; 
+                        height: 30px; 
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        padding: 0;
+                        line-height: 1;
+                    ">${this.isPlaying ? '❚❚' : '▷'}</button>
+                    <button id="player-next" style="
+                        background: none; 
+                        border: none; 
+                        color: white; 
+                        font-size: 16px; 
+                        cursor: pointer; 
+                        width: 30px; 
+                        height: 30px; 
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        padding: 0;
+                        line-height: 1;
+                    ">&gt;</button>
                     
                     <button id="mobile-player-mv" style="
                         background: none; 
@@ -2050,7 +2050,7 @@ class GlobalPlayer {
         }
         
         if (playBtn) {
-            playBtn.textContent = this.isPlaying ? '⏸' : '▶';
+            playBtn.textContent = this.isPlaying ? '❚❚' : '▷';
         }
         
         this.updateTimeDisplay();

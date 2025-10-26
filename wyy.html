@@ -49,6 +49,168 @@ body {
     opacity: 0.9;
 }
 
+.search-box {
+    width: 100%;
+    padding: 12px 20px 12px 40px; /* 减小内边距 */
+    border: 2px solid #33FFFF; /* 改回2px边框 */
+    border-radius: 9999px; /* 保持圆形 */
+    background: #111;
+    color: white;
+    font-size: 16px; /* 改回16px字体 */
+    outline: none;
+    transition: border-color 0.3s ease;
+    /* 添加搜索图标 */
+    background-repeat: no-repeat;
+    background-position: 15px center; /* 调整图标位置 */
+    background-size: 16px 16px; /* 减小图标大小 */
+}
+
+.search-box::placeholder {
+    color: #aaa;
+    font-size: 16px; /* 确保placeholder文字也是16px */
+}
+
+.search-box:hover,
+.search-box:focus {
+    border-color: #FF66CC;
+    background: #111;
+}
+
+/* 搜索页面样式 */
+.search-page {
+    background: #111;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #33FFFF;
+}
+
+.search-header h1 {
+    color: white;
+    font-size: 2rem;
+}
+
+.search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.search-result-item {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-result-item:hover {
+    background: #2a2a2a;
+    border-color: #33FFFF;
+    transform: translateY(-5px);
+}
+
+.search-result-cover {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.search-result-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.search-result-title {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-result-album {
+    color: #cdcdcd;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-result-artist {
+    color: #aaa;
+    font-size: 0.8rem;
+    margin-top: 3px;
+}
+
+.no-results {
+    text-align: center;
+    color: #aaa;
+    font-size: 1.2rem;
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+    .search-search-container {
+        width: 200px;
+    }
+    
+    .search-box {
+        padding: 10px 15px 10px 35px;
+        font-size: 14px;
+        background-position: 12px center;
+        background-size: 14px 14px;
+        border: 2px solid #33FFFF;
+    }
+    
+    .search-box::placeholder {
+        font-size: 14px;
+    }
+    
+    /* 确保搜索页面头部在手机版也合适 */
+    .search-header-container {
+        height: 80px;
+        padding: 0 10px;
+    }
+    
+    .search-left-nav a {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-search-container {
+        width: 150px;
+    }
+    
+    .search-box {
+        padding: 8px 12px 8px 30px;
+        font-size: 13px;
+        background-position: 10px center;
+        background-size: 12px 12px;
+    }
+    
+    .search-box::placeholder {
+        font-size: 13px;
+    }
+}
+
 /* 默认桌面版样式 - 5列 */
 .album-grid {
     display: grid;
@@ -265,6 +427,39 @@ body {
     
     .album-detail .album-meta p {
         font-size: 0.9rem;
+    }
+}
+
+/* 手机版专辑详情页歌曲列表样式 */
+@media (max-width: 768px) {
+    .album-detail .song-item .song-title {
+        font-size: 1rem; /* 减小字体大小 */
+    }
+    
+    /* 如果还需要调整其他相关样式 */
+    .album-detail .song-item {
+        padding: 12px; /* 可以适当调整内边距 */
+    }
+    
+    .album-detail .song-title {
+        font-size: 1rem;
+        line-height: 1.3; /* 调整行高 */
+    }
+}
+
+/* 小屏手机进一步调整 */
+@media (max-width: 480px) {
+    .album-detail .song-item .song-title {
+        font-size: 0.9rem; /* 小屏手机字体更小 */
+    }
+    
+    .album-detail .song-item {
+        padding: 10px; /* 小屏手机内边距更小 */
+    }
+    
+    .album-detail .song-title {
+        font-size: 0.9rem;
+        line-height: 1.2;
     }
 }
 
@@ -3827,7 +4022,7 @@ const bigbangData = {
                         title: 'Hands Up', 
                         duration: 285, 
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/Hands%20Up%20(1).mp3',
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -3838,7 +4033,7 @@ const bigbangData = {
                         title: 'Shake It', 
                         duration: 232, 
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/Shake%20It%20(1).mp3',
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -3849,7 +4044,7 @@ const bigbangData = {
                         title: 'V.V.I.P', 
                         duration: 219, 
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/V.V.I.P.mp3',
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -3860,7 +4055,7 @@ const bigbangData = {
                         title: `Where U At + I'll Be There`, 
                         duration: 273, 
                         file_url: `https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/Where%20U%20At%20+%20I'll%20Be%20There.mp3`,
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -3871,7 +4066,7 @@ const bigbangData = {
                         title: `Baby Don't Cry`, 
                         duration: 275, 
                         file_url: `https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/Baby%20Don't%20Cry.mp3`,
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -3882,7 +4077,7 @@ const bigbangData = {
                         title: 'Oh Yeah', 
                         duration: 198, 
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/Oh%20Yeah%202011%20Bigbang%20Concert_%20Big%20Show%20Live_%E9%9F%B3%E9%A2%91.mp4',
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -3893,7 +4088,7 @@ const bigbangData = {
                         title: 'High High', 
                         duration: 187, 
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/High%20High%202011%20Bigbang%20Concert_%20Big%20Show%20Live_%E9%9F%B3%E9%A2%91.mp4',
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -3904,7 +4099,7 @@ const bigbangData = {
                         title: 'A Fool Of Tears', 
                         duration: 240, 
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/A%20Fool%20Of%20Tears%202011%20Bigbang%20Concert_%20Big%20Show%20Live_%E9%9F%B3%E9%A2%91.mp4',
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -3915,7 +4110,7 @@ const bigbangData = {
                         title: 'Tonight', 
                         duration: 216, 
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/Tonight%202011%20Bigbang%20Concert_%20Big%20Show%20Live_%E9%9F%B3%E9%A2%91.mp4',
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -3926,7 +4121,7 @@ const bigbangData = {
                         title: 'Somebody To Love', 
                         duration: 215, 
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/Somebody%20to%20love%202011%20Bigbang%20Concert_%20Big%20Show%20Live_%E9%9F%B3%E9%A2%91.mp4',
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -3937,7 +4132,7 @@ const bigbangData = {
                         title: 'Cafe', 
                         duration: 227, 
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/Cafe%202011%20Bigbang%20Concert_%20Big%20Show%20Live_%E9%9F%B3%E9%A2%91.mp4',
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -3948,7 +4143,7 @@ const bigbangData = {
                         title: 'What is Right', 
                         duration: 220, 
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/What%20is%20Right%202011%20Bigbang%20Concert_%20Big%20Show%20Live_%E9%9F%B3%E9%A2%91.mp4',
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -3959,7 +4154,7 @@ const bigbangData = {
                         title: 'Haru Haru (Acoustic Ver.)', 
                         duration: 264, 
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/Haru%20Haru%20(Acoustic%20Ver.)%202011%20Bigbang%20Concert_%20Big%20Show%20Live_%E9%9F%B3%E9%A2%91.mp4',
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -3970,7 +4165,7 @@ const bigbangData = {
                         title: 'Lies', 
                         duration: 224, 
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/Lies%202011%20Bigbang%20Concert_%20Big%20Show%20Live_%E9%9F%B3%E9%A2%91.mp4',
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -3981,7 +4176,7 @@ const bigbangData = {
                         title: 'Last Farewell', 
                         duration: 234, 
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/Last%20Farewell%202011%20Bigbang%20Concert_%20Big%20Show%20Live_%E9%9F%B3%E9%A2%91.mp4',
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -3992,7 +4187,7 @@ const bigbangData = {
                         title: 'Heaven', 
                         duration: 295, 
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/Heaven%202011%20Bigbang%20Concert_%20Big%20Show%20Live_%E9%9F%B3%E9%A2%91.mp4',
-                        cover_url: 'ultimate.jpeg',
+                        cover_url: 'bigshow2011.jpeg',
                         album_title: '2011 Bigbang Concert: Big Show Live Album',
                         artist: 'BIGBANG',
                         album_id: 36,
@@ -4790,6 +4985,263 @@ window.allSongs = [
     )
 ];
 
+// SearchPage 组件 - 日期在专辑名字下面
+function SearchPage({ onBack, onAlbumSelect, onPlaySong }) {
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+
+    // 执行搜索 - 修复重复歌曲问题
+    const performSearch = (query) => {
+        if (!query.trim()) {
+            setSearchResults([]);
+            return;
+        }
+
+        const queryLower = query.toLowerCase();
+        const allAlbums = [
+            ...window.bigbangData.group.albums,
+            ...window.bigbangData.members.flatMap(member => member.albums)
+        ];
+
+        // 使用Set来去重，基于歌曲标题和专辑ID
+        const seenSongs = new Set();
+        const results = [];
+
+        // 遍历所有专辑和歌曲
+        allAlbums.forEach(album => {
+            album.songs.forEach(song => {
+                if (song.title.toLowerCase().includes(queryLower)) {
+                    // 创建唯一标识符：歌曲标题 + 专辑ID
+                    const songKey = `${song.title}_${album.id}`;
+                    
+                    if (!seenSongs.has(songKey)) {
+                        seenSongs.add(songKey);
+                        
+                        // 确保歌曲有完整的专辑信息
+                        const songWithAlbumInfo = {
+                            ...song,
+                            cover_url: song.cover_url || album.cover_url,
+                            album_title: album.title,
+                            artist: album.type === 'group' ? 'BIGBANG' : 
+                                   (album.artist || (album.memberId ? 
+                                    window.bigbangData.members.find(m => m.id === album.memberId)?.stage_name : '未知艺人')),
+                            album_id: album.id,
+                            album_type: album.type,
+                            member_id: album.memberId,
+                            release_year: album.release_year,
+                            // 添加版本标识
+                            version: getSongVersion(album, song)
+                        };
+                        
+                        results.push(songWithAlbumInfo);
+                    }
+                }
+            });
+        });
+
+        // 按专辑发行年份排序，最新的在前面
+        results.sort((a, b) => {
+            const yearA = extractYear(a.release_year);
+            const yearB = extractYear(b.release_year);
+            return yearB - yearA;
+        });
+
+        setSearchResults(results);
+    };
+
+    // 提取年份
+    const extractYear = (releaseYear) => {
+        const match = releaseYear?.match(/(\d{4})/);
+        return match ? parseInt(match[1]) : 0;
+    };
+
+    // 获取歌曲版本信息
+    const getSongVersion = (album, song) => {
+        const albumTitle = album.title.toLowerCase();
+        const songTitle = song.title.toLowerCase();
+        
+        if (albumTitle.includes('remix')) return 'Remix版本';
+        if (albumTitle.includes('live') || albumTitle.includes('concert')) return '现场版本';
+        if (albumTitle.includes('acoustic')) return 'Acoustic版本';
+        if (albumTitle.includes('english')) return '英文版本';
+        if (albumTitle.includes('japanese') || albumTitle.includes('jp')) return '日文版本';
+        if (songTitle.includes('remix')) return 'Remix版本';
+        if (songTitle.includes('acoustic')) return 'Acoustic版本';
+        
+        // 根据专辑类型判断
+        if (album.type === 'group') {
+            if (albumTitle.includes('single')) return '单曲版本';
+            if (albumTitle.includes('mini')) return '迷你专辑版本';
+            if (albumTitle.includes('vol.1') || albumTitle.includes('vol.2')) return '正规专辑版本';
+        }
+        
+        return '原版';
+    };
+
+    // 处理搜索框变化
+    const handleSearchChange = (e) => {
+        const query = e.target.value;
+        setSearchQuery(query);
+        performSearch(query);
+    };
+
+    // 处理搜索结果点击
+    const handleResultClick = (song) => {
+        // 找到歌曲所属的专辑
+        const allAlbums = [
+            ...window.bigbangData.group.albums,
+            ...window.bigbangData.members.flatMap(member => member.albums)
+        ];
+        
+        const album = allAlbums.find(a => a.id === song.album_id);
+        
+        if (album) {
+            // 找到专辑所属的成员
+            const member = window.bigbangData.members.find(m => 
+                m.albums.some(a => a.id === album.id)
+            );
+            
+            onAlbumSelect(album, member);
+        }
+    };
+
+    // 处理直接播放
+    const handlePlayClick = (e, song) => {
+        e.stopPropagation();
+        onPlaySong(song);
+    };
+
+    return (
+        <div className="search-page">
+            {/* 使用与专辑列表页面相同的头部布局 */}
+            <div className="container1">
+                <div className="header-container">
+                    <nav className="left-nav">
+                        <a href="#" onClick={(e) => { e.preventDefault(); onBack(); }}>
+                            Back
+                        </a>
+                    </nav>
+                    <div className="title-group">
+                        <h1>&nbsp;</h1>
+                    </div>
+                    <div className="search-container">
+                        <input
+                            type="text"
+                            className="search-box"
+                            placeholder="搜索歌曲名称..."
+                            value={searchQuery}
+                            onChange={handleSearchChange}
+                            autoFocus
+                        />
+                    </div>
+                    <nav className="right-nav">
+                        <button 
+                            className="sort-button"
+                            onClick={() => window.location.href = 'favorites.html'}
+                            style={{
+                                background: 'none', 
+                                border: 'none', 
+                                color: '#33FFFF', 
+                                cursor: 'pointer', 
+                                fontSize: '20px',
+                                padding: '8px 12px'
+                            }}
+                        >
+                            我的收藏
+                        </button>
+                    </nav>
+                </div>
+            </div>
+            
+            <div className="container">
+                <div style={{ 
+                    textAlign: 'center', 
+                    color: '#33FFFF', 
+                    fontSize: '1.5rem', 
+                    marginBottom: '20px',
+                    fontWeight: 'bold'
+                }}>
+                    搜索结果
+                </div>
+                
+                <div className="search-results">
+                    {searchResults.length > 0 ? (
+                        searchResults.map(song => (
+                            <div 
+                                key={`${song.id}_${song.album_id}`} 
+                                className="search-result-item"
+                                onClick={() => handleResultClick(song)}
+                            >
+                                <img 
+                                    src={song.cover_url} 
+                                    alt={song.album_title}
+                                    className="search-result-cover"
+                                    onError={(e) => {
+                                        e.target.src = 'default-cover.jpg';
+                                    }}
+                                />
+                                <div className="search-result-info">
+                                    <div className="search-result-title">
+                                        {song.title}
+                                        {song.version && song.version !== '原版' && (
+                                            <span style={{
+                                                color: '#33FFFF',
+                                                fontSize: '12px',
+                                                marginLeft: '8px',
+                                                fontWeight: 'normal'
+                                            }}>
+                                                {song.version}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div className="search-result-album">
+                                        {song.album_title}
+                                    </div>
+                                    <div className="search-result-year" style={{
+                                        color: '#aaa',
+                                        fontSize: '0.8rem',
+                                        marginTop: '2px'
+                                    }}>
+                                        {song.release_year}
+                                    </div>
+                                </div>
+                                <button 
+                                    onClick={(e) => handlePlayClick(e, song)}
+                                    style={{
+                                        background: 'none',
+                                        border: 'none',
+                                        color: '#33FFFF',
+                                        cursor: 'pointer',
+                                        fontSize: '20px',
+                                        padding: '8px',
+                                        borderRadius: '50%',
+                                        transition: 'all 0.3s ease'
+                                    }}
+                                    onMouseOver={(e) => {
+                                        e.target.style.background = 'rgba(51, 255, 255, 0.1)';
+                                        e.target.style.transform = 'scale(1.1)';
+                                    }}
+                                    onMouseOut={(e) => {
+                                        e.target.style.background = 'none';
+                                        e.target.style.transform = 'scale(1)';
+                                    }}
+                                    title="播放歌曲"
+                                >
+                                    ▷
+                                </button>
+                            </div>
+                        ))
+                    ) : searchQuery ? (
+                        <div className="no-results">未找到相关歌曲</div>
+                    ) : (
+                        <div className="no-results">请输入歌曲名称进行搜索</div>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+}
+
         // Player 组件
 function Player({ currentSong, playlist, onPlayNext, onPlayPrev }) {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -4848,11 +5300,11 @@ function Player({ currentSong, playlist, onPlayNext, onPlayPrev }) {
             </div>
 
             <div className="player-controls">
-                <button onClick={onPlayPrev}>⏮</button>
+                <button onClick={onPlayPrev}>&lt;</button>
                 <button onClick={togglePlayPause}>
-                    {isPlaying ? '⏸' : '▶'}
+                    {isPlaying ? '❚❚' : '▷'}
                 </button>
-                <button onClick={onPlayNext}>⏭</button>
+                <button onClick={onPlayNext}>&gt;</button>
             </div>
 
             <div className="player-progress">
@@ -5046,6 +5498,15 @@ function AlbumList({ onAlbumSelect, onPlaySong, currentMember, onMemberSelect, o
                     </nav>
                     <div className="title-group">
                         <h1>&nbsp;</h1>
+                    </div>
+                    <div className="search-container">
+                        <input
+                            type="text"
+                            className="search-box"
+                            placeholder="搜索歌曲..."
+                            onClick={() => window.globalSetCurrentView('search')}
+                            readOnly
+                        />
                     </div>
                     <nav className="right-nav">
                         <button 
@@ -5268,6 +5729,15 @@ function AlbumDetail({ album, onBack, onPlaySong, currentMember }) {
                     </nav>
                     <div className="title-group">
                         <h1>&nbsp;</h1>
+                    </div>
+                    <div className="search-container">
+                        <input
+                            type="text"
+                            className="search-box"
+                            placeholder="搜索歌曲..."
+                            onClick={() => window.globalSetCurrentView('search')}
+                            readOnly
+                        />
                     </div>
                     <nav className="right-nav">
                         <button 
@@ -5676,6 +6146,14 @@ const handlePlaySong = (song) => {
                     onBack={handleBackToList}
                     onPlaySong={handlePlaySong}
                     currentMember={currentMember}
+                />
+            )}
+            
+            {currentView === 'search' && (
+                <SearchPage 
+                    onBack={() => setCurrentView('albumList')}
+                    onAlbumSelect={handleAlbumSelect}
+                    onPlaySong={handlePlaySong}
                 />
             )}
             
