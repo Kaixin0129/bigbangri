@@ -26,6 +26,10 @@ class GlobalPlayer {
         this.mvVideo = null;
         this.mvOverlay = null;
         
+        // 新增：随机播放状态
+        this.isShuffleMode = false;
+        this.originalPlaylistOrder = []; // 保存原始播放列表顺序
+        
         this.init();
     }
 
@@ -430,14 +434,29 @@ class GlobalPlayer {
         }
     }
 
-    // 修复播放列表相关方法
-    addToPlaylist(song) {
+    // 修复播放列表相关方法 - 重点修改这里
+    addToPlaylist(song, albumSongs = null) {
+        // 如果提供了专辑歌曲，则设置整个专辑到播放列表
+        if (albumSongs && albumSongs.length > 0) {
+            console.log('设置整个专辑到播放列表，歌曲数量:', albumSongs.length);
+            this.playlist = [...albumSongs];
+            this.originalPlaylistOrder = [...albumSongs]; // 保存原始顺序
+            this.currentPlaylistType = 'album';
+            this.savePlaylist();
+            this.updatePlaylistUI();
+            console.log('专辑播放列表已设置，当前播放列表长度:', this.playlist.length);
+            return;
+        }
+        
+        // 否则按原来的逻辑添加单曲
         const isInPlaylist = this.playlist.some(s => s.id === song.id);
         if (!isInPlaylist) {
             this.playlist.push({
                 ...song,
                 addedAt: new Date().toISOString()
             });
+            // 添加歌曲时也要更新原始顺序
+            this.originalPlaylistOrder = [...this.playlist];
             this.savePlaylist();
             this.updatePlaylistUI();
             console.log('添加到播放列表，当前播放列表长度:', this.playlist.length);
@@ -451,6 +470,7 @@ class GlobalPlayer {
 
     removeFromPlaylist(songId) {
         this.playlist = this.playlist.filter(song => song.id !== songId);
+        this.originalPlaylistOrder = this.originalPlaylistOrder.filter(song => song.id !== songId);
         this.savePlaylist();
         this.updatePlaylistUI();
         this.updatePlaylistCount(); // 修复：更新计数
@@ -597,15 +617,21 @@ class GlobalPlayer {
                     }
                     return savedSong;
                 }).filter(song => song); // 过滤掉null值
+                
+                // 加载时也保存原始顺序
+                this.originalPlaylistOrder = [...this.playlist];
+                
                 this.updatePlaylistUI();
                 this.updatePlaylistCount(); // 修复：加载后更新计数
                 console.log('加载播放列表:', this.playlist.length);
             } catch (error) {
                 console.error('加载播放列表失败:', error);
                 this.playlist = [];
+                this.originalPlaylistOrder = [];
             }
         } else {
             this.playlist = [];
+            this.originalPlaylistOrder = [];
         }
     }
 
@@ -669,9 +695,9 @@ class GlobalPlayer {
         console.log('未找到歌曲数据');
     }
 
-    // 修复播放方法 - 确保歌曲信息完整
-    play(song, playlistType = 'manual') {
-        console.log('播放歌曲:', song, '播放列表类型:', playlistType);
+    // 修复播放方法 - 重点修改这里：在专辑页面播放时设置整个专辑到播放列表
+    play(song, playlistType = 'manual', albumSongs = null) {
+        console.log('播放歌曲:', song, '播放列表类型:', playlistType, '专辑歌曲:', albumSongs);
         
         // 修复：确保歌曲信息完整，特别是专辑信息
         if (!song.album_id || !song.album_type) {
@@ -701,12 +727,16 @@ class GlobalPlayer {
         this.audio.src = song.file_url;
         this.currentPlaylistType = playlistType;
         
-        // 修复：确保播放列表正确设置
+        // 修复：重点修改播放列表设置逻辑
         if (playlistType === 'favorites') {
             this.playlist = [...this.favorites];
-        } else if (playlistType === 'album') {
-            const currentAlbumSongs = this.getAlbumSongs(song);
+            this.originalPlaylistOrder = [...this.favorites];
+        } else if (playlistType === 'album' || albumSongs) {
+            // 如果是专辑播放模式或者提供了专辑歌曲，设置整个专辑到播放列表
+            const currentAlbumSongs = albumSongs || this.getAlbumSongs(song);
             this.playlist = currentAlbumSongs;
+            this.originalPlaylistOrder = [...currentAlbumSongs];
+            console.log('设置专辑播放列表，歌曲数量:', this.playlist.length);
         } else {
             // 手动模式：确保歌曲在播放列表中
             this.addToPlaylist(song);
@@ -759,6 +789,12 @@ class GlobalPlayer {
         });
     }
 
+    // 新增：在专辑页面播放歌曲的方法（设置整个专辑到播放列表）
+    playAlbumSong(song, albumSongs) {
+        console.log('播放专辑歌曲，设置整个专辑到播放列表');
+        this.play(song, 'album', albumSongs);
+    }
+
     // 新增：在wyy.html页面更新URL以保持精准跳转
     updateWyyPageUrl() {
         if (!this.currentSong) return;
@@ -804,6 +840,74 @@ class GlobalPlayer {
         return this.playlist.length > 0 ? this.playlist : [song];
     }
 
+    // 新增：切换随机播放模式 - 重点修改这里
+    toggleShuffle() {
+        this.isShuffleMode = !this.isShuffleMode;
+        
+        if (this.isShuffleMode) {
+            // 开启随机播放：保存原始顺序并随机排列播放列表
+            if (this.originalPlaylistOrder.length === 0) {
+                this.originalPlaylistOrder = [...this.playlist];
+            }
+            this.shufflePlaylist();
+            console.log('开启随机播放，播放列表已重新排列');
+        } else {
+            // 关闭随机播放：恢复原始顺序
+            if (this.originalPlaylistOrder.length > 0) {
+                this.playlist = [...this.originalPlaylistOrder];
+                console.log('关闭随机播放，恢复原始顺序');
+            }
+        }
+        
+        this.updateShuffleButton();
+        this.updatePlaylistUI();
+        this.savePlaylist();
+        console.log('随机播放模式:', this.isShuffleMode ? '开启' : '关闭');
+    }
+
+    // 新增：随机排列播放列表
+    shufflePlaylist() {
+        if (this.playlist.length <= 1) return;
+        
+        const currentSongId = this.currentSong ? this.currentSong.id : null;
+        const shuffled = [...this.playlist];
+        
+        // Fisher-Yates 洗牌算法
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        
+        // 如果当前正在播放歌曲，确保当前歌曲不在第一个位置（避免重复播放同一首）
+        if (currentSongId && shuffled.length > 1) {
+            const currentIndex = shuffled.findIndex(song => song.id === currentSongId);
+            if (currentIndex === 0) {
+                // 将当前歌曲与随机位置交换
+                const swapIndex = Math.floor(Math.random() * (shuffled.length - 1)) + 1;
+                [shuffled[0], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[0]];
+            }
+        }
+        
+        this.playlist = shuffled;
+    }
+
+    // 新增：更新随机播放按钮状态
+    updateShuffleButton() {
+        const shuffleBtn = document.getElementById('player-shuffle');
+        if (shuffleBtn) {
+            if (this.isShuffleMode) {
+                shuffleBtn.style.color = '#33FFFF';
+                shuffleBtn.classList.add('active');
+                shuffleBtn.title = '随机播放中';
+            } else {
+                shuffleBtn.style.color = 'white';
+                shuffleBtn.classList.remove('active');
+                shuffleBtn.title = '随机播放';
+            }
+        }
+    }
+
+    // 修改 next 方法，支持随机播放
     next() {
         if (this.playlist.length === 0) return;
         
@@ -812,15 +916,22 @@ class GlobalPlayer {
             return;
         }
         
-        const index = this.playlist.findIndex(s => s.id === this.currentSong.id);
-        if (index === -1) {
-            this.play(this.playlist[0], this.currentPlaylistType);
+        // 随机播放模式
+        if (this.isShuffleMode) {
+            this.playRandom();
         } else {
-            const nextIndex = (index + 1) % this.playlist.length;
-            this.play(this.playlist[nextIndex], this.currentPlaylistType);
+            // 顺序播放模式（原有逻辑）
+            const index = this.playlist.findIndex(s => s.id === this.currentSong.id);
+            if (index === -1) {
+                this.play(this.playlist[0], this.currentPlaylistType);
+            } else {
+                const nextIndex = (index + 1) % this.playlist.length;
+                this.play(this.playlist[nextIndex], this.currentPlaylistType);
+            }
         }
     }
 
+    // 修改 previous 方法，支持随机播放
     previous() {
         if (this.playlist.length === 0) return;
         
@@ -829,13 +940,45 @@ class GlobalPlayer {
             return;
         }
         
-        const index = this.playlist.findIndex(s => s.id === this.currentSong.id);
-        if (index === -1) {
-            this.play(this.playlist[this.playlist.length - 1], this.currentPlaylistType);
+        // 随机播放模式下，上一首也随机
+        if (this.isShuffleMode) {
+            this.playRandom();
         } else {
-            const prevIndex = (index - 1 + this.playlist.length) % this.playlist.length;
-            this.play(this.playlist[prevIndex], this.currentPlaylistType);
+            // 顺序播放模式（原有逻辑）
+            const index = this.playlist.findIndex(s => s.id === this.currentSong.id);
+            if (index === -1) {
+                this.play(this.playlist[this.playlist.length - 1], this.currentPlaylistType);
+            } else {
+                const prevIndex = (index - 1 + this.playlist.length) % this.playlist.length;
+                this.play(this.playlist[prevIndex], this.currentPlaylistType);
+            }
         }
+    }
+
+    // 新增：随机播放方法
+    playRandom() {
+        if (this.playlist.length === 0) return;
+        
+        let randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * this.playlist.length);
+        } while (this.playlist.length > 1 && 
+                 this.currentSong && 
+                 this.playlist[randomIndex].id === this.currentSong.id);
+        
+        this.play(this.playlist[randomIndex], this.currentPlaylistType);
+    }
+
+    // 新增：立即随机播放一首歌的方法
+    playRandomSong() {
+        if (this.playlist.length === 0) {
+            console.log('播放列表为空，无法随机播放');
+            return;
+        }
+        
+        const randomIndex = Math.floor(Math.random() * this.playlist.length);
+        this.play(this.playlist[randomIndex], this.currentPlaylistType);
+        console.log('随机播放歌曲:', this.playlist[randomIndex].title);
     }
 
     // 修复MV相关方法
@@ -1185,6 +1328,23 @@ class GlobalPlayer {
                         line-height: 1;
                     ">⏭</button>
                     
+                    <!-- 新增：随机播放按钮 -->
+                    <button id="player-shuffle" style="
+                        background: none; 
+                        border: none; 
+                        color: white; 
+                        font-size: 16px; 
+                        cursor: pointer; 
+                        width: 30px; 
+                        height: 30px; 
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        padding: 0;
+                        line-height: 1;
+                        margin-left: 5px;
+                    " title="随机播放">🔀</button>
+                    
                     <button id="mobile-player-mv" style="
                         background: none; 
                         border: none; 
@@ -1285,6 +1445,11 @@ class GlobalPlayer {
             <style>
                 #player-favorite.active {
                     color: #ff4757 !important;
+                }
+
+                /* 新增：随机播放按钮激活状态 */
+                #player-shuffle.active {
+                    color: #33FFFF !important;
                 }
 
                 .playlist-song-item {
@@ -1432,7 +1597,7 @@ class GlobalPlayer {
                         bottom: 100px !important;
                     }
                     
-                    #player-favorite, #player-playlist, #mobile-player-mv {
+                    #player-favorite, #player-playlist, #mobile-player-mv, #player-shuffle {
                         margin: 0 !important;
                     }
                     
@@ -1536,7 +1701,9 @@ class GlobalPlayer {
             { id: 'player-next', handler: () => this.next() },
             { id: 'player-favorite', handler: () => this.toggleFavorite() },
             { id: 'player-mv', handler: () => this.toggleMV() },
-            { id: 'mobile-player-mv', handler: () => this.toggleMV() }
+            { id: 'mobile-player-mv', handler: () => this.toggleMV() },
+            // 新增：随机播放按钮事件
+            { id: 'player-shuffle', handler: () => this.toggleShuffle() }
         ];
         
         buttons.forEach(button => {
@@ -1888,6 +2055,7 @@ class GlobalPlayer {
         
         this.updateTimeDisplay();
         this.updateMVButton(); // 确保MV按钮状态正确更新
+        this.updateShuffleButton(); // 更新随机播放按钮状态
     }
 
     saveState() {
@@ -1896,6 +2064,7 @@ class GlobalPlayer {
             isPlaying: this.isPlaying,
             currentTime: this.audio.currentTime,
             progress: this.progress,
+            isShuffleMode: this.isShuffleMode, // 保存随机播放状态
             timestamp: Date.now()
         };
         try {
@@ -1917,6 +2086,7 @@ class GlobalPlayer {
                     this.currentSong = state.currentSong;
                     this.isPlaying = state.isPlaying;
                     this.progress = state.progress;
+                    this.isShuffleMode = state.isShuffleMode || false; // 加载随机播放状态
                     
                     if (!this.audio.src || this.audio.src !== state.currentSong.file_url) {
                         this.audio.src = state.currentSong.file_url;
@@ -1958,9 +2128,9 @@ document.addEventListener('DOMContentLoaded', function() {
         window.globalPlayer.bindWindowUnload();
     }
     
-    // 修复：增强全局播放函数
-    window.playSong = (song, source = 'unknown') => {
-        console.log('调用全局播放:', song, '来源:', source);
+    // 修复：增强全局播放函数 - 添加专辑播放支持
+    window.playSong = (song, source = 'unknown', albumSongs = null) => {
+        console.log('调用全局播放:', song, '来源:', source, '专辑歌曲:', albumSongs);
         if (window.globalPlayer) {
             // 确保歌曲有完整的专辑信息
             if (!song.album_id || !song.album_type) {
@@ -1972,11 +2142,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     song.member_id = albumInfo.memberId;
                 }
             }
-            window.globalPlayer.play(song);
+            
+            // 如果在专辑页面并且有专辑歌曲，使用专辑播放模式
+            if (albumSongs && albumSongs.length > 0) {
+                console.log('使用专辑播放模式，歌曲数量:', albumSongs.length);
+                window.globalPlayer.playAlbumSong(song, albumSongs);
+            } else {
+                window.globalPlayer.play(song);
+            }
         } else {
             window.globalPlayer = new GlobalPlayer();
             setTimeout(() => {
-                window.globalPlayer.play(song);
+                if (albumSongs && albumSongs.length > 0) {
+                    window.globalPlayer.playAlbumSong(song, albumSongs);
+                } else {
+                    window.globalPlayer.play(song);
+                }
             }, 100);
         }
     };
@@ -2017,10 +2198,33 @@ document.addEventListener('DOMContentLoaded', function() {
 window.globalPlayer = new GlobalPlayer();
 window.globalPlayer.bindWindowUnload();
 
-window.playSong = (song) => {
-    console.log('调用播放:', song);
+// 修复全局播放函数
+window.playSong = (song, albumSongs = null) => {
+    console.log('调用播放:', song, '专辑歌曲:', albumSongs);
     if (window.globalPlayer) {
-        window.globalPlayer.play(song);
+        if (albumSongs && albumSongs.length > 0) {
+            window.globalPlayer.playAlbumSong(song, albumSongs);
+        } else {
+            window.globalPlayer.play(song);
+        }
+    } else {
+        console.error('全局播放器未初始化');
+    }
+};
+
+// 新增：全局随机播放函数
+window.playRandomSong = () => {
+    if (window.globalPlayer) {
+        window.globalPlayer.playRandomSong();
+    } else {
+        console.error('全局播放器未初始化');
+    }
+};
+
+// 新增：全局切换随机播放函数
+window.toggleShuffle = () => {
+    if (window.globalPlayer) {
+        window.globalPlayer.toggleShuffle();
     } else {
         console.error('全局播放器未初始化');
     }
