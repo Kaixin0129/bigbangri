@@ -1285,22 +1285,21 @@ class GlobalPlayer {
                         margin-right: 5px;
                     ">🤍</button>
                     
-                    <!-- 新增：随机播放按钮 -->
-                    <button id="player-shuffle" style="
+                    <button id="mobile-player-mv" style="
                         background: none; 
                         border: none; 
-                        color: white; 
-                        font-size: 16px; 
+                        color: #33FFFF; 
+                        font-size: 14px; 
                         cursor: pointer; 
-                        width: 30px; 
-                        height: 30px; 
-                        display: flex; 
+                        width: 24px; 
+                        height: 24px; 
+                        display: ${this.hasMV() ? 'flex' : 'none'}; 
                         align-items: center; 
                         justify-content: center; 
                         padding: 0;
                         line-height: 1;
                         margin-left: 5px;
-                    " title="随机播放">⇄</button>
+                    " title="观看MV">🎬</button>
                     
                     <button id="player-prev" style="
                         background: none; 
@@ -1345,21 +1344,22 @@ class GlobalPlayer {
                         line-height: 1;
                     ">&gt;</button>
                     
-                    <button id="mobile-player-mv" style="
+                    <!-- 新增：随机播放按钮 -->
+                    <button id="player-shuffle" style="
                         background: none; 
                         border: none; 
-                        color: #33FFFF; 
-                        font-size: 14px; 
+                        color: white; 
+                        font-size: 16px; 
                         cursor: pointer; 
-                        width: 24px; 
-                        height: 24px; 
-                        display: ${this.hasMV() ? 'flex' : 'none'}; 
+                        width: 30px; 
+                        height: 30px; 
+                        display: flex; 
                         align-items: center; 
                         justify-content: center; 
                         padding: 0;
                         line-height: 1;
                         margin-left: 5px;
-                    " title="观看MV">🎬</button>
+                    " title="随机播放">⇄</button>
                     
                     <button id="player-playlist" style="
                         background: none; 
