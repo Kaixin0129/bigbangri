@@ -30,6 +30,9 @@ class GlobalPlayer {
         this.isShuffleMode = false;
         this.originalPlaylistOrder = []; // 保存原始播放列表顺序
         
+        // 新增：单曲循环状态
+        this.isSingleLoopMode = false;
+        
         this.init();
     }
 
@@ -840,9 +843,45 @@ class GlobalPlayer {
         return this.playlist.length > 0 ? this.playlist : [song];
     }
 
+    // 新增：切换单曲循环模式
+    toggleSingleLoop() {
+        this.isSingleLoopMode = !this.isSingleLoopMode;
+        
+        // 如果开启单曲循环，关闭随机播放
+        if (this.isSingleLoopMode) {
+            this.isShuffleMode = false;
+            this.updateShuffleButton();
+        }
+        
+        this.updateSingleLoopButton();
+        console.log('单曲循环模式:', this.isSingleLoopMode ? '开启' : '关闭');
+    }
+
+    // 新增：更新单曲循环按钮状态
+    updateSingleLoopButton() {
+        const singleLoopBtn = document.getElementById('player-single-loop');
+        if (singleLoopBtn) {
+            if (this.isSingleLoopMode) {
+                singleLoopBtn.style.color = '#33FFFF';
+                singleLoopBtn.classList.add('active');
+                singleLoopBtn.title = '单曲循环中';
+            } else {
+                singleLoopBtn.style.color = 'white';
+                singleLoopBtn.classList.remove('active');
+                singleLoopBtn.title = '单曲循环';
+            }
+        }
+    }
+
     // 新增：切换随机播放模式 - 重点修改这里
     toggleShuffle() {
         this.isShuffleMode = !this.isShuffleMode;
+        
+        // 如果开启随机播放，关闭单曲循环
+        if (this.isShuffleMode) {
+            this.isSingleLoopMode = false;
+            this.updateSingleLoopButton();
+        }
         
         if (this.isShuffleMode) {
             // 开启随机播放：保存原始顺序并随机排列播放列表
@@ -907,9 +946,19 @@ class GlobalPlayer {
         }
     }
 
-    // 修改 next 方法，支持随机播放
+    // 修改 next 方法，支持随机播放和单曲循环
     next() {
         if (this.playlist.length === 0) return;
+        
+        // 单曲循环模式下，重新播放当前歌曲
+        if (this.isSingleLoopMode && this.currentSong) {
+            console.log('单曲循环模式，重新播放当前歌曲');
+            this.audio.currentTime = 0;
+            this.audio.play().catch(error => {
+                console.error('单曲循环播放失败:', error);
+            });
+            return;
+        }
         
         if (!this.currentSong) {
             this.play(this.playlist[0], this.currentPlaylistType);
@@ -931,9 +980,19 @@ class GlobalPlayer {
         }
     }
 
-    // 修改 previous 方法，支持随机播放
+    // 修改 previous 方法，支持随机播放和单曲循环
     previous() {
         if (this.playlist.length === 0) return;
+        
+        // 单曲循环模式下，重新播放当前歌曲
+        if (this.isSingleLoopMode && this.currentSong) {
+            console.log('单曲循环模式，重新播放当前歌曲');
+            this.audio.currentTime = 0;
+            this.audio.play().catch(error => {
+                console.error('单曲循环播放失败:', error);
+            });
+            return;
+        }
         
         if (!this.currentSong) {
             this.play(this.playlist[this.playlist.length - 1], this.currentPlaylistType);
@@ -1285,6 +1344,23 @@ class GlobalPlayer {
                         margin-right: 5px;
                     ">🤍</button>
                     
+                    <!-- 新增：单曲循环按钮 -->
+                    <button id="player-single-loop" style="
+                        background: none; 
+                        border: none; 
+                        color: white; 
+                        font-size: 16px; 
+                        cursor: pointer; 
+                        width: 30px; 
+                        height: 30px; 
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        padding: 0;
+                        line-height: 1;
+                        margin-right: 5px;
+                    " title="单曲循环">↻</button>
+                    
                     <button id="mobile-player-mv" style="
                         background: none; 
                         border: none; 
@@ -1447,6 +1523,11 @@ class GlobalPlayer {
                     color: #ff4757 !important;
                 }
 
+                /* 新增：单曲循环按钮激活状态 */
+                #player-single-loop.active {
+                    color: #33FFFF !important;
+                }
+
                 /* 新增：随机播放按钮激活状态 */
                 #player-shuffle.active {
                     color: #33FFFF !important;
@@ -1597,7 +1678,7 @@ class GlobalPlayer {
                         bottom: 100px !important;
                     }
                     
-                    #player-favorite, #player-playlist, #mobile-player-mv, #player-shuffle {
+                    #player-favorite, #player-playlist, #mobile-player-mv, #player-shuffle, #player-single-loop {
                         margin: 0 !important;
                     }
                     
@@ -1702,6 +1783,8 @@ class GlobalPlayer {
             { id: 'player-favorite', handler: () => this.toggleFavorite() },
             { id: 'player-mv', handler: () => this.toggleMV() },
             { id: 'mobile-player-mv', handler: () => this.toggleMV() },
+            // 新增：单曲循环按钮事件
+            { id: 'player-single-loop', handler: () => this.toggleSingleLoop() },
             // 新增：随机播放按钮事件
             { id: 'player-shuffle', handler: () => this.toggleShuffle() }
         ];
@@ -1808,7 +1891,18 @@ class GlobalPlayer {
 
     bindAudioEvents() {
         this.audio.addEventListener('timeupdate', () => this.updateProgress());
-        this.audio.addEventListener('ended', () => this.next());
+        this.audio.addEventListener('ended', () => {
+            // 单曲循环模式下，重新播放当前歌曲
+            if (this.isSingleLoopMode && this.currentSong) {
+                console.log('单曲循环模式，歌曲播放完毕，重新播放');
+                this.audio.currentTime = 0;
+                this.audio.play().catch(error => {
+                    console.error('单曲循环播放失败:', error);
+                });
+            } else {
+                this.next();
+            }
+        });
         this.audio.addEventListener('loadedmetadata', () => {
             this.updateTimeDisplay();
         });
@@ -2055,6 +2149,7 @@ class GlobalPlayer {
         
         this.updateTimeDisplay();
         this.updateMVButton(); // 确保MV按钮状态正确更新
+        this.updateSingleLoopButton(); // 更新单曲循环按钮状态
         this.updateShuffleButton(); // 更新随机播放按钮状态
     }
 
@@ -2065,6 +2160,7 @@ class GlobalPlayer {
             currentTime: this.audio.currentTime,
             progress: this.progress,
             isShuffleMode: this.isShuffleMode, // 保存随机播放状态
+            isSingleLoopMode: this.isSingleLoopMode, // 保存单曲循环状态
             timestamp: Date.now()
         };
         try {
@@ -2087,6 +2183,7 @@ class GlobalPlayer {
                     this.isPlaying = state.isPlaying;
                     this.progress = state.progress;
                     this.isShuffleMode = state.isShuffleMode || false; // 加载随机播放状态
+                    this.isSingleLoopMode = state.isSingleLoopMode || false; // 加载单曲循环状态
                     
                     if (!this.audio.src || this.audio.src !== state.currentSong.file_url) {
                         this.audio.src = state.currentSong.file_url;
@@ -2225,6 +2322,15 @@ window.playRandomSong = () => {
 window.toggleShuffle = () => {
     if (window.globalPlayer) {
         window.globalPlayer.toggleShuffle();
+    } else {
+        console.error('全局播放器未初始化');
+    }
+};
+
+// 新增：全局切换单曲循环函数
+window.toggleSingleLoop = () => {
+    if (window.globalPlayer) {
+        window.globalPlayer.toggleSingleLoop();
     } else {
         console.error('全局播放器未初始化');
     }
