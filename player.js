@@ -57,14 +57,16 @@ class GlobalPlayer {
         this.isPlaylistVisible = false;
     }
 
-    // 绑定全局事件监听
+    // 绑定全局事件监听 - 修复收藏同步问题
     bindGlobalEvents() {
+        // 监听其他地方的收藏状态变化
         window.addEventListener('favoriteStatusChanged', (event) => {
             console.log('播放器收到收藏状态变化:', event.detail);
             const { songId, isFavorite } = event.detail;
             this.handleFavoriteStatusChange(songId, isFavorite);
         });
 
+        // 监听歌曲播放事件
         window.addEventListener('songPlayed', (event) => {
             const { song } = event.detail;
             if (song && this.currentSong?.id !== song.id) {
@@ -72,23 +74,37 @@ class GlobalPlayer {
             }
         });
 
+        // 监听存储变化（多标签页同步）
         window.addEventListener('storage', (event) => {
             if (event.key === 'musicFavorites') {
                 console.log('检测到收藏列表存储变化，重新加载');
                 this.loadFavorites();
+                // 修复：重新加载后更新当前歌曲的收藏状态
+                if (this.currentSong) {
+                    const isFavorite = this.favorites.some(fav => fav.id === this.currentSong.id);
+                    this.updateFavoriteButton(isFavorite);
+                }
             }
+        });
+
+        // 新增：监听收藏列表更新事件
+        window.addEventListener('favoritesUpdated', (event) => {
+            console.log('播放器收到收藏列表更新:', event.detail);
+            this.loadFavorites(); // 重新加载确保数据一致
         });
     }
 
-    // 处理收藏状态变化
+    // 处理收藏状态变化 - 修复同步问题
     handleFavoriteStatusChange(songId, isFavorite) {
-        console.log('处理收藏状态变化:', songId, isFavorite);
+        console.log('播放器处理收藏状态变化:', songId, isFavorite);
         
+        // 更新当前歌曲的收藏按钮
         if (this.currentSong && this.currentSong.id === songId) {
             console.log('更新当前歌曲的收藏按钮');
             this.updateFavoriteButton(isFavorite);
         }
 
+        // 更新收藏列表
         if (isFavorite) {
             const song = this.allSongs.find(s => s.id === songId);
             if (song && !this.favorites.some(fav => fav.id === songId)) {
@@ -105,10 +121,114 @@ class GlobalPlayer {
             this.saveFavorites();
         }
 
+        // 如果当前是收藏播放列表，更新播放列表
         if (this.currentPlaylistType === 'favorites') {
             this.playlist = [...this.favorites];
             this.updatePlaylistUI();
         }
+
+        // 修复：强制更新所有相关UI的收藏状态
+        this.updateAllFavoriteStates(songId, isFavorite);
+    }
+
+    // 新增：更新所有相关UI的收藏状态
+    updateAllFavoriteStates(songId, isFavorite) {
+        console.log('更新所有UI的收藏状态:', songId, isFavorite);
+        
+        // 更新播放列表中的收藏状态
+        this.updatePlaylistFavoriteStates(songId, isFavorite);
+        
+        // 发送全局收藏状态同步事件
+        const syncFavoriteEvent = new CustomEvent('syncFavoriteState', {
+            detail: {
+                songId: songId,
+                isFavorite: isFavorite,
+                song: this.allSongs.find(s => s.id === songId)
+            }
+        });
+        window.dispatchEvent(syncFavoriteEvent);
+        
+        // 更新页面中的歌曲卡片收藏状态
+        this.updatePageSongCards(songId, isFavorite);
+    }
+
+    // 新增：更新播放列表中的收藏状态显示
+    updatePlaylistFavoriteStates(songId, isFavorite) {
+        const playlistItems = document.querySelectorAll('.playlist-song-item');
+        playlistItems.forEach(item => {
+            const itemSongId = parseInt(item.dataset.songId);
+            if (itemSongId === songId) {
+                // 可以在这里添加收藏状态视觉提示
+                if (isFavorite) {
+                    item.style.borderLeft = '3px solid #ff4757';
+                } else {
+                    item.style.borderLeft = '3px solid transparent';
+                }
+            }
+        });
+    }
+
+    // 新增：更新页面中所有歌曲卡片的收藏状态
+    updatePageSongCards(songId, isFavorite) {
+        // 查找所有包含该歌曲ID的元素
+        const songElements = document.querySelectorAll(`[data-song-id="${songId}"]`);
+        songElements.forEach(element => {
+            // 查找收藏按钮
+            const favoriteBtn = element.querySelector('.favorite-btn, [data-favorite]');
+            if (favoriteBtn) {
+                if (isFavorite) {
+                    favoriteBtn.textContent = '❤️';
+                    favoriteBtn.style.color = '#ff4757';
+                    favoriteBtn.dataset.favorite = 'true';
+                } else {
+                    favoriteBtn.textContent = '🤍';
+                    favoriteBtn.style.color = '#666';
+                    favoriteBtn.dataset.favorite = 'false';
+                }
+            }
+            
+            // 更新专辑详情页的收藏状态
+            const albumFavoriteBtn = element.querySelector('.album-favorite-btn');
+            if (albumFavoriteBtn) {
+                if (isFavorite) {
+                    albumFavoriteBtn.textContent = '❤️';
+                    albumFavoriteBtn.style.color = '#ff4757';
+                    albumFavoriteBtn.title = '取消收藏';
+                } else {
+                    albumFavoriteBtn.textContent = '🤍';
+                    albumFavoriteBtn.style.color = '#666';
+                    albumFavoriteBtn.title = '收藏';
+                }
+            }
+        });
+        
+        // 特别处理参与专辑页面的收藏按钮
+        this.updateParticipateAlbumFavorites(songId, isFavorite);
+    }
+
+    // 新增：专门处理参与专辑页面的收藏状态同步
+    updateParticipateAlbumFavorites(songId, isFavorite) {
+        // 查找参与专辑页面的特定元素
+        const participateItems = document.querySelectorAll('.participate-song-item, .album-song-item');
+        participateItems.forEach(item => {
+            const itemSongId = parseInt(item.dataset.songId || item.dataset.id);
+            if (itemSongId === songId) {
+                const favoriteBtns = item.querySelectorAll('.favorite-btn, .song-favorite');
+                favoriteBtns.forEach(btn => {
+                    if (isFavorite) {
+                        btn.textContent = '❤️';
+                        btn.style.color = '#ff4757';
+                        btn.classList.add('favorited');
+                        btn.title = '取消收藏';
+                    } else {
+                        btn.textContent = '🤍';
+                        btn.style.color = '#666';
+                        btn.classList.remove('favorited');
+                        btn.title = '收藏';
+                    }
+                });
+            }
+        });
     }
 
     // 修复专辑导航方法 - 重点修复精准跳转
@@ -352,7 +472,7 @@ class GlobalPlayer {
         }, 1500);
     }
 
-    // 收藏相关方法
+    // 收藏相关方法 - 修复同步问题
     toggleFavorite() {
         if (!this.currentSong) return;
         
@@ -362,6 +482,7 @@ class GlobalPlayer {
         
         console.log('播放器切换收藏状态:', songId, isFavorite, '->', newFavoriteState);
         
+        // 更新收藏列表
         if (isFavorite) {
             this.favorites = this.favorites.filter(song => song.id !== songId);
             this.updateFavoriteButton(false);
@@ -375,24 +496,32 @@ class GlobalPlayer {
         
         this.saveFavorites();
         
-        // 发送全局收藏状态变化事件
+        // 发送全局收藏状态变化事件 - 增强事件数据
         const favoriteStatusChangedEvent = new CustomEvent('favoriteStatusChanged', {
             detail: {
                 songId: songId,
                 isFavorite: newFavoriteState,
-                song: this.currentSong
+                song: this.currentSong,
+                source: 'player' // 标记来源为播放器
             }
         });
         window.dispatchEvent(favoriteStatusChangedEvent);
         
+        // 发送收藏列表更新事件
         const favoritesUpdatedEvent = new CustomEvent('favoritesUpdated', {
             detail: {
                 favorites: this.favorites,
                 updatedSong: this.currentSong,
-                action: isFavorite ? 'removed' : 'added'
+                action: isFavorite ? 'removed' : 'added',
+                source: 'player'
             }
         });
         window.dispatchEvent(favoritesUpdatedEvent);
+        
+        // 修复：立即同步更新所有UI的收藏状态
+        this.updateAllFavoriteStates(songId, newFavoriteState);
+        
+        console.log('收藏状态已更新并同步:', newFavoriteState);
     }
 
     updateFavoriteButton(isFavorite) {
@@ -402,8 +531,10 @@ class GlobalPlayer {
             favoriteBtn.style.color = isFavorite ? '#ff4757' : '#666';
             if (isFavorite) {
                 favoriteBtn.classList.add('active');
+                favoriteBtn.title = '取消收藏';
             } else {
                 favoriteBtn.classList.remove('active');
+                favoriteBtn.title = '收藏';
             }
             console.log('更新播放器收藏按钮状态:', isFavorite);
         }
@@ -536,8 +667,13 @@ class GlobalPlayer {
             return;
         }
         
-        playlistList.innerHTML = this.playlist.map(song => `
-            <div class="playlist-song-item ${this.currentSong && this.currentSong.id === song.id ? 'current' : ''}" data-song-id="${song.id}">
+        playlistList.innerHTML = this.playlist.map(song => {
+            const isFavorite = this.favorites.some(fav => fav.id === song.id);
+            const isCurrent = this.currentSong && this.currentSong.id === song.id;
+            const favoriteStyle = isFavorite ? 'border-left: 3px solid #ff4757;' : 'border-left: 3px solid transparent;';
+            
+            return `
+            <div class="playlist-song-item ${isCurrent ? 'current' : ''}" data-song-id="${song.id}" style="${favoriteStyle}">
                 <img src="${song.cover_url || 'default-cover.jpg'}" alt="${song.title}" class="playlist-song-cover" onerror="this.src='default-cover.jpg'">
                 <div class="playlist-song-info">
                     <div class="playlist-song-title">${song.title}</div>
@@ -545,7 +681,8 @@ class GlobalPlayer {
                 </div>
                 <button class="remove-from-playlist" data-song-id="${song.id}" title="从播放列表删除">✕</button>
             </div>
-        `).join('');
+            `;
+        }).join('');
     }
 
     // 新增：更新播放列表计数方法
@@ -1342,7 +1479,7 @@ class GlobalPlayer {
                         padding: 0;
                         line-height: 1;
                         margin-right: 5px;
-                    ">🤍</button>
+                    " title="收藏">🤍</button>
                     
                     <!-- 新增：单曲循环按钮 -->
                     <button id="player-single-loop" style="
@@ -2333,5 +2470,12 @@ window.toggleSingleLoop = () => {
         window.globalPlayer.toggleSingleLoop();
     } else {
         console.error('全局播放器未初始化');
+    }
+};
+
+// 新增：全局同步收藏状态函数
+window.syncFavoriteState = (songId, isFavorite) => {
+    if (window.globalPlayer) {
+        window.globalPlayer.handleFavoriteStatusChange(songId, isFavorite);
     }
 };
