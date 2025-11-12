@@ -592,7 +592,7 @@
 <li>李孝利（丈夫李尚顺与涉案人员有松散关系）</li>
 <li>李孝渊（在Burning Sun受邀DJ表演被恶意造谣）</li>
 <li>韩孝周（被造谣涉毒）</li>
-<li>高俊熙、朴志效（被牵连为群聊中提及的女演员）</li>
+<li>高俊熙、朴志效（被牵连为群聊中提及的女演员）</li> 
 <li>郑恩彩、金高恩、韩艺瑟（被造谣毒品相关派对）</li>
 <li>池昌旭（曾与林女士合影）</li>
 <li>强仁、郑珍云、李哲宇、ZICO（被媒体联想涉案）</li>
@@ -5961,39 +5961,27 @@ function filterSNS(member) {
 }
 
 
-// 用于保存每个 item 的滚动位置
-const listScrollPositions = {};
 
-function toggleList(itemIndex, show) {
-  const list = document.getElementById("celebrityList" + itemIndex);
-  const expandBtn = document.getElementById("expandBtn" + itemIndex);
-  const collapseBtn = document.getElementById("collapseBtn" + itemIndex);
+  function toggleList(index, show) {
+    const list     = document.getElementById(`celebrityList${index}`);
+    const expand   = document.getElementById(`expandBtn${index}`);
+    const collapse = document.getElementById(`collapseBtn${index}`);
 
-  if (show) {
-    // 展开时记录当前滚动位置
-    listScrollPositions[itemIndex] = window.scrollY;
+    if (!list || !expand) return;
 
-    list.style.display = "block";
-    expandBtn.style.display = "none";
-    collapseBtn.style.display = "inline-block";
-
-    // 平滑滚动到展开的部分
-    list.scrollIntoView({ behavior: "smooth", block: "start" });
-
-  } else {
-    list.style.display = "none";
-    expandBtn.style.display = "inline-block";
-    collapseBtn.style.display = "none";
-
-    // 收回时滚动回原位置
-    if (listScrollPositions[itemIndex] !== undefined) {
-      window.scrollTo({
-        top: listScrollPositions[itemIndex],
-        behavior: "smooth"
-      });
+    if (show) {
+      list.style.display = "block";
+      if (expand)   expand.style.display = "none";
+      if (collapse) collapse.style.display = "inline-block";
+      list.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      list.style.display = "none";
+      if (expand)   expand.style.display = "inline-block";
+      if (collapse) collapse.style.display = "none";
+      expand.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
-}
+
 
 
   const sliderStates = {};

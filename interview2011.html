@@ -406,6 +406,22 @@
     object-fit: contain;
   }
 
+  .toggle-btn {
+    border: 2px solid #33FFFF;
+    color: #FFFFFF;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+  }
+  .toggle-btn:hover {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
   </style>
 </head>
 
@@ -621,48 +637,6 @@
   </div>
 
   <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@时光开到荼蘼 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114041884312931&bvid=BV146AZekE9S&cid=28507244728&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2011年2月7日</strong></p>
-        <p>Mnet Wide News广告拍摄</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@时光开到荼蘼 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114041884249248&bvid=BV1K6AZekECT&cid=28507246041&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2011年2月9日</strong></p>
-        <p>Mnet Wide News广告拍摄</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@时光开到荼蘼 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114087115686251&bvid=BV1PVXXY8Ers&cid=28638643857&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2011年2月24日</strong></p>
-        <p>深夜TV演艺 采访</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <div style="text-align: center;">
     <div class="content-wrap">
       <div class="video-container">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/HjYsGHP4v_Q?si=_VS0E5wx7OJogQEh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -702,8 +676,12 @@
     </div>
     <hr class="full-width-line" />  
   </div>
+.
 
   <div style="text-align: center;">
+    <div id="110207" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="2011feb.html#110207-jump" class="jump-button">跳转到 2011 时间线</a>
+    </div>
     <div class="content-wrap">
       <div class="text-container">
         <p><strong>2011年2月7日</strong></p>
@@ -711,15 +689,70 @@
         <p>详细资讯：<a href="https://weareheretiktok.wordpress.com/2011/02/" 
           target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Wordpress</a></p><br/>
-        <p>bigbangri.com：<a href="https://www.bigbangri.com/110207.jpeg" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
-            翻译</a> - 
-        <a href="https://www.bigbangri.com/1102071.jpeg" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
-            原文</a></p>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #33FFFF;">问：</span>你什么时候觉得自己最性感？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我从来没有真正觉得自己性感过
+          <button id="expandBtn1" class="toggle-btn" onclick="toggleList(1, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList1" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #33FFFF;">问：</span>所以从现在开始会更难。你创作歌曲<br/>
+          <span style="color: #33FFFF;">胜利：</span>没有经历过，那么未来五到十年就无法保证了
+          <br/><li><span style="color: #33FFFF;">问：</span>所以从现在开始会更难。你创作歌曲<br/>
+          <span style="color: #33FFFF;">胜利：</span>没有经历过，那么未来五到十年就无法保证了
+          <br/><li><span style="color: #33FFFF;">问：</span>所以从现在开始会更难。你创作歌曲<br/>
+          <span style="color: #33FFFF;">胜利：</span>没有经历过，那么未来五到十年就无法保证了
+          <br/><li><span style="color: #33FFFF;">问：</span>所以从现在开始会更难。你创作歌曲<br/>
+          <span style="color: #33FFFF;">胜利：</span>没有经历过，那么未来五到十年就无法保证了
+          <br/><li><span style="color: #33FFFF;">问：</span>所以从现在开始会更难。你创作歌曲<br/>
+          <span style="color: #33FFFF;">胜利：</span>没有经历过，那么未来五到十年就无法保证了
+          <br/><li><span style="color: #33FFFF;">问：</span>所以从现在开始会更难。你创作歌曲<br/>
+          <span style="color: #33FFFF;">胜利：</span>没有经历过，那么未来五到十年就无法保证了
+          <button id="collapseBtn1" class="toggle-btn" onclick="toggleList(1, false)" style="margin-left:10px;">收回</button></li>          
+        </ol>
       </div>
     </div>
     <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@时光开到荼蘼 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114041884312931&bvid=BV146AZekE9S&cid=28507244728&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2011年2月7日</strong></p>
+        <p>Mnet Wide News广告拍摄</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@时光开到荼蘼 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114041884249248&bvid=BV1K6AZekECT&cid=28507246041&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2011年2月9日</strong></p>
+        <p>Mnet Wide News广告拍摄</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@时光开到荼蘼 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114087115686251&bvid=BV1PVXXY8Ers&cid=28638643857&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2011年2月24日</strong></p>
+        <p>深夜TV演艺 采访</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
   </div>
 
   <div class="video-row">
@@ -1527,19 +1560,47 @@
   </div>
 
   <div style="text-align: center;">
+    <div id="111129" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="2011nov.html#111129-jump" class="jump-button">跳转到 2011 时间线</a>
+    </div>
     <div class="content-wrap">
-      <div class="text-container">
+      <div class="text-container" id="block25">
         <p><strong>2011年11月29日</strong></p>
-        <p>10asia 采访</p>
-        <p>GD很在意自己身为音乐人的言行举止，他表示：公众对我的看法是我造成的，所以如果我出现失误了，那就是我的错</p>
-        <br/>
-        <p>详细资讯：<a href="https://web.archive.org/web/20111129124300/http://10.asiae.co.kr/Articles/new_view.htm?sec=ent0&a_id=2010122918181571944" 
-          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
-            10asia</a></p>
+        <p>GD接受 10asia 采访</p>
+        <p>详细资讯：<a href="https://web.archive.org/web/20111129124300/http://10.asiae.co.kr/Articles/new_view.htm?sec=ent0&a_id=2010122918181571944" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            10 asia</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #33FFFF;">10：</span>你眼下好像有黑眼圈<br/>
+          <span style="color: #33FFFF;">GD：</span>是啊，我昨天也表演了一整晚
+          <button id="expandBtn2" class="toggle-btn" onclick="toggleList(2, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList2" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #33FFFF;">10：</span>你又开始忙碌起来了。我知道你个人活动结束后享受了一段空闲时间<br/>
+          <span style="color: #33FFFF;">GD：</span>个人活动结束后，我一得到YG娱乐公司CEO（杨贤硕）的许可，就疯狂玩乐了一两个月</li>
+          <br/><li><span style="color: #33FFFF;">10：</span>这是你出道以来第一次有空闲时间吗？那段时间对你有什么影响？<br/>
+          <span style="color: #33FFFF;">GD：</span>我们Bigbang行程繁忙的时候很累很辛苦，但结束后一切都消失了。我觉得感觉差不多。过去的一切都好像什么都没发生过。所以，在理清思路之后，我有充足的时间为未来的活动做准备。结束个人活动的那一年，是我出道以来第一次有时间好好准备。无论是休息还是思考，过去一年我都能从容地做一些事情，而不是像以前那样匆匆忙忙。正因如此，我对下一张专辑和与大家见面都更有信心了</li>
+          <br/><li><span style="color: #33FFFF;">10：</span>我找不到合适的词来形容，但我想应该说你的态度改变了？<br/>
+          <span style="color: #33FFFF;">GD：</span>是的，我的态度改变了很多。我变得更加平和，也更努力地去理解事物。CEO告诉我，我不应该总是想着自己，应该试着站在别人的角度思考。他说了那番话之后，我开始更好地理解大多数事情。以前，每当我们行程很满的时候，我都会抱怨“为什么我们的行程安排得这么满”，然后感到烦躁，但现在我知道，即使是最小的事情也很重要。可以说，我就像刚从一场大病中康复的人一样。正因如此，我的状态才这么好，也很期待未来的发展</li>
+          <br/><li><span style="color: #33FFFF;">10：</span>看来你获得了某种解脱感<br/>
+          <span style="color: #33FFFF;">GD：</span>与其说是解脱，不如说我的内心轻松了很多，因为我觉得这就是我应该做的。别人可能会说我取得了巨大的成功，但对我来说，它成为了我的动力，是我成长的过程。现在，我不再在意别人怎么看我，而是想把我能给予的东西呈现给他们</li>
+          <br/><li><span style="color: #33FFFF;">10：</span>所以你的意思是，你以前很在意别人对你的看法吗？<br/>
+          <span style="color: #33FFFF;">GD：</span>以前，因为在人前很在意自己的工作，我改变了很多东西，包括说话的语气。而且，我在别人面前和朋友面前的形象也不一样，但现在我觉得两者越来越相似了。所以现在我更害怕接受采访了。我觉得打破艺人和真实的自我之间的界限是件好事，但在韩国接受采访时，这可能会变得很危险。（笑）除此之外，我觉得没什么好担心的，别人怎么看我。这就是我，我觉得大家喜欢的就是这样的我，以后我也会继续这样下去</li>
+          <br/><li><span style="color: #33FFFF;">10：</span>我觉得这就是为什么新专辑《Intro》里的歌词“虽然我个子矮，但我女朋友个子高”会让人印象深刻。感觉你不想过多地纠缠过去的事情，只是简单地说了句“啊，我就是这样的人”<br/>
+          <span style="color: #33FFFF;">GD：</span>确实澄清了很多事情。出道的时候我还年轻，并没有想过自己会给别人留下怎样的印象。直到发行了个人专辑之后，我才开始反思自己。那段时间我经历了很多痛苦，甚至每天早上醒来都觉得害怕。醒来之后，事情接踵而至，我想这就是我当时情绪崩溃的原因</li>
+          <br/><li><span style="color: #33FFFF;">10：</span>你是如何克服的？<br/>
+          <span style="color: #33FFFF;">GD：</span>这需要时间。随着时间的推移，我意识到自己是一名流行歌手，无论我的初衷是什么，公众的理解都是我造成的，如果我传递了错误的信息，那就是我的错。我觉得没必要把每件小事都说出来。我想用下一张专辑或者言语来冷静地表达出来，但我选择了沉默，因为我想表达感受的方式，比如写作或者谈论，都不被接受。所以那段时间，我尽全力做好自己该做的事情，努力给别人留下好印象。现在，我看到了更多支持我的人。我觉得以后就应该这样了</li>
+          <br/><li><span style="color: #33FFFF;">10：</span>这些内心的变化对你的音乐有影响吗？新专辑里的《Baby good night》这首歌和你之前的作品风格很不一样<br/>
+          <span style="color: #33FFFF;">GD：</span>当然有。因为当你打破常规的时候，可能性是无限的。而如果艺人确定了某种音乐风格，就会一遍又一遍地创作同样的音乐。可以说这是所有偶像明星都会遇到的问题，如果不打破这种模式，问题就会一直存在，如果他们不停地发行专辑而不休息，情况就会变得更糟</li>
+          <br/><li><span style="color: #33FFFF;">10：</span>确实如此。如果艺人没有时间思考，他们就会随波逐流<br/>
+          <span style="color: #33FFFF;">GD：</span>是的。我觉得如果艺术家把音乐当成工作，就做不出真正适合自己的音乐了。相反，如果给我一年或三个月的时间，我反而能享受创作音乐的过程。我觉得，无论是创作音乐、表演，还是仅仅是享受其中，都会直接影响到音乐本身</li>
+          <br/><li><span style="color: #33FFFF;">10：</span>所以从现在开始会更难。你从出道以来就一直在不停地创作歌曲<br/>
+          <span style="color: #33FFFF;">GD：</span>那段时间我失去了信心。我总觉得自己已经做到最好了，但当我把自己局限在试图形成自己的音乐风格时，反而陷入了低谷。我听说摇滚歌手徐泰智和其他一些歌手都说过，他们在思考下一张专辑时会感到焦虑。我还没有经历过那个阶段，现在说这些话可能显得有点狂妄，但我确实曾经想过，如果我认为自己已经竭尽全力，那么未来五到十年就无法保证了
+          <button id="collapseBtn2" class="toggle-btn" onclick="toggleList(2, false)" style="margin-left:10px;">收回</button></li>          
+        </ol>
       </div>
     </div>
-    <hr class="full-width-line" />  
-  </div>
+  </div><br/>
+  <img src="111129.png" style="width: 450px;">
+  <hr class="full-width-line">  
 
   <div id="interview2011-dec" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
     <a href="interview2011.html#interview2011-dec-jump" class="jump-button">12月</a>
@@ -1615,6 +1676,26 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+
+  function toggleList(index, show) {
+    const list     = document.getElementById(`celebrityList${index}`);
+    const expand   = document.getElementById(`expandBtn${index}`);
+    const collapse = document.getElementById(`collapseBtn${index}`);
+
+    if (!list || !expand) return;
+
+    if (show) {
+      list.style.display = "block";
+      if (expand)   expand.style.display = "none";
+      if (collapse) collapse.style.display = "inline-block";
+      list.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      list.style.display = "none";
+      if (expand)   expand.style.display = "inline-block";
+      if (collapse) collapse.style.display = "none";
+      expand.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
 
   const sliderStates = {};
 
