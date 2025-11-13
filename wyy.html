@@ -10479,44 +10479,47 @@ const AlbumDetail = ({ album, onBack, onPlaySong, currentMember }) => {
     const [favorites, setFavorites] = useState([]);
     const [highlightedSongId, setHighlightedSongId] = useState(null);
 
-    // 在useEffect中添加从album属性获取highlightedSongId的逻辑
-    useEffect(() => {
-        // 首先检查album属性中是否有highlightedSongId
-        if (album.highlightedSongId) {
-            setHighlightedSongId(album.highlightedSongId);
-            
-            // 自动滚动到高亮歌曲
-            setTimeout(() => {
-                const songElement = document.querySelector(`[data-song-id="${album.highlightedSongId}"]`);
-                if (songElement) {
-                    songElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }, 500);
-            
-            // 3秒后取消高亮
-            setTimeout(() => {
-                setHighlightedSongId(null);
-            }, 3000);
-        }
+// 在 AlbumDetail 组件中添加
+useEffect(() => {
+    // 确保页面滚动到专辑详情顶部
+    const albumDetailElement = document.querySelector('.album-detail');
+    if (albumDetailElement) {
+        albumDetailElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    
+    // 原有的高亮歌曲逻辑保持不变
+    if (album.highlightedSongId) {
+        setHighlightedSongId(album.highlightedSongId);
         
-        // 原有的URL参数检查逻辑保持不变
-        const urlParams = new URLSearchParams(window.location.search);
-        const songId = urlParams.get('song');
-        if (songId) {
-            setHighlightedSongId(parseInt(songId));
-            
-            setTimeout(() => {
-                const songElement = document.querySelector(`[data-song-id="${songId}"]`);
-                if (songElement) {
-                    songElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }, 500);
-            
-            setTimeout(() => {
-                setHighlightedSongId(null);
-            }, 3000);
-        }
-    }, [album]);
+        setTimeout(() => {
+            const songElement = document.querySelector(`[data-song-id="${album.highlightedSongId}"]`);
+            if (songElement) {
+                songElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }, 500);
+        
+        setTimeout(() => {
+            setHighlightedSongId(null);
+        }, 3000);
+    }
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const songId = urlParams.get('song');
+    if (songId) {
+        setHighlightedSongId(parseInt(songId));
+        
+        setTimeout(() => {
+            const songElement = document.querySelector(`[data-song-id="${songId}"]`);
+            if (songElement) {
+                songElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }, 500);
+        
+        setTimeout(() => {
+            setHighlightedSongId(null);
+        }, 3000);
+    }
+}, [album]);
 
     const formatDuration = (seconds) => {
         const mins = Math.floor(seconds / 60);
@@ -10878,9 +10881,11 @@ function App() {
         }
     }, []);
 
-// 在 handleAlbumSelect 函数中，修改引用专辑的处理逻辑
 const handleAlbumSelect = (album, member = null) => {
     console.log('选择专辑:', album.title, '成员:', member);
+    
+    // 首先滚动到页面顶部
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     
     // 如果是引用专辑，跳转到对应的目标专辑
     if (album.is_reference && album.target_album_id) {
@@ -10950,23 +10955,18 @@ const handleAlbumSelect = (album, member = null) => {
     }
 };
 
-    const handleBackToList = () => {
-        if (currentMember) {
-            setCurrentView('albumList');
-        } else {
-            setCurrentView('albumList');
-        }
-        
-        setSelectedAlbum(null);
-    };
-
-    const handleBackToGroup = () => {
-        setCurrentMember(null);
-    };
-
-    const handleMemberSelect = (member) => {
-        setCurrentMember(member);
-    };
+const handleBackToList = () => {
+    // 滚动到页面顶部
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    if (currentMember) {
+        setCurrentView('albumList');
+    } else {
+        setCurrentView('albumList');
+    }
+    
+    setSelectedAlbum(null);
+};
 
     const handlePlaySong = (song) => {
         console.log('播放歌曲:', song, '当前专辑:', selectedAlbum);
