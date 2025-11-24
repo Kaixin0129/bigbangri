@@ -693,22 +693,6 @@
         document.getElementById("footer").innerHTML = data;
       });
 
-  (function () {
-    const data = {
-      path: window.location.pathname,
-      referrer: document.referrer || null
-    };
-
-    try {
-      fetch("https://black-recipe-80b0.xinba2864.workers.dev/api/log", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      }).catch(function () {});
-    } catch (e) {
-    }
-  })();
-
 document.addEventListener('click', function(e) {
     const link = e.target.closest('a[href*="#"]');
     if (link) {

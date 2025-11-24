@@ -412,7 +412,7 @@
 <main>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="more.html">Back</a>
+      <a href="comics.html">Back</a>
     </nav>
     <div class="title-group">
       <h1>BANG*S</h1>
@@ -1292,7 +1292,7 @@
   <br/><br/><br/>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="more.html">Back</a>
+      <a href="comics.html">Back</a>
     </nav>
     <div class="title-group">
       <div id="footer"></div>
@@ -1311,22 +1311,6 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
-
-  (function () {
-    const data = {
-      path: window.location.pathname,
-      referrer: document.referrer || null
-    };
-
-    try {
-      fetch("https://black-recipe-80b0.xinba2864.workers.dev/api/log", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      }).catch(function () {});
-    } catch (e) {
-    }
-  })();
 
   const sliderStates = {};
 
