@@ -2158,10 +2158,16 @@
 
   <div class="video-row">
     <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/4yJ9mzBzLgo?si=7JEQ17oAWQxsfAsO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/4yJ9mzBzLgo?si=7JEQ17oAWQxsfAsO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      <div class="video-description">
+        <p>3:54 GD现场脱衣换装</p>
+      </div>
     </div>
     <div class="video-box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/erfZOIzbaJ4?si=h5M8KA8TplTwq6L5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/erfZOIzbaJ4?si=h5M8KA8TplTwq6L5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      <div class="video-description">
+        <p>领奖发言</p>
+      </div>
     </div>
   </div>
   <div style="text-align: center;">
@@ -2811,6 +2817,22 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+
+  (function () {
+    const data = {
+      path: window.location.pathname,
+      referrer: document.referrer || null
+    };
+
+    try {
+      fetch("https://logs.bigbangri.com/api/log", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      }).catch(function () {});
+    } catch (e) {
+    }
+  })();
 
   const sliderStates = {};
 

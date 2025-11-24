@@ -712,7 +712,7 @@
       <a href="magazine2013.html#magazine131110" class="jump-button">更多图片</a>
     </div>
     <div class="content-wrap">
-      <div class="text-container" id="block17">
+      <div class="text-container">
         <p><strong>2013年11月10日</strong></p>
         <p>GD登上PURPLE FASHION MAGAZINE : F/W 2013 ISSUE 20</p>
       </div>
@@ -1163,6 +1163,22 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+
+  (function () {
+    const data = {
+      path: window.location.pathname,
+      referrer: document.referrer || null
+    };
+
+    try {
+      fetch("https://logs.bigbangri.com/api/log", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      }).catch(function () {});
+    } catch (e) {
+    }
+  })();
 
 document.addEventListener('click', function(e) {
     const link = e.target.closest('a[href*="#"]');

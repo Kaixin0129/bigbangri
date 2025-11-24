@@ -780,6 +780,19 @@
     <hr class="full-width-line" />
   </div>
 
+  <div style="text-align: center;">
+    <div id="magazine131022-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="magazine2013.html#magazine131022" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2013年10月22日</strong></p>
+        <p>TOP登上杂志《W Korea》</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
 <div style="text-align: center;">
   <div id="131024-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
     <a href="2013oct.html#131024" class="jump-button">跳转到 2013 时间线</a>
@@ -1222,6 +1235,22 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+
+  (function () {
+    const data = {
+      path: window.location.pathname,
+      referrer: document.referrer || null
+    };
+
+    try {
+      fetch("https://logs.bigbangri.com/api/log", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      }).catch(function () {});
+    } catch (e) {
+    }
+  })();
 
   function toggleList(show) {
     const list = document.getElementById("celebrityList");

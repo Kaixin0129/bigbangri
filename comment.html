@@ -621,9 +621,11 @@ html {
 </div>
 
 <br/><br/>
-<p style="text-align: center; padding: 20px; color: rgb(242, 242, 242);">
-  Copyright © bigbangri.com All rights reserved.
-</p>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
 </main>
 <script src="player.js"></script>
 <script>
