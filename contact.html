@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+@media only screen and (max-width: 768px) {
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .social-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .social-button {
+      width: 80px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      font-size: 14px;
+      color: white;
+      line-height: 1.2;
+    }
+
+    .social-button img {
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      border-radius: 10px;
+      margin-bottom: 8px;
+    }
+
+    .social-button img:hover {
+      transform: scale(1.1);
+    }
+
+    .social-label {
+      max-height: 40px;
+      overflow: visible;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .social-label-1 {
+      max-width: 400px;
+      overflow: visible;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .social-button.wide {
+      width: auto;
+      max-width: 300px;
+    }
+
+  </style>
+</head>
+<main>
+
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="index.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>Contact</h1>
+    </div>
+  </div><br/><br/>
+
+  <p>如果你发现本站内容有错误、遗漏，或者认为某些内容侵犯了你的合法权益，可以通过以下方式联系我</p><br/>
+  <p>收到消息后我会尽量在合理时间内回复，并根据情况进行修改或移除相关内容</p><br/><br/><br/><br/>
+
+    <div class="social-container">
+      <div class="social-button">
+        <a href="https://weibo.com/u/4045622385" target="_blank">
+          <img src="weibo.jpeg" alt="Weibo">
+        </a>
+        <div class="social-label">
+          <p>微博</p>
+        </div>
+      </div>
+      <div class="social-button">
+        <a href="https://www.instagram.com/kx_0902_/" target="_blank">
+          <img src="insta.webp" alt="Instagram">
+        </a>
+        <div class="social-label">
+          <p>Instagram</p>
+        </div>
+      </div>
+      <div class="social-button">
+        <a href="https://v.douyin.com/Rs5gHm_WuIY/" target="_blank">
+          <img src="douyin.jpeg" alt="抖音">
+        </a>
+        <div class="social-label">
+          <p>抖音</p>
+        </div>
+      </div>
+      <div class="social-button">
+        <a href="https://open.spotify.com/user/31k3se7frgp25lswacrqr4cvzltq?si=3OarRpzTTeec2y2k8mZrxA" target="_blank">
+          <img src="spotify.png" alt="Spotify">
+        </a>
+        <div class="social-label">
+          <p>Spotify</p>
+        </div>
+      </div>
+      <div class="social-button">
+        <a href="https://www.xiaohongshu.com/user/profile/5faf967d0000000001001039?xsec_token=YBBERWtidZ1eP6hkUT-fsdMg9kOZfNhgd2Z0ZVge-Chz0%3D&xsec_source=app_share&xhsshare=CopyLink&appuid=5faf967d0000000001001039&apptime=1751031669&share_id=9dcf372945de419790318a3579434ce2&share_channel=copy_link" target="_blank">
+          <img src="redbook.png" alt="小红书">
+        </a>
+        <div class="social-label">
+          <p>小红书</p>
+        </div>
+      </div>
+      <div class="social-button">
+        <a href="https://www.facebook.com/thamkaixin.moe" target="_blank">
+          <img src="fb.png" alt="Facebook">
+        </a>
+        <div class="social-label">
+          <p>Facebook</p>
+        </div>
+      </div>
+    </div>
+    <div class="social-container">
+      <div class="social-button wide">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=bigbangri1218@gmail.com" target="_blank">
+          <img src="gmail.jpg" alt="GMAIL">
+        </a>
+        <div class="social-label">
+          <p>bigbangri1218@gmail.com</p>
+        </div>
+      </div>
+    </div>
+
+</main>
+  <script src="player.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+       crossorigin="anonymous"></script>
+</html>

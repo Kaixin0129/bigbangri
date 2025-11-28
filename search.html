@@ -502,8 +502,6 @@ html {
   <div id="searchResults"></div><br/><br/>
   </main>
 <script src="player.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>
   <script>
     let index = [];
 
@@ -546,77 +544,72 @@ html {
       }
     });
 
-    function search(keyword) {
-      const resultsDiv = document.getElementById("searchResults");
-      resultsDiv.innerHTML = "";
+function search(keyword) {
+  const resultsDiv = document.getElementById("searchResults");
+  resultsDiv.innerHTML = "";
 
-      if (!keyword || !index.length) {
-        resultsDiv.innerHTML = '<p class="no-results">没有找到结果</p>';
-        return;
-      }
+  if (!keyword || !index.length) {
+    resultsDiv.innerHTML = '<p class="no-results">没有找到结果</p>';
+    return;
+  }
 
-      const normalizedKeyword = normalize(keyword);
-      if (!normalizedKeyword) {
-        resultsDiv.innerHTML = '<p class="no-results">没有找到结果</p>';
-        return;
-      }
+  const normalizedKeyword = normalize(keyword);
+  if (!normalizedKeyword) {
+    resultsDiv.innerHTML = '<p class="no-results">没有找到结果</p>';
+    return;
+  }
 
-      const tokens = normalizedKeyword.split(" ").filter(Boolean);
+  const tokens = normalizedKeyword.split(" ").filter(Boolean);
 
-      // 过滤：每个 token 都必须出现在条目中
-      const results = index.filter(item => {
-        const hay = normalize(item.text || item.html || "");
-        return tokens.every(t => hay.includes(t));
-      });
+  const results = index.filter(item => {
+    const hay = normalize(item.text || item.html || "");
+    return tokens.every(t => hay.includes(t));
+  });
 
-      // 显示结果数量
-      const resultsInfo = document.createElement("p");
-      resultsInfo.className = "results-info";
-      resultsInfo.textContent = `总共 ${results.length} 个结果`;
-      resultsDiv.appendChild(resultsInfo);
+  const resultsInfo = document.createElement("p");
+  resultsInfo.className = "results-info";
+  resultsInfo.textContent = `总共 ${results.length} 个结果`;
+  resultsDiv.appendChild(resultsInfo);
 
-      if (results.length === 0) {
-        resultsDiv.innerHTML = '<p class="no-results">没有找到结果</p>';
-        return;
-      }
+  if (results.length === 0) {
+    resultsDiv.innerHTML = '<p class="no-results">没有找到结果</p>';
+    return;
+  }
 
-      // 渲染结果
-      results.forEach(item => {
-        const tempDiv = document.createElement("div");
-        tempDiv.innerHTML = item.html || "";
+  // 将搜索关键词存储到sessionStorage
+  sessionStorage.setItem('searchKeyword', keyword);
 
-        const videoContainer = tempDiv.querySelector(".video-container");
-        const textContainer = tempDiv.querySelector(".text-container");
+  results.forEach(item => {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = item.html || "";
 
-        const resultDiv = document.createElement("div");
-        resultDiv.className = "result";
+    const videoContainer = tempDiv.querySelector(".video-container");
+    const textContainer = tempDiv.querySelector(".text-container");
 
-        let inner = "";
+    const resultDiv = document.createElement("div");
+    resultDiv.className = "result";
 
-        if (videoContainer) {
-          inner += `<div class="video-container">${videoContainer.innerHTML}</div>`;
-        }
+    let inner = "";
 
-        inner += `<div class="text-container">
-                    <a href="${item.url}" style="color: inherit; text-decoration: none;">
-                      ${textContainer ? textContainer.innerHTML : escapeHtml(item.text)}
-                    </a>
-                  </div>`;
-
-        resultDiv.innerHTML = inner;
-        resultsDiv.appendChild(resultDiv);
-      });
+    if (videoContainer) {
+      inner += `<div class="video-container">${videoContainer.innerHTML}</div>`;
     }
 
-    // 简单的 HTML 转义
-    function escapeHtml(s) {
-      return String(s)
-        .replace(/&/g, "&")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;");
-    }
+    // 在URL中添加搜索参数
+    const urlWithSearch = item.url + (item.url.includes('?') ? '&' : '?') + 
+                         'search=' + encodeURIComponent(keyword);
+
+    inner += `<div class="text-container">
+                <a href="${urlWithSearch}" style="color: inherit; text-decoration: none;">
+                  ${textContainer ? textContainer.innerHTML : escapeHtml(item.text)}
+                </a>
+              </div>`;
+
+    resultDiv.innerHTML = inner;
+    resultsDiv.appendChild(resultDiv);
+  });
+}
+
   </script>
 </body>
 </html>
