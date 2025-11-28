@@ -165,25 +165,25 @@
       height: auto;
     }
 
-    @media only screen and (max-width: 768px) {
-      html, body {
+@media only screen and (max-width: 768px) {
+    html, body {
         height: 100vh;
         overflow-x: hidden;
         overflow-y: auto;
         position: relative;
-      }
+    }
 
-      body {
-        transform: scale(0.8); /* 调整为0.8而不是0.59，减少缩放程度 */
+    body {
+        transform: scale(0.59);
         transform-origin: top left;
-        width: 125%; /* 对应调整为125% */
-        height: calc(100vh / 0.8);
-      }
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
 
-      .full-width-line {
-        transform: scaleX(1.25); /* 对应调整为1.25 */
+    .full-width-line {
+        transform: scaleX(1.6949);
         transform-origin: left;
-      }
+    }
 
       #global-player {
         position: fixed !important;
