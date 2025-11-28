@@ -544,72 +544,77 @@ html {
       }
     });
 
-function search(keyword) {
-  const resultsDiv = document.getElementById("searchResults");
-  resultsDiv.innerHTML = "";
+    function search(keyword) {
+      const resultsDiv = document.getElementById("searchResults");
+      resultsDiv.innerHTML = "";
 
-  if (!keyword || !index.length) {
-    resultsDiv.innerHTML = '<p class="no-results">没有找到结果</p>';
-    return;
-  }
+      if (!keyword || !index.length) {
+        resultsDiv.innerHTML = '<p class="no-results">没有找到结果</p>';
+        return;
+      }
 
-  const normalizedKeyword = normalize(keyword);
-  if (!normalizedKeyword) {
-    resultsDiv.innerHTML = '<p class="no-results">没有找到结果</p>';
-    return;
-  }
+      const normalizedKeyword = normalize(keyword);
+      if (!normalizedKeyword) {
+        resultsDiv.innerHTML = '<p class="no-results">没有找到结果</p>';
+        return;
+      }
 
-  const tokens = normalizedKeyword.split(" ").filter(Boolean);
+      const tokens = normalizedKeyword.split(" ").filter(Boolean);
 
-  const results = index.filter(item => {
-    const hay = normalize(item.text || item.html || "");
-    return tokens.every(t => hay.includes(t));
-  });
+      // 过滤：每个 token 都必须出现在条目中
+      const results = index.filter(item => {
+        const hay = normalize(item.text || item.html || "");
+        return tokens.every(t => hay.includes(t));
+      });
 
-  const resultsInfo = document.createElement("p");
-  resultsInfo.className = "results-info";
-  resultsInfo.textContent = `总共 ${results.length} 个结果`;
-  resultsDiv.appendChild(resultsInfo);
+      // 显示结果数量
+      const resultsInfo = document.createElement("p");
+      resultsInfo.className = "results-info";
+      resultsInfo.textContent = `总共 ${results.length} 个结果`;
+      resultsDiv.appendChild(resultsInfo);
 
-  if (results.length === 0) {
-    resultsDiv.innerHTML = '<p class="no-results">没有找到结果</p>';
-    return;
-  }
+      if (results.length === 0) {
+        resultsDiv.innerHTML = '<p class="no-results">没有找到结果</p>';
+        return;
+      }
 
-  // 将搜索关键词存储到sessionStorage
-  sessionStorage.setItem('searchKeyword', keyword);
+      // 渲染结果
+      results.forEach(item => {
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = item.html || "";
 
-  results.forEach(item => {
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = item.html || "";
+        const videoContainer = tempDiv.querySelector(".video-container");
+        const textContainer = tempDiv.querySelector(".text-container");
 
-    const videoContainer = tempDiv.querySelector(".video-container");
-    const textContainer = tempDiv.querySelector(".text-container");
+        const resultDiv = document.createElement("div");
+        resultDiv.className = "result";
 
-    const resultDiv = document.createElement("div");
-    resultDiv.className = "result";
+        let inner = "";
 
-    let inner = "";
+        if (videoContainer) {
+          inner += `<div class="video-container">${videoContainer.innerHTML}</div>`;
+        }
 
-    if (videoContainer) {
-      inner += `<div class="video-container">${videoContainer.innerHTML}</div>`;
+        inner += `<div class="text-container">
+                    <a href="${item.url}" style="color: inherit; text-decoration: none;">
+                      ${textContainer ? textContainer.innerHTML : escapeHtml(item.text)}
+                    </a>
+                  </div>`;
+
+        resultDiv.innerHTML = inner;
+        resultsDiv.appendChild(resultDiv);
+      });
     }
 
-    // 在URL中添加搜索参数
-    const urlWithSearch = item.url + (item.url.includes('?') ? '&' : '?') + 
-                         'search=' + encodeURIComponent(keyword);
-
-    inner += `<div class="text-container">
-                <a href="${urlWithSearch}" style="color: inherit; text-decoration: none;">
-                  ${textContainer ? textContainer.innerHTML : escapeHtml(item.text)}
-                </a>
-              </div>`;
-
-    resultDiv.innerHTML = inner;
-    resultsDiv.appendChild(resultDiv);
-  });
-}
-
+    // 简单的 HTML 转义
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
   </script>
 </body>
 </html>
