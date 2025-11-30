@@ -439,7 +439,7 @@
     #searchInput {
       padding: 18px 24px 18px 52px;
       width: 800px;
-      max-width: 90%; /* 添加最大宽度限制 */
+      max-width: 90%;
       border: 3px solid #33FFFF;
       border-radius: 9999px;
       background-color: #111;
@@ -469,7 +469,6 @@
       }
     }
 
-    /* 添加新的媒体查询处理更小的屏幕 */
     @media (max-width: 480px) {
       #searchInput {
         width: 98%;
@@ -480,7 +479,6 @@
         background-size: 18px 18px;
       }
     }
-/* 顶部右侧 About | Contact | Privacy Policy */
 .top-links {
   display: flex;
   justify-content: flex-end;
@@ -489,7 +487,6 @@
   margin: 15px 25px 0 0;
   font-size: 16px;
 
-  /* ⭐ 让字体更锐利，不会出现灰色重影 */
   -webkit-font-smoothing: antialiased;
   text-rendering: geometricPrecision;
 }
@@ -499,7 +496,6 @@
   text-decoration: none;
   transition: color 0.2s ease;
 
-  /* 防止子像素渲染导致重影 */
   transform: translateZ(0);
 }
 
@@ -511,7 +507,6 @@
   color: white;
   font-size: 14px;
 
-  /* 同样防止竖线出现灰色边 */
   transform: translateZ(0);
 }
 

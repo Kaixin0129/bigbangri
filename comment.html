@@ -633,7 +633,6 @@ const blockedWords = [
   "罪犯", "犯罪", "傻逼", "sb", "神经病", "n号房", "赌博", "fzk", "lpt"
 ];
 
-// 屏蔽词检测函数
 function containsBlockedWords(text) {
   return blockedWords.some(word => text.includes(word));
 }
@@ -647,14 +646,11 @@ async function addComment() {
     alert("请填写名字和评论内容");
     return;
   }
-
-  // ✅ 屏蔽词过滤
   if (containsBlockedWords(message)) {
     alert("你的评论内容包含违规词汇，请修改后再发送。");
     return;
   }
 
-  // ✅ 如果本地没有保存用户名，则检查是否重复
   if (!localStorage.getItem("comment_username")) {
     try {
       const snapshot = await db.collection("comments").where("name", "==", name).limit(1).get();
@@ -668,12 +664,10 @@ async function addComment() {
       return;
     }
 
-    // ✅ 本地保存用户名（避免下次重复检查）
     localStorage.setItem("comment_username", name);
     if (nameInput) nameInput.style.display = "none";
   }
 
-  // ✅ 构建评论对象并提交
   const comment = {
     name,
     message,
