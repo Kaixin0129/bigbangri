@@ -12984,7 +12984,7 @@ members: [
             {
                 id: 100067,
                 title: '무한도전 영동고속도로 가요제',
-                cover_url: '131102.jpg',
+                cover_url: '13102.jpg',
                 release_year: '2013年11月2日',
                 jump_id: '131102solo-jump',
                 collaboration_type: 'others',
@@ -12993,7 +12993,7 @@ members: [
                         id: 1000036, 
                         title: '해볼라고 (Going to Try)', 
                         file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/Hyung%20Young%20Don%20Jyong%20(Hyung%20Don%20&%20G-Dragon)%20-%20%ED%95%B4%EB%B3%BC%EB%9D%BC%EA%B3%A0%20(Going%20To%20Try)%20%5BInfinity%20Challenge%5D.m4a',
-                        cover_url: '131102.jpg',
+                        cover_url: '13102.jpg',
                         album_title: '무한도전 영동고속도로 가요제',
                         artist: 'G-DRAGON',
                         album_id: 100067,
@@ -20166,43 +20166,58 @@ const AlbumList = ({ onAlbumSelect, onPlaySong, currentMember, onMemberSelect, o
     );
 }
 
+window.addEventListener('favoritesUpdated', function(event) {
+    // 强制刷新收藏状态
+    if (window.globalSetFavorites) {
+        window.globalSetFavorites(event.detail.favorites);
+    }
+    
+    // 如果是详情页面，重新渲染歌曲列表
+    if (window.globalRefreshAlbumDetail) {
+        window.globalRefreshAlbumDetail();
+    }
+});
+
 const AlbumDetail = ({ album, onBack, onPlaySong, currentMember }) => {
     const [favorites, setFavorites] = useState([]);
     const [highlightedSongId, setHighlightedSongId] = useState(null);
+    const [lastUpdate, setLastUpdate] = useState(Date.now()); // 添加更新时间戳
+
+    // 加载收藏数据
+    const loadFavorites = () => {
+        const savedFavorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+        setFavorites(savedFavorites);
+        return savedFavorites;
+    };
 
     useEffect(() => {
-        if (album.highlightedSongId) {
-            setHighlightedSongId(album.highlightedSongId);
-            
-            setTimeout(() => {
-                const songElement = document.querySelector(`[data-song-id="${album.highlightedSongId}"]`);
-                if (songElement) {
-                    songElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }, 500);
-            
-            setTimeout(() => {
-                setHighlightedSongId(null);
-            }, 3000);
-        }
+        // 初始化时加载收藏
+        loadFavorites();
         
-        const urlParams = new URLSearchParams(window.location.search);
-        const songId = urlParams.get('song');
-        if (songId) {
-            setHighlightedSongId(parseInt(songId));
-            
-            setTimeout(() => {
-                const songElement = document.querySelector(`[data-song-id="${songId}"]`);
-                if (songElement) {
-                    songElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }, 500);
-            
-            setTimeout(() => {
-                setHighlightedSongId(null);
-            }, 3000);
-        }
+        const handleFavoritesUpdated = () => {
+            console.log('App收到收藏更新事件');
+            // 强制重新渲染当前视图
+            if (currentView === 'albumDetail' && selectedAlbum) {
+                setSelectedAlbum({...selectedAlbum});
+            }
+        };
+        
+        window.addEventListener('favoritesUpdated', handleFavoritesUpdated);
+        
+        return () => {
+            window.removeEventListener('favoritesUpdated', handleFavoritesUpdated);
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            window.removeEventListener('focus', handleFocus);
+            window.globalRefreshAlbumDetail = null;
+            window.globalSetFavorites = null;
+        };
     }, [album]);
+
+    // 添加依赖 lastUpdate，确保收藏状态变化时重新渲染
+    useEffect(() => {
+        // 每次 lastUpdate 变化时，重新检查收藏状态
+        console.log('lastUpdate changed, current favorites:', favorites.length);
+    }, [lastUpdate]);
 
     const formatDuration = (seconds) => {
         const mins = Math.floor(seconds / 60);
@@ -20236,6 +20251,7 @@ const AlbumDetail = ({ album, onBack, onPlaySong, currentMember }) => {
         
         localStorage.setItem('musicFavorites', JSON.stringify(newFavorites));
         setFavorites(newFavorites);
+        setLastUpdate(Date.now()); // 立即更新状态
         
         const favoriteStatusChangedEvent = new CustomEvent('favoriteStatusChanged', {
             detail: {
@@ -20246,18 +20262,115 @@ const AlbumDetail = ({ album, onBack, onPlaySong, currentMember }) => {
         });
         window.dispatchEvent(favoriteStatusChangedEvent);
         
-        if (window.globalPlayer) {
-            window.globalPlayer.favorites = newFavorites;
-            window.globalPlayer.saveFavorites();
-        }
-        
-        window.dispatchEvent(new CustomEvent('favoritesUpdated', {
+        // 发布收藏更新事件
+        const favoritesUpdatedEvent = new CustomEvent('favoritesUpdated', {
             detail: {
                 favorites: newFavorites,
                 updatedSong: song,
                 action: isNowFavorite ? 'added' : 'removed'
             }
-        }));
+        });
+        window.dispatchEvent(favoritesUpdatedEvent);
+        
+        if (window.globalPlayer) {
+            window.globalPlayer.favorites = newFavorites;
+            window.globalPlayer.saveFavorites();
+        }
+    };
+
+    // 渲染歌曲列表时，使用最新的收藏状态
+    const renderSongList = () => {
+        return album.songs.map(song => {
+            const isFavorited = isSongInFavorites(song.id);
+            const isHighlighted = highlightedSongId === song.id;
+            const hasMV = song.mv_url;
+            
+            return (
+                <div 
+                    key={song.id} 
+                    className="song-item"
+                    onClick={() => onPlaySong(song)}
+                    data-song-id={song.id}
+                    style={{
+                        background: isHighlighted ? 'rgba(51, 255, 255, 0.1)' : '',
+                        borderColor: isHighlighted ? '#33FFFF' : '#333',
+                        transform: isHighlighted ? 'translateX(10px)' : 'none'
+                    }}
+                >
+                    <span className="song-title">
+                        {song.title}
+                        {hasMV && (
+                            <span 
+                                style={{
+                                    color: '#33FFFF',
+                                    fontSize: '12px',
+                                    marginLeft: '8px',
+                                    fontWeight: 'bold'
+                                }}
+                                title="有MV视频"
+                            >
+                                MV
+                            </span>
+                        )}
+                    </span>
+                    <div className="song-controls">
+                        <button 
+                            className={`favorite-btn ${isFavorited ? 'active' : ''}`}
+                            onClick={(e) => handleFavoriteClick(e, song)}
+                            title={isFavorited ? '取消收藏' : '添加到收藏'}
+                        >
+                            {isFavorited ? '❤️' : '🤍'}
+                        </button>
+                        
+                        <button 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if (window.globalPlayer) {
+                                    window.globalPlayer.addToPlaylist(song);
+                                    const button = e.target;
+                                    const originalText = button.innerHTML;
+                                    button.innerHTML = '✓';
+                                    button.style.color = '#33FFFF';
+                                    button.style.transform = 'scale(1.2)';
+                                    
+                                    setTimeout(() => {
+                                        button.innerHTML = originalText;
+                                        button.style.color = '#33FFFF';
+                                        button.style.transform = 'scale(1)';
+                                    }, 1000);
+                                }
+                            }}
+                            style={{
+                                background: 'none',
+                                border: 'none',
+                                color: '#33FFFF',
+                                cursor: 'pointer',
+                                fontSize: '18px',
+                                width: '28px',
+                                height: '28px',
+                                borderRadius: '50%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                transition: 'all 0.3s ease',
+                                fontWeight: 'bold'
+                            }}
+                            onMouseOver={(e) => {
+                                e.target.style.background = 'rgba(51, 255, 255, 0.1)';
+                                e.target.style.transform = 'scale(1.1)';
+                            }}
+                            onMouseOut={(e) => {
+                                e.target.style.background = 'none';
+                                e.target.style.transform = 'scale(1)';
+                            }}
+                            title="添加到播放列表"
+                        >
+                            +
+                        </button>
+                    </div>
+                </div>
+            );
+        });
     };
 
     return (
@@ -20284,7 +20397,11 @@ const AlbumDetail = ({ album, onBack, onPlaySong, currentMember }) => {
                     <nav className="right-nav">
                         <button 
                             className="sort-button"
-                            onClick={() => window.location.href = 'favorites.html'}
+                            onClick={() => {
+                                // 跳转到收藏页面前，确保收藏状态已保存
+                                localStorage.setItem('musicFavorites', JSON.stringify(favorites));
+                                window.location.href = 'favorites.html';
+                            }}
                             style={{
                                 background: 'none', 
                                 border: 'none', 
@@ -20322,103 +20439,13 @@ const AlbumDetail = ({ album, onBack, onPlaySong, currentMember }) => {
 
                     <div className="songs-list">
                         <h2>歌曲列表 <span style={{color: '#cdcdcd', fontSize: '0.9em'}}>{album.songs.length} 首</span></h2>
-                        {album.songs.map(song => {
-                            const isFavorited = isSongInFavorites(song.id);
-                            const isHighlighted = highlightedSongId === song.id;
-                            const hasMV = song.mv_url;
-                            
-                            return (
-                                <div 
-                                    key={song.id} 
-                                    className="song-item"
-                                    onClick={() => onPlaySong(song)}
-                                    data-song-id={song.id}
-                                    style={{
-                                        background: isHighlighted ? 'rgba(51, 255, 255, 0.1)' : '',
-                                        borderColor: isHighlighted ? '#33FFFF' : '#333',
-                                        transform: isHighlighted ? 'translateX(10px)' : 'none'
-                                    }}
-                                >
-                                    <span className="song-title">
-                                        {song.title}
-                                        {hasMV && (
-                                            <span 
-                                                style={{
-                                                    color: '#33FFFF',
-                                                    fontSize: '12px',
-                                                    marginLeft: '8px',
-                                                    fontWeight: 'bold'
-                                                }}
-                                                title="有MV视频"
-                                            >
-                                                MV
-                                            </span>
-                                        )}
-                                    </span>
-                                    <div className="song-controls">
-                                        <button 
-                                            className={`favorite-btn ${isFavorited ? 'active' : ''}`}
-                                            onClick={(e) => handleFavoriteClick(e, song)}
-                                            title={isFavorited ? '取消收藏' : '添加到收藏'}
-                                        >
-                                            {isFavorited ? '❤️' : '🤍'}
-                                        </button>
-                                        
-                                        <button 
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                if (window.globalPlayer) {
-                                                    window.globalPlayer.addToPlaylist(song);
-                                                    const button = e.target;
-                                                    const originalText = button.innerHTML;
-                                                    button.innerHTML = '✓';
-                                                    button.style.color = '#33FFFF';
-                                                    button.style.transform = 'scale(1.2)';
-                                                    
-                                                    setTimeout(() => {
-                                                        button.innerHTML = originalText;
-                                                        button.style.color = '#33FFFF';
-                                                        button.style.transform = 'scale(1)';
-                                                    }, 1000);
-                                                }
-                                            }}
-                                            style={{
-                                                background: 'none',
-                                                border: 'none',
-                                                color: '#33FFFF',
-                                                cursor: 'pointer',
-                                                fontSize: '18px',
-                                                width: '28px',
-                                                height: '28px',
-                                                borderRadius: '50%',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                transition: 'all 0.3s ease',
-                                                fontWeight: 'bold'
-                                            }}
-                                            onMouseOver={(e) => {
-                                                e.target.style.background = 'rgba(51, 255, 255, 0.1)';
-                                                e.target.style.transform = 'scale(1.1)';
-                                            }}
-                                            onMouseOut={(e) => {
-                                                e.target.style.background = 'none';
-                                                e.target.style.transform = 'scale(1)';
-                                            }}
-                                            title="添加到播放列表"
-                                        >
-                                            +
-                                        </button>
-                                    </div>
-                                </div>
-                            );
-                        })}
+                        {renderSongList()}
                     </div>
                 </div>
             </div>
         </div>
     );
-}
+};
 
 function App() {
     const [currentView, setCurrentView] = useState('albumList');

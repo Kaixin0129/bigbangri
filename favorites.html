@@ -709,6 +709,24 @@ function playSongFromFavorites(songId) {
                 }
             }, 1000);
         });
+
+if (window.opener) {
+    // 当收藏页面关闭时，通知主页面刷新
+    window.addEventListener('beforeunload', function() {
+        try {
+            // 发布收藏更新事件
+            const favorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+            const event = new CustomEvent('favoritesUpdated', {
+                detail: { favorites: favorites }
+            });
+            window.opener.dispatchEvent(event);
+        } catch (error) {
+            console.error('无法通知主页面:', error);
+        }
+    });
+}
+
+
     </script>
 
     <script src="player.js"></script>
