@@ -19871,21 +19871,31 @@ const AlbumList = ({ onAlbumSelect, onPlaySong, currentMember, onMemberSelect, o
         window.location.href = 'index.html';
     };
 
-    const handleBack = () => {
+    const handleBack = (e) => {
+        e.preventDefault();
+        
+        // 清除URL参数
+        window.history.replaceState({}, '', window.location.pathname);
+        
+        // 根据当前视图决定返回逻辑
         if (currentView === 'member' && currentMember) {
+            // 从成员专辑页面返回到成员选择页面
             setCurrentView('members');
-            setCurrentMember(null);
         } else if (currentView === 'members') {
+            // 从成员选择页面返回到团体页面
             setCurrentView('group');
-            onBackToGroup();
-        } else if (currentView === 'group') {
-            handleBackToAlbum();
-        } else if (currentView === 'group_collaborations' || currentView === 'member_collaborations') {
-            if (currentMember) {
-                setCurrentView('member');
-            } else {
-                setCurrentView('group');
+            if (onBackToGroup) {
+                onBackToGroup();
             }
+        } else if (currentView === 'group_collaborations') {
+            // 从团体参与专辑返回到团体专辑页面
+            setCurrentView('group');
+        } else if (currentView === 'member_collaborations' && currentMember) {
+            // 从成员参与专辑返回到成员专辑页面
+            setCurrentView('member');
+        } else if (currentView === 'group') {
+            // 从团体专辑页面返回到首页
+            handleBackToAlbum();
         }
     };
 
@@ -19896,7 +19906,7 @@ const AlbumList = ({ onAlbumSelect, onPlaySong, currentMember, onMemberSelect, o
 
     const handleViewSwitch = (newView) => {
         setCurrentView(newView);
-        if (newView === 'group') {
+        if (newView === 'group' && onBackToGroup) {
             onBackToGroup();
         }
     };
@@ -20022,7 +20032,7 @@ const AlbumList = ({ onAlbumSelect, onPlaySong, currentMember, onMemberSelect, o
             <div className="container1">
                 <div className="header-container">
                     <nav className="left-nav">
-                        <a href="#" onClick={(e) => { e.preventDefault(); handleBack(); }}>
+                        <a href="#" onClick={handleBack}>
                             {getBackButtonText()}
                         </a>
                     </nav>
@@ -20181,7 +20191,7 @@ window.addEventListener('favoritesUpdated', function(event) {
 const AlbumDetail = ({ album, onBack, onPlaySong, currentMember }) => {
     const [favorites, setFavorites] = useState([]);
     const [highlightedSongId, setHighlightedSongId] = useState(null);
-    const [lastUpdate, setLastUpdate] = useState(Date.now()); // 添加更新时间戳
+    const [lastUpdate, setLastUpdate] = useState(Date.now());
 
     // 加载收藏数据
     const loadFavorites = () => {
@@ -20197,8 +20207,8 @@ const AlbumDetail = ({ album, onBack, onPlaySong, currentMember }) => {
         const handleFavoritesUpdated = () => {
             console.log('App收到收藏更新事件');
             // 强制重新渲染当前视图
-            if (currentView === 'albumDetail' && selectedAlbum) {
-                setSelectedAlbum({...selectedAlbum});
+            if (window.globalSetCurrentView && window.globalSetCurrentView() === 'albumDetail' && album) {
+                loadFavorites();
             }
         };
         
@@ -20206,14 +20216,9 @@ const AlbumDetail = ({ album, onBack, onPlaySong, currentMember }) => {
         
         return () => {
             window.removeEventListener('favoritesUpdated', handleFavoritesUpdated);
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
-            window.removeEventListener('focus', handleFocus);
-            window.globalRefreshAlbumDetail = null;
-            window.globalSetFavorites = null;
         };
     }, [album]);
 
-    // 添加依赖 lastUpdate，确保收藏状态变化时重新渲染
     useEffect(() => {
         // 每次 lastUpdate 变化时，重新检查收藏状态
         console.log('lastUpdate changed, current favorites:', favorites.length);
@@ -20251,7 +20256,7 @@ const AlbumDetail = ({ album, onBack, onPlaySong, currentMember }) => {
         
         localStorage.setItem('musicFavorites', JSON.stringify(newFavorites));
         setFavorites(newFavorites);
-        setLastUpdate(Date.now()); // 立即更新状态
+        setLastUpdate(Date.now());
         
         const favoriteStatusChangedEvent = new CustomEvent('favoriteStatusChanged', {
             detail: {
@@ -20373,12 +20378,17 @@ const AlbumDetail = ({ album, onBack, onPlaySong, currentMember }) => {
         });
     };
 
+    const handleBackClick = (e) => {
+        e.preventDefault();
+        onBack();
+    };
+
     return (
         <div id={album.jump_id || 'album-jump'}>
             <div className="container1">
                 <div className="header-container">
                     <nav className="left-nav">
-                        <a href="#" onClick={(e) => { e.preventDefault(); onBack(); }}>
+                        <a href="#" onClick={handleBackClick}>
                             {currentMember ? 'Back' : 'Back'}
                         </a>
                     </nav>
@@ -20452,6 +20462,8 @@ function App() {
     const [selectedAlbum, setSelectedAlbum] = useState(null);
     const [currentSong, setCurrentSong] = useState(null);
     const [currentMember, setCurrentMember] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [key, setKey] = useState(Date.now());
 
     useEffect(() => {
         window.globalSetSelectedAlbumId = (albumId) => {
@@ -20476,7 +20488,10 @@ function App() {
             }
         };
         
-        window.globalSetCurrentView = setCurrentView;
+        window.globalSetCurrentView = (view) => {
+            console.log('设置当前视图:', view);
+            setCurrentView(view);
+        };
         window.globalSetCurrentSong = setCurrentSong;
         window.globalSetCurrentMember = setCurrentMember;
         
@@ -20488,6 +20503,7 @@ function App() {
         };
     }, []);
 
+    // 监听 URL 参数变化
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const albumId = urlParams.get('album');
@@ -20495,7 +20511,10 @@ function App() {
         const type = urlParams.get('type');
         const hash = window.location.hash;
         
+        console.log('URL参数变化:', { albumId, songId, type, hash });
+        
         if (albumId) {
+            setIsLoading(true);
             const allAlbums = [
                 ...window.bigbangData.group.albums,
                 ...window.bigbangData.group.collaborations,
@@ -20530,6 +20549,7 @@ function App() {
                     }
                 }
                 
+                // 延迟执行滚动，确保 DOM 已渲染
                 setTimeout(() => {
                     const jumpId = album.jump_id || 'album-jump';
                     const albumJump = document.getElementById(jumpId);
@@ -20549,11 +20569,15 @@ function App() {
                             }, 1000);
                         }
                     }
-                }, 500);
+                    setIsLoading(false);
+                }, 300);
+            } else {
+                setIsLoading(false);
             }
         }
         
         else if (hash && hash.startsWith('#')) {
+            setIsLoading(true);
             const jumpId = hash.substring(1);
             
             const allAlbums = [
@@ -20582,99 +20606,144 @@ function App() {
                     if (albumJump) {
                         albumJump.scrollIntoView({ behavior: 'smooth' });
                     }
-                }, 500);
-            }
-        }
-    }, []);
-
-useEffect(() => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}, [currentView]);
-
-const handleAlbumSelect = (album, member = null) => {
-    console.log('选择专辑:', album.title, '成员:', member);
-    
-    if (album.is_reference && album.target_album_id) {
-        console.log('检测到引用专辑，目标专辑ID:', album.target_album_id);
-        
-        const allAlbums = [
-            ...window.bigbangData.group.albums,
-            ...window.bigbangData.group.collaborations,
-            ...window.bigbangData.members.flatMap(member => member.albums),
-            ...window.bigbangData.members.flatMap(member => member.collaborations)
-        ];
-        
-        const targetAlbum = allAlbums.find(a => a.id === album.target_album_id);
-        
-        if (targetAlbum) {
-            console.log('找到目标专辑:', targetAlbum.title);
-            
-            let highlightedSongId = null;
-            if (album.referenced_song_ids && album.referenced_song_ids.length > 0) {
-                highlightedSongId = album.referenced_song_ids[0];
-                console.log('设置高亮歌曲ID:', highlightedSongId);
-            }
-            
-            setSelectedAlbum({
-                ...targetAlbum,
-                highlightedSongId: highlightedSongId
-            });
-            setCurrentView('albumDetail');
-            
-            const targetMember = window.bigbangData.members.find(m => 
-                m.albums.some(a => a.id === targetAlbum.id) ||
-                m.collaborations.some(a => a.id === targetAlbum.id)
-            );
-            
-            if (targetMember) {
-                setCurrentMember(targetMember);
-                console.log('设置目标成员:', targetMember.stage_name);
+                    setIsLoading(false);
+                }, 300);
             } else {
-                setCurrentMember(null);
-                console.log('目标专辑没有对应的成员，设置为团体专辑');
+                setIsLoading(false);
             }
+        }
+    }, [window.location.search, window.location.hash]);
+
+    // 监听视图变化，确保正确滚动到顶部
+    useEffect(() => {
+        console.log('当前视图变化:', currentView);
+        
+        // 使用 requestAnimationFrame 确保在下一帧执行滚动
+        requestAnimationFrame(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 强制重新渲染组件
+        if (currentView === 'albumDetail' && selectedAlbum) {
+            setKey(Date.now());
+        }
+    }, [currentView, selectedAlbum]);
+
+    const handleAlbumSelect = (album, member = null) => {
+        console.log('选择专辑:', album.title, '成员:', member);
+        
+        if (album.is_reference && album.target_album_id) {
+            console.log('检测到引用专辑，目标专辑ID:', album.target_album_id);
             
-            return;
+            const allAlbums = [
+                ...window.bigbangData.group.albums,
+                ...window.bigbangData.group.collaborations,
+                ...window.bigbangData.members.flatMap(member => member.albums),
+                ...window.bigbangData.members.flatMap(member => member.collaborations)
+            ];
+            
+            const targetAlbum = allAlbums.find(a => a.id === album.target_album_id);
+            
+            if (targetAlbum) {
+                console.log('找到目标专辑:', targetAlbum.title);
+                
+                let highlightedSongId = null;
+                if (album.referenced_song_ids && album.referenced_song_ids.length > 0) {
+                    highlightedSongId = album.referenced_song_ids[0];
+                    console.log('设置高亮歌曲ID:', highlightedSongId);
+                }
+                
+                setSelectedAlbum({
+                    ...targetAlbum,
+                    highlightedSongId: highlightedSongId
+                });
+                setCurrentView('albumDetail');
+                
+                const targetMember = window.bigbangData.members.find(m => 
+                    m.albums.some(a => a.id === targetAlbum.id) ||
+                    m.collaborations.some(a => a.id === targetAlbum.id)
+                );
+                
+                if (targetMember) {
+                    setCurrentMember(targetMember);
+                    console.log('设置目标成员:', targetMember.stage_name);
+                } else {
+                    setCurrentMember(null);
+                    console.log('目标专辑没有对应的成员，设置为团体专辑');
+                }
+                
+                return;
+            } else {
+                console.error('未找到目标专辑，ID:', album.target_album_id);
+            }
+        }
+        
+        setSelectedAlbum(album);
+        setCurrentView('albumDetail');
+        
+        if (member) {
+            setCurrentMember(member);
         } else {
-            console.error('未找到目标专辑，ID:', album.target_album_id);
+            const albumMember = window.bigbangData.members.find(m => 
+                m.albums.some(a => a.id === album.id) ||
+                m.collaborations.some(a => a.id === album.id)
+            );
+            if (albumMember) {
+                setCurrentMember(albumMember);
+            }
         }
-    }
-    
-    setSelectedAlbum(album);
-    setCurrentView('albumDetail');
-    
-    if (member) {
-        setCurrentMember(member);
-    } else {
-        const albumMember = window.bigbangData.members.find(m => 
-            m.albums.some(a => a.id === album.id) ||
-            m.collaborations.some(a => a.id === album.id)
-        );
-        if (albumMember) {
-            setCurrentMember(albumMember);
-        }
-    }
-};
+    };
 
     const handleBackToList = () => {
+        console.log('返回列表，当前成员:', currentMember);
+        
+        // 清除 URL 参数
+        window.history.replaceState({}, '', window.location.pathname);
+        
+        // 根据当前成员状态决定返回哪个列表
         if (currentMember) {
+            // 如果当前有成员，返回到成员专辑列表
             setCurrentView('albumList');
+            // 保持 currentMember 不变
         } else {
+            // 返回到主列表
             setCurrentView('albumList');
+            setCurrentMember(null);
         }
         
+        // 清除选中的专辑
         setSelectedAlbum(null);
+        
+        // 确保页面滚动到顶部
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }, 50);
     };
 
     const handleBackToGroup = () => {
+        console.log('返回团体页面');
         setCurrentMember(null);
+        setCurrentView('albumList');
+        
+        // 确保页面滚动到顶部
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }, 50);
     };
 
     const handleMemberSelect = (member) => {
+        console.log('选择成员:', member.stage_name);
         setCurrentMember(member);
+        setCurrentView('albumList');
     };
 
     const handlePlaySong = (song) => {
@@ -20714,34 +20783,82 @@ const handleAlbumSelect = (album, member = null) => {
         }
     };
 
+    // 渲染当前视图
+    const renderCurrentView = () => {
+        console.log('渲染当前视图:', currentView, '加载状态:', isLoading);
+        
+        if (isLoading) {
+            return (
+                <div className="loading-container">
+                    <div style={{ 
+                        textAlign: 'center', 
+                        color: '#33FFFF', 
+                        fontSize: '1.5rem', 
+                        marginTop: '100px'
+                    }}>
+                        加载中...
+                    </div>
+                </div>
+            );
+        }
+        
+        switch(currentView) {
+            case 'albumList':
+                return (
+                    <AlbumList 
+                        key="albumList"
+                        onAlbumSelect={handleAlbumSelect}
+                        onPlaySong={handlePlaySong}
+                        currentMember={currentMember}
+                        onMemberSelect={handleMemberSelect}
+                        onBackToGroup={handleBackToGroup}
+                    />
+                );
+            
+            case 'albumDetail':
+                if (!selectedAlbum) {
+                    console.error('没有选中的专辑，返回列表');
+                    setTimeout(() => setCurrentView('albumList'), 0);
+                    return null;
+                }
+                return (
+                    <AlbumDetail 
+                        key={`albumDetail-${selectedAlbum.id}-${key}`}
+                        album={selectedAlbum}
+                        onBack={handleBackToList}
+                        onPlaySong={handlePlaySong}
+                        currentMember={currentMember}
+                    />
+                );
+            
+            case 'search':
+                return (
+                    <SearchPage 
+                        key="searchPage"
+                        onBack={() => setCurrentView('albumList')}
+                        onAlbumSelect={handleAlbumSelect}
+                        onPlaySong={handlePlaySong}
+                    />
+                );
+            
+            default:
+                console.error('未知的视图:', currentView);
+                return (
+                    <AlbumList 
+                        key="defaultAlbumList"
+                        onAlbumSelect={handleAlbumSelect}
+                        onPlaySong={handlePlaySong}
+                        currentMember={currentMember}
+                        onMemberSelect={handleMemberSelect}
+                        onBackToGroup={handleBackToGroup}
+                    />
+                );
+        }
+    };
+
     return (
-        <div>
-            {currentView === 'albumList' && (
-                <AlbumList 
-                    onAlbumSelect={handleAlbumSelect}
-                    onPlaySong={handlePlaySong}
-                    currentMember={currentMember}
-                    onMemberSelect={handleMemberSelect}
-                    onBackToGroup={handleBackToGroup}
-                />
-            )}
-            
-            {currentView === 'albumDetail' && selectedAlbum && (
-                <AlbumDetail 
-                    album={selectedAlbum}
-                    onBack={handleBackToList}
-                    onPlaySong={handlePlaySong}
-                    currentMember={currentMember}
-                />
-            )}
-            
-            {currentView === 'search' && (
-                <SearchPage 
-                    onBack={() => setCurrentView('albumList')}
-                    onAlbumSelect={handleAlbumSelect}
-                    onPlaySong={handlePlaySong}
-                />
-            )}
+        <div key={key}>
+            {renderCurrentView()}
             
             <Player
                 currentSong={currentSong}
@@ -20927,10 +21044,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 500);
     }
 });
-
-    </script>
-    <script src="player.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>
-</body>
-</html>
