@@ -237,14 +237,14 @@ class GlobalPlayer {
         
         console.log('跳转到当前歌曲的专辑:', this.currentSong);
         
-        const isInWyyPage = window.location.pathname.includes('wyy.html') || 
-                            window.location.href.includes('wyy.html');
+        const isInWyyPage = window.location.pathname.includes('album.html') || 
+                            window.location.href.includes('album.html');
         
         if (isInWyyPage) {
-            console.log('在 wyy.html 页面内，显示当前歌曲的专辑');
+            console.log('在 album.html 页面内，显示当前歌曲的专辑');
             this.showAlbumDirectly();
         } else {
-            console.log('不在 wyy.html 页面，导航到专辑详情页面');
+            console.log('不在 album.html 页面，导航到专辑详情页面');
             this.navigateToAlbumDetail(this.currentSong);
         }
     }
@@ -258,12 +258,12 @@ class GlobalPlayer {
         
         if (!albumInfo) {
             console.log('无法找到专辑信息，导航到默认页面');
-            window.location.href = 'wyy.html';
+            window.location.href = 'album.html';
             return;
         }
         
         // 修复：构建正确的URL参数
-        let targetUrl = `wyy.html?album=${albumInfo.albumId}&song=${song.id}`;
+        let targetUrl = `album.html?album=${albumInfo.albumId}&song=${song.id}`;
         
         // 如果是成员专辑，添加成员参数
         if (albumInfo.type === 'member' && albumInfo.memberId) {
@@ -435,7 +435,7 @@ class GlobalPlayer {
             window.showSongAlbum(this.currentSong);
         } else {
             console.log('专辑显示函数未定义，重新加载页面');
-            window.location.href = `wyy.html${newUrl}`;
+            window.location.href = `album.html${newUrl}`;
         }
     }
 
@@ -851,8 +851,8 @@ class GlobalPlayer {
             }
         }
         
-        const isInWyyPage = window.location.pathname.includes('wyy.html') || 
-                            window.location.href.includes('wyy.html');
+        const isInWyyPage = window.location.pathname.includes('album.html') || 
+                            window.location.href.includes('album.html');
         
         if (!isInWyyPage && this.playerDisabled) {
             console.log('播放器已被用户关闭，不再显示');
@@ -900,7 +900,7 @@ class GlobalPlayer {
         
         // 修复：在播放时也更新专辑跳转信息
         if (isInWyyPage && this.currentSong) {
-            console.log('在wyy.html页面播放歌曲，更新URL信息');
+            console.log('在album.html页面播放歌曲，更新URL信息');
             this.updateWyyPageUrl();
         }
         
@@ -935,7 +935,7 @@ class GlobalPlayer {
         this.play(song, 'album', albumSongs);
     }
 
-    // 新增：在wyy.html页面更新URL以保持精准跳转
+    // 新增：在album.html页面更新URL以保持精准跳转
     updateWyyPageUrl() {
         if (!this.currentSong) return;
         
@@ -952,7 +952,7 @@ class GlobalPlayer {
         
         // 使用replaceState更新URL而不刷新页面
         window.history.replaceState({}, '', newUrl);
-        console.log('更新wyy.html页面URL:', newUrl);
+        console.log('更新album.html页面URL:', newUrl);
     }
 
     // 修复获取专辑歌曲的方法
@@ -1224,8 +1224,8 @@ class GlobalPlayer {
         
         this.isMVMode = true;
         
-        const isInWyyPage = window.location.pathname.includes('wyy.html') || 
-                            window.location.href.includes('wyy.html');
+        const isInWyyPage = window.location.pathname.includes('album.html') || 
+                            window.location.href.includes('album.html');
         
         if (!isInWyyPage) {
             this.hidePlayerForMV();
@@ -1321,8 +1321,8 @@ class GlobalPlayer {
         
         this.isMVMode = false;
         
-        const isInWyyPage = window.location.pathname.includes('wyy.html') || 
-                            window.location.href.includes('wyy.html');
+        const isInWyyPage = window.location.pathname.includes('album.html') || 
+                            window.location.href.includes('album.html');
         
         if (!isInWyyPage) {
             this.showPlayerAfterMV();
@@ -2146,8 +2146,8 @@ class GlobalPlayer {
         this.savePlaylist();
         this.updatePlaylistUI();
         
-        const isInWyyPage = window.location.pathname.includes('wyy.html') || 
-                            window.location.href.includes('wyy.html');
+        const isInWyyPage = window.location.pathname.includes('album.html') || 
+                            window.location.href.includes('album.html');
         
         if (!isInWyyPage) {
             this.playerDisabled = true;
@@ -2162,8 +2162,8 @@ class GlobalPlayer {
     }
 
     ensurePlayerVisible() {
-        const isInWyyPage = window.location.pathname.includes('wyy.html') || 
-                            window.location.href.includes('wyy.html');
+        const isInWyyPage = window.location.pathname.includes('album.html') || 
+                            window.location.href.includes('album.html');
         
         if (!isInWyyPage && this.playerDisabled) {
             console.log('播放器已被用户关闭，不再显示');
@@ -2355,7 +2355,7 @@ class GlobalPlayer {
     }
 }
 
-// 修复全局函数，确保在wyy.html中能正确接收参数
+// 修复全局函数，确保在album.html中能正确接收参数
 document.addEventListener('DOMContentLoaded', function() {
     if (!window.globalPlayer) {
         window.globalPlayer = new GlobalPlayer();
