@@ -720,10 +720,10 @@ function deleteCommentFromFirestore(commentId) {
   db.collection("comments").doc(commentId).delete().then(() => {
     console.log("删除成功");
 
-    // ✅ 1. 同步本地 comments 数组
+    
     comments = comments.filter(c => c.id !== commentId);
 
-    // ✅ 2. 清空并重新渲染
+    
     renderComments();
 
   }).catch((error) => {
@@ -738,7 +738,7 @@ function updateRepliesToFirestore(commentId, updatedReplies) {
   }).then(() => {
     console.log("回复删除成功");
 
-    // ✅ 重新渲染一次
+    
     renderComments();
 
   }).catch((error) => {
@@ -828,7 +828,7 @@ replyBtn.onclick = () => showReplyForm(div, index);
 actionRow.appendChild(replyBtn);
 
 const savedName = localStorage.getItem("comment_username");
-// ✅ 本人或管理员都能删评论
+
 if ((savedName && comment.name === savedName) || isAdmin) {
   const deleteBtn = document.createElement("span");
   deleteBtn.className = "delete-btn";
@@ -881,7 +881,7 @@ function createReplyElement(reply, parentIndex, replyIndex) {
   infoRow.appendChild(name);
   infoRow.appendChild(date);
 
-  // 点赞按钮
+  
   const replyLikeBtn = document.createElement("span");
   replyLikeBtn.className = "reply-like-btn";
   replyLikeBtn.style.position = "absolute";
@@ -922,14 +922,14 @@ replyRow.style.alignItems = "center";
 replyRow.style.gap = "5px";
 replyRow.style.marginTop = "6px";
 
-// 回复按钮
+
 const replyBtn = document.createElement("span");
 replyBtn.className = "reply-btn";
 replyBtn.textContent = "回复";
 replyBtn.onclick = () => showReplyForm(div, parentIndex, reply.name);
 replyRow.appendChild(replyBtn);
 
-// 如果需要显示 @用户名
+
 if (reply.replyTo && reply.replyTo !== comments[parentIndex].name) {
   const atTag = document.createElement("span");
   atTag.style.color = "white";
@@ -939,7 +939,7 @@ if (reply.replyTo && reply.replyTo !== comments[parentIndex].name) {
 }
 
 const savedName = localStorage.getItem("comment_username");
-// ✅ 本人或管理员都能删回复
+
 if ((savedName && reply.name === savedName) || isAdmin) {
   const deleteBtn = document.createElement("span");
   deleteBtn.className = "delete-btn";
@@ -954,7 +954,7 @@ if ((savedName && reply.name === savedName) || isAdmin) {
   replyRow.appendChild(deleteBtn);
 }
 
-  // 渲染到页面
+  
   div.appendChild(text);
   div.appendChild(infoRow);
   div.appendChild(replyRow);
@@ -1054,7 +1054,7 @@ function changeUsername() {
 
   localStorage.setItem("comment_username", newName);
 
-  // 更新 Firestore 中所有该用户名的评论和回复
+  
   db.collection("comments").get().then(snapshot => {
     const batch = db.batch();
 
@@ -1062,13 +1062,13 @@ function changeUsername() {
       const data = doc.data();
       let updated = false;
 
-      // 更新主评论的名字
+      
       if (data.name === oldName) {
         doc.ref.update({ name: newName });
         updated = true;
       }
 
-      // 更新楼中楼回复的名字
+      
       const replies = data.replies || [];
       let modified = false;
       const updatedReplies = replies.map(reply => {
@@ -1092,15 +1092,15 @@ function changeUsername() {
 function setFilterMode(mode) {
   const container = document.getElementById("comments");
 
-  // 保存当前滚动位置
+  
   const currentScrollY = window.scrollY;
 
-  // 临时设置高度占位，防止跳动
+  
   const originalHeight = container.offsetHeight;
   container.style.minHeight = originalHeight + "px";
   container.classList.add("comments-placeholder");
 
-  // 切换按钮样式
+  
   document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
   const labelMap = { all: '最旧', latest: '最新', hot: '最火' };
   document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -1109,10 +1109,10 @@ function setFilterMode(mode) {
     }
   });
 
-  // 清除监听
+  
   if (unsubscribeFirestore) unsubscribeFirestore();
 
-  // 延迟渲染以保持位置
+  
   setTimeout(() => {
     if (mode === 'all') {
       renderCommentsRealtime();
@@ -1122,7 +1122,7 @@ function setFilterMode(mode) {
       showMostLikedComments();
     }
 
-    // 渲染后恢复高度和可见性
+    
     setTimeout(() => {
       container.classList.remove("comments-placeholder");
       container.style.minHeight = "0px";
@@ -1170,7 +1170,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const nameInput = document.getElementById("name");
     if (nameInput) {
       nameInput.value = savedName;
-      nameInput.style.display = "none"; // ✅ 隐藏输入框
+      nameInput.style.display = "none"; 
     }
   }
 });

@@ -457,7 +457,7 @@
         <p>太阳 在 Melon Music Awards 获得：</p>
         <ul>
           <li>Top 10（赢）</li>
-          <li>Best R&B/Soul Award: Eyes, Nose, Lips（被提名）</li>
+          <li>Best R&amp;B/Soul Award: Eyes, Nose, Lips（被提名）</li>
           <li>Song of the Year: Eyes, Nose, Lips（赢）</li>
           <li>Artist of the Year（被提名）</li>
           <li>Album of the Year（被提名）</li>
@@ -488,7 +488,7 @@
       <a href="gdyb2014.html#141121" class="jump-button">跳转到 GD 2013 时间线</a>
     </div>
     <div class="content-wrap">
-      <div class="text-container" id="block10">
+      <div class="text-container" id="block5">
         <p><strong>2014年11月21日</strong></p>
         <p>GD X TAEYANG 推出第一张单曲专辑 GOOD BOY</p>
       </div>
@@ -501,9 +501,9 @@
       <a href="gdyb2014.html#1411211" class="jump-button">跳转到 GD 2013 时间线</a>
     </div>
     <div class="content-wrap">
-      <div class="text-container" id="block10">
+      <div class="text-container" id="block6">
         <p><strong>2014年11月21日</strong></p>
-        <p>GD X TAEYANG 推出第二张单曲专辑<br/>GOOD BOY [Acappella]</p>
+        <p>GD X TAEYANG 推出第二张单曲专辑<br>GOOD BOY [Acappella]</p>
       </div>
     </div>
     <hr class="full-width-line">  
@@ -514,7 +514,7 @@
       <div class="video-container">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/z3I0z6LuXSw?si=R7fGMha28cqtNrqA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
       </div>
-      <div class="text-container" id="block6">
+      <div class="text-container" id="block7">
         <p>GOOD BOY MV花絮</p><p>
       </p></div>
     </div>
@@ -522,7 +522,7 @@
       <div class="video-container">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/cZPYWcAg86Q?si=FWWUA2N8Lx1EQYg0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
       </div>
-      <div class="text-container" id="block7">
+      <div class="text-container" id="block8">
         <p>GOOD BOY 舞蹈室</p><p>
       </p></div>
     </div>
@@ -539,7 +539,7 @@
       <img src="best1.jpeg" height="350" alt="THE BEST OF BIGBANG 2006-2014">     
     </div>
     <div class="text-button-container">
-      <div class="text-container" id="block8">
+      <div class="text-container" id="block9">
         <p><strong>THE BEST OF BIGBANG 2006-2014</strong></p>
         <p>2014年11月26日 推出第七张精选辑</p>
         <ol style="list-style-position: inside; color: white;">
@@ -609,7 +609,7 @@
       <img src="yg2014.jpg" height="350" alt="2014 YG FAMILY CONCERT IN SEOUL LIVE">     
     </div>
     <div class="text-button-container">
-      <div class="text-container" id="block9">
+      <div class="text-container" id="block10">
         <p><strong>2014 YG FAMILY CONCERT IN SEOUL LIVE</strong></p>
         <p>2014年11月28日 YG Family推出现场音源单曲专辑</p>
         <ol style="list-style-position: inside; color: white;">
@@ -666,7 +666,7 @@
       <div class="video-container">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/cd7c4Pb6zCY?si=SU0-ThR719dp0Syi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
       </div>
-      <div class="text-container" id="block10">
+      <div class="text-container" id="block11">
         <p><strong>2014年11月29日</strong></p>
         <p>Simply K-pop Tour 2014 深圳</p>
         <p>GD个人参与</p>
@@ -691,8 +691,7 @@
 
 </main>
 <script src="player.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
   <script>
     fetch("footer.html")
       .then(response => response.text())
@@ -754,26 +753,31 @@ window.addEventListener('load', function() {
     }
 });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 

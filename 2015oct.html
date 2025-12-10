@@ -568,14 +568,14 @@
       <div class="text-container" id="block12">
         <p><strong>2015年10月18日</strong></p>
         <p>太阳被音乐界官员评选为最佳韩国流行男歌手排名第六</p>
-        <p>详细资讯：<a href="https://web.archive.org/web/20180731093109/http://www.tvreport.co.kr/?c=news&m=newsview&idx=1000002844" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        <p>详细资讯：<a href="https://web.archive.org/web/20180731093109/http://www.tvreport.co.kr/?c=news&amp;m=newsview&amp;idx=1000002844" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             TV Report</a></p>
       </div>
     </div>
     <div class="slider-container">
-      <button class="nav-button left" onclick="slide('slider1', 'prev')">←</button>
+      <button class="nav-button left" onclick="slide(this)">←</button>
       <div class="slider-wrapper">
-        <div class="slider" id="slider1">
+        <div class="slider">
           <div class="slide-item">
             <img src="151018.jpg" class="slide-img img-portrait">
           </div>
@@ -584,7 +584,7 @@
           </div>
         </div>
       </div>
-      <button class="nav-button right" onclick="slide('slider1', 'next')">→</button>
+      <button class="nav-button right" onclick="slide(this)">→</button>
     </div>
     <hr class="full-width-line">
   </div>
@@ -623,7 +623,7 @@
       <a href="top2015.html#151028top" class="jump-button">跳转到 TOP 2015 时间线</a>
     </div>
     <div class="content-wrap">
-      <div class="text-container" id="block21">
+      <div class="text-container" id="block15">
         <p><strong>2015年10月28日</strong></p>
         <p>TOP个人推出电影单曲专辑<br>안녕 하루카 (Hi Haruka)</p>
       </div>
@@ -637,7 +637,7 @@
     </div>
     <div class="content-wrap">
       <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/apE-JmLB2bU?si=guwOXU20U608_RhH&start=163" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/apE-JmLB2bU?si=guwOXU20U608_RhH&amp;start=163" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
       </div>
       <div class="text-container" id="block16">
         <p><strong>2015年10月28日</strong></p>
@@ -679,8 +679,7 @@
 
 </main>
 <script src="player.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
   <script>
     fetch("footer.html")
       .then(response => response.text())
@@ -742,26 +741,31 @@ window.addEventListener('load', function() {
     }
 });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 

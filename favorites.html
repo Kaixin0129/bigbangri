@@ -406,7 +406,7 @@
             
             if (favorites.length === 0) {
                 favoritesList.innerHTML = '<div class="empty-state">暂无收藏歌曲</div>';
-                // 如果没有收藏歌曲，禁用编辑按钮
+                
                 const editBtn = document.getElementById('edit-btn');
                 if (editBtn) {
                     editBtn.style.display = 'none';
@@ -414,7 +414,7 @@
                 return;
             }
 
-            // 如果有收藏歌曲，确保编辑按钮显示
+            
             const editBtn = document.getElementById('edit-btn');
             if (editBtn) {
                 editBtn.style.display = 'block';
@@ -434,7 +434,7 @@
                 </div>
             `).join('');
 
-            // 重新绑定事件
+            
             bindSongEvents();
         }
 
@@ -446,20 +446,20 @@
                 const removeBtn = item.querySelector('.remove-favorite');
                 const dragHandle = item.querySelector('.drag-handle');
                 
-                // 歌曲点击事件 - 只在非编辑模式下有效
+                
                 item.addEventListener('click', function(e) {
                     if (!isEditMode && !e.target.closest('.remove-favorite') && !e.target.closest('.drag-handle')) {
                         playSongFromFavorites(songId);
                     }
                 });
                 
-                // 移除按钮事件
+                
                 removeBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     removeFavorite(songId);
                 });
                 
-                // 拖拽手柄事件 - 只在编辑模式下有效
+                
                 if (isEditMode) {
                     initDragEvents(item, dragHandle);
                 }
@@ -488,7 +488,7 @@
                 item.classList.add('dragging');
                 document.body.style.userSelect = 'none';
                 
-                // 绑定移动和结束事件
+                
                 document.addEventListener('mousemove', onDragMove);
                 document.addEventListener('touchmove', onDragMove);
                 document.addEventListener('mouseup', endDrag);
@@ -507,23 +507,23 @@
                     const items = Array.from(favoritesList.querySelectorAll('.favorite-song-item'));
                     const currentIndex = items.indexOf(item);
                     
-                    // 计算新的位置
+                    
                     const itemHeight = item.offsetHeight;
                     const moveCount = Math.round(deltaY / itemHeight);
                     const newIndex = Math.max(0, Math.min(items.length - 1, initialIndex + moveCount));
                     
                     if (newIndex !== currentIndex) {
-                        // 移除所有drag-over类
+                        
                         items.forEach(it => it.classList.remove('drag-over'));
                         
-                        // 移动元素
+                        
                         if (newIndex > currentIndex) {
                             favoritesList.insertBefore(item, items[newIndex].nextSibling);
                         } else {
                             favoritesList.insertBefore(item, items[newIndex]);
                         }
                         
-                        // 添加视觉反馈
+                        
                         items.forEach((it, index) => {
                             if (index === newIndex) {
                                 it.classList.add('drag-over');
@@ -540,18 +540,18 @@
                 item.classList.remove('dragging');
                 document.body.style.userSelect = '';
                 
-                // 移除所有drag-over类
+                
                 document.querySelectorAll('.favorite-song-item').forEach(it => {
                     it.classList.remove('drag-over');
                 });
                 
-                // 移除事件监听器
+                
                 document.removeEventListener('mousemove', onDragMove);
                 document.removeEventListener('touchmove', onDragMove);
                 document.removeEventListener('mouseup', endDrag);
                 document.removeEventListener('touchend', endDrag);
                 
-                // 自动保存新顺序
+                
                 saveNewOrder();
             }
         }
@@ -564,32 +564,32 @@
             isEditMode = !isEditMode;
             
             if (isEditMode) {
-                // 进入编辑模式
+                
                 editBtn.textContent = '完成';
                 editBtn.classList.add('done');
                 editHint.style.display = 'block';
                 favoritesList.classList.add('edit-mode');
                 
-                // 显示所有拖拽手柄
+                
                 document.querySelectorAll('.drag-handle').forEach(handle => {
                     handle.style.display = 'block';
                 });
                 
-                // 重新绑定拖拽事件
+                
                 bindSongEvents();
             } else {
-                // 退出编辑模式
+                
                 editBtn.textContent = '编辑';
                 editBtn.classList.remove('done');
                 editHint.style.display = 'none';
                 favoritesList.classList.remove('edit-mode');
                 
-                // 隐藏所有拖拽手柄
+                
                 document.querySelectorAll('.drag-handle').forEach(handle => {
                     handle.style.display = 'none';
                 });
                 
-                // 重新绑定事件（移除拖拽事件）
+                
                 bindSongEvents();
             }
         }
@@ -609,16 +609,16 @@
                 }
             });
             
-            // 更新本地存储
+            
             if (newOrder.length === currentFavorites.length) {
                 localStorage.setItem('musicFavorites', JSON.stringify(newOrder));
                 
-                // 更新全局播放器
+                
                 if (window.globalPlayer) {
                     window.globalPlayer.favorites = newOrder;
                     window.globalPlayer.saveFavorites();
                     
-                    // 如果当前正在播放收藏列表中的歌曲，更新播放列表
+                    
                     if (window.globalPlayer.currentPlaylist === 'favorites') {
                         window.globalPlayer.updatePlaylist(newOrder);
                     }
@@ -641,7 +641,7 @@ function playSongFromFavorites(songId) {
         });
         
         if (window.globalPlayer) {
-            // 传递 playlistType 参数，告诉播放器使用收藏列表
+            
             window.globalPlayer.play(favorites[songIndex], 'favorites');
             
             console.log('播放器播放列表状态:', {
@@ -673,7 +673,7 @@ function playSongFromFavorites(songId) {
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // 初始化编辑按钮事件
+            
             const editBtn = document.getElementById('edit-btn');
             editBtn.addEventListener('click', toggleEditMode);
             
@@ -711,10 +711,10 @@ function playSongFromFavorites(songId) {
         });
 
 if (window.opener) {
-    // 当收藏页面关闭时，通知主页面刷新
+    
     window.addEventListener('beforeunload', function() {
         try {
-            // 发布收藏更新事件
+            
             const favorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
             const event = new CustomEvent('favoritesUpdated', {
                 detail: { favorites: favorites }

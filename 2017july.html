@@ -535,7 +535,7 @@
       </div>
     </div>
     <div class="video-box">
-      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=12720877&bvid=BV1qx411W77q&cid=21594583&p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=12720877&amp;bvid=BV1qx411W77q&amp;cid=21594583&amp;p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       <div class="video-description">
         <p>独家采访</p>
       </div>
@@ -570,8 +570,7 @@
 
 </div></main>
 <script src="player.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
   <script>
     fetch("footer.html")
       .then(response => response.text())
@@ -633,26 +632,31 @@ window.addEventListener('load', function() {
     }
 });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 

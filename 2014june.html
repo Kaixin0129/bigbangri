@@ -526,13 +526,13 @@
   </div><br>
   <div class="video-row">
     <div class="video-box">
-      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=227794633&bvid=BV1Qh411E7kj&cid=1107267372&p=7" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=227794633&amp;bvid=BV1Qh411E7kj&amp;cid=1107267372&amp;p=7" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       <div class="video-description">
         <p>1</p>
       </div>
     </div>
     <div class="video-box">
-      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=227794633&bvid=BV1Qh411E7kj&cid=1108068477&p=8" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=227794633&amp;bvid=BV1Qh411E7kj&amp;cid=1108068477&amp;p=8" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       <div class="video-description">
         <p>2</p>
       </div>
@@ -541,7 +541,7 @@
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=227794633&bvid=BV1Qh411E7kj&cid=1107266711&p=6" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=227794633&amp;bvid=BV1Qh411E7kj&amp;cid=1107266711&amp;p=6" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block8">
         <p><strong>2014年6月15日</strong></p>
@@ -556,9 +556,9 @@
       <a href="taeyang2014.html#140625ty" class="jump-button">跳转到 太阳2014 时间线</a>
     </div>
     <div class="content-wrap">
-      <div class="text-container">
+      <div class="text-container" id="block9">
         <p><strong>2014年6月25日</strong></p>
-        <p>太阳与Tablo合作推出单曲专辑<br/>EYES, NOSE, LIPS</p>
+        <p>太阳与Tablo合作推出单曲专辑<br>EYES, NOSE, LIPS</p>
       </div>
     </div>
     <hr class="full-width-line">  
@@ -569,7 +569,7 @@
       <a href="gd2014.html#gd140629-jump" class="jump-button">更多图片</a>
     </div>
     <div class="content-wrap">
-      <div class="text-container" id="block9">
+      <div class="text-container" id="block10">
         <p><strong>2014年6月29日</strong></p>
         <p>GD出席2015春夏巴黎男装周圣罗兰 (Saint Laurent) 秀场</p>
       </div>
@@ -593,8 +593,7 @@
 
 </main>
 <script src="player.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
   <script>
     fetch("footer.html")
       .then(response => response.text())
@@ -656,26 +655,31 @@ window.addEventListener('load', function() {
     }
 });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 

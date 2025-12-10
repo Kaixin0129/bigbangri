@@ -467,14 +467,14 @@
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/n7ZvDelZCCY?si=w0V_FJxUVX7wHZyR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/n7ZvDelZCCY?si=w0V_FJxUVX7wHZyR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
       </div>
-      <div class="text-container">
+      <div class="text-container" id="block4">
         <p><strong>2015年9月15日</strong></p>
-        <p>Dirty Vibe (DJ Snake & Aazar Remix)<br/>收录进 Excision 2015 Mix Compilation</p>
+        <p>Dirty Vibe (DJ Snake &amp; Aazar Remix)<br>收录进 Excision 2015 Mix Compilation</p>
       </div>
     </div>
-    <hr class="full-width-line" />
+    <hr class="full-width-line">
   </div>
 
   <div style="text-align: center;">
@@ -482,7 +482,7 @@
       <a href="gd2015.html#150918-jump" class="jump-button">更多图片</a>
     </div>
     <div class="content-wrap">
-      <div class="text-container" id="block4">
+      <div class="text-container" id="block5">
         <p><strong>2015年9月18日</strong></p>
         <p>GD出席在首尔举行的 Acne Studio旗舰店开业派对</p>
       </div>
@@ -492,7 +492,7 @@
 
   <div style="text-align: center;">
     <div class="content-wrap">
-      <div class="text-container" id="block5">
+      <div class="text-container" id="block6">
         <p><strong>2015年9月23日</strong></p>
         <p>GD 被 Business of Fashion 评选为：</p>
         <ul>
@@ -507,7 +507,7 @@
 
   <div style="text-align: center;">
     <div class="content-wrap">
-      <div class="text-container" id="block6">
+      <div class="text-container" id="block7">
         <p><strong>2015年9月24日</strong></p>
         <p>《国际财经时报》的Rushali Pawar将GD的时尚风格描述为古怪而又实验性</p>
         <p>详细资讯：<a href="http://www.ibtimes.co.in/bigbang-star-g-dragon-global-fashion-leader-report-647810" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
@@ -519,7 +519,7 @@
 
   <div style="text-align: center;">
     <div class="content-wrap">
-      <div class="text-container" id="block7">
+      <div class="text-container" id="block8">
         <p><strong>2015年9月24日</strong></p>
         <p>台北小巨蛋演唱会总收入80万美元，入座率100%</p>
         <p>详细资讯：<a href="https://star.ettoday.net/news/569842" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
@@ -531,7 +531,7 @@
 
   <div style="text-align: center;">
     <div class="content-wrap">
-      <div class="text-container" id="block8">
+      <div class="text-container" id="block9">
         <p><strong>2015年9月26日</strong></p>
         <p>Bigbang成为加拿大有史以来参加人数最多的韩国艺人演唱会</p>
         <p>详细资讯：<a href="https://www.thestar.com/entertainment/music/k-pop-band-big-bang-doing-booming-business-in-toronto/article_275d5065-9051-5def-861c-d3006bdea6e5.html" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
@@ -557,8 +557,7 @@
 
 </main>
 <script src="player.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
   <script>
     fetch("footer.html")
       .then(response => response.text())
@@ -620,26 +619,31 @@ window.addEventListener('load', function() {
     }
 });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 

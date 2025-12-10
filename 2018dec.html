@@ -434,7 +434,7 @@
         <ul>
           <li>Netizen Popularity Award</li>
           <li>Song of the Year</li>
-          <li>Best R&B/Soul</li>
+          <li>Best R&amp;B/Soul</li>
         </ul><br>
         <p>详细资讯：<a href="https://www.soompi.com/article/1262811wpp/2018-melon-music-awards-announces-nominees-category-awards-voting-begins" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Soompi</a></p>
@@ -549,7 +549,7 @@
     <p style="margin: 0;">下面的视频来自@GDTOP百度知道团队 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=39831722&bvid=BV1nt411z7MD&cid=69968177&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=39831722&amp;bvid=BV1nt411z7MD&amp;cid=69968177&amp;p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block9">
         <p><strong>2018年12月28日</strong></p>
@@ -595,8 +595,7 @@
 
 </main>
 <script src="player.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
   <script>
     fetch("footer.html")
       .then(response => response.text())
@@ -658,26 +657,31 @@ window.addEventListener('load', function() {
     }
 });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 

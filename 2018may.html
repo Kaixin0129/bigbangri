@@ -446,7 +446,7 @@
     <p style="margin: 0;">下面的视频来自@またあえる日まで 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=23320923&bvid=BV1EW411F7Lv&cid=38853259&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=23320923&amp;bvid=BV1EW411F7Lv&amp;cid=38853259&amp;p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block2">
         <p><strong>2018年5月11日</strong></p>
@@ -457,8 +457,21 @@
   </div>
 
   <div style="text-align: center;">
+    <div id="180516ds-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="daesung2018.html#180516ds" class="jump-button">跳转到 大声2018 时间线</a>
+    </div>
     <div class="content-wrap">
       <div class="text-container" id="block3">
+        <p><strong>2018年5月16日</strong></p>
+        <p>大声个人推出第五张现场音源单曲专辑<br>DなSHOW Vol.1(D na SHOW Vol.1)</p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container" id="block4">
         <p><strong>2018年5月24日</strong></p>
         <p>Bigbang 在 MTV Millennial Awards Brazil 被提名：</p>
         <ul>
@@ -473,7 +486,7 @@
 
   <div style="text-align: center;">
     <div class="content-wrap">
-      <div class="text-container" id="block4">
+      <div class="text-container" id="block5">
         <p><strong>2018年5月25日</strong></p>
         <p>《Gazette Review》估计GD的净资产为 4000万美元</p>
         <p>详细资讯：<a href="https://gazettereview.com/2018/05/g-dragon-net-worth/" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
@@ -488,9 +501,9 @@
       <div class="video-container">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/geEPzq77csg?si=VitnF7UPbCHJW9vX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
       </div>
-      <div class="text-container" id="block5">
+      <div class="text-container" id="block6">
         <p><strong>2018年5月25日</strong></p>
-        <p>True or False Challenge (Alan Walker & Seungri)</p>
+        <p>True or False Challenge (Alan Walker &amp; Seungri)</p>
         <p>歌曲Ignite采访互动</p>
       </div>
     </div>
@@ -512,8 +525,7 @@
 
 </main>
 <script src="player.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
   <script>
     fetch("footer.html")
       .then(response => response.text())
@@ -575,26 +587,31 @@ window.addEventListener('load', function() {
     }
 });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 

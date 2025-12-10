@@ -431,7 +431,7 @@
       <a href="seungri2018.html#180801sr" class="jump-button">跳转到 胜利2018 时间线</a>
     </div>
     <div class="content-wrap">
-      <div class="text-container">
+      <div class="text-container" id="block1">
         <p><strong>2018年8月1日</strong></p>
         <p>胜利个人推出第二张日本正规专辑<br>THE GREAT SEUNGRI of V.I</p>
       </div>
@@ -441,7 +441,7 @@
 
   <div style="text-align: center;">
     <div class="content-wrap">
-      <div class="text-container" id="block1">
+      <div class="text-container" id="block2">
         <p><strong>2018年8月4日</strong></p>
         <p>专辑《The Great Seungri》登上US World Albums 排名第三</p>
         <p>详细资讯：<a href="https://www.billboard.com/charts/world-albums/2018-08-04" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
@@ -453,7 +453,7 @@
 
   <div style="text-align: center;">
     <div class="content-wrap">
-      <div class="text-container" id="block2">
+      <div class="text-container" id="block3">
         <p><strong>2018年8月7日</strong></p>
         <p>胜利在首尔个人演唱会与粉丝一起捐赠物资，庆祝首场演唱会</p>
         <p>粉丝团累计捐款大米24812公斤，方便面16720包，蜂窝煤6490块，鸡蛋400枚</p>
@@ -474,7 +474,7 @@
       <img src="180817.webp" height="350">     
     </div>
     <div class="text-button-container">
-      <div class="text-container" id="block2">
+      <div class="text-container" id="block4">
         <p><strong>BIGBANG JAPAN DOME TOUR 2017 -LAST DANCE-: THE FINAL</strong></p>
         <p>2018年8月17日 推出第二十四张现场音源单曲专辑</p>
         <ol style="list-style-position: inside; color: white;">
@@ -527,8 +527,7 @@
 
 </main>
 <script src="player.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
   <script>
     fetch("footer.html")
       .then(response => response.text())
@@ -590,26 +589,31 @@ window.addEventListener('load', function() {
     }
 });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 

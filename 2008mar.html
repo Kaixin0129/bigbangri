@@ -448,9 +448,9 @@
         <p><strong>2008年3月5日</strong></p>
         <p>在Korean Music Awards上赢得：</p>
         <ul>
-          <li>Dance & Electronic Musician Netizen Vote</li>
+          <li>Dance &amp; Electronic Musician Netizen Vote</li>
         </ul><br>
-        <p>详细资讯：<a href="https://web.archive.org/web/20160225080435/http://starin.edaily.co.kr/news/NewsRead.edy?SCD=EA21&newsid=01331686586340368&DCD=A10202" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        <p>详细资讯：<a href="https://web.archive.org/web/20160225080435/http://starin.edaily.co.kr/news/NewsRead.edy?SCD=EA21&amp;newsid=01331686586340368&amp;DCD=A10202" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Edaily</a></p>
       </div>
     </div>
@@ -492,7 +492,7 @@
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5653359&p=8" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=3548724&amp;bvid=BV1xs411R7sX&amp;cid=5653359&amp;p=8" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block3">
         <p><strong>2008年3月10日</strong></p>
@@ -532,7 +532,7 @@
     <p style="margin: 0;">下面的视频来自@V-z-I 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=773960227&bvid=BV1v14y177KG&cid=1108048052&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=773960227&amp;bvid=BV1v14y177KG&amp;cid=1108048052&amp;p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block6">
         <p><strong>2008年3月12日</strong></p>
@@ -560,7 +560,7 @@
     <p style="margin: 0;">下面的视频来自@小猪搞快跑 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=16220142&bvid=BV13x41177bx&cid=500183559&p=4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=16220142&amp;bvid=BV13x41177bx&amp;cid=500183559&amp;p=4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block7">
         <p><strong>2008年3月17日</strong></p>
@@ -573,7 +573,7 @@
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5653360&p=9" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=3548724&amp;bvid=BV1xs411R7sX&amp;cid=5653360&amp;p=9" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block8">
         <p><strong>2008年3月20日</strong></p>
@@ -640,7 +640,7 @@
     <p style="margin: 0;">下面的视频来自@yinying00 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=39333873&bvid=BV1Bt411z7N9&cid=69117891&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=39333873&amp;bvid=BV1Bt411z7N9&amp;cid=69117891&amp;p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block12">
         <p><strong>2008年3月29日</strong></p>
@@ -667,8 +667,7 @@
 
 </main>
 <script src="player.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
   <script>
     fetch("footer.html")
       .then(response => response.text())
@@ -730,26 +729,31 @@ window.addEventListener('load', function() {
     }
 });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 

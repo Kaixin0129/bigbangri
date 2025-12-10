@@ -456,7 +456,7 @@
           <li>Kakao Hot Star Award</li>
           <li>Best Album Award: Kwon Ji Yong</li>
           <li>Best Song Award: Untitled, 2014</li>
-          <li>Best R&B/Soul Award: Untitled, 2014</li>
+          <li>Best R&amp;B/Soul Award: Untitled, 2014</li>
         </ul><br>
         <p>详细资讯：<a href="https://web.archive.org/web/20171113120503/http://www.melon.com/mma/vote/fresult.htm" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Melon</a></p>
@@ -644,7 +644,7 @@
       <div class="text-container" id="block15">
         <p><strong>2017年12月31日</strong></p>
         <p>《Unittled，2014》在 Circle Chart Cart 年榜榜单，排名第16</p>
-        <p>详细资讯：<a href="https://circlechart.kr/page_chart/onoff.circle?nationGbn=T&serviceGbn=ALL&targetTime=2017&hitYear=2017&termGbn=year&yearTime=3" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        <p>详细资讯：<a href="https://circlechart.kr/page_chart/onoff.circle?nationGbn=T&amp;serviceGbn=ALL&amp;targetTime=2017&amp;hitYear=2017&amp;termGbn=year&amp;yearTime=3" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Circle Chart</a></p>
       </div>
     </div>
@@ -666,8 +666,7 @@
 
 </main>
 <script src="player.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
   <script>
     fetch("footer.html")
       .then(response => response.text())
@@ -729,26 +728,31 @@ window.addEventListener('load', function() {
     }
 });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 

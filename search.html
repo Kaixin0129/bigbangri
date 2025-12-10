@@ -505,7 +505,7 @@ html {
   <script>
     let index = [];
 
-    // 加载搜索索引
+    
     fetch("search_index.json")
       .then(res => res.json())
       .then(data => {
@@ -514,7 +514,7 @@ html {
       })
       .catch(error => console.error("加载搜索索引失败:", error));
 
-    // 判断浏览器是否支持 \p{L} Unicode 属性转义
+    
     function supportsUnicodePropertyEscapes() {
       try { new RegExp('\\p{L}', 'u'); return true; }
       catch (e) { return false; }
@@ -524,7 +524,7 @@ html {
       ? /[^\p{L}\p{N}\s]+/gu
       : /[^A-Za-z0-9\u4e00-\u9fff\s]+/g;
 
-    // 规范化文本（小写、NFKD、去标点、合并空格）
+    
     function normalize(str) {
       if (!str) return "";
       return String(str)
@@ -535,7 +535,7 @@ html {
         .trim();
     }
 
-    // 监听 Enter
+    
     const inputEl = document.getElementById("searchInput");
     inputEl.addEventListener("keyup", function(e) {
       if (e.key === "Enter") {
@@ -561,13 +561,13 @@ html {
 
       const tokens = normalizedKeyword.split(" ").filter(Boolean);
 
-      // 过滤：每个 token 都必须出现在条目中
+      
       const results = index.filter(item => {
         const hay = normalize(item.text || item.html || "");
         return tokens.every(t => hay.includes(t));
       });
 
-      // 显示结果数量
+      
       const resultsInfo = document.createElement("p");
       resultsInfo.className = "results-info";
       resultsInfo.textContent = `总共 ${results.length} 个结果`;
@@ -578,7 +578,7 @@ html {
         return;
       }
 
-      // 渲染结果
+      
       results.forEach(item => {
         const tempDiv = document.createElement("div");
         tempDiv.innerHTML = item.html || "";
@@ -606,7 +606,7 @@ html {
       });
     }
 
-    // 简单的 HTML 转义
+    
     function escapeHtml(s) {
       return String(s)
         .replace(/&/g, "&")

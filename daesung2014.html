@@ -367,9 +367,9 @@
       </div>
     </div>
     <div class="slider-container">
-      <button class="nav-button left" onclick="slide('slider9', 'prev')">&#8592;</button>
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
       <div class="slider-wrapper">
-        <div class="slider" id="slider9">
+        <div class="slider">
           <div class="slide-item">
             <img src="1405112.webp" class="slide-img img-landscape" />
           </div>
@@ -381,7 +381,7 @@
           </div>
         </div>
       </div>
-      <button class="nav-button right" onclick="slide('slider9', 'next')">&#8594;</button>
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
     </div>
     <hr class="full-width-line">  
   </div>
@@ -395,7 +395,7 @@
       <a href="2014june.html#140611ds-jump" class="jump-button">跳转到 2014 时间线</a>
     </div>
     <div id="140611solo" style="display: flex; align-items: center; gap: 10px;">
-      <a href="albumdaesung.html#140611solo-jump" class="jump-button">专辑歌曲Mv</a>
+      <a href="album.html#140611solo-jump" class="jump-button">专辑歌曲Mv</a>
     </div>
   </div>
   <div class="content-wrap">
@@ -503,7 +503,7 @@
       <a href="2014july.html#140716ds-jump" class="jump-button">跳转到 2014 时间线</a>
     </div>
     <div id="140716solo" style="display: flex; align-items: center; gap: 10px;">
-      <a href="albumdaesung.html#140716solo-jump" class="jump-button">专辑歌曲Mv</a>
+      <a href="album.html#140716solo-jump" class="jump-button">专辑歌曲Mv</a>
     </div>
   </div>
   <div class="content-wrap">
@@ -568,9 +568,9 @@
       </div>
     </div>
     <div class="slider-container">
-      <button class="nav-button left" onclick="slide('slider2', 'prev')">&#8592;</button>
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
       <div class="slider-wrapper">
-        <div class="slider" id="slider2">
+        <div class="slider">
           <div class="slide-item">
             <img src="140805.jpg" class="slide-img img-portrait" />
           </div>
@@ -582,7 +582,7 @@
           </div>
         </div>
       </div>
-      <button class="nav-button right" onclick="slide('slider2', 'next')">&#8594;</button>
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
     </div>
     <hr class="full-width-line">
   </div>
@@ -596,7 +596,7 @@
       <a href="2014oct.html#141022ds-jump" class="jump-button">跳转到 2014 时间线</a>
     </div>
     <div id="141022solo" style="display: flex; align-items: center; gap: 10px;">
-      <a href="albumdaesung.html#141022solo-jump" class="jump-button">专辑歌曲Mv</a>
+      <a href="album.html#141022solo-jump" class="jump-button">专辑歌曲Mv</a>
     </div>
   </div>
   <div class="content-wrap">
@@ -608,16 +608,24 @@
         <p><strong>D-LITE DLive 2014 in Japan ~D'slove~</strong></p>
         <p>2014年10月22日 推出第二张现场音源单曲专辑</p>
         <ol style="list-style-position: inside; color: white;">
+          <li>陽のあたる坂道</li>
+          <li>全力少年</li>
+          <li>I LOVE YOU</li>
+          <li>アイ</li>
           <li>Rainy Rainy</li>
-          <li>想い募って</li>
-          <li>SHUT UP</li>
-          <li>二人?一人!!</li>
-          <li>Dress</li>
-          <li>ウソボンダ (Try Smiling)</li>
           <li>醒めて､眠れ</li>
-          <li>世界が終わっても</li>
+          <li>古い日記</li>
+          <li>WINGS</li>
+          <li>逢いたくていま</li>
+          <li>ウソボンダ (Try Smiling)</li>
+          <li>夢の蕾</li>
+          <li>BABY DON'T CRY</li>
+          <li>JOYFUL</li>
+          <li>Hello</li>
           <li>ナルバキスン (Look at me, Gwisun)</li>
-          <li>I LOVE YOU (Feat. 葉加瀬太郎)</li>
+          <li>FANTASTIC BABY</li>
+          <li>SHUT UP</li>
+          <li>歌うたいのバラッド</li>
         </ol>
       </div>
     </div>
@@ -629,7 +637,7 @@
       <a href="2014oct.html#141029ds-jump" class="jump-button">跳转到 2014 时间线</a>
     </div>
     <div id="141029solo" style="display: flex; align-items: center; gap: 10px;">
-      <a href="albumdaesung.html#141029solo-jump" class="jump-button">专辑歌曲Mv</a>
+      <a href="album.html#141029solo-jump" class="jump-button">专辑歌曲Mv</a>
     </div>
   </div>
   <div class="content-wrap">
@@ -745,26 +753,31 @@
         document.getElementById("footer").innerHTML = data;
       });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 </body>

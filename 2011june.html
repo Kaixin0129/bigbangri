@@ -430,7 +430,7 @@
     <p style="margin: 0;">下面的视频来自@yinying00 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=31633066&bvid=BV1PW411y7jx&cid=55312219&p=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=31633066&amp;bvid=BV1PW411y7jx&amp;cid=55312219&amp;p=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block1">
         <p><strong>2011年6月6日</strong></p>
@@ -482,7 +482,7 @@
     <p style="margin: 0;">下面的视频来自@南有鸪鱼 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=31358930&bvid=BV1dW411d7Ly&cid=54776301&p=23" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=31358930&amp;bvid=BV1dW411d7Ly&amp;cid=54776301&amp;p=23" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block3">
         <p><strong>2011年6月11日</strong></p>
@@ -512,7 +512,7 @@
     <p style="margin: 0;">下面的视频来自@南有鸪鱼 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=31358930&bvid=BV1dW411d7Ly&cid=54776867&p=24" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=31358930&amp;bvid=BV1dW411d7Ly&amp;cid=54776867&amp;p=24" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block5">
         <p><strong>2011年6月18日</strong></p>
@@ -527,7 +527,7 @@
     <p style="margin: 0;">下面的视频来自@南有鸪鱼 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=31358930&bvid=BV1dW411d7Ly&cid=54777445&p=25" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=31358930&amp;bvid=BV1dW411d7Ly&amp;cid=54777445&amp;p=25" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block6">
         <p><strong>2011年6月25日</strong></p>
@@ -554,8 +554,7 @@
 
 </main>
 <script src="player.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
   <script>
     fetch("footer.html")
       .then(response => response.text())
@@ -617,26 +616,31 @@ window.addEventListener('load', function() {
     }
 });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 

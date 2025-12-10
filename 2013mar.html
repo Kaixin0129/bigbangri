@@ -430,7 +430,7 @@
     <p style="margin: 0;">下面的视频来自@sweetGBAE 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=374665032&bvid=BV1EZ4y1w77c&cid=311370415&p=18" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=374665032&amp;bvid=BV1EZ4y1w77c&amp;cid=311370415&amp;p=18" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block1">
         <p><strong>2013年3月1日</strong></p>
@@ -490,7 +490,7 @@
     <p style="margin: 0;">下面的视频来自@喵酱不好吃 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=31582532&bvid=BV1zW411C7gA&cid=55218120&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=31582532&amp;bvid=BV1zW411C7gA&amp;cid=55218120&amp;p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block5">
         <p><strong>2013年3月15日</strong></p>
@@ -525,7 +525,7 @@
         <ul>
           <li>Hip Hop Single of the Year: One of a Kind</li>
         </ul><br>
-        <p>详细资讯：<a href="http://m.rhythmer.net/src/magazine/award/view.php?n=12169&p=1" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        <p>详细资讯：<a href="http://m.rhythmer.net/src/magazine/award/view.php?n=12169&amp;p=1" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
             Rhythmer</a></p>
       </div>
     </div>
@@ -597,9 +597,9 @@
       </div>
     </div>
     <div class="slider-container">
-      <button class="nav-button left" onclick="slide('slider2', 'prev')">←</button>
+      <button class="nav-button left" onclick="slide(this)">←</button>
       <div class="slider-wrapper">
-        <div class="slider" id="slider2">
+        <div class="slider">
           <div class="slide-item">
             <img src="130321.webp" class="slide-img img-portrait">
           </div>
@@ -611,7 +611,7 @@
           </div>
         </div>
       </div>
-      <button class="nav-button right" onclick="slide('slider2', 'next')">→</button>
+      <button class="nav-button right" onclick="slide(this)">→</button>
     </div>
     <hr class="full-width-line">
   </div>
@@ -620,7 +620,7 @@
     <p style="margin: 0;">下面的视频来自@喵酱不好吃 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=31582532&bvid=BV1zW411C7gA&cid=55218144&p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=31582532&amp;bvid=BV1zW411C7gA&amp;cid=55218144&amp;p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block11">
         <p><strong>2013年3月22日</strong></p>
@@ -635,7 +635,7 @@
     <p style="margin: 0;">下面的视频来自@一颗儿糖葫芦 点击进入观看完整视频</p>
     <div class="content-wrap">
       <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=40775349&bvid=BV1St411H7ZK&cid=71613296&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=40775349&amp;bvid=BV1St411H7ZK&amp;cid=71613296&amp;p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
       </div>
       <div class="text-container" id="block12">
         <p><strong>2013年3月26日</strong></p>
@@ -734,8 +734,7 @@
 
 </main>
 <script src="player.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
   <script>
     fetch("footer.html")
       .then(response => response.text())
@@ -797,26 +796,31 @@ window.addEventListener('load', function() {
     }
 });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 

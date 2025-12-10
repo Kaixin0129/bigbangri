@@ -1,4 +1,4 @@
-// App.jsx
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import AlbumList from './pages/AlbumList';
@@ -6,9 +6,9 @@ import AlbumDetail from './pages/AlbumDetail';
 import Player from './components/Player';
 
 function App() {
-  // 全局状态：当前播放的歌曲
+  
   const [currentSong, setCurrentSong] = useState(null);
-  // 全局状态：播放列表（例如整个专辑的歌曲）
+  
   const [playlist, setPlaylist] = useState([]);
 
   return (

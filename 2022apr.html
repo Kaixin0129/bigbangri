@@ -436,7 +436,7 @@
       <img src="220405.jpeg" height="350">     
     </div>
     <div class="text-button-container">
-      <div class="text-container" id="block2">
+      <div class="text-container" id="block1">
         <p><strong>Still Life</strong></p>
         <p>2022年4月5日 推出第九张单曲专辑</p>
         <ul>
@@ -452,7 +452,7 @@
       <a href="tspot.html#tspot-jump" class="jump-button">更多详情</a>
     </div>
     <div class="content-wrap">
-      <div class="text-container" id="block1">
+      <div class="text-container" id="block2">
         <p><strong>2022年4月8日</strong></p>
         <p>TOP将成立厂牌 T'SPOT，与Thunevin合作在法国制作</p>
         <p>瓶标由日本艺术家名和晃平 设计</p><br>
@@ -480,8 +480,7 @@
 
 </main>
 <script src="player.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
   <script>
     fetch("footer.html")
       .then(response => response.text())
@@ -543,26 +542,31 @@ window.addEventListener('load', function() {
     }
 });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 

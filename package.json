@@ -35,6 +35,7 @@
   },
   "homepage": "https://github.com/Kaixin0129/bigbangri#readme",
   "devDependencies": {
+    "@ljharb/tsconfig": "^0.3.2",
     "http-server": "^14.1.1",
     "live-server": "^1.2.2"
   }

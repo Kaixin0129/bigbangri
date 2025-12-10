@@ -1,11 +1,11 @@
-// components/Player.jsx
+
 import { useState, useRef, useEffect } from 'react';
 
 const Player = ({ currentSong, playlist, setCurrentSong }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
-  // 当 currentSong 改变时，自动播放新歌曲
+  
   useEffect(() => {
     if (currentSong && audioRef.current) {
       audioRef.current.src = currentSong.file_url;
@@ -27,7 +27,7 @@ const Player = ({ currentSong, playlist, setCurrentSong }) => {
   };
 
   const handleEnded = () => {
-    // 歌曲播放结束后的逻辑，例如播放下一首
+    
     console.log('歌曲播放结束');
     setIsPlaying(false);
   };

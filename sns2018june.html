@@ -511,9 +511,9 @@ Aori拉面国内第27号店将于5/4（星期五）在济州岛开业！ 在开�
         </div>
       </div>
       <div class="slider-container">
-        <button class="nav-button left" onclick="slide('slider3', 'prev')">&#8592;</button>
+        <button class="nav-button left" onclick="slide(this)">&#8592;</button>
         <div class="slider-wrapper">
-          <div class="slider" id="slider3">
+          <div class="slider">
             <div class="slide-item">
               <img src="180613.png" class="slide-img img-landscape" />
             </div>
@@ -522,7 +522,7 @@ Aori拉面国内第27号店将于5/4（星期五）在济州岛开业！ 在开�
             </div>
           </div>
         </div>
-        <button class="nav-button right" onclick="slide('slider3', 'next')">&#8594;</button>
+        <button class="nav-button right" onclick="slide(this)">&#8594;</button>
       </div>
     <hr class="full-width-line" />
   </div>
@@ -543,9 +543,9 @@ Aori拉面新林店位于首尔市官乐区南部环路1600 2层，新林站3号
         </div>
       </div>
       <div class="slider-container">
-        <button class="nav-button left" onclick="slide('slider2', 'prev')">&#8592;</button>
+        <button class="nav-button left" onclick="slide(this)">&#8592;</button>
         <div class="slider-wrapper">
-          <div class="slider" id="slider2">
+          <div class="slider">
             <div class="slide-item">
               <img src="180615.png" class="slide-img img-landscape" />
             </div>
@@ -554,7 +554,7 @@ Aori拉面新林店位于首尔市官乐区南部环路1600 2层，新林站3号
             </div>
           </div>
         </div>
-        <button class="nav-button right" onclick="slide('slider2', 'next')">&#8594;</button>
+        <button class="nav-button right" onclick="slide(this)">&#8594;</button>
       </div>
     <hr class="full-width-line" />
   </div>
@@ -575,9 +575,9 @@ Aori拉面蚕室saenae店位于首尔市松坡区百济古坟7路，32-8 2层，
         </div>
       </div>
       <div class="slider-container">
-        <button class="nav-button left" onclick="slide('slider4', 'prev')">&#8592;</button>
+        <button class="nav-button left" onclick="slide(this)">&#8592;</button>
         <div class="slider-wrapper">
-          <div class="slider" id="slider4">
+          <div class="slider">
             <div class="slide-item">
               <img src="180618.png" class="slide-img img-landscape" />
             </div>
@@ -589,7 +589,7 @@ Aori拉面蚕室saenae店位于首尔市松坡区百济古坟7路，32-8 2层，
             </div>
           </div>
         </div>
-        <button class="nav-button right" onclick="slide('slider4', 'next')">&#8594;</button>
+        <button class="nav-button right" onclick="slide(this)">&#8594;</button>
       </div>
     <hr class="full-width-line" />
   </div>
@@ -611,9 +611,9 @@ Aori拉面庆星大学店位于釜山市南区龙沼路9，2层，庆星大学�
         </div>
       </div>
       <div class="slider-container">
-        <button class="nav-button left" onclick="slide('slider1', 'prev')">&#8592;</button>
+        <button class="nav-button left" onclick="slide(this)">&#8592;</button>
         <div class="slider-wrapper">
-          <div class="slider" id="slider1">
+          <div class="slider">
             <div class="slide-item">
               <img src="180826.png" class="slide-img img-landscape" />
             </div>
@@ -622,7 +622,7 @@ Aori拉面庆星大学店位于釜山市南区龙沼路9，2层，庆星大学�
             </div>
           </div>
         </div>
-        <button class="nav-button right" onclick="slide('slider1', 'next')">&#8594;</button>
+        <button class="nav-button right" onclick="slide(this)">&#8594;</button>
       </div>
     <hr class="full-width-line" />
   </div>
@@ -732,26 +732,31 @@ Aori拉面庆星大学店位于釜山市南区龙沼路9，2层，庆星大学�
     }
   }
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
 </script>
 </body>

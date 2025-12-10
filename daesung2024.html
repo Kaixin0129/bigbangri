@@ -456,6 +456,56 @@
       <a href="daesung2024.html#daesung2024-mar-jump" class="jump-button">3月</a>
     </div><br/>
 
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="240305ds" style="display: flex; align-items: center; gap: 10px;">
+      <a href="2024mar.html#240305ds-jump" class="jump-button">跳转到 2024 时间线</a>
+    </div>
+    <div id="240305solo" style="display: flex; align-items: center; gap: 10px;">
+      <a href="album.html#240305solo-jump" class="jump-button">专辑歌曲Mv</a>
+    </div>
+  </div>
+  <div class="content-wrap">
+    <div class="photo-container">
+      <img src="240305.jpg" height="350" />     
+    </div>
+    <div class="text-button-container">
+      <div class="text-container">
+        <p><strong>Falling Slowly(Falling Slowly)</strong></p>
+        <p>2024年3月5日 推出第三张单曲专辑</p>
+        <ul>
+          <li>Falling Slowly</li>
+          <li>Light</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="240315ds" style="display: flex; align-items: center; gap: 10px;">
+      <a href="2024mar.html#240315ds-jump" class="jump-button">跳转到 2024 时间线</a>
+    </div>
+    <div id="240315solo" style="display: flex; align-items: center; gap: 10px;">
+      <a href="album.html#240315solo-jump" class="jump-button">专辑歌曲Mv</a>
+    </div>
+  </div>
+  <div class="content-wrap">
+    <div class="photo-container">
+      <img src="240315.jpeg" height="350" />     
+    </div>
+    <div class="text-button-container">
+      <div class="text-container">
+        <p><strong>FlexxCop OST Part.4</strong></p>
+        <p>2024年3月15日 推出第四张单曲专辑</p>
+        <ul>
+          <li>Our Memories</li>
+          <li>Our Memories (Inst.)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="video-container">
@@ -494,26 +544,31 @@
         document.getElementById("footer").innerHTML = data;
       });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 </body>

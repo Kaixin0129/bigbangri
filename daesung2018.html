@@ -501,6 +501,9 @@
     <div id="daesung2018-jan-jump" style="display: flex; align-items: center; gap: 10px;">
       <a href="daesung2018.html#daesung2018-jan" class="jump-button">1月</a>
     </div>
+    <div id="daesung2018-may-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="daesung2018.html#daesung2018-may" class="jump-button">5月</a>
+    </div>
   </div>
   <br/><br/>
   <hr class="full-width-line" />
@@ -541,6 +544,47 @@
   </div>
   <hr class="full-width-line" />  
 
+    <div id="daesung2018-may" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="daesung2018.html#daesung2018-may-jump" class="jump-button">5月</a>
+    </div><br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="180516ds" style="display: flex; align-items: center; gap: 10px;">
+      <a href="2018may.html#180516ds-jump" class="jump-button">跳转到 2018 时间线</a>
+    </div>
+    <div id="180516solo" style="display: flex; align-items: center; gap: 10px;">
+      <a href="album.html#180516solo-jump" class="jump-button">专辑歌曲Mv</a>
+    </div>
+  </div>
+  <div class="content-wrap">
+    <div class="photo-container">
+      <img src="dshowvol1.webp" height="350" />     
+    </div>
+    <div class="text-button-container">
+      <div class="text-container">
+        <p><strong>DなSHOW Vol.1(D na SHOW Vol.1)</strong></p>
+        <p>2018年5月16日 推出第五张现场音源单曲专辑</p>
+        <ol style="list-style-position: inside; color: white;">
+          <li>D-Day</li>
+          <li>VENUS</li>
+          <li>あ・ぜ・ちょ！</li>
+          <li>違う、そうじゃない</li>
+          <li>古い日記</li>
+          <li>ナルバキスン (Look at me, Gwisun)</li>
+          <li>WINGS</li>
+          <li>D-Day</li>
+          <li>VENUS</li>
+          <li>あ・ぜ・ちょ！</li>
+          <li>違う、そうじゃない</li>
+          <li>ナルバキスン (Look at me, Gwisun)</li>
+          <li>WINGS</li>
+          <li>そばにいてよ</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+
   <br/><br/><br/>
   <div class="header-container">
     <nav class="left-nav">
@@ -566,26 +610,31 @@
         document.getElementById("footer").innerHTML = data;
       });
 
-  const sliderStates = {};
+const sliderStates = new Map();
 
-  function slide(id, direction) {
-    const slider = document.getElementById(id);
-    const slides = slider.querySelectorAll('.slide-item');
-    const slideWidth = 500;
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
 
-    if (!sliderStates[id]) {
-      sliderStates[id] = 0;
-    }
-
-    if (direction === 'next') {
-      sliderStates[id] = (sliderStates[id] + 1) % slides.length;
-    } else {
-      sliderStates[id] = (sliderStates[id] - 1 + slides.length) % slides.length;
-    }
-
-    const offset = sliderStates[id] * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
   }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
 
   </script>
 </body>

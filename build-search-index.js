@@ -35,19 +35,19 @@ function buildIndex() {
     const dom = new JSDOM(html);
     const document = dom.window.document;
 
-    // 删除 content-wrap 上已有的 id
+    
     document.querySelectorAll(".content-wrap[id^='block']").forEach(cw => {
       cw.removeAttribute("id");
     });
 
-    // 每个页面单独编号
+    
     let pageCounter = 1;
 
-    // 给每个 text-container 添加 id
+    
     document.querySelectorAll(".text-container").forEach(tc => {
       tc.id = "block" + pageCounter;
 
-      // 保存索引
+      
       index.push({
         title: page.replace(".html", ""),
         url: "/" + page + "#" + tc.id,
