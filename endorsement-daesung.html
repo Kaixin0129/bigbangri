@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>代言</title>
+  <title>代言广告 (大声)</title>
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
@@ -201,15 +201,37 @@
       cursor: pointer;
     }
 
+    .two-column-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 100px;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    .column {
+      width: 45%;
+      text-align: left;
+      color: white;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: white;
+      height: auto;
+    }
+
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="index.html" class="jump-button-1">Home</a>
+    <a href="index.html">Home</a>    
+    <a href="schedule.html" class="jump-button-1">完整时间线</a>
     <a href="stage.html">打歌舞台</a>
     <a href="concert.html">演唱会</a>
-    <a href="solo.html">成员Solo</a>
     <a href="teams.html">小分队</a>
     <a href="album.html">专辑歌曲Mv</a>
     <a href="fanmeeting.html">Fan Meeting</a>
@@ -230,16 +252,33 @@
     <a href="cp.html" class="highlight1-button">CP向</a>
   </nav>
   <main>
-    <h1>·广告代言·</h1>
-    <br/>
-    <br/>
-    <p>Select a section from the navigation bar below.</p><br/>
+    <h1>·广告代言 (大声) ·</h1>
+    <nav>
+      <a href="endorsement-member.html">Back</a>
+    </nav>
+    <p>Select an endorsement section from the navigation bar below.</p>
 
-  <nav>
-    <a href="endorsementtt.html">团体</a>
-    <a href="endorsement-member.html">成员</a>
-  </nav>
-</main>
+  <div class="two-column-wrapper">
+    <div class="column left">
+      <p style="color: #33FFFF;">食物</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-bighitchicken.html" class="jump-button">BIG HIT Chicken</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">美容</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-kiehis.html" class="jump-button">Kiehl's</a>
+      </div>
+    </div>
+
+    <div class="column right">
+      <p style="color: #33FFFF;">香氛</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-jsda.html" class="jump-button">CK ONE</a>
+      </div>
+    </div>
+  </div>
+
+  </main>
 <script src="player.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
      crossorigin="anonymous"></script>

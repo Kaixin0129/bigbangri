@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>代言广告 (团体)</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    nav {
+      background-color: #111;
+      padding: 20px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: transparent;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: white;
+      color: #111;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .content-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 10px;
+    }
+
+    .text-container {
+        max-width: 400px;
+        line-height: 1.6;
+        text-align: left;
+    }
+
+    .text-container li {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .text-container ul {
+        padding-left: 0;
+        margin-left: 0;
+        list-style-position: inside;
+    }
+    
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px; /* 控制和上方内容的距离 */
+      margin-bottom: 20px;
+    }
+
+    nav a.highlight-button {
+      background-color: none;
+      color: white;
+      border: 2px solid #FF66CC;
+    }
+  
+    nav a.highlight-button:hover {
+      background-color: none;
+      color: #FF66CC;
+    }
+
+    nav a.highlight1-button {
+      background-color: none;
+      color: white;
+      border: 2px solid #33FFFF;
+    }
+  
+    nav a.highlight1-button:hover {
+      background-color: none;
+      color: #33FFFF;
+    }
+
+@media only screen and (max-width: 768px) {
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .jump-button-1 {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid #f5ed54;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button-1:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    .two-column-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 100px;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    .column {
+      width: 45%;
+      text-align: left;
+      color: white;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: white;
+      height: auto;
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>    
+    <a href="schedule.html" class="jump-button-1">完整时间线</a>
+    <a href="stage.html">打歌舞台</a>
+    <a href="concert.html">演唱会</a>
+    <a href="teams.html">小分队</a>
+    <a href="album.html">专辑歌曲Mv</a>
+    <a href="fanmeeting.html">Fan Meeting</a>
+    <a href="collection.html">官方周边</a>
+    <a href="show.html">放送节目</a>
+    <a href="interview.html">采访</a>
+    <a href="behindthescenes.html">幕后花絮</a>
+    <a href="magazine.html">杂志拍摄</a>
+    <a href="endorsement.html">代言</a>
+    <a href="awardlist.html">获奖</a>
+    <a href="movie.html">电影电视剧短剧</a> 
+    <a href="ygfamily.html">YG Family</a>
+    <a href="live.html">直播</a>
+    <a href="more.html">更多</a>
+    <a href="sns.html">SNS</a>
+    <a href="comment.html">留言区</a>
+    <a href="reference.html" class="highlight-button">参考资料</a>
+    <a href="cp.html" class="highlight1-button">CP向</a>
+  </nav>
+  <main>
+    <h1>·广告代言 (团体) ·</h1>
+    <nav>
+      <a href="endorsement.html">Back</a>
+    </nav>
+    <p>Select an endorsement section from the navigation bar below.</p>
+
+  <div class="two-column-wrapper">
+    <div class="column left">
+      <p style="color: #33FFFF;">时尚</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-skoolooks.html" class="jump-button">SKOOLOOKS</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-nii.html" class="jump-button">NII</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-fila.html" class="jump-button">FILA</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-bsx.html" class="jump-button">BSX</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-thenorthface.html" class="jump-button">The North Face</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-10corsocomo.html" class="jump-button">10 Corso Como</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-uniqlo.html" class="jump-button">Uniqlo</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-millet.html" class="jump-button">Millet</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-moonshot.html" class="jump-button">Moonshot</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">平台 / 软件</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-gmarket.html" class="jump-button">G-Market</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-me2day.html" class="jump-button">me2day</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-ufotown.html" class="jump-button">UFOTOWN</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-naver.html" class="jump-button">Naver Music</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-kakaotalk.html" class="jump-button">Kakao Talk</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">电子类</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-istation.html" class="jump-button">I-Station</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-lg.html" class="jump-button">LG</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-nikon.html" class="jump-button">Nikon</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-soul.html" class="jump-button">Soul</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">游戏</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-suddenattack.html" class="jump-button">Sudden Attack</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-dragonnest.html" class="jump-button">Dragon Nest</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-elsword.html" class="jump-button">Elsword</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-shenmo.html" class="jump-button">神魔之塔</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-quanmin.html" class="jump-button">全民超神</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">美容</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-thesaem.html" class="jump-button">The Saem</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-vidalsassoon.html" class="jump-button">Vidal Sassoon</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">香氛</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-bbbud.html" class="jump-button">BB Bud</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-eversense.html" class="jump-button">Eversense</a>
+      </div>
+    </div>
+
+    <div class="column right">
+      <p style="color: #33FFFF;">食物类</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-baskin.html" class="jump-button">Baskin Robbins</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-burgerstokyo.html" class="jump-button">THE BURGERS TOKYO</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-31icecream.html" class="jump-button">31 Ice Cream</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">饮料类</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-2drink.html" class="jump-button">2% Drink</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-cafelatte.html" class="jump-button">Cafe Latte</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-sunny10.html" class="jump-button">Sunny10</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-hite.html" class="jump-button">Hite</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-chapi.html" class="jump-button">茶π</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">娱乐类</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-livedam.html" class="jump-button">Livedam</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-marvelousjapan.html" class="jump-button">Marvelous Japan</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-ygbeatevo.html" class="jump-button">YG BEAT EVO</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">免税店</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-lotty.html" class="jump-button">Lotty Duty Free</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-shisegae.html" class="jump-button">Shinsegae Duty Free</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">公益宣传</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-cj.html" class="jump-button">CJ集团企业形象广告 </a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-shoutingkorea.html" class="jump-button">Shouting Korea</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-visit.html" class="jump-button">VISIT KOREA YEAR</a>
+      </div><br/><br/><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-imagine.html" class="jump-button">IMAGINE YOUR KOREA</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">交通工具</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-yamaha.html" class="jump-button">Yamaha TTX</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">公司</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-jeju.html" class="jump-button">济州航空公司</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">金融</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-hyundaicard.html" class="jump-button">Hyundai Card</a>
+      </div>
+    </div>
+  </div>
+
+  </main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+</body>
+</html>
