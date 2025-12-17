@@ -1,0 +1,994 @@
+<!DOCTYPE html><html lang="zh"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="bigbangri">
+  <link rel="manifest" href="/site.webmanifest">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+@media only screen and (max-width: 768px) {
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  </style>
+</head>
+
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="book.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>Shouting out to the World!</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2009年1月28日</strong></p>
+        <p>Shouting out to the World!: A Run for the Dream, Big Bang's 13,140 Days Challenge 是Bigbang自己出版的一本书<br/>中译：向世界呐喊！：为梦想奔跑，BigBang的13140天挑战</p>
+        <p>与其说这是一本Bigbang的自传，不如说它更像是一本关于自我成长的书籍。这本书讲述了五个青少年实现梦想的故事。每个成员都讲述了自己追逐梦想的历程和成长，以及梦想成真后的感受和对未来的思考</p>
+        <p>详细资讯：<a href="https://mega.nz/folder/y34nDQrT#gfNsHkwNuFIULM2dHZge6Q" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            MEGA</a></p>
+      </div> 
+    </div>
+    <p>共103页</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0001.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0002.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0003.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0004.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0005.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0006.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0007.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0008.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0009.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0010.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0011.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0012.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0013.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0014.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0015.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0016.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0017.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0018.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0019.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0020.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0021.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0022.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0023.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0024.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0025.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0026.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0027.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0028.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0029.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0030.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0031.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0032.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0033.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0034.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0035.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0036.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0037.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0038.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0039.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0040.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0041.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0042.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0043.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0044.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0045.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0046.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0047.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0048.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0049.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0050.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0051.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0052.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0053.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0054.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0055.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0056.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0057.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0058.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0059.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0060.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0061.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0062.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0063.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0064.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0065.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0066.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0067.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0068.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0069.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0070.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0071.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0072.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0073.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0074.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0075.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0076.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0077.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0078.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0079.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0080.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0081.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0082.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0083.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0084.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0085.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0086.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0087.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0088.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0089.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0090.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0091.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0092.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0093.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0094.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0095.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0096.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0097.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0098.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0099.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0100.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0101.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0102.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="Bigbang - Shout Out To The World (English)_page-0103.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/j3647yhCP64?si=9X9FXa6K12UmDXYV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>大声</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/MhBw552b1pY?si=7GkCKTGXUfO6UCUq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>TOP</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/MhBw552b1pY?si=7GkCKTGXUfO6UCUq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>GD</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ifzpwZ4fzSY?si=9-WmeRMhXhiG9xQW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>TOP</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2009年2月6日</strong></p>
+        <p>Bigbang在首尔光化门新闻中心举行《向世界呐喊！》自传发布会</p>
+        <p>一个月内就售出了 30 万册</p>
+        <p>详细资讯：<a href="https://www.mk.co.kr/news/culture/4542246" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            MK</a></p>
+      </div> 
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="book-shouting.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="book-shouting1.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="book-shouting2.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="book-shouting3.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="book-shouting4.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="book-shouting5.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="book-shouting6.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <p>详细资讯：<a href="https://www.joynews24.com/view/396980" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        JOY NEWS 24</a> - 
+    <a href="https://chinese.joins.com/news/galleryView.html?idxno=7701" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        中央日报</a></p><br/>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p>以下是领导们对其评价</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2009年3月3日</strong> 报道</p>
+        <p>韩国出版市场调研院院长韩基浩评价：这本书比我之前花费数十万美元进口的任何外国励志书籍都更让我感动</p>
+        <p>汝矣岛纯福音教会牧师李章均则表示：我希望所有年轻人都能以Bigbang为榜样，勇敢地迎接挑战，奋勇向前</p>
+        <p>三星SDS总裁金仁在一次公司战略会议上赠送了此书给300名高管，并说：当前的经济危机如同战时状态，如果我们沿用以往的思维和行动方式，就无法生存下去。要全力以赴，努力突破自己的极限。尽管经历了无数的挫折和失败，Bigbang凭借对歌唱的热情最终成为了超级巨星</p>
+        <p>负责本书策划和编辑的策划兼编辑总监李恩静表示：这些孩子从小就设定目标，并为此投入了至少两万个小时，他们的真实故事引起了青少年、二十几岁、三十几岁，甚至四五十岁读者的共鸣</p>
+        <p>详细资讯：<a href="https://www.joynews24.com/view/396980" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            JOY NEWS 24</a> - 
+        <a href="https://www.hankyung.com/article/2009063086591" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            韩国经济日报</a></p>
+      </div> 
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2009年7月1日</strong></p>
+        <p>五个月内销量突破了 40 万册，收入约45亿韩元</p>
+        <p>此书自从发布后一直稳居畅销书榜首，并连续三个月蝉联冠军</p>
+        <p>详细资讯：<a href="https://www.hankyung.com/article/2009063086591" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            韩国经济日报</a></p>
+      </div> 
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>截至2009年12月，已售出46万册，连续六周蝉联畅销书榜首（含预售量）</p>
+        <p>详细资讯：<a href="https://h21.hani.co.kr/arti/culture/culture_general/26580.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            한겨레21</a></p>
+      </div> 
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2010年12月</strong></p>
+        <p>此书在 YES24 获得年度图书奖，并表示Bigbang拯救了今年的韩国文学</p>
+        <p>详细资讯：<a href="https://h21.hani.co.kr/arti/culture/culture_general/26580.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            한겨레21</a></p>
+      </div> 
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <br><br><br>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="book.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+
+</main>
+<script src="player.js"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="#"]');
+    if (link) {
+        const href = link.getAttribute('href');
+        
+        if (href.includes('.html')) {
+            return;
+        }
+        
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            setTimeout(function() {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+                
+                window.history.pushState(null, null, '#' + targetId);
+            }, 50);
+        }
+    }
+});
+
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        setTimeout(function() {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+            }
+        }, 300);
+    }
+});
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
+
+  </script>
+
+</body></html>

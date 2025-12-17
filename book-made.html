@@ -1,0 +1,889 @@
+<!DOCTYPE html><html lang="zh"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="bigbangri">
+  <link rel="manifest" href="/site.webmanifest">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+@media only screen and (max-width: 768px) {
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  </style>
+</head>
+
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="book.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>一篇关于MADE巡演的硕士论文</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年12月</strong> 发布</p>
+        <p>빅뱅 2015 월드투어 [MADE]가 한류열풍의 지속성에 미치는 영향 是一篇来自 大田大学研究生院表演艺术与电影系电影制作专业的 硕士论文<br/>中译：Bigbang 2015世界巡回演唱会[MADE]对韩流可持续发展的影响</p>
+        <p>作者是 동영배 东永裴，但不是Bigbang里的（所以很多人误会是太阳写的）</p>
+        <p>原文观看：<a href="https://www.nl.go.kr/EN/contents/engSearch.do?srchTarget=total&pageNum=1&pageSize=10&kwd=bigbang#viewKey=CNTS-00080895459&viewType=C&category=%ED%95%99%EC%9C%84%EB%85%BC%EB%AC%B8&pageIdx=2&jourId=" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            National Library of Korea</a></p>
+      </div> 
+    </div>
+    <p>共111页</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0001.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0002.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0003.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0004.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0005.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0006.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0007.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0008.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0009.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0010.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0011.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0012.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0013.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0014.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0015.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0016.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0017.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0018.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0019.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0020.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0021.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0022.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0023.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0024.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0025.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0026.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0027.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0028.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0029.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0030.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0031.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0032.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0033.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0034.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0035.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0036.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0037.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0038.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0039.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0040.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0041.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0042.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0043.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0044.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0045.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0046.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0047.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0048.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0049.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0050.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0051.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0052.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0053.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0054.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0055.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0056.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0057.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0058.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0059.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0060.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0061.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0062.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0063.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0064.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0065.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0066.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0067.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0068.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0069.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0070.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0071.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0072.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0073.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0074.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0075.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0076.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0077.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0078.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0079.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0080.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0081.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0082.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0083.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0084.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0085.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0086.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0087.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0088.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0089.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0090.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0091.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0092.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0093.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0094.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0095.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0096.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0097.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0098.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0099.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0100.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0101.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0102.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0103.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0104.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0105.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0106.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0107.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0108.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0109.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0110.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="the influence of bigbang 2015 world tour made on the sustainability of the korean wave_By Dong Youngbae_page-0111.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <p>本页下载图片源自：<a href="https://drive.google.com/file/d/1HCm92Z2aKN-VhVIk0hAeYVZk52RvN1CZ/view?pli=1" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        Google Drive</a></p><br/>
+    <hr class="full-width-line" />
+  </div>
+
+  <br><br><br>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="book.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+
+</main>
+<script src="player.js"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="#"]');
+    if (link) {
+        const href = link.getAttribute('href');
+        
+        if (href.includes('.html')) {
+            return;
+        }
+        
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            setTimeout(function() {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+                
+                window.history.pushState(null, null, '#' + targetId);
+            }, 50);
+        }
+    }
+});
+
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        setTimeout(function() {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+            }
+        }, 300);
+    }
+});
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
+
+  </script>
+
+</body></html>
