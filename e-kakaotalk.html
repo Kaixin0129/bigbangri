@@ -1,0 +1,897 @@
+<!DOCTYPE html><html lang="zh"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="bigbangri">
+  <link rel="manifest" href="/site.webmanifest">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+@media only screen and (max-width: 768px) {
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-landscape {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  </style>
+</head>
+
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="endorsementtt.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>Kakao Talk</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2013年3月14日</strong></p>
+        <p>Bigbang 将代言韩国聊天应用 Kakao Talk，主要向东南亚扩展</p><br/>
+        <p>Kakao Talk代表表示：我们正在努力拓展市场，并与当地艺术家合作。我们希望这是在全球化时代与其他公司竞争的最佳途径</p>
+        <p>KakaoTalk联合首席执行官李思高表示：公司选择Bigbang（作为代言）不仅是因为Bigbang的年轻化魅力和影响力，还因为他们深厚的艺术造诣和广泛的流行文化吸引力。从这个角度来看，我认为Bigbang就像Kakao这款应用一样</p>
+        <p>详细资讯：<a href="https://www.hellokpop.com/news/big-bang-to-endorse-kakao-talk-in-indonesia-and-vietnam/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            HELLOKPOP</a></p>
+      </div> 
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2013年3月28日</strong></p>
+        <p>Bigbang贴纸在应用商店上架，所有用户可免费使用</p>
+        <p>详细资讯：<a href="https://ow.ly/i/1M9JM" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Ow.ly</a></p>
+      </div> 
+    </div>
+  </div>
+  <img src="e-kakao.jpg" style="width: 300px;">
+  <hr class="full-width-line" />  
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/LTe9eLwSQWY?si=yNaf2x-Zv4-XXzeW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p>with BIGBANG</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/Fp_3pVVc7To?si=rqR34WN3U5YX8_gL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>GD</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/-9bpqy0UV8E?si=4vKCWx0OnukXYW59" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>太阳</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/52tn27oJyDo?si=Ebf2Jx8z5drS4Ljk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>TOP</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ILiVtaxKZ0U?si=k2-RIYqsnZRkvHgt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>大声</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/qJJhQ1KOxdE?si=jVd3iTURQf4xzy06" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p>胜利</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/xoZCgOPtqI0?si=IowZLUn9jZF4Hot4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Free Group Call</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/MpPwl8dTyw4?si=-E8EOlxN1o4KSwTW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Free Group Chat</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/hqaxzSTW4Hk?si=Ia7YuH0EV1wrlf0Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Free Chat</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/YEc5Y0x4S4o?si=DgJho4DLxS5QRRwC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Free Call</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-kakao1.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakao2.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakao3.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakao4.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakao5.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakao6.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakao8.png" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakao9.png" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <p>详细资讯：<a href="https://keksprinzessin.wordpress.com/2013/04/07/photos-big-bang-for-kakaotalk/" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        keksprinzessin</a></p><br/>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>在印尼，Bigbang将与目前担任印尼歌唱比赛节目《The Voice Indonesia》评委的Sherina Munaf一同出镜</p><br/>
+      </div> 
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/b1RfT6h57-A?si=q1VIh0BihzCkqrn8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Free Group Call</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/JxkEJiQ8k7k?si=7ME-3klbms7J5ifO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Free Group Chat</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/PZpbYVFygXc?si=ejHR1OpS1a-hoMhO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Free Chat</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/vVOzE2Zk3lI?si=u2KNhOhiiQswRr7A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Free Call</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-kakaos.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakaos1.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakaos2.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakaos3.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakaos4.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakaos5.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakao7.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakaos6.jpeg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <p>详细资讯：<a href="https://www.facebook.com/media/set/?set=a.429033300520909&type=3" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        BIGBANG!!XD</a></p><br/>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>在越南，Bigbang将与越南著名演员Midu一同出镜</p><br/>
+      </div> 
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/wt6fwY1q3qo?si=pdmC2__u8vORtFqH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>GD</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/wpYr5G8t1aQ?si=W5-hFLgqzSoAATY2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>太阳</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/kU-G4LVTTH4?si=14QfeaL7kHNJ5zyB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>TOP</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/WAdOqAOhlKQ?si=a0jFp0x9JQzaYZ9E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Midu</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-kakaom.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakaom1.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakaom2.png" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <p>详细资讯：<a href="https://toanyonebigbang.wordpress.com/tag/4-4-13photos-bigbang-tu-kaokao-talk-voi-midu/" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        toanyonebigbang</a></p><br/>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>在马来西亚，Bigbang将与马来西亚歌手Yuna一同出镜</p><br/>
+      </div> 
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/dV2lo4ktJSw?si=q3yjjZenZD5cfbZY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>Yuna</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/8JYTfsQhd28?si=RsQ1kX6vePuvZNKO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>视频合集</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-kakaoy.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakaoy1.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakaoy2.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakaoy3.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-kakaoy4.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <p>详细资讯：<a href="https://www.facebook.com/photo?fbid=533029553427859&set=a.128849563845862" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        BIG BANG is VIP (malaysia)</a> - 
+    <a href="https://miszsheyla.blogspot.com/2013/06/kakaotalk-free-gift-from-bigbang-yuna.html" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        miszsheyla</a></p><br/>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/uFJekqhFIZw?si=I4dQkhE4y1r6h9-G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2013年4月19日</strong></p>
+        <p>Bigbang Fan Meeting in Jakarta</p>
+        <p>更多视频合集：<a href="https://www.youtube.com/watch?v=HRwTiVajLlc&list=PLLXWzKu6OQFQla3BkZ1iWDoHdD6xhcZqm" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            JUAN JUAN-</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="130419.webp" style="width: 450px;">
+  <hr class="full-width-line" />  
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2013年8月7日</strong></p>
+        <p>KakaoTalk在菲律宾 App Store 的社交网络应用排名第一</p>
+      </div> 
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2013年8月18日</strong></p>
+        <p>KakaoTalk在菲律宾应用商店和 Google Play 上排名第一</p>
+        <p>详细资讯：<a href="https://orangemagazine.ph/2013/kakaotalk-shoots-to-number-1-in-the-ph-app-store-and-google-play/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            orange magazine</a></p>
+      </div> 
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <br><br><br>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="endorsementtt.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+
+</main>
+<script src="player.js"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="#"]');
+    if (link) {
+        const href = link.getAttribute('href');
+        
+        if (href.includes('.html')) {
+            return;
+        }
+        
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            setTimeout(function() {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+                
+                window.history.pushState(null, null, '#' + targetId);
+            }, 50);
+        }
+    }
+});
+
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        setTimeout(function() {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+            }
+        }, 300);
+    }
+});
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
+
+  </script>
+
+</body></html>
