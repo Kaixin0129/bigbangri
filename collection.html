@@ -102,7 +102,7 @@
       width: 90vw;
       border: none;
       border-top: 1px solid white;
-      margin-top: 10px;
+      margin-top: 10px; /* 控制和上方内容的距离 */
       margin-bottom: 20px;
     }
 
@@ -201,6 +201,28 @@
       cursor: pointer;
     }
 
+    .two-column-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 100px;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    .column {
+      width: 45%;
+      text-align: left;
+      color: white;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: white;
+      height: auto;
+    }
+
   </style>
 </head>
 <body>
@@ -229,24 +251,64 @@
     <a href="cp.html" class="highlight1-button">CP向</a>
   </nav>
   <main>
-    <h1>·Bigbang官方周边·</h1><br/><br/>
-    <p>Select a year section from the navigation bar below.</p><br/><br/>
+    <h1>·Bigbang周边·</h1><br/><br/>
+  <p>所有的图片来源于 mybigbangcollection.com</p>
 
-  <nav>
-    <a href="collection2006.html">2006</a>
-    <a href="collection2007.html">2007</a>
-    <a href="collection2008.html">2008</a>
-    <a href="collection2009.html">2009</a>
-    <a href="collection2010.html">2010</a>
-    <a href="collection2011.html">2011</a>
-    <a href="collection2012.html">2012</a>
-    <a href="collection2013.html">2013</a>
-    <a href="collection2014.html">2014</a>
-    <a href="collection2015.html">2015</a>
-    <a href="collection2016.html">2016</a>
-    <a href="collection2017.html">2017</a>
-    <a href="collection2018.html">2018</a>
-  </nav>
+  <div class="two-column-wrapper">
+    <div class="column left">
+      <p style="color: #33FFFF;">CD</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="collection/cd/korean/" class="jump-button">Korean</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="collection/cd/japanese/" class="jump-button">Japanese</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="collection/cd/chinese/" class="jump-button">Chinese</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="collection/cd/thailand/" class="jump-button">Thailand</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="collection/cd/malaysia/" class="jump-button">Malaysia</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">FAN CLUB</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="collection/fanclub/korean/" class="jump-button">Korean</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="collection/fanclub/japanese/" class="jump-button">Japanese</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">物品</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="collection/book/" class="jump-button">Book</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="collection/photobook/" class="jump-button">Photoook</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="collection/calendar/" class="jump-button">Calendar</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">应援棒</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="collection/lightstick/" class="jump-button">Lightstick</a>
+      </div><br/><br/><br/>
+    </div>
+
+    <div class="column right">
+      <p style="color: #33FFFF;">SOLO</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="collection/solo/gd/" class="jump-button">G-Dragon</a>
+      </div><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="collection/solo/taeyang/" class="jump-button">TAEYANG</a>
+      </div><br/><br/><br/>
+      <p style="color: #33FFFF;">演唱会（团体）</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="collection/tour/" class="jump-button">演唱会</a>
+      </div><br/><br/><br/>
+    </div>
+  </div>
 
 </main>
 <script src="player.js"></script>
