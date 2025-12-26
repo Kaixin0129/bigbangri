@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    nav {
+      background-color: #111;
+      padding: 20px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: transparent;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: white;
+      color: #111;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .content-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 10px;
+    }
+
+    .text-container {
+        max-width: 400px;
+        line-height: 1.6;
+        text-align: left;
+    }
+
+    .text-container li {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .text-container ul {
+        padding-left: 0;
+        margin-left: 0;
+        list-style-position: inside;
+    }
+    
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    nav a.highlight-button {
+      background-color: none;
+      color: white;
+      border: 2px solid #FF66CC;
+    }
+  
+    nav a.highlight-button:hover {
+      background-color: none;
+      color: #FF66CC;
+    }
+
+    nav a.highlight1-button {
+      background-color: none;
+      color: white;
+      border: 2px solid #33FFFF;
+    }
+  
+    nav a.highlight1-button:hover {
+      background-color: none;
+      color: #33FFFF;
+    }
+
+@media only screen and (max-width: 768px) {
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .jump-button-1 {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid #f5ed54;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button-1:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="schedule.html" class="jump-button-1">完整时间线</a>
+    <a href="stage.html">打歌舞台</a>
+    <a href="concert.html">演唱会</a>
+    <a href="solo.html">成员Solo</a>
+    <a href="teams.html">小分队</a>
+    <a href="album.html">专辑歌曲Mv</a>
+    <a href="fanmeeting.html">Fan Meeting</a>
+    <a href="show.html">放送节目</a>
+    <a href="interview.html">采访</a>
+    <a href="behindthescenes.html">幕后花絮</a>
+    <a href="magazine.html">杂志拍摄</a>
+    <a href="endorsement.html">代言</a>
+    <a href="awardlist.html">获奖</a>
+    <a href="movie.html">电影电视剧短剧</a>
+    <a href="ygfamily.html">YG Family</a>
+    <a href="live.html">直播</a>
+    <a href="more.html">更多</a>
+    <a href="sns.html">SNS</a>
+    <a href="comment.html">留言区</a>
+    <a href="reference.html" class="highlight-button">参考资料</a>
+    <a href="cp.html" class="highlight1-button">CP向</a>
+  </nav>
+  <main>
+    <h1>·Bigbang周边 〜 CD 〜 日版·</h1>
+    <nav>
+      <a href="../../../collection.html">Back</a>
+    </nav>
+  <p>所有的图片来源于 mybigbangcollection.com</p><br/><br/>
+
+  <nav>
+    <a href="dvd/">DVD</a>
+    <a href="full/">正规专辑</a>
+    <a href="mini/">迷你专辑</a>
+    <a href="single/">单曲专辑</a>
+    <a href="collaborations/">合作专辑</a>
+  </nav>
+
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+</body>
