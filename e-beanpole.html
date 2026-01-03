@@ -1,0 +1,1218 @@
+<!DOCTYPE html><html lang="zh"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="bigbangri">
+  <link rel="manifest" href="/site.webmanifest">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+@media only screen and (max-width: 768px) {
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: 100%;
+    margin-right: 10px
+  }
+
+  .nav-button.right {
+    left: 100%;
+    margin-left: 10px;
+  }
+
+  .img-portrait {
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .img-portrait {
+    width: 300px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  </style>
+</head>
+
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="endorsementtt.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>Moonshot</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年1月23日</strong></p>
+        <p>YG宣布 GD 与 朴山多拉 代言YG公司旗下的化妆品牌 Moonshot</p>
+        <p>详细资讯：<a href="https://www.soompi.com/article/812785wpp/g-dragon-and-sandara-park-named-new-faces-of-cosmetics-brand-moonshot" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Soompi</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@TtoG_ 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114545318169223&bvid=BV1zvJBzrEzr&cid=30078403532&p=39" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2011年3月25日</strong></p>
+        <p>Mnet Wide News 采访</p>
+        <ul>
+          <li>02:14 胜利给了GD力量</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/mmiuL6QWu9A?si=2eqzkGZLQ9dQu1BF&amp;start=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      <div class="video-description">
+        <p>Girl Style</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/-7-vS_klbUg?si=9OrUF2sg7M9FnGOi&amp;start=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      <div class="video-description">
+        <p>Boy Style</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/bbTLEyTLZuY?si=4J2RvKEdqGcCWmYR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      </div>
+      <div class="text-container" id="block15">
+        <p><strong>2011年5月29日</strong></p>
+        <p>拍摄花絮</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <p>G-Dragon Momot纸模玩具（Bean Pole版）</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-bean101.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean98.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean96.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean95.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean97.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean99.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean100.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean102.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+     <p>详细资讯：<a href="https://ameblo.jp/vipsbigbang/entry-10872156292.html" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        Ameblo JP</a></p><br/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>G-DRAGON X Bean Pole 壁纸</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp1.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp2.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+     <p>详细资讯：<a href="https://ameblo.jp/vipsbigbang/entry-10895733098.html" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        Ameblo JP</a></p><br/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>照片 1</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp9.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp10.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp4.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp5.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp3.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp7.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp6.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp8.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <p>照片 2</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp11.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp12.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp13.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp15.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp16.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp14.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp17.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp18.jpg" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+     <p>详细资讯：<a href="https://ameblo.jp/vipsbigbang/entry-10894050111.html" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        Ameblo JP</a> - 
+    <a href="https://www.tumblr.com/ygkingspics/87588487266/g-dragon-for-bean-pole" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        YG Kings Pics</a></p><br/>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=114545318169223&amp;bvid=BV1zvJBzrEzr&amp;cid=30078668398&amp;p=47" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container" id="block4">
+        <p><strong>2011年7月3日</strong></p>
+        <p>Bean Pole Event</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/xhR3HzL3RXs?si=LywXZH2CJPALsBOK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/XP32eOcsqhA?si=JqxOWN4fm6Rw-ra1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/2mqqSDWChnk?si=-l_PT_nVlH3CGQYR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/qi4-OaMExPw?si=Y-h_LfaAdN3peYMa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+    </div>
+  </div>
+  <hr class="full-width-line">  
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Xg2syFhUYPw?si=DA3JZp6o4jPr1u6V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      </div>
+      <div class="text-container" id="block7">
+        <p><strong>2011年7月12日</strong></p>
+        <p>Bean Pole 花絮</p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp19.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+     <p>详细资讯：<a href="https://ameblo.jp/vipsbigbang/entry-10951546751.html" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        Ameblo JP</a></p><br/>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp38.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp39.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp20.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp27.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp30.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp32.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp33.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp37.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp25.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp28.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp29.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp34.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp36.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp31.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp40.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp35.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp34.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp24.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp23.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp41.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp42.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp43.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp46.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp20.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp47.jpg" class="slide-img img-landscape"/>
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp48.jpg" class="slide-img img-landscape"/>
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp49.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp57.jpg" class="slide-img img-landscape"/>
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp51.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp50.jpg" class="slide-img img-landscape"/>
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp56.jpg" class="slide-img img-landscape"/>
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp52.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp53.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp54.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp55.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp21.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp22.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp23.jpg" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+     <p>详细资讯：<a href="https://search.ameba.jp/search/entry/Bean%20Pole.html?aid=vipsbigbang&p=3" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        Ameblo JP</a></p><br/>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;" id="111227-jump">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年12月27日</strong></p>
+        <p>Bean Pole X G-DRAGON Style Book</p>
+        <p>详细资讯：<a href="https://g-dragon-indonesia-blog.tumblr.com/post/14912295490/trans-indonesia-beanpole-x-g-dragon-style-book" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            G-DRAGON Indonesia</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #33FFFF;">GD说……BIGBANG和我</span><br/>
+          我无法确定是BIGBANG先出现还是G-Dragon先出现；感觉就像是先有鸡还是先有蛋一样。BIGBANG之后才有了我的solo，而有了成员之后才有了BIGBANG这个组合。我以前从未从这个角度思考过这个问题
+          <button id="expandBtn6" class="toggle-btn" onclick="toggleList(6, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList6" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #33FFFF;">GD 说……我的音乐</span><br/>我觉得专辑就像日记。几年后再听的时候，你会感觉到，“啊……原来我那时候也是这样想的，也是那样的精力……” 话虽如此，每张专辑对我来说都有着特殊的意义。虽然制作一张专辑需要花费大量的时间和精力，但过一段时间再听，却会觉得有些羞涩和稚嫩。那种感觉就像我什么都不懂，却依然源源不断地迸发出能量？制作专辑需要练习，我想我还需要更多练习。我也想创作真正属于自己的音乐。我最初接触的是嘻哈，但我一直在尝试新的风格、新的流派，并将它们融合在一起。我认为优秀的音乐作品已经出现，现在我需要从中汲取灵感，创作出真正属于自己的作品。有趣的是，如果我盲目地迎合大众对热门歌曲或流行歌曲的定义，就不可能创作出一首好歌。相反，一首好歌往往是在我们小酌或玩游戏时产生的。我们从中汲取灵感，并将记忆融入创作，最终成就一首流行歌曲</li>
+          <br/><li><span style="color: #33FFFF;">GD 说……我的风格</span><br/>我通常不太在意别人对我的评价，所以我需要更加努力。虽然大家对BIGBANG有很多看法，但如果我真的在意每一个意见，那么BIGBANG或者我今天就不会取得这样的成就。我希望自己对所有事情都有自己的想法，并坚持自己的信念。穿衣风格也是如此——虽然BIGBANG最初的穿衣风格曾被大家嘲笑，但因为我们的自信以及我们驾驭各种风格的方式，大家最终接受了它。这也是我未来想要继续努力的方向</li>
+          <br/><li><span style="color: #33FFFF;">GD 说……时尚与激情</span><br/>和其他嘻哈歌手一样，我也想拥有自己的品牌，但除此之外，我还有更强烈的愿望，那就是开一家属于自己的店；一家让世界各地的时尚达人来韩国游玩时都必去的店铺。我希望人们能感受到，这家店拥有酷炫的店员、潮流的服饰、动听的音乐，它融合了时尚潮流与文化——一个能让他们学到很多东西的地方。我想打造一个空间，聚集时尚达人，共同构建一种独特的文化。比起奢侈时尚，我更钟情于街头文化和个性鲜明的时尚品牌。奢侈品牌的设计师们也从街头文化中汲取灵感，并进行合作。平价服饰固然很棒，但我更倾向于推荐那些能提供多元化体验的街头品牌——那些融合了某种文化或生活方式的品牌</li>
+          <br/><li><span style="color: #33FFFF;">GD 说……韩流</span><br/>我认为现在是韩流走出亚洲、走向世界的绝佳时机。如果我们想让本国音乐和流行音乐产业相互融合，就绝不能错失良机。我们必须努力拓展音乐版图。日本是世界第二大音乐市场，但我认为韩国音乐也非常出色。我担心我们会错失这样一个绝佳的机会。我希望我们能充分把握这次机会，让世界了解我们国家的音乐，并让年轻一代了解它。韩国有很多优秀的音乐人，所以我未来也要努力。我指的不是五六年之后，而是我想长期努力。我也想引领新音乐潮流，创造新的韩流浪潮。我认为现在不仅是韩国音乐发展的绝佳时机，也是很多其他领域发展的绝佳时机。但是，你不能因为一切进展顺利就懈怠，而应该更加努力地引导它走向新的方向。我希望大家齐心协力，确保韩流能够进一步发展和推广。我也希望自己能够站在这一切的核心位置</li>
+          <br/><li><span style="color: #33FFFF;">GD 说……成为新的标准</span><br/>我希望人们不要仅仅听听歌手的新专辑、看看他们的演出，而是应该为自己设定标准，去评判什么是优秀的音乐。现在市面上有很多音乐的标准和风格都大同小异。我希望自己能成为这方面的标杆，成为人们评判好音乐的标准。当然，如果真的有比我更优秀、更杰出的音乐家，能给出更好的答案，我也会感到非常高兴</li>
+          <br/><li><span style="color: #33FFFF;">GD 说……我的梦想</span><br/>看到舞台上那些帅气的歌手，让我萌生了成为歌手的梦想。“啊……我也想成为那样的人，他们真的太帅了。” 那时候我真的很喜欢那些歌手，虽然现在的歌手也很帅，歌也很好听，但我还是觉得如果能成为他们那样该有多棒。和其他公司相比，YG能给我想要的一切。如果我当初在其他公司开始音乐活动，现在的情况肯定会不一样。我从小就在这家公司，学习已经成为我生活的一部分。在这里学到的一切都对我影响很大。现在去公司对我来说就像是理所当然的事。如果哪天觉得累了，我宁愿待在公司和哥哥们一起做音乐，也不想出去玩。这就是YG对我来说的意义
+          <button id="collapseBtn6" class="toggle-btn" onclick="toggleList(6, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-bean50.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean51.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean52.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean53.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean54.png" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean55.webp" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean56.webp" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean57.png" class="slide-img img-landscape" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <p>扫图合集</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-bean.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean1.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean3.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean4.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean5.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean59.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean87.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean70.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean83.webp" class="slide-img img-landscape"/>
+          </div>
+          <div class="slide-item">
+            <img src="e-bean84.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean85.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean88.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean91.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean60.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean61.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean62.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean23.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean2.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean58.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean66.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean67.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean68.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean65.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean82.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean92.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean93.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean94.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean6.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean7.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean8.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean9.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean12.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean10.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean11.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean14.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean13.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean16.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean17.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean24.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean18.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean19.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean20.jpg" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean30.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean31.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean21.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean26.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean27.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean28.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean22.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean25.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean29.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean49.jpg" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean41.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean42.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean43.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean38.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean32.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean36.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean35.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean33.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean34.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean37.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean39.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean40.webp" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean47.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean48.webp" class="slide-img img-portrait" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean46.webp" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean44.webp" class="slide-img img-landscape" />
+          </div>
+          <div class="slide-item">
+            <img src="e-bean45.webp" class="slide-img img-portrait" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+     <p>详细资讯：<a href="https://forevergdragon.com/?s=bean+pole" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        FOREVER GDRAGON</a></p><br/>
+    <hr class="full-width-line" />
+  </div>
+
+  <br><br><br>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="endorsementtt.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+
+</main>
+<script src="player.js"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="#"]');
+    if (link) {
+        const href = link.getAttribute('href');
+        
+        if (href.includes('.html')) {
+            return;
+        }
+        
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            setTimeout(function() {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+                
+                window.history.pushState(null, null, '#' + targetId);
+            }, 50);
+        }
+    }
+});
+
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        setTimeout(function() {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+            }
+        }, 300);
+    }
+});
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
+
+  </script>
+
+</body></html>
