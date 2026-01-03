@@ -343,7 +343,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -352,6 +353,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -385,25 +392,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   .toggle-btn {
@@ -573,8 +566,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>概念迷你专辑《でぃらいと》听起来很有趣。你是如何想到这个概念的？<br/>
           <span style="color: #33FFFF;">大声：</span>在2014年日本D-LITE DLive D'SLOVE巡回演唱会上，我演唱了《古日记》（原唱和田亚希子）和日语版的《Nalbwa Gwisoon》，反响非常好，我自己也唱得很开心。眼看就要到年底的派对季了，我想做一张大家都能在卡拉OK里唱的专辑，让大家玩得尽兴。我的MV里也展现了有趣的舞蹈编排，希望大家能在派对上边唱边跳
-          <button id="expandBtn6" class="toggle-btn" onclick="toggleList(6, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList6" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>所以您在巡演期间提到的“秋季趣味项目”就是关于这个的<br/>
           <span style="color: #33FFFF;">大声：</span>是的。Nalbwa Gwisoon 和 Daebakiya 这两首 Trot 歌曲非常符合专辑的概念，我还想再加两三首。巡演的时候我唱过 Furui Nikki，所以就决定把它也收录进去，后来我又选了 Dounimo Tomaranai，这首歌是我在找歌的时候听的</li>
           <br/><li><span style="color: #FF66CC;">问：</span>《Nalbwa Gwisoon》由前山田健一（又名Hyadain）翻译。歌词非常独特<br/>
@@ -619,7 +612,7 @@
           <span style="color: #33FFFF;">大声：</span>BIGBANG现在面临的难题是“我们该如何继续存在下去？”我们必须创作出更好的作品，实现更高的目标。这种想法让我们很难制作专辑，制作过程也越来越耗时。此外，与出道时相比，现在听我们音乐的人更多了，这也让我们需要时间来创作新歌。但我们始终铭记着，我们想创作出即使过了10年、20年，人们依然能感受到新鲜感的音乐</li>
           <br/><li><span style="color: #FF66CC;">问：</span>听到“秋天”这个词，你会想到什么？<br/>
           <span style="color: #33FFFF;">大声：</span>秋天是“准备”的季节。我喜欢冬天，所以秋天是准备去滑雪、泡温泉和参加派对的季节。我觉得大家都应该听听我的迷你专辑，为派对做好准备（笑）。我在派对上会唱《Nalbwa Gwisoon》。我们在仁川亚运会表演结束后办了个庆功派对。我们去了卡拉OK，G-DRAGON放了《Nalbwa Gwisoon》这首歌，还叫到了我的名字。我赶紧跑过去，他把麦克风递给我，我就唱了。我随时都准备好唱这首歌（笑）
-          <button id="collapseBtn4=6" class="toggle-btn" onclick="toggleList(6, false)" style="margin-left:10px;">收回</button></li>          
+          <button id="collapseBtn4=6" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></li>          
         </ol>
       </div>
     </div>
@@ -628,13 +621,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="1405112.webp" class="slide-img img-landscape" />
+            <img src="1405112.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="140511.webp" class="slide-img img-landscape" />
+            <img src="140511.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1405111.webp" class="slide-img img-landscape" />
+            <img src="1405111.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -678,8 +671,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>你们之前的专辑《D'scover》是一张J-Pop翻唱专辑，《D'slove》则是一张以原创歌曲为主的专辑。听这些歌的时候，你们有什么感受？<br/>
           <span style="color: #33FFFF;">大声：</span>这张专辑的主题是“爱”。我用歌曲来描绘所有情感中最强烈、最温暖的感受——“爱”。比如《Rainy Rainy》和《Dress》这两首歌，都是和日本作曲家一起创作的。最初，这两首歌的歌名就叫《Rainy Rainy》和《Dress》。我觉得挺好，所以根据自己的一些经历填上了歌词
-          <button id="expandBtn4" class="toggle-btn" onclick="toggleList(4, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList4" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>这次你也参与了作词<br/>
           <span style="color: #33FFFF;">大声：</span>是的，我先用韩语写了歌词，然后找人帮忙翻译成日语。有几个日语版本，所以我先用日语歌词唱了几遍，看看哪个版本更贴切。如果发音不同，歌曲也会随之改变</li>
           <br/><li><span style="color: #FF66CC;">问：</span>你之前翻唱J-Pop歌曲的经验对你有帮助吗？<br/>
@@ -708,7 +701,7 @@
           <span style="color: #33FFFF;">大声：</span>一位艺人翻唱了我翻唱专辑里一首歌的作品。在那之前，我收到了畑元宏的新演唱会DVD作为礼物。我想在日本巡演结束后观看</li>
           <br/><li><span style="color: #FF66CC;">问：</span>最近最喜欢的日语短语是什么？<br/>
           <span style="color: #33FFFF;">大声：</span>ちやほや (Chiyahoya)。我在韩语课上学到了这句话。它听起来很可爱，意思也很有趣。我只听了一遍就记住了（笑）
-          <button id="collapseBtn4" class="toggle-btn" onclick="toggleList(4, false)" style="margin-left:10px;">收回</button></li>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></li>          
         </ol>
       </div>
     </div>
@@ -717,13 +710,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="140805.jpg" class="slide-img img-portrait" />
+            <img src="140805.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1408051.jpg" class="slide-img img-landscape" />
+            <img src="1408051.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1408052.jpg" class="slide-img img-landscape" />
+            <img src="1408052.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -808,25 +801,45 @@
         document.getElementById("footer").innerHTML = data;
       });
 
-  function toggleList(index, show) {
-    const list     = document.getElementById(`celebrityList${index}`);
-    const expand   = document.getElementById(`expandBtn${index}`);
-    const collapse = document.getElementById(`collapseBtn${index}`);
-
-    if (!list || !expand) return;
-
-    if (show) {
-      list.style.display = "block";
-      if (expand)   expand.style.display = "none";
-      if (collapse) collapse.style.display = "inline-block";
-      list.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else {
-      list.style.display = "none";
-      if (expand)   expand.style.display = "inline-block";
-      if (collapse) collapse.style.display = "none";
-      expand.scrollIntoView({ behavior: "smooth", block: "center" });
+  function toggleList(button, show) {
+  const listItem = button.closest('li');
+  
+  if (show) {
+    let nestedList = listItem.querySelector('ol');
+    if (!nestedList) {
+      nestedList = listItem.nextElementSibling;
+    }
+    
+    if (nestedList && nestedList.tagName === 'OL') {
+      nestedList.style.display = "block";
+      button.style.display = "none";
+      nestedList.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  } else {
+    const nestedList = button.closest('ol');
+    
+    if (nestedList) {
+      nestedList.style.display = "none";
+      
+      let parentLi = nestedList.parentElement.closest('li');
+      if (!parentLi) {
+        parentLi = nestedList.previousElementSibling;
+        while (parentLi && parentLi.tagName !== 'LI') {
+          parentLi = parentLi.previousElementSibling;
+        }
+      }
+      
+      if (parentLi) {
+        const expandBtns = parentLi.querySelectorAll('[onclick*="true"]');
+        expandBtns.forEach(btn => {
+          btn.style.display = "inline-block";
+        });
+        
+        parentLi.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
     }
   }
+}
 
 const sliderStates = new Map();
 

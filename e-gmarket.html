@@ -341,7 +341,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -350,6 +351,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -383,25 +390,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   </style>
@@ -458,19 +451,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-gmarket14.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket14.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket10.webp" class="slide-img img-landscape" />
+            <img src="e-gmarket10.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket12.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket12.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket13.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket13.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket11.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket11.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -498,28 +491,28 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-gmarketw.jpeg" class="slide-img img-landscape" />
+            <img src="e-gmarketw.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarketw1.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarketw1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarketw2.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarketw2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarketw3.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarketw3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarketw4.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarketw4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarketw5.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarketw5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarketw6.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarketw6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarketw7.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarketw7.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -550,28 +543,28 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-gmarket2.jpeg" class="slide-img img-landscape" />
+            <img src="e-gmarket2.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket3.jpeg" class="slide-img img-landscape" />
+            <img src="e-gmarket3.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket9.webp" class="slide-img img-landscape" />
+            <img src="e-gmarket9.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket5.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket1.jpeg" class="slide-img img-landscape" />
+            <img src="e-gmarket1.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket6.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket7.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket7.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket4.png" class="slide-img img-portrait" />
+            <img src="e-gmarket4.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -586,31 +579,31 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-gmarket18.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket18.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket19.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket19.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket29.png" class="slide-img img-landscape" />
+            <img src="e-gmarket29.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket28.png" class="slide-img img-landscape" />
+            <img src="e-gmarket28.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket20.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket20.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket24.jpg" class="slide-img img-portrait" />
+            <img src="e-gmarket24.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket15.jpg" class="slide-img img-portrait" />
+            <img src="e-gmarket15.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket16.jpg" class="slide-img img-portrait" />
+            <img src="e-gmarket16.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket17.jpg" class="slide-img img-portrait" />
+            <img src="e-gmarket17.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -633,19 +626,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-gmarket30.png" class="slide-img img-landscape" />
+            <img src="e-gmarket30.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket33.png" class="slide-img img-landscape" />
+            <img src="e-gmarket33.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket35.png" class="slide-img img-landscape" />
+            <img src="e-gmarket35.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket31.png" class="slide-img img-landscape" />
+            <img src="e-gmarket31.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket32.png" class="slide-img img-landscape" />
+            <img src="e-gmarket32.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -685,25 +678,25 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-gmarket21.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket21.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket27.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket27.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket34.png" class="slide-img img-landscape" />
+            <img src="e-gmarket34.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket22.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket22.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket28.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket28.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket23.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket23.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket26.jpg" class="slide-img img-portrait" />
+            <img src="e-gmarket26.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -718,19 +711,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-gmarket29.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket29.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket30.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket30.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket37.png" class="slide-img img-landscape" />
+            <img src="e-gmarket37.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket31.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket31.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket32.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket32.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -749,25 +742,25 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-gmarket45.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket45.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket.jpeg" class="slide-img img-portrait" />
+            <img src="e-gmarket.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket47.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket47.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket8.jpg" class="slide-img img-portrait" />
+            <img src="e-gmarket8.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket46.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket46.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket48.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket48.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket49.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket49.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -782,22 +775,22 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-gmarket33.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket33.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket36.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket36.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket34.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket34.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket35.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket35.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket37.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket37.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket25.jpg" class="slide-img img-portrait" />
+            <img src="e-gmarket25.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -812,22 +805,22 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-gmarket41.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket41.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket38.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket38.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket39.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket39.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket44.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket44.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket40.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket40.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket43.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket43.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -842,19 +835,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-gmarket52.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket52.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket55.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket55.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket53.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket53.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket54.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket54.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket56.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket56.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -869,19 +862,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-gmarket61.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket61.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket57.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket57.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket58.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket58.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket59.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket59.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket60.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket60.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1000,16 +993,16 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-gmarket73.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket73.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket74.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket74.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket75.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket75.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket76.jpg" class="slide-img img-landscape" />
+            <img src="e-gmarket76.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1074,34 +1067,34 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-gmarket63.webp" class="slide-img img-landscape" />
+            <img src="e-gmarket63.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket64.webp" class="slide-img img-landscape" />
+            <img src="e-gmarket64.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket67.webp" class="slide-img img-landscape" />
+            <img src="e-gmarket67.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket66.webp" class="slide-img img-landscape" />
+            <img src="e-gmarket66.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket65.webp" class="slide-img img-landscape" />
+            <img src="e-gmarket65.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket68.webp" class="slide-img img-landscape" />
+            <img src="e-gmarket68.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket69.webp" class="slide-img img-landscape" />
+            <img src="e-gmarket69.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket70.webp" class="slide-img img-landscape" />
+            <img src="e-gmarket70.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket72.webp" class="slide-img img-landscape" />
+            <img src="e-gmarket72.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-gmarket71.jpg" class="slide-img img-portrait" />
+            <img src="e-gmarket71.jpg" class="slide-img" />
           </div>
         </div>
       </div>

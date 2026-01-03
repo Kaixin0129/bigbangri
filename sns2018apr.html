@@ -353,7 +353,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -362,6 +363,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -395,25 +402,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   </style>
@@ -467,10 +460,10 @@
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="180410.jpg" class="slide-img img-landscape" />
+              <img src="180410.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1804101.jpg" class="slide-img img-portrait" />
+              <img src="1804101.jpg" class="slide-img" />
             </div>
           </div>
         </div>
@@ -500,10 +493,10 @@ Aori拉面安山店位于京畿道安山市檀园区古栈洞534-3,A栋2层，�
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="180411.png" class="slide-img img-landscape" />
+              <img src="180411.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1804111.png" class="slide-img img-portrait" />
+              <img src="1804111.png" class="slide-img" />
             </div>
           </div>
         </div>
@@ -532,10 +525,10 @@ Aori 安山店~</p>
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="1804112.png" class="slide-img img-portrait" />
+              <img src="1804112.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1804113.png" class="slide-img img-portrait" />
+              <img src="1804113.png" class="slide-img" />
             </div>
           </div>
         </div>
@@ -567,19 +560,19 @@ AORI拉面力求温暖的不仅是胃，还有孤独症者的心。
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="180411.webp" class="slide-img img-portrait" />
+              <img src="180411.webp" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1804111.jpg" class="slide-img img-portrait" />
+              <img src="1804111.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1804112.jpg" class="slide-img img-portrait" />
+              <img src="1804112.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1804113.jpg" class="slide-img img-portrait" />
+              <img src="1804113.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1804114.jpg" class="slide-img img-portrait" />
+              <img src="1804114.jpg" class="slide-img" />
             </div>
           </div>
         </div>

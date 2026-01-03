@@ -343,7 +343,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -352,6 +353,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -385,25 +392,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   .toggle-btn {
@@ -703,8 +696,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>作为团队的队长和制作人，你一定对这张新专辑有着特殊的感情。对于专辑在韩国本土的宣传活动即将结束，你有什么感想？<br/>
           <span style="color: #33FFFF;">GD：</span>虽然时间短暂，但意义非凡。在考虑其他人对这张专辑的评价之前，我想说，这标志着Bigbang的全新黄金时代。你之前以小分队GD&TOP成员的身份在一次采访中说过，还有一次重磅炸弹等着给大家带来惊喜。我觉得《ALIVE》就是你所说的“重磅炸弹”（笑）。我对这张专辑非常满意。虽然宣传时间很短，但我认为我们已经展现了足够的实力，没有任何遗憾。今年成员们都有个人专辑要发行，我觉得我们可以保持这种势头
-          <button id="expandBtn1" class="toggle-btn" onclick="toggleList(1, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList1" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>今年对Bigbang来说是一个转折点，要摆脱之前表演《Lier》时留下的形象。这也意味着你们为了创造新的事物，一定经历了一段冒险之旅<br/>
           <span style="color: #33FFFF;">GD：</span>我发行GD&TOP的时候就开始和Teddy以及公司其他工作人员讨论这个问题了。我们一致认为，与其追赶潮流，不如永远走在别人前面。而且，我们确信自己做的一切都是正确的。除了在时尚和音乐方面取得成功之外，对我们来说，创作自己热爱的作品也很重要。如果我们对自己所做的事情充满信心和把握，我们知道总有一天会有人和我们站在一起。最终我们还是成功了，但我称之为一次成功的“冒险”</li>
           <br/><li><span style="color: #FF66CC;">问：</span>像《BAD BOY》和《BLUE》这样的歌曲与其他K-pop偶像的音乐截然不同。它们没有集体合唱，也没有明确划分成员的演唱部分<br/>
@@ -747,7 +740,7 @@
           <span style="color: #33FFFF;">GD：</span>那时候我什么都不知道。无论是悲伤还是快乐，我都欣然接受。我当时很单纯也很天真，但正因为现在想得太多，我才知道如何通过音乐与人建立联系。这是我24岁时最大的优势</li>
           <br/><li><span style="color: #FF66CC;">问：</span>那么，对于24岁的G-Dragon来说，Big Bang这个组合意味着什么呢？<br/>
           <span style="color: #33FFFF;">GD：</span>我们不会改变。就像我一直说的，成员们是我的武器、我的家人和我的盔甲。我之所以把他们比作那三个人，是因为我最近看了动作电影《复仇者联盟》
-          <button id="collapseBtn1" class="toggle-btn" onclick="toggleList(1, false)" style="margin-left:10px;">收回</button></p>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
         </ol>
       </div>
     </div>
@@ -768,8 +761,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>你们在韩国的宣传活动已经结束。感觉你们一年才能完成的事情，在短短三个月内就全部完成了。感觉如何？<br/>
           <span style="color: #33FFFF;">太阳：</span>虽然很忙，但对我个人而言，感觉很好，因为这算是一个全新的开始。如果放在以前，像这样进行音乐活动肯定会很辛苦。但这次，结果相当成功，在最艰难的时期发行专辑反而对我们有所帮助。而且我们对新专辑也很有信心
-          <button id="expandBtn2" class="toggle-btn" onclick="toggleList(2, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList2" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>这真的像是Bigbang的一个全新开始。你们不仅在亚洲，在美国和欧洲也获得了积极的反响。你们甚至获得了MTV EMA的奖项，并且在没有任何特别宣传的情况下就登上了Billboard排行榜<br/>
           <span style="color: #33FFFF;">太阳：</span>我非常感谢大家对《ALIVE》的喜爱，这感觉既是莫大的荣幸，也是自然而然的。我以前就梦想着这一天的到来</li>
           <br/><li><span style="color: #FF66CC;">问：</span>你们想象过这一切会发生吗？<br/>
@@ -812,7 +805,7 @@
           <span style="color: #33FFFF;">太阳：</span>每当我想起过去，我都觉得自己很傻。（笑）我不知道该不该这么说（笑），但我那时候真的很纯真天真</li>
           <br/><li><span style="color: #FF66CC;">问：</span>最后一个问题。Bigbang 对太阳来说意味着什么？<br/>
           <span style="color: #33FFFF;">太阳：</span>每当有人问起Bigbang，我都会告诉记者“Bigbang 就是 Bigbang”。我觉得这是对这个问题最恰当的回答。无论我用什么比喻，都无法真正代表我们这个组合。别人怎么看待我们并不会影响我们是谁，而且我们未来的热度也可能会下降。但我并不害怕。就算我们遭遇意外，无法再登上舞台，也没关系。我们能够继续做音乐，是因为我们五个人很享受在一起的时光。我们都喜欢音乐，无论我们去哪里，无论我们做什么，我都很感激我们能在一起。我无所畏惧，事情就该如此
-          <button id="collapseBtn2" class="toggle-btn" onclick="toggleList(2, false)" style="margin-left:10px;">收回</button></p>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
         </ol>
       </div>
     </div>
@@ -833,8 +826,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>你们凭借最新专辑再次获得了广泛关注。宣传活动即将结束，感觉如何？<br/>
           <span style="color: #33FFFF;">TOP：</span>在过去七年发行的所有作品中，《ALIVE》是我们最用心制作的一张。我们格外注重每一个细节，力求完美，所以这可能是我们出道以来准备工作最艰难的一张专辑。在这个过程中，我们身心都遇到了很多问题
-          <button id="expandBtn3" class="toggle-btn" onclick="toggleList(3, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList3" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>这真是个出乎意料的答案。其他成员告诉我，他们玩得很开心<br/>
           <span style="color: #33FFFF;">TOP：</span>为了把所有能想到的东西都融入到专辑里，我耗尽了精力去享受这个过程。如果宣传期再长一些，我恐怕就无法坚持下去了。因为我的舞台概念和真实的我性格有很大的差距，所以我有很多事情需要操心</li>
           <br/><li><span style="color: #FF66CC;">问：</span>可能正因如此，才给人留下了你努力用近乎完美的演技和舞台表现力来呈现给粉丝的印象<br/>
@@ -879,7 +872,7 @@
           <span style="color: #33FFFF;">TOP：</span>其实，如果大家不再喜欢我们了，我想我不会继续在Bigbang发展。如果真到了那一天，我并不介意不再在舞台上唱歌跳舞。我现在很享受做自己喜欢的事情（音乐），把我们经历过的一切都抛在脑后。我不想让这段美好的时光消逝。我希望Bigbang的美好回忆能够被永远珍藏，也希望其他人能有同样的感受</li>
           <br/><li><span style="color: #FF66CC;">问：</span>抛开对未来的担忧，你觉得Bigbang现在是怎样的一支队伍？<br/>
           <span style="color: #33FFFF;">TOP：</span>我们确实受到了很多关注，不仅在国内，海外也很受欢迎。我不是因为身在其中才这么说，也不是因为我自大。我毫不怀疑我们现在比以前更受欢迎，我相信Bigbang在享受每一刻的同时，也能在每一张专辑中展现出更多新的元素
-          <button id="collapseBtn3" class="toggle-btn" onclick="toggleList(3, false)" style="margin-left:10px;">收回</button></p>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
         </ol>
       </div>
     </div>
@@ -900,8 +893,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>你们在国内的活动已经结束了，但看起来依然很忙，在国外有很多活动，还有广告代言<br/>
           <span style="color: #33FFFF;">胜利：</span>可能没有你们想象的那么糟糕。看起来忙碌好像已经成了我们的形象（笑）。其实，最近我们经历了很多事情，压力很大。能上的电视节目有限，还要背负粉丝们的期望，感觉肩负着全世界的重担。所以我们专注于展现我们依然充满活力。我努力展现自己严肃的一面，而不是像以前那样活泼开朗。部分原因是希望得到其他成员的认可和肯定
-          <button id="expandBtn4" class="toggle-btn" onclick="toggleList(4, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList4" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>《BLUE》发行时，你们凭借开头部分令人惊喜的干净利落的旋律获得了音乐评论家的好评<br/>
           <span style="color: #33FFFF;">胜利：</span>录制这首歌的时候其实挺有挑战性的。在Bigbang的歌曲中，我唱副歌的次数屈指可数。唱开头的时候我压力很大，但G-Dragon鼓励我说：“只有你的声音才能让这首歌完美。我创作这首歌的时候脑海里想的就是你的声音。” 我记得我们在录制过程中反复修改了一些地方</li>
           <br/><li><span style="color: #FF66CC;">问：</span>Bigbang以前的主打歌都比较充满活力和激情，而《BLUE》则比较平静，让人上瘾。确实风格很不一样<br/>
@@ -934,7 +927,7 @@
           <span style="color: #33FFFF;">胜利：</span>关键在于不断努力，保持稳定。我并不比别人优秀，但我努力不让自己失败。三年前，我告诉YG娱乐的CEO杨贤硕：“我会非常努力的。”但他那句“如果你不努力，你会怎么样？”让我震惊不已。我觉得这是我在Bigbang出道以来听过最难忘的话。但他说的太对了。我“必须”努力，不仅是为了公司和其他人，也是为了我自己。所以，从某种意义上说，我没必要再提醒别人我会努力，其他成员也一样。杨或许看起来像个严厉的教练，但他那天跟我说的话真的点燃了我内心的激情</li>
           <br/><li><span style="color: #FF66CC;">问：</span>除了需要达成的目标之外，Bigbang对你来说意味着什么？<br/>
           <span style="color: #33FFFF;">胜利：</span>Bigbang是我想要相伴终生的组合。其他成员都比我年长，但有时我觉得他们就像我的挚友。因为我把一生都奉献给了这个行业，没有中学和高中时期的美好回忆，所以Bigbang的成员对我来说意义非凡。我们虽然没有血缘关系，但我可以毫不犹豫地说，我想和他们成为兄弟。我们一起经历了风风雨雨，如今形影不离。我想，没有什么能将我们分开
-          <button id="collapseBtn4" class="toggle-btn" onclick="toggleList(4, false)" style="margin-left:10px;">收回</button></p>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
         </ol>
       </div>
     </div>
@@ -955,8 +948,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>完成这次宣传活动对你来说意义或许比其他成员更为重大。你会如何表达自己的感受呢？<br/>
           <span style="color: #33FFFF;">大声：</span>去年发生了很多事，也正因如此，我肩负着巨大的压力。我也曾对这段时间是否应该继续活动感到犹豫。但是，相比于我花费在担忧上的时间和精力，我作为团队成员所感受到的爱却远胜于这些。现在回想起来，所有这些经历都让我们有机会建立更牢固的纽带，并肩前行。所以，我想说，这张专辑的宣传期是我歌唱生涯中最幸福的时光
-          <button id="expandBtn5" class="toggle-btn" onclick="toggleList(5, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList5" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>《BLUE》给人一种冰雪融化的感觉。考虑到你的处境，你在演唱这首歌时一定思绪万千吧<br/>
           <span style="color: #33FFFF;">大声：</span>我在舞台上的时候，不会把个人经历和感受联系起来。我只是尽到歌手的职责。所以，我基本上是想把《BLUE》这首歌里蕴含的孤独和寂寞传递出去，而不是袒露自己的个人情感。当然，我也可以反思一下自己的经历，毕竟最近我经历了很多，也感到很孤独</li>
           <br/><li><span style="color: #FF66CC;">问：</span>那是不是意味着你现在在舞台上能够专注于唱歌了？你刚才高高举起手指指向天空，表现得很不错，也确实吸引了观众的目光<br/>
@@ -991,7 +984,7 @@
           <span style="color: #33FFFF;">大声：</span>六年前我还是个阴郁的孩子。来到YG娱乐后才开始学跳舞，总是忙着追赶别人。而且，我当时一点自信都没有。即使现在和别人在一起，我也会感觉自己失去了自我。你可以说我不怎么表达自己的想法，也不容易被别人左右，但我喜欢现在的自己。其他成员个性都很强，在团队里做个调解人挺好的。而且，我还有很多事情要做。即使我不说出口，我相信他们也知道他们对我来说有多重要</li>
           <br/><li><span style="color: #FF66CC;">问：</span>Bigbang对你来说意味着什么呢？<br/>
           <span style="color: #33FFFF;">大声：</span>我们只是……配合得非常好，彼此之间也很有默契。就像五个真正热爱音乐的男生组成的团体。现在我觉得成员们比我的儿时好友还要亲近。我真的很感激能遇到他们，我怀疑是否还有哪个团队能像我们一样，七年多来一直拥有同一个目标
-          <button id="collapseBtn5" class="toggle-btn" onclick="toggleList(5, false)" style="margin-left:10px;">收回</button></p>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
         </ol>
       </div>
     </div>
@@ -1375,25 +1368,45 @@
         document.getElementById("footer").innerHTML = data;
       });
 
-  function toggleList(index, show) {
-    const list     = document.getElementById(`celebrityList${index}`);
-    const expand   = document.getElementById(`expandBtn${index}`);
-    const collapse = document.getElementById(`collapseBtn${index}`);
-
-    if (!list || !expand) return;
-
-    if (show) {
-      list.style.display = "block";
-      if (expand)   expand.style.display = "none";
-      if (collapse) collapse.style.display = "inline-block";
-      list.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else {
-      list.style.display = "none";
-      if (expand)   expand.style.display = "inline-block";
-      if (collapse) collapse.style.display = "none";
-      expand.scrollIntoView({ behavior: "smooth", block: "center" });
+  function toggleList(button, show) {
+  const listItem = button.closest('li');
+  
+  if (show) {
+    let nestedList = listItem.querySelector('ol');
+    if (!nestedList) {
+      nestedList = listItem.nextElementSibling;
+    }
+    
+    if (nestedList && nestedList.tagName === 'OL') {
+      nestedList.style.display = "block";
+      button.style.display = "none";
+      nestedList.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  } else {
+    const nestedList = button.closest('ol');
+    
+    if (nestedList) {
+      nestedList.style.display = "none";
+      
+      let parentLi = nestedList.parentElement.closest('li');
+      if (!parentLi) {
+        parentLi = nestedList.previousElementSibling;
+        while (parentLi && parentLi.tagName !== 'LI') {
+          parentLi = parentLi.previousElementSibling;
+        }
+      }
+      
+      if (parentLi) {
+        const expandBtns = parentLi.querySelectorAll('[onclick*="true"]');
+        expandBtns.forEach(btn => {
+          btn.style.display = "inline-block";
+        });
+        
+        parentLi.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
     }
   }
+}
 
 const sliderStates = new Map();
 

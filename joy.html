@@ -343,7 +343,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -352,6 +353,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -385,25 +392,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   </style>
@@ -705,10 +698,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="110526.jpeg" class="slide-img img-portrait" />
+            <img src="110526.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="joy4.jpg" class="slide-img img-landscape" />
+            <img src="joy4.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -800,16 +793,16 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="joy5.jpg" class="slide-img img-landscape" />
+            <img src="joy5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="joy6.png" class="slide-img img-landscape" />
+            <img src="joy6.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="joy7.png" class="slide-img img-landscape" />
+            <img src="joy7.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="joy8.png" class="slide-img img-landscape" />
+            <img src="joy8.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -977,13 +970,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="joy1.jpg" class="slide-img img-portrait" />
+            <img src="joy1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="joy2.jpg" class="slide-img img-portrait" />
+            <img src="joy2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="joy3.png" class="slide-img img-landscape" />
+            <img src="joy3.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1009,13 +1002,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="rc1.jpg" class="slide-img img-landscape" />
+            <img src="rc1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="rc2.jpg" class="slide-img img-landscape" />
+            <img src="rc2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="rc3.jpg" class="slide-img img-landscape" />
+            <img src="rc3.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1081,13 +1074,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="xb1.jpeg" class="slide-img img-portrait" />
+            <img src="xb1.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="xb2.jpeg" class="slide-img img-portrait" />
+            <img src="xb2.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="xb3.jpeg" class="slide-img img-landscape" />
+            <img src="xb3.jpeg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1111,34 +1104,34 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="j2.jpg" class="slide-img img-portrait" />
+            <img src="j2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="j1.jpg" class="slide-img img-portrait" />
+            <img src="j1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="j4.jpg" class="slide-img img-portrait" />
+            <img src="j4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="j3.jpg" class="slide-img img-portrait" />
+            <img src="j3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="j7.jpg" class="slide-img img-portrait" />
+            <img src="j7.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="j10.jpg" class="slide-img img-portrait" />
+            <img src="j10.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="j11.jpg" class="slide-img img-landscape" />
+            <img src="j11.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="j5.jpg" class="slide-img img-landscape" />
+            <img src="j5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="j8.jpg" class="slide-img img-landscape" />
+            <img src="j8.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="j9.jpg" class="slide-img img-landscape" />
+            <img src="j9.jpg" class="slide-img" />
           </div>
         </div>
       </div>

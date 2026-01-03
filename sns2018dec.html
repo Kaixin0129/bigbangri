@@ -353,7 +353,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -362,6 +363,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -395,25 +402,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   </style>
@@ -474,16 +467,16 @@
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="1812112.png" class="slide-img img-portrait" />
+              <img src="1812112.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1812113.png" class="slide-img img-portrait" />
+              <img src="1812113.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1812114.png" class="slide-img img-portrait" />
+              <img src="1812114.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1812115.png" class="slide-img img-portrait" />
+              <img src="1812115.png" class="slide-img" />
             </div>
           </div>
         </div>
@@ -514,10 +507,10 @@ Aori拉面53号店，国内第44号店已于12月01日星期六在光州U•Squa
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="181211.png" class="slide-img img-landscape" />
+              <img src="181211.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1812111.png" class="slide-img img-portrait" />
+              <img src="1812111.png" class="slide-img" />
             </div>
           </div>
         </div>
@@ -544,13 +537,13 @@ Aori拉面53号店，国内第44号店已于12月01日星期六在光州U•Squa
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="181212.jpg" class="slide-img img-portrait" />
+              <img src="181212.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1812121.jpg" class="slide-img img-portrait" />
+              <img src="1812121.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1812122.jpg" class="slide-img img-portrait" />
+              <img src="1812122.jpg" class="slide-img" />
             </div>
           </div>
         </div>
@@ -577,10 +570,10 @@ Aori拉面53号店，国内第44号店已于12月01日星期六在光州U•Squa
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="18121211.jpg" class="slide-img img-landscape" />
+              <img src="18121211.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="18121212.jpg" class="slide-img img-portrait" />
+              <img src="18121212.jpg" class="slide-img" />
             </div>
           </div>
         </div>
@@ -607,13 +600,13 @@ Aori拉面53号店，国内第44号店已于12月01日星期六在光州U•Squa
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="181219.jpg" class="slide-img img-landscape" />
+              <img src="181219.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1812191.jpg" class="slide-img img-landscape" />
+              <img src="1812191.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1812192.jpg" class="slide-img img-portrait" />
+              <img src="1812192.jpg" class="slide-img" />
             </div>
           </div>
         </div>
@@ -640,10 +633,10 @@ Aori拉面53号店，国内第44号店已于12月01日星期六在光州U•Squa
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="181220.jpg" class="slide-img img-landscape" />
+              <img src="181220.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1812201.jpg" class="slide-img img-portrait" />
+              <img src="1812201.jpg" class="slide-img" />
             </div>
           </div>
         </div>
@@ -677,10 +670,10 @@ Aori Ramen 位于越南最大城市的 CBD 第一区。<br/>
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="181227.png" class="slide-img img-portrait" />
+              <img src="181227.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1812271.png" class="slide-img img-portrait" />
+              <img src="1812271.png" class="slide-img" />
             </div>
           </div>
         </div>

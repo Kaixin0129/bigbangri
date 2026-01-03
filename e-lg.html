@@ -341,7 +341,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -350,6 +351,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -383,25 +390,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   </style>
@@ -481,28 +474,28 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lg.webp" class="slide-img img-landscape" />
+            <img src="e-lg.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw11.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpw11.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw14.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpw14.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw16.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpw16.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw15.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpw15.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw17.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpw17.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw12.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpw12.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw13.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpw13.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -529,22 +522,22 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lglpw10.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpw10.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg1.webp" class="slide-img img-portrait" />
+            <img src="e-lg1.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg2.webp" class="slide-img img-portrait" />
+            <img src="e-lg2.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg3.webp" class="slide-img img-portrait" />
+            <img src="e-lg3.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg4.webp" class="slide-img img-portrait" />
+            <img src="e-lg4.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg5.webp" class="slide-img img-portrait" />
+            <img src="e-lg5.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -587,64 +580,64 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lgsuit18.jpg" class="slide-img img-landscape" />
+            <img src="e-lgsuit18.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit19.jpg" class="slide-img img-landscape" />
+            <img src="e-lgsuit19.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit.webp" class="slide-img img-landscape" />
+            <img src="e-lgsuit.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit1.webp" class="slide-img img-landscape" />
+            <img src="e-lgsuit1.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit11.webp" class="slide-img img-landscape" />
+            <img src="e-lgsuit11.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit6.webp" class="slide-img img-portrait" />
+            <img src="e-lgsuit6.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit2.webp" class="slide-img img-portrait" />
+            <img src="e-lgsuit2.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit9.webp" class="slide-img img-landscape" />
+            <img src="e-lgsuit9.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit8.webp" class="slide-img img-portrait" />
+            <img src="e-lgsuit8.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit13.webp" class="slide-img img-portrait" />
+            <img src="e-lgsuit13.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit16.webp" class="slide-img img-landscape" />
+            <img src="e-lgsuit16.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit3.webp" class="slide-img img-portrait" />
+            <img src="e-lgsuit3.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit4.webp" class="slide-img img-portrait" />
+            <img src="e-lgsuit4.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit15.webp" class="slide-img img-portrait" />
+            <img src="e-lgsuit15.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit5.webp" class="slide-img img-portrait" />
+            <img src="e-lgsuit5.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit17.webp" class="slide-img img-landscape" />
+            <img src="e-lgsuit17.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit14.webp" class="slide-img img-portrait" />
+            <img src="e-lgsuit14.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit10.webp" class="slide-img img-landscape" />
+            <img src="e-lgsuit10.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit7.webp" class="slide-img img-portrait" />
+            <img src="e-lgsuit7.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgsuit12.webp" class="slide-img img-portrait" />
+            <img src="e-lgsuit12.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -697,25 +690,25 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lg1.jpg" class="slide-img img-landscape" />
+            <img src="e-lg1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg11.webp" class="slide-img img-landscape" />
+            <img src="e-lg11.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg.jpg" class="slide-img img-landscape" />
+            <img src="e-lg.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg19.webp" class="slide-img img-landscape" />
+            <img src="e-lg19.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg2.jpg" class="slide-img img-landscape" />
+            <img src="e-lg2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg9.webp" class="slide-img img-landscape" />
+            <img src="e-lg9.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg10.webp" class="slide-img img-landscape" />
+            <img src="e-lg10.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -727,22 +720,22 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lg22.webp" class="slide-img img-portrait" />
+            <img src="e-lg22.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg17.webp" class="slide-img img-portrait" />
+            <img src="e-lg17.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg20.webp" class="slide-img img-portrait" />
+            <img src="e-lg20.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg4.jpg" class="slide-img img-landscape" />
+            <img src="e-lg4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg6.webp" class="slide-img img-portrait" />
+            <img src="e-lg6.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg7.webp" class="slide-img img-landscape" />
+            <img src="e-lg7.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -754,31 +747,31 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lg8.webp" class="slide-img img-portrait" />
+            <img src="e-lg8.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg15.webp" class="slide-img img-portrait" />
+            <img src="e-lg15.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg16.webp" class="slide-img img-portrait" />
+            <img src="e-lg16.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg14.webp" class="slide-img img-portrait" />
+            <img src="e-lg14.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg13.webp" class="slide-img img-portrait" />
+            <img src="e-lg13.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg21.webp" class="slide-img img-portrait" />
+            <img src="e-lg21.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg18.webp" class="slide-img img-portrait" />
+            <img src="e-lg18.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg12.webp" class="slide-img img-landscape" />
+            <img src="e-lg12.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg23.webp" class="slide-img img-landscape" />
+            <img src="e-lg23.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -810,19 +803,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lg47.jpg" class="slide-img img-landscape" />
+            <img src="e-lg47.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg43.webp" class="slide-img img-landscape" />
+            <img src="e-lg43.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg44.webp" class="slide-img img-landscape" />
+            <img src="e-lg44.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg45.webp" class="slide-img img-landscape" />
+            <img src="e-lg45.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg46.webp" class="slide-img img-landscape" />
+            <img src="e-lg46.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -850,25 +843,25 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lg24.webp" class="slide-img img-landscape" />
+            <img src="e-lg24.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg27.webp" class="slide-img img-portrait" />
+            <img src="e-lg27.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg30.webp" class="slide-img img-portrait" />
+            <img src="e-lg30.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg26.webp" class="slide-img img-portrait" />
+            <img src="e-lg26.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg25.webp" class="slide-img img-portrait" />
+            <img src="e-lg25.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg28.webp" class="slide-img img-portrait" />
+            <img src="e-lg28.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg29.webp" class="slide-img img-portrait" />
+            <img src="e-lg29.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -880,46 +873,46 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lg42.webp" class="slide-img img-landscape" />
+            <img src="e-lg42.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg33.webp" class="slide-img img-portrait" />
+            <img src="e-lg33.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg31.webp" class="slide-img img-portrait" />
+            <img src="e-lg31.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg32.webp" class="slide-img img-portrait" />
+            <img src="e-lg32.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg38.webp" class="slide-img img-portrait" />
+            <img src="e-lg38.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg39.webp" class="slide-img img-portrait" />
+            <img src="e-lg39.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg35.webp" class="slide-img img-portrait" />
+            <img src="e-lg35.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg36.webp" class="slide-img img-portrait" />
+            <img src="e-lg36.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg3.jpg" class="slide-img img-landscape" />
+            <img src="e-lg3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg41.webp" class="slide-img img-landscape" />
+            <img src="e-lg41.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg40.webp" class="slide-img img-portrait" />
+            <img src="e-lg40.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg53.jpg" class="slide-img img-portrait" />
+            <img src="e-lg53.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg34.webp" class="slide-img img-portrait" />
+            <img src="e-lg34.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg37.webp" class="slide-img img-portrait" />
+            <img src="e-lg37.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -962,19 +955,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lg52.jpg" class="slide-img img-landscape" />
+            <img src="e-lg52.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg49.jpg" class="slide-img img-landscape" />
+            <img src="e-lg49.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg48.jpg" class="slide-img img-landscape" />
+            <img src="e-lg48.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg50.jpg" class="slide-img img-landscape" />
+            <img src="e-lg50.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg51.jpg" class="slide-img img-landscape" />
+            <img src="e-lg51.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1006,43 +999,43 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lglp.jpg" class="slide-img img-landscape" />
+            <img src="e-lglp.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp1.png" class="slide-img img-landscape" />
+            <img src="e-lglp1.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp4.jpg" class="slide-img img-landscape" />
+            <img src="e-lglp4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp3.jpg" class="slide-img img-landscape" />
+            <img src="e-lglp3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp2.jpg" class="slide-img img-landscape" />
+            <img src="e-lglp2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp9.webp" class="slide-img img-landscape" />
+            <img src="e-lglp9.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp5.jpg" class="slide-img img-portrait" />
+            <img src="e-lglp5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw17.jpg" class="slide-img img-portrait" />
+            <img src="e-lglppw17.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw18.jpg" class="slide-img img-portrait" />
+            <img src="e-lglppw18.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw19.jpg" class="slide-img img-portrait" />
+            <img src="e-lglppw19.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw20.jpg" class="slide-img img-portrait" />
+            <img src="e-lglppw20.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp6.webp" class="slide-img img-landscape" />
+            <img src="e-lglp6.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp7.webp" class="slide-img img-landscape" />
+            <img src="e-lglp7.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1086,70 +1079,70 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lglpw9.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpw9.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp10.jpg" class="slide-img img-landscape" />
+            <img src="e-lglp10.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp11.jpg" class="slide-img img-landscape" />
+            <img src="e-lglp11.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp12.jpg" class="slide-img img-landscape" />
+            <img src="e-lglp12.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp13.jpg" class="slide-img img-landscape" />
+            <img src="e-lglp13.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp14.jpg" class="slide-img img-landscape" />
+            <img src="e-lglp14.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw4.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpw4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp20.jpg" class="slide-img img-landscape" />
+            <img src="e-lglp20.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp15.jpg" class="slide-img img-portrait" />
+            <img src="e-lglp15.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw5.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpw5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpw.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw1.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpw1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw2.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpw2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp18.jpg" class="slide-img img-portrait" />
+            <img src="e-lglp18.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw6.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpw6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw7.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpw7.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp16.jpg" class="slide-img img-portrait" />
+            <img src="e-lglp16.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw3.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpw3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp19.jpg" class="slide-img img-portrait" />
+            <img src="e-lglp19.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp17.jpg" class="slide-img img-portrait" />
+            <img src="e-lglp17.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw8.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpw8.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglp8.webp" class="slide-img img-landscape" />
+            <img src="e-lglp8.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1216,67 +1209,67 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lglpp26.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpp26.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp20.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpp20.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw12.jpg" class="slide-img img-landscape" />
+            <img src="e-lglppw12.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp14.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpp14.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp5.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpp5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp11.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpp11.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp22.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpp22.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp13.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpp13.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw6.jpg" class="slide-img img-portrait" />
+            <img src="e-lglppw6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp3.webp" class="slide-img img-landscape" />
+            <img src="e-lglpp3.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp18.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpp18.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp16.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpp16.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw9.jpg" class="slide-img img-portrait" />
+            <img src="e-lglppw9.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp6.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpp6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp4.webp" class="slide-img img-landscape" />
+            <img src="e-lglpp4.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp15.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpp15.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp23.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpp23.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw16.jpg" class="slide-img img-portrait" />
+            <img src="e-lglppw16.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp10.webp" class="slide-img img-landscape" />
+            <img src="e-lglpp10.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp19.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpp19.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp17.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpp17.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1288,79 +1281,79 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lglpp.webp" class="slide-img img-landscape" />
+            <img src="e-lglpp.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp27.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpp27.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp28.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpp28.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp12.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpp12.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp1.webp" class="slide-img img-landscape" />
+            <img src="e-lglpp1.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp30.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpp30.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw2.jpg" class="slide-img img-portrait" />
+            <img src="e-lglppw2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw.jpg" class="slide-img img-landscape" />
+            <img src="e-lglppw.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw1.jpg" class="slide-img img-landscape" />
+            <img src="e-lglppw1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw3.jpg" class="slide-img img-landscape" />
+            <img src="e-lglppw3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw4.jpg" class="slide-img img-landscape" />
+            <img src="e-lglppw4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp31.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpp31.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp32.jpeg" class="slide-img img-portrait" />
+            <img src="e-lglpp32.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp2.webp" class="slide-img img-landscape" />
+            <img src="e-lglpp2.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp25.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpp25.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp21.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpp21.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw8.jpg" class="slide-img img-landscape" />
+            <img src="e-lglppw8.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw5.jpg" class="slide-img img-portrait" />
+            <img src="e-lglppw5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpp24.jpg" class="slide-img img-portrait" />
+            <img src="e-lglpp24.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw7.jpg" class="slide-img img-landscape" />
+            <img src="e-lglppw7.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw13.jpg" class="slide-img img-landscape" />
+            <img src="e-lglppw13.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw14.jpg" class="slide-img img-landscape" />
+            <img src="e-lglppw14.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw15.jpg" class="slide-img img-landscape" />
+            <img src="e-lglppw15.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw10.jpg" class="slide-img img-landscape" />
+            <img src="e-lglppw10.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglppw11.jpg" class="slide-img img-landscape" />
+            <img src="e-lglppw11.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1397,13 +1390,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lgoo.jpg" class="slide-img img-landscape" />
+            <img src="e-lgoo.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo2.jpg" class="slide-img img-landscape" />
+            <img src="e-lgoo2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo1.jpg" class="slide-img img-landscape" />
+            <img src="e-lgoo1.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1415,13 +1408,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lgoo13.jpg" class="slide-img img-landscape" />
+            <img src="e-lgoo13.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo14.jpg" class="slide-img img-landscape" />
+            <img src="e-lgoo14.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo15.webp" class="slide-img img-landscape" />
+            <img src="e-lgoo15.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1449,37 +1442,37 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lgoo9.jpg" class="slide-img img-landscape" />
+            <img src="e-lgoo9.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo16.jpg" class="slide-img img-landscape" />
+            <img src="e-lgoo16.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo8.png" class="slide-img img-landscape" />
+            <img src="e-lgoo8.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo10.jpg" class="slide-img img-landscape" />
+            <img src="e-lgoo10.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo11.jpg" class="slide-img img-landscape" />
+            <img src="e-lgoo11.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo17.webp" class="slide-img img-portrait" />
+            <img src="e-lgoo17.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo3.jpg" class="slide-img img-landscape" />
+            <img src="e-lgoo3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo4.jpg" class="slide-img img-landscape" />
+            <img src="e-lgoo4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo5.jpg" class="slide-img img-landscape" />
+            <img src="e-lgoo5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo6.jpg" class="slide-img img-landscape" />
+            <img src="e-lgoo6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo7.jpg" class="slide-img img-landscape" />
+            <img src="e-lgoo7.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1490,19 +1483,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lgoo18.webp" class="slide-img img-landscape" />
+            <img src="e-lgoo18.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo19.webp" class="slide-img img-portrait" />
+            <img src="e-lgoo19.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo20.webp" class="slide-img img-landscape" />
+            <img src="e-lgoo20.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo21.webp" class="slide-img img-landscape" />
+            <img src="e-lgoo21.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgoo22.webp" class="slide-img img-portrait" />
+            <img src="e-lgoo22.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1554,16 +1547,16 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lg2x.jpg" class="slide-img img-landscape" />
+            <img src="e-lg2x.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg2x1.jpg" class="slide-img img-landscape" />
+            <img src="e-lg2x1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lg2x2.jpg" class="slide-img img-landscape" />
+            <img src="e-lg2x2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lglpw18.jpg" class="slide-img img-landscape" />
+            <img src="e-lglpw18.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1645,22 +1638,22 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lgob3.jpg" class="slide-img img-landscape" />
+            <img src="e-lgob3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgob.jpg" class="slide-img img-landscape" />
+            <img src="e-lgob.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgob1.jpg" class="slide-img img-landscape" />
+            <img src="e-lgob1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgob2.jpg" class="slide-img img-landscape" />
+            <img src="e-lgob2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgob4.jpg" class="slide-img img-landscape" />
+            <img src="e-lgob4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgob5.jpg" class="slide-img img-landscape" />
+            <img src="e-lgob5.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1687,22 +1680,22 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lgob10.jpg" class="slide-img img-portrait" />
+            <img src="e-lgob10.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgob6.jpg" class="slide-img img-landscape" />
+            <img src="e-lgob6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgob.png" class="slide-img img-landscape" />
+            <img src="e-lgob.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgob9.webp" class="slide-img img-landscape" />
+            <img src="e-lgob9.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgob8.webp" class="slide-img img-landscape" />
+            <img src="e-lgob8.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lgob7.jpg" class="slide-img img-landscape" />
+            <img src="e-lgob7.jpg" class="slide-img" />
           </div>
         </div>
       </div>

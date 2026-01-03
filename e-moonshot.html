@@ -341,7 +341,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -350,6 +351,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -383,25 +390,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   </style>
@@ -462,25 +455,25 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-moonshot11.webp" class="slide-img img-landscape" />
+            <img src="e-moonshot11.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot12.webp" class="slide-img img-landscape" />
+            <img src="e-moonshot12.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot14.webp" class="slide-img img-landscape" />
+            <img src="e-moonshot14.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot13.png" class="slide-img img-landscape" />
+            <img src="e-moonshot13.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot15.jpg" class="slide-img img-landscape" />
+            <img src="e-moonshot15.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot16.webp" class="slide-img img-portrait" />
+            <img src="e-moonshot16.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot17.webp" class="slide-img img-portrait" />
+            <img src="e-moonshot17.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -507,16 +500,16 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-moonshot18.webp" class="slide-img img-landscape" />
+            <img src="e-moonshot18.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot19.webp" class="slide-img img-landscape" />
+            <img src="e-moonshot19.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot20.jpg" class="slide-img img-landscape" />
+            <img src="e-moonshot20.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot21.jpg" class="slide-img img-landscape" />
+            <img src="e-moonshot21.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -532,37 +525,37 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-moonshot.jpg" class="slide-img img-landscape" />
+            <img src="e-moonshot.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot10.webp" class="slide-img img-landscape" />
+            <img src="e-moonshot10.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot1.webp" class="slide-img img-landscape" />
+            <img src="e-moonshot1.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot9.jpg" class="slide-img img-landscape" />
+            <img src="e-moonshot9.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot2.webp" class="slide-img img-landscape" />
+            <img src="e-moonshot2.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot3.webp" class="slide-img img-landscape" />
+            <img src="e-moonshot3.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot4.webp" class="slide-img img-landscape" />
+            <img src="e-moonshot4.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot5.png" class="slide-img img-landscape" />
+            <img src="e-moonshot5.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot6.png" class="slide-img img-landscape" />
+            <img src="e-moonshot6.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot7.png" class="slide-img img-landscape" />
+            <img src="e-moonshot7.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot8.png" class="slide-img img-landscape" />
+            <img src="e-moonshot8.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -581,22 +574,22 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-moonshot22.jpg" class="slide-img img-landscape" />
+            <img src="e-moonshot22.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot23.webp" class="slide-img img-portrait" />
+            <img src="e-moonshot23.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot24.jpg" class="slide-img img-landscape" />
+            <img src="e-moonshot24.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot25.jpg" class="slide-img img-landscape" />
+            <img src="e-moonshot25.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot27.webp" class="slide-img img-landscape" />
+            <img src="e-moonshot27.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot26.webp" class="slide-img img-landscape" />
+            <img src="e-moonshot26.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -615,31 +608,31 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-moonshot28.jpg" class="slide-img img-portrait" />
+            <img src="e-moonshot28.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot29.jpg" class="slide-img img-portrait" />
+            <img src="e-moonshot29.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot30.webp" class="slide-img img-portrait" />
+            <img src="e-moonshot30.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot31.jpg" class="slide-img img-portrait" />
+            <img src="e-moonshot31.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot32.jpg" class="slide-img img-portrait" />
+            <img src="e-moonshot32.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot33.jpg" class="slide-img img-landscape" />
+            <img src="e-moonshot33.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot34.webp" class="slide-img img-landscape" />
+            <img src="e-moonshot34.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot35.webp" class="slide-img img-landscape" />
+            <img src="e-moonshot35.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-moonshot36.webp" class="slide-img img-landscape" />
+            <img src="e-moonshot36.webp" class="slide-img" />
           </div>
         </div>
       </div>

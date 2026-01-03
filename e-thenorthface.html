@@ -341,7 +341,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -350,6 +351,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -383,25 +390,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   </style>
@@ -469,55 +462,55 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-north39.jpg" class="slide-img img-portrait" />
+            <img src="e-north39.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north48.jpg" class="slide-img img-portrait" />
+            <img src="e-north48.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north52.jpg" class="slide-img img-landscape" />
+            <img src="e-north52.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north53.jpg" class="slide-img img-portrait" />
+            <img src="e-north53.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north67.jpg" class="slide-img img-landscape" />
+            <img src="e-north67.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north65.jpg" class="slide-img img-portrait" />
+            <img src="e-north65.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north54.jpg" class="slide-img img-portrait" />
+            <img src="e-north54.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north66.jpg" class="slide-img img-portrait" />
+            <img src="e-north66.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north63.jpg" class="slide-img img-portrait" />
+            <img src="e-north63.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north51.jpg" class="slide-img img-portrait" />
+            <img src="e-north51.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north64.jpg" class="slide-img img-portrait" />
+            <img src="e-north64.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north50.jpg" class="slide-img img-portrait" />
+            <img src="e-north50.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north38.jpg" class="slide-img img-portrait" />
+            <img src="e-north38.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north40.jpg" class="slide-img img-portrait" />
+            <img src="e-north40.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north42.jpg" class="slide-img img-landscape" />
+            <img src="e-north42.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north68.jpg" class="slide-img img-portrait" />
+            <img src="e-north68.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north41.jpg" class="slide-img img-portrait" />
+            <img src="e-north41.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -549,97 +542,97 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-north.jpg" class="slide-img img-portrait" />
+            <img src="e-north.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north1.jpg" class="slide-img img-landscape" />
+            <img src="e-north1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north2.jpg" class="slide-img img-landscape" />
+            <img src="e-north2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north19.webp" class="slide-img img-landscape" />
+            <img src="e-north19.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north3.jpg" class="slide-img img-landscape" />
+            <img src="e-north3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north4.jpg" class="slide-img img-landscape" />
+            <img src="e-north4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north62.jpg" class="slide-img img-landscape" />
+            <img src="e-north62.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north5.jpg" class="slide-img img-landscape" />
+            <img src="e-north5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north60.jpg" class="slide-img img-landscape" />
+            <img src="e-north60.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north49.jpg" class="slide-img img-landscape" />
+            <img src="e-north49.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north7.jpg" class="slide-img img-landscape" />
+            <img src="e-north7.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north58.jpg" class="slide-img img-portrait" />
+            <img src="e-north58.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north34.jpg" class="slide-img img-landscape" />
+            <img src="e-north34.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north69.jpg" class="slide-img img-landscape" />
+            <img src="e-north69.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north35.jpg" class="slide-img img-landscape" />
+            <img src="e-north35.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north6.jpg" class="slide-img img-landscape" />
+            <img src="e-north6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north33.jpg" class="slide-img img-landscape" />
+            <img src="e-north33.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north56.jpg" class="slide-img img-landscape" />
+            <img src="e-north56.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north36.jpg" class="slide-img img-landscape" />
+            <img src="e-north36.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north61.jpg" class="slide-img img-landscape" />
+            <img src="e-north61.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north57.jpg" class="slide-img img-landscape" />
+            <img src="e-north57.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north18.webp" class="slide-img img-portrait" />
+            <img src="e-north18.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north8.jpg" class="slide-img img-landscape" />
+            <img src="e-north8.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north9.jpg" class="slide-img img-landscape" />
+            <img src="e-north9.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north28.jpg" class="slide-img img-landscape" />
+            <img src="e-north28.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north29.jpg" class="slide-img img-portrait" />
+            <img src="e-north29.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north13.jpg" class="slide-img img-landscape" />
+            <img src="e-north13.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north55.jpg" class="slide-img img-landscape" />
+            <img src="e-north55.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north32.jpg" class="slide-img img-portrait" />
+            <img src="e-north32.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north11.jpg" class="slide-img img-landscape" />
+            <img src="e-north11.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north12.jpg" class="slide-img img-landscape" />
+            <img src="e-north12.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -651,16 +644,16 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-north26.jpg" class="slide-img img-landscape" />
+            <img src="e-north26.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north37.jpg" class="slide-img img-landscape" />
+            <img src="e-north37.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north22.webp" class="slide-img img-portrait" />
+            <img src="e-north22.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north21.webp" class="slide-img img-portrait" />
+            <img src="e-north21.webp" class="slide-img" />
           </div>
           <div class="slide-item">
             <img src="e-north23.webp" class="slide-img img-landscape"/>
@@ -669,10 +662,10 @@
             <img src="e-north17.jpg" class="slide-img img-landscape"/>
           </div>
           <div class="slide-item">
-            <img src="e-north30.jpg" class="slide-img img-portrait" />
+            <img src="e-north30.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north31.jpg" class="slide-img img-portrait" />
+            <img src="e-north31.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -683,10 +676,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-north24.jpeg" class="slide-img img-portrait" />
+            <img src="e-north24.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-north15.jpg" class="slide-img img-landscape" />
+            <img src="e-north15.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
             <img src="e-north25.jpg" class="slide-img img-landscape"/>
@@ -746,76 +739,76 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-northt.jpg" class="slide-img img-landscape" />
+            <img src="e-northt.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt1.jpg" class="slide-img img-landscape" />
+            <img src="e-northt1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt13.jpg" class="slide-img img-landscape" />
+            <img src="e-northt13.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt14.jpg" class="slide-img img-landscape" />
+            <img src="e-northt14.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt2.jpg" class="slide-img img-portrait" />
+            <img src="e-northt2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt12.jpg" class="slide-img img-landscape" />
+            <img src="e-northt12.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt3.jpg" class="slide-img img-landscape" />
+            <img src="e-northt3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt10.jpg" class="slide-img img-landscape" />
+            <img src="e-northt10.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt19.jpg" class="slide-img img-landscape" />
+            <img src="e-northt19.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt16.jpg" class="slide-img img-landscape" />
+            <img src="e-northt16.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt17.jpg" class="slide-img img-landscape" />
+            <img src="e-northt17.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt18.jpg" class="slide-img img-landscape" />
+            <img src="e-northt18.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt11.jpg" class="slide-img img-landscape" />
+            <img src="e-northt11.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt21.jpg" class="slide-img img-landscape" />
+            <img src="e-northt21.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt22.jpg" class="slide-img img-landscape" />
+            <img src="e-northt22.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt20.jpg" class="slide-img img-landscape" />
+            <img src="e-northt20.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt23.jpg" class="slide-img img-landscape" />
+            <img src="e-northt23.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt8.jpg" class="slide-img img-landscape" />
+            <img src="e-northt8.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt4.jpg" class="slide-img img-landscape" />
+            <img src="e-northt4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt5.jpg" class="slide-img img-landscape" />
+            <img src="e-northt5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt15.jpg" class="slide-img img-landscape" />
+            <img src="e-northt15.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt24.jpg" class="slide-img img-landscape" />
+            <img src="e-northt24.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt6.jpg" class="slide-img img-landscape" />
+            <img src="e-northt6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt9.jpg" class="slide-img img-landscape" />
+            <img src="e-northt9.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -827,40 +820,40 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-northt34.webp" class="slide-img img-portrait" />
+            <img src="e-northt34.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt35.webp" class="slide-img img-portrait" />
+            <img src="e-northt35.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt25.jpg" class="slide-img img-portrait" />
+            <img src="e-northt25.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt36.jpg" class="slide-img img-portrait" />
+            <img src="e-northt36.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt26.jpg" class="slide-img img-portrait" />
+            <img src="e-northt26.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt27.jpg" class="slide-img img-portrait" />
+            <img src="e-northt27.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt28.jpg" class="slide-img img-portrait" />
+            <img src="e-northt28.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt29.jpg" class="slide-img img-portrait" />
+            <img src="e-northt29.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt30.jpg" class="slide-img img-portrait" />
+            <img src="e-northt30.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt31.jpg" class="slide-img img-portrait" />
+            <img src="e-northt31.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt32.jpg" class="slide-img img-portrait" />
+            <img src="e-northt32.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northt33.jpg" class="slide-img img-portrait" />
+            <img src="e-northt33.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -882,28 +875,28 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-northg1.jpg" class="slide-img img-portrait" />
+            <img src="e-northg1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northg.jpg" class="slide-img img-portrait" />
+            <img src="e-northg.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northg2.jpg" class="slide-img img-portrait" />
+            <img src="e-northg2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northg3.jpg" class="slide-img img-portrait" />
+            <img src="e-northg3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northg4.jpg" class="slide-img img-portrait" />
+            <img src="e-northg4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northg5.jpg" class="slide-img img-portrait" />
+            <img src="e-northg5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northg6.jpg" class="slide-img img-portrait" />
+            <img src="e-northg6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northg7.jpg" class="slide-img img-portrait" />
+            <img src="e-northg7.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -922,34 +915,34 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-northy.webp" class="slide-img img-portrait" />
+            <img src="e-northy.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northy6.webp" class="slide-img img-portrait" />
+            <img src="e-northy6.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northy7.jpg" class="slide-img img-landscape" />
+            <img src="e-northy7.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northy4.webp" class="slide-img img-portrait" />
+            <img src="e-northy4.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northy2.webp" class="slide-img img-portrait" />
+            <img src="e-northy2.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northy1.webp" class="slide-img img-portrait" />
+            <img src="e-northy1.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northy3.webp" class="slide-img img-portrait" />
+            <img src="e-northy3.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northy9.jpg" class="slide-img img-portrait" />
+            <img src="e-northy9.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northy8.jpg" class="slide-img img-portrait" />
+            <img src="e-northy8.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northy5.webp" class="slide-img img-portrait" />
+            <img src="e-northy5.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -968,28 +961,28 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-norths.jpg" class="slide-img img-portrait" />
+            <img src="e-norths.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-norths5.webp" class="slide-img img-portrait" />
+            <img src="e-norths5.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-norths6.webp" class="slide-img img-portrait" />
+            <img src="e-norths6.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-norths7.webp" class="slide-img img-portrait" />
+            <img src="e-norths7.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-norths1.jpg" class="slide-img img-portrait" />
+            <img src="e-norths1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-norths2.webp" class="slide-img img-portrait" />
+            <img src="e-norths2.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-norths3.webp" class="slide-img img-portrait" />
+            <img src="e-norths3.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-norths4.webp" class="slide-img img-portrait" />
+            <img src="e-norths4.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1042,28 +1035,28 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-northn21.jpg" class="slide-img img-landscape" />
+            <img src="e-northn21.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn23.jpg" class="slide-img img-portrait" />
+            <img src="e-northn23.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn28.jpg" class="slide-img img-portrait" />
+            <img src="e-northn28.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn25.jpg" class="slide-img img-portrait" />
+            <img src="e-northn25.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn22.jpg" class="slide-img img-portrait" />
+            <img src="e-northn22.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn30.jpg" class="slide-img img-landscape" />
+            <img src="e-northn30.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn29.jpg" class="slide-img img-landscape" />
+            <img src="e-northn29.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn24.jpg" class="slide-img img-portrait" />
+            <img src="e-northn24.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1074,37 +1067,37 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-northn27.jpg" class="slide-img img-landscape" />
+            <img src="e-northn27.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn20.jpg" class="slide-img img-landscape" />
+            <img src="e-northn20.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn19.jpg" class="slide-img img-landscape" />
+            <img src="e-northn19.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn18.jpg" class="slide-img img-landscape" />
+            <img src="e-northn18.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn12.jpg" class="slide-img img-landscape" />
+            <img src="e-northn12.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn26.jpg" class="slide-img img-landscape" />
+            <img src="e-northn26.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn17.jpg" class="slide-img img-landscape" />
+            <img src="e-northn17.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn16.jpg" class="slide-img img-landscape" />
+            <img src="e-northn16.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn15.jpg" class="slide-img img-landscape" />
+            <img src="e-northn15.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn14.jpg" class="slide-img img-landscape" />
+            <img src="e-northn14.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn13.jpg" class="slide-img img-landscape" />
+            <img src="e-northn13.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1144,37 +1137,37 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-northn.jpg" class="slide-img img-landscape" />
+            <img src="e-northn.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn7.jpg" class="slide-img img-landscape" />
+            <img src="e-northn7.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn8.jpg" class="slide-img img-landscape" />
+            <img src="e-northn8.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn6.jpg" class="slide-img img-landscape" />
+            <img src="e-northn6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn4.jpg" class="slide-img img-landscape" />
+            <img src="e-northn4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn1.jpg" class="slide-img img-portrait" />
+            <img src="e-northn1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn10.jpg" class="slide-img img-portrait" />
+            <img src="e-northn10.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn9.jpg" class="slide-img img-portrait" />
+            <img src="e-northn9.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn3.jpg" class="slide-img img-portrait" />
+            <img src="e-northn3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn11.jpg" class="slide-img img-portrait" />
+            <img src="e-northn11.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-northn2.jpg" class="slide-img img-portrait" />
+            <img src="e-northn2.jpg" class="slide-img" />
           </div>
         </div>
       </div>

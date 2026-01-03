@@ -425,7 +425,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -434,6 +435,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -467,25 +474,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   .toggle-btn {
@@ -570,8 +563,8 @@
   <div class="content-wrap">
     <div class="text-container">
       <p>被涉及到Burning Sun丑闻的人员：
-        <button id="expandBtn3" class="toggle-btn" onclick="toggleList(3, true)" style="margin-left:10px;">展开</button></p>
-        <ol id="celebrityList3" style="display: none;">
+        <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+        <ol id="celebrityList" style="display: none;">
 <li>李胜利</li>
 <li>金尚教</li>
 <li>郑俊英、崔钟训（性侵犯）</li>
@@ -599,7 +592,7 @@
 <li>黄荷娜、高俊熙（聊天室）</li>
 <li>吴世勋（疑似支持胜利被恶意造谣）</li>
 <li>车太铉（牵扯到郑俊英）</li>
-<li>权赫俊（证人）<button id="collapseBtn3" class="toggle-btn" onclick="toggleList(3, false)" style="margin-left:10px;">收回</button></li>
+<li>权赫俊（证人）<button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></li>
         </ol>
     </div>
   </div>
@@ -657,22 +650,22 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="181214.jpg" class="slide-img img-portrait" />
+            <img src="181214.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1812141.jpg" class="slide-img img-portrait" />
+            <img src="1812141.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1812142.jpg" class="slide-img img-portrait" />
+            <img src="1812142.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1812143.jpg" class="slide-img img-portrait" />
+            <img src="1812143.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1812144.jpg" class="slide-img img-portrait" />
+            <img src="1812144.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1812145.jpg" class="slide-img img-portrait" />
+            <img src="1812145.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -684,28 +677,28 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="1812146.jpg" class="slide-img img-portrait" />
+            <img src="1812146.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1812147.jpg" class="slide-img img-portrait" />
+            <img src="1812147.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1812148.jpg" class="slide-img img-landscape" />
+            <img src="1812148.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="18121410.jpg" class="slide-img img-landscape" />
+            <img src="18121410.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="18121411.jpg" class="slide-img img-portrait" />
+            <img src="18121411.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="18121412.jpg" class="slide-img img-portrait" />
+            <img src="18121412.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="18121413.jpg" class="slide-img img-portrait" />
+            <img src="18121413.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="18121414.jpg" class="slide-img img-portrait" />
+            <img src="18121414.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -750,10 +743,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="181221.jpg" class="slide-img img-portrait" />
+            <img src="181221.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1812211.jpg" class="slide-img img-portrait" />
+            <img src="1812211.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -889,10 +882,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="bbs.png" class="slide-img img-portrait" />
+            <img src="bbs.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="bbs1.png" class="slide-img img-portrait" />
+            <img src="bbs1.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -937,13 +930,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="181124.jpg" class="slide-img img-portrait" />
+            <img src="181124.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="190128.jpg" class="slide-img img-portrait" />
+            <img src="190128.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1901281.jpg" class="slide-img img-portrait" />
+            <img src="1901281.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1014,10 +1007,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="1901294.jpg" class="slide-img img-portrait" />
+            <img src="1901294.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1901297.jpg" class="slide-img img-portrait" />
+            <img src="1901297.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1100,13 +1093,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190129.jpg" class="slide-img img-landscape" />
+            <img src="190129.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1901291.jpg" class="slide-img img-landscape" />
+            <img src="1901291.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1901292.jpg" class="slide-img img-landscape" />
+            <img src="1901292.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1380,10 +1373,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190206.jpeg" class="slide-img img-portrait" />
+            <img src="190206.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1902061.jpeg" class="slide-img img-landscape" />
+            <img src="1902061.jpeg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1450,16 +1443,16 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="1902143.gif" class="slide-img img-landscape" />
+            <img src="1902143.gif" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="190214.jpeg" class="slide-img img-landscape" />
+            <img src="190214.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1902141.jpg" class="slide-img img-landscape" />
+            <img src="1902141.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1902142.jpg" class="slide-img img-landscape" />
+            <img src="1902142.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1628,10 +1621,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190225.jpg" class="slide-img img-portrait" />
+            <img src="190225.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1902251.jpg" class="slide-img img-portrait" />
+            <img src="1902251.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1733,10 +1726,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190226.jpg" class="slide-img img-portrait" />
+            <img src="190226.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1902261.jpg" class="slide-img img-landscape" />
+            <img src="1902261.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1819,28 +1812,28 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190227.jpg" class="slide-img img-landscape" />
+            <img src="190227.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1902271.webp" class="slide-img img-portrait" />
+            <img src="1902271.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1902272.jpg" class="slide-img img-portrait" />
+            <img src="1902272.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1902274.jpg" class="slide-img img-portrait" />
+            <img src="1902274.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1902273.jpg" class="slide-img img-portrait" />
+            <img src="1902273.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1902275.jpg" class="slide-img img-portrait" />
+            <img src="1902275.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1902276.webp" class="slide-img img-portrait" />
+            <img src="1902276.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1902277.jpg" class="slide-img img-landscape" />
+            <img src="1902277.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1852,10 +1845,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190227p.jpg" class="slide-img img-portrait" />
+            <img src="190227p.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="190227p1.jpg" class="slide-img img-portrait" />
+            <img src="190227p1.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -2071,13 +2064,13 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190304.jpg" class="slide-img img-landscape" />
+            <img src="190304.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903041.jpg" class="slide-img img-landscape" />
+            <img src="1903041.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903042.jpg" class="slide-img img-landscape" />
+            <img src="1903042.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -2169,19 +2162,19 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190307.jpg" class="slide-img img-landscape" />
+            <img src="190307.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903071.jpg" class="slide-img img-landscape" />
+            <img src="1903071.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903072.jpg" class="slide-img img-landscape" />
+            <img src="1903072.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903073.jpg" class="slide-img img-landscape" />
+            <img src="1903073.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903074.jpg" class="slide-img img-landscape" />
+            <img src="1903074.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -2347,10 +2340,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="s190311.jpg" class="slide-img img-landscape" />
+            <img src="s190311.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s1903111.jpg" class="slide-img img-portrait" />
+            <img src="s1903111.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -2546,22 +2539,22 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190314.png" class="slide-img img-landscape" />
+            <img src="190314.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903141.png" class="slide-img img-landscape" />
+            <img src="1903141.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903142.png" class="slide-img img-landscape" />
+            <img src="1903142.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903143.png" class="slide-img img-landscape" />
+            <img src="1903143.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903144.png" class="slide-img img-landscape" />
+            <img src="1903144.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903142.jpg" class="slide-img img-landscape" />
+            <img src="1903142.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -2572,10 +2565,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190314.webp" class="slide-img img-portrait" />
+            <img src="190314.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903141.jpg" class="slide-img img-portrait" />
+            <img src="1903141.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -2604,10 +2597,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190314s.jpg" class="slide-img img-portrait" />
+            <img src="190314s.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903141s.png" class="slide-img img-landscape" />
+            <img src="1903141s.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -2635,16 +2628,16 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="d190314.jpg" class="slide-img img-portrait" />
+            <img src="d190314.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d1903141.png" class="slide-img img-landscape" />
+            <img src="d1903141.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d1903142.jpg" class="slide-img img-portrait" />
+            <img src="d1903142.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d1903143.png" class="slide-img img-landscape" />
+            <img src="d1903143.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -2779,10 +2772,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190315k.jpg" class="slide-img img-landscape" />
+            <img src="190315k.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="190315k1.jpg" class="slide-img img-landscape" />
+            <img src="190315k1.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -2886,19 +2879,19 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190317.jpg" class="slide-img img-landscape" />
+            <img src="190317.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903171.jpg" class="slide-img img-landscape" />
+            <img src="1903171.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903172.jpg" class="slide-img img-landscape" />
+            <img src="1903172.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903173.jpg" class="slide-img img-landscape" />
+            <img src="1903173.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903174.jpg" class="slide-img img-landscape" />
+            <img src="1903174.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -2926,10 +2919,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190318.jpg" class="slide-img img-landscape" />
+            <img src="190318.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903181.jpg" class="slide-img img-landscape" />
+            <img src="1903181.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -3186,13 +3179,13 @@ MD 1：帮我打个本垒打</p>
             2</a></p>
         <ol style="list-style-position: inside; color: white;">
         <li>他否认了胜利在国外吸食可卡因的指控，并表示愿意与提出指控的人一起接受讯问，他表示胜利愿意接受测谎仪测试以证明自己的清白
-        <br/><br/><button id="expandBtn1" class="toggle-btn" onclick="toggleList(1, true)" style="margin-left:10px;">展开</button></li>
-        <ol id="celebrityList1" start="2" style="display: none; list-style-position: inside; color: white;">
+        <br/><br/><button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></li>
+        <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li>金先生商量让他在Club Arena为来自台湾的‘A’一行人准备场地并邀请女性。Kim Lim是胜利多年的女性朋友，是新加坡人。她与胜利的事业毫无关联，她的职业也与投资无关。之前有误会说‘A’是Burning Sun的投资人，但事实并非如此。A某当时在韩国度假，但胜利在名古屋开演唱会，无法照顾她。所以他想通过金某介绍一位女性旅伴，让她在首尔期间陪她购物。警方还对金某的熟人展开了调查，这些熟人是通过金某介绍给A某的。当被问及有关将男性送往酒店房间的短信时。他们是A某带来的朋友，可以推断短信是指送他们去酒店</li>
           <br/><li>被举报的短信中，并没有A某最初的对话，这部分被省略，只公开了容易引起注意的部分，胜利不记得这部分了。因为那是三年前的信息了，胜利不会说这种话，他不会用‘easy girls’这种低俗的表达方式。我们认为他在名古屋演唱会后的庆祝晚宴上没有正确表达自己。即使谈话内容被视为涉及性交，金先生说‘我给他们打电话了，但我不知道他们是否会善待你’，而且被叫来的女性是金先生的熟人，所以可以断定谈话内容与卖淫无关</li>
           <br/><li>如果胜利还留着当时的短信，我们就能了解事实，从一开始就把事情说清楚。但那是三年前的事了，他一点记忆都没有，而且当时也没有卖淫的事情发生，所以我们才说这些指控是假的。胜利是在接受警方调查时才看到短信的，看到‘A某’的真名和金某打电话联系的熟人后，胜利才想起来</li>
           <br/><li>我们保留了当时的短信。胜利推荐的女性并非提供性陪同服务的。这位商业伙伴说，‘我要去见印度尼西亚国王。请推荐一些可以像妻子或女朋友一样陪我去的女性’，并请求一位女性陪他出席各种活动。这不是性陪护服务，更像是参加婚礼或其他活动的兼职。最后，胜利和他的商业伙伴去了印尼，就他们两个人。胜利通过他投资了20亿韩元（约180万美元），只是想好好招待他，维持生意关系，收回投资
-          <button id="collapseBtn1" class="toggle-btn" onclick="toggleList(1, false)" style="margin-left:10px;">收回</button></li>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></li>          
         </ol>
       </div>
     </div>
@@ -3236,8 +3229,8 @@ MD 1：帮我打个本垒打</p>
         <ol style="list-style-position: inside; color: white;">
 <li><span style="color: #FF66CC;">问：</span>您为什么同意接受采访？<br/>
 <span style="color: #33FFFF;">胜利：</span>说实话，我没有资格抱怨或强烈坚持我的处境。说到底，我只是一个公众人物，我行为不当也参与了不法的生意。我确实觉得现在报道的内容与我所知相差太远了。我同意接受采访，是因为关于Burning Sun的新闻报道与我所知的事实大相径庭
-        <br/><br/><button id="expandBtn2" class="toggle-btn" onclick="toggleList(2, true)" style="margin-left:10px;">展开</button></li>
-        <ol id="celebrityList2" start="2" style="display: none; list-style-position: inside; color: white;">
+        <br/><br/><button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></li>
+        <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>做错事的生意’这个说法是指Burning Sun吗？<br/>
 <span style="color: #33FFFF;">胜利：</span> 是的</li>
           <br/><li><span style="color: #FF66CC;">问：</span>据了解，您是Burning Sun的老板<br/>
@@ -3302,7 +3295,7 @@ MD 1：帮我打个本垒打</p>
 <span style="color: #33FFFF;">胜利：</span>不只是对郑俊英，对所有人都一样。只是Kakao聊天室里没有写这些。即使是这个案子，调查人员和国家也只是看到Kakao聊天记录，然后提出怀疑，最终做出判断。如果我和聊天室里的人通了电话呢？而且我当面跟他们说了什么，谁也不知道，对吧？关于Monkey Museum的讨论也是我们开业前三个月发生的对话。开业前我就意识到了，并说过“我们不能那样做关于非法的事情。”只是Kakao聊天室里没有这些内容</li>
           <br/><li><span style="color: #FF66CC;">问：</span>最后您想说什么？<br/>
 <span style="color: #33FFFF;">胜利：</span>我只希望调查和结果能够客观公正。最近曝光的种种问题，YG、崔顺实、Bigbang、金河仪、黄教汉等人都被归为一类，被当成一个组织。我只是个普通的明星，并不认识他们。这件事之所以闹得沸沸扬扬，是因为其性质涉及多家成人娱乐机构。但当它被牵扯进政治，并被诬陷成完全不同的事情时，我感到非常害怕，这让人感到困惑。说实话，我不知道什么是真什么是假。我真诚地配合调查，我希望在调查结果公布之前国家能够平息愤怒，客观地评价我，我将不胜感激。对于过去十年来一直关注我的众多人、为我加油的粉丝和国家、我的前公司YG以及我的团队和同事，我深感抱歉。我相信，无论调查结果如何，这都是我一生都要背负的罪孽。我会带着悔恨度过余生。我为自己几年前的错误言行，造成了如此大的局面，感到非常抱歉和羞愧。我希望所有疑点的真相都能尽快揭晓，让国家不再感到不安
-          <button id="collapseBtn2" class="toggle-btn" onclick="toggleList(2, false)" style="margin-left:10px;">收回</button></li>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></li>          
         </ol>
     </div>
   </div>
@@ -3328,22 +3321,22 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190323.png" class="slide-img img-landscape" />
+            <img src="190323.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903231.png" class="slide-img img-landscape" />
+            <img src="1903231.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903232.png" class="slide-img img-landscape" />
+            <img src="1903232.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903233.png" class="slide-img img-landscape" />
+            <img src="1903233.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903234.png" class="slide-img img-landscape" />
+            <img src="1903234.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903235.png" class="slide-img img-landscape" />
+            <img src="1903235.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -3369,10 +3362,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190324.jpg" class="slide-img img-landscape" />
+            <img src="190324.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="190324.png" class="slide-img img-landscape" />
+            <img src="190324.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -3482,19 +3475,19 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190327.jpg" class="slide-img img-portrait" />
+            <img src="190327.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="190329.jpg" class="slide-img img-portrait" />
+            <img src="190329.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903271.jpg" class="slide-img img-landscape" />
+            <img src="1903271.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903272.jpg" class="slide-img img-landscape" />
+            <img src="1903272.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903273.jpg" class="slide-img img-landscape" />
+            <img src="1903273.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -3610,10 +3603,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190331.jpg" class="slide-img img-portrait" />
+            <img src="190331.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903311.jpg" class="slide-img img-portrait" />
+            <img src="1903311.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -3689,10 +3682,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190401.jpg" class="slide-img img-landscape" />
+            <img src="190401.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1904011.jpg" class="slide-img img-landscape" />
+            <img src="1904011.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -4244,19 +4237,19 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="1903148.png" class="slide-img img-landscape" />
+            <img src="1903148.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="190514.jpg" class="slide-img img-portrait" />
+            <img src="190514.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1903149.png" class="slide-img img-landscape" />
+            <img src="1903149.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="19031410.png" class="slide-img img-landscape" />
+            <img src="19031410.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="19031411.png" class="slide-img img-landscape" />
+            <img src="19031411.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -4277,19 +4270,19 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="1905141.jpg" class="slide-img img-portrait" />
+            <img src="1905141.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1905142.jpg" class="slide-img img-portrait" />
+            <img src="1905142.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1905143.jpg" class="slide-img img-portrait" />
+            <img src="1905143.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1905144.jpg" class="slide-img img-landscape" />
+            <img src="1905144.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1905145.jpg" class="slide-img img-landscape" />
+            <img src="1905145.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -4339,16 +4332,16 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190515.jpg" class="slide-img img-portrait" />
+            <img src="190515.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1905151.jpg" class="slide-img img-portrait" />
+            <img src="1905151.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1905152.jpg" class="slide-img img-landscape" />
+            <img src="1905152.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1905153.jpg" class="slide-img img-landscape" />
+            <img src="1905153.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -4511,10 +4504,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190625.jpg" class="slide-img img-portrait" />
+            <img src="190625.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1906251.jpg" class="slide-img img-portrait" />
+            <img src="1906251.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -4559,10 +4552,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190710.jpg" class="slide-img img-landscape" />
+            <img src="190710.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1907101.jpg" class="slide-img img-landscape" />
+            <img src="1907101.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -4585,13 +4578,13 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190727.png" class="slide-img img-landscape" />
+            <img src="190727.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1907271.png" class="slide-img img-landscape" />
+            <img src="1907271.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1907272.png" class="slide-img img-landscape" />
+            <img src="1907272.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -4624,34 +4617,34 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="190828.png" class="slide-img img-landscape" />
+            <img src="190828.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="190828.jpg" class="slide-img img-landscape" />
+            <img src="190828.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1908281.jpg" class="slide-img img-portrait" />
+            <img src="1908281.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1908282.jpg" class="slide-img img-portrait" />
+            <img src="1908282.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1908283.jpg" class="slide-img img-portrait" />
+            <img src="1908283.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1908281.png" class="slide-img img-landscape" />
+            <img src="1908281.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1908282.png" class="slide-img img-landscape" />
+            <img src="1908282.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1908283.png" class="slide-img img-landscape" />
+            <img src="1908283.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1908284.png" class="slide-img img-landscape" />
+            <img src="1908284.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1908285.png" class="slide-img img-landscape" />
+            <img src="1908285.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -4734,10 +4727,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="1912032.jpg" class="slide-img img-portrait" />
+            <img src="1912032.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1912031.jpg" class="slide-img img-portrait" />
+            <img src="1912031.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -4786,13 +4779,13 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="191211.png" class="slide-img img-landscape" />
+            <img src="191211.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1912111.png" class="slide-img img-landscape" />
+            <img src="1912111.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1912112.jpg" class="slide-img img-landscape" />
+            <img src="1912112.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -4821,22 +4814,22 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="200113.png" class="slide-img img-landscape" />
+            <img src="200113.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="2001131.png" class="slide-img img-landscape" />
+            <img src="2001131.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="2001132.png" class="slide-img img-landscape" />
+            <img src="2001132.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="2001133.png" class="slide-img img-landscape" />
+            <img src="2001133.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="2001134.png" class="slide-img img-landscape" />
+            <img src="2001134.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="2001135.png" class="slide-img img-landscape" />
+            <img src="2001135.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -4857,10 +4850,10 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="200113.jpg" class="slide-img img-landscape" />
+            <img src="200113.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="2001131.jpg" class="slide-img img-landscape" />
+            <img src="2001131.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -5496,13 +5489,13 @@ MD 1：帮我打个本垒打</p>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="220526.png" class="slide-img img-portrait" />
+            <img src="220526.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="2205261.png" class="slide-img img-portrait" />
+            <img src="2205261.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="2205262.png" class="slide-img img-portrait" />
+            <img src="2205262.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -5964,25 +5957,45 @@ function filterSNS(member) {
 
 
 
-  function toggleList(index, show) {
-    const list     = document.getElementById(`celebrityList${index}`);
-    const expand   = document.getElementById(`expandBtn${index}`);
-    const collapse = document.getElementById(`collapseBtn${index}`);
-
-    if (!list || !expand) return;
-
-    if (show) {
-      list.style.display = "block";
-      if (expand)   expand.style.display = "none";
-      if (collapse) collapse.style.display = "inline-block";
-      list.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else {
-      list.style.display = "none";
-      if (expand)   expand.style.display = "inline-block";
-      if (collapse) collapse.style.display = "none";
-      expand.scrollIntoView({ behavior: "smooth", block: "center" });
+  function toggleList(button, show) {
+  const listItem = button.closest('li');
+  
+  if (show) {
+    let nestedList = listItem.querySelector('ol');
+    if (!nestedList) {
+      nestedList = listItem.nextElementSibling;
+    }
+    
+    if (nestedList && nestedList.tagName === 'OL') {
+      nestedList.style.display = "block";
+      button.style.display = "none";
+      nestedList.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  } else {
+    const nestedList = button.closest('ol');
+    
+    if (nestedList) {
+      nestedList.style.display = "none";
+      
+      let parentLi = nestedList.parentElement.closest('li');
+      if (!parentLi) {
+        parentLi = nestedList.previousElementSibling;
+        while (parentLi && parentLi.tagName !== 'LI') {
+          parentLi = parentLi.previousElementSibling;
+        }
+      }
+      
+      if (parentLi) {
+        const expandBtns = parentLi.querySelectorAll('[onclick*="true"]');
+        expandBtns.forEach(btn => {
+          btn.style.display = "inline-block";
+        });
+        
+        parentLi.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
     }
   }
+}
 
 
 

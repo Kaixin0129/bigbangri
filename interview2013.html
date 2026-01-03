@@ -343,7 +343,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -352,6 +353,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -385,25 +392,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   .toggle-btn {
@@ -526,8 +519,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>如果可以当一天Bigbang成员，你会选择谁？<br/>
           <span style="color: #33FFFF;">大声：</span>TOP。能做自己想做的事，感觉完全没有压力。想吃就吃，这点我真的好羡慕他。他简直像个小宝宝，TOP
-          <button id="expandBtn1" class="toggle-btn" onclick="toggleList(1, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList1" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>作为一张J-Pop翻唱专辑，《D'scover》的曲风非常丰富，收录了《Sunny Hill》、《Powerful Boy》、《Joyful》和《Tonight Boogie Back》等歌曲<br/>
           <span style="color: #33FFFF;">大声：</span>我先从200首歌的歌单中挑选出自己真正想唱的歌。然后，我每首歌都试唱一遍，最终选出了10首感觉合适的。能制作出一张曲风如此多样的专辑，我感到非常满足。所有歌曲的共同点是“温暖”。就像在母亲的子宫里一样。我努力想要强调这种温暖。当我聆听原曲的歌词和演唱时，如果我能够将歌曲中感受到的温暖、色彩、激情和信息表达出来，我就会非常开心</li>
           <br/><li><span style="color: #FF66CC;">问：</span>有没有哪首歌是你特别喜欢的？<br/>
@@ -736,7 +729,7 @@
           <span style="color: #33FFFF;">大声：</span>我不想说再见（假装哭泣）</li>
           <br/><li><span style="color: #FF66CC;">问：</span>可恶，我也不想说再见。不过，这次巡演的规模扩大了，全国人民都能听到你的现场演唱啦！D-LITE 先生在舞台上一定会更加光芒四射，所以我很期待在巡演中见到 D-LITE 先生！<br/>
           <span style="color: #33FFFF;">大声：</span>非常感谢大家能陪伴我走到最后！我们几乎全程都用日语交流，所以有时候听不懂一些词会有点沮丧，不过这也给了我一个很好的学习机会！大家也都玩得开心吗？我嘛，应该没什么问题吧？（笑）最后，请大家期待我的个人演唱会！大家一起挥汗如雨，释放内啡肽吧！！
-          <button id="collapseBtn1" class="toggle-btn" onclick="toggleList(1, false)" style="margin-left:10px;">收回</button></li>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></li>          
         </ol>
       </div>
     </div>
@@ -745,19 +738,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="130304.png" class="slide-img img-portrait" />
+            <img src="130304.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1303041.png" class="slide-img img-portrait" />
+            <img src="1303041.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1303042.png" class="slide-img img-portrait" />
+            <img src="1303042.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1303043.png" class="slide-img img-portrait" />
+            <img src="1303043.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1303044.png" class="slide-img img-landscape" />
+            <img src="1303044.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -780,8 +773,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>这是一张让人感到温暖的专辑<br/>
           <span style="color: #33FFFF;">大声：</span>谢谢。我唱歌的时候想象着母亲腹中的温暖。我非常喜欢的一首歌是《Sunny Hill》。为了克服眼前的巨大障碍，释放我的能量，我每天早上都会听这首歌。歌词“现在的痛苦终将成为重要的回忆”与G-Dragon创作的《Wings》的歌词有异曲同工之妙。当Bigbang身处困境时，我们希望与粉丝们感同身受，唱着“总有一天我们会再次欢笑，没问题”
-          <button id="expandBtn4" class="toggle-btn" onclick="toggleList(4, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList4" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>录音是在世界巡演期间完成的吧？<br/>
           <span style="color: #33FFFF;">大声：</span>说实话，真的太难了，我一度想放弃，压力也很大。不过个人发展和Bigbang不一样。那首歌里写的就是我的全部故事。我认真对待，最终完成了一件自己满意的作品。投入的精力真的非常大</li>
           <br/><li><span style="color: #FF66CC;">问：</span>你肯定是个韩国人！歌手是不是尤其需要保持这种拼搏的精神？<br/>
@@ -800,7 +793,7 @@
           <span style="color: #33FFFF;">大声：</span>我会分享我自己的经历。我觉得我的经历和同龄人不太一样，感受也会有所不同。有好的方面，也有不好的方面。有些时候，我甚至被逼到了绝境，也认真考虑过。但是，如果我的经历能够帮助别人找到正确的方向，避免他们误入歧途，我就会竭尽全力</li>
           <br/><li><span style="color: #FF66CC;">问：</span>请给那些在工作和爱情方面遇到很多麻烦的ANAN读者一些建议<br/>
           <span style="color: #33FFFF;">大声：</span>有些读者比我年纪还大，我给他们提建议会不会太自恋了？（笑）如果是工作上的烦恼，我会先想想这件事在10年或20年后是否还重要。如果不重要，我就不会再烦恼了。但如果会影响到未来，我会认真面对。至于爱情，我的经验不多，所以只能说“请努力经营”……请听听专辑里的《爱情》这首歌，它会鼓励大家去爱哦
-          <button id="collapseBtn4" class="toggle-btn" onclick="toggleList(4, false)" style="margin-left:10px;">收回</button></li>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></li>          
         </ol>
       </div>
     </div>
@@ -809,13 +802,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="130321.webp" class="slide-img img-portrait" />
+            <img src="130321.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1303211.webp" class="slide-img img-landscape" />
+            <img src="1303211.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1303212.webp" class="slide-img img-landscape" />
+            <img src="1303212.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -923,8 +916,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>你的首次世界巡回演唱会即将结束，真是太火热了！虽然还有几场演出，但巡演圆满落幕，你有什么感想？<br/>
 <span style="color: #33FFFF;">GD：</span>我的首次世界巡回演唱会是去年的BIGBANG世界巡回演唱会。当时我既紧张又兴奋，因为要去很多不同的地方演出，但巡演的过程真的非常有趣。我平时很少有机会到处旅行，但这次巡演，我可以在休息时间好好休息，和工作人员们一起玩。我很开心能留下这么多美好的回忆。对我来说，这就像是一次学校组织的旅行。我也很高兴无论走到哪里都能感受到大家的喜爱
-          <button id="expandBtn2" class="toggle-btn" onclick="toggleList(2, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList2" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>问：即使是在海外，我觉得大家还是会认出你的！<br/>
 <span style="color: #33FFFF;">GD：</span>所以我不能像我希望的那样去任何地方。所以我会在酒店的游泳池玩耍，或者出去吃饭。这样也挺开心的。我觉得这样能和工作人员们更加亲近一些</li>
           <br/><li><span style="color: #FF66CC;">问：</span>虽然你之前和BIGBANG成员一起巡演过，但我觉得这次的个人巡演仍然是一个全新的挑战<br/>
@@ -976,7 +969,7 @@
 <span style="color: #33FFFF;">GD：</span>这个问题可能有点笼统，但我喜欢有品位的女生。仔细想想，这其实很难做到。即使是穿衣打扮，也要有品位；即使是说话，也要听起来很有品味。就像那种既时尚又有品位的女生一样？这种女生懂得照顾自己，而且通常对别人也很友善​​。我觉得她们看起来也很聪明</li>
           <br/><li><span style="color: #FF66CC;">问：</span>而且还要漂亮？<br/>
 <span style="color: #33FFFF;">GD：</span>那就更好了
-          <button id="collapseBtn2" class="toggle-btn" onclick="toggleList(2, false)" style="margin-left:10px;">收回</button></li>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></li>          
         </ol>
       </div>
     </div>
@@ -998,9 +991,9 @@
   <li>
     <span style="color: #33FFFF;">BBJ：</span>请问您在听完原版《I Love You》后有何感想？<br/>
     <span style="color: #33FFFF;">大声：</span>尾崎丰的《I Love You》之前在韩国也有人翻唱过，在韩国也是一首非常受欢迎的歌曲。无论是日本人还是外国人，都知道这首歌，它也是我最喜欢的歌曲之一。现在，一首如此受大家喜爱的歌曲要由我来翻唱，这让我感到有些不安和紧张。但是，因为这首歌我非常喜欢，所以我决定尝试一下
-    <button id="expandBtn15" class="toggle-btn" onclick="toggleList(15, true)" style="margin-left:10px;">展开</button>
+    <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button>
   </li>
-  <ol id="celebrityList15" start="2" style="display: none; list-style-position: inside; color: white;">
+  <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
     <br/>
     <li>
       <span style="color: #33FFFF;">BBJ：</span>请告诉我们大家为什么应该听《I Love You》，以及您与葉加瀨太郎合作录音时的感受<br/>
@@ -1025,7 +1018,7 @@
     <li>
       <span style="color: #33FFFF;">BBJ：</span>最后，请跟粉丝们说说这首歌（为《I Love You》做宣传）吧<br/>
       <span style="color: #33FFFF;">葉加瀨太郎：</span>翻唱J-pop歌曲，并与D-LITE和龟田诚二合作，这些都是难得一见的新鲜事物。最重要的是，我非常期待UULA未来在这个全新的媒体平台上取得怎样的发展
-      <button id="collapseBtn15" class="toggle-btn" onclick="toggleList(15, false)" style="margin-left:10px;">收回</button>
+      <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button>
     </li>
   </ol>
       </div>
@@ -1084,8 +1077,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>哪个词会让D-LITE开心？<br/>
           <span style="color: #33FFFF;">大声：</span>嗯……“情色”（笑）以后请叫我“情色”吧（笑）
-          <button id="expandBtn5" class="toggle-btn" onclick="toggleList(5, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList5" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>你觉得你身上有什么魅力让这么多粉丝如此喜爱你？你的声音、笑容、肌肉、善良……你觉得你身上最吸引人的是什么？<br/>
           <span style="color: #33FFFF;">大声：</span>大概是我的小眼睛和大鼻子吧？（笑）嗯……我也不知道。我想问问大家！</li>
           <br/><li><span style="color: #FF66CC;">问：</span>请告诉我们其他成员听到你的歌 I LOVE YOU 时的反应<br/>
@@ -1118,7 +1111,7 @@
           <span style="color: #33FFFF;">大声：</span>我喜欢看动物……但我不敢碰它们（笑）。我一见到动物就害怕，因为我不会跟它们说话。就算我说“别靠近我”，它们还是会过来（笑）。出于同样的原因，我也害怕虫子和鬼……</li>
           <br/><li><span style="color: #FF66CC;">问：</span>VI<br/>
           <span style="color: #33FFFF;">大声：</span>我羡慕他的阳光和自信（笑）。我是个爱操心的人，总是有很多担忧……但是当我看到VI积极的一面时，我也会想，我也应该振作起来
-          <button id="collapseBtn5" class="toggle-btn" onclick="toggleList(5, false)" style="margin-left:10px;">收回</button></li>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></li>          
         </ol>
       </div>
     </div>
@@ -1174,8 +1167,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>我在你的“专辑制作特辑”视频中看到你想谈谈爱情。你具体想谈的是哪种爱情呢？ <br/>
           <span style="color: #33FFFF;">胜利：</span>当被问到“你认为爱情是什么？”时，很多人会谈到痛苦或难以忘怀的事情。我想谈谈爱情的方方面面，比如爱情中的兴奋、快乐、离别、痛苦、遗憾等等
-          <button id="expandBtn6" class="toggle-btn" onclick="toggleList(6, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList6" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>你们的《Let's Talk About Love》R级预告片引起了热议。但大家的反应似乎褒贬不一，有人觉得“太过分了”，也有人觉得“因为是Bigbang的胜利，所以很成功”<br/>
           <span style="color: #33FFFF;">胜利：</span>现实是，即使你创作了一首非常好的歌，如果没有好的宣传，一切都会付诸东流。我想通过一些具有争议性的东西来吸引大家的注意力，所以我们制作了R级版本。在和公司高层以及拍摄团队反复讨论后，我们最终决定可以尝试这种游走在尺度边缘的做法</li>
           <br/><li><span style="color: #FF66CC;">问：</span>那么，你的很多观点都体现在视频里了吗？<br/>
@@ -1222,7 +1215,7 @@
           <span style="color: #33FFFF;">胜利：</span>我觉得大概年底的时候大家就能看到我们五个人一起出现了。就算没有新歌，我觉得我们也有责任通过电视节目或者演唱会等方式和粉丝们见面</li>
           <br/><li><span style="color: #FF66CC;">问：</span>你希望通过这张个人专辑达到什么目标？<br/>
           <span style="color: #33FFFF;">胜利：</span>比起追求音乐排行榜上的好成绩，我更希望这张专辑的意义在于发掘了我隐藏的音乐才能。这是我制作的第一张专辑，所以我想把它做到最好。另外，G-Dragon和太阳的专辑也即将发行。对于一个组合来说，连续发行这么多张个人专辑并不常见，但我希望能够帮助他们打好开端
-          <button id="collapseBtn6" class="toggle-btn" onclick="toggleList(6, false)" style="margin-left:10px;">收回</button></li>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></li>          
         </ol>
       </div>
     </div>
@@ -1231,19 +1224,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="130826.jpg" class="slide-img img-landscape" />
+            <img src="130826.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1308261.jpg" class="slide-img img-landscape" />
+            <img src="1308261.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1308262.jpg" class="slide-img img-landscape" />
+            <img src="1308262.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1308263.jpg" class="slide-img img-portrait" />
+            <img src="1308263.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1308264.jpg" class="slide-img img-landscape" />
+            <img src="1308264.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1300,15 +1293,15 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>准备新专辑时，你有向 G-Dragon 请教吗？<br/>
           <span style="color: #33FFFF;">胜利：</span>我其实向（哥哥）G-Dragon请教了很多问题。我甚至缠着他，求他帮忙
-          <button id="expandBtn10" class="toggle-btn" onclick="toggleList(10, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList10" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>身边的人对你时隔两年多的回归有什么建议？<br/>
           <span style="color: #33FFFF;">胜利：</span>我身边的人都告诉我，因为这是我两年零七个月以来的第一张专辑，我应该说出我想说的话。那真的让我醍醐灌顶。我从第一首歌就开始创作，我觉得最终我把所有想表达的东西都融入其中了</li>
           <br/><li><span style="color: #FF66CC;">问：</span>《Gotta Talk To You》是怎么创作的？<br/>
           <span style="color: #33FFFF;">胜利：</span>我写《Gotta Talk To You》这首歌的时候，脑海里浮现的是我试图搭讪女孩时的感觉。我这样写是因为我在恋爱关系中既不算太外向，也不算太害羞</li>
           <br/><li><span style="color: #FF66CC;">问：</span>你和 G-Dragon 的个人活动之间有竞争吗？<br/>
           <span style="color: #33FFFF;">胜利：</span>我们不会参与竞争。虽然我们各自进行个人活动，但我们仍然是Bigbang的胜利和Bigbang的G-Dragon。如果我们个人活动做得好，对Bigbang整体来说也是好事。我们各自进行个人活动并取得成功，这很棒，我真的很享受这种感觉
-          <button id="collapseBtn10" class="toggle-btn" onclick="toggleList(10, false)" style="margin-left:10px;">收回</button></p>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
         </ol>
       </div>
     </div>
@@ -1329,8 +1322,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>如果你不是巨星，这些事情会发生吗？<br/>
           <span style="color: #33FFFF;">GD：</span>当然，如果G-Dragon不是早已是韩国流行乐坛的巨星，凭借其个人和Bigbang组合的音乐在亚洲拥有数千万粉丝，这一切都不可能发生。简单来说，（美国潮流引领者）注意到我是因为我发展得好。如果我发展得不好，他们根本不会注意到我，也不会在意。所以我并没有想太多
-          <button id="expandBtn8" class="toggle-btn" onclick="toggleList(8, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList8" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>你怎么看待别人因为外貌来评价你？<br/>
           <span style="color: #33FFFF;">GD：</span>和所有人一样，我喜欢衣服，也喜欢穿自己喜欢的衣服。我们可能在穿衣风格上有所不同，有些人可能不喜欢。但仅仅因为外表就评判一个人是很愚蠢的。如果你有时间这么做，我建议你照照镜子，多花点时间提升自己。拜托，现在都2013年了</li>
           <br/><li><span style="color: #FF66CC;">问：</span>有人把你比作Kanye，你如何看？<br/>
@@ -1365,7 +1358,7 @@
           <span style="color: #33FFFF;">GD：</span>紧张得要命。她给我的歌词加和声，对我来说是荣幸而且难以置信</li>
           <br/><li><span style="color: #FF66CC;">问：</span>更嘻哈的风格会疏远K-pop粉丝吗？<br/>
           <span style="color: #33FFFF;">GD：</span>《Coup D'ETAT》不是为了迎合。我做我想做的音乐。韩国公众可能不喜欢，但也许美国公众会
-          <button id="collapseBtn8" class="toggle-btn" onclick="toggleList(8, false)" style="margin-left:10px;">收回</button></p>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
         </ol>
       </div>
     </div>
@@ -1386,8 +1379,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>《VVIP》之后，这次的新专辑对你意味着什么？<br/>
           <span style="color: #33FFFF;">胜利：</span>凭借上一张专辑《VVIP》中的歌曲《Strong Baby》成功打破了以往的形象，我用第二张个人迷你专辑《Let's Talk About Love》宣告自己已长大成人。此外，我还作为创作型歌手实现了飞跃，包揽了作词、作曲和制作
-          <button id="expandBtn9" class="toggle-btn" onclick="toggleList(9, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList9" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>你常说自己是“老手”，这是什么意思？<br/>
           <span style="color: #33FFFF;">胜利：</span>我已经做了七年了，所以我是个老手了。虽然这么说有点不好意思，但我必须表现得像个老手。咦？我一开始简直不敢相信自己的耳朵。虽然这番话不假，但作为一位“自封”的老将，任何人都难以开口。我的直言不讳从一开始就让采访者感到不安，但我接下来的话自然而然地让采访者点头表示赞同。我当歌手已经七年了，如果不能抓住观众的心，那就毫无意义。即使是新人也会说，“不愧是Bigbang”，“不愧是Bigbang的胜利”，所以我感到有些压力</li>
           <br/><li><span style="color: #FF66CC;">问：</span>你为什么开始自己做音乐制作？<br/>
@@ -1412,7 +1405,7 @@
           <span style="color: #33FFFF;">胜利：</span>看到后辈们取得成功，成为热门艺人，我感到非常高兴。在我看来，“欢迎”才是最恰当的词。我希望我们的音乐产业蓬勃发展，让大家都能享受我们的音乐。因此，这么多优秀艺人的涌现是一件令人欣喜的事情。我从不担心“如果我们排名落后怎么办”</li>
           <br/><li><span style="color: #FF66CC;">问：</span>你认为前辈对 Bigbang 的态度如何？<br/>
           <span style="color: #33FFFF;">胜利：</span>神话、God和DJ DOC在Big Bang刚出道时就说过，他们很高兴也很感激我们能够出道。这不是竞争，而是他们希望音乐产业能够蓬勃发展。我们出道的时候，东方神起、李承哲、Se7en、Wonder Girls、少女时代和Rain哥等组合都非常活跃。我希望音乐产业能够像那时一样蓬勃发展，成为更热门的话题
-          <button id="collapseBtn9" class="toggle-btn" onclick="toggleList(9, false)" style="margin-left:10px;">收回</button></p>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
         </ol>
       </div>
     </div>
@@ -1432,8 +1425,8 @@
             Complex</a></p><br/>
         <ol style="list-style-position: inside; color: white;">
           <p>GD畅谈了他目前日常穿搭中常用的服装品牌
-          <button id="expandBtn7" class="toggle-btn" onclick="toggleList(7, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList7" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" style="display: none; list-style-position: inside; color: white;">
             <li style="color: #33FFFF;">Yves Saint Laurent (YSL)</li>
             <p>我以前不太喜欢YSL，但自从它变成Saint Laurent之后我就成了它的粉丝，因为我是创意总监Hedi Slimane的铁杆粉丝。Hedi Slimane参与过的所有品牌我都喜欢——他执掌Dior Homme的时候我特别喜欢，也买过很多Dior的衣服。2007年Hedi Slimane离开Dior Homme，Kris Van Assche接手之后，我就很少穿Dior了。然后2012年Hedi开始负责Saint Laurent……说实话，我不应该这么说，但现在的Saint Laurent看起来就像Dior Homme。[笑] 虽然是Saint Laurent，但感觉就像Dior Homme。这完全是Hedi Slimane的个人风格。而且他还把YSL里的‘Y’拿走了。本来应该是Yves Saint Laurent，但他……去掉了“伊夫”这个名字。我觉得这真的很值得称赞</p>
             <li style="color: #33FFFF;">Rick Owens</li>
@@ -1456,7 +1449,7 @@
             <p>因为[Pyrex和Hood By Air]都是目前刚推出的新品牌，我就想买来试试。以前，买了就是买了，无所谓。但现在，不管是通过Instagram还是其他什么渠道，一旦照片传播开来，品牌方就会开始注意到。如果他们觉得不错，就会寄来一大堆东西。最后我们就能合作，事情就是这样发展起来的。我从来没学过服装设计。我做音乐已经十年了，很多人学习和从事服装设计工作超过十年，但最终都没成功。所以我觉得，在缺乏相关背景的情况下贸然进入这个行业不太合适。你知道，Pyrex 更注重活动策划。他们推出了一系列以 Pyrex 为主题的作品，而且他们可能还会推出其他主题的作品。我考虑过做类似的事情，这种更注重活动策划、更独特一些。从某种意义上说，购买这些服装也是一种学习行业运作方式。等到我觉得自己准备好推出自己的作品时，我对整个行业就会有更全面的了解</p>
             <br/>
             <p>我喜欢各种衣服，所以什么牌子都无所谓。我还是会去东大门市场（首尔著名的购物区，以高仿商品闻名）。我去的时候别人都认不出我（笑）。很久以前，我和[YG制作人]Kush和Teddy一起去了东大门。我们偶然发现一家店，里面全是Big Bang和我的照片。所有的衣服都是以我们穿过的款式为基础，但颜色搭配却千差万别。[笑] 甚至有些款式只有一种颜色，这家店里却有所有可能的颜色。我记得当时路过那家店，心想：‘哇，这太疯狂了。’然后店主突然冒出来，抓住我的胳膊说：‘嘿，你的身材和G-Dragon很像。要不要来我们店里看看？我们各种尺码的衣服都有。’所以我告诉他，‘我没事，我讨厌G-Dragon。’然后他说，‘你的穿着打扮也有点像他。拜托。’我们就走开了
-          <button id="collapseBtn7" class="toggle-btn" onclick="toggleList(7, false)" style="margin-left:10px;">收回</button></p>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
         </ol>
       </div>
     </div>
@@ -1584,8 +1577,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>和ELLE的拍摄感觉如何？<br/>
           <span style="color: #33FFFF;">太阳：</span>我很喜欢。概念也很棒
-          <button id="expandBtn11" class="toggle-btn" onclick="toggleList(11, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList11" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>你即将发行一张新专辑<br/>
           <span style="color: #33FFFF;">太阳：</span>这张专辑我准备了很久。自从三年前的个人专辑之后，我一直没有足够的灵感再做一张专辑</li>
           <br/><li><span style="color: #FF66CC;">问：</span>你是说你上一张专辑《Solar》吗？<br/>
@@ -1662,7 +1655,7 @@
           <span style="color: #33FFFF;">太阳：</span>目前，我希望这张专辑能给很多人带来启发。我也希望自己能继续创作音乐。当然，我会的。但是，现在我状态最好，我想全身心投入创作，不受其他事情的干扰</li>
           <br/><li><span style="color: #FF66CC;">问：</span>我觉得你真是个一心一意的人<br/>
           <span style="color: #33FFFF;">太阳：</span>我跟你说，我真的好开心！（笑）
-          <button id="collapseBtn11" class="toggle-btn" onclick="toggleList(11, false)" style="margin-left:10px;">收回</button></p>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
         </ol>
       </div>
     </div>
@@ -1715,8 +1708,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>我听说你和胜利关系很好？<br/>
           <span style="color: #33FFFF;">答：</span>是的，没错。胜利是个很外向的人。我刚加入YG的时候，一切都感觉很陌生。但胜利来到我的房间，做了自我介绍，然后说：“哥！你是新来的吧？我们一起合作吧！”（笑）他的友善让我们很快就成了好朋友
-          <button id="expandBtn15" class="toggle-btn" onclick="toggleList(15, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList15" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>这是否促成了你参与胜利的个人专辑制作？<br/>
           <span style="color: #33FFFF;">答：</span>倒也不是因为这个，不过社长下达命令，你就得照办。（笑）他跟我说：“我们要发行胜利的专辑，你写首歌吧。”就这样，我开始创作《What Can I Do 》。最初，我们打算把它作为单曲发行，但我和胜利的合作非常愉快，他想创作更多音乐。于是我们又创作了几首歌，社长听了之后建议：“为什么不做成迷你专辑，而不是只发单曲呢？”于是，大概两周之内，我们就完成了四首歌，胜利的第一张个人专辑就此诞生</li>
           <br/><li><span style="color: #FF66CC;">问：</span>作为音乐伙伴，胜利是怎样的？<br/>
@@ -1729,7 +1722,7 @@
           <span style="color: #33FFFF;">答：</span>这是有什么特别的原因吗？其实并没有什么特别的原因，只是在制作过程中自然而然发生的。比如，胜利的《I Know》这首歌，是我们当时在制作《What Can I Do》期间，花了两个星期的时间作为副项目完成的。这首歌是我和胜利共同创作的，我们觉得它很适合做成一首对唱歌曲。胜利建议邀请IU加入，虽然当时联系IU比较困难，但胜利最终还是成功促成了这件事。这就是这首合作曲的由来</li>
           <br/><li><span style="color: #FF66CC;">问：</span>听说你一直在和太阳一起创作新歌，能透露一下创作方向吗？<br/>
           <span style="color: #33FFFF;">答：</span>我参与了太阳即将发行的个人专辑的制作，应该很快就会面世。目前，我的重心主要放在与新人合作上，因为YG正在培养很多新人。我正在思考接下来要创作什么样的歌曲
-          <button id="collapseBtn15" class="toggle-btn" onclick="toggleList(15, false)" style="margin-left:10px;">收回</button></p>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
         </ol>
       </div>
     </div>
@@ -1766,8 +1759,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>带着新专辑回归，尤其是在第二张完整专辑发行前先公开一首单曲，现在感觉如何？<br/>
           <span style="color: #33FFFF;">太阳：</span>感觉就像即将进入最终决战。先行曲已经发布，专辑发行日期也越来越近了。我在这张新专辑上倾注了大量心血，也因此更加喜爱它，很高兴它终于要和大家见面。在第二张完整专辑发行前先提前发布单曲，这一点让我真是松了一口气。有了这次预发布，我终于可以想象所有准备工作成果最终呈现出来的样子了，感觉就像到达了终点线一样
-          <button id="expandBtn12" class="toggle-btn" onclick="toggleList(12, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList12" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>你现在感受到的压力，与刚出道时相比有什么不同？<br/>
           <span style="color: #33FFFF;">太阳：</span>第一次尝试和多次尝试的压力确实不同。刚出道的时候，我更担心的是“别人会怎么看我”。现在的压力更多来自于“我该如何运用这些年累积下来的音乐经验”。我之前做过的音乐，和这次新作品的风格其实差别很大。我很好奇它们之间到底有多大的差异，同时也想找到它们的共通点。最后我得出的结论是：把我真正想做的、而且是我最擅长的东西展现出来，就是所有问题的答案</li>
           <br/><li><span style="color: #FF66CC;">问：</span>这次的《Ringa Linga》比你之前的歌曲更有力量，以前的作品则偏向感伤、柔和。你怎么理解这种变化？<br/>
@@ -1846,7 +1839,7 @@
           <span style="color: #33FFFF;">太阳：</span>这张专辑应该会在明年年初发行。前阵子我把整张专辑从头到尾认真听了一遍，感觉制作团队真的倾注了非常多的心血。我曾经打趣说过：“我觉得我们做这张专辑，比做沙丁鱼露还要用心，哈哈。”我的意思是，它的味道非常浓，很有“发酵之后的那种浓郁感”。听众会自己判断到底喜不喜欢，但就我个人的感受来说——这真的是一张花了很多心思去做的专辑</li>
           <br/><li><span style="color: #FF66CC;">问：</span>最后，有什么话想对一直等待你的粉丝说吗？<br/>
           <span style="color: #33FFFF;">太阳：</span>因为专辑延期的关系，外界有很多猜测，粉丝们也很担心。我看到这些的时候，其实也会感到很抱歉、很不安。但我知道，那是因为大家真的很关心我。所以我也希望，大家可以不要太在意外界各种各样的因素，把注意力放回到音乐本身。至于最终的成品，如果你喜欢，那就好好享受它；如果你不喜欢，也没关系，可以期待下一张专辑。你甚至可以骂我。（笑）对我来说，只要大家愿意用心去听音乐、去感受音乐，我就已经很感激了
-          <button id="collapseBtn12" class="toggle-btn" onclick="toggleList(12, false)" style="margin-left:10px;">收回</button></p>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
         </ol>
       </div>
     </div>
@@ -1895,8 +1888,8 @@
         <ol style="list-style-position: inside; color: white;">
           <li><span style="color: #FF66CC;">问：</span>你有没有像这样在夜晚漫步过梨泰院的街道？<br/>
           <span style="color: #33FFFF;">太阳：</span>我以前经常来梨泰院，几乎就住在这里。志龙以前也住在这附近，所以我经常来这里闲逛和购物
-          <button id="expandBtn14" class="toggle-btn" onclick="toggleList(14, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList14" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>现在都凌晨四点多了，但你看起来精力充沛<br/>
           <span style="color: #33FFFF;">太阳：</span>拍摄让我重新焕发了活力。我今天玩得很开心</li>
           <br/><li><span style="color: #FF66CC;">问：</span>距离我们2008年的采访已经过去5年了。那时候你还是个男孩，现在看起来像个男人了<br/>
@@ -1975,7 +1968,7 @@
           <span style="color: #33FFFF;">太阳：</span>我之前旅行时去过很多国家，每个国家都有其独特的风景和色彩，真是美不胜收。说实话，我真的很想去旅行。明年，我计划去很多地方</li>
           <br/><li><span style="color: #FF66CC;">问：</span>你想先去哪儿？<br/>
           <span style="color: #33FFFF;">太阳：</span>巴西。我朋友去过，他说那里的日出美极了。我真想亲眼看看
-          <button id="collapseBtn14" class="toggle-btn" onclick="toggleList(14, false)" style="margin-left:10px;">收回</button></p>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
         </ol>
       </div>
     </div>
@@ -1997,8 +1990,8 @@
           <li><span style="color: #FF66CC;">问：</span>今年你在韩国以外的地方都听了哪些音乐？<br/>
           <span style="color: #33FFFF;">太阳：</span>Kanye West, Drake, The Weeknd, Miguel and M.I.A<br/>
           <span style="color: #33FFFF;">胜利：</span>Robin Thicke
-          <button id="expandBtn13" class="toggle-btn" onclick="toggleList(13, true)" style="margin-left:10px;">展开</button></p>
-          <ol id="celebrityList13" start="2" style="display: none; list-style-position: inside; color: white;">
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
           <br/><li><span style="color: #FF66CC;">问：</span>G-Dragon的最新专辑与Missy Elliott和Diplo等人合作。你还想和谁合作？<br/>
           <span style="color: #33FFFF;">GD：</span>Pharrell (Williams)<br/>
           <span style="color: #33FFFF;">太阳：</span>我的第三张个人专辑将于一月份发行，我与很多美国制作人合作过，比如 Underdogs（制作人包括 Dru Hill、Mary J. Blige、Babyface 等）和 Boys Noize（德国电子音乐 DJ）</li>
@@ -2015,7 +2008,7 @@
           <br/><li><span style="color: #FF66CC;">问：</span>你在菲律宾拥有庞大的粉丝群。在台风海燕灾害发生后，你有什么话想对你的菲律宾粉丝说吗？<br/>
           <span style="color: #33FFFF;">胜利：</span>这太令人难过了……<br/>
           <span style="color: #33FFFF;">太阳：</span>我们对菲律宾有着非常美好的回忆。菲律宾人民的精神和力量比任何台风都强大
-          <button id="collapseBtn13" class="toggle-btn" onclick="toggleList(13, false)" style="margin-left:10px;">收回</button></p>          
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
         </ol>
       </div>
     </div>
@@ -2091,25 +2084,45 @@
         document.getElementById("footer").innerHTML = data;
       });
 
-  function toggleList(index, show) {
-    const list     = document.getElementById(`celebrityList${index}`);
-    const expand   = document.getElementById(`expandBtn${index}`);
-    const collapse = document.getElementById(`collapseBtn${index}`);
-
-    if (!list || !expand) return;
-
-    if (show) {
-      list.style.display = "block";
-      if (expand)   expand.style.display = "none";
-      if (collapse) collapse.style.display = "inline-block";
-      list.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else {
-      list.style.display = "none";
-      if (expand)   expand.style.display = "inline-block";
-      if (collapse) collapse.style.display = "none";
-      expand.scrollIntoView({ behavior: "smooth", block: "center" });
+  function toggleList(button, show) {
+  const listItem = button.closest('li');
+  
+  if (show) {
+    let nestedList = listItem.querySelector('ol');
+    if (!nestedList) {
+      nestedList = listItem.nextElementSibling;
+    }
+    
+    if (nestedList && nestedList.tagName === 'OL') {
+      nestedList.style.display = "block";
+      button.style.display = "none";
+      nestedList.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  } else {
+    const nestedList = button.closest('ol');
+    
+    if (nestedList) {
+      nestedList.style.display = "none";
+      
+      let parentLi = nestedList.parentElement.closest('li');
+      if (!parentLi) {
+        parentLi = nestedList.previousElementSibling;
+        while (parentLi && parentLi.tagName !== 'LI') {
+          parentLi = parentLi.previousElementSibling;
+        }
+      }
+      
+      if (parentLi) {
+        const expandBtns = parentLi.querySelectorAll('[onclick*="true"]');
+        expandBtns.forEach(btn => {
+          btn.style.display = "inline-block";
+        });
+        
+        parentLi.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
     }
   }
+}
 
 const sliderStates = new Map();
 

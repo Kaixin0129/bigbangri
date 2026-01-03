@@ -343,7 +343,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -352,6 +353,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -385,25 +392,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   .slider {
@@ -418,7 +411,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -427,6 +421,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -460,25 +460,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   .toggle-btn {
@@ -673,34 +659,34 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="170313.jpg" class="slide-img img-landscape" />
+            <img src="170313.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1703131.jpg" class="slide-img img-landscape" />
+            <img src="1703131.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1703132.jpg" class="slide-img img-landscape" />
+            <img src="1703132.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1703133.jpg" class="slide-img img-landscape" />
+            <img src="1703133.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1703134.jpg" class="slide-img img-landscape" />
+            <img src="1703134.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1703135.jpg" class="slide-img img-landscape" />
+            <img src="1703135.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1703136.jpg" class="slide-img img-landscape" />
+            <img src="1703136.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1703137.jpg" class="slide-img img-landscape" />
+            <img src="1703137.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1703138.jpg" class="slide-img img-portrait" />
+            <img src="1703138.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1703139.jpg" class="slide-img img-portrait" />
+            <img src="1703139.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -974,18 +960,45 @@
         document.getElementById("footer").innerHTML = data;
       });
 
-  function toggleList(show) {
-    const list = document.getElementById("celebrityList");
-    const expandBtn = document.getElementById("expandBtn");
-    if (show) {
-      list.style.display = "block";
-      expandBtn.style.display = "none";
-    } else {
-      list.style.display = "none";
-      expandBtn.style.display = "inline-block";
-      expandBtn.scrollIntoView({ behavior: "smooth", block: "center" });
+  function toggleList(button, show) {
+  const listItem = button.closest('li');
+  
+  if (show) {
+    let nestedList = listItem.querySelector('ol');
+    if (!nestedList) {
+      nestedList = listItem.nextElementSibling;
+    }
+    
+    if (nestedList && nestedList.tagName === 'OL') {
+      nestedList.style.display = "block";
+      button.style.display = "none";
+      nestedList.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  } else {
+    const nestedList = button.closest('ol');
+    
+    if (nestedList) {
+      nestedList.style.display = "none";
+      
+      let parentLi = nestedList.parentElement.closest('li');
+      if (!parentLi) {
+        parentLi = nestedList.previousElementSibling;
+        while (parentLi && parentLi.tagName !== 'LI') {
+          parentLi = parentLi.previousElementSibling;
+        }
+      }
+      
+      if (parentLi) {
+        const expandBtns = parentLi.querySelectorAll('[onclick*="true"]');
+        expandBtns.forEach(btn => {
+          btn.style.display = "inline-block";
+        });
+        
+        parentLi.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
     }
   }
+}
 
 const sliderStates = new Map();
 

@@ -341,7 +341,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -350,6 +351,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -383,25 +390,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   </style>
@@ -451,25 +444,25 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-nii.jpg" class="slide-img img-landscape" />
+            <img src="e-nii.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii1.jpg" class="slide-img img-landscape" />
+            <img src="e-nii1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii2.jpg" class="slide-img img-landscape" />
+            <img src="e-nii2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii3.jpg" class="slide-img img-landscape" />
+            <img src="e-nii3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii4.jpg" class="slide-img img-landscape" />
+            <img src="e-nii4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii5.jpg" class="slide-img img-landscape" />
+            <img src="e-nii5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii6.jpg" class="slide-img img-landscape" />
+            <img src="e-nii6.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -491,19 +484,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="0803071.jpg" class="slide-img img-portrait" />
+            <img src="0803071.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="0803072.jpg" class="slide-img img-landscape" />
+            <img src="0803072.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="0803073.jpg" class="slide-img img-portrait" />
+            <img src="0803073.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="0803074.jpg" class="slide-img img-portrait" />
+            <img src="0803074.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="0803075.jpg" class="slide-img img-landscape" />
+            <img src="0803075.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -545,13 +538,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-nii19.jpg" class="slide-img img-landscape" />
+            <img src="e-nii19.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii20.jpg" class="slide-img img-landscape" />
+            <img src="e-nii20.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii21.jpg" class="slide-img img-landscape" />
+            <img src="e-nii21.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -563,40 +556,40 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-nii7.jpg" class="slide-img img-landscape" />
+            <img src="e-nii7.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii8.jpg" class="slide-img img-landscape" />
+            <img src="e-nii8.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii9.jpg" class="slide-img img-landscape" />
+            <img src="e-nii9.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii10.jpg" class="slide-img img-landscape" />
+            <img src="e-nii10.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii11.jpg" class="slide-img img-landscape" />
+            <img src="e-nii11.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii12.jpg" class="slide-img img-landscape" />
+            <img src="e-nii12.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii13.jpg" class="slide-img img-landscape" />
+            <img src="e-nii13.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii14.jpg" class="slide-img img-landscape" />
+            <img src="e-nii14.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii15.jpg" class="slide-img img-landscape" />
+            <img src="e-nii15.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii16.jpg" class="slide-img img-landscape" />
+            <img src="e-nii16.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii17.jpg" class="slide-img img-landscape" />
+            <img src="e-nii17.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii18.jpg" class="slide-img img-landscape" />
+            <img src="e-nii18.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -608,22 +601,22 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-nii22.jpg" class="slide-img img-landscape" />
+            <img src="e-nii22.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii23.jpg" class="slide-img img-landscape" />
+            <img src="e-nii23.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii24.jpg" class="slide-img img-landscape" />
+            <img src="e-nii24.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii25.jpg" class="slide-img img-landscape" />
+            <img src="e-nii25.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii26.jpg" class="slide-img img-landscape" />
+            <img src="e-nii26.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii27.jpg" class="slide-img img-landscape" />
+            <img src="e-nii27.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -635,19 +628,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-nii28.jpg" class="slide-img img-landscape" />
+            <img src="e-nii28.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii29.jpg" class="slide-img img-landscape" />
+            <img src="e-nii29.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii30.webp" class="slide-img img-landscape" />
+            <img src="e-nii30.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii31.jpg" class="slide-img img-landscape" />
+            <img src="e-nii31.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii74.jpg" class="slide-img img-landscape" />
+            <img src="e-nii74.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -659,16 +652,16 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-nii32.webp" class="slide-img img-landscape" />
+            <img src="e-nii32.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw8.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw8.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw9.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw9.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw10.jpg" class="slide-img img-landscape" />
+            <img src="e-niiw10.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -713,70 +706,70 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-nii75.jpg" class="slide-img img-portrait" />
+            <img src="e-nii75.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii83.jpg" class="slide-img img-landscape" />
+            <img src="e-nii83.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii87.jpg" class="slide-img img-landscape" />
+            <img src="e-nii87.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii86.jpg" class="slide-img img-landscape" />
+            <img src="e-nii86.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii80.jpg" class="slide-img img-landscape" />
+            <img src="e-nii80.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii79.jpg" class="slide-img img-landscape" />
+            <img src="e-nii79.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii81.jpg" class="slide-img img-portrait" />
+            <img src="e-nii81.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii77.jpg" class="slide-img img-landscape" />
+            <img src="e-nii77.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii76.jpg" class="slide-img img-landscape" />
+            <img src="e-nii76.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii95.jpg" class="slide-img img-portrait" />
+            <img src="e-nii95.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii79.jpg" class="slide-img img-landscape" />
+            <img src="e-nii79.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii82.jpg" class="slide-img img-landscape" />
+            <img src="e-nii82.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii84.jpg" class="slide-img img-portrait" />
+            <img src="e-nii84.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii85.jpg" class="slide-img img-landscape" />
+            <img src="e-nii85.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii88.jpg" class="slide-img img-landscape" />
+            <img src="e-nii88.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii78.jpg" class="slide-img img-portrait" />
+            <img src="e-nii78.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii94.jpg" class="slide-img img-portrait" />
+            <img src="e-nii94.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii89.jpg" class="slide-img img-portrait" />
+            <img src="e-nii89.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii90.jpg" class="slide-img img-portrait" />
+            <img src="e-nii90.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii91.jpg" class="slide-img img-portrait" />
+            <img src="e-nii91.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii92.jpg" class="slide-img img-portrait" />
+            <img src="e-nii92.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii93.jpg" class="slide-img img-portrait" />
+            <img src="e-nii93.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -795,25 +788,25 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-nii33.webp" class="slide-img img-landscape" />
+            <img src="e-nii33.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii34.webp" class="slide-img img-landscape" />
+            <img src="e-nii34.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii35.webp" class="slide-img img-landscape" />
+            <img src="e-nii35.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii36.webp" class="slide-img img-portrait" />
+            <img src="e-nii36.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii37.webp" class="slide-img img-portrait" />
+            <img src="e-nii37.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii38.webp" class="slide-img img-portrait" />
+            <img src="e-nii38.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii46.webp" class="slide-img img-portrait" />
+            <img src="e-nii46.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -824,25 +817,25 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-nii41.webp" class="slide-img img-landscape" />
+            <img src="e-nii41.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii40.webp" class="slide-img img-landscape" />
+            <img src="e-nii40.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii42.webp" class="slide-img img-portrait" />
+            <img src="e-nii42.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii43.webp" class="slide-img img-portrait" />
+            <img src="e-nii43.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii47.webp" class="slide-img img-portrait" />
+            <img src="e-nii47.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii44.webp" class="slide-img img-portrait" />
+            <img src="e-nii44.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii45.webp" class="slide-img img-portrait" />
+            <img src="e-nii45.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -910,28 +903,28 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-niiw.jpg" class="slide-img img-landscape" />
+            <img src="e-niiw.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw1.jpg" class="slide-img img-landscape" />
+            <img src="e-niiw1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw2.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw3.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw4.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw5.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw6.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw7.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw7.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -943,52 +936,52 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-niiw11.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw11.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw12.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw12.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw13.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw13.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw14.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw14.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw15.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw15.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw16.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw16.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw17.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw17.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw18.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw18.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw19.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw19.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw20.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw20.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw21.jpg" class="slide-img img-portrait" />
+            <img src="e-niiw21.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw23.jpg" class="slide-img img-landscape" />
+            <img src="e-niiw23.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw24.jpg" class="slide-img img-landscape" />
+            <img src="e-niiw24.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw25.jpg" class="slide-img img-landscape" />
+            <img src="e-niiw25.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw26.jpg" class="slide-img img-landscape" />
+            <img src="e-niiw26.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-niiw27.jpg" class="slide-img img-landscape" />
+            <img src="e-niiw27.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1015,58 +1008,58 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-nii48.jpg" class="slide-img img-landscape" />
+            <img src="e-nii48.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii49.jpg" class="slide-img img-landscape" />
+            <img src="e-nii49.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii54.webp" class="slide-img img-portrait" />
+            <img src="e-nii54.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii56.webp" class="slide-img img-portrait" />
+            <img src="e-nii56.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii50.webp" class="slide-img img-landscape" />
+            <img src="e-nii50.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii60.webp" class="slide-img img-portrait" />
+            <img src="e-nii60.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii71.webp" class="slide-img img-portrait" />
+            <img src="e-nii71.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii70.webp" class="slide-img img-portrait" />
+            <img src="e-nii70.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii69.webp" class="slide-img img-portrait" />
+            <img src="e-nii69.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii51.webp" class="slide-img img-landscape" />
+            <img src="e-nii51.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii55.webp" class="slide-img img-portrait" />
+            <img src="e-nii55.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii52.webp" class="slide-img img-landscape" />
+            <img src="e-nii52.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii73.webp" class="slide-img img-portrait" />
+            <img src="e-nii73.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii52.webp" class="slide-img img-landscape" />
+            <img src="e-nii52.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii53.webp" class="slide-img img-landscape" />
+            <img src="e-nii53.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii58.webp" class="slide-img img-portrait" />
+            <img src="e-nii58.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii65.webp" class="slide-img img-portrait" />
+            <img src="e-nii65.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii67.webp" class="slide-img img-portrait" />
+            <img src="e-nii67.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1077,19 +1070,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-nii59.webp" class="slide-img img-portrait" />
+            <img src="e-nii59.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii68.webp" class="slide-img img-portrait" />
+            <img src="e-nii68.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii72.webp" class="slide-img img-portrait" />
+            <img src="e-nii72.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii57.webp" class="slide-img img-portrait" />
+            <img src="e-nii57.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-nii63.webp" class="slide-img img-portrait" />
+            <img src="e-nii63.webp" class="slide-img" />
           </div>
         </div>
       </div>

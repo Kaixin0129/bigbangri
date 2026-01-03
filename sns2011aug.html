@@ -353,7 +353,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -362,6 +363,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -395,25 +402,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
     html {
@@ -472,10 +465,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="1108022.jpeg" class="slide-img img-landscape" />
+            <img src="1108022.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1108021.jpeg" class="slide-img img-portrait" />
+            <img src="1108021.jpeg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -503,13 +496,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="1108091.jpeg" class="slide-img img-portrait" />
+            <img src="1108091.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1108092.jpeg" class="slide-img img-landscape" />
+            <img src="1108092.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1108093.jpeg" class="slide-img img-landscape" />
+            <img src="1108093.jpeg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -613,22 +606,22 @@ My friend Seungil said to me“‘Thank you4the gift”,then G-D said “I’ll 
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="1108221.jpeg" class="slide-img img-portrait" />
+            <img src="1108221.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1108222.jpeg" class="slide-img img-landscape" />
+            <img src="1108222.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1108223.jpeg" class="slide-img img-portrait" />
+            <img src="1108223.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1108224.jpeg" class="slide-img img-portrait" />
+            <img src="1108224.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1108225.jpeg" class="slide-img img-landscape" />
+            <img src="1108225.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1108226.jpeg" class="slide-img img-landscape" />
+            <img src="1108226.jpeg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -672,10 +665,10 @@ My friend Seungil said to me“‘Thank you4the gift”,then G-D said “I’ll 
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="1108251.jpeg" class="slide-img img-landscape" />
+            <img src="1108251.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1108252.jpeg" class="slide-img img-portrait" />
+            <img src="1108252.jpeg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -727,19 +720,19 @@ My friend Seungil said to me“‘Thank you4the gift”,then G-D said “I’ll 
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="1108265.jpeg" class="slide-img img-landscape" />
+            <img src="1108265.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1108264.jpeg" class="slide-img img-landscape" />
+            <img src="1108264.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1108263.png" class="slide-img img-landscape" />
+            <img src="1108263.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1108262.jpg" class="slide-img img-landscape" />
+            <img src="1108262.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="se7en.jpg" class="slide-img img-portrait" />
+            <img src="se7en.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -785,10 +778,10 @@ My friend Seungil said to me“‘Thank you4the gift”,then G-D said “I’ll 
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="1108301.jpeg" class="slide-img img-portrait" />
+            <img src="1108301.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1108302.jpeg" class="slide-img img-landscape" />
+            <img src="1108302.jpeg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -816,10 +809,10 @@ My friend Seungil said to me“‘Thank you4the gift”,then G-D said “I’ll 
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="1108303.jpeg" class="slide-img img-landscape" />
+            <img src="1108303.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1108304.jpeg" class="slide-img img-landscape" />
+            <img src="1108304.jpeg" class="slide-img" />
           </div>
         </div>
       </div>

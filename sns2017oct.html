@@ -353,7 +353,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -362,6 +363,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -395,25 +402,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
     html {
@@ -475,10 +468,10 @@ Aori拉面韩国第12分店即将在集多种文化与个性的首尔梨泰院�
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="171018.png" class="slide-img img-portrait" />
+              <img src="171018.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1710181.png" class="slide-img img-portrait" />
+              <img src="1710181.png" class="slide-img" />
             </div>
           </div>
         </div>
@@ -505,10 +498,10 @@ Aori拉面韩国第12分店即将在集多种文化与个性的首尔梨泰院�
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="171020.png" class="slide-img img-landscape" />
+              <img src="171020.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1710201.png" class="slide-img img-portrait" />
+              <img src="1710201.png" class="slide-img" />
             </div>
           </div>
         </div>
@@ -553,10 +546,10 @@ Aori拉面韩国第12分店即将在集多种文化与个性的首尔梨泰院�
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="171023.png" class="slide-img img-portrait" />
+              <img src="171023.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1710203.png" class="slide-img img-portrait" />
+              <img src="1710203.png" class="slide-img" />
             </div>
           </div>
         </div>
@@ -584,10 +577,10 @@ Aori拉面韩国第12分店即将在集多种文化与个性的首尔梨泰院�
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="1710251.jpg" class="slide-img img-portrait" />
+              <img src="1710251.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="171025.jpg" class="slide-img img-portrait" />
+              <img src="171025.jpg" class="slide-img" />
             </div>
           </div>
         </div>
@@ -615,10 +608,10 @@ Aori拉面韩国第12分店即将在集多种文化与个性的首尔梨泰院�
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="171031.png" class="slide-img img-landscape" />
+              <img src="171031.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1710311.png" class="slide-img img-portrait" />
+              <img src="1710311.png" class="slide-img" />
             </div>
           </div>
         </div>

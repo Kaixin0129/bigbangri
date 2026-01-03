@@ -353,7 +353,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -362,6 +363,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -395,25 +402,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   </style>
@@ -467,22 +460,22 @@ Aori拉面国内第27号店将于5/4（星期五）在济州岛开业！ 在开�
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="180609.jpeg" class="slide-img img-landscape" />
+              <img src="180609.jpeg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="180504.jpg" class="slide-img img-portrait" />
+              <img src="180504.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1805041.jpg" class="slide-img img-portrait" />
+              <img src="1805041.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1805042.jpg" class="slide-img img-portrait" />
+              <img src="1805042.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1805043.jpg" class="slide-img img-portrait" />
+              <img src="1805043.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1805044.jpg" class="slide-img img-portrait" />
+              <img src="1805044.jpg" class="slide-img" />
             </div>
           </div>
         </div>
@@ -514,13 +507,13 @@ Aori拉面原州店位于江原道原州市Neungnadong-gil70,207号武三公园�
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="180507.png" class="slide-img img-landscape" />
+              <img src="180507.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1805072.jpg" class="slide-img img-landscape" />
+              <img src="1805072.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1805071.jpeg" class="slide-img img-portrait" />
+              <img src="1805071.jpeg" class="slide-img" />
             </div>
           </div>
         </div>
@@ -565,13 +558,13 @@ Aori拉面国内第29号店将于5/9（星期三）在蘆原区开业！ 蘆原�
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="1805136.png" class="slide-img img-landscape" />
+              <img src="1805136.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="180513.jpeg" class="slide-img img-portrait" />
+              <img src="180513.jpeg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1805131.jpeg" class="slide-img img-portrait" />
+              <img src="1805131.jpeg" class="slide-img" />
             </div>
           </div>
         </div>
@@ -603,16 +596,16 @@ Aori拉面国内第29号店将于5/9（星期三）在蘆原区开业！ 蘆原�
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="1805132.jpeg" class="slide-img img-landscape" />
+              <img src="1805132.jpeg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1805133.png" class="slide-img img-landscape" />
+              <img src="1805133.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1805134.png" class="slide-img img-portrait" />
+              <img src="1805134.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1805135.png" class="slide-img img-portrait" />
+              <img src="1805135.png" class="slide-img" />
             </div>
           </div>
         </div>
@@ -640,10 +633,10 @@ Aori拉面国内第29号店将于5/9（星期三）在蘆原区开业！ 蘆原�
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="180724.jpg" class="slide-img img-portrait" />
+              <img src="180724.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1807241.jpg" class="slide-img img-portrait" />
+              <img src="1807241.jpg" class="slide-img" />
             </div>
           </div>
         </div>

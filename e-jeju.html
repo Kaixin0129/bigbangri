@@ -341,7 +341,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -350,6 +351,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -383,25 +390,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   </style>
@@ -472,10 +465,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-jeju.jpg" class="slide-img img-landscape" />
+            <img src="e-jeju.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju4.jpg" class="slide-img img-landscape" />
+            <img src="e-jeju4.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -503,43 +496,43 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-jeju11.jpg" class="slide-img img-landscape" />
+            <img src="e-jeju11.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju22.jpg" class="slide-img img-landscape" />
+            <img src="e-jeju22.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jejuw.jpg" class="slide-img img-landscape" />
+            <img src="e-jejuw.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju5.jpg" class="slide-img img-landscape" />
+            <img src="e-jeju5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jejuw1.jpg" class="slide-img img-landscape" />
+            <img src="e-jejuw1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju7.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju7.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju8.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju8.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju9.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju9.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju10.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju10.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju6.jpg" class="slide-img img-landscape" />
+            <img src="e-jeju6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju17.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju17.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju18.jpg" class="slide-img img-landscape" />
+            <img src="e-jeju18.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju19.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju19.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -551,46 +544,46 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-jeju21.jpg" class="slide-img img-landscape" />
+            <img src="e-jeju21.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju1.jpg" class="slide-img img-landscape" />
+            <img src="e-jeju1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju2.jpg" class="slide-img img-landscape" />
+            <img src="e-jeju2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju13.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju13.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju14.jpg" class="slide-img img-landscape" />
+            <img src="e-jeju14.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju15.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju15.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju24.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju24.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju25.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju25.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju26.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju26.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju27.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju27.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju28.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju28.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju29.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju29.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju16.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju16.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju30.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju30.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -623,16 +616,16 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-jeju23.webp" class="slide-img img-landscape" />
+            <img src="e-jeju23.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju20.jpg" class="slide-img img-landscape" />
+            <img src="e-jeju20.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju31.JPG" class="slide-img img-landscape" />
+            <img src="e-jeju31.JPG" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju32.JPG" class="slide-img img-landscape" />
+            <img src="e-jeju32.JPG" class="slide-img" />
           </div>
         </div>
       </div>
@@ -648,145 +641,145 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-jeju12.jpg" class="slide-img img-landscape" />
+            <img src="e-jeju12.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju33.webp" class="slide-img img-landscape" />
+            <img src="e-jeju33.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju34.webp" class="slide-img img-landscape" />
+            <img src="e-jeju34.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju35.webp" class="slide-img img-landscape" />
+            <img src="e-jeju35.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju36.webp" class="slide-img img-landscape" />
+            <img src="e-jeju36.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju37.webp" class="slide-img img-landscape" />
+            <img src="e-jeju37.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju38.webp" class="slide-img img-landscape" />
+            <img src="e-jeju38.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju39.webp" class="slide-img img-landscape" />
+            <img src="e-jeju39.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju40.webp" class="slide-img img-landscape" />
+            <img src="e-jeju40.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju41.webp" class="slide-img img-landscape" />
+            <img src="e-jeju41.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju42.webp" class="slide-img img-landscape" />
+            <img src="e-jeju42.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju43.webp" class="slide-img img-landscape" />
+            <img src="e-jeju43.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju44.webp" class="slide-img img-landscape" />
+            <img src="e-jeju44.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju45.webp" class="slide-img img-landscape" />
+            <img src="e-jeju45.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju46.webp" class="slide-img img-landscape" />
+            <img src="e-jeju46.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju47.webp" class="slide-img img-landscape" />
+            <img src="e-jeju47.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju49.webp" class="slide-img img-landscape" />
+            <img src="e-jeju49.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju50.webp" class="slide-img img-landscape" />
+            <img src="e-jeju50.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju51.webp" class="slide-img img-landscape" />
+            <img src="e-jeju51.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju53.webp" class="slide-img img-landscape" />
+            <img src="e-jeju53.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju54.webp" class="slide-img img-landscape" />
+            <img src="e-jeju54.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju55.webp" class="slide-img img-landscape" />
+            <img src="e-jeju55.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju56.webp" class="slide-img img-landscape" />
+            <img src="e-jeju56.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju57.webp" class="slide-img img-landscape" />
+            <img src="e-jeju57.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju58.webp" class="slide-img img-landscape" />
+            <img src="e-jeju58.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju59.webp" class="slide-img img-landscape" />
+            <img src="e-jeju59.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju60.webp" class="slide-img img-landscape" />
+            <img src="e-jeju60.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju61.webp" class="slide-img img-landscape" />
+            <img src="e-jeju61.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju62.webp" class="slide-img img-landscape" />
+            <img src="e-jeju62.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju63.webp" class="slide-img img-landscape" />
+            <img src="e-jeju63.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju64.webp" class="slide-img img-landscape" />
+            <img src="e-jeju64.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju65.webp" class="slide-img img-landscape" />
+            <img src="e-jeju65.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju66.webp" class="slide-img img-landscape" />
+            <img src="e-jeju66.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju67.webp" class="slide-img img-landscape" />
+            <img src="e-jeju67.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju68.webp" class="slide-img img-landscape" />
+            <img src="e-jeju68.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju69.webp" class="slide-img img-landscape" />
+            <img src="e-jeju69.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju70.webp" class="slide-img img-landscape" />
+            <img src="e-jeju70.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju71.webp" class="slide-img img-landscape" />
+            <img src="e-jeju71.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju72.webp" class="slide-img img-landscape" />
+            <img src="e-jeju72.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju73.webp" class="slide-img img-landscape" />
+            <img src="e-jeju73.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju74.webp" class="slide-img img-landscape" />
+            <img src="e-jeju74.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju75.webp" class="slide-img img-landscape" />
+            <img src="e-jeju75.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju76.webp" class="slide-img img-landscape" />
+            <img src="e-jeju76.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju78.webp" class="slide-img img-landscape" />
+            <img src="e-jeju78.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju79.webp" class="slide-img img-landscape" />
+            <img src="e-jeju79.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju80.webp" class="slide-img img-landscape" />
+            <img src="e-jeju80.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju81.webp" class="slide-img img-landscape" />
+            <img src="e-jeju81.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -827,10 +820,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-jeju3.jpg" class="slide-img img-portrait" />
+            <img src="e-jeju3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-jeju83.jpg" class="slide-img img-landscape" />
+            <img src="e-jeju83.jpg" class="slide-img" />
           </div>
         </div>
       </div>

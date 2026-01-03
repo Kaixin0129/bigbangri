@@ -341,7 +341,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -350,6 +351,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -383,25 +390,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   </style>
@@ -441,16 +434,16 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-10.jpg" class="slide-img img-landscape" />
+            <img src="e-10.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-101.webp" class="slide-img img-portrait" />
+            <img src="e-101.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-102.jpg" class="slide-img img-portrait" />
+            <img src="e-102.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-103.jpg" class="slide-img img-landscape" />
+            <img src="e-103.jpg" class="slide-img" />
           </div> 
         </div>
       </div>
@@ -474,28 +467,28 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-10m.jpg" class="slide-img img-landscape" />
+            <img src="e-10m.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-10m1.jpg" class="slide-img img-landscape" />
+            <img src="e-10m1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-10m7.jpg" class="slide-img img-portrait" />
+            <img src="e-10m7.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-10m2.jpg" class="slide-img img-landscape" />
+            <img src="e-10m2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-10m3.jpg" class="slide-img img-landscape" />
+            <img src="e-10m3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-10m4.jpg" class="slide-img img-landscape" />
+            <img src="e-10m4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-10m5.jpg" class="slide-img img-landscape" />
+            <img src="e-10m5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-10m6.jpg" class="slide-img img-portrait" />
+            <img src="e-10m6.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -519,52 +512,52 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-104.jpg" class="slide-img img-portrait" />
+            <img src="e-104.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-105.png" class="slide-img img-landscape" />
+            <img src="e-105.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-106.png" class="slide-img img-landscape" />
+            <img src="e-106.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-107.png" class="slide-img img-landscape" />
+            <img src="e-107.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-1013.png" class="slide-img img-landscape" />
+            <img src="e-1013.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-108.webp" class="slide-img img-portrait" />
+            <img src="e-108.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-109.png" class="slide-img img-landscape" />
+            <img src="e-109.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-1010.png" class="slide-img img-landscape" />
+            <img src="e-1010.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-1011.png" class="slide-img img-landscape" />
+            <img src="e-1011.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-1012.png" class="slide-img img-portrait" />
+            <img src="e-1012.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-1015.png" class="slide-img img-landscape" />
+            <img src="e-1015.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-1014.png" class="slide-img img-landscape" />
+            <img src="e-1014.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-1018.png" class="slide-img img-landscape" />
+            <img src="e-1018.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-1019.png" class="slide-img img-landscape" />
+            <img src="e-1019.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-1016.jpg" class="slide-img img-landscape" />
+            <img src="e-1016.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-1017.jpg" class="slide-img img-landscape" />
+            <img src="e-1017.jpg" class="slide-img" />
           </div>
         </div>
       </div>

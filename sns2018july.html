@@ -353,7 +353,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -362,6 +363,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -395,25 +402,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   </style>
@@ -471,13 +464,13 @@
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="180708.png" class="slide-img img-landscape" />
+              <img src="180708.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1807081.png" class="slide-img img-landscape" />
+              <img src="1807081.png" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1807082.png" class="slide-img img-portrait" />
+              <img src="1807082.png" class="slide-img" />
             </div>
           </div>
         </div>
@@ -525,10 +518,10 @@ Aori拉面上岩店位于首尔市麻浦区世界杯北路54路25，上岩DMC, P
         <div class="slider-wrapper">
           <div class="slider">
             <div class="slide-item">
-              <img src="180724.jpg" class="slide-img img-portrait" />
+              <img src="180724.jpg" class="slide-img" />
             </div>
             <div class="slide-item">
-              <img src="1807241.jpg" class="slide-img img-portrait" />
+              <img src="1807241.jpg" class="slide-img" />
             </div>
           </div>
         </div>

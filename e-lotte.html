@@ -341,7 +341,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -350,6 +351,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -383,25 +390,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   </style>
@@ -452,10 +445,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lottew1.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew2.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew2.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -470,13 +463,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lottew3.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew4.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew18.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew18.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -491,13 +484,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lottew5.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew6.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew19.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew19.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -512,13 +505,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lottew7.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew7.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew8.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew8.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew20.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew20.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -533,13 +526,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lottew9.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew9.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew10.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew10.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew21.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew21.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -554,13 +547,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lottew11.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew11.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew12.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew12.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew22.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew22.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -575,10 +568,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lottew13.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew13.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew14.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew14.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -593,28 +586,28 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lottew15.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew15.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lotte.jpg" class="slide-img img-landscape" />
+            <img src="e-lotte.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lotte1.png" class="slide-img img-landscape" />
+            <img src="e-lotte1.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lotte2.png" class="slide-img img-landscape" />
+            <img src="e-lotte2.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lotte3.png" class="slide-img img-landscape" />
+            <img src="e-lotte3.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lotte4.png" class="slide-img img-landscape" />
+            <img src="e-lotte4.png" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lotte5.png" class="slide-img img-landscape" />
+            <img src="e-lotte5.png" class="slide-img" />
           </div>
         </div>
       </div>
@@ -629,13 +622,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lottew16.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew16.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew17.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew17.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew23.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew23.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -659,10 +652,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="100222.jpg" class="slide-img img-landscape" />
+            <img src="100222.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1002221.jpg" class="slide-img img-landscape" />
+            <img src="1002221.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -713,13 +706,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte1.webp" class="slide-img img-landscape" />
+            <img src="lotte1.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte2.webp" class="slide-img img-landscape" />
+            <img src="lotte2.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte3.gif" class="slide-img img-landscape" />
+            <img src="lotte3.gif" class="slide-img" />
           </div>
         </div>
       </div>
@@ -734,13 +727,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte4.webp" class="slide-img img-landscape" />
+            <img src="lotte4.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte5.jpg" class="slide-img img-landscape" />
+            <img src="lotte5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte14.webp" class="slide-img img-portrait" />
+            <img src="lotte14.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -755,94 +748,94 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte97.jpg" class="slide-img img-landscape" />
+            <img src="lotte97.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte99.jpg" class="slide-img img-landscape" />
+            <img src="lotte99.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte98.jpg" class="slide-img img-landscape" />
+            <img src="lotte98.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte100.jpg" class="slide-img img-landscape" />
+            <img src="lotte100.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte101.jpg" class="slide-img img-landscape" />
+            <img src="lotte101.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte102.jpg" class="slide-img img-landscape" />
+            <img src="lotte102.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte103.webp" class="slide-img img-landscape" />
+            <img src="lotte103.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte104.webp" class="slide-img img-landscape" />
+            <img src="lotte104.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte105.webp" class="slide-img img-landscape" />
+            <img src="lotte105.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte106.webp" class="slide-img img-landscape" />
+            <img src="lotte106.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte107.webp" class="slide-img img-landscape" />
+            <img src="lotte107.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte108.webp" class="slide-img img-landscape" />
+            <img src="lotte108.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte110.webp" class="slide-img img-landscape" />
+            <img src="lotte110.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte111.webp" class="slide-img img-landscape" />
+            <img src="lotte111.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte112.webp" class="slide-img img-landscape" />
+            <img src="lotte112.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte113.webp" class="slide-img img-landscape" />
+            <img src="lotte113.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte114.webp" class="slide-img img-landscape" />
+            <img src="lotte114.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte115.webp" class="slide-img img-landscape" />
+            <img src="lotte115.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte124.webp" class="slide-img img-landscape" />
+            <img src="lotte124.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte116.webp" class="slide-img img-landscape" />
+            <img src="lotte116.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte127.webp" class="slide-img img-landscape" />
+            <img src="lotte127.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte117.webp" class="slide-img img-landscape" />
+            <img src="lotte117.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte118.webp" class="slide-img img-landscape" />
+            <img src="lotte118.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte126.webp" class="slide-img img-landscape" />
+            <img src="lotte126.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte119.webp" class="slide-img img-landscape" />
+            <img src="lotte119.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte120.webp" class="slide-img img-landscape" />
+            <img src="lotte120.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte121.webp" class="slide-img img-landscape" />
+            <img src="lotte121.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte122.webp" class="slide-img img-landscape" />
+            <img src="lotte122.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte123.webp" class="slide-img img-landscape" />
+            <img src="lotte123.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte125.webp" class="slide-img img-landscape" />
+            <img src="lotte125.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -858,40 +851,40 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte84.webp" class="slide-img img-portrait" />
+            <img src="lotte84.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte85.webp" class="slide-img img-landscape" />
+            <img src="lotte85.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte86.webp" class="slide-img img-landscape" />
+            <img src="lotte86.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte88.webp" class="slide-img img-landscape" />
+            <img src="lotte88.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte93.webp" class="slide-img img-landscape" />
+            <img src="lotte93.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte95.webp" class="slide-img img-landscape" />
+            <img src="lotte95.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte90.webp" class="slide-img img-landscape" />
+            <img src="lotte90.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte87.webp" class="slide-img img-portrait" />
+            <img src="lotte87.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte89.webp" class="slide-img img-portrait" />
+            <img src="lotte89.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte94.webp" class="slide-img img-portrait" />
+            <img src="lotte94.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte96.webp" class="slide-img img-portrait" />
+            <img src="lotte96.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte91.webp" class="slide-img img-portrait" />
+            <img src="lotte91.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -906,13 +899,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte6.webp" class="slide-img img-landscape" />
+            <img src="lotte6.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte7.jpg" class="slide-img img-landscape" />
+            <img src="lotte7.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte8.jpg" class="slide-img img-landscape" />
+            <img src="lotte8.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -936,10 +929,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte81.jpg" class="slide-img img-landscape" />
+            <img src="lotte81.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte82.jpg" class="slide-img img-landscape" />
+            <img src="lotte82.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -958,19 +951,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte9.webp" class="slide-img img-landscape" />
+            <img src="lotte9.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte13.webp" class="slide-img img-landscape" />
+            <img src="lotte13.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte10.webp" class="slide-img img-portrait" />
+            <img src="lotte10.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte11.jpg" class="slide-img img-portrait" />
+            <img src="lotte11.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte12.webp" class="slide-img img-portrait" />
+            <img src="lotte12.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -985,10 +978,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte15.webp" class="slide-img img-landscape" />
+            <img src="lotte15.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte16.webp" class="slide-img img-landscape" />
+            <img src="lotte16.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1025,49 +1018,49 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-lottew24.jpg" class="slide-img img-portrait" />
+            <img src="e-lottew24.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew25.jpg" class="slide-img img-portrait" />
+            <img src="e-lottew25.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew26.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew26.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew27.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew27.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew28.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew28.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew29.jpg" class="slide-img img-portrait" />
+            <img src="e-lottew29.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew30.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew30.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew31.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew31.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew32.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew32.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew33.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew33.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew34.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew34.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew35.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew35.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew36.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew36.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew37.jpg" class="slide-img img-portrait" />
+            <img src="e-lottew37.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-lottew38.jpg" class="slide-img img-landscape" />
+            <img src="e-lottew38.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1089,55 +1082,55 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte17.jpg" class="slide-img img-landscape" />
+            <img src="lotte17.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte18.jpg" class="slide-img img-landscape" />
+            <img src="lotte18.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte19.jpg" class="slide-img img-landscape" />
+            <img src="lotte19.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte47.jpg" class="slide-img img-landscape" />
+            <img src="lotte47.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte20.jpg" class="slide-img img-landscape" />
+            <img src="lotte20.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte21.jpg" class="slide-img img-landscape" />
+            <img src="lotte21.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte22.jpg" class="slide-img img-landscape" />
+            <img src="lotte22.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte23.jpg" class="slide-img img-landscape" />
+            <img src="lotte23.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte24.jpg" class="slide-img img-landscape" />
+            <img src="lotte24.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte25.jpg" class="slide-img img-landscape" />
+            <img src="lotte25.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte26.jpg" class="slide-img img-landscape" />
+            <img src="lotte26.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte27.jpg" class="slide-img img-portrait" />
+            <img src="lotte27.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte28.jpg" class="slide-img img-portrait" />
+            <img src="lotte28.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte29.jpg" class="slide-img img-portrait" />
+            <img src="lotte29.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte30.jpg" class="slide-img img-portrait" />
+            <img src="lotte30.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte31.jpg" class="slide-img img-landscape" />
+            <img src="lotte31.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte32.jpg" class="slide-img img-landscape" />
+            <img src="lotte32.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1157,10 +1150,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte34.webp" class="slide-img img-landscape" />
+            <img src="lotte34.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte35.webp" class="slide-img img-landscape" />
+            <img src="lotte35.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1178,31 +1171,31 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte36.webp" class="slide-img img-landscape" />
+            <img src="lotte36.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte37.webp" class="slide-img img-landscape" />
+            <img src="lotte37.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte48.jpg" class="slide-img img-landscape" />
+            <img src="lotte48.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte49.jpg" class="slide-img img-portrait" />
+            <img src="lotte49.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte50.jpg" class="slide-img img-landscape" />
+            <img src="lotte50.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte51.jpg" class="slide-img img-landscape" />
+            <img src="lotte51.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte52.jpg" class="slide-img img-landscape" />
+            <img src="lotte52.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte53.jpg" class="slide-img img-landscape" />
+            <img src="lotte53.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte54.jpg" class="slide-img img-portrait" />
+            <img src="lotte54.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1235,10 +1228,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte38.webp" class="slide-img img-landscape" />
+            <img src="lotte38.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte39.webp" class="slide-img img-landscape" />
+            <img src="lotte39.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1253,10 +1246,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte40.webp" class="slide-img img-landscape" />
+            <img src="lotte40.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte41.webp" class="slide-img img-landscape" />
+            <img src="lotte41.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1271,10 +1264,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte42.webp" class="slide-img img-landscape" />
+            <img src="lotte42.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte43.webp" class="slide-img img-landscape" />
+            <img src="lotte43.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1298,13 +1291,13 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte44.webp" class="slide-img img-portrait" />
+            <img src="lotte44.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte45.webp" class="slide-img img-landscape" />
+            <img src="lotte45.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte46.webp" class="slide-img img-landscape" />
+            <img src="lotte46.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1326,19 +1319,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte55.webp" class="slide-img img-landscape" />
+            <img src="lotte55.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte59.jpg" class="slide-img img-landscape" />
+            <img src="lotte59.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte60.jpg" class="slide-img img-landscape" />
+            <img src="lotte60.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte61.jpg" class="slide-img img-landscape" />
+            <img src="lotte61.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte58.jpg" class="slide-img img-landscape" />
+            <img src="lotte58.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1350,28 +1343,28 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte56.webp" class="slide-img img-landscape" />
+            <img src="lotte56.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte57.jpg" class="slide-img img-landscape" />
+            <img src="lotte57.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte65.jpg" class="slide-img img-landscape" />
+            <img src="lotte65.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte66.jpg" class="slide-img img-landscape" />
+            <img src="lotte66.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte67.jpg" class="slide-img img-landscape" />
+            <img src="lotte67.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte63.jpg" class="slide-img img-landscape" />
+            <img src="lotte63.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte64.jpg" class="slide-img img-landscape" />
+            <img src="lotte64.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte62.jpg" class="slide-img img-landscape" />
+            <img src="lotte62.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1389,19 +1382,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte68.webp" class="slide-img img-landscape" />
+            <img src="lotte68.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte69.webp" class="slide-img img-landscape" />
+            <img src="lotte69.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte70.jpg" class="slide-img img-landscape" />
+            <img src="lotte70.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte71.jpg" class="slide-img img-landscape" />
+            <img src="lotte71.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte72.jpg" class="slide-img img-landscape" />
+            <img src="lotte72.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1416,10 +1409,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte73.webp" class="slide-img img-landscape" />
+            <img src="lotte73.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte74.webp" class="slide-img img-landscape" />
+            <img src="lotte74.webp" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1434,16 +1427,16 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte75.webp" class="slide-img img-landscape" />
+            <img src="lotte75.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte83.webp" class="slide-img img-landscape" />
+            <img src="lotte83.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte76.webp" class="slide-img img-landscape" />
+            <img src="lotte76.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte77.jpg" class="slide-img img-landscape" />
+            <img src="lotte77.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1458,10 +1451,10 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="lotte78.webp" class="slide-img img-landscape" />
+            <img src="lotte78.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="lotte79.webp" class="slide-img img-landscape" />
+            <img src="lotte79.webp" class="slide-img" />
           </div>
         </div>
       </div>

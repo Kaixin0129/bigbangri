@@ -299,7 +299,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -308,6 +309,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -341,25 +348,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   </style>
@@ -396,49 +389,49 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="160217.jpg" class="slide-img img-portrait" />
+            <img src="160217.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1602171.jpg" class="slide-img img-portrait" />
+            <img src="1602171.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1602172.jpg" class="slide-img img-portrait" />
+            <img src="1602172.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1602174.jpg" class="slide-img img-portrait" />
+            <img src="1602174.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1602173.jpg" class="slide-img img-portrait" />
+            <img src="1602173.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="16021717.PNG" class="slide-img img-portrait" />
+            <img src="16021717.PNG" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="16021718.PNG" class="slide-img img-portrait" />
+            <img src="16021718.PNG" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="16021719.PNG" class="slide-img img-portrait" />
+            <img src="16021719.PNG" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1602175.jpg" class="slide-img img-portrait" />
+            <img src="1602175.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1602177.jpg" class="slide-img img-portrait" />
+            <img src="1602177.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1602178.jpg" class="slide-img img-portrait" />
+            <img src="1602178.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1602176.jpg" class="slide-img img-portrait" />
+            <img src="1602176.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="16021710.jpg" class="slide-img img-portrait" />
+            <img src="16021710.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1602179.jpg" class="slide-img img-portrait" />
+            <img src="1602179.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="16021711.jpg" class="slide-img img-portrait" />
+            <img src="16021711.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -465,25 +458,25 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="160802.jpg" class="slide-img img-portrait" />
+            <img src="160802.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1608021.jpg" class="slide-img img-portrait" />
+            <img src="1608021.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1608022.jpg" class="slide-img img-portrait" />
+            <img src="1608022.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1608023.jpg" class="slide-img img-portrait" />
+            <img src="1608023.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1608024.jpg" class="slide-img img-landscape" />
+            <img src="1608024.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1608025.jpg" class="slide-img img-portrait" />
+            <img src="1608025.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1608026.jpg" class="slide-img img-portrait" />
+            <img src="1608026.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -513,34 +506,34 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="160803.jpg" class="slide-img img-portrait" />
+            <img src="160803.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1608031.jpg" class="slide-img img-portrait" />
+            <img src="1608031.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1608032.jpg" class="slide-img img-landscape" />
+            <img src="1608032.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1608033.jpg" class="slide-img img-portrait" />
+            <img src="1608033.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1608034.jpg" class="slide-img img-portrait" />
+            <img src="1608034.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1608035.jpg" class="slide-img img-portrait" />
+            <img src="1608035.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1608036.jpg" class="slide-img img-portrait" />
+            <img src="1608036.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1608037.jpg" class="slide-img img-portrait" />
+            <img src="1608037.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1608038.jpg" class="slide-img img-portrait" />
+            <img src="1608038.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1608039.jpg" class="slide-img img-portrait" />
+            <img src="1608039.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -570,61 +563,61 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="160906.jpg" class="slide-img img-portrait" />
+            <img src="160906.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1609061.jpg" class="slide-img img-portrait" />
+            <img src="1609061.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1609062.jpg" class="slide-img img-portrait" />
+            <img src="1609062.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1609063.jpg" class="slide-img img-portrait" />
+            <img src="1609063.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1609064.jpg" class="slide-img img-portrait" />
+            <img src="1609064.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1609065.jpg" class="slide-img img-portrait" />
+            <img src="1609065.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1609066.jpg" class="slide-img img-portrait" />
+            <img src="1609066.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1609067.jpg" class="slide-img img-portrait" />
+            <img src="1609067.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1609068.jpg" class="slide-img img-portrait" />
+            <img src="1609068.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1609069.jpg" class="slide-img img-portrait" />
+            <img src="1609069.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="16090610.jpg" class="slide-img img-portrait" />
+            <img src="16090610.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="16090611.jpg" class="slide-img img-portrait" />
+            <img src="16090611.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="16090612.jpg" class="slide-img img-portrait" />
+            <img src="16090612.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="16090613.jpg" class="slide-img img-portrait" />
+            <img src="16090613.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="16090614.jpg" class="slide-img img-portrait" />
+            <img src="16090614.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="16090615.jpg" class="slide-img img-portrait" />
+            <img src="16090615.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="16090616.jpg" class="slide-img img-portrait" />
+            <img src="16090616.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="16090617.jpg" class="slide-img img-landscape" />
+            <img src="16090617.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="16090618.jpg" class="slide-img img-portrait" />
+            <img src="16090618.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -654,40 +647,40 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="t160906.jpg" class="slide-img img-portrait" />
+            <img src="t160906.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="t1609061.jpeg" class="slide-img img-portrait" />
+            <img src="t1609061.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="t1609062.jpeg" class="slide-img img-portrait" />
+            <img src="t1609062.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="t1609063.jpeg" class="slide-img img-portrait" />
+            <img src="t1609063.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="t1609067.jpeg" class="slide-img img-portrait" />
+            <img src="t1609067.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="t1609068.jpeg" class="slide-img img-portrait" />
+            <img src="t1609068.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="t1609064.jpeg" class="slide-img img-portrait" />
+            <img src="t1609064.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="t16090610.jpeg" class="slide-img img-portrait" />
+            <img src="t16090610.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="t1609065.jpeg" class="slide-img img-portrait" />
+            <img src="t1609065.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="t1609066.jpeg" class="slide-img img-portrait" />
+            <img src="t1609066.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="t1609069.jpeg" class="slide-img img-portrait" />
+            <img src="t1609069.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="t16090611.jpeg" class="slide-img img-landscape" />
+            <img src="t16090611.jpeg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -715,61 +708,61 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="s160906.jpeg" class="slide-img img-landscape" />
+            <img src="s160906.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s1609061.jpeg" class="slide-img img-landscape" />
+            <img src="s1609061.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s1609062.jpeg" class="slide-img img-portrait" />
+            <img src="s1609062.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s1609063.jpeg" class="slide-img img-portrait" />
+            <img src="s1609063.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090652.jpg" class="slide-img img-portrait" />
+            <img src="s16090652.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090653.jpg" class="slide-img img-portrait" />
+            <img src="s16090653.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s1609064.jpg" class="slide-img img-portrait" />
+            <img src="s1609064.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s1609065.jpg" class="slide-img img-portrait" />
+            <img src="s1609065.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s1609066.jpg" class="slide-img img-portrait" />
+            <img src="s1609066.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s1609067.jpeg" class="slide-img img-landscape" />
+            <img src="s1609067.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s1609068.jpg" class="slide-img img-portrait" />
+            <img src="s1609068.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s1609069.jpg" class="slide-img img-portrait" />
+            <img src="s1609069.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090610.jpeg" class="slide-img img-landscape" />
+            <img src="s16090610.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090611.jpeg" class="slide-img img-landscape" />
+            <img src="s16090611.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090612.jpeg" class="slide-img img-landscape" />
+            <img src="s16090612.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090613.jpg" class="slide-img img-portrait" />
+            <img src="s16090613.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090614.jpeg" class="slide-img img-landscape" />
+            <img src="s16090614.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090615.jpeg" class="slide-img img-landscape" />
+            <img src="s16090615.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090616.jpg" class="slide-img img-portrait" />
+            <img src="s16090616.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -783,25 +776,25 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="s16090617.jpg" class="slide-img img-landscape" />
+            <img src="s16090617.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090618.jpg" class="slide-img img-landscape" />
+            <img src="s16090618.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090619.jpg" class="slide-img img-landscape" />
+            <img src="s16090619.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090647.jpg" class="slide-img img-portrait" />
+            <img src="s16090647.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090648.jpg" class="slide-img img-portrait" />
+            <img src="s16090648.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090649.jpg" class="slide-img img-portrait" />
+            <img src="s16090649.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090650.jpg" class="slide-img img-portrait" />
+            <img src="s16090650.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -815,19 +808,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="s16090641.jpg" class="slide-img img-landscape" />
+            <img src="s16090641.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090620.jpg" class="slide-img img-landscape" />
+            <img src="s16090620.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090621.jpg" class="slide-img img-landscape" />
+            <img src="s16090621.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090622.jpeg" class="slide-img img-landscape" />
+            <img src="s16090622.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090623.jpeg" class="slide-img img-landscape" />
+            <img src="s16090623.jpeg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -841,34 +834,34 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="s16090631.jpeg" class="slide-img img-portrait" />
+            <img src="s16090631.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090632.jpeg" class="slide-img img-portrait" />
+            <img src="s16090632.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090633.jpeg" class="slide-img img-portrait" />
+            <img src="s16090633.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090634.jpg" class="slide-img img-portrait" />
+            <img src="s16090634.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090635.jpg" class="slide-img img-portrait" />
+            <img src="s16090635.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090636.jpg" class="slide-img img-portrait" />
+            <img src="s16090636.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090637.jpg" class="slide-img img-portrait" />
+            <img src="s16090637.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090638.jpg" class="slide-img img-portrait" />
+            <img src="s16090638.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090639.jpg" class="slide-img img-portrait" />
+            <img src="s16090639.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090640.jpeg" class="slide-img img-landscape" />
+            <img src="s16090640.jpeg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -882,25 +875,25 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="s16090625.jpg" class="slide-img img-portrait" />
+            <img src="s16090625.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090626.jpeg" class="slide-img img-portrait" />
+            <img src="s16090626.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090624.jpeg" class="slide-img img-portrait" />
+            <img src="s16090624.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090629.jpeg" class="slide-img img-landscape" />
+            <img src="s16090629.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090627.jpg" class="slide-img img-portrait" />
+            <img src="s16090627.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090628.jpg" class="slide-img img-portrait" />
+            <img src="s16090628.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090630.jpeg" class="slide-img img-portrait" />
+            <img src="s16090630.jpeg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -914,22 +907,22 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="s16090651.jpg" class="slide-img img-portrait" />
+            <img src="s16090651.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090643.jpeg" class="slide-img img-landscape" />
+            <img src="s16090643.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090644.jpeg" class="slide-img img-landscape" />
+            <img src="s16090644.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090645.jpeg" class="slide-img img-portrait" />
+            <img src="s16090645.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090646.jpg" class="slide-img img-portrait" />
+            <img src="s16090646.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="s16090642.jpg" class="slide-img img-portrait" />
+            <img src="s16090642.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -954,58 +947,58 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="d160906.jpg" class="slide-img img-portrait" />
+            <img src="d160906.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d1609061.jpg" class="slide-img img-portrait" />
+            <img src="d1609061.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d1609062.jpg" class="slide-img img-portrait" />
+            <img src="d1609062.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d1609063.jpg" class="slide-img img-portrait" />
+            <img src="d1609063.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d1609064.jpg" class="slide-img img-portrait" />
+            <img src="d1609064.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d1609065.jpg" class="slide-img img-portrait" />
+            <img src="d1609065.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d1609066.jpg" class="slide-img img-portrait" />
+            <img src="d1609066.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d1609067.jpg" class="slide-img img-portrait" />
+            <img src="d1609067.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d1609068.jpg" class="slide-img img-portrait" />
+            <img src="d1609068.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d1609069.jpg" class="slide-img img-portrait" />
+            <img src="d1609069.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d16090610.jpg" class="slide-img img-portrait" />
+            <img src="d16090610.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d16090611.jpg" class="slide-img img-portrait" />
+            <img src="d16090611.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d16090612.jpg" class="slide-img img-landscape" />
+            <img src="d16090612.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d16090613.jpg" class="slide-img img-landscape" />
+            <img src="d16090613.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d16090614.jpg" class="slide-img img-portrait" />
+            <img src="d16090614.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d16090615.jpg" class="slide-img img-portrait" />
+            <img src="d16090615.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d16090616.jpeg" class="slide-img img-portrait" />
+            <img src="d16090616.jpeg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="d16090617.jpeg" class="slide-img img-landscape" />
+            <img src="d16090617.jpeg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1030,40 +1023,40 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="tt160906.jpg" class="slide-img img-portrait" />
+            <img src="tt160906.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="tt1609061.jpg" class="slide-img img-portrait" />
+            <img src="tt1609061.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="tt1609062.jpg" class="slide-img img-portrait" />
+            <img src="tt1609062.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="tt1609063.jpg" class="slide-img img-portrait" />
+            <img src="tt1609063.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="tt1609064.jpg" class="slide-img img-portrait" />
+            <img src="tt1609064.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="tt1609065.jpg" class="slide-img img-portrait" />
+            <img src="tt1609065.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="tt1609066.jpg" class="slide-img img-portrait" />
+            <img src="tt1609066.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="tt1609067.jpg" class="slide-img img-portrait" />
+            <img src="tt1609067.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="tt1609068.jpg" class="slide-img img-portrait" />
+            <img src="tt1609068.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="tt1609069.jpg" class="slide-img img-portrait" />
+            <img src="tt1609069.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="tt16090610.jpg" class="slide-img img-portrait" />
+            <img src="tt16090610.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="tt16090611.jpg" class="slide-img img-portrait" />
+            <img src="tt16090611.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -1091,25 +1084,25 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="161202.avif" class="slide-img img-portrait" />
+            <img src="161202.avif" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1612021.avif" class="slide-img img-portrait" />
+            <img src="1612021.avif" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1612022.avif" class="slide-img img-portrait" />
+            <img src="1612022.avif" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1612023.avif" class="slide-img img-portrait" />
+            <img src="1612023.avif" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1612024.avif" class="slide-img img-portrait" />
+            <img src="1612024.avif" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1612025.avif" class="slide-img img-portrait" />
+            <img src="1612025.avif" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="1612026.avif" class="slide-img img-portrait" />
+            <img src="1612026.avif" class="slide-img" />
           </div>
         </div>
       </div>

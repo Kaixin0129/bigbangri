@@ -341,7 +341,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -350,6 +351,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -383,25 +390,11 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-  .img-landscape {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+    left: calc(100% + 10px);
   }
 
   </style>
@@ -440,19 +433,19 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-soul20.jpg" class="slide-img img-portrait" />
+            <img src="e-soul20.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul21.jpg" class="slide-img img-portrait" />
+            <img src="e-soul21.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul22.jpg" class="slide-img img-portrait" />
+            <img src="e-soul22.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul23.jpg" class="slide-img img-portrait" />
+            <img src="e-soul23.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul24.jpg" class="slide-img img-portrait" />
+            <img src="e-soul24.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -463,31 +456,31 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-soul10.jpg" class="slide-img img-landscape" />
+            <img src="e-soul10.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul11.jpg" class="slide-img img-landscape" />
+            <img src="e-soul11.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul12.jpg" class="slide-img img-landscape" />
+            <img src="e-soul12.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul13.jpg" class="slide-img img-landscape" />
+            <img src="e-soul13.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul14.jpg" class="slide-img img-landscape" />
+            <img src="e-soul14.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul15.jpg" class="slide-img img-landscape" />
+            <img src="e-soul15.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul16.jpg" class="slide-img img-landscape" />
+            <img src="e-soul16.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul17.jpg" class="slide-img img-landscape" />
+            <img src="e-soul17.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul18.jpg" class="slide-img img-landscape" />
+            <img src="e-soul18.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -506,34 +499,34 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-soul.jpg" class="slide-img img-portrait" />
+            <img src="e-soul.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul1.jpg" class="slide-img img-portrait" />
+            <img src="e-soul1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul2.jpg" class="slide-img img-portrait" />
+            <img src="e-soul2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul3.jpg" class="slide-img img-portrait" />
+            <img src="e-soul3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul4.jpg" class="slide-img img-portrait" />
+            <img src="e-soul4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul5.jpg" class="slide-img img-portrait" />
+            <img src="e-soul5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul6.jpg" class="slide-img img-portrait" />
+            <img src="e-soul6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul7.jpg" class="slide-img img-landscape" />
+            <img src="e-soul7.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul19.jpg" class="slide-img img-portrait" />
+            <img src="e-soul19.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul8.jpg" class="slide-img img-landscape" />
+            <img src="e-soul8.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -590,94 +583,94 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-soul29.jpg" class="slide-img img-landscape" />
+            <img src="e-soul29.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw4.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw4.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw14.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw14.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul30.jpg" class="slide-img img-landscape" />
+            <img src="e-soul30.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw9.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw9.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw8.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw8.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw11.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw11.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw1.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw1.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw5.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw5.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw6.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw6.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw2.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw2.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw3.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw3.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw10.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw10.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw15.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw15.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw16.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw16.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw17.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw17.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul34.jpg" class="slide-img img-landscape" />
+            <img src="e-soul34.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul31.jpg" class="slide-img img-landscape" />
+            <img src="e-soul31.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw12.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw12.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw13.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw13.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw7.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw7.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul33.jpg" class="slide-img img-landscape" />
+            <img src="e-soul33.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul36.jpg" class="slide-img img-landscape" />
+            <img src="e-soul36.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul35.jpg" class="slide-img img-landscape" />
+            <img src="e-soul35.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul32.jpg" class="slide-img img-landscape" />
+            <img src="e-soul32.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul38.jpg" class="slide-img img-landscape" />
+            <img src="e-soul38.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul37.jpg" class="slide-img img-landscape" />
+            <img src="e-soul37.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul39.jpg" class="slide-img img-landscape" />
+            <img src="e-soul39.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul40.jpg" class="slide-img img-landscape" />
+            <img src="e-soul40.jpg" class="slide-img" />
           </div>
         </div>
       </div>
@@ -699,73 +692,73 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-soulw37.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw37.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw18.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw18.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw19.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw19.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul25.jpg" class="slide-img img-landscape" />
+            <img src="e-soul25.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw20.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw20.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw35.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw35.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw22.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw22.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul26.jpg" class="slide-img img-landscape" />
+            <img src="e-soul26.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw21.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw21.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw23.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw23.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw24.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw24.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw25.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw25.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw26.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw26.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul27.jpg" class="slide-img img-landscape" />
+            <img src="e-soul27.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw34.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw34.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soul28.jpg" class="slide-img img-landscape" />
+            <img src="e-soul28.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw30.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw30.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw29.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw29.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw27.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw27.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw28.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw28.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw31.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw31.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw32.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw32.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-soulw33.jpg" class="slide-img img-landscape" />
+            <img src="e-soulw33.jpg" class="slide-img" />
           </div>
         </div>
       </div>
