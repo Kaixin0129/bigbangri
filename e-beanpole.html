@@ -341,7 +341,8 @@
     height: 400px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .slide-img {
@@ -350,6 +351,12 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
   }
 
   .slider-container {
@@ -383,25 +390,27 @@
   }
 
   .nav-button.left {
-    right: 100%;
-    margin-right: 10px
+    right: calc(100% + 10px);
   }
 
   .nav-button.right {
-    left: 100%;
+    left: calc(100% + 10px);
+  }
+
+  .toggle-btn {
+    border: 2px solid #33FFFF;
+    color: #FFFFFF;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
     margin-left: 10px;
+    transition: all 0.3s ease;
   }
-
-  .img-portrait {
-    width: 400px;
-    height: 300px;
-    object-fit: contain;
-  }
-
-  .img-portrait {
-    width: 300px;
-    height: 400px;
-    object-fit: contain;
+  .toggle-btn:hover {
+    background: #FFFFFF;
+    color: #000000;
   }
 
   </style>
@@ -411,10 +420,10 @@
 <main>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="endorsementtt.html">Back</a>
+      <a href="endorsement-gd.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>Moonshot</h1>
+      <h1>Bean Pole</h1>
     </div>
     <nav class="right-nav">
       <a href="index.html">Home</a>
@@ -424,12 +433,49 @@
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="text-container">
-        <p><strong>2016年1月23日</strong></p>
-        <p>YG宣布 GD 与 朴山多拉 代言YG公司旗下的化妆品牌 Moonshot</p>
-        <p>详细资讯：<a href="https://www.soompi.com/article/812785wpp/g-dragon-and-sandara-park-named-new-faces-of-cosmetics-brand-moonshot" 
+        <p><strong>2011年3月</strong></p>
+        <p>GD 担任毛织的休闲品牌 Bean Pole 的模特</p>
+        <p>GD表示能够成为我一直以来都非常欣赏的品牌的代言人，我感到无比激动。我认为这个品牌非常适合20多岁的年轻人</p>
+        <p>详细资讯：<a href="https://www.newswire.co.kr/newsRead.php?no=534790&picno=235740" 
           target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
-            Soompi</a></p>
+            NewsWire</a></p>
       </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年3月10日</strong></p>
+        <p>GD 出席 Bean Pole Jeans 门店开业派对</p>
+        <p>详细资讯：<a href="https://forevergdragon.com/2011/03/11/photos-paparazzi-gd-at-beanpole-jeans-store-opening-party-110310/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            FOREVER GDRAGON</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110310gd2.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110310gd3.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110310gd1.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110310gd.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110310gd4.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
     </div>
     <hr class="full-width-line" />
   </div>
@@ -544,16 +590,106 @@
   </div>
 
   <div style="text-align: center;">
-    <p>照片 1</p>
+    <p>成片</p>
     <div class="slider-container">
       <button class="nav-button left" onclick="slide(this)">&#8592;</button>
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-beanp9.jpg" class="slide-img" />
+            <img src="e-beanp315.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-beanp10.jpg" class="slide-img" />
+            <img src="e-beanp313.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp314.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp316.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp321.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp322.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp320.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp319.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp318.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp317.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp323.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp324.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp325.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp326.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp327.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <p>拍摄花絮合集</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp11.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp12.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp13.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp328.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp15.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp16.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp14.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp17.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp305.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp306.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp307.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp18.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp308.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp309.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
             <img src="e-beanp4.jpg" class="slide-img" />
@@ -573,38 +709,14 @@
           <div class="slide-item">
             <img src="e-beanp8.jpg" class="slide-img" />
           </div>
-        </div>
-      </div> 
-      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
-    </div>
-    <p>照片 2</p>
-    <div class="slider-container">
-      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
-      <div class="slider-wrapper">
-        <div class="slider">
           <div class="slide-item">
-            <img src="e-beanp11.jpg" class="slide-img" />
+            <img src="e-beanp310.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-beanp12.jpg" class="slide-img" />
+            <img src="e-beanp311.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-beanp13.jpg" class="slide-img" />
-          </div>
-          <div class="slide-item">
-            <img src="e-beanp15.jpg" class="slide-img" />
-          </div>
-          <div class="slide-item">
-            <img src="e-beanp16.jpg" class="slide-img" />
-          </div>
-          <div class="slide-item">
-            <img src="e-beanp14.jpg" class="slide-img" />
-          </div>
-          <div class="slide-item">
-            <img src="e-beanp17.jpg" class="slide-img" />
-          </div>
-          <div class="slide-item">
-            <img src="e-beanp18.jpg" class="slide-img" />
+            <img src="e-beanp312.jpg" class="slide-img" />
           </div>
         </div>
       </div> 
@@ -615,7 +727,10 @@
         Ameblo JP</a> - 
     <a href="https://www.tumblr.com/ygkingspics/87588487266/g-dragon-for-bean-pole" 
       target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
-        YG Kings Pics</a></p><br/>
+        YG Kings Pics - 
+    <a href="https://m.blog.naver.com/qlsrjt59/130105933652" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        Naver</a></p><br/>
     <hr class="full-width-line" />
   </div>
 
@@ -665,17 +780,106 @@
           <div class="slide-item">
             <img src="e-beanp19.jpg" class="slide-img" />
           </div>
+          <div class="slide-item">
+            <img src="e-beanp284.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp283.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp280.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp282.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp285.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp291.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp287.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp286.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp288.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp290.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp293.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp292.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp289.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp281.jpg" class="slide-img" />
+          </div>
         </div>
       </div> 
       <button class="nav-button right" onclick="slide(this)">&#8594;</button>
     </div>
-     <p>详细资讯：<a href="https://ameblo.jp/vipsbigbang/entry-10951546751.html" 
+     <p>详细资讯：<a href="https://ameblo.jp/vipsbigbang/entry-11023865240.html" 
       target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
         Ameblo JP</a></p><br/>
     <hr class="full-width-line">  
   </div>
 
   <div style="text-align: center;">
+    <p>G-DRAGON X BeanPole 2011秋冬拍摄系列</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp294.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp302.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp296.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp303.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp299.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp295.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp298.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp297.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp300.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp301.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+     <p>详细资讯：<a href="https://ameblo.jp/vipsbigbang/entry-11023865240.html" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        Ameblo JP</a></p><br/>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <p>以下都是出自官方的拍摄花絮图（转自粉丝站）</p>
     <div class="slider-container">
       <button class="nav-button left" onclick="slide(this)">&#8592;</button>
       <div class="slider-wrapper">
@@ -735,6 +939,9 @@
             <img src="e-beanp24.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
+            <img src="e-beanp22.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
             <img src="e-beanp23.jpg" class="slide-img" />
           </div>
         </div>
@@ -761,25 +968,25 @@
             <img src="e-beanp20.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-beanp47.jpg" class="slide-img img-landscape"/>
+            <img src="e-beanp47.jpg" class="slide-img"/>
           </div>
           <div class="slide-item">
-            <img src="e-beanp48.jpg" class="slide-img img-landscape"/>
+            <img src="e-beanp48.jpg" class="slide-img"/>
           </div>
           <div class="slide-item">
             <img src="e-beanp49.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-beanp57.jpg" class="slide-img img-landscape"/>
+            <img src="e-beanp57.jpg" class="slide-img"/>
           </div>
           <div class="slide-item">
             <img src="e-beanp51.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-beanp50.jpg" class="slide-img img-landscape"/>
+            <img src="e-beanp50.jpg" class="slide-img"/>
           </div>
           <div class="slide-item">
-            <img src="e-beanp56.jpg" class="slide-img img-landscape"/>
+            <img src="e-beanp56.jpg" class="slide-img"/>
           </div>
           <div class="slide-item">
             <img src="e-beanp52.jpg" class="slide-img" />
@@ -802,7 +1009,70 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-beanp21.jpg" class="slide-img" />
+            <img src="e-beanp79.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp70.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp72.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp78.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp61.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp75.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp65.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp74.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp59.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp69.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp76.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp67.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp64.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp66.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp68.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp60.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp73.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp77.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp62.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp71.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp63.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp58.jpg" class="slide-img" />
           </div>
         </div>
       </div> 
@@ -813,10 +1083,627 @@
       <div class="slider-wrapper">
         <div class="slider">
           <div class="slide-item">
-            <img src="e-beanp22.jpg" class="slide-img" />
+            <img src="e-beanp104.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-beanp23.jpg" class="slide-img" />
+            <img src="e-beanp102.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp103.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp93.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp82.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp85.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp88.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp106.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp96.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp97.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp99.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp100.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp95.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp84.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp91.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp94.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp100.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp80.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp105.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp101.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp98.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp81.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp89.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp86.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp107.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp114.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp125.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp131.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp122.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp130.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp126.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp128.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp127.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp123.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp124.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp115.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp121.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp120.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp119.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp116.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp113.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp112.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp110.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp108.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp132.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp111.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp115.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp121.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp137.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp138.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp133.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp139.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp143.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp151.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp144.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp136.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp134.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp142.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp135.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp146.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp141.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp150.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp149.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp148.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp145.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp140.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp167.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp168.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp169.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp166.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp162.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp161.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp160.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp159.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp163.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp165.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp164.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp152.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp154.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp153.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp157.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp158.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp155.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp156.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp186.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp185.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp192.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp193.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp195.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp194.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp189.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp190.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp188.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp187.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp191.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp184.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp183.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp182.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp180.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp172.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp173.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp181.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp179.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp176.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp178.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp174.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp171.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp175.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp177.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp217.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp218.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp219.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp211.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp212.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp221.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp215.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp214.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp216.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp213.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp210.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp209.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp208.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp207.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp205.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp201.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp202.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp200.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp203.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp206.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp204.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp21.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp228.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp220.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp222.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp223.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp224.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp225.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp227.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp226.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp230.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp229.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp233.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp232.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp231.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp247.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp234.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp235.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp237.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp236.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp238.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp239.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp240.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp241.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp242.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp243.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp244.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp245.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp246.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp250.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp252.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp248.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp249.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp255.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp253.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp254.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp256.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp257.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp258.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp259.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp260.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div> 
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-beanp279.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp261.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp262.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp273.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp274.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp275.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp276.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp277.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp278.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp271.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp270.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp269.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp268.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp264.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp272.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp267.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp266.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp265.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-beanp263.jpg" class="slide-img" />
           </div>
         </div>
       </div> 
@@ -827,6 +1714,42 @@
         Ameblo JP</a></p><br/>
     <hr class="full-width-line">  
   </div>
+
+    <div style="text-align: center;">
+      <div class="content-wrap">
+        <div class="text-container">
+          <p><strong>2011年9月7日</strong> Twitter</p>
+          <p>Bean Pole官方 发 GD 的周边</p>
+          <p>详细资讯：<a href="https://tieba.baidu.com/p/1203238640?&share=9105&fr=sharewise&is_video=false&unique=04CF7D9088BF24D014ECAD64FB7E3434&st=1752233265&client_type=1&client_version=12.83.1.0&sfc=copy&share_from=post" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bb唯饭后院吧</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="1109071.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1109072.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1109073.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1109075.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1109074.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
 
   <div style="text-align: center;" id="111227-jump">
     <div class="content-wrap">
@@ -887,7 +1810,7 @@
   </div>
 
   <div style="text-align: center;">
-    <p>扫图合集</p>
+    <p>Style Book 扫图合集</p>
     <div class="slider-container">
       <button class="nav-button left" onclick="slide(this)">&#8592;</button>
       <div class="slider-wrapper">
@@ -917,7 +1840,7 @@
             <img src="e-bean70.webp" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-bean83.webp" class="slide-img img-landscape"/>
+            <img src="e-bean83.webp" class="slide-img"/>
           </div>
           <div class="slide-item">
             <img src="e-bean84.webp" class="slide-img" />
@@ -1040,9 +1963,6 @@
             <img src="e-bean22.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
-            <img src="e-bean25.jpg" class="slide-img" />
-          </div>
-          <div class="slide-item">
             <img src="e-bean29.jpg" class="slide-img" />
           </div>
           <div class="slide-item">
@@ -1109,10 +2029,64 @@
     <hr class="full-width-line" />
   </div>
 
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年2月2日</strong></p>
+        <p>GD登上杂志《HIGH CUT》2012年2月封面</p>
+        <p>详细资讯：<a href="https://hommeboylife.wordpress.com/2012/02/02/g-dragon-for-high-cut-magazine/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            hommeboylife</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="m120202.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="m1202021.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="m1202022.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="m1202023.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="m1202024.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="m1202025.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="m1202026.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="m1202027.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="m1202028.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="m1202029.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="m12020210.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-button right" onclick="slide(this)">&#8594;</button>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
   <br><br><br>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="endorsementtt.html">Back</a>
+      <a href="endorsement-gd.html">Back</a>
     </nav>
     <div class="title-group">
       <div id="footer"></div>
@@ -1132,6 +2106,46 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+
+  function toggleList(button, show) {
+  const listItem = button.closest('li');
+  
+  if (show) {
+    let nestedList = listItem.querySelector('ol');
+    if (!nestedList) {
+      nestedList = listItem.nextElementSibling;
+    }
+    
+    if (nestedList && nestedList.tagName === 'OL') {
+      nestedList.style.display = "block";
+      button.style.display = "none";
+      nestedList.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  } else {
+    const nestedList = button.closest('ol');
+    
+    if (nestedList) {
+      nestedList.style.display = "none";
+      
+      let parentLi = nestedList.parentElement.closest('li');
+      if (!parentLi) {
+        parentLi = nestedList.previousElementSibling;
+        while (parentLi && parentLi.tagName !== 'LI') {
+          parentLi = parentLi.previousElementSibling;
+        }
+      }
+      
+      if (parentLi) {
+        const expandBtns = parentLi.querySelectorAll('[onclick*="true"]');
+        expandBtns.forEach(btn => {
+          btn.style.display = "inline-block";
+        });
+        
+        parentLi.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  }
+}
 
 document.addEventListener('click', function(e) {
     const link = e.target.closest('a[href*="#"]');
