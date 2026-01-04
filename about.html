@@ -10,6 +10,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="bigbangri" />
   <link rel="manifest" href="/site.webmanifest" />
+
   <style>
     * {
       margin: 0;
@@ -27,7 +28,6 @@
       color: white;
       text-decoration: none;
       padding: 15px 25px;
-      background-color: none;
       border-radius: 5px 18px;
       border: 2px solid white;
       transition: background 0.3s ease;
@@ -41,9 +41,7 @@
       border-radius: 5px 18px;
       text-decoration: none;
       transition: all 0.3s ease;
-      flex-shrink: 0;
       min-width: 120px;
-      white-space: nowrap;
       text-align: center;
     }
 
@@ -58,10 +56,8 @@
       text-align: center;
     }
 
-    html {
-        scroll-behavior: smooth;
-    }
-    
+    html { scroll-behavior: smooth; }
+
     .header-container {
       display: flex;
       justify-content: center;
@@ -71,50 +67,32 @@
       height: 100px;
     }
 
-    .title-group {
-      display: inline-block;
-    } 
+    .title-group { display: inline-block; }
 
-    .left-nav,
-    .right-nav {
+    .left-nav {
       position: absolute;
+      left: 0;
       top: 10%;
       transform: translateY(-50%);
     }
 
-    .left-nav {
-      left: 0;
-    }
-
-    .right-nav {
-      right: 0;
-    }
-
-    .left-nav a,
-    .right-nav a {
+    .left-nav a {
       padding: 18px 30px;
       font-size: 18px;
       border-radius: 5px 18px;
-      color: white;
-      text-decoration: none;
       border: 2px solid white;
-      display: inline-block;
-      transition: background 0.3s ease;
     }
 
-    .left-nav a:hover,
-    .right-nav a:hover {
+    .left-nav a:hover {
       background-color: white;
       color: #111;
-      cursor: pointer;
     }
 
     .full-width-line {
       width: 90vw;
       border: none;
       border-top: 1px solid white;
-      margin-top: 10px;
-      margin-bottom: 20px;
+      margin: 20px auto;
     }
 
 @media only screen and (max-width: 768px) {
@@ -126,14 +104,14 @@
     }
 
     body {
-        transform: scale(0.65);
+        transform: scale(0.59);
         transform-origin: top left;
-        width: 153.85%;
-        height: calc(100vh / 0.65);
+        width: 169.5%;
+        height: calc(100vh / 0.59);
     }
 
     .full-width-line {
-        transform: scaleX(1.5385);
+        transform: scaleX(1.6949);
         transform-origin: left;
     }
 
@@ -170,141 +148,6 @@
     }
 }
 
-    .content-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-      margin: 40px auto 0;
-      max-width: 1000px;
-    }
-
-    .text-container {
-      flex: 1 1 400px;
-      max-width: 500px;
-      text-align: left;
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-  .slider {
-    display: flex;
-    flex-wrap: nowrap;
-    transition: transform 0.5s ease;
-  }
-
-  .slide-item {
-    flex-shrink: 0;
-    width: 500px;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .slide-img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
-    display: block;
-    margin: auto;
-  }
-
-  .slider-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px auto;
-    max-width: fit-content;
-  }
-
-  .slider-wrapper {
-    position: relative;
-    overflow: hidden;
-    width: 500px;
-    height: 400px;
-  }
-
-  .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.7);
-    border: none;
-    padding: 10px 15px;
-    font-size: 24px;
-    cursor: pointer;
-    border-radius: 10px;
-    z-index: 10;
-    transition: background-color 0.3s;
-  }
-
-  .nav-button.left {
-    right: 100%;
-    margin-right: 10px
-  }
-
-  .nav-button.right {
-    left: 100%;
-    margin-left: 10px;
-  }
-
-    .social-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .social-button {
-      width: 80px;
-      height: 120px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      text-align: center;
-      font-size: 14px;
-      color: white;
-      line-height: 1.2;
-    }
-
-    .social-button img {
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      transition: transform 0.3s;
-      border-radius: 10px;
-      margin-bottom: 8px;
-    }
-
-    .social-button img:hover {
-      transform: scale(1.1);
-    }
-
-    .social-label {
-      max-height: 40px;
-      overflow: visible;
-      white-space: normal;
-      word-break: break-word;
-    }
-
-    .social-label-1 {
-      max-width: 400px;
-      overflow: visible;
-      white-space: normal;
-      word-break: break-word;
-    }
-
-    .social-button.wide {
-      width: auto;
-      max-width: 300px;
-    }
-
     .image-text-row {
       display: flex;
       align-items: center;
@@ -330,14 +173,18 @@
       color: white;
     }
 
-    .divider {
-      width: 2px;
-      background-color: white;
-      height: auto;
-    }
+main > p,
+main > h3,
+main > h1 {
+  text-align: left;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
   </style>
 </head>
+
 <body>
 <main>
 
@@ -346,53 +193,97 @@
       <a href="index.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>About关于</h1>
-      <h3><br/>bigbangri.com 是由个人粉丝独立建立的非官方资料整理型网站，主要用于系统性整理与归档 BIGBANG 相关的历史资料、公开视频与公开信息</h3>
+      <h1>About 关于</h1>
     </div>
   </div><br/>
 
-      <p>本站不代表任何经纪公司、官方组织或艺人本人立场，亦不隶属于任何商业机构</p>
-      <p style="color: #ffa3dc;">所有内容均基于公开可查的网络资料进行整理、分类与说明，仅用于个人兴趣向的信息汇总与粉丝向资料归档</p>
-      <h3 style="color: #33FFFF;">本站不提供会员制度或付费内容，所有页面均可免费浏览（因为我已经是VIP了👑）</h3><br/>
+  <h3>bigbangri.com 是由个人粉丝独立建立的非官方资料整理型网站，
+        主要用于系统性整理与归档 BIGBANG 相关的历史资料、
+        公开视频与公开信息</h3>
+
+  <p style="max-width:900px;margin:30px auto;line-height:1.8;">
+    bigbangri.com 的定位并非即时资讯平台或社交媒体站点，
+    而是一个以长期资料整理与文化记录为核心目的的参考型网站。
+    网站内容围绕 BIGBANG 及其成员自出道以来的公开活动记录，
+    通过人工整理、分类与校对的方式进行系统性归档。
+  </p>
+
+  <p style="max-width:900px;margin:20px auto;line-height:1.8;">
+    本站内容更新不以频率或流量为导向，
+    而以资料完整性、时间顺序准确性与可长期查阅性为主要标准。
+    因此，部分页面更适合在桌面端或平板设备上进行系统浏览。
+  </p>
+
+  <p>本站不代表任何经纪公司、官方组织或艺人本人立场，亦不隶属于任何商业机构</p>
+
+  <br/><br/><br/>
+  <div style="text-align: center;">
+  <p style="color:#ffa3dc;">
+    所有内容均基于公开可查的网络资料进行整理、分类与说明，
+    仅用于个人兴趣向的信息汇总与粉丝向资料归档
+  </p>
+  <h3 style="color:#33FFFF;">
+    本站不提供会员制度或付费内容，所有页面均可免费浏览
+  </h3>
+  </div>
+  <br/>
+
+  <div class="image-text-row">
+    <img src="y3.png" style="height:230px;width:240px;" />
+    <div>
+      <p>若你在页面中看到该图片作为视频封面</p>
+      <p style="color:#ffa3dc;">这属于正常展示情况，并非视频内容缺失</p>
+      <p style="color:#33FFFF;">点击后将跳转至原始视频页面进行观看</p>
+    </div>
+  </div><hr/>
+
+  <div style="max-width:900px;margin:40px auto;line-height:1.8;text-align:left;">
+    <p>
+      本站所整理的视频与图像内容，主要来源于官方公开视频平台
+      或原始发布者，并尽量采用嵌入或外部链接形式呈现，
+      以尊重原作者版权与平台使用规范。
+    </p>
+    <p>
+      在资料整理过程中，本站会优先保留原始出处与发布平台信息，
+      并对重复内容进行合并与标注说明。
+      若部分内容因地区或平台限制无法直接播放，
+      将引导访客前往原始页面进行观看。
+    </p>
+  </div>
+
+  <div class="two-column-wrapper">
+    <div class="column">
+      <h2 style="color:#ffa3dc;">为什么大部分视频都会使用 YouTube？</h2><br/>
+      <p>
+        YouTube 是全球用户规模最大的公开视频平台之一，
+        BIGBANG 出道时期正值其快速发展阶段，
+        因此大量早期公开视频集中于该平台。
+      </p>
+      <p>
+        本站在整理过程中会尽量保留原始出处与发布者信息，
+        并以嵌入或跳转方式呈现内容。
+      </p>
     </div>
 
-    <div class="image-text-row">
-      <img src="y3.png" style="height: 230px; width: 240px;" />
-      <div class="image-text-description">
-        <p>若你在页面中看到该图片作为视频封面</p>
-        <p style="color: #ffa3dc;">这属于正常展示情况，并非视频内容缺失</p>
-        <p style="color: #33FFFF;">点击后将直接跳转至对应的原始视频播放页面进行观看</p>
-        <p>&lt;图片仅作为占位说明，与视频画面本身无直接&gt;</p>
-      </div>
+    <div class="column">
+      <h2 style="color:#ffa3dc;">视频展示方式说明</h2><br/>
+      <p>
+        由于公开视频数量庞大，
+        本站主要采用官方嵌入或外部链接方式进行展示，
+        以降低服务器资源占用。
+      </p>
+      <p>
+        若因地区限制无法直接播放，
+        请按照页面提示前往原始平台观看。
+      </p>
     </div>
-    <hr class="full-width-line" />
+  </div>
 
-    <div class="two-column-wrapper">
-      <div class="column left">
-        <h2 style="color: #ffa3dc; font-size: 20px;">
-          为什么大部分视频都会用YouTube呢？</h2>
-        <h2 style="color: #33FFFF; font-size: 18px;">YouTube 是全球用户规模最大的公开视频平台之一。2005 至 2006 年正值其快速发展阶段，而 BIGBANG 出道时期恰好处于这一时间段，因此大量早期公开视频与粉丝上传内容均集中于该平台</h2><br/>
-        <p>补充：早在2006年初 YG娱乐的工作人员就曾上传了很多Bigbang未出道前的视频</p><br/>
-        <h2 style="color: #ffa3dc; font-size: 18px;">
-          其次，中文翻译组都是从YouTube上搬运视频，后进行翻译才会诞生出很多经典中字视频</h2><br/>
-        <h2 style="color: #33FFFF; font-size: 18px;">本站在内容整理过程中较为注重原始出处与发布来源，尽量保留原平台、原发布者信息，相关视频均以官方播放器或原始链接形式呈现，以尊重原作者及平台的版权与使用规范</h2>
-      </div>
+</main>
 
-      <div class="column right">
-        <h2 style="color: #ffa3dc; font-size: 18px;">
-          视频大多以嵌入原视频形式展示<br/>（大多数是b站）点击进入即可</h2><br/>
-        <h2 style="color: #33FFFF; font-size: 20px;">由于公开视频数量较多，若全部采用本地存储方式将占用大量服务器资源，因此本站主要采用官方嵌入或外部链接的方式进行展示</h2><br/>
-        <p style="text-decoration: underline;">YouTube视频需要挂梯子才可以观看</p><br/>
-        <h2 style="color: #ffa3dc; font-size: 22px;">
-          因为本人我是马来西亚VIP，加上考虑到有些大陆VIP不能翻墙，
-          所以我优先会使用b站发布带中文字幕的视频</h2><br/>
-        <h2 style="color: #33FFFF; font-size: 18px;">VIP们不要担心语言问题，YouTube视频自带有翻译各国语言的功能</h2>
-      </div>
-    </div>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+        crossorigin="anonymous"></script>
 
-<main>
-  <script src="player.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-       crossorigin="anonymous"></script>
 </body>
 </html>

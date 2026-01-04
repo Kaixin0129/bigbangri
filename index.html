@@ -517,6 +517,46 @@
   }
 }
 
+    .two-column-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 100px;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    .column {
+      width: 45%;
+      text-align: left;
+      color: white;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: white;
+      height: auto;
+    }
+
+    p {
+      margin-bottom: 10px;
+      margin: 10px 0;
+      line-height: 1.8;
+    }
+    
+@media (max-width: 768px) {
+  .two-column-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .two-column-wrapper .column {
+    width: 100%;
+    text-align: left;
+  }
+}
+
   </style>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LT59M219NB"></script>
@@ -562,6 +602,8 @@
   <a href="contact.html">Contact</a>
   <span class="divider">|</span>
   <a href="privacy.html">Privacy Policy</a>
+  <span class="divider">|</span>
+  <a href="terms.html">Terms of Service</a>
 </div>
   
   <main>
@@ -576,12 +618,13 @@
       />
     </div>
 
-    <h1 style="font-size: 28px">BIGBANG 2006–2025 年官方与公开资料整理合集</h1><br/>
+    <h1 style="font-size: 28px">BIGBANG 2006–2026 年公开资料整理合集</h1><br/>
 
     <div class="icon-text-wrapper">
       <img src="1.png" alt="胜利" class="icon" />
       <div class="text">
-        <p>欢迎所有喜爱 BIGBANG 的朋友们<br/>本站致力于提供完整和长期的历史资料整理</p>
+        <p>欢迎所有喜爱 BIGBANG 的朋友</p>
+        <p>本站致力于提供完整和长期的历史资料整理</p>
       </div>
     </div>
 
@@ -661,6 +704,55 @@
         </div>
       </div>
     </div>
+
+  <div class="two-column-wrapper">
+    <div class="column left">
+      <p>
+        本网站是一个以 BIGBANG 为主题的长期资料整理与文化归档站点，
+        系统性收录自 2006 年出道以来，BIGBANG 及其成员在音乐作品、
+        舞台活动、影视演出、广告代言、杂志拍摄等领域中的官方与公开记录。
+      </p>
+      <p>
+        与以即时新闻或短期更新为核心的平台不同，本站更注重资料的完整性、
+        时间顺序的准确性以及不同阶段内容之间的逻辑关联，
+        适合作为长期查阅与系统浏览用途。
+      </p>
+      <p>
+        所有页面内容均由人工整理与维护完成，并非自动生成。
+        通过分类、整合与校对，减少重复信息，
+        提高整体可读性与参考价值。
+      </p>
+      <p>
+        本站所呈现的内容主要来源于官方公开资料、已播出节目、
+        正式媒体报道与可验证的历史信息。
+        在整理过程中，会尽量标注出处并保持原始语境，
+        避免误导性解读。
+      </p>
+      <p>
+        由于不同年份与平台的资料存在版本差异，
+        本站会持续对历史内容进行补充与修正，
+        并欢迎访客通过留言方式提供可核实的补充信息。
+      </p>
+    </div>
+
+    <div class="column right">
+      <p>
+        本站并不以流量或短期曝光为目标，
+        而是以稳定、持续的资料维护为长期方向，
+        适合希望深入了解 BIGBANG 发展历程的使用者。
+      </p>
+      <p>
+        本网站为非官方粉丝整理站点，与 YG Entertainment
+        或任何相关艺人所属公司不存在商业或隶属关系。
+        所有内容仅用于文化记录与资料整理目的。
+      </p>
+      <p>
+        网站将持续进行维护与更新，
+        并在必要时对内容进行修正与补充，
+        以提升整体参考价值与可读性。
+      </p>
+    </div>
+  </div>
 
   </main>
   <script src="player.js"></script>
