@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+@media only screen and (max-width: 768px) {
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: calc(100% + 10px);
+  }
+
+  .nav-button.right {
+    left: calc(100% + 10px);
+  }
+
+  </style>
+</head>
+
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="interview.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>采访2024年</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="interview2025.html">2025</a>
+    </nav>
+  </div>
+  <br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="interview2024-feb-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2024.html#interview2024-feb" class="jump-button">2月</a>
+    </div>
+  </div>
+  <br/><br/>
+  <hr class="full-width-line" />
+
+  <div id="interview2024-feb" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2024.html#interview2024-feb-jump" class="jump-button">2月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="2402" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="2024feb.html#2402-jump" class="jump-button">跳转到 2024 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2024年2月</strong></p>
+        <p>杂志《System》第22期（Spring/Summer 2024）里谈论 GD</p>
+        <p>详细资讯：<a href="https://system-magazine.com/issues/issue-22/influence-k-pop" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            SYSTEM</a></p><br/>
+        <p>KB Lee：是一位创意总监，负责将众多品牌和艺人与韩国联系起来，同时也是G-Dragon的私人朋友和顾问</p>
+        <p>Mirim Lee：曾任《Harper’s Bazaar Korea》的时尚总监，并与 KB Lee共同创立了 TMN Agency</p>
+        <p>Gee Eun：担任YG娱乐公司的视觉总监</p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li>2016年，香奈儿向YG娱乐旗下人气男团Bigbang的队长G-Dragon提供了一份独家品牌大使合同
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <p><span style="color: #FF66CC;">KB Lee：</span>我当时就在想，这事儿是不是真的会发生。他当时是亚洲最具影响力的艺人，我很好奇像香奈儿这样的时尚品牌会如何接纳他。从那以后，K-pop与奢侈时尚品牌之间的关系彻底改变了</p>
+          <p><span style="color: #33FFFF;">Mirim Lee：</span>G-Dragon和Chanel当时正处于相互了解的过程中。他们都非常乐于尝试新鲜事物</p>
+          <br/><li>2016年，G-Dragon成为香奈儿首位亚洲全球品牌大使后，K-pop与奢侈时尚之间的关系发生了彻底改变。有句俗话说，在Gee Eun之前有K-pop时尚，在Gee Eun之后才有了真正的K-pop时尚。你能谈谈K-pop风格的演变吗？</li>
+          <p><span style="color: #39FF14;">Gee Eun：</span>这太搞笑了。我还活着呢！我从小就认识一些音乐人，他们穿的几乎都是舞台服装，只在演出时穿。想想那些亮片和珠片吧。我一直觉得这样很可惜，我希望我的艺人无论台上台下都能很酷。我希望人们——甚至艺人自己——都相信他们天生就很酷。你不能随便给别人穿点什么就指望他们看起来很自然。不自然的地方很明显，人们一眼就能看出来。所以，我不会直接告诉他们该穿什么，而是慢慢地用一些热门的系列或单品来逗他们，比如会说：‘哦，你没有这个吗？’好奇的人就会明白我的意思，然后自己也开始感兴趣。就像我说的，我必须让我的艺人相信他们天生就很有型。这就是为什么我以前从不接受采访或抛头露面，因为一旦我这么做，就会损害他们自身的时尚品味。首先，我会花大量时间聆听和自学，了解艺术家音乐背后的灵感来源，努力理解其概念，以及如何用视觉方式呈现这些理念。我曾经很喜欢朋克时尚、亚文化和复古风。我会把市面上能买到的单品混搭，更换不同的配饰，我想这就是人们所说的改变之处。当粉丝们意识到他们可以购买和穿着这些单品时，K-pop风格也变得更加平易近人。这促成了BigBang成为潮流引领者，尤其是G-Dragon。他穿过的某件衣服，第二天东大门的商店里就会到处都是仿制品。他成为了时尚偶像，虽然有很多时尚偶像，但还没有人能像他一样，让人们总是好奇他接下来会穿什么。在筹备他的新专辑时，我真的感到责任重大</p>
+          <br/><li>2016年，G-Dragon成为香奈儿首位亚洲全球品牌大使。你第一次听到这个消息时是什么反应？</li>
+          <p><span style="color: #FF66CC;">KB Lee：</span>我觉得太不可思议了。我当时在想这是否真的可能，但同时又觉得这是意料之中的事。G-Dragon当时是亚洲最具影响力的艺人，我很好奇像香奈儿这样的时尚品牌会如何接纳他。他是一位真正的先驱。此后，K-pop与奢侈时尚品牌之间的关系发生了彻底的改变</p>
+          <p><span style="color: #33FFFF;">Mirim Lee：</span>在此之前，一些韩国明星也会受邀参加时尚活动或时装秀，但当G-Dragon签约香奈儿——我想裴斗娜与路易威登的首份合约也是在同一时期——这真的将这种关系提升到了一个全新的高度，不再仅仅是受邀出席</p>
+          <p><span style="color: #39FF14;">Gee Eun：</span>这并非一个突如其来的消息，因为我们为此在幕后付出了很多努力。我非常欣赏卡尔·拉格斐和圣罗兰的艾迪·斯利曼，所以一开始我们都是自费去看巴黎时装周，纯粹出于兴趣和好奇。GD很喜欢看秀，并且意识到时装周的T台也是灵感的源泉。时装周的灯光、表演和制作都对他产生了影响。我和香奈儿的面料总监金英成是好朋友，他也是韩国人。如果说维吉妮·维亚尔是卡尔的得力助手，那么金英成就是他的左膀右臂。我介绍他们认识，是因为我想让香奈儿知道我们在韩国有这样一位杰出的艺术家。每次GD出现在时装周上，都会成为人们热议的话题，这种影响力一季接一季地持续下去。在经历了几年的时装周巡演之后，香奈儿问我们是否可以只邀请GD参加香奈儿的秀。但对于像他这样的艺术家来说，只为一场秀就远赴欧洲，实在有些棘手。光是把他和他的所有工作人员都请过来就要花费数十万美元。所以香奈儿提供了一个解决方案：签署一份品牌大使合同。这在当时是前所未有的，不仅因为GD是亚洲人，还因为他是一位与香奈儿签约的男性艺术家。这个方案之所以奏效，是因为卡尔·拉格斐每场秀都会推出几件男装，而GD也能驾驭女装。在他之前，甚至还没有‘品牌大使’这种说法</p>
+          <br/><li>又过了几年，才有更多韩国流行偶像开始代言奢侈时尚品牌。考虑到互联网时代和时尚潮流的快速更迭，G-Dragon 确实走在了时代的前沿。你认为是什么促成了这一切？</li>
+          <p><span style="color: #FF66CC;">KB Lee：</span>在他之前，人们可能不太尊重偶像的音乐才华，但他创作的音乐却令人耳目一新。他引领了亚洲的时尚潮流，我认为各大品牌都想借此机会分一杯羹</p>
+          <p><span style="color: #39FF14;">Gee Eun：</span>我并不觉得这中间间隔太长，因为 BLACKPINK 出道时，BigBang 的大部分活动也刚刚结束。我为 BLACKPINK 设定的最大目标是为每位成员签约一个顶级品牌，因为我无法为 BigBang 做到这一点。男装市场规模较小</p>
+          <br/><li>你觉得这些年来，人们对韩国明星、编辑和品牌的看法或待遇发生了变化吗？尤其是在欧洲奢侈时尚品牌内部？</li>
+          <p><span style="color: #33FFFF;">Mirim Lee：</span>变化很大。以前每场秀上韩国编辑不到10位，现在这个数字翻了三倍。以前我们总是被安排在最后面，但现在韩国编辑和品牌大使都能坐到最好的位置，比如就在CEO旁边</p>
+          <p><span style="color: #39FF14;">Gee Eun：</span>明星们一直都受到很好的待遇，但韩国员工在时装周上的待遇发生了很大的变化。人们对韩国的整体认知度和关注度确实提高了。我和日本有很多业务往来，我经常问日本品牌或公司现在有什么热门趋势值得关注。他们会说：‘你为什么问我们？韩国现在就是最火的！’我觉得现在真的是我们的时代了。作为在这波热潮之前就开始工作的人，我感到非常兴奋。以前我们只能拿到其他国家展示完的最后一批样品；等他们到了韩国，那些衣服肯定都已经被穿烂了。后来，Hedi 还特意把BigBang秀场上的Saint Laurent系列服装直接寄给我们，让他们几天后就能在颁奖典礼上穿。我觉得那才是真正的成功</p>
+          <p><span style="color: #FF66CC;">KB Lee：</span>我们前几天刚聊到这个。大概2013年左右，我们开始和GD一起去看巴黎时装周——那时他还没和香奈儿签约——我们去了Junya Watanabe、Saint Laurent和其他一些品牌的秀。人们总是问我关于他的事，甚至在他们认识他之前，比如，‘他是谁？为什么外面有那么多人等着他？’我觉得他在签约某个品牌之前就参加各种不同的秀，展现不同的风格，这给人们留下了深刻的印象。但现在，明星一旦有点名气，就会立刻签约某个品牌。适应一个品牌固然很好，但个人风格肯定会经历不同的阶段和转变。有时候你喜欢Rick Owens，有时候又喜欢Dries Van Noten。我不是要明星们去研究时尚，而是说，如果只是简单地决定‘好，你就是Gucci，你就是Chanel，你就是Louis Vuitton’，这会限制他们展现自身风格的可能性</p>
+          <p><span style="color: #33FFFF;">Mirim Lee：</span>在GD之前，韩国明星或许会被邀请参加一些时装秀，但很少有人会像他那样频繁地出现在各种T台上。我安排GD和他的团队去巴黎参加了一些他们早期的时装秀，因为我想为《Harper‘s Bazaar Korea》拍摄他。他和Gee Eun，以及BigBang的另一位成员太阳，都非常乐于尝试新鲜事物，并且玩得很开心。如果人们能够体验各种各样的时装秀和品牌宣传片，并自行决定自己与哪个品牌契合，那就更理想了。G-Dragon和Chanel之间就是这样建立起的合作关系和相互了解的过程，并且彼此尊重。这才是成为品牌大使的绝佳途径。根据合同金额签约实在太可惜了，这关乎真实性</p>
+          <p><span style="color: #FF66CC;">KB Lee：</span>GD和香奈儿的Young-Seong是私交甚笃的朋友。我们经常会去拜访她和Virginie Viard，并把我们和Nike的联名款送给她们。GD会和他们的鞋履设计师随意聊聊，说说他喜欢什么款式，香奈儿真的会根据他的喜好制作样品。他们的关系非常真挚。当时他和BigBang在亚洲的影响力非常大，而且他身边还有像Mirim和Gee Eun这样的人，可以围绕他们创作相关的时尚内容，这真是天时地利人和。各方都希望推广他们的作品，而且他们彼此之间也互相支持。韩国时尚在那段时间发生了巨大的变化</p>
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></li>          
+        </ol>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line">  
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="interview.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="interview2025.html">2025</a>
+    </nav>
+  </div>
+
+
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+  
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+}
+
+  </script>
+</body>
+</html>
