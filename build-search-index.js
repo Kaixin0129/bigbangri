@@ -23,7 +23,8 @@ const pages = [
   "2022jan.html","2022feb.html","2022mar.html","2022apr.html","2022may.html","2022june.html","2022july.html","2022aug.html","2022sept.html","2022oct.html","2022nov.html","2022dec.html",
   "2023jan.html","2023feb.html","2023mar.html","2023apr.html","2023may.html","2023june.html","2023july.html","2023aug.html","2023sept.html","2023oct.html","2023nov.html","2023dec.html",
   "2024jan.html","2024feb.html","2024mar.html","2024apr.html","2024may.html","2024june.html","2024july.html","2024aug.html","2024sept.html","2024oct.html","2024nov.html","2024dec.html",
-  "2025jan.html","2025feb.html","2025mar.html","2025apr.html","2025may.html","2025june.html","2025july.html","2025aug.html","2025sept.html","2025oct.html","2025nov.html","2025dec.html"
+  "2025jan.html","2025feb.html","2025mar.html","2025apr.html","2025may.html","2025june.html","2025july.html","2025aug.html","2025sept.html","2025oct.html","2025nov.html","2025dec.html",
+  "2026jan.html",
 ];
 
 function buildIndex() {
