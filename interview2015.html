@@ -398,6 +398,22 @@
     left: calc(100% + 10px);
   }
 
+  .toggle-btn {
+    border: 2px solid #33FFFF;
+    color: #FFFFFF;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+  }
+  .toggle-btn:hover {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
   </style>
 </head>
 
@@ -422,6 +438,9 @@
     </div>
     <div id="interview2015-mar-jump" style="display: flex; align-items: center; gap: 10px;">
       <a href="interview2015.html#interview2015-mar" class="jump-button">3月</a>
+    </div>
+    <div id="interview2015-may-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2015.html#interview2015-may" class="jump-button">5月</a>
     </div>
     <div id="interview2015-june-jump" style="display: flex; align-items: center; gap: 10px;">
       <a href="interview2015.html#interview2015-june" class="jump-button">6月</a>
@@ -478,6 +497,73 @@
       </div>
     </div>
     <hr class="full-width-line" />
+  </div>
+
+  <div id="interview2015-may" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2015.html#interview2015-may-jump" class="jump-button">5月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="150505" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2015may.html#150505-jump" class="jump-button">跳转到 2015 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container" id="block17">
+        <p><strong>2015年5月5日</strong></p>
+        <p>Bigbang接受 KPOP Behind 的专访</p>
+        <p>详细资讯：<a href="https://www.kpopbehind.com/2015/05/interview-with-big-bang-5-members-music.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            KPOP Behind</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li>问：你们说过每个月的第一天都会发行新单曲，这听起来像是一个不同寻常的企划<br/>
+          <span style="color: #fc5353;">太阳：</span>就在一个月前，我们还在纠结是发行单曲还是完整专辑。其实，我们有很多非常满意的新歌，本来想发行一张包含所有歌曲的完整专辑。但是，我们也想为每首歌都拍摄MV，所以最终决定每个月发行一首单曲
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li>问：下个月你们会发行什么类型的歌曲？给我点提示吧<br/>
+          <span style="color: #fc5353;">太阳：</span>我想说的是，每首歌都不一样。我们每个月都会给大家带来截然不同的作品。我们也有像《Fantastic Baby》那样节奏欢快的歌曲</li>
+          <br/><li>问：你认为BIGBANG的音乐有什么特点？<br/>
+          <span style="color: #FF66CC;">GD：</span>我不能说BIGBANG的音乐是红色还是蓝色。我们只是做只有我们才能做、我们自信的事情。因为我们一起合作了很长时间，所以我们找到了我们最擅长的东西。《LOSER》和《BAE BAE》是我们2015年的首发单曲，但我不能说它们是今年所有歌曲中最好的，也不能说是最差的。我喜欢所有的歌<br/><span style="color: #00ff51;">TOP：</span>是啊，哪首歌先发行都无所谓</li>
+          <br/><li>问：在创作新歌的时候，你们最在意的是什么？<br/>
+          <span style="color: #FF66CC;">GD：</span>我觉得所有歌手都会有烦恼。随着时间的推移，我们也越来越在意自己的音乐。创作新歌的时候，我们努力决定哪些该做，哪些不该做。我们非常重视歌词，因为我们想通过歌曲引起大家的共鸣。其实，我们从整个歌曲制作过程中学到了很多。当我们迷失方向的时候，杨贤硕和Teddy这两位帮了我们很多忙，他们一直是我们很好的助手</li>
+          <br/><li>问：我想知道你们是否尝试创作一些更受大众欢迎的新歌<br/>
+          <span style="color: #00ff51;">TOP：</span>毫无疑问，BIGBANG是一个流行组合，这意味着我们必须创作流行音乐。我们一直努力创作出能被更多人喜爱的好歌<br/><span style="color: #FF66CC;">GD：</span>但是，这并不意味着我们总是专注于歌曲的流行度。我的意思是，我们只是创作好歌。当然，我的个人专辑里会包含一些难度较高、实验性较强的歌曲，但在制作BIGBANG的专辑时，我会努力创作出能被更多人喜爱的歌曲。如果我们喜欢自己的歌，大众也喜欢，那就是最好的结果了</li>
+          <br/><li>问：你们什么时候会觉得自己是个失败者？<br/>
+          <span style="color: #FF66CC;">GD：</span>明星也是普通人，我们也会感到痛苦和悲伤。所以，我们想通过歌曲《LOSER》讲述一个基于我们真实经历的故事<br/><span style="color: #00ff51;">TOP：</span>K-pop的世界看起来光鲜亮丽，但我们在台下常常感觉像身处地狱，而且常常会无缘无故地感到沮丧</li>
+          <br/><li>问：你们通常是如何创作歌曲的？<br/>
+          <span style="color: #fc5353;">太阳：</span>Teddy通常会负责音乐的框架，GD负责细节部分。然后，所有成员都会自由地交流意见<br/><span style="color: #33FFFF;">胜利：</span>GD和TOP负责创作rap歌词，太阳参与旋律的创作。我不参与歌曲创作，但我会尽力帮助团队<br/><span style="color: #FF66CC;">GD：</span>虽然胜利并非BIGBANG的正式作词作曲人，但包括他在内的所有BIGBANG成员都会积极参与歌曲创作。我所做的只是将大家的意见结合起来</li>
+          <br/><li>问：歌曲《BAE BAE》中提到了一位25岁的女孩，这个年龄有什么特别的含义吗？<br/>
+          <span style="color: #FF66CC;">GD：</span>我们创作这首歌的时候，讨论了爱情和女人。我们认为25岁是男女之间最能拥有激情浪漫的年纪。我们尝试用一种抽象的方式来表达<br/><span style="color: #00ff51;">TOP：</span>是的，这首歌讲的是一个自私的男人想要女孩永远保持青春</li>
+          <br/><li>问：所以，你们写《BAE BAE》的时候，脑海里没有具体的人选吗？<br/>
+          <span style="color: #00ff51;">TOP：</span>没有。我们只是在想女孩子看起来最美的年纪。我们当时在25岁和26岁之间犹豫不决</li>
+          <br/><li>问：对了，之前传闻和GD交往的水原希子也是25岁<br/>
+          <span style="color: #FF66CC;">GD：</span>她25岁？我不知道。不过，我觉得年龄是这首歌的一个有趣元素</li>
+          <br/><li>问：所以，你们不想谈恋爱吗？<br/>
+          <span style="color: #fc5353;">太阳：</span>和其他同龄的年轻人一样，我觉得谈恋爱没什么不好。而且我需要丰富的阅历，因为我要通过音乐来表达我的情感。对了，在亚洲，尤其是在韩国，人们对明星的恋情太敏感了<br/><span style="color: #00ff51;">TOP：</span>我唯一真正明白的是，我们需要尊重粉丝和我们之间的距离。把私生活全部公开可能会有很多负面影响<br/><span style="color: #FF66CC;">GD：</span>爱情对音乐的影响很大。但是，我觉得我们没必要搞开放式关系</li>
+          <br/><li>问：你们会分享彼此的感情生活吗？<br/>
+          <span style="color: #FF66CC;">GD：</span>有些成员会，有些成员不会<br/><span style="color: #fbff00;">大声：</span>总之，遇到好女孩很重要</li>
+          <br/><li>问：你是如何平衡艺人生活和普通人生活的？<br/>
+          <span style="color: #FF66CC;">GD：</span>对我来说，两者兼顾真的很难，因为我总是不得不放弃其中之一。我以前在舞台上表演的时候，通常都要隐藏自己内心的“权志龙”。不过，我在演艺圈已经十年了，我想我终于找到了平衡艺人生活和普通人生活的方法</li>
+          <br/><li>问：大声，你在日本以solo歌手的身份活动了很久，感觉如何？<br/>
+          <span style="color: #fbff00;">大声：</span>其实我以前一点自信都没有。我觉得自己就像BIGBANG的腰带一样，因为我一直默默地做着自己该做的事<br/><span style="color: #FF66CC;">GD：</span>嗯，对男人来说，结实的腰部肌肉确实很重要<br/><span style="color: #fbff00;">大声：</span>哈哈，总之，我曾经很焦虑，因为觉得不能给YG和BIGBANG带来任何负面影响。但是自从在日本发行了solo专辑之后，我就改变了。现在感觉没那么害怕了</li>
+          <br/><li>问：你作为歌手经历过低谷期吗？<br/>
+          <span style="color: #FF66CC;">GD：</span>去年我经历了一段低谷期。我写不出歌，为此非常焦虑。不过，我从其他成员那里得到了答案。去年年底，我们开始认真地创作新歌，因为成员们一直陪伴在我身边，我才走出了低谷<br/><span style="color: #00ff51;">TOP：</span>我觉得我每次拍完电影后都会陷入低谷，因为我唱rap的时候嗓音会很奇怪。而且有时候我写rap歌词要花一整天的时间</li>
+          <br/><li>TOP，你最近开始用Instagram了。是什么让你这么做的呢？<br/>
+          <span style="color: #00ff51;">TOP：</span>我知道我的粉丝因为我不经常和他们互动而感到难过。所以我开始用Instagram和他们交流。当然，我也会用它来宣传我们的新歌。不过，其实我很容易对什么事情感到厌倦，想放弃的时候随时都可以</li>
+          <br/><li>问：BIGBANG成员之间有竞争意识吗？<br/>
+          <span style="color: #fc5353;">太阳：</span>没有。我们不是solo歌手，我们知道保持平衡很重要。我们一直在努力调整，以达成共识<br/><span style="color: #00ff51;">TOP：</span>我们一起工作已经很久了，我们之间完全没有竞争感</li>
+          <br/><li>问：你们之间有过争吵吗？<br/>
+          <span style="color: #00ff51;">TOP：</span>没有，我们每个人性格都不一样，所以彼此之间从来没有过冲突。坦白说，我们朋友不多，成员们是我唯一的朋友<br/><span style="color: #fbff00;">大声：</span>成员们是我遇到困难时可以依靠的朋友</li>
+          <br/><li>问：我觉得胜利很受其他成员的喜爱是因为他是忙内<br/>
+          <span style="color: #FF66CC;">GD：</span>他很可爱，哈哈。其实他跟我们有点不一样。他是家里的长子，而我们都是老幺。以前他经常被我们欺负，跟我们在一起的时候确实会觉得不自在。不过也没什么大不了的。我们以前取笑他不吃泡菜，他只吃香肠和火腿，连烤肉都不会。但是，他现在已经是BIGBANG里最成熟的成员了<br/><span style="color: #33FFFF;">胜利：</span>到现在已经七八年了。我觉得成员们都很爱我。特别是GD，他们经常想让我唱。所以才能唱《LOSER》里最重要的部分，哈哈。我为此感到非常自豪</li>
+          <br/><li>问：你们认为是什么驱动着你们的成长？<br/>
+          <span style="color: #fc5353;">太阳：</span>我们年轻时经历过困难，这对我们来说非常幸运。我们还是练习生的时候，YG公司处境很糟糕。现在才加入YG大家庭的年轻艺人是没机会吸取这样的教训的<br/><span style="color: #FF66CC;">GD：</span>我们出道的时候，连想都不敢想能在音乐排行榜上名列前茅。我们身无分文，买零食都要向给我们拍纪录片的电视制作人借钱。每个人每天的伙食费只有5美元<br/><span style="color: #00ff51;">TOP：</span>那时候我们很喜欢吃韩国巧克力饼干Diget。我现在也很喜欢吃</li>
+          <br/><li>问：你们会以BIGBANG的身份活动到什么时候？不知道你们是否会和YG续约<br/>
+          <span style="color: #00ff51;">TOP：</span>我想即使到了七八十岁也能继续开演唱会。但我们都同意，如果年纪大了、精力不足，就应该停止唱歌<br/><span style="color: #FF66CC;">GD：</span>我们在YG的庇护下以BIGBANG的身份活动了10年。我没有理由离开公司。只要我们对音乐充满热情，杨贤硕也一直支持我们，我们就能一起走下去很多年
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <hr class="full-width-line">  
   </div>
 
   <div id="interview2015-june" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
@@ -582,6 +668,46 @@
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
+
+  function toggleList(button, show) {
+  const listItem = button.closest('li');
+  
+  if (show) {
+    let nestedList = listItem.querySelector('ol');
+    if (!nestedList) {
+      nestedList = listItem.nextElementSibling;
+    }
+    
+    if (nestedList && nestedList.tagName === 'OL') {
+      nestedList.style.display = "block";
+      button.style.display = "none";
+      nestedList.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  } else {
+    const nestedList = button.closest('ol');
+    
+    if (nestedList) {
+      nestedList.style.display = "none";
+      
+      let parentLi = nestedList.parentElement.closest('li');
+      if (!parentLi) {
+        parentLi = nestedList.previousElementSibling;
+        while (parentLi && parentLi.tagName !== 'LI') {
+          parentLi = parentLi.previousElementSibling;
+        }
+      }
+      
+      if (parentLi) {
+        const expandBtns = parentLi.querySelectorAll('[onclick*="true"]');
+        expandBtns.forEach(btn => {
+          btn.style.display = "inline-block";
+        });
+        
+        parentLi.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  }
+}
 
 const sliderStates = new Map();
 
