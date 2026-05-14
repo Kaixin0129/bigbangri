@@ -1,0 +1,1089 @@
+<!DOCTYPE html><html lang="zh"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="bigbangri">
+  <link rel="manifest" href="/site.webmanifest">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+@media only screen and (max-width: 768px) {
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .right-side{
+    position: relative;
+    align-items:center;
+  }
+
+  .slide-counter{
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .nav-button{
+    background-color: rgba(255,255,255,0.7);
+    border:none;
+    padding:10px 15px;
+    font-size:24px;
+    cursor:pointer;
+    border-radius:10px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: calc(100% + 10px);
+  }
+
+  </style>
+</head>
+
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="2014.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>2014年10月</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="2014nov.html">11月</a>
+    </nav>
+  </div>
+
+  <div style="text-align: center;">
+    <a href="sns2014oct.html" class="jump-button">跳转到 SNS 时间线</a>
+  </div><br><br>
+  <hr class="full-width-line">  
+
+  <div style="text-align: center;">
+    <div id="141002-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="top2014.html#141002" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container" id="block1">
+        <p><strong>2014年10月2日</strong></p>
+        <p>TOP出席在首尔DDP购物中心举行的欧米茄“碟飞系列尊贵蝴蝶腕表”发布会</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="141003-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="top2014.html#141003" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/FLfV7TC1eew?si=-RUZFAcoPKZEMjag" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      </div>
+      <div class="text-container" id="block2">
+        <p><strong>2014年10月3日</strong></p>
+        <p>TOP 出席在首尔现代百货商店举行的Millet品牌签名会</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/qzRenEHpGeg?si=2U9WNsQFjZaD4cji" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      </div>
+      <div class="text-container" id="block3">
+        <p><strong>2014年10月4日</strong></p>
+        <p>在韩国仁川举行的2014年亚运会闭幕式上进行表演</p>
+        <ul>
+          <li>YG已在9月30日确定胜利将会缺席（胜利出车祸）</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/gAKOgZaIvto?si=5TahI3pW8GiqAYzl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2014年10月5日</strong></p>
+        <p>柳熙烈的写生簿</p>
+        <p>太阳个人参与</p>
+        <ul>
+          <li>36:49 出场</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="magazine-141005" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="magazine2014.html#magazine-141005-jump" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2014年10月5日</strong></p>
+        <p>TOP登上香港杂志《Milk》</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@Ellai 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=16579123&bvid=BV16x411V7Gb&cid=27160162&p=6" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2014年10月7日</strong></p>
+        <p>魁!音樂番付</p>
+        <p>大声个人参与</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div id="141009-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="top2014.html#141009" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/SlR_srVNegM?si=19SQdJ_eJ_dLraQv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2014年10月9日</strong></p>
+        <p>TOP出席在日本的《老千2》发行活动（第一场）</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/QiducXnWTQg?si=x79EcN7fJ1iuq5ey" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2014年10月9日</strong></p>
+        <p>TOP出席在日本的《老千2》发行活动（第二场）</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/LZKpbbk0FvA?si=POFG4VNP31krD3cQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p>玩游戏</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/marr5hwe1ec?si=CV89yjZ0agL32PuS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2014年10月11日</strong></p>
+        <p>柳熙烈的写生簿</p>
+        <ul>
+          <li>Ailee 打电话给太阳</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="141011" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="daesung2014.html#141011-jump" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A171615542&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2014年10月11日</strong></p>
+        <p>日本广播 NACK5 HITS!THE TOWN SPECIAL</p>
+        <p>大声个人参与</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 350px; text-align: left;" id="block4">
+      <table style="text-align: left; border-collapse: collapse; table-layout: fixed;">
+        <colgroup>
+          <col style="width: 200px;">
+          <col>
+        </colgroup>
+        <tbody><tr><td>2014年10月10-12日</td><td>首尔</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@跳跳鱼不见了呢 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=849581326&amp;bvid=BV14L4y1W75x&amp;cid=453360701&amp;p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container" id="block5">
+        <p><strong>2014年10月12日</strong></p>
+        <p>South Korea：Rise Seoul Concert Series</p>
+        <p>首尔（第三天）</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="magazine-141014" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="magazine2014.html#magazine-141014-jump" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2014年10月14日</strong></p>
+        <p>太阳大声登上日本杂志《Josei Jishun》2014年10月刊</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container" id="block6">
+        <p><strong>2014年10月中旬</strong></p>
+        <p>胜利正式出院了，但还未正式康复</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="141017" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="gdyb2014.html#141017-jump" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2014年10月17日</strong></p>
+        <p>GD太阳出席 BOON THE SHOP 开幕仪式</p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <div id="141020" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="top2014.html#141020-jump" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2014年10月20日</strong></p>
+        <p>TOP接受 VOGUE 户外拍摄</p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A172953299&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2014年10月20日</strong></p>
+        <p>日本广播 アポロン</p>
+        <p>大声个人参与</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/k67WVkHBoes?si=mFtO5_imAxeHVZZi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      <div class="video-description">
+        <p>Rich</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/qhc_UpS6U3Y?si=YaxafNYZZBRr75W1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      <div class="video-description">
+        <p>Eyes Nose Lips</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container" id="block7">
+        <p><strong>2014年10月21日</strong></p>
+        <p>太阳参与Epik High的专辑SHOEBOX</p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <div id="141022ds-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="daesung2014.html#141022ds" class="jump-button">跳转到 大声2014 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container" id="block8">
+        <p><strong>2014年10月22日</strong></p>
+        <p>大声个人推出第二张现场音源单曲专辑<br>D-LITE DLive 2014 in Japan ~D'slove~</p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A173314158&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2014年10月22日</strong></p>
+        <p>日本电台 ON8+1</p>
+        <p>大声个人参与</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="magazine-141022-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="magazine2014.html#magazine-141022" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2014年10月22日</strong></p>
+        <p>TOP登上日本杂志《High Cut》2014年10月刊</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="e-syrup.html" class="jump-button">更多详情</a>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/U8jbaGEEKMk?si=Z0TgjY-ZkgZ3ZHpY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      </div>
+      <div class="text-container" id="block9">
+        <p><strong>2014年10月24日</strong></p>
+        <p>TOP个人代言 Syrup 广告歌曲《I'M THE KING》</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="magazine-141024-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="magazine2014.html#magazine-141024" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container" id="block10">
+        <p><strong>2014年10月24日</strong></p>
+        <p>太阳登上日本杂志《ViVi》2014年12月刊</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/7-jxSvuCGoA?si=l8vGFBfJeih2ozEv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2014年10月24日</strong></p>
+        <p>奔跑吧兄弟第一季第三集</p>
+        <p>GD 打电话给 Angelababy</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A174032210&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2014年10月27日</strong></p>
+        <p>日本电台 Yokohama E-en!</p>
+        <p>大声个人参与</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container" id="block11">
+        <p><strong>2014年10月28日</strong></p>
+        <p>Bigbang 在 Style Icon Awards 被提名：</p>
+        <p>GD</p>
+        <ul>
+          <li>Top 10 Style Icons</li>
+        </ul><br>
+        <p>太阳</p>
+        <ul>
+          <li>Top 50 Style Icons</li>
+        </ul><br>
+        <p>详细资讯：<a href="https://web.archive.org/web/20160309185057/http://mwave.interest.me/enewsworld/en/article/79355/2014-sia-zo-in-sung-wins-2014-style-icon-of-the-year" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            MWave</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="gd141028" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="gd2014.html#gd141028-jump" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/z4uH0xkcmb0?si=KdQhiwxF6JBgGlX5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      </div>
+      <div class="text-container" id="block12">
+        <p><strong>2014年10月28日</strong></p>
+        <p>GD出席在香港的周大福发布会</p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <div id="ty141028" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="taeyang2014.html#ty141028-jump" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/zm41jQop2so?si=1_UCmeEtGB3i_dzT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      </div>
+      <div class="text-container" id="block13">
+        <p><strong>2014年10月28日</strong></p>
+        <p>太阳出席Calvin Klein的 CK One 签名会</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="magazine2-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="magazine2014.html#magazine2" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/yDXWteqrBQo?si=vwaSZRZOGbJt-yjs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      </div>
+      <div class="text-container" id="block14">
+        <p><strong>2014年10月28日</strong></p>
+        <p>Bigbang除了胜利参与《W Korea》 11月刊的画报拍摄</p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://geo.dailymotion.com/player.html?video=x28s6g9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2014年10月28日</strong></p>
+        <p>日本电台 Live 4 Life</p>
+        <p>大声个人参与</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/fKWEMbt7KMc?si=PUd6ywrTXKj94GJo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2014年10月28日</strong></p>
+        <p>大声 Message Music Shelf Japan</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="141029ds-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="daesung2014.html#141029ds" class="jump-button">跳转到 大声2014 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container" id="block15">
+        <p><strong>2014年10月29日</strong></p>
+        <p>大声个人推出第三张日语正规专辑<br>でぃらいと(Delight)</p>
+      </div>
+    </div>`
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container" id="block16">
+        <p><strong>2014年10月29日</strong></p>
+        <p>大声专辑《Delight》获得了原唱的好评</p>
+        <p>和田晶子表示：这首歌很有意思！既保留了《古井日记》的优点，后半部分的原汁原味的演唱风格也非常有趣！40年前的歌曲能够以现在的形式在现代传达，真的非常开心！</p>
+        <p>详细资讯：<a href="https://web.archive.org/web/20230423012318/https://ygex.jp/bigbang/news/detail.php?id=1015067" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            YGEX</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A174253891&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2014年10月29日</strong></p>
+        <p>日本电台 Live 4 Life</p>
+        <p>大声个人参与</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="141029-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="daesung2014.html#141029" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2014年10月29日</strong></p>
+        <p>大声在 Nikkansports.com 上发表了关于“演歌复兴”的文章</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container" id="block17">
+        <p><strong>2014年10月30日</strong></p>
+        <p>大声专辑《Delight》登顶Oricon日专辑榜</p>
+        <p>详细资讯：<a href="https://web.archive.org/web/20171010155648/http://www.ygfamily.com/artist/Network_Info.asp?IDX=6107&amp;Page=1&amp;n2PageSize=9&amp;LANGDIV=K&amp;ATYPE=2&amp;ARTIDX=8" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            YG Family</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <div style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="e-visa.html" class="jump-button">更多详情</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2014年10月30日</strong></p>
+        <p>Bigbang 与日本 Sumitomo Mitsui Card（SMBC）合作推出过粉丝向的信用卡，BIGBANG VISA Card</p>
+      </div> 
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <br><br><br>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="2014.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="2014nov.html">11月</a>
+    </nav>
+  </div>
+
+
+</main>
+<script src="player.js"></script>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="#"]');
+    if (link) {
+        const href = link.getAttribute('href');
+        
+        if (href.includes('.html')) {
+            return;
+        }
+        
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            setTimeout(function() {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+                
+                window.history.pushState(null, null, '#' + targetId);
+            }, 50);
+        }
+    }
+});
+
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        setTimeout(function() {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const elementRect = targetElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                
+                const offset = window.innerHeight * 0.1;
+                const targetPosition = absoluteElementTop - offset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition),
+                    behavior: 'smooth'
+                });
+            }
+        }, 300);
+    }
+});
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+
+  const counter = container.querySelector('.slide-counter');
+  counter.textContent = `${state + 1}/${slides.length}`;
+}
+
+document.querySelectorAll('.slider-container').forEach(container => {
+  const slides = container.querySelectorAll('.slide-item');
+  const counter = container.querySelector('.slide-counter');
+
+  counter.textContent = `1/${slides.length}`;
+});
+
+  </script>
+
+</body></html>
