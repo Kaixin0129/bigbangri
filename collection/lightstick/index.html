@@ -128,6 +128,26 @@
     }
 
 @media only screen and (max-width: 768px) {
+    .header-container {
+      height: auto;
+      min-height: 100px;
+      padding: 20px 0;
+      align-items: flex-start;
+    }
+
+    .title-group {
+      width: 100%;
+      padding: 0 120px;
+      text-align: center;
+    }
+
+    .title-group h1 {
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.3;
+      font-size: 42px;
+    }
+
     html, body {
         height: 100vh;
         overflow-x: hidden;
@@ -200,6 +220,28 @@
       cursor: pointer;
     }
 
+    .two-column-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 100px;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    .column {
+      width: 45%;
+      text-align: left;
+      color: white;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: white;
+      height: auto;
+    }
+
   </style>
 </head>
 <body>
@@ -234,13 +276,25 @@
     </nav>
   <p>所有的图片来源于 mybigbangcollection.com</p><br/><br/>
 
-  <nav>
-    <a href="korean.html">Korean</a>
-    <a href="japanese.html">Japanese</a>
-  </nav>
+  <div class="two-column-wrapper">
+    <div class="column left">
+      <p style="color: #33FFFF; font-size:18px; font-weight:bold;">KOREAN</p><br/><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="penlight.html" class="jump-button">笔灯</a>
+      </div><br/>
+    </div>
+
+    <div class="column right">
+      <p style="color: #33FFFF; font-size:18px; font-weight:bold;">JAPANESE</p><br/><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="2009.html" class="jump-button">2009</a>
+      </div><br/>
+    </div>
+  </div>
 
 </main>
-<script src="player.js"></script>
+<script src="/player.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
      crossorigin="anonymous"></script>
 </body>
+</html>
