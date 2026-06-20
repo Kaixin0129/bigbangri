@@ -1,0 +1,2699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIGBANG OT5</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #111;
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.container1 {
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.search-box {
+    width: 100%;
+    padding: 12px 20px 12px 40px;
+    border: 2px solid #33FFFF;
+    border-radius: 9999px;
+    background: #111;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-repeat: no-repeat;
+    background-position: 15px center;
+    background-size: 16px 16px;
+}
+
+.search-box::placeholder {
+    color: #aaa;
+    font-size: 16px;
+}
+
+.search-box:hover,
+.search-box:focus {
+    border-color: #FF66CC;
+    background: #111;
+}
+
+.search-page {
+    background: #111;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #33FFFF;
+}
+
+.search-header h1 {
+    color: white;
+    font-size: 2rem;
+}
+
+.search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.search-result-item {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-result-item:hover {
+    background: #2a2a2a;
+    border-color: #33FFFF;
+    transform: translateY(-5px);
+}
+
+.search-result-cover {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.search-result-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.search-result-title {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-result-album {
+    color: #cdcdcd;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-result-artist {
+    color: #aaa;
+    font-size: 0.8rem;
+    margin-top: 3px;
+}
+
+.no-results {
+    text-align: center;
+    color: #aaa;
+    font-size: 1.2rem;
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+    .search-search-container {
+        width: 200px;
+    }
+    
+    .search-box {
+        padding: 10px 15px 10px 35px;
+        font-size: 14px;
+        background-position: 12px center;
+        background-size: 14px 14px;
+        border: 2px solid #33FFFF;
+    }
+    
+    .search-box::placeholder {
+        font-size: 14px;
+    }
+    
+    .search-header-container {
+        height: 80px;
+        padding: 0 10px;
+    }
+    
+    .search-left-nav a {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-search-container {
+        width: 150px;
+    }
+    
+    .search-box {
+        padding: 8px 12px 8px 30px;
+        font-size: 13px;
+        background-position: 10px center;
+        background-size: 12px 12px;
+    }
+    
+    .search-box::placeholder {
+        font-size: 13px;
+    }
+}
+
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.album-card {
+  border: 1px solid #333;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  color: white;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 0;
+}
+
+.album-card:hover {
+    background: #2a2a2a;
+    transform: translateX(5px);
+    border-color: #33FFFF;
+}
+
+.album-cover {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.album-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.album-year {
+    color: #cdcdcd;
+    font-size: 0.8rem;
+}
+
+@media (min-width: 769px) {
+    .album-header {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 30px;
+        align-items: flex-start;
+        height: 200px;
+    }
+    
+    .album-meta {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+    
+    .album-meta h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: white;
+    }
+    
+    .album-meta p {
+        font-size: 1.1rem;
+        color: #cdcdcd;
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 12px;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .album-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 20px;
+        width: 100%;
+    }
+    
+    .album-card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        text-align: left;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    .album-cover {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+        min-width: 70px;
+    }
+    
+    .album-info {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+        width: calc(100% - 82px);
+    }
+    
+    .album-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 4px;
+        color: white;
+        line-height: 1.3;
+        width: 100%;
+        display: block;
+    }
+    
+    .album-year {
+        font-size: 0.85rem;
+        color: #cdcdcd;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        display: block;
+    }
+    
+    .album-detail .album-header {
+        flex-direction: column;
+        text-align: left;
+        gap: 20px;
+        height: auto;
+    }
+    
+    .album-detail .album-cover-large {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+    
+    .album-detail .album-meta {
+        text-align: left;
+        height: auto;
+    }
+    
+    .album-detail .album-meta h1 {
+        font-size: 1.8rem;
+    }
+    
+    .album-detail .album-meta p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .album-card {
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .album-cover {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+    }
+    
+    .album-info {
+        width: calc(100% - 70px);
+    }
+    
+    .album-title {
+        font-size: 1rem;
+        margin-bottom: 3px;
+    }
+    
+    .album-year {
+        font-size: 0.8rem;
+    }
+    
+    .album-detail .album-cover-large {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .album-detail .album-meta h1 {
+        font-size: 1.5rem;
+    }
+    
+    .album-detail .album-meta p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .album-detail .song-item .song-title {
+        font-size: 1rem;
+    }
+    
+    .album-detail .song-item {
+        padding: 12px;
+    }
+    
+    .album-detail .song-title {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+}
+
+@media (max-width: 480px) {
+    .album-detail .song-item .song-title {
+        font-size: 0.9rem;
+    }
+    
+    .album-detail .song-item {
+        padding: 10px;
+    }
+    
+    .album-detail .song-title {
+        font-size: 0.9rem;
+        line-height: 1.2;
+    }
+}
+
+.album-detail {
+    background: #111;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-top: 20px;
+}
+
+.album-header {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    align-items: flex-start;
+}
+
+.album-cover-large {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.album-meta h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.album-meta p {
+    font-size: 1.1rem;
+    color: #cdcdcd;
+    margin-bottom: 8px;
+}
+
+.songs-list {
+    margin-top: 30px;
+}
+
+.songs-list h2 {
+    margin-bottom: 20px;
+    color: white;
+    border-bottom: 2px solid #33FFFF;
+    padding-bottom: 10px;
+}
+
+.song-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #333;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.song-item:hover {
+    background: #111;
+    transform: translateX(5px);
+    border-color: #33FFFF;
+}
+
+.song-item:hover .song-title,
+.song-item:hover .song-duration {
+    color: white;
+}
+
+.song-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.song-title {
+    font-size: 1.1rem;
+    color: white;
+}
+
+.song-duration {
+    color: white;
+    font-size: 0.9rem;
+}
+
+.favorite-btn {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 16px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin-right: 8px;
+}
+
+.favorite-btn:hover {
+    background: rgba(255, 71, 87, 0.1);
+    transform: scale(1.1);
+}
+
+.favorite-btn.active {
+    color: #ff4757;
+    background: rgba(255, 71, 87, 0.1);
+}
+
+.favorite-btn.active:hover {
+    transform: scale(1.1);
+}
+
+.song-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #111;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-top: 1px solid #333;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+}
+
+.player-cover {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.player-controls button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.player-progress input {
+  width: 200px;
+}
+
+.loading {
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 50px;
+}
+
+.error {
+    text-align: center;
+    color: #ff6b6b;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+.title-group {
+    display: inline-block;
+} 
+
+.jump-button:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100px;
+}
+
+@media (min-width: 769px) {
+    .header-container {
+        z-index: 1000;
+        margin: 0;
+    }
+    
+    .container {
+        margin-top: 0;
+    }
+}
+
+.title-group {
+    display: inline-block;
+} 
+
+.left-nav {
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.right-nav {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (min-width: 769px) {
+    .left-nav {
+        top: 30%;
+        left: 10px;
+    }
+    .right-nav {
+        top: 30%;
+        right: 10px;
+    }
+}
+
+.left-nav {
+  position: absolute;
+  left: 5px;
+  top: 25%;
+  transform: translateY(-50%);
+}
+
+.right-nav {
+  position: absolute;
+  right: 5px;
+  top: 25%;
+  transform: translateY(-50%);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    background-color: none;
+    border-radius: 5px 18px;
+    border: 2px solid white;
+    transition: background 0.3s ease;
+    font-size: 18px;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  color: white;
+}
+
+.filter-btn.active {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.right-nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sort-button {
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+}
+
+.sort-button:hover {
+    color: white;
+}
+
+.sort-button.active {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.sort-separator {
+    color: #666;
+    font-size: 15px;
+    user-select: none;
+}
+
+.left-nav a {
+    padding: 13px 30px;
+    font-size: 18px;
+    border-radius: 5px 14px;
+    color: white;
+    text-decoration: none;
+    border: 2px solid white;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
+
+.left-nav a:hover {
+    background-color: white;
+    color: #111;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .left-nav {
+    transform: scale(0.79);
+    transform-origin: top left;
+    width: auto;
+    height: calc(100vh / 0.79);
+    left: 0px;
+    top: -8%;
+  }
+
+  .right-nav {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    transform: none;
+    transform-origin: top right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .full-width-line {
+    transform: scaleX(1.6949);
+    transform-origin: left;
+  }
+
+  .sort-button {
+    font-size: 11px !important;
+    padding: 4px 6px !important;
+    white-space: nowrap;
+  }
+
+  .sort-separator {
+    font-size: 11px !important;
+  }
+
+  .right-nav .sort-button[style*="color: #33FFFF"] {
+    font-size: 11px !important;
+    padding: 4px 6px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .right-nav {
+    gap: 2px;
+  }
+
+  .sort-button {
+    font-size: 10px !important;
+    padding: 3px 4px !important;
+  }
+
+  .sort-separator {
+    font-size: 10px !important;
+  }
+
+  .right-nav .sort-button[style*="color: #33FFFF"] {
+    font-size: 10px !important;
+    padding: 3px 4px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .right-nav {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 120px;
+  }
+
+  .sort-button {
+    font-size: 9px !important;
+    padding: 2px 3px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-container {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+  }
+
+  .search-box {
+    padding: 10px 15px 10px 35px;
+    font-size: 14px;
+    background-position: 12px center;
+    background-size: 14px 14px;
+    border: 2px solid #33FFFF;
+  }
+
+  .search-box::placeholder {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-container {
+    top: 45px;
+    width: 180px;
+  }
+
+  .search-box {
+    padding: 8px 12px 8px 30px;
+    font-size: 13px;
+    background-position: 10px center;
+    background-size: 12px 12px;
+  }
+
+  .search-box::placeholder {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .search-container {
+    top: 48px;
+    width: 160px;
+  }
+}
+
+/* 参与专辑样式 */
+.collaboration-album-card {
+  border: 1px solid #333;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  color: white;
+  padding: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-width: 0;
+}
+
+.collaboration-album-card:hover {
+  background: #2a2a2a;
+  transform: translateX(5px);
+  border-color: #33FFFF;
+}
+
+.collaboration-album-cover {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.collaboration-album-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.collaboration-album-artist {
+  color: #cdcdcd;
+  font-size: 0.9rem;
+  margin-bottom: 3px;
+}
+
+.collaboration-album-year {
+  color: #aaa;
+  font-size: 0.8rem;
+}
+
+/* 手机版参与专辑样式 */
+@media (max-width: 768px) {
+  .collaboration-album-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    text-align: left;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+  
+  .collaboration-album-cover {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+    min-width: 70px;
+  }
+  
+  .collaboration-album-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    width: calc(100% - 82px);
+  }
+  
+  .collaboration-album-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+    color: white;
+    line-height: 1.3;
+    width: 100%;
+    display: block;
+  }
+  
+  .collaboration-album-artist {
+    font-size: 0.9rem;
+    color: #cdcdcd;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: block;
+    margin-bottom: 2px;
+  }
+  
+  .collaboration-album-year {
+    font-size: 0.8rem;
+    color: #aaa;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: block;
+  }
+}
+
+/* 小屏手机优化 */
+@media (max-width: 480px) {
+  .collaboration-album-card {
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .collaboration-album-cover {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+  }
+  
+  .collaboration-album-info {
+    width: calc(100% - 70px);
+  }
+  
+  .collaboration-album-title {
+    font-size: 1rem;
+    margin-bottom: 3px;
+  }
+  
+  .collaboration-album-artist {
+    font-size: 0.8rem;
+    margin-bottom: 1px;
+  }
+  
+  .collaboration-album-year {
+    font-size: 0.7rem;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+
+const bigbangData = {
+    group: {
+        name: "BIGBANG",
+        stage_name: "BIGBANG",
+        cover_url: 'BIGBANG.jpeg',
+        description: 'OT5',
+        albums: [
+            {
+                id: 18,
+                title: 'Bigbang First Single Album [CD + DVD]',
+                cover_url: 'bfsa.jpg',
+                release_year: '2006年8月29日',
+                jump_id: '060829album',
+                description: '推出 CD + DVD 特别版专辑（包括出道实录）',
+                songs: [
+                    { 
+                        id: 235, 
+                        title: 'Intro (Put Your Hands Up)', 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/main/Put%20Your%20Hands%20Up%20-%20Intro.mp3',
+                        cover_url: 'bfsa.jpg',
+                        album_title: 'Bigbang First Single Album [CD + DVD]',
+                        artist: 'BIGBANG',
+                        album_id: 18,
+                        album_type: 'group',
+                    },
+                    { 
+                        id: 236, 
+                        title: 'We Belong Together (Feat. Park Bom)', 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/BIGBANG%20(GDXTOP)%20-%20WE%20BELONG%20TOGETHER%20FT.PARK%20BOM%20LYRICS%20(COLOUR%20CODED%20HANROMENG).mp3',
+                        cover_url: 'bfsa.jpg',
+                        album_title: 'Bigbang First Single Album [CD + DVD]',
+                        artist: 'BIGBANG',
+                        album_id: 18,
+                        album_type: 'group',
+                        mv_url: 'https://www.youtube.com/embed/bjTEMBB-mjY?si=pmnlSXjMKafBDGso'
+                    },
+                    { 
+                        id: 237, 
+                        title: `눈물뿐인 바보 (A Fool's Of Tears)`, 
+                        file_url: `https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/BIGBANG%20-%20%EB%88%88%EB%AC%BC%EB%BF%90%EC%9D%B8%20%EB%B0%94%EB%B3%B4%20(A%20Fool's%20Only%20Tears)%20%5BColor%20Coded%20Lyrics_%20HanRomEng%5D.mp3`,
+                        cover_url: 'bfsa.jpg',
+                        album_title: 'Bigbang First Single Album [CD + DVD]',
+                        artist: 'BIGBANG',
+                        album_id: 18,
+                        album_type: 'group',
+                        mv_url: 'https://www.youtube.com/embed/MVetyA1KfG0?si=bMiXEgD_cEL8fvtX'
+                    },
+                    { 
+                        id: 238, 
+                        title: 'This Love (G-DRAGON SOLO)', 
+                        file_url: 'https://github.com/Kaixin0129/bigbangri-music/raw/refs/heads/main/BIGBANG%20(G-DRAGON)%20-%20This%20Love%20%5BLyrics_%20HanRomEng%5D.mp3',
+                        cover_url: 'bfsa.jpg',
+                        album_title: 'Bigbang First Single Album [CD + DVD]',
+                        artist: 'BIGBANG',
+                        album_id: 18,
+                        album_type: 'group',
+                        mv_url: 'https://www.youtube.com/embed/6d_cUb6wRxU?si=VjuwIO8p8tpJ51Qo'
+                    }
+                ]
+            },
+        ]
+    }
+]
+};
+
+window.bigbangData = bigbangData;
+window.bigbangAlbums = bigbangData.group.albums;
+window.allSongs = [
+    ...bigbangData.group.albums.flatMap(album => 
+        album.songs.map(song => ({
+            ...song,
+            cover_url: song.cover_url || album.cover_url,
+            album_title: album.title,
+            artist: 'BIGBANG',
+            album_id: album.id,
+            album_type: 'group'
+        }))
+    ),
+    ...bigbangData.group.collaborations.flatMap(album =>
+        album.songs.map(song => ({
+            ...song,
+            cover_url: song.cover_url || album.cover_url,
+            album_title: album.title,
+            artist: album.artist,
+            album_id: album.id,
+            album_type: 'group_collaboration',
+            collaborator: album.collaborator
+        }))
+    ),
+    ...bigbangData.members.flatMap(member =>
+        member.albums.flatMap(album =>
+            album.songs.map(song => ({
+                ...song,
+                cover_url: song.cover_url || album.cover_url,
+                album_title: album.title,
+                artist: member.stage_name,
+                album_id: album.id,
+                album_type: 'member'
+            }))
+        )
+    ),
+    ...bigbangData.members.flatMap(member =>
+        member.collaborations.flatMap(album =>
+            album.songs.map(song => ({
+                ...song,
+                cover_url: song.cover_url || album.cover_url,
+                album_title: album.title,
+                artist: album.artist,
+                album_id: album.id,
+                album_type: 'member_collaboration',
+                collaborator: album.collaborator,
+                collaboration_type: album.collaboration_type,
+                member_id: member.id
+            }))
+        )
+    )
+];
+
+function SearchPage({ onBack, onAlbumSelect, onPlaySong }) {
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+
+    const performSearch = (query) => {
+        if (!query.trim()) {
+            setSearchResults([]);
+            return;
+        }
+
+        const queryLower = query.toLowerCase();
+        const allAlbums = [
+            ...window.bigbangData.group.albums,
+            ...window.bigbangData.group.collaborations,
+            ...window.bigbangData.members.flatMap(member => member.albums),
+            ...window.bigbangData.members.flatMap(member => member.collaborations)
+        ];
+
+        const seenSongs = new Set();
+        const results = [];
+
+        allAlbums.forEach(album => {
+            album.songs.forEach(song => {
+                if (song.title.toLowerCase().includes(queryLower)) {
+                    const songKey = `${song.title}_${album.id}`;
+                    
+                    if (!seenSongs.has(songKey)) {
+                        seenSongs.add(songKey);
+                        
+                        const songWithAlbumInfo = {
+                            ...song,
+                            cover_url: song.cover_url || album.cover_url,
+                            album_title: album.title,
+                            artist: album.artist || 'BIGBANG',
+                            album_id: album.id,
+                            album_type: album.type,
+                            release_year: album.release_year,
+                        };
+                        
+                        results.push(songWithAlbumInfo);
+                    }
+                }
+            });
+        });
+
+        results.sort((a, b) => {
+            const yearA = extractYear(a.release_year);
+            const yearB = extractYear(b.release_year);
+            return yearB - yearA;
+        });
+
+        setSearchResults(results);
+    };
+
+    const extractYear = (releaseYear) => {
+        const match = releaseYear?.match(/(\d{4})/);
+        return match ? parseInt(match[1]) : 0;
+    };
+
+    const handleSearchChange = (e) => {
+        const query = e.target.value;
+        setSearchQuery(query);
+        performSearch(query);
+    };
+
+    const handleResultClick = (song) => {
+        const allAlbums = [
+            ...window.bigbangData.group.albums,
+            ...window.bigbangData.group.collaborations,
+            ...window.bigbangData.members.flatMap(member => member.albums),
+            ...window.bigbangData.members.flatMap(member => member.collaborations)
+        ];
+        
+        const album = allAlbums.find(a => a.id === song.album_id);
+        
+        if (album) {
+            const member = window.bigbangData.members.find(m => 
+                m.albums.some(a => a.id === album.id) || 
+                m.collaborations.some(a => a.id === album.id)
+            );
+            
+            onAlbumSelect(album, member);
+        }
+    };
+
+    const handlePlayClick = (e, song) => {
+        e.stopPropagation();
+        onPlaySong(song);
+    };
+
+    return (
+        <div className="search-page">
+            <div className="container1">
+                <div className="header-container">
+                    <nav className="left-nav">
+                        <a href="#" onClick={(e) => { e.preventDefault(); onBack(); }}>
+                            Back
+                        </a>
+                    </nav>
+                    <div className="title-group">
+                        <h1>&nbsp;</h1>
+                    </div>
+                    <div className="search-container">
+                        <input
+                            type="text"
+                            className="search-box"
+                            placeholder="搜索歌曲名称..."
+                            value={searchQuery}
+                            onChange={handleSearchChange}
+                            autoFocus
+                        />
+                    </div>
+                    <nav className="right-nav">
+                        <button 
+                            className="sort-button"
+                            onClick={() => window.location.href = 'favorites.html'}
+                            style={{
+                                background: 'none', 
+                                border: 'none', 
+                                color: '#33FFFF', 
+                                cursor: 'pointer', 
+                                fontSize: '20px',
+                                padding: '8px 12px'
+                            }}
+                        >
+                            我的收藏
+                        </button>
+                    </nav>
+                </div>
+            </div>
+            
+            <div className="container">
+                <div style={{ 
+                    textAlign: 'center', 
+                    color: '#33FFFF', 
+                    fontSize: '1.5rem', 
+                    marginBottom: '20px',
+                    fontWeight: 'bold'
+                }}>
+                    搜索结果
+                </div>
+                
+                <div className="search-results">
+                    {searchResults.length > 0 ? (
+                        searchResults.map(song => (
+                            <div 
+                                key={`${song.id}_${song.album_id}`} 
+                                className="search-result-item"
+                                onClick={() => handleResultClick(song)}
+                            >
+                                <img 
+                                    src={song.cover_url} 
+                                    alt={song.album_title}
+                                    className="search-result-cover"
+                                    onError={(e) => {
+                                        e.target.src = 'default-cover.jpg';
+                                    }}
+                                />
+                                <div className="search-result-info">
+                                    <div className="search-result-title">{song.title}</div>
+                                    <div className="search-result-album">{song.album_title}</div>
+                                    <div className="search-result-year" style={{
+                                        color: '#aaa',
+                                        fontSize: '0.8rem',
+                                        marginTop: '2px'
+                                    }}>
+                                        {song.release_year}
+                                    </div>
+                                </div>
+                                <button 
+                                    onClick={(e) => handlePlayClick(e, song)}
+                                    style={{
+                                        background: 'none',
+                                        border: 'none',
+                                        color: '#33FFFF',
+                                        cursor: 'pointer',
+                                        fontSize: '20px',
+                                        padding: '8px',
+                                        borderRadius: '50%',
+                                        transition: 'all 0.3s ease'
+                                    }}
+                                    onMouseOver={(e) => {
+                                        e.target.style.background = 'rgba(51, 255, 255, 0.1)';
+                                        e.target.style.transform = 'scale(1.1)';
+                                    }}
+                                    onMouseOut={(e) => {
+                                        e.target.style.background = 'none';
+                                        e.target.style.transform = 'scale(1)';
+                                    }}
+                                    title="播放歌曲"
+                                >
+                                    ▷
+                                </button>
+                            </div>
+                        ))
+                    ) : searchQuery ? (
+                        <div className="no-results">未找到相关歌曲</div>
+                    ) : (
+                        <div className="no-results">请输入歌曲名称进行搜索</div>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+
+function Player({ currentSong, playlist, onPlayNext, onPlayPrev }) {
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [progress, setProgress] = useState(0);
+    const audioRef = useRef(null);
+
+    useEffect(() => {
+        if (currentSong && audioRef.current) {
+            audioRef.current.src = currentSong.file_url;
+            audioRef.current.load();
+            if (isPlaying) {
+                audioRef.current.play();
+            }
+        }
+    }, [currentSong]);
+
+    const togglePlayPause = () => {
+        if (!audioRef.current) return;
+        if (isPlaying) {
+            audioRef.current.pause();
+        } else {
+            audioRef.current.play();
+        }
+        setIsPlaying(!isPlaying);
+    };
+
+    const handleTimeUpdate = () => {
+        const current = audioRef.current.currentTime;
+        const duration = audioRef.current.duration || 0;
+        setProgress((current / duration) * 100);
+    };
+
+    const handleSeek = (e) => {
+        const newTime = (e.target.value / 100) * audioRef.current.duration;
+        audioRef.current.currentTime = newTime;
+        setProgress(e.target.value);
+    };
+
+    if (!currentSong) return null;
+
+    return (
+        <div className="player">
+            <div className="player-info">
+                <img
+                    src={currentSong.cover_url || 'default-cover.jpg'}
+                    alt="cover"
+                    className="player-cover"
+                    onError={(e) => {
+                        e.target.src = 'default-cover.jpg';
+                    }}
+                />
+                <div className="player-meta">
+                    <div className="player-title">{currentSong.title}</div>
+                    <div className="player-artist">{currentSong.album_title || 'BIGBANG'}</div>
+                </div>
+            </div>
+
+            <div className="player-controls">
+                <button onClick={onPlayPrev}>&lt;</button>
+                <button onClick={togglePlayPause}>
+                    {isPlaying ? '❚❚' : '▷'}
+                </button>
+                <button onClick={onPlayNext}>&gt;</button>
+            </div>
+
+            <div className="player-progress">
+                <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={progress}
+                    onChange={handleSeek}
+                />
+            </div>
+
+            <audio
+                ref={audioRef}
+                onTimeUpdate={handleTimeUpdate}
+                onEnded={() => {
+                    setIsPlaying(false);
+                    onPlayNext();
+                }}
+            />
+        </div>
+    );
+}
+
+const AlbumList = ({ onAlbumSelect, onPlaySong, currentMember, onMemberSelect, onBackToGroup }) => {
+    const [currentView, setCurrentView] = useState(currentMember ? 'member' : 'group');
+    const [sortOrder, setSortOrder] = useState('all');
+    const [collaborationFilter, setCollaborationFilter] = useState('all');
+
+    const parseDate = (releaseYear) => {
+        if (!releaseYear) return new Date(0);
+        
+        const matchFull = releaseYear.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/);
+        if (matchFull) {
+            const year = parseInt(matchFull[1]);
+            const month = parseInt(matchFull[2]) - 1;
+            const day = parseInt(matchFull[3]);
+            return new Date(year, month, day);
+        }
+        
+        const matchMonth = releaseYear.match(/(\d{4})年(\d{1,2})月/);
+        if (matchMonth) {
+            const year = parseInt(matchMonth[1]);
+            const month = parseInt(matchMonth[2]) - 1;
+            return new Date(year, month, 1);
+        }
+        
+        const matchYear = releaseYear.match(/(\d{4})/);
+        if (matchYear) {
+            const year = parseInt(matchYear[1]);
+            return new Date(year, 0, 1);
+        }
+        
+        return new Date(0);
+    };
+
+    useEffect(() => {
+        if (currentMember) {
+            setCurrentView('member');
+        } else {
+            setCurrentView('group');
+        }
+    }, [currentMember]);
+
+    const handleSortChange = (order) => {
+        setSortOrder(order);
+    };
+
+    const handleBackToAlbum = () => {
+        window.location.href = 'index.html';
+    };
+
+    const handleBack = () => {
+        if (currentView === 'member' && currentMember) {
+            setCurrentView('members');
+            setCurrentMember(null);
+        } else if (currentView === 'members') {
+            setCurrentView('group');
+            onBackToGroup();
+        } else if (currentView === 'group') {
+            handleBackToAlbum();
+        } else if (currentView === 'group_collaborations' || currentView === 'member_collaborations') {
+            if (currentMember) {
+                setCurrentView('member');
+            } else {
+                setCurrentView('group');
+            }
+        }
+    };
+
+    const handleMemberSelect = (member) => {
+        onMemberSelect(member);
+        setCurrentView('member');
+    };
+
+    const handleViewSwitch = (newView) => {
+        setCurrentView(newView);
+        if (newView === 'group') {
+            onBackToGroup();
+        }
+    };
+
+    const getCurrentAlbums = () => {
+        let albums = [];
+        
+        if (currentView === 'group') {
+            albums = window.bigbangData.group.albums;
+        } else if (currentView === 'group_collaborations') {
+            albums = window.bigbangData.group.collaborations;
+        } else if (currentView === 'member' && currentMember) {
+            albums = currentMember.albums;
+        } else if (currentView === 'member_collaborations' && currentMember) {
+            albums = currentMember.collaborations;
+            
+            if (collaborationFilter === 'bigbang') {
+                albums = albums.filter(album => album.collaboration_type === 'bigbang');
+            } else if (collaborationFilter === 'others') {
+                albums = albums.filter(album => album.collaboration_type === 'others');
+            }
+        } else if (currentView === 'members') {
+            albums = window.bigbangData.members.flatMap(member => 
+                member.albums.map(album => ({
+                    ...album,
+                    artist: member.stage_name,
+                    member_id: member.id
+                }))
+            );
+        }
+        
+        return [...albums].sort((a, b) => {
+            const dateA = parseDate(a.release_year);
+            const dateB = parseDate(b.release_year);
+            
+            if (sortOrder === 'latest') {
+                return dateB.getTime() - dateA.getTime();
+            } else {
+                return dateA.getTime() - dateB.getTime();
+            }
+        });
+    };
+
+    const currentAlbums = getCurrentAlbums();
+
+    const renderMembersGrid = () => {
+        return (
+            <div className="album-grid">
+                {window.bigbangData.members.map(member => (
+                    <div 
+                        key={member.id}
+                        className="album-card"
+                        onClick={() => handleMemberSelect(member)}
+                    >
+                        <img 
+                            src={member.cover_url} 
+                            alt={member.stage_name}
+                            className="album-cover"
+                            onError={(e) => {
+                                e.target.src = 'default-cover.jpg';
+                            }}
+                        />
+                        <div className="album-info">
+                            <div className="album-title">{member.stage_name}</div>
+                            <div className="album-year">{member.name}</div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        );
+    };
+
+    const renderAlbumsGrid = () => {
+        const isCollaborationView = currentView === 'group_collaborations' || currentView === 'member_collaborations';
+        
+        return (
+            <div className="album-grid">
+                {currentAlbums.map(album => (
+                    <div 
+                        key={album.id} 
+                        className={isCollaborationView ? 'collaboration-album-card' : 'album-card'}
+                        onClick={() => onAlbumSelect(album, currentMember)}
+                        data-album-id={album.id}
+                    >
+                        <img 
+                            src={album.cover_url} 
+                            alt={album.title}
+                            className={isCollaborationView ? 'collaboration-album-cover' : 'album-cover'}
+                            onError={(e) => {
+                                e.target.src = 'default-cover.jpg';
+                            }}
+                        />
+                        <div className={isCollaborationView ? 'collaboration-album-info' : 'album-info'}>
+                            <div className={isCollaborationView ? 'collaboration-album-title' : 'album-title'}>
+                                {album.title}
+                            </div>
+                            <div className={isCollaborationView ? 'collaboration-album-year' : 'album-year'}>
+                                {album.release_year}
+                                {!isCollaborationView && album.artist && ` • ${album.artist}`}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        );
+    };
+
+    const getCurrentTitle = () => {
+        if (currentView === 'group') return 'BIGBANG 团体专辑';
+        if (currentView === 'group_collaborations') return 'BIGBANG 参与专辑';
+        if (currentView === 'members') return '选择成员';
+        if (currentView === 'member' && currentMember) return `${currentMember.stage_name} 的个人作品`;
+        if (currentView === 'member_collaborations' && currentMember) return `${currentMember.stage_name} 的参与专辑`;
+        return '专辑列表';
+    };
+
+    const getBackButtonText = () => {
+        return 'Back';
+    };
+
+    return (
+        <div>
+            <div className="container1">
+                <div className="header-container">
+                    <nav className="left-nav">
+                        <a href="#" onClick={(e) => { 
+                            e.preventDefault(); 
+                            e.stopPropagation();
+                            handleBack(); 
+                        }}>
+                            {getBackButtonText()}
+                        </a>
+                    </nav>
+                    <div className="title-group">
+                        <h1>&nbsp;</h1>
+                    </div>
+                    <div className="search-container">
+                        <input
+                            type="text"
+                            className="search-box"
+                            placeholder="搜索歌曲..."
+                            onClick={() => window.globalSetCurrentView('search')}
+                            readOnly
+                        />
+                    </div>
+                    <nav className="right-nav">
+                        <button 
+                            className="sort-button"
+                            onClick={() => window.location.href = 'favorites.html'}
+                            style={{
+                                background: 'none', 
+                                border: 'none', 
+                                color: '#33FFFF', 
+                                cursor: 'pointer', 
+                                fontSize: '20px',
+                                padding: '8px 12px'
+                            }}
+                        >
+                            我的收藏
+                        </button>
+                        
+                        {/* 团体页面视图切换按钮 */}
+                        {currentView === 'group' && (
+                            <>
+                                <button 
+                                    className={`sort-button ${currentView === 'group' ? 'active' : ''}`}
+                                    onClick={() => handleViewSwitch('group')}
+                                >
+                                    团体专辑
+                                </button>
+                                <span className="sort-separator">|</span>
+                                <button 
+                                    className={`sort-button ${currentView === 'group_collaborations' ? 'active' : ''}`}
+                                    onClick={() => handleViewSwitch('group_collaborations')}
+                                >
+                                    参与专辑
+                                </button>
+                                <span className="sort-separator">|</span>
+                                <button 
+                                    className={`sort-button ${currentView === 'members' ? 'active' : ''}`}
+                                    onClick={() => handleViewSwitch('members')}
+                                >
+                                    成员
+                                </button>
+                            </>
+                        )}
+                        
+                        {/* 成员个人作品页面视图切换按钮 */}
+                        {currentView === 'member' && currentMember && (
+                            <>
+                                <button 
+                                    className={`sort-button ${currentView === 'member' ? 'active' : ''}`}
+                                    onClick={() => handleViewSwitch('member')}
+                                >
+                                    个人作品
+                                </button>
+                                <span className="sort-separator">|</span>
+                                <button 
+                                    className={`sort-button ${currentView === 'member_collaborations' ? 'active' : ''}`}
+                                    onClick={() => handleViewSwitch('member_collaborations')}
+                                >
+                                    参与专辑
+                                </button>
+                            </>
+                        )}
+                        
+                        {/* 成员参与专辑筛选按钮 */}
+                        {currentView === 'member_collaborations' && (
+                            <>
+                                <button 
+                                    className={`sort-button ${collaborationFilter === 'all' ? 'active' : ''}`}
+                                    onClick={() => setCollaborationFilter('all')}
+                                >
+                                    全部
+                                </button>
+                                <span className="sort-separator">|</span>
+                                <button 
+                                    className={`sort-button ${collaborationFilter === 'bigbang' ? 'active' : ''}`}
+                                    onClick={() => setCollaborationFilter('bigbang')}
+                                >
+                                    BIGBANG
+                                </button>
+                                <span className="sort-separator">|</span>
+                                <button 
+                                    className={`sort-button ${collaborationFilter === 'others' ? 'active' : ''}`}
+                                    onClick={() => setCollaborationFilter('others')}
+                                >
+                                    其他艺人
+                                </button>
+                            </>
+                        )}
+                        
+                        {/* 排序按钮 */}
+                        {(currentView === 'group' || currentView === 'member' || 
+                          currentView === 'group_collaborations' || currentView === 'member_collaborations') && (
+                            <>
+                                <span className="sort-separator">|</span>
+                                <button 
+                                    className={`sort-button ${sortOrder === 'all' ? 'active' : ''}`}
+                                    onClick={() => handleSortChange('all')}
+                                >
+                                    最旧
+                                </button>
+                                <span className="sort-separator">|</span>
+                                <button 
+                                    className={`sort-button ${sortOrder === 'latest' ? 'active' : ''}`}
+                                    onClick={() => handleSortChange('latest')}
+                                >
+                                    最新
+                                </button>
+                            </>
+                        )}
+                    </nav>
+                </div>
+            </div>
+            
+            <div className="container">
+                <div style={{ 
+                    textAlign: 'center', 
+                    color: '#33FFFF', 
+                    fontSize: '1.5rem', 
+                    marginBottom: '20px',
+                    fontWeight: 'bold'
+                }}>
+                    {getCurrentTitle()}
+                </div>
+                
+                {currentView === 'members' ? renderMembersGrid() : renderAlbumsGrid()}
+            </div>
+        </div>
+    );
+}
+
+window.addEventListener('favoritesUpdated', function(event) {
+    
+    if (window.globalSetFavorites) {
+        window.globalSetFavorites(event.detail.favorites);
+    }
+    
+    
+    if (window.globalRefreshAlbumDetail) {
+        window.globalRefreshAlbumDetail();
+    }
+});
+
+const AlbumDetail = ({ album, onBack, onPlaySong, currentMember }) => {
+    const [favorites, setFavorites] = useState([]);
+    const [highlightedSongId, setHighlightedSongId] = useState(null);
+    const [lastUpdate, setLastUpdate] = useState(Date.now());
+
+    
+    const loadFavorites = () => {
+        const savedFavorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+        setFavorites(savedFavorites);
+        return savedFavorites;
+    };
+
+    useEffect(() => {
+        
+        loadFavorites();
+        
+        const handleFavoritesUpdated = () => {
+            console.log('App收到收藏更新事件');
+            
+            if (currentView === 'albumDetail' && selectedAlbum) {
+                setSelectedAlbum({...selectedAlbum});
+            }
+        };
+        
+        window.addEventListener('favoritesUpdated', handleFavoritesUpdated);
+        
+        return () => {
+            window.removeEventListener('favoritesUpdated', handleFavoritesUpdated);
+        };
+    }, [album]);
+
+    
+    useEffect(() => {
+        
+        console.log('lastUpdate changed, current favorites:', favorites.length);
+    }, [lastUpdate]);
+
+    const formatDuration = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    };
+
+    const isSongInFavorites = (songId) => {
+        return favorites.some(song => song.id === songId);
+    };
+
+    const handleFavoriteClick = (e, song) => {
+        e.stopPropagation();
+        
+        const currentFavorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+        const existingIndex = currentFavorites.findIndex(fav => fav.id === song.id);
+        
+        let newFavorites;
+        let isNowFavorite;
+        
+        if (existingIndex === -1) {
+            isNowFavorite = true;
+            newFavorites = [...currentFavorites, {
+                ...song,
+                addedAt: new Date().toISOString()
+            }];
+        } else {
+            isNowFavorite = false;
+            newFavorites = currentFavorites.filter(fav => fav.id !== song.id);
+        }
+        
+        localStorage.setItem('musicFavorites', JSON.stringify(newFavorites));
+        setFavorites(newFavorites);
+        setLastUpdate(Date.now()); 
+        
+        const favoriteStatusChangedEvent = new CustomEvent('favoriteStatusChanged', {
+            detail: {
+                songId: song.id,
+                isFavorite: isNowFavorite,
+                song: song
+            }
+        });
+        window.dispatchEvent(favoriteStatusChangedEvent);
+        
+        
+        const favoritesUpdatedEvent = new CustomEvent('favoritesUpdated', {
+            detail: {
+                favorites: newFavorites,
+                updatedSong: song,
+                action: isNowFavorite ? 'added' : 'removed'
+            }
+        });
+        window.dispatchEvent(favoritesUpdatedEvent);
+        
+        if (window.globalPlayer) {
+            window.globalPlayer.favorites = newFavorites;
+            window.globalPlayer.saveFavorites();
+        }
+    };
+
+    
+    const renderSongList = () => {
+        return album.songs.map(song => {
+            const isFavorited = isSongInFavorites(song.id);
+            const isHighlighted = highlightedSongId === song.id;
+            const hasMV = song.mv_url;
+            
+            return (
+                <div 
+                    key={song.id} 
+                    className="song-item"
+                    onClick={() => onPlaySong(song)}
+                    data-song-id={song.id}
+                    style={{
+                        background: isHighlighted ? 'rgba(51, 255, 255, 0.1)' : '',
+                        borderColor: isHighlighted ? '#33FFFF' : '#333',
+                        transform: isHighlighted ? 'translateX(10px)' : 'none'
+                    }}
+                >
+                    <span className="song-title">
+                        {song.title}
+                        {hasMV && (
+                            <span 
+                                style={{
+                                    color: '#33FFFF',
+                                    fontSize: '12px',
+                                    marginLeft: '8px',
+                                    fontWeight: 'bold'
+                                }}
+                                title="有MV视频"
+                            >
+                                MV
+                            </span>
+                        )}
+                    </span>
+                    <div className="song-controls">
+                        <button 
+                            className={`favorite-btn ${isFavorited ? 'active' : ''}`}
+                            onClick={(e) => handleFavoriteClick(e, song)}
+                            title={isFavorited ? '取消收藏' : '添加到收藏'}
+                        >
+                            {isFavorited ? '❤️' : '🤍'}
+                        </button>
+                        
+                        <button 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if (window.globalPlayer) {
+                                    window.globalPlayer.addToPlaylist(song);
+                                    const button = e.target;
+                                    const originalText = button.innerHTML;
+                                    button.innerHTML = '✓';
+                                    button.style.color = '#33FFFF';
+                                    button.style.transform = 'scale(1.2)';
+                                    
+                                    setTimeout(() => {
+                                        button.innerHTML = originalText;
+                                        button.style.color = '#33FFFF';
+                                        button.style.transform = 'scale(1)';
+                                    }, 1000);
+                                }
+                            }}
+                            style={{
+                                background: 'none',
+                                border: 'none',
+                                color: '#33FFFF',
+                                cursor: 'pointer',
+                                fontSize: '18px',
+                                width: '28px',
+                                height: '28px',
+                                borderRadius: '50%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                transition: 'all 0.3s ease',
+                                fontWeight: 'bold'
+                            }}
+                            onMouseOver={(e) => {
+                                e.target.style.background = 'rgba(51, 255, 255, 0.1)';
+                                e.target.style.transform = 'scale(1.1)';
+                            }}
+                            onMouseOut={(e) => {
+                                e.target.style.background = 'none';
+                                e.target.style.transform = 'scale(1)';
+                            }}
+                            title="添加到播放列表"
+                        >
+                            +
+                        </button>
+                    </div>
+                </div>
+            );
+        });
+    };
+
+    return (
+        <div id={album.jump_id || 'album-jump'}>
+            <div className="container1">
+                <div className="header-container">
+                    <nav className="left-nav">
+                        <a href="#" onClick={(e) => { 
+                            e.preventDefault(); 
+                            e.stopPropagation();
+                            onBack(); 
+                        }}>
+                            {currentMember ? 'Back' : 'Back'}
+                        </a>
+                    </nav>
+                    <div className="title-group">
+                        <h1>&nbsp;</h1>
+                    </div>
+                    <div className="search-container">
+                        <input
+                            type="text"
+                            className="search-box"
+                            placeholder="搜索歌曲..."
+                            onClick={() => window.globalSetCurrentView('search')}
+                            readOnly
+                        />
+                    </div>
+                    <nav className="right-nav">
+                        <button 
+                            className="sort-button"
+                            onClick={() => {
+                                
+                                localStorage.setItem('musicFavorites', JSON.stringify(favorites));
+                                window.location.href = 'favorites.html';
+                            }}
+                            style={{
+                                background: 'none', 
+                                border: 'none', 
+                                color: '#33FFFF', 
+                                cursor: 'pointer', 
+                                fontSize: '20px',
+                                padding: '8px 12px'
+                            }}
+                        >
+                            我的收藏
+                        </button>
+                    </nav>
+                </div>
+            </div>
+            <div className="container">
+                <div className="album-detail">
+                    <div className="album-header">
+                        <img 
+                            src={album.cover_url} 
+                            alt={album.title}
+                            className="album-cover-large"
+                            onError={(e) => {
+                                e.target.src = 'default-cover.jpg';
+                            }}
+                        />
+                        <div className="album-meta">
+                            <h1>{album.title}</h1>
+                            <p>发行日期：{album.release_year}</p>
+                            {album.collaborator && (
+                                <p>合作艺人：{album.collaborator}</p>
+                            )}
+                            <p>{album.description}</p>
+                        </div>
+                    </div>
+
+                    <div className="songs-list">
+                        <h2>歌曲列表 <span style={{color: '#cdcdcd', fontSize: '0.9em'}}>{album.songs.length} 首</span></h2>
+                        {renderSongList()}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+function App() {
+    const [currentView, setCurrentView] = useState('albumList');
+    const [selectedAlbum, setSelectedAlbum] = useState(null);
+    const [currentSong, setCurrentSong] = useState(null);
+    const [currentMember, setCurrentMember] = useState(null);
+    const [key, setKey] = useState(Date.now());
+    const [isInitialized, setIsInitialized] = useState(false);
+
+    useEffect(() => {
+        window.globalSetSelectedAlbumId = (albumId) => {
+            const allAlbums = [
+                ...window.bigbangData.group.albums,
+                ...window.bigbangData.group.collaborations,
+                ...window.bigbangData.members.flatMap(member => member.albums),
+                ...window.bigbangData.members.flatMap(member => member.collaborations)
+            ];
+            const album = allAlbums.find(a => a.id === parseInt(albumId));
+            if (album) {
+                setSelectedAlbum(album);
+                setCurrentView('albumDetail');
+                
+                const member = window.bigbangData.members.find(m => 
+                    m.albums.some(a => a.id === album.id) ||
+                    m.collaborations.some(a => a.id === album.id)
+                );
+                if (member) {
+                    setCurrentMember(member);
+                }
+            }
+        };
+        
+        window.globalSetCurrentView = (view) => {
+            console.log('设置当前视图:', view);
+            setCurrentView(view);
+        };
+        window.globalSetCurrentSong = setCurrentSong;
+        window.globalSetCurrentMember = setCurrentMember;
+        
+        
+        setIsInitialized(true);
+        
+        return () => {
+            window.globalSetSelectedAlbumId = null;
+            window.globalSetCurrentView = null;
+            window.globalSetCurrentSong = null;
+            window.globalSetCurrentMember = null;
+        };
+    }, []);
+
+    
+    useEffect(() => {
+        if (!isInitialized) return;
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const albumId = urlParams.get('album');
+        const songId = urlParams.get('song');
+        const type = urlParams.get('type');
+        const hash = window.location.hash;
+        
+        console.log('URL参数变化:', { albumId, songId, type, hash });
+        
+        if (albumId) {
+            const allAlbums = [
+                ...window.bigbangData.group.albums,
+                ...window.bigbangData.group.collaborations,
+                ...window.bigbangData.members.flatMap(member => member.albums),
+                ...window.bigbangData.members.flatMap(member => member.collaborations)
+            ];
+            
+            const album = allAlbums.find(a => a.id === parseInt(albumId));
+            
+            if (album) {
+                setSelectedAlbum(album);
+                setCurrentView('albumDetail');
+                
+                if (type === 'group') {
+                    setCurrentMember(null);
+                } else if (type === 'member') {
+                    const member = window.bigbangData.members.find(m => 
+                        m.albums.some(a => a.id === album.id)
+                    );
+                    if (member) {
+                        setCurrentMember(member);
+                    }
+                } else {
+                    const member = window.bigbangData.members.find(m => 
+                        m.albums.some(a => a.id === album.id) ||
+                        m.collaborations.some(a => a.id === album.id)
+                    );
+                    if (member) {
+                        setCurrentMember(member);
+                    } else {
+                        setCurrentMember(null);
+                    }
+                }
+                
+                
+                setTimeout(() => {
+                    const jumpId = album.jump_id || 'album-jump';
+                    const albumJump = document.getElementById(jumpId);
+                    if (albumJump) {
+                        albumJump.scrollIntoView({ behavior: 'smooth' });
+                        
+                        if (songId) {
+                            setTimeout(() => {
+                                const songElement = document.querySelector(`[data-song-id="${songId}"]`);
+                                if (songElement) {
+                                    songElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                    songElement.style.background = 'rgba(51, 255, 255, 0.1)';
+                                    setTimeout(() => {
+                                        songElement.style.background = '';
+                                    }, 2000);
+                                }
+                            }, 1000);
+                        }
+                    }
+                }, 300);
+            }
+        }
+        
+        else if (hash && hash.startsWith('#')) {
+            const jumpId = hash.substring(1);
+            
+            const allAlbums = [
+                ...window.bigbangData.group.albums,
+                ...window.bigbangData.group.collaborations,
+                ...window.bigbangData.members.flatMap(member => member.albums),
+                ...window.bigbangData.members.flatMap(member => member.collaborations)
+            ];
+            
+            const album = allAlbums.find(a => a.jump_id === jumpId);
+            
+            if (album) {
+                setSelectedAlbum(album);
+                setCurrentView('albumDetail');
+                
+                const member = window.bigbangData.members.find(m => 
+                    m.albums.some(a => a.id === album.id) ||
+                    m.collaborations.some(a => a.id === album.id)
+                );
+                if (member) {
+                    setCurrentMember(member);
+                }
+                
+                setTimeout(() => {
+                    const albumJump = document.getElementById(jumpId);
+                    if (albumJump) {
+                        albumJump.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 300);
+            }
+        }
+    }, [window.location.search, window.location.hash, isInitialized]);
+
+    
+    useEffect(() => {
+        if (!isInitialized) return;
+        
+        console.log('当前视图变化:', currentView);
+        
+        
+        requestAnimationFrame(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        
+        if (currentView === 'albumDetail' && selectedAlbum) {
+            setKey(Date.now());
+        }
+    }, [currentView, selectedAlbum, isInitialized]);
+
+    const handleAlbumSelect = (album, member = null) => {
+        console.log('选择专辑:', album.title, '成员:', member);
+        
+        if (album.is_reference && album.target_album_id) {
+            console.log('检测到引用专辑，目标专辑ID:', album.target_album_id);
+            
+            const allAlbums = [
+                ...window.bigbangData.group.albums,
+                ...window.bigbangData.group.collaborations,
+                ...window.bigbangData.members.flatMap(member => member.albums),
+                ...window.bigbangData.members.flatMap(member => member.collaborations)
+            ];
+            
+            const targetAlbum = allAlbums.find(a => a.id === album.target_album_id);
+            
+            if (targetAlbum) {
+                console.log('找到目标专辑:', targetAlbum.title);
+                
+                let highlightedSongId = null;
+                if (album.referenced_song_ids && album.referenced_song_ids.length > 0) {
+                    highlightedSongId = album.referenced_song_ids[0];
+                    console.log('设置高亮歌曲ID:', highlightedSongId);
+                }
+                
+                setSelectedAlbum({
+                    ...targetAlbum,
+                    highlightedSongId: highlightedSongId
+                });
+                setCurrentView('albumDetail');
+                
+                const targetMember = window.bigbangData.members.find(m => 
+                    m.albums.some(a => a.id === targetAlbum.id) ||
+                    m.collaborations.some(a => a.id === targetAlbum.id)
+                );
+                
+                if (targetMember) {
+                    setCurrentMember(targetMember);
+                    console.log('设置目标成员:', targetMember.stage_name);
+                } else {
+                    setCurrentMember(null);
+                    console.log('目标专辑没有对应的成员，设置为团体专辑');
+                }
+                
+                return;
+            } else {
+                console.error('未找到目标专辑，ID:', album.target_album_id);
+            }
+        }
+        
+        setSelectedAlbum(album);
+        setCurrentView('albumDetail');
+        
+        if (member) {
+            setCurrentMember(member);
+        } else {
+            const albumMember = window.bigbangData.members.find(m => 
+                m.albums.some(a => a.id === album.id) ||
+                m.collaborations.some(a => a.id === album.id)
+            );
+            if (albumMember) {
+                setCurrentMember(albumMember);
+            }
+        }
+    };
+
+    const handleBackToList = () => {
+        console.log('返回列表，当前视图:', currentView, '当前成员:', currentMember);
+        
+        
+        window.history.replaceState({}, '', window.location.pathname);
+        
+        if (currentMember) {
+            
+            setCurrentView('albumList');
+        } else {
+            
+            setCurrentView('albumList');
+        }
+        
+        
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }, 50);
+    };
+
+    const handleBackToGroup = () => {
+        console.log('返回团体页面');
+        setCurrentMember(null);
+        setCurrentView('albumList');
+        
+        
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }, 50);
+    };
+
+    const handleMemberSelect = (member) => {
+        console.log('选择成员:', member.stage_name);
+        setCurrentMember(member);
+        setCurrentView('albumList'); 
+    };
+
+    const handlePlaySong = (song) => {
+        console.log('播放歌曲:', song, '当前专辑:', selectedAlbum);
+        
+        if (!song.cover_url) {
+            song.cover_url = selectedAlbum?.cover_url;
+            song.album_title = selectedAlbum?.title;
+            song.artist = selectedAlbum?.artist;
+        }
+        
+        if (selectedAlbum && (!song.album_id || !song.album_type)) {
+            song.album_id = selectedAlbum.id;
+            song.album_type = currentMember ? 'member' : 'group';
+            song.member_id = currentMember?.id;
+        }
+        
+        if (window.playSong) {
+            if (selectedAlbum && selectedAlbum.songs && selectedAlbum.songs.length > 0) {
+                const albumSongsWithInfo = selectedAlbum.songs.map(albumSong => ({
+                    ...albumSong,
+                    cover_url: albumSong.cover_url || selectedAlbum.cover_url,
+                    album_title: selectedAlbum.title,
+                    artist: currentMember ? currentMember.stage_name : 'BIGBANG',
+                    album_id: selectedAlbum.id,
+                    album_type: currentMember ? 'member' : 'group',
+                    member_id: currentMember?.id
+                }));
+                
+                window.playSong(song, 'album', albumSongsWithInfo);
+            } else {
+                window.playSong(song, 'album');
+            }
+        } else {
+            console.error('全局播放器未加载');
+            setCurrentSong(song);
+        }
+    };
+
+    
+    const renderCurrentView = () => {
+        if (!isInitialized) {
+            return (
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '100vh',
+                    background: '#0a0a0a',
+                    color: '#33FFFF'
+                }}>
+                    加载中...
+                </div>
+            );
+        }
+        
+        console.log('渲染当前视图:', currentView);
+        
+        switch(currentView) {
+            case 'albumList':
+                return (
+                    <AlbumList 
+                        key="albumList"
+                        onAlbumSelect={handleAlbumSelect}
+                        onPlaySong={handlePlaySong}
+                        currentMember={currentMember}
+                        onMemberSelect={handleMemberSelect}
+                        onBackToGroup={handleBackToGroup}
+                    />
+                );
+            
+            case 'albumDetail':
+                if (!selectedAlbum) {
+                    console.error('没有选中的专辑，返回列表');
+                    
+                    setTimeout(() => setCurrentView('albumList'), 0);
+                    return null;
+                }
+                return (
+                    <AlbumDetail 
+                        key={`albumDetail-${selectedAlbum.id}-${key}`}
+                        album={selectedAlbum}
+                        onBack={handleBackToList}
+                        onPlaySong={handlePlaySong}
+                        currentMember={currentMember}
+                    />
+                );
+            
+            case 'search':
+                return (
+                    <SearchPage 
+                        key="searchPage"
+                        onBack={() => setCurrentView('albumList')}
+                        onAlbumSelect={handleAlbumSelect}
+                        onPlaySong={handlePlaySong}
+                    />
+                );
+            
+            default:
+                console.error('未知的视图:', currentView);
+                
+                return (
+                    <AlbumList 
+                        key="defaultAlbumList"
+                        onAlbumSelect={handleAlbumSelect}
+                        onPlaySong={handlePlaySong}
+                        currentMember={currentMember}
+                        onMemberSelect={handleMemberSelect}
+                        onBackToGroup={handleBackToGroup}
+                    />
+                );
+        }
+    };
+
+    return (
+        <div key={key}>
+            {renderCurrentView()}
+            
+            <Player
+                currentSong={currentSong}
+                playlist={currentSong ? window.allSongs : []}
+                onPlayNext={() => {
+                    if (!currentSong) return;
+                    const index = window.allSongs.findIndex(s => s.id === currentSong.id);
+                    const nextIndex = (index + 1) % window.allSongs.length;
+                    setCurrentSong(window.allSongs[nextIndex]);
+                }}
+                onPlayPrev={() => {
+                    if (!currentSong) return;
+                    const index = window.allSongs.findIndex(s => s.id === currentSong.id);
+                    const prevIndex = (index - 1 + window.allSongs.length) % window.allSongs.length;
+                    setCurrentSong(window.allSongs[prevIndex]);
+                }}
+            />
+        </div>
+    );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
+window.showAlbum = function(albumId, type = null) {
+    if (!albumId) return;
+    
+    let newUrl = `album.html?album=${albumId}`;
+    if (type) {
+        newUrl += `&type=${type}`;
+    }
+    window.history.replaceState({}, '', newUrl);
+    
+    if (window.globalSetSelectedAlbumId && window.globalSetCurrentView) {
+        window.globalSetSelectedAlbumId(parseInt(albumId));
+        window.globalSetCurrentView('albumDetail');
+        
+        setTimeout(() => {
+            const allAlbums = [
+                ...window.bigbangData.group.albums,
+                ...window.bigbangData.group.collaborations,
+                ...window.bigbangData.members.flatMap(member => member.albums),
+                ...window.bigbangData.members.flatMap(member => member.collaborations)
+            ];
+            const album = allAlbums.find(a => a.id === parseInt(albumId));
+            const jumpId = album ? (album.jump_id || 'album-jump') : 'album-jump';
+            
+            const albumJump = document.getElementById(jumpId);
+            if (albumJump) {
+                albumJump.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 500);
+    } else {
+        window.location.href = newUrl;
+    }
+};
+
+window.showSongAlbum = function(song) {
+    if (!song) return;
+    
+    if (song.album_id) {
+        let newUrl = `album.html?album=${song.album_id}&song=${song.id}`;
+        if (song.album_type) {
+            newUrl += `&type=${song.album_type}`;
+        }
+        window.history.replaceState({}, '', newUrl);
+        
+        if (window.globalSetSelectedAlbumId && window.globalSetCurrentView) {
+            window.globalSetSelectedAlbumId(song.album_id);
+            window.globalSetCurrentView('albumDetail');
+            
+            setTimeout(() => {
+                const allAlbums = [
+                    ...window.bigbangData.group.albums,
+                    ...window.bigbangData.group.collaborations,
+                    ...window.bigbangData.members.flatMap(member => member.albums),
+                    ...window.bigbangData.members.flatMap(member => member.collaborations)
+                ];
+                const album = allAlbums.find(a => a.id === song.album_id);
+                const jumpId = album ? (album.jump_id || 'album-jump') : 'album-jump';
+                
+                const albumJump = document.getElementById(jumpId);
+                if (albumJump) {
+                    albumJump.scrollIntoView({ behavior: 'smooth' });
+                    
+                    setTimeout(() => {
+                        const songElement = document.querySelector(`[data-song-id="${song.id}"]`);
+                        if (songElement) {
+                            songElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            songElement.style.background = 'rgba(51, 255, 255, 0.1)';
+                            setTimeout(() => {
+                                songElement.style.background = '';
+                            }, 2000);
+                        }
+                    }, 1000);
+                }
+            }, 500);
+        } else {
+            window.location.href = newUrl;
+        }
+    }
+};
+
+window.jumpToAlbum = function(jumpId) {
+    if (!jumpId) return;
+    
+    const allAlbums = [
+        ...window.bigbangData.group.albums,
+        ...window.bigbangData.group.collaborations,
+        ...window.bigbangData.members.flatMap(member => member.albums),
+        ...window.bigbangData.members.flatMap(member => member.collaborations)
+    ];
+    
+    const album = allAlbums.find(a => a.jump_id === jumpId);
+    
+    if (album) {
+        let newUrl = `album.html?album=${album.id}#${jumpId}`;
+        
+        const member = window.bigbangData.members.find(m => 
+            m.albums.some(a => a.id === album.id) ||
+            m.collaborations.some(a => a.id === album.id)
+        );
+        if (member) {
+            newUrl += `&type=member`;
+        } else if (album.album_type === 'group_collaboration') {
+            newUrl += `&type=group_collaboration`;
+        } else if (album.album_type === 'member_collaboration') {
+            newUrl += `&type=member_collaboration`;
+        } else {
+            newUrl += `&type=group`;
+        }
+        
+        window.history.replaceState({}, '', newUrl);
+        
+        if (window.globalSetSelectedAlbumId && window.globalSetCurrentView) {
+            window.globalSetSelectedAlbumId(album.id);
+            window.globalSetCurrentView('albumDetail');
+            
+            if (member) {
+                window.globalSetCurrentMember(member);
+            } else {
+                window.globalSetCurrentMember(null);
+            }
+            
+            setTimeout(() => {
+                const albumJump = document.getElementById(jumpId);
+                if (albumJump) {
+                    albumJump.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 500);
+        } else {
+            window.location.href = newUrl;
+        }
+    }
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const albumId = urlParams.get('album');
+    const songId = urlParams.get('song');
+    const type = urlParams.get('type');
+    const hash = window.location.hash;
+    
+    if (albumId) {
+        setTimeout(() => {
+            window.showAlbum(albumId, type);
+        }, 500);
+    }
+    
+    else if (hash && hash.startsWith('#')) {
+        const jumpId = hash.substring(1);
+        setTimeout(() => {
+            window.jumpToAlbum(jumpId);
+        }, 500);
+    }
+    
+    if (songId) {
+        setTimeout(() => {
+            const song = window.allSongs.find(s => s.id === parseInt(songId));
+            if (song) {
+                window.showSongAlbum(song);
+            }
+        }, 500);
+    }
+});
+
+    </script>
+    <script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+</body>
+</html>
