@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+@media only screen and (max-width: 768px) {
+    .header-container {
+      height: auto;
+      min-height: 100px;
+      padding: 20px 0;
+      align-items: flex-start;
+    }
+
+    .title-group {
+      width: 100%;
+      padding: 0 120px;
+      text-align: center;
+    }
+
+    .title-group h1 {
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.3;
+      font-size: 42px;
+    }
+
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .right-side{
+    position: relative;
+    align-items:center;
+  }
+
+  .slide-counter{
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .nav-button{
+    background-color: rgba(255,255,255,0.7);
+    border:none;
+    padding:10px 15px;
+    font-size:24px;
+    cursor:pointer;
+    border-radius:10px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: calc(100% + 10px);
+  }
+
+  .toggle-btn {
+    border: 2px solid #33FFFF;
+    color: #FFFFFF;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+  }
+  .toggle-btn:hover {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
+  </style>
+</head>
+
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="interview.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>采访2016年</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="interview2017.html">2017</a>
+    </nav>
+  </div>
+  <br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="interview2016-jan-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2016.html#interview2016-jan" class="jump-button">1月</a>
+    </div>
+    <div id="interview2016-feb-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2016.html#interview2016-feb" class="jump-button">2月</a>
+    </div>
+    <div id="interview2016-mar-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2016.html#interview2016-mar" class="jump-button">3月</a>
+    </div>
+    <div id="interview2016-may-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2016.html#interview2016-may" class="jump-button">5月</a>
+    </div>
+    <div id="interview2016-june-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2016.html#interview2016-june" class="jump-button">6月</a>
+    </div>
+    <div id="interview2016-june-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2016.html#interview2016-june" class="jump-button">6月</a>
+    </div>
+    <div id="interview2016-sept-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2016.html#interview2016-sept" class="jump-button">9月</a>
+    </div>
+    <div id="interview2016-oct-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2016.html#interview2016-oct" class="jump-button">10月</a>
+    </div>
+    <div id="interview2016-dec-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2016.html#interview2016-dec" class="jump-button">12月</a>
+    </div>
+  </div>
+  <br/><br/>
+  <hr class="full-width-line" />
+
+  <div id="interview2016-jan" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2016.html#interview2016-jan-jump" class="jump-button">1月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="magazine-160108-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="magazine2016.html#magazine-160108" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年1月8日</strong></p>
+        <p>GD登上杂志《周刊朝鲜》Vol.2390</p>
+        <p>详细资讯：<a href="https://m.cafe.naver.com/ca-fe/web/cafes/gdbangarchive/articles/4404?useCafeId=false&tc" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Cafe</a></p><br/>
+        <p>G-Dragon最初购买 济州市涯月邑涯月北西路 这块地并非为了赚钱。他想挂上自己最喜欢的画作，打造一个既能作为工作室又能邀请朋友放松休闲的场所</p>
+        <p>G-Dragon将所有资产管理 (从收入和税务到投资策略) 都委托给了一家专业的咨询公司 (CLAN Co., Ltd)</p>
+        <br/>
+        <p>记者在首尔江南区德黑兰路的一家咖啡馆采访了Clan的CEO 和 Clan战略企划室组长（河大浩）</p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #FF66CC;">问：</span>你是什么时候开始负责管理G-Dragon的资产？<br/>
+          <span style="color: #33FFFF;">Clan CEO：</span>我从2007年就开始管理G-Dragon的资产。当时他的收入远没有现在这么高。最初我是通过G-Dragon的母亲提供理财建议，随着他的收入快速增长，我在2014年成立公司，正式负责他的资产管理
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #FF66CC;">问：</span>你眼中的G-Dragon是一个怎样的人？<br/>
+          <span style="color: #33FFFF;">Clan CEO：</span>G-Dragon很听父母的话，也很有人情味。不过在音乐方面，他似乎从来不会妥协</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>Clan主要提供哪些服务？<br/>
+          <span style="color: #33FFFF;">Clan CEO：</span>我们会像娱乐经纪公司一样，负责起草合约、资产管理以及商业规划。我们承担实际运营支出，并按照投资成果收取一定比例的佣金。每位艺人的合约内容和商业规划都会根据个人特点有所不同</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你们管理G-Dragon资产时最重视什么？<br/>
+          <span style="color: #33FFFF;">Clan CEO：</span>G-Dragon对赚钱本身并没有太大的兴趣。他不会追求高风险投资，而是偏向节税型产品和稳定的资产管理。因为我们管理的是"G-Dragon"这个品牌，所以最重要的是确保财务透明，避免税务等问题影响他的形象</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>G-Dragon的实际年收入到底有多少？<br/>
+          <span style="color: #33FFFF;">Clan CEO：</span>因为涉及客户隐私，我不能透露具体数字。但可以确定的是，实际收入高于tvN节目估算的金额</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>G-Dragon的收入主要来自版权吗？<br/>
+          <span style="color: #33FFFF;">河大浩：</span>G-Dragon的版权收入其实只占总收入的一小部分</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>为什么越来越多艺人选择与你们合作？<br/>
+          <span style="color: #33FFFF;">河大浩：</span>最近很多演员都会来咨询财务问题，也有不少艺人正在和Clan讨论合作。虽然不能公开他们的身份，但其中有不少偶像明星。我们并没有特别宣传，只是越来越多人听说我们负责管理G-Dragon的资产后，主动联系我们</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>最近G-Dragon都在忙些什么？<br/>
+          <span style="color: #33FFFF;">河大浩：</span>他最近非常投入艺术创作，也对收藏艺术品有浓厚兴趣。除了收藏韩国艺术家的作品之外，最近也开始收藏许多海外艺术家的作品
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/kfEeSW8U_e8?si=lZTcT2ZSA8kUD6l3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2016年1月20日</strong></p>
+        <p>Golden Disc Awards 新闻发布会</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/un94JsBZTl0?si=9wUaXyAiPyluOFQG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2016年1月20日</strong></p>
+        <p>Bigbang Message 感谢2百万 V Live 订阅</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年1月25日</strong></p>
+        <p>Zico 接受 BEAUTY+ 采访，提到太阳</p>
+        <p>详细资讯：<a href="https://bigbangmusic.de/index.php/zicos-interview-about-taeyang-on-beauty-january-2016-2016-01-25-220702" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bigbangmusic.de</a></p><br/>
+        <p>问：我们非常期待你未来的小分队企划。你想和哪位音乐人合作？<br/>
+Zico：是太阳前辈。他是我在韩国最喜欢的艺人。我们曾经一起参与制作歌曲《FEAR》，但如果有机会，我想再次和他合作我的歌曲</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/L64N1TnRU0U?si=6cU039tpiMv2tGuB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2016年1月27日</strong></p>
+        <p>大声 Message Encore!! 3DTour</p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div id="interview2016-feb" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2016.html#interview2016-feb-jump" class="jump-button">2月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="magazine6-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="magazine2016.html#magazine6" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年2月17日</strong></p>
+        <p>TOP登上《Arena Homme+》2016年3月刊封面</p>
+        <p>详细资讯：<a href="https://bigbangmusic.de/index.php/eng-trans-part-translation-top-arena-homme-interview-2016-2016-02-22-155720" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bigbangmusic.de</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #FF66CC;">问：</span>通过你的Instagram，我可以看出你拥有非常丰富的艺术知识和兴趣。你似乎对艺术相关的工作有一些想法<br/>
+          <span style="color: #33FFFF;">TOP：</span>我想继续介绍一些来自韩国和日本的艺术家。虽然有一些年轻艺术家的作品很有意义，但那些因为缺乏宣传关注而没有被关注的艺术家却令人遗憾。今年我似乎有更多机会向一些艺术家介绍他们。目前，这还是个秘密，但我认为这会成为一个很棒的项目
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #FF66CC;">问：</span>我可以在采访中写到这个吗？<br/>
+          <span style="color: #33FFFF;">TOP：</span>当然可以！你可能会非常惊讶。我们正在计划一个支持年轻艺术家的项目</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>我听说电影拍摄结束后你过得很艰难，因为你仍然沉浸在角色中<br/>
+          <span style="color: #33FFFF;">TOP：</span>我一直都是这样</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你不觉得难熬吗？<br/>
+          <span style="color: #33FFFF;">TOP：</span>这很折磨人，但如果没有这种刺激，那就一点乐趣都没有了。在BIGBANG专辑制作期间，我修改了《LOSER》中的rap部分大约30次。我太专注了，那几个月我感觉很沮丧。我的欲望也变得低落了。然而，没办法，因为我就是那种把自己置于极端情况下才能获得最大刺激的人</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>有没有特别想尝试的角色？<br/>
+          <span style="color: #33FFFF;">TOP：</span>没有，我喜欢真诚的东西。真诚的东西很容易打动我的心。到目前为止，如果有人能把某件事做好，我反而会有点叛逆，不想去做。这就是我总是尽量避免那些平淡无奇的事情的原因。在我们国家的电影产业中，适合20到30岁年龄段的电影类型并不多。我对此感到遗憾
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="160218-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2016feb.html#160218" class="jump-button">跳转到 2016 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年2月18日</strong></p>
+        <p>Bigbang接受 Star News 采访</p>
+        <p>详细资讯：<a href="https://x.com/mshinju/status/700227145709191168?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E700227145709191168%7Ctwgr%5E1154a09da391300bb757786214a8b65550e27d51%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fbigbangmusic.de%2Findex.php%2Feng-trans-bigbang-star-news-interview-about-military-enlistment-2016-02-18-2016-02-18-090944" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            mshinju</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li>问： 你们入伍的时间不远了。BIGBANG成员们在谈论未来时会讨论些什么？<br/>
+          <span style="color: #FF66CC;">GD：</span>其实我们刻意不去谈论这个。为了享受每一天，我们没有时间谈论其他任何事情（除了现在）。但我不用谈论就知道的一件事是，我们的未来会更加辉煌<br/><span style="color: #fc5353;">太阳：</span>我以前说过很多次了，我们想继续创作音乐，一直站在舞台上，直到我们自己觉得不再酷为止<br/><span style="color: #00ff51;">TOP：</span>我一直在制定积极的未来计划<br/><span style="color: #fbff00;">大声：</span>当然，入伍前我们五个人一起表演的机会确实不多了。所以我想珍惜每一次演出。当然，我们打算退伍后继续做音乐，但细节还没有讨论<br/><span style="color: #33FFFF;">胜利：</span>......
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="magazine-160220-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="magazine2016.html#magazine-160220" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年2月20日</strong></p>
+        <p>Bigbang登上杂志《ELLE》2016年4月刊封面</p>
+        <p>详细资讯：<a href="https://bigbangmusic.de/index.php/eng-trans-bigbang-elle-magazine-march-2016-interview-2016-02-27-154007" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bigbangmusic.de</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li>问：出道这么多年，你现在面对舞台的心态有什么变化？<br/>
+          <span style="color: #FF66CC;">GD：</span>BIGBANG已经活动了这么久，我感觉不到日常生活和演出之间有什么隔阂。我只是很自然地享受这一切
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li>问：这些年，你觉得自己最大的成长是什么？<br/>
+          <span style="color: #fc5353;">太阳：</span>我以前是个输不起的人，只想着自己，但最近我觉得自己成熟了，视野也开阔了</li>
+          <br/><li>问：演唱会对你来说意味着什么？<br/>
+          <span style="color: #33FFFF;">胜利：</span>在演唱会上，看到大家都很兴奋，我真的会很开心。我唱歌、跳舞，感觉就像我们一直在参加派对一样！</li>
+          <br/><li>问：粉丝对你来说是怎样的存在？<br/>
+          <span style="color: #fbff00;">大声：</span>即使我们真的很忙，但只要想到粉丝们的笑脸，我就觉得很安心。他们是我巨大的能量来源</li>
+          <br/><li>问：作为演员，你认为最重要的能力是什么？<br/>
+          <span style="color: #00ff51;">TOP：</span>我认为，如果一个演员不能同时展现至少10种不同的表情，他就无法娱乐观众</li>
+          <br/><li>问：这次《MADE SERIES》专辑和以往相比，有什么不同？<br/>
+          <span style="color: #FF66CC;">GD：</span>随着年龄和人生阅历的增长，我们作为个人和作为一个团队都变得更加成熟，这张专辑正是这种成长的体现。过去我们常唱一些比较私人的故事，这次则用了更容易理解的表达，希望创作出更多人都能产生共鸣的歌词。我觉得这次并不是堆砌华丽的辞藻，而是真诚地描绘现实</li>
+          <br/><li>问：这次发行日语专辑，对日本粉丝有什么特别的意义？<br/>
+          <span style="color: #33FFFF;">胜利：</span>这是很久以来第一次同时收录日语版本的歌曲。粉丝们总是很快就学会韩语歌词，这让我非常感动，但更让我开心的是，这次终于可以在演唱会上和大家一起用日语大声合唱</li>
+          <br/><li>问：BIGBANG能够合作这么多年，你认为最大的原因是什么？<br/>
+          <span style="color: #00ff51;">TOP：</span>我们最大的魅力，就是五个人的个性完全不同。创作歌曲、讨论演唱会时，有的人想法很开放，有的人非常注重细节，所以整体能够保持很好的平衡</li>
+          <br/><li>问：你认为BIGBANG最吸引人的地方是什么？<br/>
+          <span style="color: #fc5353;">太阳：</span>我们每个人的性格都截然不同，但只要站上舞台，我们的默契是谁都比不上的。我想，当粉丝看到这一点的时候，就会想一直支持我们</li>
+          <br/><li>问：对于BIGBANG未来的发展，你们有没有设定目标？<br/>
+          <span style="color: #fbff00;">大声：</span>我相信我们以前也说过，只要有一天觉得不再有趣了，我们就会停止活动。这是我们五个人一直以来共同的约定。未来喜欢的音乐类型可能会改变，但只要我们还享受音乐，就没有问题。除此之外，我们没有替未来做任何决定。正因为没有设限，所以我们拥有无限可能，这就是BIGBANG的魅力所在</li>
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div id="interview2016-mar" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2016.html#interview2016-mar-jump" class="jump-button">3月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/3i2kgw5MjlU?si=ST8SkhWv44ImmNux" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2016年3月2日</strong></p>
+        <p>QQ Music Awards前 采访</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@BTBGB 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=30972931&bvid=BV1UW411o75M&cid=54086014&p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2016年3月2日</strong></p>
+        <p>BIGBANGS 2016 WELCOMING COLLECTION</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/FY68qA_tBQg?si=mj52qF8MfnhcRvZZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2016年3月9日</strong></p>
+        <p>Kappa 代言Message</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div id="magazine-160329-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="magazine2016.html#magazine-160329" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年3月29日</strong></p>
+        <p>GD X 小松菜奈 接受 Nylon 采访</p>
+        <p>详细资讯：<a href="https://bigbangmusic.de/index.php/2016-03-29-14-36-08-eng-trans-g-dragon-nylon-japan-april-2016-interview" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bigbangmusic.de</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li>尼龙： 首先，请您坦诚地谈谈对今天拍摄的看法<br/>
+          <br/><span style="color: #FF66CC;">GD：</span><br/><span style="color: #33FFFF;">小松菜奈：</span></li>
+
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #FF66CC;">GD：</span>这是不含酒精的吗？（看着一杯哈密瓜汽水说）<br/>尼龙：是的</li>
+          <li><span style="color: #FF66CC;">GD：真可惜。世界巡演结束了，今天是最后一场演出，所以我很想喝一杯（笑）</span><br/>全体：哈哈哈哈哈哈</li>
+          <li>尼龙： 首先，请您坦诚地谈谈对今天拍摄的看法<br/>
+          <span style="color: #FF66CC;">GD：</span>很有趣<br/><span style="color: #33FFFF;">小松菜奈：</span>我当时真的很紧张<br/><span style="color: #FF66CC;">GD：</span>也许我没表现出来，但我当时也很紧张（笑）</li>
+          <li>尼龙： 你们两个以前见过面？<br/>
+          <span style="color: #FF66CC;">GD：</span>我们去年五月在韩国的香奈儿 2015/16 早春度假系列发布会上相遇<br/><span style="color: #33FFFF;">小松菜奈：</span>差不多正好是一年前。那是我们第一次见面<br/>
+          <span style="color: #FF66CC;">GD：</span>但我们没聊多久，只是简单地互相介绍了一下<br/><span style="color: #33FFFF;">小松菜奈：</span>那时候我受邀去给一家杂志做报道，见到你的时候他们正在拍视频。后来我看了视频，发现自己看起来很害羞，当时觉得很尴尬（笑）</li>
+          <li>尼龙： 你们对彼此的第一印象是什么？<br/>
+          <span style="color: #FF66CC;">GD：</span>那次活动有很多外国明星，但除了我们之外，亚洲人并不多。而且，她的亚洲美貌在人群中格外引人注目<br/><span style="color: #33FFFF;">小松菜奈：</span>我们见面交谈时我非常激动。虽然是第一次见面，但他对我非常礼貌，也更加印证了我之前对他的印象，他是个很可爱的人<br/><span style="color: #FF66CC;">GD：</span>（害羞地）：谢谢</li>
+          <li>尼龙： 这是你们自那次会面以来的首次重聚。你们的印象是否有所改变？<br/>
+          <span style="color: #FF66CC;">GD：</span>我们第一次见面时，她看起来很成熟，但我听说她最近刚满20岁。今天见面后，我觉得她更加成熟了<br/><span style="color: #33FFFF;">小松菜奈：</span>非常感谢。我不知道自己有没有长大（笑）。从那以后，我的头发也剪得很短了<br/><span style="color: #FF66CC;">GD：</span>哦，是的，我们初次见面时他的头发要长得多。现在看起来很短很漂亮<br/><span style="color: #33FFFF;">小松菜奈：</span>非常感谢。今天一整天都像做梦一样<br/><span style="color: #FF66CC;">GD：</span>哈哈，这一切都是一场梦（笑）<br/><span style="color: #33FFFF;">小松菜奈：</span>这绝对是梦想成真（笑）。我感觉自己从来没有这么紧张过。拍摄的时候我一直担心自己会太僵硬，但GD会面带微笑地跟我说话，体贴地察觉到我的感受，让我偶尔能放松下来。不过大部分时间我都很紧张<br/><span style="color: #FF66CC;">GD：</span>我觉得当你演戏或被拍照时，你需要有点紧张，所以也许这种紧张感是好事（笑）</li>
+          <li>尼龙： BIGBANG在世界巡演期间到访了许多国家。你们在空闲时间都做了些什么？<br/>
+          <span style="color: #FF66CC;">GD：</span>最近我对古董家具、艺术品和雕塑很感兴趣。在世界巡演期间，或者有机会出国的时候，我都会去参观当地的美术馆。虽然我们去的国家基本固定，比如巴黎、日本和美国，但我还是会尽可能利用时间去参观不同的美术馆。奈奈小姐，您也会去这样的地方吗？<br/><span style="color: #33FFFF;">小松菜奈：</span>我还没去过呢<br/><span style="color: #FF66CC;">GD：</span>我来日本的时候经常会去画廊。东京的画廊我去得不多，不过京都和关西一带的画廊我经常去。最近我去了一个岛。啊，叫什么来着？是一个有很多艺术家作品的岛，比如草间弥生。从大阪往北走一点就能到<br/><span style="color: #33FFFF;">小松菜奈：</span>四国岛的一个岛屿？我一时想不起来名字（笑）。这类信息是你自己查的吗？<br/><span style="color: #FF66CC;">GD：</span>是啊！我也喜欢城堡，所以我会查一下资料，然后去逛逛。美术馆人不多，我可以安静地参观。在巴黎，我们经常自己预约，然后去参观景点。像那种地方通常禁止拍照，所以我不会把照片上传到社交媒体。我只是把它们留在记忆里，然后离开<br/><span style="color: #33FFFF;">小松菜奈：</span>你真活跃<br/><span style="color: #FF66CC;">GD：</span>对啊！我想起来了！直岛！它是香川县的一个岛屿<br/><span style="color: #33FFFF;">小松菜奈：</span>哦，你刚刚才想起来（笑）</li>
+          <li>尼龙： 娜娜酱，你拍摄照片时也去过很多不同的地方。你最近在土耳其拍摄了你的第一本摄影集，叫做《特拉布宗》？<br/>
+          <span style="color: #33FFFF;">小松菜奈：</span>这是我第一次去土耳其。这次拍摄大家都想去一个不太常用于拍摄的地方。那里的一切都和我想象中的一样，所以我很高兴我们去了土耳其<br/><span style="color: #FF66CC;">GD：</span>我从没去过土耳其。那里好玩吗？<br/><span style="color: #33FFFF;">小松菜奈：</span>比我想象的还要美好。人们都非常热情<br/><span style="color: #FF66CC;">GD：</span>你们尝试过不同的东西吗？食物好吃吗？<br/><span style="color: #33FFFF;">小松菜奈：</span>我们先去了土耳其东北部的特拉布宗，那里的食物太好吃了，我吃太多，结果肚子疼了（笑）。不过之后我们去了伊斯坦布尔，我在那里恢复了健康，玩得很开心<br/><span style="color: #FF66CC;">GD：</span>听起来不错。（拿着奶奶的照片集）现在我看了你的照片，感觉那是个很美的地方。它有一种治愈的力量。你在那里待了多久？<br/><span style="color: #33FFFF;">小松菜奈：</span>大概一周。整本书都是在土耳其拍摄的<br/><span style="color: #FF66CC;">GD：</span>这个地方很美，也拍了很多漂亮的照片，但是你当时有空闲时间吗？你都做了些什么？<br/><span style="color: #33FFFF;">小松菜奈：</span>我只有第一天有空。因为这本书的主题是“成为土耳其女孩”，我想感受一下当地的风景，所以我去买了我在封面上戴的那条头巾<br/><span style="color: #FF66CC;">GD：</span>这身装扮和封面以及拍摄氛围非常契合。当地的服装很适合你，看起来很棒</li>
+          <li>尼龙： 接下来，请您再多介绍一下G-Dragon的音乐世界。您创作音乐时的环境是怎样的？<br/>
+          <span style="color: #FF66CC;">GD：</span>我其实没有固定的创作场所。我经常从闲聊中汲取灵感，或者在录音室里做音乐的时候，甚至只是懒洋洋地躺在床上。我觉得音乐是自然而然产生的——你强求不来，所以如果我一开始就把它当成工作，那就很难成功。对我来说，灵感最好是像这样，在轻松愉快的聊天中涌现出来<br/><span style="color: #33FFFF;">小松菜奈：</span>如果在这样的谈话中突然想到什么，你会怎么做？<br/><span style="color: #FF66CC;">GD：</span>我会尽快记在手机里<br/><span style="color: #33FFFF;">小松菜奈：</span>太棒了。所以，你以后可能会从今天的谈话中获得一些灵感吧？（笑）<br/><span style="color: #FF66CC;">GD：</span>有可能！（笑）<br/><span style="color: #33FFFF;">小松菜奈：</span>你创作的时候不是先谱曲还是先写歌词吗？<br/><span style="color: #FF66CC;">GD：</span>每次都不一样。如果我有了主题，或者受到某个词的启发，我就会以此为基础进行创作。但有时候，我也会听到一段旋律，然后根据它来构思歌词。这完全取决于我当天的心情</li>
+          <li>尼龙： 我们听说娜娜喜欢《春春》<br/>
+          <span style="color: #FF66CC;">GD：</span>你喜欢Haru Haru？真令人惊讶<br/><span style="color: #33FFFF;">小松菜奈：</span>我也很喜欢你的独唱歌曲《Crooked》<br/><span style="color: #FF66CC;">GD：</span>一首关于男人被甩的歌（笑）<br/><span style="color: #33FFFF;">小松菜奈：</span>没错（笑）。我真的很喜欢BIGBANG的MV。你们是一起创作的吗？<br/><span style="color: #FF66CC;">GD：</span>是的，MV是由所有成员共同创作的。当然，导演也参与其中，但我们在创作音乐的时候就已经对MV的最终呈现效果有了大致的想法。因为是我们自己创作的，所以我们最清楚想要通过音乐传达什么。不过，因为我不是演员，所以每次拍摄的时候都会觉得有点尴尬<br/><span style="color: #33FFFF;">小松菜奈：</span>完全看不出来。大家都很好</li>
+          <li>尼龙： 奈奈酱，你去看过她们的日本演唱会吗？<br/>
+          <span style="color: #33FFFF;">小松菜奈：</span>是的，我去东京巨蛋看过他们的演唱会。几年前，朋友邀请我去看我人生中的第一场BIGBANG演唱会，我玩得很开心。那是我第一次觉得演唱会真的很有趣。他们的表演超棒，主持人也很有趣，能看到他们这两种截然不同的风格，真的太棒了。看他们模仿日本名人也特别搞笑（笑）<br/><span style="color: #FF66CC;">GD：</span>哈哈哈哈（笑）<br/><span style="color: #33FFFF;">小松菜奈：</span>歌曲、MV、演唱会、主持——一切都太美好了！<br/><span style="color: #FF66CC;">GD：</span>非常感谢。你当面这么说，我都觉得不好意思了！（笑）</li>
+          <li>尼龙： Nana二月份庆祝了她的20岁生日。G-Dragon，你的20岁是怎样的呢？（译者注：20岁在韩国（韩国年龄20岁，国际年龄19岁）和日本都具有重要意义，因为它是成年年龄，就像18岁在许多西方国家一样。）<br/>
+          <span style="color: #FF66CC;">GD：</span>20岁……说实话，那一年除了工作就是工作，所以真的没什么美好的回忆（笑）。我们刚出道不久，所以我就拼命工作。每天都在忙工作……所以那一年真的没什么美好的回忆……我也不知道。现在想想，感觉有点浪费时间。那个年纪有很多独特的事情，比如恋爱、玩乐等等，但我们当时根本没时间。工作固然重要，但现在如果我有点空闲时间，我会尝试去不同的地方，做不同的事情。时间一去不复返，所以一定要珍惜当下。时间真的过得太快了。现在我听起来像个小老头了！（笑） <br/>全体：哈哈哈哈</li>
+          <li>尼龙： 奈奈酱，你20岁之后，你的心态有发生什么变化吗？<br/>
+          <span style="color: #33FFFF;">小松菜奈：</span>小时候我觉得20岁好像很成熟，但到了20岁之后，感觉一切都没变。只是现在能做的事情更多了，比如喝酒。就像我们之前说的，有很多地方我想去。我想珍惜我的时光。我想独自闯荡，结识不同的人，尝试除了演员和模特之外的其他事情。我现在才20岁，就像G-Dragon说的那样，我现在能做的事情没有极限<br/><span style="color: #FF66CC;">GD：</span>没错。重要的是，你要把你说的话变成现实。我也喜欢旅行，但重要的不仅是去那些好地方，还要去那些和你习惯的地方截然不同的地方。我觉得去那样的地方你能学到更多。也请你尝试一下不带经纪人和工作人员一起旅行。你会从那些地方遇到的人身上学到很多重要的东西。作为一名表演者，你能从中受益匪浅。但重要的是，不仅作为一名表演者，更作为一个人，都要享受生活。因为你的人生只属于你自己
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div id="interview2016-may" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2016.html#interview2016-may-jump" class="jump-button">5月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="160510" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="top2016.html#160510-jump" class="jump-button">更多详情</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年5月10日</strong></p>
+        <p>TOP接受《Larry's List》的采访</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/JWTrJF4E49c?si=cBsrQlriFCel72qT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2016年5月10日</strong></p>
+        <p>茶π 采访</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div id="interview2016-june" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2016.html#interview2016-june-jump" class="jump-button">6月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@ForeverTOP崔胜铉个人站 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=4984377&bvid=BV19s411e74K&cid=8095964&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2016年6月14日</strong></p>
+        <p>电影《失控‧幽灵飞车》发布会</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/IBeTuHwE-Sg?si=kOYv7N8lPNfB1eAf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2016年6月30日</strong></p>
+        <p>MTV Italian Music Awards 获奖感言<p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="magazine-160317-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="magazine2016.html#magazine-160317" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年3月17日</strong> 发布</p>
+        <p>Bigbang登上杂志《VOGUE》2009年1月刊</p>
+        <p>详细资讯：<a href="https://www.vogue.co.kr/2009/01/07/%EB%B9%85%EB%B1%85-%ED%99%94%EB%B3%B4/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            VOGUE</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li>问： 很多人认为BIGBANG带动了韩国年轻人的穿搭风格，你怎么看？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我觉得是因为我们的知名度。现在我们有了一定的知名度，名人穿什么衣服就会成为大家讨论的话题。我出国的时候会买很多东西，在韩国国内的精品店也会买。我不会舍不得花钱购物，毕竟我们的工作就是面对大众，所以必须毫不犹豫地投资自己
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li>问： 为什么会选择Bob Dylan作为这次拍摄的致敬对象？<br/>
+          <span style="color: #00ff51;">TOP：</span>我喜欢The Notorious B.I.G.，所以从小主要听Hip-Hop。后来慢慢开始接触乡村音乐和老流行音乐，最近越来越喜欢老歌。当然，Bob Dylan是一位伟大的音乐家，他本人也很有魅力，看起来孤僻又充满思考。因为他的风格和我完全不同，所以我觉得尝试他的风格会很有意思</li>
+          <br/><li>问： 为什么会选择Justin Timberlake？<br/>
+          <span style="color: #33FFFF;">胜利：</span>Justin Timberlake是我人生中第一个真正喜欢上的音乐人。他不喜欢一成不变，无论是音乐还是舞台，总是在尝试创新。我认识他的舞者，他们告诉我，即使已经是超级巨星，他依然是个工作狂，非常努力</li>
+          <br/><li>问： 你最欣赏Justin Timberlake什么地方？<br/>
+          <span style="color: #33FFFF;">胜利：</span>其实他的穿搭一直都很简单，就是西装配运动鞋。但只要看他的表演，就会觉得他充满活力，让人忍不住喜欢。而且他的每一任女朋友都很漂亮（笑）</li>
+          <br/><li>问： 为什么会选择André 3000？<br/>
+          <span style="color: #FF66CC;">GD：</span>看他为其他艺人创作的歌曲，就知道他不仅是一位优秀的歌手，更是一位非常有才华的制作人。我第一次认识他的时候，比起音乐，更先被他的风格吸引。他总会尝试黑人音乐人很少尝试的造型，把颜色和各种元素搭配得既经典又有个性，有时候甚至像个小丑。因为我从来没有尝试过这种风格，所以想至少体验一次</li>
+          <br/><li>问： 为什么会选择Michael Jackson？<br/>
+          <span style="color: #fc5353;">太阳：</span>可以说，Michael Jackson是第一位打造出完美舞台表演的歌手。我小时候在电视上看到他来韩国演出的时候，真的受到很大的冲击。我认为没有人能够超越他的舞台、他的表演，以及他独一无二的魅力</li>
+          <br/><li>问： 为什么会选择Elvis Presley？<br/>
+          <span style="color: #fbff00;">大声：</span>我很羡慕Elvis Presley留下来的音乐，到今天听起来依然那么完美。我也很羡慕他能够成为直到今天仍然受到大家喜爱的伟大艺术家。巧合的是，我最近正在出演音乐剧《Cats》，而我饰演的角色也是以Elvis为灵感创作的</li>
+          <br/><li>问： 最近你们一起看了纪录片《Shine a Light》，有什么感想？<br/>
+          <span style="color: #fc5353;">太阳：</span>哇，真的非常感动。看完之后，我们成员还聊过，希望以后即使年纪大了，也能够像他们一样一直做音乐。因为是纪录片，所以不像一般电影那么娱乐，但真的很打动人。它记录了他们一路走来的过程，年轻时说过的话和几十年后的画面自然交织在一起，幕后花絮也非常有意思
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div id="interview2016-sept" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2016.html#interview2016-sept-jump" class="jump-button">9月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@GDTOP百度知道团队 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=6262366&bvid=BV14s411r7Eu&cid=10174130&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2016年9月8日</strong></p>
+        <p>CNN Talk Asia</p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div id="interview2016-oct" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2016.html#interview2016-oct-jump" class="jump-button">10月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2016年10月3日</strong></p>
+        <p>TOP接受了CNN Style的采访</p>
+        <p>我的生活常常非常精彩，因为我既是Bigbang成员TOP，又通过演戏扮演着多个角色。每当我的心灵因这样的生活而疲惫不堪时，我就会从艺术的无限之美中找到治愈和慰藉，并不断获得新的灵感。当我看到令我感到满足的设计或绘画，以及当我在艺术中看到美好的事物或难以想象的美时，我都会感到一种羡慕，这给了我更大的激励。拍卖会上汇集了亚洲和西方艺术家的作品，虽然有很多著名艺术家的杰作，但我想知道如果将它们与新兴艺术家的年轻品味的作品混合在一起，会是什么样子。我很自豪地看到我花了一年多的时间精心策划的所有作品都聚集在一个地方，但想到要与这么多人分享我的快乐和其他各种情感，我也很紧张</p>
+        <p>详细资讯：<a href="http://en.koreaportal.com/articles/23182/20161003/bigbang-t-o-p-sothebys-cnn-style-k-pop-tttop.htm" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            KOREA PORTAL</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="interview.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="interview2017.html">2017</a>
+    </nav>
+  </div>
+
+
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+  function toggleList(button, show) {
+  const listItem = button.closest('li');
+  
+  if (show) {
+    let nestedList = listItem.querySelector('ol');
+    if (!nestedList) {
+      nestedList = listItem.nextElementSibling;
+    }
+    
+    if (nestedList && nestedList.tagName === 'OL') {
+      nestedList.style.display = "block";
+      button.style.display = "none";
+      nestedList.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  } else {
+    const nestedList = button.closest('ol');
+    
+    if (nestedList) {
+      nestedList.style.display = "none";
+      
+      let parentLi = nestedList.parentElement.closest('li');
+      if (!parentLi) {
+        parentLi = nestedList.previousElementSibling;
+        while (parentLi && parentLi.tagName !== 'LI') {
+          parentLi = parentLi.previousElementSibling;
+        }
+      }
+      
+      if (parentLi) {
+        const expandBtns = parentLi.querySelectorAll('[onclick*="true"]');
+        expandBtns.forEach(btn => {
+          btn.style.display = "inline-block";
+        });
+        
+        parentLi.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  }
+}
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+
+  const counter = container.querySelector('.slide-counter');
+  counter.textContent = `${state + 1}/${slides.length}`;
+}
+
+document.querySelectorAll('.slider-container').forEach(container => {
+  const slides = container.querySelectorAll('.slide-item');
+  const counter = container.querySelector('.slide-counter');
+
+  counter.textContent = `1/${slides.length}`;
+});
+
+  </script>
+</body>
+</html>
