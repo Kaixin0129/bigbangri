@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+@media only screen and (max-width: 768px) {
+    .header-container {
+      height: auto;
+      min-height: 100px;
+      padding: 20px 0;
+      align-items: flex-start;
+    }
+
+    .title-group {
+      width: 100%;
+      padding: 0 120px;
+      text-align: center;
+    }
+
+    .title-group h1 {
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.3;
+      font-size: 42px;
+    }
+
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .right-side{
+    position: relative;
+    align-items:center;
+  }
+
+  .slide-counter{
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .nav-button{
+    background-color: rgba(255,255,255,0.7);
+    border:none;
+    padding:10px 15px;
+    font-size:24px;
+    cursor:pointer;
+    border-radius:10px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: calc(100% + 10px);
+  }
+
+  .toggle-btn {
+    border: 2px solid #33FFFF;
+    color: #FFFFFF;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+  }
+  .toggle-btn:hover {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
+  </style>
+</head>
+
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="interview.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>采访2017年</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="interview2018.html">2018</a>
+    </nav>
+  </div>
+  <br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="interview2017-jan-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2017.html#interview2017-jan" class="jump-button">1月</a>
+    </div>
+    <div id="interview2017-feb-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2017.html#interview2017-feb" class="jump-button">2月</a>
+    </div>
+    <div id="interview2017-mar-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2017.html#interview2017-mar" class="jump-button">3月</a>
+    </div>
+    <div id="interview2017-apr-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2017.html#interview2017-apr" class="jump-button">4月</a>
+    </div>
+    <div id="interview2017-may-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2017.html#interview2017-may" class="jump-button">5月</a>
+    </div>
+    <div id="interview2017-june-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2017.html#interview2017-june" class="jump-button">6月</a>
+    </div>
+    <div id="interview2017-july-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2017.html#interview2017-july" class="jump-button">7月</a>
+    </div>
+    <div id="interview2017-dec-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2017.html#interview2017-dec" class="jump-button">12月</a>
+    </div>
+  </div>
+  <br/><br/>
+  <hr class="full-width-line" />
+
+  <div id="interview2017-jan" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2017.html#interview2017-jan-jump" class="jump-button">1月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="170107-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017jan.html#170107" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年1月7日</strong></p>
+        <p>BIGBANG 写给 VIP 们的手写信</p>
+        <p>详细资讯：<a href="https://bigbangmusic.de/index.php/2017-01-07-18-37-08-eng-trans-bigbangs-handwritten-letters-to-vips" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bigbangmusic.de</a></p><br/>
+        <p><span style="color: #FF66CC;">GD：</span>感觉我们的第一次舞台仿佛就在昨天，但十年之后，今天还会像昨天一样吗……？与其说要你们永远爱我们，不如我们永远爱你们。我们不是歌手和粉丝，而是朋友和家人……让我们永远在一起。即使我们暂时分开。我们会心连心，心意相通，直到永远</p>
+        <p><span style="color: #fc5353;">太阳：</span>我会变成一棵树，永远留在这里，陪伴你们……接下来的两年我会非常想念大家。在思念之中，我会变得更加成熟</p>
+        <p><span style="color: #00ff51;">TOP：</span>接下来的两年我会非常想念大家。在思念之中，我会变得更加成熟</p>
+        <p><span style="color: #fbff00;">大声：</span>过去的十年预示着未来十年的到来……因为V.I.P的爱，因为那份力量，我们才能走过这十年……感谢你成为我生命中珍贵的邂逅……谢谢……让我们一路走好！！我爱你，V.I.P！！</p>
+        <p><span style="color: #33FFFF;">胜利：</span>致与我共度青春的人们。过去的十年热烈而甜蜜。有时苦涩、酸痛、痛苦，现在让我们把过去的十年称为回忆，把未来的十年称为承诺</p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="170107m.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="170107m1.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="170107m2.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="170107m3.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="170107m4.jpeg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/qfDp2US3IVQ?si=08NyijdXjLUscMh4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2017年1月23日</strong></p>
+        <p>茶π 采访</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Ippi4M_rdU4?si=_5pynlC0ukR0hKIJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p>采访 2</p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div id="interview2017-feb" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2017.html#interview2017-feb-jump" class="jump-button">2月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="magazine-170107-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="magazine2017.html#magazine-170107" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年2月14日</strong></p>
+        <p>大声接受 AnAn 采访</p>
+        <p>详细资讯：<a href="https://bigbangmusic.de/index.php/2017-02-15-06-09-10-full-eng-trans-d-lite-daesung-anan-magazine-japan-interview-feb-2017" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bigbangmusic.de</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #FF66CC;">问：</span>今年《anan》选择你作为封面人物，你有什么感受？<br/>
+          <span style="color: #33FFFF;">大声：</span>我很不好意思……
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #FF66CC;">问：</span>你一直觉得自己是一个特别的人吗？<br/>
+          <span style="color: #33FFFF;">大声：</span>我从来没有觉得自己很特别。我总是在寻找自己的不足，然后想办法去改善。如果真的去找的话，会发现很多很多！（笑）像眼睛小、罗圈腿之类的身体缺陷，是没有办法改变的，所以我尽量接受它们。但是和歌唱技巧等可以通过努力改变的事情有关的不足，我会继续努力。即使我已经很努力了，但还是有一些做不到的地方，这些部分会由粉丝、工作人员和BIGBANG成员们帮我弥补。所以，如果有人能够理解我，那并不是因为我自己，而是因为我身边有这些人。尤其是粉丝的力量非常巨大。有很多次我身体不舒服，甚至完全唱不了歌，但只要看着粉丝们的脸，我就突然又能唱出来了。这也许是肉眼看不到的东西，但我相信粉丝们正在把他们的力量传递给我</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你平时看起来几乎从来不会生气。你真的不会生气吗？<br/>
+          <span style="color: #33FFFF;">大声：</span>当然会。在工作中，如果生气了，却把应该说的话一直憋在心里，其实是不好的。我第一次公开表达自己的愤怒，是在制作个人专辑《D'scover》的时候。在那以前，我总觉得那些让我生气的事情根本无法改变。以前的我是一个什么都接受、什么都不会反抗的人。但是后来因为嗓子不舒服去看医生，我咨询过的几位医生都告诉我，真正的问题并不完全是嗓子，而是心理上的。他们都建议我应该坦率地表达自己的感受。因为我一次又一次听到同样的建议，所以决定试着不要再压抑自己的情绪。如果我生气了，现场的气氛可能会变得紧张，但这种情况只会持续一阵子。相比之下，一张能够流传一生的专辑更加重要</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>那你为什么总能在舞台上保持微笑？<br/>
+          <span style="color: #33FFFF;">大声：</span>因为幕后的工作人员能够理解并接受我的感受。有时候，他们也需要对我保持耐心。我觉得人与人之间能够很好地相处，关键就是能不能和对方分享彼此的想法和感受</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>在需要明确说“不”的商业场合，和恋爱关系相比，有什么不同？<br/>
+          <span style="color: #33FFFF;">大声：</span>如果我真的喜欢一个人，我几乎什么都会接受。但是不管我有多喜欢一个人，“你的工作和我，哪个更重要？”这种问题还是会让我很头疼……我应该怎么回答呢？“我的确去工作了，但是我的心留在这里～”然后我就走了（笑）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>社交媒体已经成为人们分享感受的一种方式，但BIGBANG里唯一没有社交媒体账号的人就是你。为什么？<br/>
+          <span style="color: #33FFFF;">大声：</span>前段时间我其实注册过一个Instagram账号，原本是想看看其他成员上传了什么，但最后我也没有真的去看（笑）。我从小就不喜欢拍照，也不喜欢给自己拍照。每次相机开始倒计时的时候，我都会想：“我到底在这里干什么？”然后脸就会变得没有表情。现在想起来，我其实有点后悔小时候因为不喜欢拍照，所以没有留下很多照片。不过，比起用相机把那些让我感动的东西记录下来，我更希望直接用自己的眼睛去看。旅行也是一样。我不喜欢拍完一张照片，就马上赶去下一个景点</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你觉得最能与你分享感受的人是谁？<br/>
+          <span style="color: #33FFFF;">大声：</span>最终还是BIGBANG的成员们</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你们五个人的性格都非常不同，对吧？<br/>
+          <span style="color: #33FFFF;">大声：</span>对。我们五个人性格不同，兴趣爱好也不同。我们唯一的共同点，就是每个人都喜欢按照自己的方式做事情（笑）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>这种差异以前会不会给你带来困扰？<br/>
+          <span style="color: #33FFFF;">大声：</span>出道之后的前五年，我有时候确实会因为彼此的不同而感到困扰。但是录制《ALIVE》之后，情况发生了变化。我们开始能够接受彼此身上的每一种差异。我们就像拼图里的不同碎片。后来我们理解了，虽然每个人的形状都不一样，但组合起来以后，却能够形成一幅完整的图画。从那以后，我们的团队合作有了非常大的进步。现在我只要看他们的眼睛，就知道他们在想什么</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>有人说BIGBANG是一个非常神奇的五人组合，你怎么看？<br/>
+          <span style="color: #33FFFF;">大声：</span>SOL和VI总是冲在最前面，他们喜欢引人注意。G-DRAGON和TOP什么都不做，就能够吸引大家的视线。而我比较喜欢站在后面看着他们。我不太想站在最前面。毕竟，我还得负责给这四个自由灵魂“维持交通秩序”嘛（笑）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>所以你觉得自己在BIGBANG里扮演的是一个怎样的角色？<br/>
+          <span style="color: #33FFFF;">大声：</span>大概就是站在后面，看着他们，然后负责把他们这些自由的灵魂好好协调起来吧（笑）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>对于“BIGBANG是一个神奇的五人组合”这句话，你怎么看？<br/>
+          <span style="color: #33FFFF;">大声：</span>我们到底是五个人在一起比较幸运，还是把VI遮起来以后，四个人会不会更好——这个问题还是留给你们来判断吧（笑）
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="170224" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017feb.html#170224-jump" class="jump-button">跳转到 2014 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年2月24日</strong></p>
+        <p>大声接受 Numéro 采访</p>
+        <p>详细资讯：<a href="https://numero.jp/talks29/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Numéro</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #FF66CC;">问：</span>首先，请您谈谈您的个人迷你专辑《D-Day》，这是您两年来的首张个人专辑。您在制作这张专辑时都融入了哪些元素？<br/>
+          <span style="color: #33FFFF;">大声：</span>我之前的专辑《D'slove》追求的是更成熟的音乐风格，但这张专辑，我想为大家带来轻松愉悦、清新舒爽的音乐，以迎接即将到来的温暖季节。因此，我邀请了一些我一直以来都非常喜欢的音乐人来合作制作这张专辑
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #FF66CC;">问：</span>您曾与生物怪客的水野佳树、畑元宏、绫香等艺人合作过，对吗？是什么促使您邀请这些日本流行乐坛的顶尖艺人为您创作歌曲呢？<br/>
+          <span style="color: #33FFFF;">大声：</span>我曾在一张名为《D'scover》的翻唱专辑中翻唱过他们的歌曲，从那时起，我就一直想和他们一起创作原创音乐。我当然很喜欢他们的音乐，但我也想亲自见到他们，和他们聊聊。当我提出这个项目时，时机恰到好处，他们欣然同意，而且整个合作过程也进行得非常顺利</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>所以，你要带着这张专辑进行个人巨蛋巡回演唱会。你能跟我们说说你对现场演出的期待吗？<br/>
+          <span style="color: #33FFFF;">大声：</span>我并不想只是表演一场秀，而是非常渴望与大家共同打造一场精彩的现场演出。我希望观众们能够尽情享受，看到他们的喜悦，我也会从中获得力量。所以，我不想只是展示一些事先准备好的东西，而是想与他们分享那一刻，共同创造美好的回忆。我独唱的时候很少跳舞，但我会全程走动，一边唱歌一边与不同区域的观众进行眼神交流。这次的演出，所有歌曲都是那种可以让我们一起欢呼雀跃、兴奋不已的歌曲，所以我非常期待</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>活跃于各个领域的D-LITE，包括与BIGBANG一起进行世界巡回演出，是什么契机（触发点/原因）让你决定从事音乐事业？<br/>
+          <span style="color: #33FFFF;">大声：</span>我们全家都热爱音乐，从小就经常一起去唱卡拉OK，所以家里总是充满音乐。我人生的一个转折点，也是在音乐的熏陶下，一位老师推荐我担任中学音乐节的歌手，让我有机会在众人面前演唱。起初我很惊讶，但我永远不会忘记站在舞台上唱完歌的那一刻的喜悦和激动。我想，从那时起，我一直在努力，一点一滴地积累经验，最终才走到今天</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你在观看现场演出时会体验到什么样的情绪？<br/>
+          <span style="color: #33FFFF;">大声：</span>这是日常生活中不常体验到的。在舞台上表演的喜悦难以言表。这就是为什么我想继续创作音乐，以便能够继续站在舞台上。它就是如此令人兴奋。而且，在现场演出中连续演唱两个多小时后，在回家的路上开车听一些舒缓的音乐，感觉真是太棒了！无论如何，音乐都是我生命中不可或缺的一部分</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>听说你最近一直在专注于声乐训练。是什么动力让你不断努力提升自己呢？<br/>
+          <span style="color: #33FFFF;">大声：</span>在独自巡演期间，我更加深刻地体会到嗓音的重要性。对我而言，嗓音是一种乐器。我相信我必须亲自保养好它。通过这样做，我希望能够给前来观看我现场演出的观众带来更多的快乐</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你有没有欣赏的艺术家？<br/>
+          <span style="color: #33FFFF;">大声：</span>我喜欢听各种各样的音乐。最近我听了很多摇滚乐，我觉得自己越来越喜欢那些能让我感到愉悦的音乐。比如，皇后乐队主唱弗雷迪·默丘里在舞台上散发出的那种气场和力量真的让我震撼。每当我有现场演出的时候，我有时会看他的演出视频，我觉得他能如此强烈地吸引观众，真是太不可思议了</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>活跃于各个领域的D-LITE，包括与BIGBANG一起进行世界巡回演出，是什么契机（触发点/原因）让你决定从事音乐事业？<br/>
+          <span style="color: #33FFFF;">大声：</span>我们全家都热爱音乐，从小就经常一起去唱卡拉OK，所以家里总是充满音乐。我人生的一个转折点，也是在音乐的熏陶下，一位老师推荐我担任中学音乐节的歌手，让我有机会在众人面前演唱。起初我很惊讶，但我永远不会忘记站在舞台上唱完歌的那一刻的喜悦和激动。我想，从那时起，我一直在努力，一点一滴地积累经验，最终才走到今天</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你在观看现场演出时会体验到什么样的情绪？<br/>
+          <span style="color: #33FFFF;">大声：</span>这是日常生活中不常体验到的。在舞台上表演的喜悦难以言表。这就是为什么我想继续创作音乐，以便能够继续站在舞台上。它就是如此令人兴奋。而且，在现场演出中连续演唱两个多小时后，在回家的路上开车听一些舒缓的音乐，感觉真是太棒了！无论如何，音乐都是我生命中不可或缺的一部分</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>听说你最近一直在专注于声乐训练。是什么动力让你不断努力提升自己呢？<br/>
+          <span style="color: #33FFFF;">大声：</span>在独自巡演期间，我更加深刻地体会到嗓音的重要性。对我而言，嗓音是一种乐器。我相信我必须亲自保养好它。通过这样做，我希望能够给前来观看我现场演出的观众带来更多的快乐</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你有没有欣赏的艺术家？<br/>
+          <span style="color: #33FFFF;">大声：</span>我喜欢听各种各样的音乐。最近我听了很多摇滚乐，我觉得自己越来越喜欢那些能让我感到愉悦的音乐。比如，皇后乐队主唱弗雷迪·默丘里在舞台上散发出的那种气场和力量真的让我震撼。每当我有现场演出的时候，我有时会看他的演出视频，我觉得他能如此强烈地吸引观众，真是太不可思议了
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="170224d.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="170224d1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="170224d2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>详细资讯：<a href="https://ameblo.jp/bigban-go/entry-12250926423.html" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        Ameblo JP</a></p><br/>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div id="interview2017-mar" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2017.html#interview2017-mar-jump" class="jump-button">3月</a>
+  </div><br/>
+
+<div style="text-align: center;">
+    <div id="170313" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017mar.html#170313-jump" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+  <div class="content-wrap">
+    <div class="text-container">
+      <p><strong>2017年3月13日</strong></p>
+      <p>大声接受日本《Barks》由东条芳江主持的长篇采访</p>
+        <p>详细资讯：<a href="https://barks.jp/news/785613/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BARKS</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #FF66CC;">问：</span>首先，BIGBANG十周年纪念企划结束了，您有什么感想吗？<br/>
+<span style="color: #33FFFF;">大声：</span>是的。现在回想起来，那段时间真的很有趣，最难忘的是感激之情。我觉得过去十年来我们一直深受粉丝们的喜爱，也非常感谢一直以来支持我们的所有工作人员。最近我一直对大家心怀感激
+        <br/><br/><button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></li>
+        <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #FF66CC;">问：</span>那么问题来了，如果没有被选为BIGBANG成员的话，你觉得现在你会在做什么呢？<br/>
+<span style="color: #33FFFF;">大声：</span>现在？在家玩游戏。我猜我妈会一边玩游戏一边打我（笑）。啊，我可能当时想成为一名SP。因为我和我爸都喜欢运动，所以我在这方面很努力</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>大声被选为BIGBANG成员后，生活发生了巨大的变化吗？<br/>
+<span style="color: #33FFFF;">大声：</span>当然变了。我本来的目标是当歌手，也非常努力，但没想到自己会成为一个十年不落歌迷的歌手，还能在海外巡演开演唱会</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>什么时候感受到BIGBANG有多么厉害的呢？<br/>
+<span style="color: #33FFFF;">大声：</span>当我们进行世界巡演时，有时会觉得即使在南美这样遥远的地方，人们也在听我们的音乐。我们在美国开演唱会时，很多美国人会来看我们，但另一方面，我们一直以来都在听美国音乐，并立志成为歌手。即使是现在，我们仍然会从聆听美国流行音乐中获得灵感，所以想想也挺奇怪的</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>大声，是美国音乐启发了您成为一名歌手吗？<br/>
+<span style="color: #33FFFF;">大声：</span>不，是家人让我开始唱歌的。我家里人都喜欢音乐，所以我们经常一起去卡拉OK。后来我上中学的时候，学校举办了一个校庆，班主任偷偷推荐了我（笑）。我知道我必须去表演，所以就去了。当时在舞台上唱歌的经历给我留下了深刻的印象，至今仍未忘记。从那时起，我开始认真考虑成为一名歌手，研究如何成为一名歌手，并为此努力</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你一定很感谢你的班主任吧。从在学园祭舞台上表演，到和BIGBANG一起走向世界，大声也实现了跨越，成为了能够举办个人巨蛋巡演的歌手。<br/>
+<span style="color: #33FFFF;">大声：</span>我本来根本没想过要单飞（笑）。性格上来说，我不太喜欢主动出击。即使在BIGBANG的时候，我也只是在幕后默默地照顾其他成员，所以从来没有想过要单飞。所以这也不是我自己想做的事情，是我日本经纪公司的社长先问我是否想出一张个人专辑。他说：“翻唱J-POP歌曲怎么样？”就这样，我的个人事业就此开启</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>翻唱专辑《D'scover》的solo表演实际上感觉如何？<br/>
+<span style="color: #33FFFF;">大声：</span>非常有趣。和BIGBANG的音乐有点不一样</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>然后出道后就马上开始了第一次个人巡演。独自进行现场演出会不会很困难呢？<br/>
+<span style="color: #33FFFF;">大声：</span>当然很艰难。压力很大。我记得我们第一次巡演（D-LITE D'scover Tour 2013 in Japan ~D Live~）的第一天是在神户，当时我认真地想过要偷偷溜走（笑）。我当时没什么信心，也没什么勇气</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>如果BIGBANG进行巨蛋巡演或者世界巡演会怎样呢？<br/>
+<span style="color: #33FFFF;">大声：</span>是的。当时我并没有意识到自己是BIGBANG的一员，反而担心自己能否独自巡演。我没有勇气。我没有独自巡演的经验，所以压力很大。但当我在神户第一次尝试的时候，一切都很顺利。我非常开心。我想，正是因为那些回忆，我现在才能继续以SOLO艺人的身份继续工作。当然，这份工作不是每天玩得开心就能完成的。有时候，你必须努力工作，不断尝试，才能在享受乐趣的同时做到最好。我克服那些艰难困苦的力量源泉，很大程度上就来自于我对那些现场​​演出的记忆</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>现场演出的回忆是大声前进的动力。<br/>
+<span style="color: #33FFFF;">大声：</span>没错</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>那么，为了享受即将到来的巨蛋巡演，您现在做了哪些努力呢？<br/>
+<span style="color: #33FFFF;">大声：</span>（采访时）我们还在录音。现在我专注于完成这张专辑，全力以赴。我不再像以前那样想“逃避”。我想做好一张专辑，然后尽快开始具体考虑巡演的事情</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>那么，我们来谈谈你目前正在制作的迷你专辑吧。专辑名延续了“D”系列。这张新专辑的标题“D-Day”是什么意思呢？<br/>
+<span style="color: #33FFFF;">大声：</span>“D-Day”这个词在韩国是“重要的日子”的意思。在日本似乎不太常用，但它最初源于美国。它可以表示倒计时到某个重要的日子，也可以指当天本身，还可以理解为“大声的日子”，所以我想用“D-Day”这个词</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>继J-POP翻唱的《D'scover》、以情歌为主题的《D'slove》、为派对增添气氛的《D'light》之后，这张专辑的主题是什么？<br/>
+<span style="color: #33FFFF;">大声：</span>如果说《D'slove》是一张讲述成熟爱情的专辑，那么这张专辑感觉就像我20岁左右？我带着同样的年轻感觉录制的（笑）。音乐是一样的。它不像《D'slove》那么沉重，总的来说，这次有很多令人耳目一新的歌曲。我制作这张专辑是因为我想制作一张每个人都能喜欢的专辑</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>原来如此。这张专辑收录了绫香、秦基博、水野芳树（Ikimonogakari）作曲的歌曲，不过大声是想把歌曲贡献给这三个人的吗？<br/>
+<span style="color: #33FFFF;">大声：</span>对。顺便说一下，这张专辑的制作人龟田（诚二）和其他三位成员都参与过《D'scover》的制作，我在那张专辑里翻唱了他们的歌。从那时起，我就一直想，如果有机会，请他们为我写一首原创歌曲。所以我在这个时候提出了这个建议……</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>大家都写歌了。<br/>
+<span style="color: #33FFFF;">大声：</span>没错，我很感激</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>之前和你一起出演过音乐节目的畑，与其说是抒情曲，不如说是充满活力、轻快的曲调《D-Day》。<br/>
+<span style="color: #33FFFF;">大声：</span>是的。听畑的专辑的时候，抒情曲当然很棒，但我特别喜欢那些节奏感很强的歌曲，觉得“太棒了”。所以，关于这次的形象，就像我之前说的，我想做一首大家能喜欢的清爽歌曲，所以当我告诉畑的时候，他说“是的，我明白”。他很好地理解了我的形象，并创作了歌曲，所以工作进展得很顺利</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>畑本人在歌名和歌曲中加入了“D-Day”这个词吗？<br/>
+<span style="color: #33FFFF;">大声：</span>那是我们提的建议。歌曲完成后，畑先生问我：“你想要什么样的歌词？”我觉得如果专辑名和专辑里的歌曲能联系起来就好了，就给他发了封邮件，畑先生就写了下来</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>水野作曲的《VENUS》与生物恵的《Joyful》一样，是一首让人忍不住想要舞动身体的Funky曲调，至今在生物恵的个人演唱会和BIGBANG演唱会上都大受欢迎。<br/>
+<span style="color: #33FFFF;">大声：</span>没错。我非常喜欢这个</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>这首歌唱起来不是很困难吗？<br/>
+<span style="color: #33FFFF;">大声：</span>没错，节奏太快，快到喘不过气来（笑）。我练习唱了好多次。自从收到demo之后，我就一直很喜欢这首歌。听过一遍之后，我脑子里立刻浮现出“这样就很好听了”的画面，所以这首歌很早就确定了。我一直很喜欢Ikimonogakari的歌，听过很多遍，这首歌里有我喜欢的所有元素。如果要我唱这首歌，我有很多想法可以让它变得更有趣。比如怎么唱，怎么保持节奏</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>好像有很多不同的玩法，比如“1、2、3、4”或“摇一摇，摇一摇”。<br/>
+<span style="color: #33FFFF;">大声：</span>没错！这首歌应该会跟我原来的歌《Joyful》很像吧（笑）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你喜欢这种有节奏的律动吗？<br/>
+<span style="color: #33FFFF;">大声：</span>我喜欢时髦的歌曲</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>另一方面，《Anymore》是大声用情感演唱的一首悲伤的抒情歌曲。<br/>
+<span style="color: #33FFFF;">大声：</span>这首歌是韩国歌手赵成华（Sung Hwak Cho）创作的，他参与了《D'slove》的几首歌的创作。为了平衡这张专辑，我想加入一首抒情歌曲。这首歌的摇滚风格强劲有力，我很喜欢，但我也想创作一些略带悲伤的歌曲。这首歌也是我非常喜欢的</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>很适合大声。你很擅长唱这种抒情歌曲。<br/>
+<span style="color: #33FFFF;">大声：</span>就这首？如果我唱这首歌，我会死的（笑）。这歌调很高</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>我觉得Funky歌曲和抒情歌曲的演唱方式是不同的。<br/>
+<span style="color: #33FFFF;">大声：</span>没错。抒情歌曲比Funky歌曲需要更细致的表达，也需要更精准地调整嗓音，所以为了唱好，压力很大。不过我很高兴录音很顺利。这张专辑里的所有歌曲里，这首是我最担心的。我当时会想，“我能唱好吗？”不过，我很高兴录音很顺利</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>在演唱技巧上，您故意不运用假声，对吗？<br/>
+<span style="color: #33FFFF;">大声：</span>我不擅长假声（笑）。我觉得假声不太适合这首歌。我更想用自然的声音，用力地呐喊。我觉得这样更符合这首歌的情感，所以我就这么做了</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>大声，你觉得自己擅长唱什么样的歌曲呢？<br/>
+<span style="color: #33FFFF;">大声：</span>大家都说想让我唱轻柔的抒情歌（笑）。我喜欢像《Anymore》这样充满力量、悲伤、忧郁的抒情歌，也喜欢Funky的歌……我都喜欢，但我更喜欢唱Funky的。唱完之后，我能感受到歌迷的感受，唱抒情歌的时候，我的心也会跟着颤动。当我全心全意地唱抒情歌的时候，歌迷们会认真聆听，不是吗？那种氛围和唱Funky歌时的能量是不同的。我们的喜好方向不同</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>绫香送给你什么样的歌曲呢？<br/>
+<span style="color: #33FFFF;">大声：</span>这是一首中速歌曲，融合了 Ayaka 的风格和我自己的一些风格</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>我再问你一下，你唱J-POP和K-POP的时候觉得最大的区别是什么？<br/>
+<span style="color: #33FFFF;">大声：</span>嗯（苦笑）。啊，但它们确实有微妙的不同。听的时候，它们相似又略有不同。不同却又相似。这就是我的感受。我觉得K-POP和J-POP里都有一些难以言喻却又能打动人心的点。我觉得《D-Day》就是要找到那个看不见的点，并把它融入其中。所以我绝对希望你们听一听</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>专辑发行后，巨蛋巡演终于要开始了。BIGBANG演唱会和单独演唱会的制作有什么不同呢？<br/>
+<span style="color: #33FFFF;">大声：</span>如果说BIGBANG的现场表演很吸引人，那么我认为我的个人表演是我和粉丝们共同创造的</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>大声演唱会的一大特点就是和粉丝的距离很近。<br/>
+<span style="color: #33FFFF;">大声：</span>我喜欢给出反馈（笑）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>啊。所以你最后还是和观众说话了？<br/>
+<span style="color: #33FFFF;">大声：</span>是的。我也觉得说话很有趣。因为我是在和观众说话，我不知道该讲什么。所以才很有趣。我觉得现场表演的乐趣之一就是根据当时的情况创造一种节奏。这真的很有趣</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>所以，大声现场演出的一个特点就是，一旦进入即兴演奏的开关，演唱会就会越来越长。<br/>
+<span style="color: #33FFFF;">大声：</span>哈哈哈（笑）。这确实有点问题。不过如果没那么好玩，我也不会做。希望大家喜欢，我自己也喜欢，所以篇幅会稍微长一点……这次是的……我会注意不要写得太长（笑）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>虽然和BIGBANG一起演出已经很常见了，但这是你作为SOLO歌手的第一次巨蛋巡演。你觉得会是怎样的现场演出呢？<br/>
+<span style="color: #33FFFF;">大声：</span>场地越大，一对一的沟通就越困难，这是显而易见的。所以对于巨蛋演唱会，我们会从更广阔的视角来思考，思考大家会如何享受它。虽然这是我们的第一次巨蛋演出，但我并不特别紧张。我们正在努力确保这场演唱会不会让到场的歌迷后悔</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>这次鼓要怎么办呢？<br/>
+<span style="color: #33FFFF;">大声：</span>啊。我也很担心这个。我还没决定要不要去</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>大声 在《Intro (To You)》中演奏了行进鼓，这让专辑的开头显得很有戏剧性，对吗？<br/>
+<span style="color: #33FFFF;">大声：</span>不，一点也不（坚定地）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>我以为演唱会的开场是敲着鼓从下面升起的。真可惜（笑）。BIGBANG的其他成员有没有提到巨蛋巡演的事呢？<br/>
+<span style="color: #33FFFF;">大声：</span>TOP对我说：“祝贺你的个人巨蛋巡演圆满成功。我为你感到高兴，我会为你加油的”</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>入伍前和TOP见过面吗？<br/>
+<span style="color: #33FFFF;">大声：</span>中国香港演唱会结束后我们见过面。他入伍前一天我给他打了电话。“保重，加油。” 他回复说：“Solo，我也会支持你的。” 你知道吗，当时的气氛一点也不悲伤。韩国男人从出生起就注定要入伍。当时的气氛很明亮</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>是什么让大声开始照顾BIGBANG中的T.O.P呢？<br/>
+<span style="color: #33FFFF;">大声：</span>可能是因为我心胸宽广吧（众笑）。我觉得能接受TOP那个玩笑的人不多（笑）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>自从大声被录取之后，他最终成为了TOP的照顾者吗？<br/>
+<span style="color: #33FFFF;">大声：</span>哈哈哈（笑）。我觉得应该没错。TOP是老大，但他也很敏感。我开玩笑说他“像个婴儿”，但他真的很纯真，对待自己的情绪也像婴儿一样坦诚。其他成员一直说我是个“冷漠的人”（笑）。所以我从TOP那里受到了很好的影响，我也想成为他的好朋友，也想和他保持良好的关系。不知不觉中，我们就发展成了现在这样的关系（笑）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>大声在BIGBANG整体中扮演着什么样的角色呢？<br/>
+<span style="color: #33FFFF;">大声：</span>我觉得我的职责就是在长辈和小辈之间保持平衡。这样TAEYANG、G-DRAGON、TOP和VI就不会打架了</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>（笑）看来要这么用心，工作量可不小啊。所以，说实话，单独工作真的更容易吗？<br/>
+<span style="color: #33FFFF;">大声：</span>很放松（笑）。因为一个人，所以体力上有点吃力。不过和BIGBANG不一样，我可以创造自己的世界观，所以很有趣。Solo有它自己的乐趣，BIGBANG有它自己的乐趣，有些事只有BIGBANG才能做到，所以两者都很有趣</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>那么，您希望这次巡演对粉丝们来说成为怎样的“D-Day”呢？<br/>
+<span style="color: #33FFFF;">大声：</span>首先我想到的是，我想创造美好的回忆。我的现场演出最重要的关键词就是把这样的回忆作为礼物送给大家。所以，我希望听到大家说：“这是他们看过的最棒的一场现场演出。” 我也想创造最美好的回忆。这样，这一天就会成为他们永远难忘的一天。我计划让这一天成为他们永远难忘的一天</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>最后，请给我们的读者留言。<br/>
+<span style="color: #33FFFF;">大声：</span>是的。大家好吗？请多保重。春天快到了，相信大家在2017年一定都在努力，充实地过好每一天。我制作这张专辑是为了给你们的日常生活带来更多正能量。如果你们能从我的音乐中获得哪怕一丝力量，我就很满足了。如果你们爱上我，希望我们能在演唱会上一起创造许多美好的回忆。大家加油，我也会加油</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你的日语回答很完美。话说，最近学的最难的日语单词是什么？<br/>
+<span style="color: #33FFFF;">大声：</span>很难，所以我记住了，然后马上就忘了（大家笑）
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></li>          
+        </ol>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <p>大声好可爱呀 ´͈ ᵕ `͈.</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="170313.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1703131.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1703132.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1703133.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1703134.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1703135.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1703136.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1703137.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1703138.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1703139.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div id="interview2017-apr" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2017.html#interview2017-apr-jump" class="jump-button">4月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/d4JUil7yqhw?si=hvtwh9wyvMNPgxBz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2017年4月1日</strong></p>
+        <p>太阳出席了首尔车展Lexus新闻发布会</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/s68GsrzJX9c?si=kIu5OW2rETr6dSV8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2017年4月4日</strong></p>
+        <p>太阳采访</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div id="magazine-170418-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017apr.html#magazine-170418" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年4月18日</strong></p>
+        <p>大声登上日本杂志《Jelly》</p>
+        <p>详细资讯：<a href="https://bigbangmusic.de/index.php/2017-04-18-11-46-51-eng-trans-daesung-d-lite-interview-in-jelly-magazine-japan-2017" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bigbangmusic.de</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #FF66CC;">问：</span>你的形象总是笑容灿烂，但私底下是怎样的呢？<br/>
+          <span style="color: #33FFFF;">大声：</span>私底下我大部分时间都是一个人。因为我比较宅，所以休息日我根本不出门，也很少和朋友见面。可想而知，我一个人的时候是不会笑的～（笑）
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #FF66CC;">问：</span>10年后，成员之间有什么变化吗？<br/>
+          <span style="color: #33FFFF;">大声：</span>目前，TOP不能和我们在一起，感觉真的很孤单。也许和这个有点关系，但从大约2年前开始，我们都开始在成员聊天室里用“我爱你~”或“我想你~”来表达爱意。尽管我们5个人原本都是不轻易表达爱意的人（笑）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>为什么你没有社交媒体账号？<br/>
+          <span style="color: #33FFFF;">大声：</span>最近粉丝经常问我这个问题。但其实没什么特别的原因，我平时不拍照，也没有什么特别想说的。也许我的性格不适合社交媒体吧（笑）。我本来就不是那种喜欢谈论自己的人，而且我也不是那么勤奋。你看，我不想通过社交媒体和粉丝交流，我想的是心与心的交流！
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+  </div>
+  <img src="170418.jpg" style="width: 400px;">
+  <hr class="full-width-line" />  
+
+  <div style="text-align: center;">
+    <div id="magazine-170423-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017apr.html#magazine-170423" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年4月23日</strong></p>
+        <p>GD登上杂志《W KOREA》</p>
+        <p>详细资讯：<a href="https://bigbangmusic.de/index.php/photos-eng-trans-g-dragon-for-8-seconds-korea-photoshoot-in-w-korea-magazine" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bigbangmusic.de</a></p><br/>
+      <ol style="list-style-position: inside; color: white;">
+        <li><span style="color: #FF66CC;">问：</span>这是你第三次参与8 Seconds的广告拍摄了，对这个品牌有什么特别的感受吗？<br/>
+        <span style="color: #33FFFF;">GD：</span>我觉得8 Seconds是一个让人感觉轻松、舒服的品牌。我认为它最大的魅力，就是任何人都可以很轻松地欣赏和接触它
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+        <br/><li><span style="color: #FF66CC;">问：</span>Eight Seconds联名系列里，你最喜欢哪一件单品？<br/>
+        <span style="color: #33FFFF;">GD：</span>一系列百搭、容易穿的T恤，还有一些比较有个性的单品</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>今天拍摄了很多不同的场景，包括试衣间、自拍、居家健身、猫以及瓶子翻转挑战。哪个场景最有趣？<br/>
+        <span style="color: #33FFFF;">GD：</span>可能是和猫一起拍摄的部分吧。因为我自己也养猫，所以这个想法让我特别有共鸣，也觉得非常自然。另外，我也是第一次尝试瓶子翻转挑战。没想到做得越多，就越想赢，反而觉得越来越有趣</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>你宣布今年上半年会携第三张个人专辑回归。这张专辑的关键词是什么？<br/>
+        <span style="color: #33FFFF;">GD：</span>秘密</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>你总是渴望新鲜事物，也不断尝试新的冒险。接下来还想在哪些领域挑战自己？<br/>
+        <span style="color: #33FFFF;">GD：</span>我想摆脱“艺术家”这个身份，甚至跨越这个界限，尝试一些新的东西。从这个过程中，我能够获得非常巨大的能量和灵感</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>接下来有什么计划吗？比如特别演出或者其他活动？<br/>
+        <span style="color: #33FFFF;">GD：</span>下半年会有世界巡回演出，我也计划举办一场个人演唱会。谢谢大家的关注</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>你认为什么才是所谓的“韩式时尚”？<br/>
+        <span style="color: #33FFFF;">GD：</span>用自己的方式表达自己</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>你现在最感兴趣的事情是什么？比如时尚单品、电影、音乐等等？<br/>
+        <span style="color: #33FFFF;">GD：</span>拍照</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>为什么喜欢拍照？<br/>
+        <span style="color: #33FFFF;">GD：</span>这只是我的一个兴趣爱好，但我拍照的时候会非常专注。我喜欢捕捉那些转瞬即逝的瞬间
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+      </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="interview2017-may" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2017.html#interview2017-may-jump" class="jump-button">5月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="170525-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017may.html#170525" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年5月25日</strong></p>
+        <p>Bigbang VIP Message Run,BIGBANG Scout!</p>
+        <p>详细资讯：<a href="https://bigbangmusic.de/index.php/2017-05-25-06-30-24-eng-trans-bigbang-messages-for-vips-run-bigbang-scout" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bigbangmusic.de</a></p><br/>
+        <p><span style="color: #FF66CC;">GD：</span>VIP们！我不确定我们是否像对待VIP一样好好对待你们。我们尽力了，但我知道这还不够。我们一直习惯于接受，真的很抱歉。从现在开始，我们会更好地对待你们。不表达，你们就无法知道。但请记住，我们非常爱你们。在我们疲惫的时候，你们支持我们。我们可以分享快乐，也可以在悲伤的时候依靠你们。我们不能总是和你们每个人面对面交流，但让我们彼此更加相爱。现在才10年，让我们继续一起前进吧。我们会一直让你们幸福</p>
+        <p><span style="color: #fc5353;">太阳：</span>非常感谢你们陪伴我们五个人这么久，10年。我们应该花更多的时间陪伴你们。很抱歉我们没能做到这一点。让我们用更快乐的回忆填满未来。我们爱你们所有人</p>
+        <p><span style="color: #00ff51;">TOP：</span>过去的十年里，我改变了很多，你也一样。我想我们都改变了，朝着好的方向改变，留下了很多美好的回忆。我会一直努力成为一个能够创造新表达方式的人，我不在的时候，请照顾好自己，长胖一些<br/>
+长胖 = 多吃，保持健康<br/>
+BAEBAE的歌词：“我们很舒服，所以我们变胖了。”</p>
+        <p><span style="color: #fbff00;">大声：</span>V = 我没有什么可羡慕的<br/>
+I = 你是如此<br/>
+A = 一个美丽的人<br/>
+I = 我想永远和你在一起<br/>
+Pi = 当你需要的时候，永远的VIP</p>
+        <p><span style="color: #33FFFF;">胜利：</span>谢谢你，也对不起。我想和你在一起，对你更好一些。这是真的。实际上，我是对待VIP最好的人，但你只喜欢G-DRAGON或T.O.P，我嫉妒了。我需要更多的爱。你必须治愈我。你是我的私人护士</p>
+      </div>
+    </div>
+  </div>
+  <img src="170525m.jpg" style="width: 300px;">
+  <hr class="full-width-line" />  
+
+  <div id="interview2017-june" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2017.html#interview2017-june-jump" class="jump-button">6月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="magazine-170612-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017june.html#magazine-170612" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/KErrFNIuHhM?si=f3YKaV0GZjV_4yor" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2017年6月12日</strong></p>
+        <p>大声登上日本杂志《FRaU》2017年7月刊</p>
+        <p>详细资讯：<a href="https://bigbangmusic.de/index.php/2017-06-15-04-39-56-eng-trans-daesung-d-lite-frau-magazine-japan-interview-june-2017" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bigbangmusic.de</a></p><br/>
+      <ol style="list-style-position: inside; color: white;">
+        <li><span style="color: #FF66CC;">问：</span>在日本完成首次巨蛋巡回演唱会后，您有什么感想？<br/>
+        <span style="color: #33FFFF;">大声：</span>的确如此。独自一人让我可以自由地利用整个舞台。（笑）在大家的帮助下，我完成了一场与以往不同的体力挑战。（笑）我们5人的活动暂时停止，今年我们4人将开始各自的个人活动。对我来说，0.TO.10巡演结束后，我立刻就开始制作我的个人专辑，并全力投入到我的巡回演唱会中。因此，当巡演结束时，我有一种“毫发无损地到达了这一步”的安全感。同时，享受舞台的无忧无虑的感觉也比其他任何事情都重要。我也对一直支持我的粉丝们心怀感激……这些想法一直萦绕在我的心头，即使演唱会已经结束，我的内心依然忙碌（笑）。在录音的两个月里，我戒掉了我最爱的红酒。有时我会感到沮丧，但克服困难后取得的巨大成就总是让我产生这样的想法：“如果可以，我想再经历一次！
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+        <br/><li><span style="color: #FF66CC;">问：</span>我们能期待一下你未来的计划吗？<br/>
+        <span style="color: #33FFFF;">大声：</span>我是一个喜欢专注于当下，努力做好眼前一切的人。我不是那种会刻意为未来做计划的人；我不想太忙（笑）。但是，通过这次的个人活动，我看到了很多东西，那时我就想，“2017年我可以更忙一些，对吧？</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>看来你完全没有机会休息？<br/>
+        <span style="color: #33FFFF;">大声：</span>巡演结束后回到韩国，我身心都得到了很好的休息，现在很自由。的确，虽然我的确想过去度假，但我不知道是因为我还没有敞开心扉，还是因为我比较胆怯，所以无法完全停下来休息。最后，我只是不停地练习，折磨自己（笑）。不过，我晚上会在YouTube上看我喜欢的艺人，所以也挺轻松的</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>即使你们五个人都各自进行个人活动，你们还是会互相联系的，对吧？<br/>
+        <span style="color: #33FFFF;">大声：</span>当然，这是必须的！我们各自进行个人活动并不是因为我们的关系变差了（笑）。虽然最近我们确实很忙，聊天室变得很安静，但有时成员们喝多了会发信息说‘我好想你’。我们在一起超过10年了；我们经常会想着成员们，发信息问‘你现在在做什么？’</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>你们会和成员们分享自己的烦恼吗？<br/>
+        <span style="color: #33FFFF;">大声：</span>不。成员们总是说我是个‘神秘人’（笑）。其实，我烦恼的最终答案通常都来自我自己；每当我在安静的时候面对自己，我都会审视自己的内心，问自己：‘我该如何做好这件事？’从那里，我自然而然就能看到问题的根源。但是，当你不想面对自己的问题时，无论你告诉别人什么，你仍然会为找不到答案的部分而挣扎，对吧？啊，有件事我想弄清楚，我可以问问大家吗？夏天快到了，我该如何舒适地度过这个季节呢？我个人体温偏高，冬天通常穿得很少。天气热的时候，我往往会失去动力，什么都不想做。夏天我真的会变得很笨拙！这真的让我很沮丧！（笑）</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>男人的人生是从40岁开始的！？婚姻是……？你四月份刚庆祝了28岁生日！即将步入30岁，你理想中的男性是什么样的？<br/>
+        <span style="color: #33FFFF;">大声：</span>我一直认为，男人的人生要到40岁才真正开始。如果我的目标是迎接一个精彩的40岁，那就意味着我必须在那时拥抱浪漫。对女人来说，浪漫始于30岁；对男人来说，浪漫始于40岁。一个人的个性色彩可以逐渐展现出来。因此，关于我如何度过我的30岁，我没有任何具体的计划，但最终，我觉得一个人在20多岁和30多岁时不应该懒惰，必须不断地打好基础，否则到了40多岁就无法风采依旧。因此，每一天都非常重要。无论多么艰难，只要我能一个接一个地克服困难，我的内心就会得到磨练，我的自信心也会随之提升。到那时，服兵役的意义就会更加深刻。我相信，大约两年的军旅生涯可以磨练人的意志，使一个人在身心两方面都更加成熟。我认为，真正的成年人与我之间还有一段距离，所以我希望努力成为一个心胸开阔、视野更广阔的人</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>我们可以看出你很有想法，而且是一个独立的人<br/>
+        <span style="color: #33FFFF;">大声：</span>毕竟出道已经10年了。我认为这一切都是通过我在工作中承担的责任而培养起来的。无论是团体活动还是个人活动，都有很多工作人员为了我、为了我们付出了很多努力，不是吗？不用说，我很感激，但更重要的是，我们需要培养更强烈的责任感。经纪人、造型师、发型师、摄影师、保安等等……今天的舞台也是很多人共同努力的成果。我希望我的作品能得到与我合作过的人们的赞扬，比如‘我以前和D-LITE合作过’。我希望就是这样</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>你现在还在工作吗？你对婚姻有什么想法？<br/>
+        <span style="color: #33FFFF;">大声：</span>总有一天我会结婚的，但我还没有对妻子有具体的理想形象。至于时间，大概会在37岁左右吧，我希望到那时能够遇到那个我可以全心全意依靠的人！（笑）</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>将来能和家人一起住在韩国真的是最好的吗？<br/>
+        <span style="color: #33FFFF;">大声：</span>是的，但我确实想过在其他国家居住。夏威夷、东京、洛杉矶、悉尼等等。特别是东京，虽然我去过无数次，但每次去那里，我都会觉得，‘啊，真是个好地方！’而且东京可以方便地往返札幌，这也不错。（笑）海鲜、甜瓜……札幌真是我的梦想之地，拥有我喜欢的一切</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>既然如此，让我们期待你们在日本开展更多活动吧。“当然，我一直在思考如何让大家都开心。包括我在内的四个人，今年是重要的一年，我们会各自努力，创造更多美好的回忆<br/>
+        <span style="color: #33FFFF;">大声：</span>为了变得更强大，成为更优秀的五人组合，为了实现每个人进步的愿望，D-LITE 将粉丝放在首位，并从首尔传递了他们大量的爱。韩国和 D-LITE 一样充满激情。下一个目的地已经确定！</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>烤肉、火锅等等，韩国美食无论吃什么都觉得美味；D-LITE最喜欢哪一种呢？<br/>
+        <span style="color: #33FFFF;">大声：</span>如果要说我最喜欢的，那还是泡菜汤。不管喝过多少次，我都不会厌倦。当然，在寒冷的冬天喝泡菜汤很舒服，但在夏天出汗的时候喝泡菜汤也很棒。我真的很怕热，但这无可争议。吃完泡菜汤后，我会感到神清气爽，仿佛压力都得到了缓解，而且精力也更充沛了。所以，来韩国一定要尝尝泡菜汤。还有豆腐汤、部队锅，我也推荐。特别是喜欢吃辣的人，一定要尝尝辣鸡爪，这道菜即使是韩国人也觉得辣，它是用非常辣的酱汁炸鸡爪做成的。辣度是那种你第一次尝试就会喜欢的程度</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>对于那些已经对韩国料理感到满意的人，您还有什么其他推荐吗？<br/>
+        <span style="color: #33FFFF;">大声：</span>啊，这个问题……我通常被问到这个问题时会感到困扰。从日本来的人通常都会事先做些功课，所以他们可能比我了解得更多。虽然我确实会想到去新沙洞林荫道和东大门购物，但我建议去南山。从山上往下看真的很美，而且街边有很多便宜的食物。那里有一家非常有名的炸猪肉摊。是情侣约会的好去处</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>那带日本女孩去约会呢？<br/>
+        <span style="color: #33FFFF;">大声：</span>那就去我家吧，开玩笑啦。（笑）如果是她第一次来韩国，那还是去东大门。那里有很多24小时营业的摊位，所以非常热闹欢乐。也有很多专门卖参鸡汤的店，但也可以购物、吃参鸡汤、看电影……这是一条全方位的约会路线。（笑）</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>韩国引以为傲的东西；让我们直接问，韩国的魅力是什么？<br/>
+        <span style="color: #33FFFF;">大声：</span>当然，有很多美食。但就像我唱歌表演一样，我想以世界认可为目标。然而，最独特的优势在于情感的深度和丰富性。例如，即使是第一次去餐厅，阿姨们也会热情地迎接你，提供服务，下次你再来，她们会记得你，热情地欢迎你，诸如此类的事情。购物时也是如此。“请稍微便宜一点”之类的对话也是日常沟通的方式。这种民族特性真正重视和考虑人与人之间的紧密联系。这可能和大阪很相似吧？！
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+      </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div id="170621" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017june.html#170621-jump" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年6月21日</strong></p>
+        <p>GD接受 iD France 采访</p>
+      <p>详细资讯：<a href="https://i-d.co/article/korean-style-is-about-moving-fast-g-dragon-discusses-the-sound-of-koreas-future/" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+          i-D</a></p><br/>
+      <ol style="list-style-position: inside; color: white;">
+        <li><span style="color: #FF66CC;">问：</span>你好，G Dragon！你穿的是香奈儿，你刚刚在首尔为他们表演过，香奈儿对你来说意味着什么？<br/>
+        <span style="color: #33FFFF;">GD：</span>香奈儿就是香奈儿，它不是一个品牌。世界上没有任何东西能比得上香奈儿。无论你走到哪里，人们都知道它。你无法解释香奈儿，它是一个动词
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+        <br/><li><span style="color: #FF66CC;">问：</span>你的演出是为一群小观众准备的。和你以前在体育场演出相比，感觉怎么样？<br/>
+        <span style="color: #33FFFF;">GD：</span>说实话，我更喜欢小型演出。这样更有趣。每次登台的感觉都不一样。能量永远不一样，观众也不同，氛围也一直在变化</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>上台前感觉怎么样？<br/>
+        <span style="color: #33FFFF;">GD：</span>我挺冷静的。说实话，我已经很习惯了。我六岁开始音乐生涯。Bigbang出道的时候，我十九岁，韩国年龄。如果我没记错的话，你们应该是十七岁吧</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>韩国的年龄制度不一样？<br/>
+        <span style="color: #33FFFF;">GD：</span>是啊！其实韩国是世界上唯一一个这么规定的国家。问问我们的总统就知道了！我不知道为什么，真希望知道。我今天28岁。但在韩国，我已经30岁了。我知道，这很糟心……</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>你在亚洲算是超级巨星，在西方国家也相当有名。成为这样的偶像感觉如何？<br/>
+        <span style="color: #33FFFF;">GD：</span>听到你这么说，我感到很荣幸！你知道，这就是21世纪的时代：每个人都联系在一起，世界瞬息万变。这看起来很特别，但同时又很自然。如果我发布新内容，世界上的每个人都会在同一时刻知道我在做什么。就像我与人联系的方式一样，我觉得现在的社交媒体将时尚与音乐、艺术与流行音乐等等紧密地联系在一起</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>你曾带着你的品牌 Peaceminusone 在巴黎举办过展览。你把自己定义为设计师吗？<br/>
+        <span style="color: #33FFFF;">GD：</span>我不认为自己是设计师，而是一位艺术家——一位有很多作品的艺术家。我的品牌不仅仅是一个时尚品牌。两三年前，我在首尔市立美术馆举办了一场展览，支持韩国年轻新锐艺术家。我想让人们知道，韩国艺术家也能创作出伟大的作品</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>韩国时尚每一季都越来越火爆，很多人都把它当成一种新现象来谈论。你也有同样的感受吗？<br/>
+        <span style="color: #33FFFF;">GD：</span>它确实越来越火爆，但这不仅仅是时尚。整个韩国市场都在变大：无论是时尚、音乐还是韩流——无论什么。这是一种整体的文化，而我就是其中的一部分</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>你开始做音乐的时候有没有预料到这种转变？<br/>
+        <span style="color: #33FFFF;">GD：</span>我刚开始做音乐的时候并没有想着出名。我的意思是，那不是我最初的目标。当然，我看到越来越多的人对韩国文化感兴趣，我为此感到非常自豪。某种程度上，我感到很荣幸。我热爱我的国家，所以看到它闪耀光芒我感到无比高兴。它发展得非常快，有好的一面，也有坏的一面，但我努力从中汲取精华。我仍然想尝试新事物，这样我就能了解它们，然后把这些东西教给年轻人</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>您如何描述韩国风格？<br/>
+        <span style="color: #33FFFF;">GD：</span> 我年轻的时候，对日本的文化、风格和生活方式非常着迷。我也喜欢中国电影。我想说的是，我们过去常常向不同的亚洲国家学习，甚至向美国和欧洲学习。相信我：韩国人学得很快。最重要的是不断学习，否则你就只是在抄袭。所以，如果你想成为一名艺术家，那就创造属于你自己的东西。基本上，韩国风格就是快速行动。欧洲曾经对日本着迷，但如今，许多人的目光都集中在韩国。我们欣赏的不再是极简主义或美学，而是韩国的活力</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>这种能量从何而来？<br/>
+        <span style="color: #33FFFF;">GD：</span>你知道吗，因为我们有一颗渴望的心灵。我们已经名声显赫，备受认可，但我们仍然渴望更多。我们依然渴望。韩国人，包括我在内，都渴望进步得越来越快。在音乐、时尚、艺术领域也是如此。一击必杀：这就是我的心态</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>做音乐的意义究竟是什么？<br/>
+        <span style="color: #33FFFF;">GD：</span>这是一个非常大的问题。我并没有确切的答案，所以我会谈谈我的新专辑《权志龙》  ——我的真名。这张专辑是我30岁人生中迈出的新一步。所以我决定将我的巡演命名为《第三幕》（Motte）。这是我职业生涯的第三幕。《Motte》讲述了我的出身。这张专辑让我回归本源。我们都生活在数字世界，但我把我的专辑放在U盘里，每个U盘上都用手绘的红色划线来代表DNA。其中一些是我自己画的</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>如果你可以许个愿望，你会许什么？<br/>
+        <span style="color: #33FFFF;">GD：</span>你是说我的愿望？iD 的封面！
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+      </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div id="magazine-170624-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017june.html#magazine-170624" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年6月24日</strong></p>
+        <p>GD接受 ELLE 采访</p>
+        <p>详细资讯：<a href="https://www.elle.co.kr/article/18600" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            ELLE</a></p><br/>
+      <ol style="list-style-position: inside; color: white;">
+        <li><span style="color: #FF66CC;">问：</span>作为G-Dragon一路走来，想必是一段如梦似幻的时光，但你有没有想过从梦中醒来呢？<br/>
+        <span style="color: #33FFFF;">GD：</span>首先，我很庆幸这不是梦。如果是梦，那恐怕会持续很久。公众记忆中的G-Dragon是2006年才出现的，但我从13岁就开始以G-Dragon的身份生活。我从6岁就开始活跃在娱乐圈，在这个领域摸爬滚打了24年，从未离开过任何一家公司。当然，学生有学校，上班族有公司，但我从小就隶属于某个经纪公司或拥有一个艺名。由于工作时间太长，我的精力不如从前了。我的精神力量非常强大，但由于体力跟不上，心理上也承受着很大的压力。仿佛命中注定一般，我精力完全耗尽的时候，竟然接手了最棘手的课题……当然，事后回想起来，我想我会意识到那是一段宝贵的时光
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+        <br/><li><span style="color: #FF66CC;">问：</span>如果可以回到过去，选择现在的生活，假设你了解自己迄今为止经历的一切，你会做出怎样的决定？<br/>
+        <span style="color: #33FFFF;">GD：</span>如果我知道未来会发生什么，我会选择重来一次。让美好的事物更加美好，避免糟糕的事情。这很容易。反之，如果我不知道未来会发生什么，我会为此焦虑不已。我一生中犯过错，也目睹过太多重大事件。从二十五六岁开始，经历了这么多，大多数事情都无法再困扰我了。如果我面临同龄人同样的烦恼，我想我也不会觉得那么严重。事实上，我在制作个人专辑时就遇到了这样的困境。我相信，那种分不清梦境与现实的感觉，并非我独有，而是每个人都会有的。在电影《楚门的世界》中，每个人都可能经历的事件就发生在这个情境中。即便并非什么惊天动地的大事，无论你是名人还是普通人，每个人一生中至少都会经历一次梦想成真或遭遇不可思议的境遇。只不过我的舞台更大，我必须与公众分享；发生在我身上的事或许并非多么惊天动地。然而，当这些事与家人朋友分享，并产生深远的影响时，我的感受也更加强烈。要通过个人专辑来讲述这些故事……说实话，我并不真的想这么做。这张专辑对我来说更像是一份送给自己的礼物。正如我之前提到的，我希望日后，当我回顾这张专辑时，我会想：“三十岁的时候，我做了一些不错的作品”，“我人生中也因此留下了一个重要的印记”。但我并不想让G-Dragon成为这张专辑的主角</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>这会是我第一次也是最后一次袒露心声吗？<br/>
+        <span style="color: #33FFFF;">GD：</span>我不知道。真的不知道。我只是第一次以权志龙的身份介绍自己。G-Dragon、权志龙、Peaceminusone，这些都是我根据不同场合用来区分身份的名字。或许以后会有新的名字出现。无论是写书还是拍电影，如果我觉得有必要，任何新的工作形式都有可能。我现在觉得，至少需要正式地向公众介绍一次权志龙。G-Dragon不是歌手的真名，而是权志龙的艺名。因为对我来说，权志龙比G-Dragon更有意义。如果说权志龙之前一直在舞台上扮演G-Dragon，那么这一次，G-Dragon将以权志龙的身份出现。正因如此，我才感到非常困难、尴尬，并且很谨慎</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>感谢您分享您的真心话。最后，我可以说声恭喜您三十岁了吗？<br/>
+        <span style="color: #33FFFF;">GD：</span>当然，这的确值得祝贺。我其实挺喜欢变老的
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+      </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div id="magazine-170628-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017june.html#magazine-170628" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年6月28日</strong></p>
+        <p>太阳接受 ELLE MEN 采访</p>
+        <p>详细资讯：<a href="https://bigbangmusic.de/index.php/2017-06-28-11-38-11-eng-trans-photos-taeyang-for-elle-men-hong-kong-july-2017-edition" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bigbangmusic.de</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #33FFFF;">太阳：</span>过去的十年我和Bigbang一起度过，一起参加各种活动，我的生活因此变得充实。感觉如果没有Bigbang，就不会有我。我一直在努力准备我的专辑，计划是希望能在演唱会之前发行。虽然我不能和大家分享这张专辑会是什么样子，但总的来说，这次我与很多以前没有合作过的制作人合作，尝试了很多新的东西。我希望这是一张非常贴近我、更像我自己的专辑。关于演唱会，很多方面仍在讨论中。我一直觉得演唱会最重要的部分是好好呈现我的音乐，让每个人都能清楚地听到表演，此外，演唱会的流程和效果也不容忽视。最重要的是，我希望忠于舞台，一个能够衬托我，太阳，作为歌手的舞台，舞台始终是重点，也是这场演唱会的主题。作为Bigbang的成员，我进行了如此多的演出，此外，我自己也发行了专辑《Rise》并进行了巡回演唱会，我很幸运，在那一刻，我总是觉得每一场演出都是最难忘的。这也意味着每一场演出都比上一场更进一步。忠于自我，总是优先考虑下一首歌
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #FF66CC;">问：</span>作为一名歌手和词曲作者，拥有如此多的热门歌曲，你是否感到必须超越自己的压力？<br/>
+          <span style="color: #33FFFF;">太阳：</span>这似乎与我的性格有关。我不是一个喜欢背负重担或在做事时感到巨大压力的人。只有当我完全摆脱包袱时，就像我们刚开始做音乐时的那种心态，我才能自由地构思或想出专辑的创意。这不仅是一种成就感，也让我非常享受这个过程。我一直希望我能保持这种热情，享受创作音乐的过程，所有这些对音乐家来说都非常重要</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>在生活和音乐创作中，太阳始终相信“忠于自我”，尤其是在“寻找真理”方面<br/>
+          <span style="color: #33FFFF;">太阳：</span>好音乐的标杆首先在于真实。音乐创作必须包含歌手本身所拥有的活力和激情。其次，音乐应该引起大众的共鸣，让听众感觉仿佛在唱自己的情感，只有这样才能算得上是一件好作品。坦白说，对于我参与过的所有歌曲，我都很满意。如果非要选一首最喜欢的，那一定是《Eyes, Nose, Lips》。这首歌不仅是人们最喜爱的歌曲，也是让我意识到创作音乐只需坦诚地表达自己的故事的歌曲</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>虽然Bigbang的十周年纪念日刚刚结束，但如果从太阳的练习生时期算起，它已经占据了他人生的一半以上<br/>
+          <span style="color: #33FFFF;">太阳：</span>过去的十年左右时间，我一直和Bigbang在一起，一起参加各种活动。我的生活因此变得充实，感觉如果没有Bigbang，就没有我。在这漫长的岁月里，我们取得了无数的成就，但同时也经历了许多风雨。每一个奖项，每一项纪录都非常珍贵，但如果要我选择一件最不能舍弃的东西，那一定是所有关于Bigbang的回忆，与所有粉丝的回忆，以及与工作人员一起工作的所有回忆。无论是愉快的还是艰难的，好的还是坏的，它们都绝对不能被抛弃。没有这一切，就不会有现在的我，也不会有现在的Bigbang</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>自出道以来的这十年也是韩流的巅峰时期，尤其是这十年是K-pop音乐从韩国传播到亚洲乃至全世界最重要的十年。站在韩流的巅峰，你们有何感想？<br/>
+          <span style="color: #33FFFF;">太阳：</span>我们从K-pop文化起步，K-pop给了我们一个舞台。在某种程度上，我们非常幸运。同时，我们也意识到，我们所做的一切不仅在我国，而且在许多其他国家也会被人们听到。因此，当我们制作专辑或准备舞台表演时，我们总是激励自己创作出高质量的作品</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>过去，你将你崇拜的偶像视为一种信仰，而现在，Bigbang 已成为许多人的信仰。如果要定义这个“Bigbang 世代” ？<br/>
+          <span style="color: #33FFFF;">太阳：</span>这是一个信仰正在改变的世代。很多人看待我们的方式，就像我们年轻时看待自己喜欢的歌手一样。那时，他们的存在对我来说不仅仅是艺术家，即使我们从未见过面，也感觉他们一直与我们同在。我也希望我们的粉丝或听我们音乐的人会有同样的感觉，希望我们永远留在大家的记忆中</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你已经实现了许多目标，但你也不能继续在“高温”下工作<br/>
+          <span style="color: #33FFFF;">太阳：</span>并不是说现在不‘热’了，只是我知道并非所有事情都必须在‘高温’下完成。我可以根据情况调整自己的状态，需要冷静的时候我会降低状态，看到喜欢的东西时我会更加热情地投入。随着年龄的增长，我现在知道如何区分生活中重要的事情，避免耗尽自己</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>这是太阳首次与品牌合作，正如这个系列的名字一样，充满了激情、温暖和活力<br/>
+          <span style="color: #33FFFF;">太阳：</span>Fendi是我一直很喜欢的品牌，我觉得它非常时尚。能够与这样的品牌合作，是我以前从未想过的事情。我真的很高兴能有这样一个绝佳的机会，进行如此时尚的合作。与西尔维娅·文图里尼·芬迪合作，见到她和她的团队，做了很多准备工作，这是一个非常愉快、非常激动人心、非常有趣的过程。这些作品也充分展现了我真正想要表达的想法，为了实现我想要表达的内容，每个人都进行了很多沟通，工作非常努力，我希望这没有让芬迪的工作人员太累，哈哈</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>这次Fendi x Taeyang男装系列的主题是“讯息”。“信仰”、“恩典”、“思考”、“拯救”、“热情”、“精彩”、“爱”、“尝试”、“信任”、“是的”等词语出现在该系列的夹克、T恤、包袋、鞋履和其他单品上。其中一些词语的灵感直接来源于Taeyang，每个词语都有其独特的意义<br/>
+          <span style="color: #33FFFF;">太阳：</span>这次的主题是讯息，其中包含一些对我而言非常重要的词语，它们激励着我，或者对我有着特殊的意义。当然，这个系列也可以代表我自己。我的真名是Young Bae。我喜欢用英文写出这个名字的感觉。其他国家的人也很容易发音，所以无论是设计中出现的“young bae”，还是我经常在签名中画的雏菊——我最喜欢的花——都出现在这次合作的单品上</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>18岁踏入音乐圈，如今即将迈入30岁，作为一名歌手，作为一个男人，与年龄的增长相比，你更看重人生车轮上的印记<br/>
+          <span style="color: #33FFFF;">太阳：</span>现在我看待事物时，会分清轻重缓急，我会好好安排。年轻的时候，我很容易对很多事情充满热情。现在我会专注于一件事，朝着一个方向努力</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>对一个男人来说，30岁是一个转折点，他是如何看待男人的年龄的呢？<br/>
+          <span style="color: #33FFFF;">太阳：</span>我认识很多30岁之前的人，说实话，真正能称得上‘30岁就功成名就’的人并不多。因此，我也希望我的成长不仅仅以年龄来衡量，而是以时间的流逝和随之而来的成熟来衡量。如果非要说30岁以后有什么变化，也许是看到一些看起来很酷但穿起来很麻烦的衣服，我在20多岁的时候还会买，但现在我30岁了，私下里我只会买舒适的衣服</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>去年，太阳被评为世界第二帅的男人。除了在Instagram上表达惊讶之外，他还在采访中说，去年看到调查结果时，他笑了很久，不明白为什么自己是第二名。尽管如此，太阳对他的排名并没有任何抱怨外貌<br/>
+          <span style="color: #33FFFF;">太阳：</span>很难选出自己身上最吸引人的部位，但我感觉整体上我有自己的风格和感觉，我喜欢自己的外貌，对自己没有任何不满意的地方。事实上，锻炼和训练身体才是最大的难题。说实话，自从我成为歌手以来，我很容易长胖，所以我一直每天只吃一顿饭。最近我长胖了不少，尤其是在休息期间，如果我一天吃超过一顿饭，体重就会立刻增加。因此，最近我又开始每天只吃一顿饭，并且一有时间就锻炼
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="170628m6.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="170628m7.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="interview2017-july" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2017.html#interview2017-july-jump" class="jump-button">7月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@GDTOP百度知道团队 点击进入观看完整视频</p>
+  </div><br/>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/TzeAwO0tKjc?si=EPQqXlSQE1qXuYas" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+      <div class="video-description">
+        <p>记者会</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=12720877&bvid=BV1qx411W77q&cid=21594583&p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>独家采访</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container" id="block6">
+        <p><strong>2017年7月28日</strong></p>
+        <p>胜利参加在台北的十周年展览记者会</p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div id="interview2017-dec" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2017.html#interview2017-dec-jump" class="jump-button">12月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="171204-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017dec.html#171204" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年12月4日</strong></p>
+        <p>太阳 在 GQ Korea入选 ：</p>
+        <ul>
+          <li>Men of the Year</li>
+        </ul><br/>
+        <p>详细资讯：<a href="https://alwaystaeyang.wordpress.com/2017/12/04/interview-gq-korea-december-2017-living-like-the-sun/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Wordpress</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="171204.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1712041.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1712042.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1712043.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1712044.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1712045.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1712046.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1712047.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1712048.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1712049.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="17120410.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="17120411.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="17120412.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+  </div>
+  <div class="content-wrap">
+    <div class="text-container">
+      <p>太阳接受 GQ Korea 采访</p>
+      <ol style="list-style-position: inside; color: white;">
+        <li><span style="color: #FF66CC;">问：</span>太阳过去接受《GQ》杂志的所有采访我都看过了。我注意到你大部分采访都谈到了未来的计划。你说你会谈恋爱，会进行世界巡演，还会发行一首纯人声的歌曲。你都做到了<br/>
+        <span style="color: #33FFFF;">太阳：</span>是吗？哈哈。你提到这些的时候我有点惊讶。我当时就说过这些话…… 
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+        <br/><li><span style="color: #FF66CC;">问：</span>现在还有什么（要完成的）？<br/>
+        <span style="color: #33FFFF;">太阳：</span>考虑到我的音乐，我最终得出结论：反映我生活的音乐更能让人与我的音乐和真诚产生共鸣。我做音乐越多，就越觉得——我不确定这是否是正确的表达方式——我的生活才是最重要的。当我从生活中的各种境遇中感受、学习并受到启发时，我就能创作出更真实的音乐。我不知道这对音乐家来说是否合适，但我想成为一个非常成熟的人。我觉得我的生活反映在我所表达的一切之中</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>你以前不是这样吗？比如在音乐方面，你的表演方式会符合某种表演类型？<br/>
+        <span style="color: #33FFFF;">太阳：</span>以前，工作是第一位的，发歌才是最重要的。我急着发歌，而不是为了表达自己的个人观点。不过，如果我以前不是这样，我就不会是现在的样子了</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>你从未刻意让自己成为适合综艺节目的人，但你却成为了一个在综艺节目中毫不尴尬的人。我想这就是现在的太阳<br/>
+        <span style="color: #33FFFF;">太阳：</span>是的，如果我还是现在这个样子，我或许会在那些节目中表现得更好。但这也和时代有关。以前的综艺节目总是会夸大其词，渲染一些细节。这对我来说是个很大的负担，因为它并不适合我。但现在人们更希望看到事物的本来面目。现在我能做综艺节目，就是因为有了“观察类综艺”。[真人秀]</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>还有更多——关于你的第二张正规 专辑《RISE》？我觉得那时候太阳就转变了 现在的姿态。在Bigbang的舞台上，你和以前很不一样。看起来你真的在舞台上表演<br/>
+        <span style="color: #33FFFF;">太阳：</span>没错。我一直努力展现真实的自我，自然而然地就改变了。我不想提年龄，但我也不能忽视时间的影响。我的思维变得更简单了，也更清楚什么是核心</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>我清楚地记得，太阳想做一些事情，但公司反对，所以你不得不去争取和说服。这种情况也改变了吗？<br/>
+        <span style="color: #33FFFF;">太阳：</span>我的第二张正规专辑花了四年时间才完成，因为当时我们之间的矛盾非常严重。所以我无法展现我真正追求的音乐。在《眼睛、鼻子、嘴唇》之后，我的想法发生了很大的变化。我的音乐风格不断受到冲突、推迟，然后分崩离析，所以我一直在思考我能做什么样的音乐。这首歌问世了，我决定讲述我自己，而不是考虑任何音乐类型。很多人都喜欢这首歌，所以我认为真正的好音乐来自真诚的故事</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>那么第三张正规专辑《WHITE NIGHT》更能展现你自己吗？<br/>
+        <span style="color: #33FFFF;">太阳：</span>从各个角度来看都会有所不同。但我觉得这张专辑包含了我现在的感受和热爱，几乎我的全部身份都体现在里面了。为了这张专辑，我做了所有我想做的事情，几乎99%。我通过第二张正规专辑学会了如何去做。我最后悔的就是人际关系。我意识到，归根结底，最重要的还是人际关系。与人的关系，与公司的关系。我待人接物的态度变了。我以前很封闭，但（之后）我敞开心扉，与人相处感觉更自然了</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>我不确定这事儿真的那么容易做到。我觉得（和人）建立关系也是一种天赋。太阳是怎么做到的？<br/>
+        <span style="color: #33FFFF;">太阳：</span>如果我表达出自己的感受，我就重生了。哈哈</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>如果有人问你“你变了吗？”你会怎么回答？<br/>
+        <span style="color: #33FFFF;">太阳：</span>有变化，我可以肯定地说，（对我来说）这是好的改变</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>在我看来，有一点始终没有改变，那就是你是一个会用“真诚”这个词的人。我觉得太阳像孩子一样渴望纯粹的热情，现在依然如此<br/>
+        <span style="color: #33FFFF;">太阳：</span>如果这一点改变了，我想我可能就做不了音乐了。如果我不能全心全意地接受它，或者它不是（我热爱的东西），我就不可能去做它</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>最近你在看Mix Nine的练习生，感觉怎么样？你的出场时间很短，节目里只有你的加油致辞，所以我真的不知道你是什么感受<br/>
+        <span style="color: #33FFFF;">太阳：</span>我当初尝试当歌手的时候也很拼命，就这样成为了歌手。他们真的非常拼命。比如，我曾经怀疑过自己，“成为歌手对我来说为什么这么重要，我为什么要付出这么多？”还有，如果他们能具体地规划自己的梦想就更好了，但大多数时候梦想都很模糊。他们只是尽最大努力学习，无条件地更加努力。他们没有反思，也没有为奋斗做好准备——自己是什么样的歌手，什么样的音乐，什么样的舞台</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>你用了“奋斗”这个词，所以我想问你，我认为拥有纯粹激情能量的人也会有很多愤怒。但到目前为止，我从未见过太阳生气<br/>
+        <span style="color: #33FFFF;">太阳：</span>这真的很奇怪。我有那一面，但这从未被播出过。我不会生气，但我是一个非常直接的人。在成员中，我是对工作人员说坏话最多的人。这可能真的很冷漠。我也在电视上这样（对人们）说话，但被剪掉了。只播出了温暖的话语。以前的工作人员觉得很难和我合作，但现在我知道如何在说好话的同时解决问题</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>《WHITE NIGHT》听起来也是这样。即使是最强劲的舞曲，也会​​让人感觉柔和<br/>
+        <span style="color: #33FFFF;">太阳：</span>我想它应该是这样的。反正它包含了我现在的色彩</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>你最喜欢这张专辑里的哪首歌？<br/>
+        <span style="color: #33FFFF;">太阳：</span>我真的每首歌都喜欢。哈哈。但如果一定要选的话，我会选《Intro》——就像我的第二张正规专辑一样。我总是试图在《Intro》里展现专辑的整体主题或色彩。我觉得（《Intro》）在这张专辑里最能展现《WHITE NIGHT》的形象</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>另外，太阳的专辑里，最后一首歌和第一首歌一样重要。最后一首歌总是包含着精彩的演唱<br/>
+        <span style="color: #33FFFF;">太阳：</span>我是这样认为的。我总是想把太阳最热时的景象融入到最后一首歌里。我第二张专辑的第一首歌和最后一首歌都没有妥协，所以它们承载了整张专辑的色彩</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>有人说这张专辑太短了，就像上一张一样，毕竟这是 一张完整的专辑<br/>
+        <span style="color: #33FFFF;">太阳：</span>我同意。它至少应该有10首歌</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>你也删了一些歌？<br/>
+        <span style="color: #33FFFF;">太阳：</span>第二张专辑里删了一些歌，但这张专辑就这样完成了。作为创作者，我创作了8首歌，并且全部收录进去，我很满意。如果能多放一些就好了，但如果多放一些，今年就发不了了。今年我起步很早，每个月都出一首歌。几乎没有休息过</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>以前你会对一首歌进行打磨和改进，但现在你会迅速进入下一步<br/>
+        <span style="color: #33FFFF;">太阳：</span>考虑到我的职业生涯，如果我不这样做，我觉得要达到我满意的程度会花费太多时间。我花了太多时间制作我的第二张正规专辑，所以后来我厌倦了听那些我最初创作的歌曲？我问自己“这样可以吗？”，然后我意识到这种挣扎对我来说并不好</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>这张专辑在国外比在韩国更受欢迎，你有什么感受？<br/>
+        <span style="color: #33FFFF;">太阳：</span>嗯，我很高兴它在国外受到欢迎？哈哈。但我希望在韩国也能有好的反响。因为我是一个用韩语唱歌的歌手</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>（我觉得）太阳是个品味独特，但又想打入主流的歌手。这么说来，在韩国获得良好的反响重要吗？<br/>
+        <span style="color: #33FFFF;">太阳：</span>我的歌在哪里（受欢迎程度）并不重要，我的优势在于我用韩语演唱。我的声音有个优点，就是用韩语唱歌，外国人听了不会觉得突兀。我从小听着外国音乐长大，但我的情感根植于韩国。这会比较难，但我用平衡的方式表达出来是正确的、很酷的方式，所以（我的音乐）在韩国和亚洲都能被认可。其实，外国歌迷即使听不懂歌词的意思，也会从头到尾唱我的歌吧？希望我用韩语演唱的歌曲也能获得良好的认可</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>你总是关注韩国歌手。最近在听谁的音乐？<br/>
+        <span style="color: #33FFFF;">太阳：</span>前辈YouJaeha的音乐，我想表达这种音乐在最近的流行趋势中。我听他的第一张正规专辑时，感觉非常纯粹，虽然已经过去很久了，但歌词仍然让人百分百产生共鸣。歌曲的力量在于它能唤起如此多的共鸣，我很惊讶他当时能创作出这样的音乐。我想，如果他能坚持到今天，K-pop可能会完全不同</li>
+        <br/><li><span style="color: #FF66CC;">问：</span>有趣的是，如今被评为最佳歌手的歌手，竟然高度评价了那位因为“唱功不足”而被禁的歌手<br/>
+        <span style="color: #33FFFF;">太阳：</span>真的吗？想想看，以当时的标准来看，或许确实如此。但现在对我来说，这才是真正的音乐。其实，这（音乐）是无法评价的。你根本无法用唱功来衡量。你明白我的意思吧？
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+      </ol>
+    </div>
+  </div><br/>
+  <hr class="full-width-line" />  
+
+  <div style="text-align: center;">
+    <div id="171207" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2017dec.html#171207-jump" class="jump-button">跳转到 2017 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年12月7日</strong></p>
+        <p>胜利登上杂志《Stream》</p>
+        <p>详细资讯：<a href="https://www.facebook.com/photo/?fbid=1471037406345383&set=info-seungris-stream-magazine-interview-translationasias-no-1-dj-creator-seungri" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            VIP Universe</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #FF66CC;">问：</span>最近过得怎么样？<br/>
+          <span style="color: #33FFFF;">胜利：</span>假期快到了，我比平时更忙。我一直在专注于个人宣传和事业，尤其是NHR，我非常重视它。我也在夜店做DJ
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #FF66CC;">问：</span>你亲自在夜店做DJ，这很令人惊讶<br/>
+          <span style="color: #33FFFF;">胜利：</span>我真的很喜欢听音乐，所以我做DJ是因为我喜欢。我用4台CDJ，所以会把音乐从这边放到那边，如果我兴奋起来，甚至会上台表演。用4台CDJ并不是说听音乐的效果会更好，但是这样表演会让我更兴奋，也能带动现场气氛。DJ也是一种表演</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>在韩国DJ中，NHR很受欢迎。你为什么创立NHR？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我想把那些处境艰难的人培养成亚洲的明星DJ。去年，DJ GLORY在我开的嘻哈酒吧Monkey Museum打碟，音乐非常棒。于是我和他聊了起来，他说他自己也做音乐。我听了他的作品，真的太棒了。我问他：“你做的音乐这么好，为什么不分享呢？” 他说他没有机会。他喜欢音乐，所以开始自己创作音乐，也做DJ，但是一直没有机会被认可。我当时觉得很遗憾。所以我跟GLORY说，我想听听所有音乐人的作品，第二天我就把他们的歌都听完了。我看到了其中的潜力。从那天起，我努力奋斗，创立了NHR</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>把旗下艺人培养成亚洲明星DJ似乎并不容易<br/>
+          <span style="color: #33FFFF;">胜利：</span>电子舞曲音乐节的DJ档期竞争非常激烈。音乐节人山人海，但相比之下，DJ的数量却远远不够。春、夏、秋季，各种节日活动层出不穷，一天之内，多个节日都需要DJ。未来，对DJ的需求只会持续增长。正因如此，我希望在这个特殊时期，将我们的DJ打造成为亚洲的明星DJ。我非常清楚自己目前的处境，无论是作为商业伙伴还是Bigbang成员，我都清楚自己有哪些不足，所以我不会盲目乐观。在经营多个企业的过程中，我积累了丰富的经验。我相信，将他们打造成为亚洲市场上的明星DJ的目标完全可以实现</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>您认为成为亚洲明星DJ需要具备哪些素质？<br/>
+          <span style="color: #33FFFF;">胜利：</span>你觉得大家去参加音乐节的原因是什么？原因可能有很多，但归根结底，是因为有知名的DJ来。观众喜欢我的派对真的是因为我放的音乐好吗？不，他们更喜欢是因为我是BIGBANG的胜利。DJ圈也是一样。既然你是DJ，你的音乐才华当然要出众，但你也需要在亚洲有名气。我会尽我所能帮助他们，让他们成为亚洲的明星DJ</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>在这方面，我认为“BIGBANG胜利厂牌”这个称号对NHR来说有很多优势<br/>
+          <span style="color: #33FFFF;">胜利：</span>幸好，很多人会来参加我举办的派对。一开始，他们是来看我的，但演出结束后，很多人都成了NHR旗下不同DJ的粉丝。这个过程有助于我们的DJ成名。我认为它作为一个平台，是一个优势</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>我觉得你真的很关心NHR的DJ们<br/>
+          <span style="color: #33FFFF;">胜利：</span>是的，我希望他们能成功。DJ Glory和DJ TPA演出结束后，汗水都浸透了鞋底。他们真的很有热情。我相信像他们这样的人应该得到认可</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>NHR旗下艺人外形出众。在招募DJ时，您更看重他们的外形还是明星气质？<br/>
+          <span style="color: #33FFFF;">胜利：</span>当然。我是个做生意的人。我的目标是超越韩国明星DJ的范畴，将他们打造成亚洲明星DJ，所以我当然会考虑这一点</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>请您谈谈NHR（Natural High Record）的含义<br/>
+          <span style="color: #33FFFF;">胜利：</span>我不抽烟，所以我拥有的Monkey Museumx是一家无烟俱乐部。说实话，如果你去其他俱乐部，里面到处都是烟味，我想证明即使不抽烟也能玩得尽兴，所以我开了一家无烟俱乐部。我也把它命名为“Natural High Record”，寓意相同。它的含义是，我们将创作能让听众即使不借助酒精或香烟等辅助手段也能感受到“自然快感”的音乐</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>BIGBANG 的哥哥们或 YG 的 CEO 对 NHR 的成立有何反应？<br/>
+          <span style="color: #33FFFF;">胜利：</span>当初萌生成立 NHR 的想法时，我跟公司说了。我是 YG 旗下的艺人，如果我不跟公司说就成立一个独立的厂牌，我觉得这在道德上是不合适的。这和音乐有关，所以大家都支持我。他们都知道我一直很喜欢 DJing。而且我们的老板本身就是一名 DJ，他现在还在做 DJ</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>NHR 的音乐风格是什么？胜利：我认为细分音乐风格没有意义。我们划分音乐风格有很多原因，但最终都是跨界的。所以说 NHR 的音乐风格是“各种类型的音乐”才更准确<br/>
+          <span style="color: #33FFFF;">胜利：</span>我认为细分音乐风格没有意义。我们划分音乐风格有很多原因，但最终都是跨界的。所以说 NHR 的音乐风格是“各种类型的音乐”才更准确</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你们去年持续发行音乐<br/>
+          <span style="color: #33FFFF;">胜利：</span>去年我在NHR发行了50首歌，都是我认真制作的。虽然没有热门歌曲，但我认为这本身就很有意义。我觉得DJ拥有很多歌曲是一种优势。你需要准备的歌曲数量比你想象的要多得多，才能满足一小时的DJ需求</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你在世界各地都举办过NHR派对，派对策划都是你自己做的吗？<br/>
+          <span style="color: #33FFFF;">胜利：</span>策划起来很容易，因为我之前参加过BIGBANG的世界巡演。演唱会结束后，哥哥们回宿舍休息的时候，我总是会去夜店。所以我跟世界各地的夜店老板都有交情。只要一个电话，我就能立刻选好场地，所以并不难</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>在所有NHR派对中，哪一场最让你难忘？<br/>
+          <span style="color: #33FFFF;">胜利：</span>是中秋节期间在马尼拉举办的那场派对。之前在海外举办派对的时候，我只能安排好行程，所以没法到处旅行。但这次马尼拉的派对，我们有机会去观光，甚至还去了长滩岛，所以行程本身就令人难忘。当然，派对也很棒</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你和DJ们关系似乎很亲密，因为你们一起进行了海外巡演。Instagram上有很多你们的合照<br/>
+          <span style="color: #33FFFF;">胜利：</span>当然。我们一起进行海外巡演后关系变得非常亲密。不仅是NHR旗下的艺人，我也尽量和我餐厅的员工保持友好关系，没有任何拘束。DJ DANU之前也曾在我开的流动酒吧兼职。我问他为什么不试试，他就是这样开始做DJ的。即使在和同厂牌的DJ们合作时意见不一致，我也喜欢一起讨论，不会直接表达我的观点，而是会说“如果这样做，观众会不会更喜欢？”另一方面，和这些朋友在一起，我也能够理解BIGBANG的哥哥们。在BIGBANG里，我是忙内。但在这里，我是领导者，所以责任重大</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你一定很忙，但你仍然关心每一位员工，这很令人惊讶<br/>
+          <span style="color: #33FFFF;">胜利：</span>我觉得这其实是找借口说自己忙，做不了事。比如，因为流动酒吧营业到很晚，如果我没有其他安排，我可以去我的流动酒吧，而不是去别的地方喝酒，这样我可以和我的员工们交流，增进感情。而且，我喜欢参与所有店铺或业务的运营，和他们一起努力。这简直是一种病。病。如果我有什么想做的事情，即使睡不着觉，做完之后我也会感到满足。这就是为什么我睡眠很少的原因</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你似乎对所有事情都充满热情。电子舞曲音乐节在世界各地都很流行，你有没有想过以后举办自己的音乐节？<br/>
+          <span style="color: #33FFFF;">胜利：</span>完全没有。世界各地的音乐节市场都竞争激烈，我从没想过要跳进这片红海。不管音乐节办得多么成功，一年也就举办三天，很难盈利。我想打造的是明星DJ，而不是音乐节本身</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>有没有你视为榜样的厂牌？<br/>
+          <span style="color: #33FFFF;">胜利：</span>首先，我喜欢Spinnin' Records。Monster Cat是一家加拿大厂牌，主要做强劲的音乐，但我真的很喜欢他们的音乐。请大家去听听！Marshmello也是这个厂牌旗下的艺人</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>最后，请谈谈NHR的未来计划和愿景<br/>
+          <span style="color: #33FFFF;">胜利：</span>正如我之前在采访中提到的，我的目标是打造一个超越韩国DJ厂牌、代表亚洲的DJ厂牌。所以，我正在各个领域努力，希望未来能给大家带来好消息。敬请期待！
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+  </div>
+  <img src="171207.jpg" style="width: 400px;">
+  <hr class="full-width-line" />  
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="interview.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="interview2018.html">2018</a>
+    </nav>
+  </div>
+
+
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+  function toggleList(button, show) {
+  const listItem = button.closest('li');
+  
+  if (show) {
+    let nestedList = listItem.querySelector('ol');
+    if (!nestedList) {
+      nestedList = listItem.nextElementSibling;
+    }
+    
+    if (nestedList && nestedList.tagName === 'OL') {
+      nestedList.style.display = "block";
+      button.style.display = "none";
+      nestedList.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  } else {
+    const nestedList = button.closest('ol');
+    
+    if (nestedList) {
+      nestedList.style.display = "none";
+      
+      let parentLi = nestedList.parentElement.closest('li');
+      if (!parentLi) {
+        parentLi = nestedList.previousElementSibling;
+        while (parentLi && parentLi.tagName !== 'LI') {
+          parentLi = parentLi.previousElementSibling;
+        }
+      }
+      
+      if (parentLi) {
+        const expandBtns = parentLi.querySelectorAll('[onclick*="true"]');
+        expandBtns.forEach(btn => {
+          btn.style.display = "inline-block";
+        });
+        
+        parentLi.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  }
+}
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+
+  const counter = container.querySelector('.slide-counter');
+  counter.textContent = `${state + 1}/${slides.length}`;
+}
+
+document.querySelectorAll('.slider-container').forEach(container => {
+  const slides = container.querySelectorAll('.slide-item');
+  const counter = container.querySelector('.slide-counter');
+
+  counter.textContent = `1/${slides.length}`;
+});
+
+  </script>
+</body>
+</html>
