@@ -1,13 +1,15 @@
-<!DOCTYPE html><html lang="zh"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BIGBANG OT5</title>
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <meta name="apple-mobile-web-app-title" content="bigbangri">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
   <style>
     * {
       margin: 0;
@@ -424,178 +426,167 @@
     right: calc(100% + 10px);
   }
 
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .right-side{
+    position: relative;
+    align-items:center;
+  }
+
+  .slide-counter{
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .nav-button{
+    background-color: rgba(255,255,255,0.7);
+    border:none;
+    padding:10px 15px;
+    font-size:24px;
+    cursor:pointer;
+    border-radius:10px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: calc(100% + 10px);
+  }
+
   </style>
 </head>
-
 <body>
 <main>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="2019.html">Back</a>
+      <a href="taeyang.html">Back</a>
     </nav>
     <div class="title-group">
-      <h1>2019年4月</h1>
+      <h1>TAEYANG 东永裴<br/>2026年</h1>
     </div>
     <nav class="right-nav">
-      <a href="2019may.html">5月</a>
+      <a href="taeyang2027.html">2027</a>
     </nav>
   </div>
 
-  <div style="text-align: center;">
-    <a href="sns2019apr.html" class="jump-button">跳转到 SNS 时间线</a>
-  </div><br><br>
-  <hr class="full-width-line">
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@GDTOP百度知道团队 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=49028393&bvid=BV1Mb411K7pz&cid=85863539&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2019年4月11日</strong></p>
-        <p>韩国护国音乐会</p>
-        <p>太阳大声参演</p>
-      </div>
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="taeyang2026-may-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="taeyang2026.html#taeyang2026-may" class="jump-button">5月</a>
     </div>
-    <hr class="full-width-line" />
   </div>
+  <br/><br/>
+  <hr class="full-width-line" />
 
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/ZvSVxxXkGTY?si=q1la0o2j53rLln7b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2019年4月26日</strong></p>
-        <p>大田军民和谐节 彩排</p>
-        <p>太阳大声参演</p>
-      </div>
+    <div id="taeyang2026-may" style="display: flex; align-items: center; justify-content: center; justify-content: center; gap: 20px;">
+      <a href="taeyang2026.html#taeyang2026-may-jump" class="jump-button">5月</a>
+    </div><br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="260518ty" style="display: flex; align-items: center; gap: 10px;">
+      <a href="2026may.html#260518ty-jump" class="jump-button">跳转到 2026 时间线</a>
     </div>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/cGEX8CqTzJs?si=aGh1R4EMiqtO5Ypf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p>大声庆生</p>
-      </div>
+    <div id="260518solo" style="display: flex; align-items: center; gap: 10px;">
+      <a href="album.html#260518solo-jump" class="jump-button">专辑歌曲Mv</a>
     </div>
-    <hr class="full-width-line" />
   </div>
-
-  <div style="text-align: center;">
-    <p style="margin: 0;">下面的视频来自@L34- 点击进入观看完整视频</p>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115012093873703&bvid=BV1ZmtDz8Etd&cid=31634161999&p=13" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
+  <div class="content-wrap">
+    <div class="photo-container">
+      <img src="QUINTESSENCE.jpg" height="350" />
+    </div>
+    <div class="text-button-container">
       <div class="text-container">
-        <p><strong>2019年4月26日</strong></p>
-        <p>D's house EP13</p>
+        <p><strong>QUINTESSENCE</strong></p>
+        <p>2026年5月18日 推出第五张正规专辑</p>
+        <ul>
+          <li>Bad</li>
+          <li>Live Fast Die Slow</li>
+          <li>Would You (feat. TARZZAN, WOOCHAN)</li>
+          <li>Movie</li>
+          <li>Open Up (feat. The Kid LAROI)</li>
+          <li>Love Like This</li>
+          <li>Yes</li>
+          <li>Now</li>
+          <li>G.O.A.T</li>
+          <li>4U</li>
+        </ul>
       </div>
     </div>
-    <hr class="full-width-line" />
   </div>
+  <hr class="full-width-line" />
 
-  <div style="text-align: center;">
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/4zP74GN-bPQ?si=m02KLFAeVyY2hQ38" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p><strong>2019年4月27日</strong></p>
-        <p>大田军民和谐节</p>
-        <p>太阳大声参演</p>
-      </div>
-    </div>
-    <div class="content-wrap">
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/AgvoH-4S90c?si=EzsI0IXEfJHFK5My" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="text-container">
-        <p>Look At Me, Gwisun</p>
-      </div>
-    </div>
-    <hr class="full-width-line" />
-  </div>
-
-  <br><br><br>
+  <br/><br/><br/>
   <div class="header-container">
     <nav class="left-nav">
-      <a href="2019.html">Back</a>
+      <a href="taeyang.html">Back</a>
     </nav>
     <div class="title-group">
       <div id="footer"></div>
     </div>    
     <nav class="right-nav">
-      <a href="2019may.html">5月</a>
+      <a href="taeyang2027.html">2027</a>
     </nav>
   </div>
 
+
 </main>
 <script src="player.js"></script>
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399" crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
   <script>
     fetch("footer.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("footer").innerHTML = data;
       });
-
-document.addEventListener('click', function(e) {
-    const link = e.target.closest('a[href*="#"]');
-    if (link) {
-        const href = link.getAttribute('href');
-        
-        if (href.includes('.html')) {
-            return;
-        }
-        
-        e.preventDefault();
-        const targetId = href.substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-            setTimeout(function() {
-                const elementRect = targetElement.getBoundingClientRect();
-                const absoluteElementTop = elementRect.top + window.pageYOffset;
-                
-                const offset = window.innerHeight * 0.1;
-                const targetPosition = absoluteElementTop - offset;
-                
-                window.scrollTo({
-                    top: Math.max(0, targetPosition),
-                    behavior: 'smooth'
-                });
-                
-                window.history.pushState(null, null, '#' + targetId);
-            }, 50);
-        }
-    }
-});
-
-window.addEventListener('load', function() {
-    if (window.location.hash) {
-        setTimeout(function() {
-            const targetId = window.location.hash.substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                const elementRect = targetElement.getBoundingClientRect();
-                const absoluteElementTop = elementRect.top + window.pageYOffset;
-                
-                const offset = window.innerHeight * 0.1;
-                const targetPosition = absoluteElementTop - offset;
-                
-                window.scrollTo({
-                    top: Math.max(0, targetPosition),
-                    behavior: 'smooth'
-                });
-            }
-        }, 300);
-    }
-});
-
 const sliderStates = new Map();
 
 function slide(button) {
@@ -631,7 +622,6 @@ document.querySelectorAll('.slider-container').forEach(container => {
 
   counter.textContent = `1/${slides.length}`;
 });
-
   </script>
-
-</body></html>
+</body>
+</html>
