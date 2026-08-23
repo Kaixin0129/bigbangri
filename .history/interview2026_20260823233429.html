@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+@media only screen and (max-width: 768px) {
+    .header-container {
+      height: auto;
+      min-height: 100px;
+      padding: 20px 0;
+      align-items: flex-start;
+    }
+
+    .title-group {
+      width: 100%;
+      padding: 0 120px;
+      text-align: center;
+    }
+
+    .title-group h1 {
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.3;
+      font-size: 42px;
+    }
+
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .right-side{
+    position: relative;
+    align-items:center;
+  }
+
+  .slide-counter{
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .nav-button{
+    background-color: rgba(255,255,255,0.7);
+    border:none;
+    padding:10px 15px;
+    font-size:24px;
+    cursor:pointer;
+    border-radius:10px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: calc(100% + 10px);
+  }
+
+  .toggle-btn {
+    border: 2px solid #33FFFF;
+    color: #FFFFFF;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+  }
+  .toggle-btn:hover {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
+  </style>
+</head>
+
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="interview.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>采访2026年</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="interview2027.html">2027</a>
+    </nav>
+  </div>
+  <br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="interview2026-apr-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2026.html#interview2026-apr" class="jump-button">4月</a>
+    </div>
+    <div id="interview2026-may-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2026.html#interview2026-may" class="jump-button">5月</a>
+    </div>
+  </div>
+  <br/><br/>
+  <hr class="full-width-line" />
+
+  <div id="interview2026-apr" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2026.html#interview2026-apr-jump" class="jump-button">4月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="magazine-260402-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="magazine2026.html#magazine-260402" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年4月2日</strong></p>
+        <p>TOP接受 GQ HYPE 采访</p>
+        <p>详细资讯：<a href="https://gqhongkong.com/en/highlight-eng/gq-cover-charlie-puth-on-his-new-frequency" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            GQ HONGKONG</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #FF66CC;">问：</span>你已经很久没有出现在公众视野了。这段时间你都在做什么？<br/>
+          <span style="color: #33FFFF;">TOP：</span>近十年来，我几乎完全与世隔绝，一心扑在音乐创作上。除了待在家里和录音室，我几乎不与外界接触。我全身心投入到创作中。我认为那段时期极具建设性，也硕果累累
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #FF66CC;">问：</span>这些年来，你的音乐风格发生了怎样的变化？<br/>
+          <span style="color: #33FFFF;">TOP：</span>我入行至今已经过去了相当长一段时间。我对音乐的热爱从未改变</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>回首往事，与在舞台上备受爱戴的生活相比，那些“平静”的岁月对你产生了怎样的影响？<br/>
+          <span style="color: #33FFFF;">TOP：</span>对我来说，那是一段完美的时光。它给了我足够的空间去创作音乐。内心深处，复杂而嘈杂的声音伴随着我，极大地拓展了我的潜能和自我认知。​​我变得更加大胆，更加无所畏惧。我相信，当人们听到我的新音乐时，他们会感受到这一点</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>在那段时间里，是什么让你保持内心的平静和踏实？<br/>
+          <span style="color: #33FFFF;">TOP：</span>在创作音乐的每一个瞬间，我都真切地体会到我存在的意义和目的。过去十年间，随着我不断创作新的音乐，我听到的声音和音乐的演变有时变得更加强烈，我的歌词也变得更加大胆、更加无畏</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>在制作这张专辑的过程中，你最感到快乐和满足的时刻是什么时候？<br/>
+          <span style="color: #33FFFF;">TOP：</span>创作音乐的时候，我是最快乐的人</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>是什么让你觉得“现在”是回归的最佳时机？<br/>
+          <span style="color: #33FFFF;">TOP：</span>我终于觉得这张专辑“完成了”。我对自己要求极其严格，尤其是在以自己名义创作时——近乎苛刻，而且非常理性。直到现在，我才觉得这张专辑达到了我极高的标准和品味</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你希望通过这张专辑传达怎样的情感或理念？<br/>
+          <span style="color: #33FFFF;">TOP：</span>正如标题所示：“多重视角”和“另一个维度”。这次，我运用了一种从未尝试过的叙事手法，并结合了复杂的音响结构。我希望听众在聆听时能够体验到各种各样的情感。我不想在他们听到音乐之前就将我的意图强加于他们。我希望他们能够自由地、自然地感受这些情感的涌现</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>当你开始制作这张专辑时，你觉得它是你过去故事的延续，还是一个全新故事的开始？<br/>
+          <span style="color: #33FFFF;">TOP：</span>问得好！这张专辑是关于整理我的过去，开启人生新篇章。我不想再重蹈覆辙。它代表着一个全新的自我，一个我收拾二十多岁时的一切，最终蜕变为全新自我的过程。我希望创作出能够反映我这个年龄的音乐，也希望大家都能与我一同见证这段新的旅程</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>“另一个维度”究竟是什么？<br/>
+          <span style="color: #33FFFF;">TOP：</span>对个人而言，它代表着什么？从字面上讲，它的意思是“多重视角，另一个维度”。它代表着大家即将见到的全新版本的我</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>这张专辑的制作花了多长时间？<br/>
+          <span style="color: #33FFFF;">TOP：</span>近十年来，我不仅完成了这张作为起点的完整专辑，还创作了多张计划在未来五年内陆续发行的完整专辑。这张专辑是整个系列的开端。目前，我就先说到这里。给大家一点小小的预告</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>请从专辑中选择一首歌。为什么这首歌对你来说意义非凡？<br/>
+          <span style="color: #33FFFF;">TOP：</span>我把这张专辑看作一个整体，一个完整的作品。当你从头到尾听完之后，你就会明白。这是一张极具电影感的专辑，拥有宏大的叙事结构，故事的展开方式将带给你全新的体验</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你对艺术和策展有着浓厚的兴趣。你的视觉感知力是如何影响你的音乐创作的？<br/>
+          <span style="color: #33FFFF;">TOP：</span>从小我就对艺术情有独钟。我很容易被美好的事物所启发，并将这种灵感转化为音乐。我的梦想是创作出像艺术品一样经久不衰的音乐，创作者的意图并不那么显而易见，每一次聆听都能带来新的发现</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>能否分享一下这张专辑的创作过程？<br/>
+          <span style="color: #33FFFF;">TOP：</span>我一直在探索。在这个时代，作为一个生活在当下的人，人们真正需要什么样的音乐？基于这种思考，我创作了这部作品。我没有琐碎的顾虑，也没有过度的计算。我自由地探索新的、更具实验性的表达形式。整个过程灵活而自由</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>去年九月曾有传言说《鱿鱼游戏》的美术指导蔡京善将执导MV。这是真的吗？和她合作感觉如何？<br/>
+          <span style="color: #33FFFF;">TOP：</span>我入行至今已经过去了相当长一段时间。我对音乐的热爱从未改变</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>所有项目和计划都高度保密，因此部分报道属实，部分报道不准确。首先可以确定的是，《鱿鱼游戏2》的摄影师金智勇担任了MV的总导演，而美术指导蔡京善则负责所有制作设计和场景搭建。曾参与《鱿鱼游戏》拍摄的摄影和美术团队再次携手打造了这部MV，共同创作出意义非凡、堪称经典的作品。此外，蔡京善还担任了我实体专辑的美术指导。她、她的艺术团队以及我本人都对专辑的设计感到无比兴奋。能够为歌迷们呈现一张真正非凡、充满实验性且美轮美奂的专辑，如同艺术品一般，让我感到无比激动
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="magazine-260428-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="magazine2026.html#magazine-260428" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年4月28日</strong></p>
+        <p>TOP接受 WWD 采访</p>
+        <p>详细资讯：<a href="https://x.com/TTTOPSUPPORT/status/2051872703351796200" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            TTTOPSUPPORT</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #FF66CC;">问：</span>这是您13年来首张完整的全长个人专辑。正值出道20周年，这份巧合让人感到格外有意义。您从未停止追求音乐，这一直是对粉丝们莫大的安慰。那段时间，您过得怎么样？<br/>
+          <span style="color: #33FFFF;">TOP：</span>那是一段暂时远离社交和喧嚣的时期。但与其说是单纯的休息，我相信我比以往任何时候都更激烈地利用了那段时间。我比任何人都更有生产力，那是一段让我充实到极致的时间，我甚至想告诉自己，我度过了激烈而有意义的一段时光
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #FF66CC;">问：</span>这张专辑给人一种印象，艺术家并非试图满足他人的期待，而是完全实现了自己内心的世界。经过时间的洗礼，经历了诸多情感的波澜，您最终发现自己创作的核心本质是什么？<br/>
+          <span style="color: #33FFFF;">TOP：</span>最终，我意识到自己只是一个深深热爱音乐和电影的人。我再次感受到，只有当我创作出自己想听的音乐，并创造出与众不同的东西时，我才能真正成为自己</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>首支曲目“TOP욕，”[Self Crucifixion] 从一开始就充满张力<br/>
+          <span style="color: #33FFFF;">TOP：</span>我之所以毫无保留地包含了过去的耻辱部分，是因为我想清晰地为我永不再回的那一人生篇章画上句号。通过在作品中准确记录那些时刻，这是我自己刻意推进的进程</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>专辑标题《Multiple Perspectives (ANOTHER DIMENSION)》非常引人入胜。您是否希望这张专辑成为一架望远镜，让公众通过它观察T.O.P作为一个复杂艺术家的多面性，或者成为一架显微镜，剖析并揭示您的内在自我？<br/>
+          <span style="color: #33FFFF;">TOP：</span>老实说，我尽量不抱任何个人期待。我创作作品时，并没有特定的受众对象。有时候我很清楚公众想要什么，但那可能会模糊我试图实现的本质。在过去十几年里，我只专注于最根本的问题：在这个时代，真正需要什么样的音乐？这就是为什么我希望今后推出的作品不会只是被商业消费然后消逝。专辑标题《Multiple Perspectives》源于同样的想法。我相信，通过我的音乐汇聚不同思想的每一个瞬间，都是完成这张专辑的过程的一部分。我想留下许多不同的视角记录，这些视角将在未来回响在这张专辑上</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>您亲自制作了所有曲目。在短小音乐主导的时代，大约1-2分钟的短形式音乐盛行，您却选择了更长的叙事形式，每首歌都超过3分钟。您一定有自己不妥协的标准<br/>
+          <span style="color: #33FFFF;">TOP：</span>潮流总是流动，公众反应也在不断变化。在这种流动中，我想创作出不会被快速消费然后遗忘的音乐，而是即使时间流逝也不会褪色的音乐。在这张作品中，我尝试融入一种超越时代的“黄金时代”元素——类似于1960年代至70年代摇滚的语言，并将其与我视为K-pop真正本质的1990年代韩国流行音乐的情感感性相结合，同时采用解构手法。我最享受的挑战是创造一种感觉上不属于任何特定时代的结构，听起来不像任何曾经听过的音乐。老实说，一旦我开始谈音乐，我就有太多想法，永远说不完（笑）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>在声音方面，也给人一种印象，您更多依赖声音的力量本身，而不是用各种装置来填充密度<br/>
+          <span style="color: #33FFFF;">TOP：</span>在这张专辑中，几乎没有双轨或和声。它只用单一的声音录制。我把自己的声音本身视为一件大型乐器。为了捕捉那种真实感，我几乎痴迷地剥离声音。事实上，音乐类似于绘画或烹饪。正如一道菜用优质食材突出其自然风味时会最闪耀，我希望只用我本质的声音找到最佳平衡，而不是堆砌不必要的元素。这个过程是我最有趣且最重要的研究课题</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>那个过程一定是一场孤独而激烈的自我斗争。就我个人而言，它甚至让我想起了阿格尼丝·马丁的作品，她以克制美学而闻名。你在录制时为了实现那种本质的声音，采取了什么样的心态？<br/>
+          <span style="color: #33FFFF;">TOP：</span>这张专辑我唯一专注的概念就只有一件事：用我自己的声音说服全世界。在进入录音棚之前，我基本上会用“我必须用这一个声音说服世界”这个想法来催眠自己。虽然积累能量是技术性的事，但我的工作需要更深层的冥想。如果我自己都没有被说服，无论录制投入多少努力，我都会毫不犹豫地删除所有文件。我就是无法允许自己用一个连我自己都不相信的声音对世界说话</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>作为一名艺术家，您拥有敏锐的洞察时代的能力。是否有某个特定的历史或文化时刻启发了专辑的创作？<br/>
+          <span style="color: #33FFFF;">TOP：</span>我总是试图把自己置于观察者的位置。最近，当我在街上看到20多岁和30多岁的人时，我发现时尚和整体文化都强烈融入了1990年代和2000年代的感性。这让我确信“我应该再次创作这样的音乐”。就我个人而言，我非常喜欢1990年代韩国流行音乐所拥有的情感和能量。我想捕捉那个K-pop这个词甚至尚未确立的时代里纯粹的怀旧情怀，并以现代、更精致的方式重新诠释它</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>当您浏览YouTube和各种平台时，会发现青少年和20岁出头的听众大量涌入。甚至那些第一次接触作为艺术家的T.O.P的年轻粉丝也兴奋地说：“这才是真正的K-pop。”这样的反馈给您带来了怎样的动力？<br/>
+          <span style="color: #33FFFF;">TOP：</span>这让我觉得自己需要更端正地生活（笑）。自从《鱿鱼游戏》第二季以来，我真正感受到拥有许多小学生年龄年轻粉丝的影响力。意识到这一事实的那一刻，我感受到一种积极的责任感。对于我现在所处的地位，我感受到前所未有的更深层责任</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>这张专辑是浓缩过去的记录，还是某种抹除？在创作过程中，您是否发现了自己新的面向？<br/>
+          <span style="color: #33FFFF;">TOP：</span>我没有意识到任何新东西。相反，它捕捉了完全清空并丢弃过去自我的过程。在摆脱了过去所有不必要的自我版本之后，我终于能够面对一个真正自由的新自我。这张专辑是与过去告别的记录</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>众多曲目中，选择《DESPERADO》和《완전미쳤어 (Studio 54)》作为双主打曲是否有特别的含义？<br/>
+          <span style="color: #33FFFF;">TOP：</span>我的专辑其实并没有真正独立的单曲主打。我将整张专辑创作成一个有机整体的故事，以每个曲目本质上都是主打曲的理念。如果比作一部电影，就像是必须从中挑选出一幕最具冲击力的场景，但鉴于我专辑的前卫特性，我首先选择了那些对大众最友好的歌曲。我专注于那些听众能够更舒适地进入并互动的曲目。特别是《Desperado》是专辑后半部分的章节，它在情感上与我这一代听众最紧密相连，这就是我选择它的原因</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>《DESPERADO》与现有风格不同。我会说它带有一种稍显直接而温暖的情感<br/>
+          <span style="color: #33FFFF;">TOP：</span>某个时刻，我开始思考：“为什么我们没有足够的多，可以在你想营造一种细腻、亲密的氛围时聆听的音乐？另一方面，对于那些想享受独处的人，当他们独自喝着威士忌或举杯时，我希望他们能感受到一种情感上的充实感，比如‘我现在听着这种音乐感觉挺酷的</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>音乐视频的完成度令人震撼。你与艺术总监蔡京善和摄影师金智永合作，他们都参与了《鱿鱼游戏》第二季。如果有一个你最注重的视觉重点，会是什么？  我希望听众能感受到那种自信、近乎时尚的满足感。这是一首我以比平时说话方式更安静、更克制的表达方式呈现的歌曲<br/>
+          <span style="color: #33FFFF;">TOP：</span>我不想遵循音乐视频的典型惯例。我想要一种模糊了艺术电影与音乐视频界限的东西，既高度美学化，又承载着清晰的信息。幸运的是，导演们深深共鸣于我的愿景，我们在完全尊重彼此角色和专业领域的同时，进行了激烈的合作。我只提供了视觉灵感，此后完全信任并委托给了每个岗位的专业人士。正因如此，我认为我们创造出了一部超越单纯视频的合作作品</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>音乐视频中出现的娜娜，与你的化学反应也成为了热门话题<br/>
+          <span style="color: #33FFFF;">TOP：</span>完成歌曲后，我首先想到了娜啦。我们需要一个能同时体现某种狂躁能量和古典优雅的人。最重要的是，她需要有内化音乐节奏的感觉。我小心翼翼地请她先听听音乐，说：“如果你拒绝也没关系，但请先听听音乐”，她欣然同意了</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>当代艺术大师埃德·鲁沙参与专辑设计的消息本身就令人惊讶<br/>
+          <span style="color: #33FFFF;">TOP：</span>他是一位通常隐居创作的大师，所以我有点谨慎，但还是亲自与他见面并推进了项目。整个过程直至那神秘而精致的最终结果，对我来说也是一段非常特别的经历</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>曲目中，“Kkokkalkoon”这个标题特别突出。对于一首粉丝歌来说，这是个相当不寻常的名字<br/>
+          <span style="color: #33FFFF;">TOP：</span>相比我平时的音乐，它非常无害且甜美，不是吗？（笑）我甚至尝试着玩闹地往更可爱方向走，结果只是为了好玩把标题弄得更长。我倾向于享受用日常普通物件作为隐喻。我在想，是否有一种可爱的方式来讽刺那些激烈冲突的人们，有一天我注意到身边一个尖尖形状的零食，就想：“就是它了。在英文歌词中，我把它表达为“Doritos”，我想让音乐在其中承载机智和幽默，几乎与歌词表面暗示的内容形成反差</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>我听说你已经完成了足够多的音乐，可以发行未来几年的作品。那些没进这张专辑的歌，是有意作为策略留到未来发行的吗？<br/>
+          <span style="color: #33FFFF;">TOP：</span>是的！
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div id="interview2026-may" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2026.html#interview2026-may-jump" class="jump-button">5月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="260526-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2026may.html#260526" class="jump-button">跳转到 2025 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年4月28日</strong></p>
+        <p>TOP接受 Billboard 采访</p>
+        <p>详细资讯：<a href="https://www.billboard.com/music/pop/top-interview-bigbang-another-dimension-full-solo-album-1236257589/?link_source=ta_thread_link&taid=6a17a1b9f1ef2b0001f4723a&utm_campaign=trueanthem" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Billboard</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #FF66CC;">问：</span>这张《TOP SPOT – ANOTHER DIMENSION》对你来说有什么特别的意义？<br/>
+          <span style="color: #33FFFF;">TOP：</span>这张专辑对我来说意义非凡，因为这是我的第一张个人正规专辑。能够以个人歌手的身份凭借这张专辑登上Billboard世界专辑榜，对我来说意义重大。我和BIGBANG成员们现在创作的音乐风格截然不同，但我始终支持和尊重他们的音乐。距离我回归乐坛已经很久了，所以我衷心感谢大家给予我的巨大支持和喜爱
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #FF66CC;">问：</span>你花了多长时间制作这张专辑？<br/>
+          <span style="color: #33FFFF;">TOP：</span>我花了大约十年时间打造这张专辑。它不仅仅是我认为最优秀的11首歌曲的集合。对我来说，它更像是一部时长37分钟的电影。我根据自己的喜好，自由地融合了多种音乐类型，希望打造一张能够从多个视角去理解的专辑</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>为什么你会把这张专辑比作“一部电影”？<br/>
+          <span style="color: #33FFFF;">TOP：</span>因为我一直是以导演的视角来制作这张专辑。我不仅关注音乐本身，也关注整体的视觉、概念以及作品最终呈现出来的感觉。我希望它能够像一场艺术展览一样，是一个完整的作品，而不仅仅是一张音乐专辑</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你的音乐受到了哪些艺术家和音乐人的影响？<br/>
+          <span style="color: #33FFFF;">TOP：</span>Notorious B.I.G.、Tupac以及其他90年代嘻哈巨星对我的音乐产生了很大的影响。这些长期以来影响我的音乐元素，自然也融入了这张专辑。同时，我也加入了自己过去作为BIGBANG成员的经历，以及这些年来形成的新的个人表达</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>《ANOTHER DIMENSION》中有没有展现出过去的你没有展示过的一面？<br/>
+          <span style="color: #33FFFF;">TOP：</span>有。例如《THE GIANT》让我能够更多地展现自己的歌唱能力，而不是单纯依靠Rap。我也尝试通过不同的声音、旋律和表达方式，让大家看到音乐人TOP更多不同的面貌</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你的艺术收藏也成为了《SEOUL CHAOS》等歌曲的一部分吗？<br/>
+          <span style="color: #33FFFF;">TOP：</span>是的。我的艺术收藏、我看到的作品以及我生活中的很多东西，都自然地进入了我的创作。这些经历都是我的一部分，所以它们也会成为音乐的一部分</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你为什么如此重视这张专辑的视觉和收藏价值？<br/>
+          <span style="color: #33FFFF;">TOP：</span>多年来，我创作这张专辑的目标就是打造一部真正原创的作品，就像一场艺术展览，并把它作为礼物送给我的歌迷。我希望它能够反映我的个人品味。不仅仅是听觉上的享受，也是一种视觉上的享受，几乎就像一件值得收藏的艺术品。我希望每一位拥有这张专辑的人，都能感受到它作为一件值得珍藏的物品的真正价值</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>最终完成专辑之后，你对结果满意吗？<br/>
+          <span style="color: #33FFFF;">TOP：</span>最终这张专辑完全符合我的预期。现在音乐终于面世，我很高兴有这么多人能够听到它</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>看到粉丝们分享专辑开箱视频，你有什么感觉？<br/>
+          <span style="color: #33FFFF;">TOP：</span>当我看到粉丝们开箱专辑，并在网上分享这些视频时，感觉就像我曾经的梦想正在一点点地实现。我非常感激。我的新音乐让我能够在这么长时间之后，再次与我的粉丝们建立联系</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>未来还会发布《ANOTHER DIMENSION》的其他MV吗？<br/>
+          <span style="color: #33FFFF;">TOP：</span>会。除了《DESPERADO》和《Studio54》之外，旗下更多歌曲的MV也会很快发布。而且这些MV的制作方式会与我以往的作品截然不同</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你接下来有什么演艺计划？<br/>
+          <span style="color: #33FFFF;">TOP：</span>目前还是秘密（笑）。不过，我未来的抱负并不只是唱歌和演戏</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你未来还会继续发行音乐吗？<br/>
+          <span style="color: #33FFFF;">TOP：</span>我将继续通过TOP SPOT PICTURES发行我的新音乐。未来，我也希望能够培养下一代艺术家</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你有没有想过自己未来会涉足电影制作？<br/>
+          <span style="color: #33FFFF;">TOP：</span>有。我最终梦想着能够制作电影。我希望未来可以通过不同的形式继续表达自己的艺术世界</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你之前参加的DearMoon月球旅行项目已经取消了。你现在还想去月球吗？<br/>
+          <span style="color: #33FFFF;">TOP：</span>当然想。与月球和外太空相关的主题如今已经深深融入我的音乐。就我个人而言，它们也成为了我艺术世界中极其重要的元素。我真心希望未来继续创作的音乐能够继续直接从月球汲取灵感，所以我坚信总有一天我会登上月球</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>为什么“月球”和“外太空”对你如此重要？<br/>
+          <span style="color: #33FFFF;">TOP：</span>因为它们已经成为我的灵感来源之一。这些主题不仅存在于我的音乐中，也逐渐成为我整个艺术世界的一部分。所以我希望未来还能继续从那里获得灵感</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>《FOR FANS》是一首写给粉丝的歌曲。你最想通过这首歌告诉他们什么？<br/>
+          <span style="color: #33FFFF;">TOP：</span>我一直想对我的粉丝们说，我想早点和大家分享我的新歌。其实我一直担心粉丝会离开我。所以这张专辑对我来说不仅是音乐作品，也是我重新与粉丝建立联系的一种方式</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>那么，你希望未来和粉丝保持怎样的关系？<br/>
+          <span style="color: #33FFFF;">TOP：</span>从这张专辑开始，我会继续通过音乐回馈大家。我也会不断努力，成为一名始终真诚创作、不断推陈出新的艺术家。我希望能够长久地和大家保持联系</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>如果用一句话总结《ANOTHER DIMENSION》，你会怎么说？<br/>
+          <span style="color: #33FFFF;">TOP：</span>这是我用了十年时间完成的一份礼物。我希望大家不仅能够听到我的音乐，也能够看到、感受到属于我的艺术世界
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="interview.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="interview2027.html">2027</a>
+    </nav>
+  </div>
+
+
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+  function toggleList(button, show) {
+  const listItem = button.closest('li');
+  
+  if (show) {
+    let nestedList = listItem.querySelector('ol');
+    if (!nestedList) {
+      nestedList = listItem.nextElementSibling;
+    }
+    
+    if (nestedList && nestedList.tagName === 'OL') {
+      nestedList.style.display = "block";
+      button.style.display = "none";
+      nestedList.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  } else {
+    const nestedList = button.closest('ol');
+    
+    if (nestedList) {
+      nestedList.style.display = "none";
+      
+      let parentLi = nestedList.parentElement.closest('li');
+      if (!parentLi) {
+        parentLi = nestedList.previousElementSibling;
+        while (parentLi && parentLi.tagName !== 'LI') {
+          parentLi = parentLi.previousElementSibling;
+        }
+      }
+      
+      if (parentLi) {
+        const expandBtns = parentLi.querySelectorAll('[onclick*="true"]');
+        expandBtns.forEach(btn => {
+          btn.style.display = "inline-block";
+        });
+        
+        parentLi.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  }
+}
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+
+  const counter = container.querySelector('.slide-counter');
+  counter.textContent = `${state + 1}/${slides.length}`;
+}
+
+document.querySelectorAll('.slider-container').forEach(container => {
+  const slides = container.querySelectorAll('.slide-item');
+  const counter = container.querySelector('.slide-counter');
+
+  counter.textContent = `1/${slides.length}`;
+});
+
+  </script>
+</body>
+</html>
