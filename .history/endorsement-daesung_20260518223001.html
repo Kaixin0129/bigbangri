@@ -221,14 +221,37 @@
       cursor: pointer;
     }
 
+    .two-column-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 100px;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    .column {
+      width: 45%;
+      text-align: left;
+      color: white;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: white;
+      height: auto;
+    }
+
   </style>
 </head>
 <body>
+
   <nav>
-    <a href="index.html">Home</a>    
+    <a href="index.html">Home</a>
     <a href="schedule.html" class="jump-button-1">完整时间线</a>
-    <a href="stage.html">打歌舞台</a>
     <a href="concert.html">演唱会</a>
+    <a href="solo.html">成员Solo</a>
     <a href="teams.html">小分队</a>
     <a href="album.html">专辑歌曲Mv</a>
     <a href="fanmeeting.html">Fan Meeting</a>
@@ -237,7 +260,6 @@
     <a href="interview.html">采访</a>
     <a href="behindthescenes.html">幕后花絮</a>
     <a href="magazine.html">杂志拍摄</a>
-    <a href="endorsement.html">代言</a>
     <a href="awardlist.html">获奖</a>
     <a href="movie.html">电影电视剧短剧</a>
     <a href="ygfamily.html">YG Family</a>
@@ -249,42 +271,31 @@
     <a href="cp.html" class="highlight1-button">CP向</a>
   </nav>
   <main>
-    <h1>·大声个人solo完整时间线·</h1>
+    <h1>·广告代言 (大声) ·</h1>
     <nav>
-      <a href="solo.html">Back</a>
+      <a href="endorsement-member.html">Back</a>
     </nav>
-    <p>Select a year section from the navigation bar below.</p>
+    <p>Select an endorsement section from the navigation bar below.</p>
 
-  <nav>
-    <a href="daesungpredebut.html">出道前</a>
-    <a href="daesung2006.html">2006</a>
-    <a href="daesung2007.html">2007</a>
-    <a href="daesung2008.html">2008</a>
-    <a href="daesung2009.html">2009</a>
-    <a href="daesung2010.html">2010</a>
-    <a href="daesung2011.html">2011</a>
-    <a href="daesung2012.html">2012</a>
-    <a href="daesung2013.html">2013</a>
-    <a href="daesung2014.html">2014</a>
-    <a href="daesung2015.html">2015</a>
-    <a href="daesung2016.html">2016</a>
-    <a href="daesung2017.html">2017</a>
-    <a href="daesung2018.html">2018</a>
-    <a href="daesung2023.html">2023</a>
-    <a href="daesung2024.html">2024</a>
-    <a href="daesung2025.html">2025</a>
-  </nav><br/><br/>
+  <div class="two-column-wrapper">
+    <div class="column left">
+      <p style="color: #33FFFF;">食物</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-bighit.html" class="jump-button">BIG HIT Chicken</a>
+      </div>
+    </div>
 
-  <p>更多大声相关的</p>
-  <nav>
-    <a href="daesunggy.html">公益捐赠</a>
-    <a href="daesungcase.html">事件</a>
-  </nav>
-
+    <div class="column right">
+      <p style="color: #33FFFF;">美容</p><br/>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="e-kiehls.html" class="jump-button">Kiehl's</a>
+      </div>
+    </div>
+  </div>
 
   </main>
 <script src="player.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
-     crossorigin="anonymous"></script>  
+     crossorigin="anonymous"></script>
 </body>
 </html>
