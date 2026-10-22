@@ -440,9 +440,9 @@
         <button class="jump-button" onclick="filterSNS('bigbang')">Bigbang全员</button>
         <button class="jump-button" onclick="filterSNS('gd')">G-Dragon</button>
         <button class="jump-button" onclick="filterSNS('top')">TOP</button>
-        <button class="jump-button" onclick="filterSNS('taeyang')">太阳</button>
-        <button class="jump-button" onclick="filterSNS('daesung')">大声</button>
-        <button class="jump-button" onclick="filterSNS('seungri')">胜利</button>
+        <button class="jump-button" onclick="filterSNS('ty')">太阳</button>
+        <button class="jump-button" onclick="filterSNS('ds')">大声</button>
+        <button class="jump-button" onclick="filterSNS('sr')">胜利</button>
       </div>
     </div>
   </div><br/>
@@ -539,7 +539,7 @@
     </div><br/>
 
   <div id="noContentMessage" style="display:none; text-align:center; color: white; font-size: 40px; margin-top: 30px;">
-    此成员没有任何出行
+    暂无该成员的个人机场记录，可点击「Bigbang全员」查看团体出行记录
   </div>
 
   <br/><br/><br/>
@@ -591,55 +591,62 @@
     memberList.style.display = filterLocked ? 'flex' : 'none';
   }
 
-  function filterSNS(member) {
-    const entries = document.querySelectorAll('.sns-entry');
-    const message = document.getElementById('noContentMessage');
-    const backButton = document.getElementById('backButton');
-    const nextButton = document.getElementById('nextButton');
-    const footer = document.getElementById('footer');
-    const currentFilter = document.getElementById('currentFilter');
+function filterSNS(member) {
+  const entries = document.querySelectorAll('.sns-entry');
+  const message = document.getElementById('noContentMessage');
+  const backButton = document.getElementById('backButton');
+  const nextButton = document.getElementById('nextButton');
+  const footer = document.getElementById('footer');
+  const currentFilter = document.getElementById('currentFilter');
 
-    const memberNames = {
-      all: '全部',
-      bigbang: 'Bigbang全员',
-      gd: 'G-Dragon',
-      top: 'TOP',
-      taeyang: '太阳',
-      daesung: '大声',
-      seungri: '胜利'
-    };
+  const memberNames = {
+    all: '全部',
+    gd: 'G-Dragon',
+    top: 'TOP',
+    ty: '太阳',
+    ds: '大声',
+    sr: '胜利'
+  };
 
-    if (memberNames[member]) {
-      currentFilter.textContent = `当前筛选：${memberNames[member]}`;
-      currentFilter.style.display = 'block';
-    } else {
-      currentFilter.style.display = 'none';
-    }
-
-    let hasContent = false;
-
-    entries.forEach(entry => {
-      const members = entry.dataset.member.split(' ');
-      if (member === 'all' || members.includes(member)) {
-        entry.style.display = 'block';
-        hasContent = true;
-      } else {
-        entry.style.display = 'none';
-      }
-    });
-
-    if (!hasContent && member !== 'all') {
-      if (message) message.style.display = 'block';
-      if (backButton) backButton.style.display = 'none';
-      if (nextButton) nextButton.style.display = 'none';
-      if (footer) footer.style.display = 'none';
-    } else {
-      if (message) message.style.display = 'none';
-      if (backButton) backButton.style.display = 'inline-block';
-      if (nextButton) nextButton.style.display = 'inline-block';
-      if (footer) footer.style.display = 'block';
-    }
+  if (memberNames[member]) {
+    currentFilter.textContent = `当前筛选：${memberNames[member]}`;
+    currentFilter.style.display = 'block';
+  } else {
+    currentFilter.style.display = 'none';
   }
+
+  let hasContent = false;
+
+  entries.forEach(entry => {
+    const members = entry.dataset.member.split(' ');
+    if (member === 'all' || members.includes(member)) {
+      entry.style.display = 'block';
+      hasContent = true;
+    } else {
+      entry.style.display = 'none';
+    }
+  });
+
+  const monthContainers = document.querySelectorAll('div[id^="airport2011-"]');
+
+  monthContainers.forEach(el => {
+    if (!el.closest('.sns-entry')) {
+      el.style.display = (member === 'all') ? 'flex' : 'none';
+    }
+  });
+
+  if (!hasContent && member !== 'all') {
+    if (message) message.style.display = 'block';
+    if (backButton) backButton.style.display = 'none';
+    if (nextButton) nextButton.style.display = 'none';
+    if (footer) footer.style.display = 'none';
+  } else {
+    if (message) message.style.display = 'none';
+    if (backButton) backButton.style.display = 'inline-block';
+    if (nextButton) nextButton.style.display = 'inline-block';
+    if (footer) footer.style.display = 'block';
+  }
+}
 
 const sliderStates = new Map();
 
