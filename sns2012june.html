@@ -437,6 +437,7 @@
     <div class="filter-button">筛选</div>
     <div class="member-list" id="memberList">
       <button class="jump-button" onclick="filterSNS('all')">全部</button>
+      <button class="jump-button" onclick="filterSNS('bigbang')">Bigbang官号</button>
       <button class="jump-button" onclick="filterSNS('gd')">G-Dragon</button>
       <button class="jump-button" onclick="filterSNS('ty')">太阳</button>
       <button class="jump-button" onclick="filterSNS('top')">TOP</button>
@@ -504,6 +505,24 @@
   <hr class="full-width-line" />
 </div>
 
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年6月30日</strong> me2day</p>
+        <p>西瓜，这种时令水果，是最好的水果，因为它能消肿，而且富含抗氧化剂番茄红素！此外，如果蓝莓（花青素）和西瓜（番茄红素）一起食用，就能获得更好的抗氧化效果！^^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/yqk50jYkM" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="120630s.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
 <div id="noContentMessage" style="display:none; text-align:center; color: white; font-size: 40px; margin-top: 30px;">
     此成员没有发过贴文
 </div>
@@ -567,6 +586,7 @@
 
     const memberNames = {
       all: '全部',
+      bigbang: 'Bigbang官号',
       gd: 'G-Dragon',
       top: 'TOP',
       ty: '太阳',

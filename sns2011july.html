@@ -437,6 +437,7 @@
     <div class="filter-button">筛选</div>
     <div class="member-list" id="memberList">
       <button class="jump-button" onclick="filterSNS('all')">全部</button>
+      <button class="jump-button" onclick="filterSNS('bigbang')">Bigbang官号</button>
       <button class="jump-button" onclick="filterSNS('gd')">G-Dragon</button>
       <button class="jump-button" onclick="filterSNS('ty')">太阳</button>
       <button class="jump-button" onclick="filterSNS('top')">TOP</button>
@@ -465,6 +466,24 @@
     </div>
   </div>
   <img src="1107081.jpeg" style="width: 300px; height: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@Bean pole</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年7月12日</strong> me2day</p>
+        <p>最初实现的GD即时拍摄现场转播！看到疯狂的人们的反应 决定进行了！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/mYlXcQ" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="110712s.jpg" style="width: 400px;"/>
   <hr class="full-width-line" />
 </div>
 
@@ -604,6 +623,7 @@
 
     const memberNames = {
       all: '全部',
+      bigbang: 'Bigbang官号',
       gd: 'G-Dragon',
       top: 'TOP',
       ty: '太阳',
