@@ -558,7 +558,9 @@
           <button class="jump-button" onclick="filterSNS('psg')">PSG</button>
           <button class="jump-button" onclick="filterSNS('monamhee')">Monamhee</button>
           <button class="jump-button" onclick="filterSNS('jacob')">Jacob & Co.</button>
+          <button class="jump-button" onclick="filterSNS('oxford')">OXFORD</button>
           <button class="jump-button" onclick="filterSNS('mama')">MAMA AWARDS</button>
+          <button class="jump-button" onclick="filterSNS('beoplay')">Bang & Olufsen</button>
           <button class="jump-button" onclick="filterSNS('toystory')">TOY STORY</button>
           <button class="jump-button" onclick="filterSNS('mcd')">McDonald's</button>
         </div>
@@ -2555,11 +2557,55 @@
   </div>
 </div>
 
+<div class="sns-entry" data-member="oxford">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2025年9月15日</strong></p>
+        <p>PEACEMINUSONE 与 韩国积木制造商 OXFORD 合作推出积木产品限量版，818 BLOOM</p>
+        <p>详细资讯：<a href="https://finance.yahoo.com/news/g-dragon-iconic-flower-turns-090500951.html?utm_source=chatgpt.com&guccounter=1" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            yahoo</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="250915p.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="250915p1.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="250915p2.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="250915p3.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="250915p4.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="250915p5.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="250915p6.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
 <div class="sns-entry" data-member="mama">
   <div style="text-align: center;">
     <div class="content-wrap">
       <div class="text-container">
-        <p><strong>2026年11月20日-29日</strong></p>
+        <p><strong>2025年11月20日-29日</strong></p>
         <p>PEACEMINUSONE 与 K-pop颁奖典礼 MAMA AWARDS 合作推出联名款系列</p>
         <p>详细资讯：<a href="https://www.instagram.com/p/DRBIUipCMI_/&img_index=1" 
           target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
@@ -3219,6 +3265,7 @@ function filterSNS(member) {
     jacob: 'Jacob & Co.',
     beoplay: 'Bang & Olufsen',
     highball: 'Highball酒',
+    oxford: 'OXFORD',
     mama: 'MAMA AWARDS',
     toystory: 'TOY STORY',
     mcd: `McDonald's`,
