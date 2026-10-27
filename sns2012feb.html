@@ -708,7 +708,7 @@
       </div>
     </div>
   </div>
-  <img src="120227s.jpeg" style="width: 400px;"/>
+  <img src="120227s.jpg" style="width: 400px;"/>
   <hr class="full-width-line" />
 </div>
 
@@ -726,7 +726,7 @@
       </div>
     </div>
   </div>
-  <img src="120228s.jpeg" style="width: 300px;"/>
+  <img src="120228s.jpg" style="width: 300px;"/>
   <hr class="full-width-line" />
 </div>
 
@@ -834,8 +834,11 @@
 
     if (memberNames[member]) {
       currentFilter.textContent = `当前筛选：${memberNames[member]}`;
-      currentFilter1.textContent = `筛选出来的图片也包括成员与别人的合照贴文 \ 或别人提到此成员`;
-      currentFilter.style.display = 'block';
+if (member === 'bigbang') {
+  currentFilter1.textContent = '只记录Bigbang官方账号仅发布成员们的照片，不记录宣传类内容等';
+} else {
+  currentFilter1.textContent = '筛选出来的图片也包括成员与别人的合照贴文 或 别人提到此成员';
+}      currentFilter.style.display = 'block';
       currentFilter1.style.display = 'block';
     } else {
       currentFilter.style.display = 'none';

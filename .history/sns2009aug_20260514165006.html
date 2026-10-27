@@ -1034,8 +1034,11 @@ D-DAY纪念 本人认证shot！fighting ^ ^</p>
 
     if (memberNames[member]) {
       currentFilter.textContent = `当前筛选：${memberNames[member]}`;
-      currentFilter1.textContent = `筛选出来的图片也包括成员与别人的合照贴文 \ 或别人提到此成员`;
-      currentFilter.style.display = 'block';
+if (member === 'bigbang') {
+  currentFilter1.textContent = '只记录Bigbang官方账号仅发布成员们的照片，不记录宣传类内容等';
+} else {
+  currentFilter1.textContent = '筛选出来的图片也包括成员与别人的合照贴文 或 别人提到此成员';
+}      currentFilter.style.display = 'block';
       currentFilter1.style.display = 'block';
     } else {
       currentFilter.style.display = 'none';
