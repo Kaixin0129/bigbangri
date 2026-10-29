@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BIGBANG OT5</title>
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="bigbangri" />
+<link rel="manifest" href="/site.webmanifest" />
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.5);
+        transform-origin: top left;
+        width: 200%;
+        height: calc(100vh / 0.5);
+      }
+
+      .full-width-line {
+        transform: scaleX(2);
+        transform-origin: left;
+      }
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .filter-dropdown-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+    margin-top: -50px;
+  }
+
+  .filter-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .filter-button {
+    padding: 15px 25px;
+    background-color: #111;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px 18px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .member-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    margin-top: 5px;
+  }
+
+  .member-list button {
+    margin: 6px 0;
+  }
+
+  #noContentMessage {
+    padding: 15px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 30px auto 0;
+  }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .right-side{
+    position: relative;
+    align-items:center;
+  }
+
+  .slide-counter{
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .nav-button{
+    background-color: rgba(255,255,255,0.7);
+    border:none;
+    padding:10px 15px;
+    font-size:24px;
+    cursor:pointer;
+    border-radius:10px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: calc(100% + 10px);
+  }
+
+</style>
+</head>
+<body>
+<main>
+<div class="header-container">
+  <nav class="left-nav">
+    <a href="sns2017.html">Back</a>
+  </nav>
+  <div class="title-group">
+    <h1>SNS 2017年7月</h1>
+  </div>
+  <nav class="right-nav">
+    <a href="sns2017aug.html">8月</a>
+  </nav>
+</div>
+
+<div class="filter-dropdown-wrapper">
+  <div class="filter-dropdown" id="filterDropdown" onclick="toggleFilterLock()" onmouseenter="showMemberList()" onmouseleave="hideMemberList()">
+    <div class="filter-button">筛选</div>
+    <div class="member-list" id="memberList">
+      <button class="jump-button" onclick="filterSNS('all')">全部</button>
+      <button class="jump-button" onclick="filterSNS('bigbang')">Bigbang官号</button>
+      <button class="jump-button" onclick="filterSNS('gd')">G-Dragon</button>
+      <button class="jump-button" onclick="filterSNS('ty')">太阳</button>
+      <button class="jump-button" onclick="filterSNS('top')">TOP</button>
+      <button class="jump-button" onclick="filterSNS('ds')">大声</button>
+      <button class="jump-button" onclick="filterSNS('sr')">胜利</button>
+    </div>
+  </div>
+</div>
+
+<h1 id="currentFilter" style="text-align:center; margin-top: 30px; margin-bottom: 10px; color: #33FFFF; display: none;"></h1>
+<p id="currentFilter1" style="text-align:center; margin-bottom: 30px; color: white; display: none;"></p>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月1日</strong> Instagram</p>
+        <p>❤<br/>无文字</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FaoPYrYr7" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170701s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ds">
+  <div style="text-align: center;">
+    <p>@nolaxmash</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月2日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FazXCsuA7" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170702s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月3日</strong> Instagram</p>
+        <p>太阳 2017 世界巡演 "WHITE NIGHT" 日本站 #whitenight #白夜 #千叶 #兵库</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FaGAHw3Qf" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170703s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@leeejungyeol</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月4日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FaRQdoZdJ" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170704s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月4日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FaRLry5z9" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170704s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@权达美</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月5日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fb1ZX47WB" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170705s.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月5日</strong> Instagram</p>
+        <p>🐾<br/>#JamesClar</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fb1Vmbq2U" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170705s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月5日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FaYrLAlnc" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170705s2.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@boram_tbl</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月6日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FbadPDEXE" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170706s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@in_suk</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月6日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fb6O71C45" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170706s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月7日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fbl1cjU0M" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170707s.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月7日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fbl19mpKB" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170707s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月7日</strong> Instagram</p>
+        <p>7/28 我们会将把台湾Omini Club的气氛点燃成亚洲最嗨的Club！千万不要错过哦！ @ omni_taipei @ naturalhighrecord @ djglory @ tpa_official @ jidanwoo 台北见 台湾见吧^^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FbkAltWWt" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170707s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月8日</strong> Instagram</p>
+        <p>#AORI拉面 #江南站@ aoriramen</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/Fbt9Ah2hY" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+              李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="170708.png" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1707081.png" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@fakesickness</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月8日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fbu7XfsL2" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170708s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月8日</strong> Instagram</p>
+        <p>第一天 #whitenight #巡演 #日本 #千叶 谢谢大家 明天见💕</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FbtL1lmKO" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170708s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月8日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fbtn0CSgW" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170708s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ds">
+  <div style="text-align: center;">
+    <p>@gahee_v</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月10日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FbKq9taH8" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170710s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@Rino Nakasone</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月10日</strong> Twitter</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FbKpw8NAd" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170710s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月10日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FbKoltTDg" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170710s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty ds">
+  <div style="text-align: center;">
+    <p>@SE7EN</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月10日</strong> Instagram</p>
+        <p>#stillfam❤️</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FbKoe45Sw" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170710s3.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@fakesickness</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月11日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FbVEw6L21" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170711s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="B">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月11日</strong> Instagram</p>
+        <p>台北，我很快就要来了!!! 我们在ATOZ展览见吧! 到时见! 很快我要去台湾了，我们台北的 ATOZ 十周年纪念展见喔！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FbVDYEUP5" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170711s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月11日</strong> Instagram</p>
+        <p>你好 #MOTTE 在 #西雅图</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FbVDKe5pl" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170711s2.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月12日</strong> Instagram</p>
+        <p>"Act III, MOTTE" 在 #西雅图🔥 演出太棒了! 美国巡演的完美开始! 非常感谢你们 我爱你们! 对, 就是你!!🎱 全世界所有的VIP✨🌎✨ 西雅图夜未眠, 晚安🌹下一站是哪里? #圣何塞🖤</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fc652ro1q" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170712s.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月13日</strong> Instagram</p>
+        <p>7/16（周日）在MOON PLACE（美丽SUN海滩）举办的Tropical Night Out"The FINAL" NHR的TPA&GLORY会登场！大家都要来哦！#MOONPLACE #NHR</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FcfcEgNUP" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170713s.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月13日</strong> Instagram</p>
+        <p>无文字<br/>💚❤️💙<br/>演出必须继续🔥#ACTIIIMOTTE<br/>无文字</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FcbgIqfsP" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170713s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月14日</strong> Instagram</p>
+        <p>当一个真正的世界游客🌳 @ 奥林匹克雕塑公园<br/>#抵达👣 #圣何塞🖤</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fco4XBj9y" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170714s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月15日</strong> Instagram</p>
+        <p>'Act III:M.O.T.T.E' 在 #圣何塞💥 今晚演唱会见🔥等不及了🔫🔜‼️</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FctnMaEu8" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170715s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月16日</strong> Instagram</p>
+        <p>圣何塞 >>>> 洛杉矶</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FcHzZ5NUt" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170716s.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月17日</strong> Instagram</p>
+        <p>只拿到银牌或者铜牌有点可惜，不过已经尽力了也没关系ㅜㅜ#Bonjijitsu@leejungwoojj#李正宇导演@hamajinho 谢谢你，滨岛先生！#Queenofjijitsu@hijini23#谢谢李熙珍导演#Sabi#Prevention 非常感谢你和团队在一起！#TeamSpider</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/FcNTCygsj" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+              李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="170717.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1707171.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span>、@jeeejungyeol</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月17日</strong> Instagram</p>
+        <p>胜利队很努力！辛苦了！庆功宴果然还是#aori拉面#大阪</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/FcPcuuJdF" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+              李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="1707174.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1707176.png" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1707175.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1707177.png" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月17日</strong> Instagram</p>
+        <p>"Act III, M.O.T.T.E" 在 #洛杉矶✔️💯💥 每一刻都很珍贵!✨🙏✨ 谢谢你们让我的一天如此美好! 我爱你们!🖤🖖😘 下一站是 #休斯顿</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FcRbdoJti" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170717s.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ds">
+  <div style="text-align: center;">
+    <p>@sj861117sjsj</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月17日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FcQ6bDqe0" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170717s1.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@_martialclub_</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月18日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fd08dcyb6" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170718s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@hamajinho​</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月19日</strong> Instagram</p>
+        <p>胜利抵达日本的那天。我们在机场见面，他说：“滨岛老师~~”，看到他看起来很放松，我松了一口气。我意识到其实我更紧张（哈哈）。之后，我们去了胜利推荐的一家荞麦面店。那里面种类繁多，味道鲜美。谢谢你的盛宴！#胜利 #bigbang #delahivajapan #jbjjf #jiujitsu #seungri</p>
+        <br/>
+        <p>「柔术<span style="color: #33FFFF;">胜</span>」</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/Fd4j7c0Am" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+              李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="170719.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1707191.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@hamajinho​</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月20日</strong> Instagram</p>
+        <p>赛后，我咨询了韩国分部代表李正宇，并授予胜利蓝带。虽然他与金牌失之交臂，但他在同级别比赛中与冠军展开了激烈角逐，并在公开级别比赛中凭借裁判的判定战胜了体型更大的对手。他能在柔术首秀中展现如此精湛的技艺，令我印象深刻<br/>
+然而，授予他蓝带的时机纯属巧合，因为他当时恰好参加了一场比赛。考虑到他的职业生涯以及他日常训练的技术水平，如果他在任何时候获得蓝带也不足为奇<br/>
+巴西柔术没有晋级考试，比赛成绩仅供参考。国际巴西柔术联合会 (IBJF) 规定，“由同一学院的二级黑带或更高级别的教练来认证腰带”。换句话说，这是唯一的选择。即使选手赢得比赛，也不一定能根据其技术和职业生涯表现的综合评估获得晋级。即使没有参加比赛，他们也可能获得晋级。我认为巴西柔术的一大优点在于它非常深奥，而不仅仅是胜负决定的<br/>
+这次，胜利以微弱优势落败，与金牌失之交臂，但在与李正宇商量，并对他的职业生涯、技术和能力进行全面评估后，他被晋升为蓝带<br/>
+祝贺你，胜利。
+我很感激你选择了巴西柔术这项小众运动，并在李正宇的指导下教我柔术，并有机会与我见面。继续努力，谢谢你<br/>
+#胜利 #bigbang #DelaRivaJapan #jbjjf #jiujitsu</p>
+        <p>「柔术<span style="color: #33FFFF;">胜</span>」</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/FdkrnA1hf" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+              李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="170720.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1707201.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@guitarslayer24</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月20日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdjpX9T7O" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170720s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月20日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdjlY7GO0" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170720s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@leeejungyeol</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月20日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fdjlw3w7B" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170720s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月20日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fdh8zFdYD" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170720s3.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@hamajinho​</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月21日</strong> Instagram</p>
+        <p>在公开级（无级别）决赛开始时。当我第一次听说他参加这次比赛时也会参加公开级比赛时，我当时真的在想：“什么？真的吗？！” 一开始我以为他在开玩笑，因为大多数胜利这个级别的选手都避开了公开级，但他真的非常有动力！我担心他会受伤，但这只是多余的担心。#胜利
+<br/>#bigbang#jbjjf#jiujitsu#De La Riva Japan#我爱上了一个接受挑战的男人（笑）</p>
+        <p>「柔术<span style="color: #33FFFF;">胜</span>」</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/Fdrrcpu65" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+              李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="170721.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1707211.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@hamajinho​</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月21日</strong> Instagram</p>
+        <p>因为我的工作，我见过成千上万的运动员在比赛前的表现，但胜利却如此冷静沉着，很难相信这是他的第一场比赛。
+          <br/>#胜利 #bigbang #jbjjf #jiujitsu #De La Riva 日本 #我爱上这个了，哈哈</p>
+        <p>「柔术<span style="color: #33FFFF;">胜</span>」</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/FdkrnA1hf" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+              李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="1707212.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1707213.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月21日</strong> Instagram</p>
+        <p>恭喜 @ christiandada_tokyo @ xbryantan 🎊</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdsoycXaT" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170721s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月21日</strong> Instagram</p>
+        <p>☀️</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fdn3LzxV8" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170721s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月21日</strong> Instagram</p>
+        <p>Off to #Chicago</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fdn3hFWW1" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170721s2.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月22日</strong> Instagram</p>
+        <p>-Act III, M.O.T.T.E- 在 #芝加哥✔️💯 下一站是 #迈阿密💥</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdHuNvCgD" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170722s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@hamajinho</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月22日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdC8Zpapf" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170722s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@fakesickness</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月22日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdC81DPzq" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170722s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@jonasbrwood</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月22日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdxFmnvjg" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170722s3.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ds">
+  <div style="text-align: center;">
+    <p>@sonic_mic</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月22日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdxEncozJ" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170722s4.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月22日</strong> Instagram</p>
+        <p>@ jonasbrwood 🌳🌸🌲☘️🌷🌴<br/>很高兴认识你 jonas! @ jonasbrwood<br/>#可爱 @ jonasbrwood 🎾🎾🎾🎾🎾</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdxD5oysI" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170722s5.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月23日</strong> Instagram</p>
+        <p>🌎</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdLRED5HD" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170723s.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月23日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdLwP2izo" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170723s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@hamajinho</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月23日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdHwslqcY" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170723s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月23日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdHvNiXU9" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170723s3.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月23日</strong> Instagram</p>
+        <p>@ peaceminusonedotcom<br/>我在这里 #迈阿密</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdHviwoc1" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170723s4.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@laurenz0__</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月24日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdV205408" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170724s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月24日</strong> Instagram</p>
+        <p>#马来西亚 #吉隆坡 @ naturalhighrecord #肉铺 @ yg_republique #Zouk 吉隆坡 !!!!!!!!!🇲🇾🇲🇾🇲🇾 8/11 8/11 8/11</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdRzonUvU" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170724s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月24日</strong> Instagram</p>
+        <p>😱✨#Damianhirst<br/>💭</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdPgO8x4T" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170724s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月24日</strong> Instagram</p>
+        <p>谢谢 #NIKE 为我的巡演 'Act III, M.O.T.T.E' 定制了我见过最酷的独一无二的 Air force1 @ peaceminusonedotcom</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FdPgy9pXs" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170724s3.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月25日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fe31EEx81" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170725s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@davegrutman</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月25日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fe2WB7quN" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170725s1.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@davegrutman</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月25日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fe2SSEV8n" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170725s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@hamajinho</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月25日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fe2Sp7t3S" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170725s3.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月25日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fe2DVrhh1" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170725s4.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月25日</strong> Instagram</p>
+        <p>🌈✨<br/>明天起在迈阿密首次开设 #PMO 快闪店 只营业6天 请大家来看看迈阿密独一无二的单品!⚡️</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fe2CtgIME" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170725s5.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@hamajinho​</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月26日</strong> Instagram</p>
+        <p>自从胜利来韩国后就一直和他联系，但他好像很忙，我当然也知道，就跟他说：“没事的！别勉强自己！” 我还以为这次能见到他呢？我一点也不难过！结果他从仁川机场一路赶来，给了我一个惊喜！#Sunri #胜利 #bigbang #DeLaRivaJapan #bonjiujitsu #柔道 #对练了一个多小时！#虽然很可怜他这么忙，但是当他抱住我喊“滨岛老师！”的时候，我差点哭了哈哈</p>
+        <br/>
+        <p>「柔术<span style="color: #33FFFF;">胜</span>」</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/FedQGcO6y" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+              李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="170726.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1707261.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@fakesickness</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月26日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FedPIcV0S" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170726s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@ddp_seoul、@hamajinho​</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月27日</strong> Instagram</p>
+        <br/>
+        <p>「柔术<span style="color: #33FFFF;">胜</span>」</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/Felna5Khq" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+              李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="170727.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="1707271.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@viviiixix_97</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月27日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FennM2eD0" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170727s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@ddp_seoul</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月27日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Feng6gHnn" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170727s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月27日</strong> Instagram</p>
+        <p>@aoriramen AORI拉面 在#东大门 #DDP #7月28日 #周五就可以和大家见面了! 今后也会为了送上一碗好吃的让大家吃了心情好的#AORI拉面而尽全力的 ! #AORI的神隐 #东大门 #DDP</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FenfPr2Eb" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170727s3.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月27日</strong> Instagram</p>
+        <p>再见了 #迈阿密🌸😢❤️ 出发去 #纽约🔥 #ACTIIIMOTTE世界巡演2017</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fen99FQ9e" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170727s4.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@kaws</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月28日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fex3awm0r" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170728s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@resilient__e</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月28日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/Fex3vbZ5W" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170728s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月28日</strong> Instagram</p>
+        <p>#TOMORROWLAND 登陆韩国🇰🇷  @ naturalhighrecord @ djglory 不要错过哟 #7月29日 #仁川文鹤竞技场<br/>我在 #台北 #bigbang #展览 想我了吗? 😉</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FewK8C8oV" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170728s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月28日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FewJ5jWPC" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170728s3.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@xx9792</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月29日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FeFHjjabs" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170729s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@lisley</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月29日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FeF6z3sHG" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170729s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@rudahribeiro</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月29日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FeF66ETVa" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170729s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2017年7月29日</strong> Instagram</p>
+        <p>非常爱你们 😘 #台北 #bigbang #展览</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/FeEZCxsqL" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="170729s3.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div id="noContentMessage" style="display:none; text-align:center; color: white; font-size: 40px; margin-top: 30px;">
+    此成员没有发过贴文
+</div>
+
+<br/><br/><br/>
+<div class="header-container">
+  <nav class="left-nav">
+    <a href="sns2017.html" id="backButton">Back</a>
+  </nav>
+  <div class="title-group">
+    <div id="footer"></div>
+  </div>    
+  <nav class="right-nav">
+  <a href="sns2017aug.html" id="nextButton">8月</a>
+  </nav>
+</div>
+
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+
+  let filterLocked = false;
+
+  function toggleFilterLock() {
+    filterLocked = !filterLocked;
+    updateMemberListDisplay();
+  }
+
+  function showMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'flex';
+    }
+  }
+
+  function hideMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'none';
+    }
+  }
+
+  function updateMemberListDisplay() {
+    const memberList = document.getElementById('memberList');
+    memberList.style.display = filterLocked ? 'flex' : 'none';
+  }
+
+  function filterSNS(member) {
+    const entries = document.querySelectorAll('.sns-entry');
+    const message = document.getElementById('noContentMessage');
+    const backButton = document.getElementById('backButton');
+    const nextButton = document.getElementById('nextButton');
+    const footer = document.getElementById('footer');
+    const currentFilter = document.getElementById('currentFilter');
+    const currentFilter1 = document.getElementById('currentFilter1');
+
+    const memberNames = {
+      all: '全部',
+      bigbang: 'Bigbang官号',
+      gd: 'G-Dragon',
+      top: 'TOP',
+      ty: '太阳',
+      ds: '大声',
+      sr: '胜利'
+    };
+
+    if (memberNames[member]) {
+      currentFilter.textContent = `当前筛选：${memberNames[member]}`;
+if (member === 'bigbang') {
+  currentFilter1.textContent = '只记录Bigbang官方账号仅发布成员们的照片，不记录宣传类内容等';
+} else {
+  currentFilter1.textContent = '筛选出来的图片也包括成员与别人的合照贴文 或 别人提到此成员';
+}      currentFilter.style.display = 'block';
+      currentFilter1.style.display = 'block';
+    } else {
+      currentFilter.style.display = 'none';
+      currentFilter1.style.display = 'none';
+    }
+
+    let hasContent = false;
+
+    entries.forEach(entry => {
+      const members = entry.dataset.member.split(' ');
+      if (member === 'all' || members.includes(member)) {
+        entry.style.display = 'block';
+        hasContent = true;
+      } else {
+        entry.style.display = 'none';
+      }
+    });
+
+    if (!hasContent && member !== 'all') {
+      if (message) message.style.display = 'block';
+      if (backButton) backButton.style.display = 'none';
+      if (nextButton) nextButton.style.display = 'none';
+      if (footer) footer.style.display = 'none';
+    } else {
+      if (message) message.style.display = 'none';
+      if (backButton) backButton.style.display = 'inline-block';
+      if (nextButton) nextButton.style.display = 'inline-block';
+      if (footer) footer.style.display = 'block';
+    }
+  }
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+
+  const counter = container.querySelector('.slide-counter');
+  counter.textContent = `${state + 1}/${slides.length}`;
+}
+
+document.querySelectorAll('.slider-container').forEach(container => {
+  const slides = container.querySelectorAll('.slide-item');
+  const counter = container.querySelector('.slide-counter');
+
+  counter.textContent = `1/${slides.length}`;
+});
+
+</script>
+</body>
+</html>
