@@ -1,0 +1,3004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+@media only screen and (max-width: 768px) {
+    .header-container {
+      height: auto;
+      min-height: 100px;
+      padding: 20px 0;
+      align-items: flex-start;
+    }
+
+    .title-group {
+      width: 100%;
+      padding: 0 120px;
+      text-align: center;
+    }
+
+    .title-group h1 {
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.3;
+      font-size: 42px;
+    }
+
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 510px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .jump-button-1 {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid #33FFFF;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button-1:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+.filter-dropdown-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -50px;
+  z-index: 10;
+}
+.filter-dropdown {
+  position: relative;
+}
+
+.filter-button {
+  padding: 15px 25px;
+  background-color: #111; /* 原本的深色背景 */
+  color: white;
+  border: 2px solid #33FFFF; /* 青蓝色边框 */
+  border-radius: 5px 18px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+  background-color: white; /* 悬停时背景变白 */
+  color: black; /* 文字变黑 */
+}
+
+.member-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 100;
+  margin-top: 8px;
+  background-color: #111;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.filter-columns {
+  display: flex;
+  gap: 30px;
+}
+
+.filter-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-dropdown.open .member-list {
+  display: block;
+}
+
+  #noContentMessage {
+    padding: 15px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 30px auto 0;
+  }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .right-side{
+    position: relative;
+    align-items:center;
+  }
+
+  .slide-counter{
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .nav-button{
+    background-color: rgba(255,255,255,0.7);
+    border:none;
+    padding:10px 15px;
+    font-size:24px;
+    cursor:pointer;
+    border-radius:10px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: calc(100% + 10px);
+  }
+
+  .toggle-btn {
+    border: 2px solid #33FFFF;
+    color: #FFFFFF;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+  }
+  .toggle-btn:hover {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="gdbusiness.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>ZO&FRIENDS</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+<div class="filter-dropdown-wrapper">
+  <div class="filter-dropdown" id="filterDropdown">
+    <div class="filter-button" onclick="toggleFilterMenu()">筛选</div>
+
+    <div class="member-list" id="memberList">
+      <div class="filter-columns">
+        <div class="filter-col">
+        </div>
+        <div class="filter-col">
+          <button class="jump-button" onclick="filterSNS('all')">全部</button>
+          <button class="jump-button" onclick="filterSNS('monamhee')">Monamhee</button>
+          <button class="jump-button" onclick="filterSNS('romnd')">rom&nd</button>
+          <button class="jump-button" onclick="filterSNS('casetify')">CASETiFY</button>
+          <button class="jump-button" onclick="filterSNS('fanta')">FANTA</button>
+          <button class="jump-button" onclick="filterSNS('ohscent')">OHSCENT</button>
+          <button class="jump-button" onclick="filterSNS('coller')">COLLER</button>
+          <button class="jump-button" onclick="filterSNS('royche')">ROYCHE</button>
+          <button class="jump-button" onclick="filterSNS('cellfusionc')">Cell Fusion C</button>
+          <button class="jump-button" onclick="filterSNS('tmoney')">T-Money</button>
+          <button class="jump-button" onclick="filterSNS('medicube')">medicube</button>
+          <button class="jump-button" onclick="filterSNS('kedition')">K-EDITION</button>
+          <button class="jump-button" onclick="filterSNS('uniqlo')">UNIQLO</button>
+          <button class="jump-button" onclick="filterSNS('ruyifilm')">Ruyi Film</button>
+          <button class="jump-button" onclick="filterSNS('converse')">CONVERSE</button>
+          <button class="jump-button" onclick="filterSNS('lush')">LUSH</button>
+          <button class="jump-button" onclick="filterSNS('banila co')">BANILA CO</button>
+          <button class="jump-button" onclick="filterSNS('glampalm')">GLAMPALM</button>
+          <button class="jump-button" onclick="filterSNS('stanley')">Stanley</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div style="text-align: center;">
+    <p>官网网站：<a href="https://linefriendssquare.com/en/collections/zonfriends?srsltid=AfmBOoqdNjzDiqku5xu1tIDrddA8RXVNsARGKSW-I5DHIMavVbjq7JqW" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        ZO&FRIENDS</a></p>
+  </div><br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="zofriends2024-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="zofriends.html#zofriends2024" class="jump-button">2024</a>
+    </div>
+    <div id="zofriends2025-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="zofriends.html#zofriends2025" class="jump-button">2025</a>
+    </div>
+    <div id="zofriends2026-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="zofriends.html#zofriends2026" class="jump-button">2026</a>
+    </div>
+  </div><br/>
+  <hr class="full-width-line" />
+
+  <h1 id="currentFilter" style="text-align:center; margin-top: 30px; margin-bottom: 10px; color: #33FFFF; display: none;"></h1><br/>
+
+  <div id="zofriends2024" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="zofriends.html#zofriends2024-jump" class="jump-button">2024</a>
+  </div><br/>
+
+<div class="sns-entry" data-member="monamhee">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2024年12月16日</strong></p>
+        <p>PEACEMINUSONE与韩国潮牌 MONAMHEE 合作，推出了毛绒钥匙扣配饰系列</p>
+        <p>详细资讯：<a href="https://linefriendssquare.com/en/blogs/event/ip1-peaceminusone-x-monamhee?srsltid=AfmBOor-fqm3F6jzOo-c4izIlkSchf23D1WQnqziPf8JWf_S7g1tWDeO" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            LINEFRIENDS SQUARE</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="241216.gif" style="width: 450px;">
+  <div style="text-align: center;">
+    <p><br/>DAIHEE Plush Keyring</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="241216.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2412161.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2412162.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2412163.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2412164.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2412165.jpeg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+  <div style="text-align: center;">
+    <p><br/>SYHEE Plush Keyring</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="2412166.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2412167.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2412168.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2412169.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="24121610.jpeg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="24121611.jpeg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+  </div>
+  <img src="24121613.jpeg" style="width: 400px;">
+</div>
+<div class="sns-entry" data-member="monamhee">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2024年12月20日-2025年1月6日</strong></p>
+        <p>首尔明洞区LINE FRIENDS SQUARE Myeongdong设立实体Pop-Up店</p>
+        <p>每人最多购入一款2个，如购买超过10万韩元将获得免费鞋带赠品</p>
+        <p>详细资讯：<a href="https://www.instagram.com/p/DDyfifIpFQQ/?img_index=3" target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            felavu.magazine</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="24121612.jpeg" style="width: 450px;">
+  <hr class="full-width-line">
+</div>
+
+  <div id="zofriends2025" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="zofriends.html#zofriends2025-jump" class="jump-button">2025</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <img src="e-zoa2.webp" style="width: 500px;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2025年7月11日</strong></p>
+        <p>ZO&FRIENDS 是由韩国创意 IP 公司 IPX（前身为 LINE FRIENDS） 与 GD 共同打造的新角色 IP</p>
+        <p><br/>IPX 相关人士表示：与 G-DRAGON 一同历时约两年策划推出的『ZO&FRIENDS』，在去年夏天受到粉丝热烈喜爱，成功完成出道。这次的第二波快闪活动将延续这股热度，成为与全球粉丝直接相见的新旅程。未来我们也将透过差异化的世界观与产品，为全球粉丝带来特别的体验</p>
+        <p>详细资讯：<a href="https://global.fashionseoul.com/2025-07-11/%22Unveiling%20G-Dragon's%20Style%20in%20'ZO%26FRIENDS'%22" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            FASHION SEOUL</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="250711z.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="250711z1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>Zoa：权志龙本人宠物猫Zoa</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-zoa5.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoa.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoa1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>A&NE：雏菊 (Daisy)</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-zoa6.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoa4.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>AKI（粉色）和 ZAKI（黄色）：从 Zoa 的彩色脚印中诞生的活泼彩色球</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-zoa7.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoa3.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>第一次 ZO&FRIENDS Global POP-UP</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>2025年7月30日-8月10日 韩国首尔弘大、中国上海</p>
+        <p>2025年7月30日-8月31日 中国香港</p>
+        <p>2025年7月30日-8月7日 泰国曼谷</p>
+        <p>2025年8月18日-8月31日 中国台湾台北</p>
+        <p>2025年8月18日-9月1日 日本东京</p>
+        <p>2025年9月5日-9月30日 美国洛杉矶</p>
+        <p>详细资讯：<a href="https://www.instagram.com/p/DMXFTCoBgVf/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            zonfriends_official</a></p>
+      </div>
+    </div><br/>
+    <img src="250711p.webp" style="width: 350px;">
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2025年8月18日</strong></p>
+        <p>ZO&FRIENDS 表情包上线在社交平台 Kakaotalk 和 Line</p>
+        <p>动图.gif：<a href="https://store.line.me/stickershop/product/35523/en" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Line</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="sticker-10.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-20.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-9.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-19.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-2.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-14.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-15.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-17.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-16.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-7.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-3.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-1.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-21.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-8.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-12.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-11.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-4.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-5.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-22.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-24.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-13.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-6.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="sticker-23.gif" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+<div class="sns-entry" data-member="romnd">
+  <div style="text-align: center;">
+    <p>官方网站：<a href="https://romandbeauty.com/collections/rom-nd-x-zo-friends?srsltid=AfmBOooxkfHwD6UG7RDqVr0woK9AFgRlHIyAWzUK728ocIHEtYPcbiYp" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        rom&nd</a></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2025年11月1日</strong></p>
+        <p>韩国彩妆品牌 rom&nd 与 ZO&FRIENDS 推出限量联名彩妆系列</p>
+        <p>详细资讯：<a href="https://www.niusnews.com/=P1bx7ddx7" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            NIUSNEWS</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-zoa11.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoa12.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoa8.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoa9.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoa10.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>果冻打亮</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-zoar37.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar38.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar39.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar40.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar41.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar42.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar43.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>迷雾软糖唇釉</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-zoar.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar1.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>果冻唇膏</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-zoar2.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar3.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar4.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar5.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar6.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar7.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>柔焦气垫</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-zoar8.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar9.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar10.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>果汁腮红球（含粉扑）</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-zoar11.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar11.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar12.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar15.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar13.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar14.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar16.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>眼皮眼影迷你盘</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-zoar17.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar18.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar19.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>眼皮十色眼影盘</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-zoar20.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar21.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>根纤染眉膏</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-zoar22.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar23.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar24.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>果汁唇釉2.0（DIY套组）</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-zoar34.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar36.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar25.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar26.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar27.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar28.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar29.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar30.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar31.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar32.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar33.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>满额赠、加价购物品</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-zoar44.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar45.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar46.gif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-zoar47.gif" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="tmoney">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2025年11月19日</strong></p>
+        <p>ZO&FRIENDS 与 韩国公共交通智能卡 T-Money 首次推出交通卡联名系列</p>
+        <p>详细资讯：<a href="https://www.buykgoodshk.com/product_details.php?name=ZoaTmoney&utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            buykgoodshk</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="251119z.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="251119z1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="251119z2.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="251119z3.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="251119z4.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="251119z5.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="251119z6.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="casetify">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2025年12月11日</strong></p>
+        <p>电子配件品牌 CASETiFY 与 ZO&FRIENDS 合作推出联名系列产品</p>
+        <p>详细资讯：<a href="https://www.newspie.com.tw/zo-friends-x-casetify-20251210/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            NEWS PIE</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-casetify.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetify1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetify2.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetify3.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetify4.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetify5.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetify6.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p>iPhone 手机壳系列</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-casetifyi21.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi16.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi17.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi22.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi3.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi7.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi4.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi2.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi10.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi11.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi13.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi8.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi6.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi15.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi4.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi5.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi28.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi27.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi26.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi31.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi23.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi29.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi9.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi12.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi18.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi25.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi20.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi19.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi24.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyi30.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>AirPods 壳系列</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-casetifya.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifya1.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>三星折叠屏 手机壳系列</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-casetisys.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetisys1.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetisys2.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetisys3.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetisys4.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetisys5.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetisys6.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetisys7.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>镜子握把支架</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-casetifym.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifym3.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifym1.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifym2.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifym4.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifym5.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>钥匙扣标签</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="e-casetifyk2.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyk3.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyk.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyk4.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyk5.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="e-casetifyk1.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>详细资讯：<a href="https://linefriendssquare.com/en/collections/zonfriends?srsltid=AfmBOoqdNjzDiqku5xu1tIDrddA8RXVNsARGKSW-I5DHIMavVbjq7JqW" 
+      target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+        ZO&FRIENDS</a></p><br/>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div style="text-align: center;">
+    <p>第二次 ZOAful Winter POP-UP</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>2025年12月19日-12月28日 韩国首尔、釜山、水原</p>
+        <p>2025年12月19日-1月3日 中国北京</p>
+        <p>2025年12月21日-1月3日 中国上海</p>
+        <p>2025年12月25日-12月28日 泰国曼谷</p>
+        <p>2026年1月14日-3月1日 中国香港</p>
+        <p>2026年1月16日-2月1日 菲律宾雅加达</p>
+        <p>2026年1月23日-2月8日 新加坡</p>
+        <p>2026年1月23日-2月22日 中国台湾台北</p>
+        <p>2026年1月28日-2月9日 日本东京</p>
+        <p>2026年2月21日-4月19日 阿拉伯 阿布扎比</p>
+        <p>2026年3月21日-3月31日 美国洛杉矶、纽约</p>
+        <p>详细资讯：<a href="https://www.instagram.com/p/DR1fNpwAYXz/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            zonfriends_official</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="zofriends2026" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="zofriends.html#zofriends2026-jump" class="jump-button">2026</a>
+  </div><br/>
+
+<div class="sns-entry" data-member="fanta">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年1月1日</strong></p>
+        <p>ZO&FRIENDS 与 Coca-Cola旗下的品牌 FANTA 合作推出联名饮品</p>
+        <p>详细资讯：<a href="https://dimc.co.kr/portfolio-md-fanta-zofreinds-merchandise?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            dimc</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260101z.png" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260101z1.png" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260101z2.png" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260101z3.png" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260101z4.png" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260101z5.png" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260101z6.png" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260101z7.png" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="ohscent">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年3月1日</strong></p>
+        <p>ZO&FRIENDS 与 香氛品牌 OHSCENT 合作推出联名系列</p>
+        <p>详细资讯：<a href="https://www.kiitosstore.com/products/zofriends?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            KIITOS STORE</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260301z1.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260301z3.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260301z.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260301z6.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260301z2.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260301z4.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260301z5.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260301z7.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260301z8.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div style="text-align: center;">
+    <p>第三次 ZO&FRIENDS LUCKY SHOP</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>2026年3月12-19日：韩国明洞</p>
+        <p>2026年3月12-22日：韩国蚕室</p>
+        <p>2026年3月12-22日：韩国釜山</p>
+        <p>2026年3月20日-4月13日：日本东京涉谷</p>
+        <p>2026年3月20-31日：日本东京新大久保</p>
+        <p>2026年3月21-31日：日本大阪心斋桥</p>
+        <p>2026年3月21-31日：日本广岛</p>
+        <p>2026年3月24-30日：日本名古屋</p>
+        <p>2026年3月25-31日：日本东京涉谷</p>
+        <p>2026年3月28日-4月3日：日本大宫</p>
+        <p>2026年3月28日-4月5日：日本福冈</p>
+        <p>2026年3月28日-4月13日：日本大阪梅田</p>
+        <p>2026年3月28日-4月12日：日本大阪HMV</p>
+        <p>2026年3月12日-4月8日：中国香港</p>
+        <p>2026年4月10日-5月10日：台湾台北</p>
+        <p>2026年4月15日-5月10日：台湾高雄</p>
+        <p>2026年4月10日：新加坡（售完为止）</p>
+        <p>2026年4月24日：马来西亚（NOT ONLY TOY 的期间展售）</p><br/><br/>
+        <p>在中国大陆，ZO&FRIENDS LUCKY SHOP 同步进入LINE FRIENDS / SUPER RARE 门店，这次活动名字为 LINE FRIENDS Mini Shop</p>
+        <p>从2026年3月12日开始，售完为止</p>
+        <ol style="list-style-position: inside; color: white;">
+          <li>上海</li>
+          <li>成都</li>
+          <li>南京</li>
+          <li>武汉</li>
+          <li>深圳</li>
+          <li>郑州</li>
+          <li>沈阳</li>
+          <li>杭州</li>
+          <li>福州</li>
+          <li>南昌 （限时）</li>
+          <li>合肥</li>
+          <li>重庆</li>
+          <li>温州 （限时）</li>
+          <li>广州正佳广场店</li>
+          <li>北京王府井喜悦店</li>
+          <li>长沙悦方 IDMALL 店</li>
+          <li>西安赛格国际购物中心店</li>
+        </ol><br/>
+        <p>1家 LINE FRIENDS 旗舰店 + 13家 Mini Shop + 4家 SUPER RARE</p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260312s.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260312s1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+        <p>详细资讯：<a href="https://linefriends.com/ko-kr/media/ipx-zo-friendsyi-se-beonjjae-pabeob-zo-friends-lucky-shop-k-pop-seongji-hongdaereul-sijageuro-geulrobeol-geocyeo-k-keolceo-jungsimji-myeongdongeseo-haenguneul-jeonhanda" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            LINE FRIENDS</a></p><br/>
+    <hr class="full-width-line" />
+  </div>
+
+<div class="sns-entry" data-member="coller">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年3月18日</strong></p>
+        <p>ZO&FRIENDS 与 LINE FRIENDS 旗下的创意互动品牌 COLLER 合作推出</p>
+        <p>详细资讯：<a href="https://weibo.com/2837606470/QwE9twyuq" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            权志龙_FAMHOME</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260318z.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260318z1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260318z2.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260318z3.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260318z4.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260318z5.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260318z6.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260318z7.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260318z8.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260318z9.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260318z10.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260318z11.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260318z12.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260318z13.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260318z14.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="royche">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年4月10日</strong></p>
+        <p>ZO&FRIENDS 与 电子产品品牌 ROYCHE 合作推出联名产品系列</p>
+        <p>详细资讯：<a href="https://soulsimplehk.com/en/collections/zo-friends-x-royche?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            SOUL SIMPLE</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260410z1.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z2.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z3.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260410z8.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z4.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z5.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z6.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z7.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260410z9.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z10.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z11.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z12.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z13.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260410z18.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z14.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z15.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z16.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z17.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260410z21.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z20.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z19.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z22.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z23.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z24.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z25.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z26.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260410z27.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z28.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260410z29.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="cellfusionc">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年4月29日</strong></p>
+        <p>ZO&FRIENDS 与 韩国专业医美级护肤品牌 Cell Fusion C 合作推出 防晒护肤限定礼盒</p>
+        <p>详细资讯：<a href="https://www.newswire.co.kr/newsRead.php?no=1032968&utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            News Wire</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260429z14.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260429z18.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260429z19.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260429z16.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260429z17.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260429z9.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260429z11.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260429z10.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260429z12.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260429z13.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260429z.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260429z1.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260429z4.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260429z5.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260429z2.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260429z3.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260429z6.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260429z7.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260429z15.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+        <p>详细资讯：<a href="https://global.oliveyoung.com/product/detail?prdtNo=GA260439592&utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            OLIVE YOUNG</a></p><br/>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="tmoney">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年5月13日</strong></p>
+        <p>ZO&FRIENDS 与 韩国公共交通智能卡 T-Money 再次推出第二版交通卡联名系列</p>
+        <p>详细资讯：<a href="https://sunbaeoutlet.com/products/pre-order-t-money-card-x-g-dragon-zo-friends-copy?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            SUNBAESHOP</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260513z.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260513z1.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260513z2.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260513z3.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260513z4.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="medicube">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年6月9日</strong></p>
+        <p>ZO&FRIENDS 与 韩国医学美容护肤品牌 medicube 合作推出 AGE-R Booster Pro X2 美容仪限定版</p>
+        <p>详细资讯：<a href="https://soulsimplehk.com/products/medicube-age-r-booster-pro-x2-zo-friends-edition?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            SOUL SIMPLE</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260609z.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260609z1.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260609z2.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260609z3.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260609z4.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="kedition">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年6月18-28日</strong></p>
+        <p>ZO&FRIENDS 与 K-EDITION 合作在韩国首尔国立民俗博物馆前庭中展示 ZO&FRIENDS X K-EDITION 商品</p>
+        <p>详细资讯：<a href="https://world.nol.com/en/content/festas/019ef354-19d9-7033-b8f8-62d197e4a370?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            NOL WORLD</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260618z.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260618z1.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260618z2.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260618z3.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260618z4.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260618z5.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260618z6.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260618z7.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260618z8.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260618z9.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260618z10.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260618z11.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260618z12.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="uniqlo">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年7月17日</strong></p>
+        <p>ZO&FRIENDS 与 UNIQLO 合作推出T恤系列</p>
+        <p>详细资讯：<a href="https://www.uniqlo.com/my/en/special-feature/zo-and-friends" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            UNIQLO</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/YEIGexEjzm8?si=Hn6dmVAFOMmqhetD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p>宣传视频</p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260717z.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z1.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z2.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z3.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z4.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z5.avif" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260717z6.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z7.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z18.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z19.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z8.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z9.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z15.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z10.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z11.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z14.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z12.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z13.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z16.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260717z17.avif" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="tmoney">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年8月10日</strong></p>
+        <p>ZO&FRIENDS 与 韩国公共交通智能卡 T-Money 第三次合作推出立体钥匙扣交通卡</p>
+        <p>详细资讯：<a href="https://eng.tmoney.co.kr/aeb/cmnctn/news/readNewsView.dev?bdSeqNo=4190&utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            T-Money</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260810z.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260810z1.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="ruyifilm">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年8月14日</strong></p>
+        <p>ZO&FRIENDS 与 中国电影公司 Ruyi Film 合作推出周边系列</p>
+        <p>详细资讯：<a href="https://x.com/Zoa_Kwon_/status/2088424205683691766" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Zoa_Kwon_</a></p>
+      </div>
+    </div>
+    <p>联名主题杯桶套餐、400% 收藏手办、萌粒盲盒、联名吊卡、联名斜挎包</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260814z.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260814z1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260814z2.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260814z4.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260814z11.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260814z10.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260814z3.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260814z6.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260814z5.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260814z7.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260814z8.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260814z9.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+        <p>详细资讯：<a href="https://x.com/always_bigbang3/status/2095388186042368254" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            always_bigbang3</a></p><br/>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div style="text-align: center;">
+    <p>第四次 ZO&FRIENDS Ordinary Day POP-UP</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>2026年8月19日-9月6日：台湾台北</p>
+        <p>2026年8月23日-9月10日：台湾台南</p>
+        <p>2026年8月26日-9月7日：马来西亚</p>
+        <p>详细资讯：<a href="https://aipxa.kktix.cc/events/znfordinarydaytpe?locale=en" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            AIPXA LAND</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+<div class="sns-entry" data-member="converse">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年9月3日</strong></p>
+        <p>ZO&FRIENDS 与 CONVERSE 联名系列</p>
+        <p>详细资讯：<a href="https://www.converse.co.kr/product/%EC%BB%A8%EB%B2%84%EC%8A%A4-%EC%A1%B0%EC%95%A4%ED%94%84%EB%A0%8C%EC%A6%88-%EC%B2%99-70-x-%EC%BF%A8-%EA%B7%B8%EB%A0%88%EC%9D%B4/15624/category/85/display/1/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            CONVERSE</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260904z20.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z23.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z19.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z18.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z17.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z21.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z22.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z2.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z3.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z4.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z5.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z6.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z7.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z8.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z9.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z10.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z11.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z12.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z13.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z14.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z15.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z16.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260904z24.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z25.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z26.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z27.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z28.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z29.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z30.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z31.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z32.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z33.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z34.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904z35.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+        <p>详细资讯：<a href="https://kstyleseoul.co.kr/en-us/articles/290?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            K-STYLE Seoul</a></p><br/>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年9月4日</strong></p>
+        <p>ZO&FRIENDS 推出新品系列</p>
+        <p>详细资讯：<a href="https://linefriends.co.jp/news/zGvs92t4" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            LINE FRIENDS</a></p>
+      </div>
+    </div>
+    <p>毛绒玩偶及挂件、收纳及包袋、服饰及配件、文具及小物</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260904S.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904S1.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904S2.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904S3.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904S4.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904S5.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904S6.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904S7.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904S8.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904S9.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904S10.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904S11.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904S12.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904S13.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260904S14.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+<div class="sns-entry" data-member="lush">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年9月14日</strong></p>
+        <p>ZO&FRIENDS 与 英国天然美妆与护品牌 LUSH 联名推出洗浴产品</p>
+        <p>详细资讯：<a href="https://linefriends.co.jp/news/zGvs92t4" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            LINE FRIENDS</a></p>
+      </div>
+    </div>
+    <p>1. Agi Jagi Duo 沐浴软糖＋身体磨砂膏<br/>2. Fluffy ZOA 头发打底<br/>3. Anne's Stormy Weather 身体喷雾<br/>4. Cloud Cat ZOA 泡澡球</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260914z.png" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260914z1.png" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260914z2.png" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260914z3.png" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="banilaco">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年9月30日</strong></p>
+        <p>ZO&FRIENDS 与 韩国美妆及卸妆产品品牌 BANILA CO 联名推出洗浴产品</p>
+        <p>详细资讯：<a href="https://sunbaeoutlet.com/collections/zo-friends?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            SUNBAESHOP</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="260930z.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260930z1.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260930z2.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260930z3.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260930z4.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260930z5.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="260930z6.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="glampalm">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年10月6日</strong></p>
+        <p>ZO&FRIENDS 与 韩国的高端专业美发造型工具品牌 GLAMPALM 合作推出特别版系列</p>
+        <p>详细资讯：<a href="https://www.glampalm.com.hk/blog/posts/glampalm-zoa?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            GLAMPALM</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="261006z.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261006z1.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261006z2.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261006z3.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261006z4.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261006z5.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261006z6.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261006z7.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261006z8.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261006z9.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="stanley">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年10月9日</strong></p>
+        <p>ZO&FRIENDS 与 保温杯品牌 Stanley 1913 联名推出保温杯联名系列</p>
+        <p>详细资讯：<a href="https://my.stanley1913.com/pages/zo-friends-collection?utm_source=chatgpt.com#dee7d1dc5111dbf1af4d2396c132dbc8" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Stanley</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="261009z22.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z1.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z2.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z3.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z4.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="261009z5.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z6.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z7.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z8.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z9.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="261009z10.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z11.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z12.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z13.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z14.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="261009z15.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z16.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z17.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z18.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z19.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z20.webp" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="261009z21.webp" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="gdbusiness.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+ 
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+  let filterLocked = false;
+
+function toggleFilterMenu() {
+  const dropdown = document.getElementById("filterDropdown");
+  dropdown.classList.toggle("open");
+}
+
+  function showMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'flex';
+    }
+  }
+
+  function hideMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'none';
+    }
+  }
+
+  function updateMemberListDisplay() {
+    const memberList = document.getElementById('memberList');
+    memberList.style.display = filterLocked ? 'flex' : 'none';
+  }
+
+function filterSNS(member) {
+  const entries = document.querySelectorAll('.sns-entry');
+  const allDivs = document.querySelectorAll('main > div');
+  const message = document.getElementById('noContentMessage');
+  const currentFilter = document.getElementById('currentFilter');
+  const footer = document.getElementById('footer');
+
+  const memberNames = {
+    all: '全部',
+    monamhee: 'Monamhee',
+    romnd: 'rom&nd',
+    casetify: 'CASETiFY',
+    fanta: 'FANTA',
+    ohscent: 'OHSCENT',
+    coller: 'COLLER',
+    royche: 'ROYCHE',
+    cellfusionc: 'Cell Fusion C',
+    tmoney: 'T-Money',
+    medicube: 'medicube',
+    kedition: 'K-EDITION',
+    uniqlo: 'UNIQLO',
+    ruyifilm: 'Ruyi Film',
+    converse: 'CONVERSE',
+    lush: 'LUSH',
+    banilaco: 'BANILA CO',
+    glampalm: 'GLAMPALM',
+    stanley: 'Stanley',
+  };
+
+  
+  if (memberNames[member]) {
+    currentFilter.textContent = `当前筛选：${memberNames[member]}`;
+    currentFilter.style.display = 'block';
+  } else {
+    currentFilter.style.display = 'none';
+  }
+
+  let hasContent = false;
+
+  
+  entries.forEach(entry => {
+    const members = entry.dataset.member.split(' ');
+    if (member === 'all' || members.includes(member)) {
+      entry.style.display = 'block';
+      hasContent = true;
+    } else {
+      entry.style.display = 'none';
+    }
+  });
+
+  
+  allDivs.forEach(div => {
+    const isHeader = div.classList.contains('header-container');
+    const isFilter = div.classList.contains('filter-dropdown-wrapper');
+    const isSNS = div.classList.contains('sns-entry');
+    const isFooterContainer = div.querySelector('#footer') !== null;
+
+    if (isHeader || isFilter || isFooterContainer) {
+      div.style.display = ''; 
+    } else if (!isSNS) {
+      
+      div.style.display = member === 'all' ? '' : 'none';
+    }
+  });
+
+  
+  if (footer) {
+    footer.style.display = 'block';
+  }
+
+  
+  if (!hasContent && member !== 'all') {
+    if (message) message.style.display = 'block';
+  } else {
+    if (message) message.style.display = 'none';
+  }
+
+  
+  const bsContainer = document.querySelector('div[style*="justify-content: center"]');
+  if (bsContainer) {
+    if (member === 'all') {
+      bsContainer.style.display = 'flex';
+      bsContainer.style.justifyContent = 'center';
+      bsContainer.style.gap = '40px';
+      bsContainer.style.flexWrap = 'wrap';
+    } else {
+      bsContainer.style.display = 'none';
+    }
+  }
+}
+
+
+
+  function toggleList(button, show) {
+  const listItem = button.closest('li');
+  
+  if (show) {
+    let nestedList = listItem.querySelector('ol');
+    if (!nestedList) {
+      nestedList = listItem.nextElementSibling;
+    }
+    
+    if (nestedList && nestedList.tagName === 'OL') {
+      nestedList.style.display = "block";
+      button.style.display = "none";
+      nestedList.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  } else {
+    const nestedList = button.closest('ol');
+    
+    if (nestedList) {
+      nestedList.style.display = "none";
+      
+      let parentLi = nestedList.parentElement.closest('li');
+      if (!parentLi) {
+        parentLi = nestedList.previousElementSibling;
+        while (parentLi && parentLi.tagName !== 'LI') {
+          parentLi = parentLi.previousElementSibling;
+        }
+      }
+      
+      if (parentLi) {
+        const expandBtns = parentLi.querySelectorAll('[onclick*="true"]');
+        expandBtns.forEach(btn => {
+          btn.style.display = "inline-block";
+        });
+        
+        parentLi.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  }
+}
+
+
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+
+  const counter = container.querySelector('.slide-counter');
+  counter.textContent = `${state + 1}/${slides.length}`;
+}
+
+document.querySelectorAll('.slider-container').forEach(container => {
+  const slides = container.querySelectorAll('.slide-item');
+  const counter = container.querySelector('.slide-counter');
+
+  counter.textContent = `1/${slides.length}`;
+});
+
+</script>
+</body>
+</html>
