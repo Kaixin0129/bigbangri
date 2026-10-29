@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    nav {
+      background-color: #111;
+      padding: 20px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: transparent;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: white;
+      color: #111;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .content-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 10px;
+    }
+
+    .text-container {
+        max-width: 400px;
+        line-height: 1.6;
+        text-align: left;
+    }
+
+    .text-container li {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .text-container ul {
+        padding-left: 0;
+        margin-left: 0;
+        list-style-position: inside;
+    }
+    
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin-top: 10px; /* 控制和上方内容的距离 */
+      margin-bottom: 20px;
+    }
+
+    nav a.highlight-button {
+      background-color: none;
+      color: white;
+      border: 2px solid #FF66CC;
+    }
+  
+    nav a.highlight-button:hover {
+      background-color: none;
+      color: #FF66CC;
+    }
+
+    nav a.highlight1-button {
+      background-color: none;
+      color: white;
+      border: 2px solid #33FFFF;
+    }
+  
+    nav a.highlight1-button:hover {
+      background-color: none;
+      color: #33FFFF;
+    }
+
+@media only screen and (max-width: 768px) {
+    .header-container {
+      height: auto;
+      min-height: 100px;
+      padding: 20px 0;
+      align-items: flex-start;
+    }
+
+    .title-group {
+      width: 100%;
+      padding: 0 120px;
+      text-align: center;
+    }
+
+    .title-group h1 {
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.3;
+      font-size: 42px;
+    }
+
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .jump-button-1 {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid #f5ed54;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button-1:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    .two-column-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 100px;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    .column {
+      width: 45%;
+      text-align: left;
+      color: white;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: white;
+      height: auto;
+    }
+
+    p {
+      margin-bottom: 10px;
+      margin: 10px 0;
+      line-height: 1.8;
+    }
+    
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="schedule.html" class="jump-button-1">完整时间线</a>
+    <a href="stage.html">打歌舞台</a>
+    <a href="concert.html">演唱会</a>
+    <a href="solo.html">成员Solo</a>
+    <a href="teams.html">小分队</a>
+    <a href="album.html">专辑歌曲Mv</a>
+    <a href="fanmeeting.html">Fan Meeting</a>
+    <a href="collection.html">官方周边</a>
+    <a href="show.html">放送节目</a>
+    <a href="interview.html">采访</a>
+    <a href="behindthescenes.html">幕后花絮</a>
+    <a href="magazine.html">杂志拍摄</a>
+    <a href="endorsement.html">代言</a>
+    <a href="awardlist.html">获奖</a>
+    <a href="movie.html">电影电视剧短剧</a>
+    <a href="ygfamily.html">YG Family</a>
+    <a href="live.html">直播</a>
+    <a href="more.html">更多</a>
+    <a href="sns.html">SNS</a>
+    <a href="comment.html" class="highlight-button">留言区</a>
+    <a href="cp.html" class="highlight1-button">CP向</a>
+  </nav>
+  <main>
+  <h1>参考资料References</h1><br/>
+  <h2>点击粉蓝色的字体即可进入网站链接</h2>
+
+  <div class="two-column-wrapper">
+    <div class="column left">
+      <p style="text-decoration: underline;">Bigbang媒体网站</p>
+      <p>1. 英文版本：<a href="https://en.wikipedia.org/wiki/BigBang_(South_Korean_band)" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            WIKIPEDIA</a></p>
+      <p>2. 大陆版本：<a href="https://zh.wikipedia.org/wiki/BIGBANG" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            维基百科</a></p>
+      <p>3. Bigbang个人资料：<a href="https://kprofiles.com/big-bang-members-profile/" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            Kpop Profiles</a></p>
+      <p>4. Bigbang行程列表：<a href="https://bigbangkorean.wordpress.com/" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Wordpress</a></p>
+        
+      <p style="text-decoration: underline;"><br/>Bigbang官方账号</p>
+      <p>1. <a href="https://www.youtube.com/bigbang" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            YouTube</a></p>
+      <p>2. <a href="https://open.spotify.com/artist/4Kxlr1PRlDKEB0ekOCyHgX" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Spotify</a></p>
+      <p>3. <a href="https://kprofiles.com/big-bang-members-profile/" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            Facebook</a></p>
+      <p>4. YG Select：<a href="https://en.ygselect.com/category/bigbang/29/" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            官方周边</a><br/>YG已经把Bigbang专栏删除了，但是周边今年还在上新品继续卖....</p>
+      <p>5. <a href="https://en.ygselect.com/category/x-bigbang/430/" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            KRUNK</a></p>
+      <p>6. <a href="https://ygex.jp/bigbang/schedule/?c=2&year&page=4" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            YGEX</a>（杂志）</p>
+      </p>
+
+      <p style="text-decoration: underline;"><br/>维基百科成员的个人资料</p>
+      <p>1. G-Dragon：<a href="https://zh.wikipedia.org/zh-cn/G-Dragon" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            中文</a> -    
+      <a href="https://en.wikipedia.org/wiki/G-Dragon" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            英文</a></p>
+      <p>2. 太阳：<a href="https://zh.wikipedia.org/zh-cn/%E5%A4%AA%E9%99%BD_(%E6%AD%8C%E6%89%8B)" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            中文</a> -   
+      <a href="https://en.wikipedia.org/wiki/Taeyang" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            英文</a></p>
+      <p>3. T.O.P崔胜铉：<a href="https://zh.wikipedia.org/zh-cn/T.O.P." 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            中文</a> -   
+      <a href="https://en.wikipedia.org/wiki/T.O.P" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            英文</a></p>
+      <p>4. 姜大声：<a href="https://zh.wikipedia.org/zh-cn/%E5%A7%9C%E5%A4%A7%E8%81%B2" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            中文</a> -   
+      <a href="https://en.wikipedia.org/wiki/Daesung" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            英文</a></p>
+      <p>5. 李胜利：<a href="https://zh.wikipedia.org/zh-cn/%E5%8B%9D%E5%88%A9_(%E6%AD%8C%E6%89%8B)" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            中文</a> -   
+      <a href="https://en.wikipedia.org/wiki/Seungri" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            英文</a></p>
+      <p>6. 个人巡回演唱会：<a href="https://zh.wikipedia.org/wiki/BIGBANG%E5%80%8B%E4%BA%BA%E5%B7%A1%E8%BF%B4%E6%BC%94%E5%94%B1%E6%9C%83%E5%88%97%E8%A1%A8#Taeyang_Hot_Concert" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            维基百科</a></p>
+
+      <p style="text-decoration: underline;"><br/>这些是我有参考的关于Bigbang</p>
+      <p>1. 粉丝买下的周边实体图片：<br/><a href="https://www.mybigbangcollection.com/directory/" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            My BIGBANG Collection</a></p>
+      <p>2. 06-13年打歌舞台：<a href="https://bigbang-collection.blogspot.com/p/performances-by-year.html?m=1" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BB Collection</a></p>
+      <p>3. 影视作品列表：<a href="https://zh.wikipedia.org/wiki/BIGBANG%E5%BD%B1%E8%A6%96%E4%BD%9C%E5%93%81%E5%88%97%E8%A1%A8" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            维基百科</a></p>
+      <p>4. 演唱会列表：<a href="https://en.wikipedia.org/wiki/List_of_BigBang_concert_tours" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            WIKIPEDIA</a></p>
+      <p>5. 内陆网站关于广告代言：<a href="https://m.digitaling.com/articles/23500.html" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            数英DIGITALING</a></p>
+
+      <p style="text-decoration: underline;"><br/>超好用的同担网站</p>
+      <p>1. <a href="https://bigbangmusic.de/" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            bigbangmusic.de</a></p>
+      <p>2. <a href="https://bigbangpluswatch.carrd.co/" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bigbangpluswatch.carrd.co</a></p>
+      <p>3. <a href="https://bigbangupdates.com/" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            bigbangupdates.com</a></p>
+      <p>4. Bigbang行程图片：<a href="https://oddnessweirdness.blogspot.com/search/label/Big%20Bang" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Bigbang</a> - 
+        <a href="https://oddnessweirdness.blogspot.com/search/label/G-Dragon" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            G-Dragon</a></p>
+      <p>5. Bigbang行程：<a href="https://ygfamilyph.weebly.com/update/archives/06-2013/2" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            YG Family Philippines</a></p>
+      <p>6. 综艺汇总：<a href="https://weareheretiktok.wordpress.com/portfolio/english-subbed-bigbang-showsinterviews-etc/" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Tik Tok</a></p>
+      <p>7. <a href="https://daesunguk.wordpress.com/category/interviews/" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            Daesung UK</a></p>
+
+      <p style="text-decoration: underline;"><br/>推荐的韩网（不会造假）</p>
+      <p>1. <a href="http://koreaboo.com/" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      <p>心寒的是只有一个kkkk</p>
+      </div>
+
+    <div class="column right">
+      <p style="text-decoration: underline;">Bigbang领奖列表</p>
+      <p>1. 英文：<a href="https://en.wikipedia.org/wiki/List_of_awards_and_nominations_received_by_BigBang" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            WIKIPEDIA</a></p>
+      <p>2. 马来文：<a href="https://ms.wikipedia.org/wiki/Senarai_anugerah_dan_pencalonan_yang_diterima_oleh_Big_Bang" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            WIKIPEDIA</a></p>
+      <p>3. <a href="https://foshobigbang.wordpress.com/bigbang-discography/awards-2/" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            WORDPRESS</a></p>
+      <p>4. <a href="https://en.namu.wiki/w/BIGBANG/%EC%88%98%EC%83%81%20%EA%B2%BD%EB%A0%A5" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Namuwiki</a></p>
+
+      <p style="text-decoration: underline;"><br/>成员solo获奖</p>
+      <p>1. <a href="https://en.wikipedia.org/wiki/List_of_awards_and_nominations_received_by_G-Dragon" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            G-Dragon</a></p>
+      <p>2. <a href="https://en.wikipedia.org/wiki/List_of_awards_and_nominations_received_by_Taeyang" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            太阳</a></p>
+      <p>3. <a href="https://en.wikipedia.org/wiki/T.O.P" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            T.O.P崔胜铉</a></p>
+      <p>4. <a href="https://en.wikipedia.org/wiki/Daesung" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            姜大声</a></p>
+      <p>5. <a href="https://en.wikipedia.org/wiki/Seungri" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            李胜利</a></p>
+      <p>6. <a href="https://en.wikipedia.org/wiki/GD_X_Taeyang#Awards_and_nominations" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            GD X Taeyang</a></p>
+      <p>7. <a href="https://en.wikipedia.org/wiki/GD_%26_TOP" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            GD&TOP</a></p>
+
+      <p style="text-decoration: underline;"><br/>成员solo歌曲/参与他人的歌曲</p>
+      <p>1. <a href="https://en.wikipedia.org/wiki/G-Dragon_discography" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            G-Dragon</a></p>
+      <p>2. <a href="https://en.wikipedia.org/wiki/Taeyang_discography" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            太阳</a></p>
+      <p>3. <a href="https://en.wikipedia.org/wiki/T.O.P_discography" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            T.O.P崔胜铉</a></p>
+      <p>4. <a href="https://en.wikipedia.org/wiki/Daesung_discography" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            姜大声</a></p>
+      <p>5. <a href="https://en.wikipedia.org/wiki/Seungri_discography" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            李胜利</a></p>
+      <p>6. <a href="https://en.wikipedia.org/wiki/BigBang_discography" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Bigbang</a></p>
+
+      <p style="text-decoration: underline;"><br/>事件</p>
+      <p>1. 完整时间线：<a href="https://fr.wikipedia.org/wiki/Scandale_du_Burning_Sun" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            法语</a> - 
+        <a href="https://en.wikipedia.org/wiki/Burning_Sun_scandal" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            英语</a></p>
+      <p>2. 完整时间线：<br/><a href="https://kpoppersguide.wordpress.com/2019/03/07/burningsun-timeline/" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            KPOPPER'S GUIDE</a></p>
+      <p>3. 完整时间线：<a href="https://www.billboard.com/music/music-news/burning-sun-scandal-timeline-seungri-jung-joon-young-8503818/" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+           Billboard</a></p>
+      <p>4. 完整时间线：<a href="https://www.koreaboo.com/series/burning-sun-scandal/timeline/" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      <p>5. <a href="https://www.soompi.com/article/1311088wpp/burning-sun-gate-a-timeline-of-crime-corruption-and-controversies" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            Soompi</a></p>
+      <p>6. <a href="https://www.allkpop.com/article/2019/03/timeline-from-burning-sun-controversy-to-seungris-retirement-and-beyond" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Allkpop</a></p>
+      <p>7. <a href="https://www.tumblr.com/inyournightmares97/183412817792/seungri-masterpost-with-timeline-updated-31119#" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            Tumblr</a></p>
+      <p>8. <a href="https://bollybg.wixsite.com/supportcjh" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bollybg</a></p>
+      <p>9. Lifestyle：<a href="https://lifestyle.inquirer.net/327938/prostitution-and-molka-timeline-of-the-k-pop-sex-scandal/#" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            1</a> - 
+      <a href="https://lifestyle.inquirer.net/327938/prostitution-and-molka-timeline-of-the-k-pop-sex-scandal/#" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            2</a></p>
+      <p>10. <a href="https://dr.ntu.edu.sg/server/api/core/bitstreams/8ccc4441-d0eb-48c4-8379-2a27541377b8/content" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            NTU PDF</a></p>
+      <p>11. <a href="https://www.popline.id/k-pop/75396648/timeline-lengkap-skandal-burning-sun-penangkapan-artis-hingga-keterlibatan-banyak-bintang-kpop" 
+        target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Popline</a></p>
+      <p>12. 完整时间线：<a href="https://www.reddit.com/r/kpop/comments/b0isrw/timeline_of_burning_sun_seungri_jung_joon_young/?utm_source=chatgpt.com" 
+        target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            Reddit</a></p>
+
+    <p style="text-decoration: underline;"><br/>标明作者的授权</p>
+    <p>本网站的头像标志：<a href="https://www.xiaohongshu.com/user/profile/66e11a1b000000001d0322cf?xsec_token=YBLP30WAR4hzJ3VFog3jzcN3MwA2k0AklRAKRofrdNqMU%3D&xsec_source=app_share&xhsshare=CopyLink&appuid=5faf967d0000000001001039&apptime=1752670787&share_id=2e599c3ff799479fa08b55eabcf5f38a&share_channel=copy_link" 
+      target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            悲傷眼淚66</a></p>
+    <p>本网站的背景图片：<span style="color: #33FFFF;">摇摆狗墨画</span></p>
+    <p>胜利门事件资料提供：<a href="https://v.douyin.com/vM719qp7Q_o/ 4@0.com" 
+      target="_blank" style="color: #FF66CC; text-decoration: none;" onmouseover="this.style.color='#FFFFFF';" onmouseout="this.style.color='#FF66CC';">
+            Captain🍐</a></p>
+
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">感谢以下的各大博主一起携手制作此网站<br/><span style="text-decoration: underline;">均以来自微博（排名不分先后)</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>0. 肚子又响了（我）</p>
+        <p>1. xxxigd-vi</p>
+        <p>2. 灯下黑</p>
+        <p>3. 肉菌</p>
+        <p>4. _权利_99</p>
+        <p>5. -HAOZHIHAN-</p>
+        <p>6. 南極熊48</p>
+        <p>7. VI_VGTTD</p>
+        <p>8. 小籠包加農炮</p>
+        <p>9. potatow_w</p>
+        <p>10. 一口VI</p>
+        <p>11. MLVBO_-</p>
+        <p>12. 阿泥哈噻油</p>
+        <p>13. 无辜乌龙</p>
+        <p>14. IVIoderato</p>
+        <p>15. shangyd46</p>
+        <p>16. 莉莉的莉莉-zyx</p>
+      </div>
+    </div>
+  </div>
+
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+  (function () {
+    const data = {
+      path: window.location.pathname,
+      referrer: document.referrer || null
+    };
+
+    try {
+      fetch("https://black-recipe-80b0.xinba2864.workers.dev/api/log", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      }).catch(function () {});
+    } catch (e) {
+    }
+  })();
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+
+  const counter = container.querySelector('.slide-counter');
+  counter.textContent = `${state + 1}/${slides.length}`;
+}
+
+document.querySelectorAll('.slider-container').forEach(container => {
+  const slides = container.querySelectorAll('.slide-item');
+  const counter = container.querySelector('.slide-counter');
+
+  counter.textContent = `1/${slides.length}`;
+});
+
+  </script>
+</body>
+</html>
