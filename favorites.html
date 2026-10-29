@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIGBANG OT5</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #111;
+            color: white;
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+        .container1 {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 100px;
+        }
+
+        .title-group {
+            display: inline-block;
+            text-align: center;
+        } 
+
+        .title-group h1 {
+            font-size: 2.5rem;
+            color: #33FFFF;
+            margin: 0;
+        }
+
+        .favorites-count {
+            color: #cdcdcd;
+            margin-left: 10px;
+            font-size: 1rem;
+        }
+
+        .left-nav {
+            position: absolute;
+            left: 5px;
+            top: 25%;
+            transform: translateY(-50%);
+        }
+
+        .right-nav {
+            position: absolute;
+            right: 5px;
+            top: 25%;
+            transform: translateY(-50%);
+        }
+
+        .left-nav a {
+            padding: 13px 30px;
+            font-size: 18px;
+            border-radius: 5px 14px;
+            color: white;
+            text-decoration: none;
+            border: 2px solid white;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+
+        .edit-btn {
+            padding: 10px 25px;
+            font-size: 16px;
+            border-radius: 5px 14px;
+            color: white;
+            text-decoration: none;
+            border: 2px solid #33FFFF;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .edit-btn:hover {
+            background-color: white;
+            color: #111;
+        }
+
+        .edit-btn.done {
+            border-color: #111;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .edit-btn.done:hover {
+            border-color: white;
+            color: #111;
+        }
+
+        nav a:hover {
+            background-color: white;
+            color: #111;
+            cursor: pointer;
+        }
+
+        .favorites-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .favorite-song-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #333;
+        }
+
+        .favorite-song-item:hover {
+            background: #2a2a2a;
+            transform: translateX(5px);
+            border-color: #33FFFF;
+        }
+
+        /* 编辑模式样式 */
+        .edit-mode .favorite-song-item {
+            cursor: grab;
+        }
+
+        .edit-mode .favorite-song-item:active {
+            cursor: grabbing;
+        }
+
+        .edit-mode .favorite-song-item:hover {
+            transform: none;
+            border-color: #33FFFF;
+        }
+
+        .drag-handle {
+            margin-right: 15px;
+            color: #33FFFF;
+            font-size: 18px;
+            cursor: grab;
+            padding: 8px;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+
+        .drag-handle:active {
+            cursor: grabbing;
+            transform: scale(1.1);
+        }
+
+        .edit-mode .drag-handle {
+            display: block;
+        }
+
+        .drag-handle {
+            display: none;
+        }
+
+        .favorite-song-item.dragging {
+            opacity: 0.6;
+            transform: rotate(5deg);
+        }
+
+        .favorite-song-item.drag-over {
+            border-top: 2px solid #33FFFF;
+        }
+
+        .edit-hint {
+            text-align: center;
+            color: white;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .favorite-song-cover {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            margin-right: 20px;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .favorite-song-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .favorite-song-title {
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .favorite-song-album {
+            color: #cdcdcd;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .song-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .remove-favorite {
+            background: none;
+            border: none;
+            color: #33FFFF;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .remove-favorite:hover {
+            color: #ff4757;
+            background: rgba(255, 71, 87, 0.1);
+            transform: scale(1.1);
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #666;
+            padding: 60px 20px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container1 {
+                padding: 20px;
+            }
+
+            .header-container {
+                height: 80px;
+            }
+
+            .left-nav {
+                transform: scale(0.79);
+                transform-origin: top left;
+                left: 0px;
+                top: -8%;
+            }
+
+            .right-nav {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                transform: scale(0.79);
+                transform-origin: top right;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .container {
+                padding: 15px;
+                margin-top: 0;
+            }
+            
+            .title-group h1 {
+                font-size: 1.8rem;
+            }
+            
+            .favorite-song-item {
+                padding: 12px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+            
+            .favorite-song-cover {
+                width: 50px;
+                height: 50px;
+                margin-right: 12px;
+                flex-shrink: 0;
+            }
+            
+            .favorite-song-title {
+                font-size: 0.95rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .favorite-song-info {
+                flex: 1;
+                min-width: 0;
+                overflow: hidden;
+            }
+
+            .song-controls {
+                flex-shrink: 0;
+            }
+
+            .drag-handle {
+                margin-right: 10px;
+                padding: 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title-group h1 {
+                font-size: 1.5rem;
+            }
+            
+            .favorite-song-item {
+                gap: 10px;
+                padding: 10px;
+            }
+            
+            .favorite-song-cover {
+                width: 45px;
+                height: 45px;
+                margin-right: 10px;
+            }
+            
+            .favorite-song-title {
+                font-size: 0.9rem;
+            }
+
+            .remove-favorite {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+
+            .drag-handle {
+                margin-right: 8px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <div class="header-container">
+            <nav class="left-nav">
+                <a href="#" onclick="goBack()">Back</a>
+            </nav>
+            <div class="title-group">
+                <h1>我的收藏 <span class="favorites-count" id="favorites-count">(0)</span></h1>
+            </div>
+            <nav class="right-nav">
+                <button class="edit-btn" id="edit-btn">编辑</button>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="edit-hint" id="edit-hint" style="display: none;">长按 ⋮⋮ 符号拖动歌曲重新排序</div>
+        <div class="favorites-list" id="favorites-list">
+            <div class="empty-state">暂无收藏歌曲</div>
+        </div>
+    </div>
+
+    <script>
+        let isEditMode = false;
+        let dragSrcElement = null;
+
+        function goBack() {
+            window.history.back();
+        }
+
+        function loadFavorites() {
+            const favorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+            const favoritesList = document.getElementById('favorites-list');
+            const favoritesCount = document.getElementById('favorites-count');
+            
+            console.log('加载收藏列表，数量:', favorites.length);
+            
+            favoritesCount.textContent = `(${favorites.length})`;
+            
+            if (favorites.length === 0) {
+                favoritesList.innerHTML = '<div class="empty-state">暂无收藏歌曲</div>';
+                
+                const editBtn = document.getElementById('edit-btn');
+                if (editBtn) {
+                    editBtn.style.display = 'none';
+                }
+                return;
+            }
+
+            
+            const editBtn = document.getElementById('edit-btn');
+            if (editBtn) {
+                editBtn.style.display = 'block';
+            }
+            
+            favoritesList.innerHTML = favorites.map(song => `
+                <div class="favorite-song-item" data-song-id="${song.id}">
+                    <div class="drag-handle">⋮⋮</div>
+                    <img src="${song.cover_url || 'default-cover.jpg'}" alt="${song.title}" class="favorite-song-cover">
+                    <div class="favorite-song-info">
+                        <div class="favorite-song-title">${song.title}</div>
+                        <div class="favorite-song-album">${song.album_title || ''}</div>
+                    </div>
+                    <div class="song-controls">
+                        <button class="remove-favorite" title="取消收藏">✕</button>
+                    </div>
+                </div>
+            `).join('');
+
+            
+            bindSongEvents();
+        }
+
+        function bindSongEvents() {
+            const songItems = document.querySelectorAll('.favorite-song-item');
+            
+            songItems.forEach(item => {
+                const songId = parseInt(item.dataset.songId);
+                const removeBtn = item.querySelector('.remove-favorite');
+                const dragHandle = item.querySelector('.drag-handle');
+                
+                
+                item.addEventListener('click', function(e) {
+                    if (!isEditMode && !e.target.closest('.remove-favorite') && !e.target.closest('.drag-handle')) {
+                        playSongFromFavorites(songId);
+                    }
+                });
+                
+                
+                removeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    removeFavorite(songId);
+                });
+                
+                
+                if (isEditMode) {
+                    initDragEvents(item, dragHandle);
+                }
+            });
+        }
+
+        function initDragEvents(item, dragHandle) {
+            let isDragging = false;
+            let startY = 0;
+            let initialIndex = 0;
+
+            dragHandle.addEventListener('mousedown', startDrag);
+            dragHandle.addEventListener('touchstart', startDrag);
+
+            function startDrag(e) {
+                if (!isEditMode) return;
+                
+                e.preventDefault();
+                isDragging = true;
+                startY = e.type === 'mousedown' ? e.clientY : e.touches[0].clientY;
+                
+                const favoritesList = document.getElementById('favorites-list');
+                const items = Array.from(favoritesList.querySelectorAll('.favorite-song-item'));
+                initialIndex = items.indexOf(item);
+                
+                item.classList.add('dragging');
+                document.body.style.userSelect = 'none';
+                
+                
+                document.addEventListener('mousemove', onDragMove);
+                document.addEventListener('touchmove', onDragMove);
+                document.addEventListener('mouseup', endDrag);
+                document.addEventListener('touchend', endDrag);
+            }
+
+            function onDragMove(e) {
+                if (!isDragging) return;
+                
+                e.preventDefault();
+                const currentY = e.type === 'mousemove' ? e.clientY : e.touches[0].clientY;
+                const deltaY = currentY - startY;
+                
+                if (Math.abs(deltaY) > 10) {
+                    const favoritesList = document.getElementById('favorites-list');
+                    const items = Array.from(favoritesList.querySelectorAll('.favorite-song-item'));
+                    const currentIndex = items.indexOf(item);
+                    
+                    
+                    const itemHeight = item.offsetHeight;
+                    const moveCount = Math.round(deltaY / itemHeight);
+                    const newIndex = Math.max(0, Math.min(items.length - 1, initialIndex + moveCount));
+                    
+                    if (newIndex !== currentIndex) {
+                        
+                        items.forEach(it => it.classList.remove('drag-over'));
+                        
+                        
+                        if (newIndex > currentIndex) {
+                            favoritesList.insertBefore(item, items[newIndex].nextSibling);
+                        } else {
+                            favoritesList.insertBefore(item, items[newIndex]);
+                        }
+                        
+                        
+                        items.forEach((it, index) => {
+                            if (index === newIndex) {
+                                it.classList.add('drag-over');
+                            }
+                        });
+                    }
+                }
+            }
+
+            function endDrag() {
+                if (!isDragging) return;
+                
+                isDragging = false;
+                item.classList.remove('dragging');
+                document.body.style.userSelect = '';
+                
+                
+                document.querySelectorAll('.favorite-song-item').forEach(it => {
+                    it.classList.remove('drag-over');
+                });
+                
+                
+                document.removeEventListener('mousemove', onDragMove);
+                document.removeEventListener('touchmove', onDragMove);
+                document.removeEventListener('mouseup', endDrag);
+                document.removeEventListener('touchend', endDrag);
+                
+                
+                saveNewOrder();
+            }
+        }
+
+        function toggleEditMode() {
+            const editBtn = document.getElementById('edit-btn');
+            const editHint = document.getElementById('edit-hint');
+            const favoritesList = document.getElementById('favorites-list');
+            
+            isEditMode = !isEditMode;
+            
+            if (isEditMode) {
+                
+                editBtn.textContent = '完成';
+                editBtn.classList.add('done');
+                editHint.style.display = 'block';
+                favoritesList.classList.add('edit-mode');
+                
+                
+                document.querySelectorAll('.drag-handle').forEach(handle => {
+                    handle.style.display = 'block';
+                });
+                
+                
+                bindSongEvents();
+            } else {
+                
+                editBtn.textContent = '编辑';
+                editBtn.classList.remove('done');
+                editHint.style.display = 'none';
+                favoritesList.classList.remove('edit-mode');
+                
+                
+                document.querySelectorAll('.drag-handle').forEach(handle => {
+                    handle.style.display = 'none';
+                });
+                
+                
+                bindSongEvents();
+            }
+        }
+
+        function saveNewOrder() {
+            const favoritesList = document.getElementById('favorites-list');
+            const items = favoritesList.querySelectorAll('.favorite-song-item');
+            const currentFavorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+            
+            const newOrder = [];
+            
+            items.forEach(item => {
+                const songId = parseInt(item.dataset.songId);
+                const song = currentFavorites.find(s => s.id === songId);
+                if (song) {
+                    newOrder.push(song);
+                }
+            });
+            
+            
+            if (newOrder.length === currentFavorites.length) {
+                localStorage.setItem('musicFavorites', JSON.stringify(newOrder));
+                
+                
+                if (window.globalPlayer) {
+                    window.globalPlayer.favorites = newOrder;
+                    window.globalPlayer.saveFavorites();
+                    
+                    
+                    if (window.globalPlayer.currentPlaylist === 'favorites') {
+                        window.globalPlayer.updatePlaylist(newOrder);
+                    }
+                }
+                
+                console.log('收藏顺序已更新');
+            }
+        }
+
+function playSongFromFavorites(songId) {
+    const favorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+    const songIndex = favorites.findIndex(s => s.id === songId);
+    
+    if (songIndex !== -1) {
+        console.log('播放收藏列表:', {
+            currentSong: favorites[songIndex].title,
+            currentIndex: songIndex,
+            totalSongs: favorites.length,
+            fullPlaylist: favorites.map(s => s.title)
+        });
+        
+        if (window.globalPlayer) {
+            
+            window.globalPlayer.play(favorites[songIndex], 'favorites');
+            
+            console.log('播放器播放列表状态:', {
+                playlistLength: window.globalPlayer.playlist.length,
+                currentIndex: window.globalPlayer.currentIndex,
+                currentPlaylistType: window.globalPlayer.currentPlaylistType
+            });
+        }
+    }
+}
+
+        function removeFavorite(songId) {
+            const favorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+            const updatedFavorites = favorites.filter(song => song.id !== songId);
+            
+            localStorage.setItem('musicFavorites', JSON.stringify(updatedFavorites));
+            
+            if (window.globalPlayer) {
+                window.globalPlayer.favorites = updatedFavorites;
+                window.globalPlayer.saveFavorites();
+            }
+            
+            window.dispatchEvent(new StorageEvent('storage', {
+                key: 'musicFavorites',
+                newValue: JSON.stringify(updatedFavorites)
+            }));
+            
+            loadFavorites();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const editBtn = document.getElementById('edit-btn');
+            editBtn.addEventListener('click', toggleEditMode);
+            
+            loadFavorites();
+            
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) {
+                    loadFavorites();
+                }
+            });
+            
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'musicFavorites') {
+                    console.log('检测到收藏列表变化，重新加载');
+                    loadFavorites();
+                }
+            });
+
+            window.addEventListener('pageshow', function(e) {
+                console.log('页面显示，重新加载收藏列表');
+                loadFavorites();
+            });
+
+            let lastFavoritesCount = 0;
+            setInterval(function() {
+                const currentFavorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+                const currentCount = currentFavorites.length;
+                
+                if (currentCount !== lastFavoritesCount) {
+                    console.log('检测到收藏数量变化，重新加载', { before: lastFavoritesCount, after: currentCount });
+                    lastFavoritesCount = currentCount;
+                    loadFavorites();
+                }
+            }, 1000);
+        });
+
+if (window.opener) {
+    
+    window.addEventListener('beforeunload', function() {
+        try {
+            
+            const favorites = JSON.parse(localStorage.getItem('musicFavorites') || '[]');
+            const event = new CustomEvent('favoritesUpdated', {
+                detail: { favorites: favorites }
+            });
+            window.opener.dispatchEvent(event);
+        } catch (error) {
+            console.error('无法通知主页面:', error);
+        }
+    });
+}
+
+
+    </script>
+
+    <script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+</body>
+</html>
