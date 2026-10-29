@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+@media only screen and (max-width: 768px) {
+    .header-container {
+      height: auto;
+      min-height: 100px;
+      padding: 20px 0;
+      align-items: flex-start;
+    }
+
+    .title-group {
+      width: 100%;
+      padding: 0 120px;
+      text-align: center;
+    }
+
+    .title-group h1 {
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.3;
+      font-size: 42px;
+    }
+
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .right-side{
+    position: relative;
+    align-items:center;
+  }
+
+  .slide-counter{
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .nav-button{
+    background-color: rgba(255,255,255,0.7);
+    border:none;
+    padding:10px 15px;
+    font-size:24px;
+    cursor:pointer;
+    border-radius:10px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: calc(100% + 10px);
+  }
+
+  .toggle-btn {
+    border: 2px solid #33FFFF;
+    color: #FFFFFF;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+  }
+  .toggle-btn:hover {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
+  </style>
+</head>
+
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="interview.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>采访2018年</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="interview2019.html">2019</a>
+    </nav>
+  </div>
+  <br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="interview2018-feb-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2018.html#interview2018-feb" class="jump-button">2月</a>
+    </div>
+    <div id="interview2018-mar-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2018.html#interview2018-mar" class="jump-button">3月</a>
+    </div>
+    <div id="interview2018-may-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2018.html#interview2018-may" class="jump-button">5月</a>
+    </div>
+    <div id="interview2018-july-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2018.html#interview2018-july" class="jump-button">7月</a>
+    </div>
+    <div id="interview2018-aug-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2018.html#interview2018-aug" class="jump-button">8月</a>
+    </div>
+    <div id="interview2018-sept-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2018.html#interview2018-sept" class="jump-button">9月</a>
+    </div>
+    <div id="interview2018-oct-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2018.html#interview2018-oct" class="jump-button">10月</a>
+    </div>
+    <div id="interview2018-nov-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="interview2018.html#interview2018-nov" class="jump-button">11月</a>
+    </div>
+  </div>
+  <br/><br/>
+  <hr class="full-width-line" />
+
+  <div id="interview2018-feb" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2018.html#interview2018-feb-jump" class="jump-button">2月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FBigBangIta%2Fvideos%2F1861527797190555%2F&show_text=false&width=560&t=0" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>      </div>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年2月4日</strong></p>
+        <p>MBC Section TV</p>
+        <p>胜利 采访</p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年2月20日</strong></p>
+        <p>胜利接受Below独家采访</p>
+        <p>详细资讯：<a href="https://www.allkpop.com/article/2018/02/big-bangs-seungri-discusses-edm-music-opening-up-his-new-club-burning-sun" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Allkpop</a></p><br/>
+        <p>问：很高兴见到你。作为 Bigbang成员，你在忙些什么？<br/>
+胜利：谢谢，最近很忙。而且我还在忙杨贤硕指导的个人专辑</p>
+        <p>问：您是什么时候开始对 EDM 音乐感兴趣的？<br/>
+胜利：在宣传《Lies》时，G-Dragon哥推荐我听 Tiesto的《Traffic》，我立刻就爱上了它</p>
+        <p>问：NHR（Natural High Records）是一家什么样的唱片公司？<br/>
+胜利：NHR 成立于 2016年，由才华横溢的 DJ/制作人组成，例如GLORY、TPA、SAM&SP3CK、FERRY、MILKY、DANU、RUPPY</p>
+        <p>问：现在您已经成为自己独立厂牌的老板，您能理解 YG 老板吗？<br/>
+胜利：首先，艺术家很难像我一样思考。所以作为代表，我必须提出解决方案，其他人也必须效仿。从这个意义上讲，我能理解杨贤硕的感受，以及他作为CEO的辛勤付出，我对此表示敬意</p>
+        <p>问：可以介绍一下你们的新夜店 Burning Sun 吗？<br/><span style="color: #33FFFF;">就是因为这句话他亲口说出的....🥲</span><br/>
+胜利：Burning Sun 是我和 Monkey Museum 的同事们一起成立的，我们想要一个更大的场地，所以就这样决定了。场地是为我的员工准备的</p>
+        <p>问：哪些 DJ 将在 Burning Sun 上表演？<br/>
+胜利：目前 NHR 和 DCTOM旗下的 DJ将会进行表演，同时还会邀请来自国外的DJ</p>
+        <p>问：您有以EDM音乐进行个人表演的计划吗？<br/>
+胜利：我现在正在制作的个人专辑融入了舞曲，实际上我计划与海外著名的DJ合作</p>
+        <p>问：对你来说，EDM 音乐是什么？<br/>
+胜利：活力。我通常不听悲伤的歌曲，我会选择一些节奏感更强的音乐来让自己充满活力</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="interview2018-mar" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2018.html#interview2018-mar-jump" class="jump-button">3月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="magazine-180321-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="magazine2018.html#magazine-180321" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月21日</strong></p>
+        <p>太阳接受 ELLE 采访</p>
+        <p>详细资讯：<a href="https://www.elle.co.kr/article/20427" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            ELLE</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #FF66CC;">问：</span>短发很适合你<br/>
+          <span style="color: #33FFFF;">太阳：</span>我已经很久没剪过这么短的头发了。不过，我本来还有一段时间可以留长。G-Dragon建议我在入伍的时候和他一起剪，所以我昨天就去剪了。因为ELLE杂志会在我入伍之后发行，所以我想拍一个适合入伍的造型
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #FF66CC;">问：</span>你和BIGBANG一起走过了13年，回首过去有什么感想？<br/>
+          <span style="color: #33FFFF;">太阳：</span>我觉得时间过得真的很快。13年已经过去了，感觉非常不真实</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>在BIGBANG的经历和成就中，你觉得最珍贵的是什么？<br/>
+          <span style="color: #33FFFF;">太阳：</span>认识BIGBANG的成员们是最珍贵、最有价值的事情。包括成员，以及一直和我们一起工作的工作人员。回头看这些经历，我觉得这才是最重要的</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>这些年来，你一直展现着属于太阳的音乐风格和个性。特别是去年发行的第三张专辑《White Night》，你把它描述为“音乐风格的拓展”。这其中有什么内在的变化吗？<br/>
+          <span style="color: #33FFFF;">太阳：</span>与其说这是一个重大的转折点，不如说是我作为BIGBANG成员和个人歌手不断发行专辑、不断积累经验的结果。随着时间过去，我发现自己能够用更加冷静、客观的角度去看待自己的优点和自身。无论是音乐风格还是音乐内容，我都觉得自己在每一张专辑里，一点一点地找到真正的自己</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>创作过程中必然会经历挣扎和挑战。你的“创造力”源自哪里？<br/>
+          <span style="color: #33FFFF;">太阳：</span>从根本上来说，我相信每个人都是艺术家。不管是艺术还是体育，表达自己，或者设计自己理想中的生活，本身就是一种创造性的行为。所以，比起从某一个特定的情境里寻找灵感，我更觉得，保持一种随时都能够获得灵感的状态更加重要。当我处于一种纯粹的状态时，世间万物都可以成为我的灵感来源。而最重要的灵感，当然是“爱”。它可以是对家人的爱，也可以是对伴侣的爱，或者是对身边人的爱。当你真正爱上一个人的时候，就连平时看到的日落或者夜空，都会变得完全不一样，不是吗？</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>那么，成就今天这个“太阳”的真正天赋是什么？<br/>
+          <span style="color: #33FFFF;">太阳：</span>说实话，我不认为自己有什么特别与生俱来的天赋。也许可以说，我身上的某些特质比较适合这份工作。这个世界上有很多天赋异禀、或者在某个领域拥有独特才能的人。但我认为，最重要的还是能够获得别人的帮助。一个人就算拥有再耀眼的才能，如果没有真诚的人在身边帮助他，那份光芒也很难长久地持续下去</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>这是你从事这份工作之后才领悟到的吗？<br/>
+          <span style="color: #33FFFF;">太阳：</span>是的。我相信我得到的爱远远超过了我应该得到的。正是因为有这么多一直帮助我的人在身边，才有了今天的太阳。艺术家太阳的诞生，离不开他们</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>成为一个好人和成为一个优秀的艺术家之间，会不会产生冲突？<br/>
+          <span style="color: #33FFFF;">太阳：</span>我不擅长欺骗别人。对于艺人来说，这可能是一个致命的弱点。我非常重视“真实性”。如果我希望大家能够通过我的音乐感受到我的真诚，那么我自己首先就必须能够完全接受这些音乐，必须处在一个足够纯粹的状态。所以，我的生活本身不能是谎言</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>如果你能坐上时光机，选择一场演出回到过去，你会选择哪一场？<br/>
+          <span style="color: #33FFFF;">太阳：</span>现在我马上就要入伍了，说实话，我愿意回到任何一场演出</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你已经开始想念舞台了吗？你现在正在经历人生中的一些重要时刻，感觉怎么样？<br/>
+          <span style="color: #33FFFF;">太阳：</span>一开始，面对那些自己从来没有经历过的新事情，我确实有些害怕。我还是会想：“我真的能做好吗？”但是现在，我已经做出了很多决定，所以比起恐惧，我更多的是期待和兴奋。通过这个过程，我希望自己能够成长为一个更好、更成熟的人</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>最后，还有什么想对读者说的吗？<br/>
+          <span style="color: #33FFFF;">太阳：</span>我的粉丝们，无论是作为“太阳”，还是作为东永裴，都一直陪伴、支持和鼓励着我。现在他们真的就像我的朋友和家人一样。对于那些和我一起成长的人，我不想让他们失望。不管是在音乐方面，还是作为一个普通的人，我都希望自己能够继续成为值得他们支持的人。我希望能够尽快回来，为大家带来真正优秀的音乐和精彩、新鲜的表演，并且能够长久地陪伴大家
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div id="interview2018-may" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2018.html#interview2018-may-jump" class="jump-button">5月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@またあえる日まで 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=23320923&bvid=BV1EW411F7Lv&cid=38853259&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年5月11日</strong></p>
+        <p>三人歌曲Ignite采访互动</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@everLASTing_SR 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=32355081&bvid=BV1yW411z7LF&cid=56613544&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年5月12日</strong></p>
+        <p>Blue Spring Festival</p>
+        <p>胜利演讲</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/geEPzq77csg?si=VitnF7UPbCHJW9vX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年5月25日</strong></p>
+        <p>True or False Challenge (Alan Walker & Seungri)</p>
+        <p>歌曲Ignite采访互动</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="interview2018-july" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2018.html#interview2018-july-jump" class="jump-button">7月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div id="magazine-180702-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="magazine2018.html#magazine-180702" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年7月2日</strong></p>
+        <p>胜利接受 MK Economy 经济学采访</p>
+        <p>详细资讯：<a href="https://ameblo.jp/gdxxx88818/entry-12387942605.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Ameblo JP</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #FF66CC;">问：</span>你为什么会被称为“胜茨比”？<br/>
+          <span style="color: #33FFFF;">胜利：</span>因为我在商业领域建立的人脉和资源，让人联想到《了不起的盖茨比》里的盖茨比
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #FF66CC;">问：</span>你以前也有过投资失败的经历吗？<br/>
+          <span style="color: #33FFFF;">胜利：</span>有。我不想再涉足房地产和电子产品行业了。我小时候在这些事情上吃过很多苦。韩国的房地产市场已经非常成熟，对于新手来说，投资土地，尤其是黄金地段，是非常残酷的。我曾经通过熟人介绍贷款，在某个地方买了一块地，结果很多年来都被钱的问题束缚着，非常痛苦。还有一次，我投资了一款号称具有突破性的电子产品。问题是，我以前是唱歌跳舞的，为什么我要去推销一个自己既不喜欢、也不了解的电子产品？这是完全不同的领域，所以最后失败了</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>这些失败经历给你带来了什么教训？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我意识到，不能因为贪婪或者盲目自信而去做生意。我越来越相信，真正能够成功的企业，必须建立在真诚的投资、认真学习、坚持不懈以及坚定信念的基础上</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你创办Aori Ramen的时候，为什么会选择这么谨慎的方式？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我非常喜欢拉面，所以自己跑遍了日本各地去研究拉面。我没有急着大量开店，而是一步一步推进。首先建立汤料工厂，为之后的加盟业务做准备，这样才能保证不同店铺的味道保持一致</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你在考虑新的商业项目时，会使用什么方法分析？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我经常使用SWOT分析法。名人创业的优势是，他们自己就是一个平台。早期阶段不需要投入太多宣传费用，就能够吸引消费者。劣势是，艺人可能缺乏真正的生产和运营能力。机会在于，我们比较容易进入海外市场，而不仅仅局限于韩国。风险则是，艺人的知名度随时可能下降，消费者的喜好也随时可能发生变化。所以我会花很多时间建立合作伙伴网络，弥补自己的弱点和风险，同时发挥自己的优势和机会。我会尽可能让合作伙伴成为我的代理人，或者让他们能够在没有我亲自到场的情况下把事情处理好。在对业务有利的情况下，我也愿意进行利润分成。到目前为止，这种方式给我带来了很多不错的商业机会</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>Aori Ramen为什么能够这么快拓展到海外？<br/>
+          <span style="color: #33FFFF;">胜利：</span>很大程度上是因为当地合作伙伴的帮助。在海外，我们从最初制定计划到正式开店，只用了大约三个月</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你的语言能力对事业发展有帮助吗？<br/>
+          <span style="color: #33FFFF;">胜利：</span>当然有。这些年来，我一直认真学习日语和英语。最开始主要是为了BIGBANG的世界巡演，能够直接和海外粉丝交流。随着粉丝越来越多，我开始进入中国市场。现在不管去到哪里，我都可以直接和当地人交流，也能够利用自己的幽默感和机智化解一些尴尬的情况</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>现在你也开始投资创业公司，为什么会从传统的创业转向投资？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我觉得帮助早期创业公司成长，和自己创办一家公司同样重要。我希望能够发现真正有潜力的企业，所以现在也开始投资国内外的创业公司</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你为什么会投资Lemon这样的纳米技术公司？<br/>
+          <span style="color: #33FFFF;">胜利：</span>最近我看了《复仇者联盟》，钢铁侠穿上纳米科技战衣的场景给我留下了很深的印象。我觉得这种技术完全有可能成为现实，所以开始寻找韩国国内相关的企业。后来听说Toptech旗下的Lemon可以大规模生产透气、防水的纳米薄膜，我就大胆投资了。我最开始听说这种材料已经可以应用在高端智能手机的防水功能上。我觉得它的商业拓展潜力非常大，未来还可以应用在功能性服装、口罩、卫生巾、医疗用品等领域</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>除了韩国，你还关注哪些海外投资市场？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我现在也正在和国内外合作伙伴一起筹建一家私募股权公司，目前主要关注越南和蒙古。从这些国家的数据来看，它们现在的情况有点像15年前的首尔。我认为这些市场增长潜力很大，而且竞争相对较少，所以正在寻找合适的投资机会，同时也会邀请金融专家成为合作伙伴</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你为什么会对商业这么感兴趣？<br/>
+          <span style="color: #33FFFF;">胜利：</span>因为BIGBANG其他成员都太有才华了（笑），所以我一直觉得自己比较默默无闻。看来我一直隐藏起来的生存技能，终于派上用场了。而且商业也是一个不会和其他成员产生冲突的领域（笑）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你创业的最终目标是什么？是希望赚很多钱吗？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我并不想取得什么特别巨大的成就，也不是为了变得非常有钱。我的目标其实很简单，就是维持现在这样的生活水平，能够舒服地吃美食、旅行。最终，我希望成为一个好父亲、一个好的家庭主人</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你即将入伍服兵役，在这段时间里，你会怎么安排自己的事业？<br/>
+          <span style="color: #33FFFF;">胜利：</span>为了确保我暂时离开的时候，各项业务都能够顺利运作，我们正在为每一个项目建立专业的管理团队和顾问团队</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>服役结束之后，你对未来还有什么计划？<br/>
+          <span style="color: #33FFFF;">胜利：</span>作为BIGBANG的成员，我希望能够尽快回归，继续我的音乐活动。我相信，接下来的十年，会是我们回馈那些过去十三年来一直支持我们的粉丝们的一段珍贵时光
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div id="magazine-180719-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="magazine2018.html#magazine-180719" class="jump-button">更多图片</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年7月19日</strong></p>
+        <p>胜利登上杂志《High Cut》封面</p>
+        <p>详细资讯：<a href="https://www.soompi.com/article/1204571wpp/bigbangs-seungri-talks-about-gaining-older-generation-fans-more" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Soompi</a></p><br/>
+        <p>一言以蔽之，这是一张令人满意的专辑。这张专辑展现了我所有在BIGBANG活动期间无法展现的隐藏才能</p>
+        <p>你看过电影《了不起的盖茨比》吗？它其实并不是一部轻松愉快的派对电影。为了挽回爱人黛西，他努力工作赚钱，举办了一场盛大的派对。他竭尽全力地展现自己，表达自己的心意，并做好了一切准备，但最终还是没能赢回黛西的心</p>
+        <p>每个人都有自己的故事。看看巴斯奎特的作品就知道了。无论是艺术还是音乐，都需要一些悲剧元素才能引起公众的共鸣。这张专辑里既有‘派对达人’、充满活力、阳光开朗的胜利，也有我内心深处隐藏的痛苦和磨难</p>
+        <p>“我觉得在节目中，我真诚的一面被观众看到了。我之前所做的一切都不是为了作秀，而是真实的我。那些之前认为这一切都是装出来的，但看了真人秀之后，他们开始意识到‘啊，原来他真的在经营生意，而且很努力’，‘这才是他真实的一面’。我觉得大家开始认可我了</p>
+        <p>自从出演《我家的熊孩子》之后，我去餐厅吃饭时，中年女性都很喜欢我。[她们看到我]切葱的时候，会把刀留在砧板上就跑出去</p>
+        <p>现在我听到的都是‘哎呀，多吃点’，而不是粉丝们喊的‘欧巴！欧巴！’。这很新鲜。我想知道发生了什么事</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@熊猫馆烤肉贩卖机 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114896515633138&bvid=BV1WngHzyEWa&cid=31209229678&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年7月27日</strong></p>
+        <p>胜酱100问 第一期</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="interview2018-aug" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2018.html#interview2018-aug-jump" class="jump-button">8月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@熊猫馆烤肉贩卖机 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115066787662402&bvid=BV1WCY9zbEya&cid=31880253419&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年8月10日</strong></p>
+        <p>胜酱100问 第二期</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div id="interview2018-sept" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2018.html#interview2018-sept-jump" class="jump-button">9月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@Anarchy__ 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115815370198870&bvid=BV1udi3B3Ef6&cid=35109407666&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年9月4日</strong></p>
+        <p>胜酱100问 第三期</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/OfEQNg1V4oY?si=tpDWA3Wz0Qq6Pu83" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年9月13日</strong></p>
+        <p>太阳大声宣传“日落之光”快闪活动</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div id="180930-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2018sept.html#180930" class="jump-button">跳转到 2018 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年9月30日</strong></p>
+        <p>胜利接受 The Lady Miz Diva 独家采访</p>
+        <p>详细资讯：<a href="https://bigbangmusic.de/index.php/interview-the-lady-miz-diva-exclusive-interview-with-seungri-on-yg-future-strategy-office-october-2018" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bigbangmusic.de</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #FF66CC;">问：</span>胜利，YG未来战略办公室》是你第一次与Netflix合作。得知你的节目将在全球190个国家播出，你有什么感受？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我很开心能和Netflix合作。他们今天给我们安排了很多工作，虽然挺有挑战性的，但也很有趣。这是我第一次和Netflix合作。我对电影、电视剧或喜剧的拍摄了解不多。但我还是做了，因为我热爱喜剧：我相信喜剧有一种独特的力量。Netflix 是最大的平台，所以我为这个全球平台而努力
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #FF66CC;">问：</span>请介绍一下YG未来战略办公室是如何成立的？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我也不知道为什么，我的董事长YG突然给我发短信说：“好了，我明天有几个会，你应该去玩玩。”他就这么发短信给我了。所以，我当时还没明白他发短信说“你应该去玩玩”是什么意思。我觉得他以为我会喜欢的。首先，YG FSO，主角不是我。这个项目的主角原本是我的会长杨贤硕。我不知道为什么，但他跟我说，因为我的行为举止像他，而我也想成为像他那样的人；我想这就是他跟我说“你应该去。你去拿下这个项目”的原因</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>多年来，VIP们一直称你为YG的继承人，或者李会长；我想知道，你作为YG娱乐公司勤奋工作的声誉是否就是这一切的开端？<br/>
+          <span style="color: #33FFFF;">胜利：</span>其实我喜欢工作，我也很努力。也许我们（胜利和杨贤硕）很像？</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>不过，我感觉并不是所有人都像你一样相信你的能力？这是节目的主旨吗？<br/>
+          <span style="color: #33FFFF;">胜利：</span>不，其实我们关注的是YG的原创故事，但我们的重点是让每个人都了解我们的故事；这不仅仅是一个K-Pop艺人的故事。这不像是一个K-Pop组合，一个超级明星的故事——它不是这样的。基本上，我以前在YG是超级巨星，但有一次我犯了错，搞砸了一次。所以YG就把我炒了。我的董事长把我炒了，然后我就去了YG FSO。我既不是艺人也不是工作人员，只是去当顾问，什么都没有。YG FSO虽然在YG旗下，但那帮人简直一团糟。什么都没有。你知道我在说什么吧？</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>我相信你也知道粉丝们会用一个词来形容YG的“地牢”，指的是那些可能永远无法再次露面的YG艺人。所以，现在你就是那个被关在YG地牢里的人吗？<br/>
+          <span style="color: #33FFFF;">胜利：</span> 是的，YG地牢</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>从我看到的片段来看，YG FSO里似乎有很多明星。你能说说你是如何与他们互动的吗？<br/>
+          <span style="color: #33FFFF;">胜利：</span>你知道，其实《YG FSO》里的所有故事都是我讲的。每一集的故事都取材于现实，所以相当敏感。因此，一些YG艺人，一些YG明星，都担心《YG FSO》播出，因为我们谈论了一些敏感话题。有时候我们会谈到毒品问题，有时候我们会谈到意外事故，你明白我的意思吗？</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>关于YG娱乐公司，坊间有很多猜测和传闻。YG官方会否认还是证实粉丝们的猜测呢？<br/>
+          <span style="color: #33FFFF;">胜利：</span>没错，我们说的就是各种传闻。比如，“2NE1怎么了？”所有会看这档节目的K-Pop粉丝都会感到惊讶</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>等等，你刚才说到了一个对我来说很重要的话题。我们能得到一些问题的答案吗？比如2NE1到底发生了什么？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我不知道。这取决于Netflix。你应该去问Netflix</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>YG FSO一共八集，你们都拍完了吗？<br/>
+          <span style="color: #33FFFF;">胜利：</span>其实，我们的拍摄工作是今年二月份就完成了。那已经是很久以前的事了，对吧？所以，我们现在有很多新剧集的素材，我们想努力推出第二季。我们还在和Netflix商讨，但目前还没有最终确定</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>所以，第一季会以悬念结尾？第二季的素材足够吗？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我们只想继续前进。我们想和YG的所有明星谈谈。FSO：我们可以让他们看看我们身上发生了什么。YG现在怎么样了？我怎么样了？BIGBANG现在怎么样了，你懂我的意思吗？因为Netflix是最大的平台</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你对YG FSO揭露真相的描述让我不禁想知道，是否有人对此表示反对，因为采访对象与你的关系太过亲密？<br/>
+          <span style="color: #33FFFF;">胜利：</span>很多很多。我总是和导演吵架，但导演总是赢。我们的导演（朴俊秀）是韩国最著名的伪纪录片导演，也是韩国真人喜剧领域的领军人物</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>肯定会有一些观众在观看《YG FSO》，但他们可能从未听说过YG娱乐、BIGBANG或者胜利。你希望这些观众能从《YG FSO》中获得什么？<br/>
+          <span style="color: #33FFFF;">胜利：</span>故事里，我曾经是明星，但董事长把我炒了，我跌落谷底，对吧？但我正在努力重返巅峰；可是在YG FSO团队，那些蠢货，我却要和他们一起做所有项目。因为这就是YG FSO团队；那些蠢货，所有身居要职的人</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>所有失败者？<br/>
+          <span style="color: #33FFFF;">胜利：</span>是啊，都是些失败者。所以，我才成了YG FSO的队长。虽然我还是觉得自己是明星，其他工作人员都很蠢，但我会尽力做到最好。我相信工作人员，他们也都相信我。这跟人们的真实生活真的很像。所以，即使是不了解YG、不了解BIGBANG、不了解胜利的人——他们也不在意——这不重要，因为这就是每个人的生活故事：我曾经辉煌，但现在跌落谷底，一无所有，但我依然渴望重回巅峰。正因如此，我才选择一步一步地走下去，不断攀升，跌倒，然后再攀升，再攀升，再跌倒；我想，这样的故事能够让人们感同身受，彼此更加亲近</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你的幽默感是众所周知的。你觉得这是处理棘手话题的最佳方式吗？比如在你的音乐录影带《你来自哪里？》中就运用了这种幽默<br/>
+          <span style="color: #33FFFF;">胜利：</span>当然。我相信喜剧的力量，因为我已经在BIGBANG待了12年了。我表演过很多精彩的节目，拍过很棒的MV，穿过超酷的西装，什么都做过了。现在，我想给大家带来快乐，你知道吗？这才是更有力量的</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>我想祝贺你，因为我听说你的首次个人巡回演唱会全部售罄。你感觉如何？<br/>
+          <span style="color: #33FFFF;">胜利：</span>看到演唱会爆满我真的太开心了。听到这个消息我真的很高兴。但同时我也感到压力很大，因为我是BIGBANG唯一剩下的成员了。我知道所有BIGBANG的粉丝都非常想念我们，都想再次看到五位成员，所以我尽了全力。我努力打造了一个精彩的舞台，也精心准备了歌单。所以，我正在为我们的粉丝们竭尽所能。实际上，我明年上半年要去服兵役。虽然还没最终确定，但应该是在明年上半年</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>胜利，请务必小心<br/>
+          <span style="color: #33FFFF;">胜利：</span>我还以为你看到新闻了呢。我们一切都好！（笑）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你知道，你在纽约有很多贵宾。你有没有可能在追悼会之前过来和大家告别？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我会尽力的。我应该这么做</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你应该带上你的DJ团体Natural High来这里<br/>
+          <span style="color: #33FFFF;">胜利：</span>好，那就这么办吧。就这么办</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>胜利，请给你的国际粉丝们捎句话<br/>
+          <span style="color: #33FFFF;">胜利：</span>其实我们去过那里巡演几次。但是我们和全球粉丝的互动并不多，对吧？其实，我想为全球粉丝做更多的事情。我会说英语、日语、中文，你们懂我的意思吧？所以，BIGBANG会更加贴近全球粉丝。希望全球粉丝能继续支持我们，我们也会继续努力与他们互动
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div id="interview2018-oct" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2018.html#interview2018-oct-jump" class="jump-button">10月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/3CQDuxmEuwo?si=p4TK0RwI3jyPW1sZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年10月1日</strong></p>
+        <p>胜利出席YG战姿宣传活动</p>
+        <p>这是一个长达一小时的正经采访..</p>
+        <ul>
+          <li>胜利带金丝眼镜名场面</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/55dh6FWl2Vs?si=oMBqJT81fwP8ylqp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>1</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/1kxG7fk5M9c?si=1sCPqQP4pYbrZKVi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>2</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/D7LFUEhrplU?si=3dUNCNNxXiXzRpzG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-description">
+        <p>3</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="https://drive.google.com/file/d/1B_ZwjCwqvHgky6NQUTQzZ4y57UvmV6hb/preview" width="560" height="315" allow="autoplay" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年10月1日</strong></p>
+        <p>胜利出席Netflix股东大会</p>
+        <ul>
+          <li>胜利撒娇kk</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ds5r5mZNdHA?si=d9Z0bP_ShEyAlRJQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年10月31日</strong></p>
+        <p>MY好玩 胜利 QNA</p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">#seungri RED NEWS Interview https://t.co/SztdVwoqdh</p>&mdash; Allen_D1021 (@seungrixiseyo) <a href="https://x.com/seungrixiseyo/status/1058124465513521152?ref_src=twsrc%5Etfw">November 1, 2018</a></blockquote>
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年10月31日</strong></p>
+        <p>RED News 胜利 采访</p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div id="interview2018-nov" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="interview2018.html#interview2018-nov-jump" class="jump-button">11月</a>
+  </div><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@Anarchy__ 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115825705026195&bvid=BV1gEiwB1EJE&cid=35146697567&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年11月2日</strong></p>
+        <p>胜酱100问 第四期</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+<blockquote class="twitter-tweet"><p lang="ko" dir="ltr">승리 이승리 이승현 와지전자 말고 1인방송으로 먹방 찍어주세요.... https://t.co/h9IluhuOjS</p>&mdash; 아롬 (@arom070919) <a href="https://x.com/arom070919/status/1058368616293269505?ref_src=twsrc%5Etfw">November 2, 2018</a></blockquote>
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年11月2日</strong></p>
+        <p>Netflix Malaysia</p>
+        <p>胜利 采访</p>
+      </div>
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <div id="181104-jump" style="position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+      <a href="2018nov.html#181104" class="jump-button">跳转到 2018 时间线</a>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年11月4日</strong></p>
+        <p>胜利接受 K-popped! 采访</p>
+        <p>详细资讯：<a href="https://k-popped.com/2018/11/exclusive-seungri-talks-about-all-things-malaysian/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            K-popped!</a></p><br/>
+        <ol style="list-style-position: inside; color: white;">
+          <li><span style="color: #FF66CC;">问：</span>欢迎回到马来西亚！再次回到这里感觉如何？<br/>
+          <span style="color: #33FFFF;">胜利：</span>回到这里感觉真好，就像回家一样。我知道我在这里有很多粉丝，也有很多好朋友。而且，我最近在吉隆坡开了一家餐厅。能回来真的太好了
+          <button id="expandBtn" class="toggle-btn" onclick="toggleList(this, true)" style="margin-left:10px;">展开</button></p>
+          <ol id="celebrityList" start="2" style="display: none; list-style-position: inside; color: white;">
+          <br/><li><span style="color: #FF66CC;">问：</span>你最想念马来西亚的什么？<br/>
+          <span style="color: #33FFFF;">胜利：</span>首先是美食！我爱马来西亚美食。其次是粉丝！我爱马来西亚粉丝！他们充满活力和热情。他们是我这辈子遇到过的最棒的粉丝！</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>请介绍一下你的专辑《THE GREAT SEUNGRI》<br/>
+          <span style="color: #33FFFF;">胜利：</span>《THE GREAT SEUNGRI》是我的第一张个人正规专辑。我的上一张个人专辑是5年前的。现在，我的BIGBANG成员们都在服兵役，只剩下我一个人了。我想维护BIGBANG的荣耀，所以我专注于他们的能量，并将其中一些融入到我的音乐中。 我尝试保留BIGBANG的一些风格，同时也融合了我自己的独特风格。我与一位超棒的导演兼制作人Teddy哥合作。YG所有最优秀的制作人也都参与了这张专辑的制作。iKON的B.I和Winner的Mino也都参与了这张专辑的录制，给予了我很大的支持。《THE GREAT SEUNGRI》是我生命中最完美的专辑</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>您是一位知名的歌手、词曲作者、唱片制作人、演员和企业家。接下来您还想涉足哪些领域呢？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我想做一些可以和大家分享的事情。现在的年轻人要么迷茫，要么太害羞。我想支持他们。如果他们有好的想法，我想投资他们，把他们的想法变成现实。我想成为他们的良师益友</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>哥哥们入伍后，你们的生活发生了哪些变化？<br/>
+          <span style="color: #33FFFF;">胜利：</span>以前和BIGBANG成员们在一起的时候，我总是问他们各种想法。这个怎么样？那个怎么样？这个呢？那个呢？但现在他们都退伍了，只剩下我一个人了。所以，我得自己做决定，感觉完全不一样了。五个成员的想法都摆在眼前，现在只剩下一个，那就是我的想法……有时候真的很难受，但我总是想，如果我的哥哥们都在，他们会怎么做呢？所以，我总是这样做决定</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>在某个综艺节目中，你说过你很喜欢马来西亚美食。你最喜欢哪一种呢？<br/>
+          <span style="color: #33FFFF;">胜利：</span>我当然喜欢很多东西！但是……炒饭！那是我最爱的马来西亚菜。每次度假或者旅行，我都会点炒饭。我觉得它最好吃</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>所以，如果你可以开一家马来西亚菜餐厅，你会选择开一家炒饭餐厅吗？<br/>
+          <span style="color: #33FFFF;">胜利：</span>你知道吗，马来西亚菜是最熟悉、最接近韩国菜的。味道真的太像了。如果我把马来西亚菜带到韩国市场，我相信每个韩国人都会喜欢。我真的在认真考虑把马来西亚文化带到韩国。（希望很快就能实现！）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>如果你必须选择一首歌陪伴你一生，你会选择哪首歌？为什么？<br/>
+          <span style="color: #33FFFF;">胜利：</span>只有一首吗？嗯……《Fantastic Baby》！我觉得这首歌最适合我。因为我想一辈子都保持FANTASTIC（太棒了）的状态！（笑）</li>
+          <br/><li><span style="color: #FF66CC;">问：</span>你看起来过得非常充实！有什么享受生活的秘诀可以分享给其他人吗？<br/>
+          <span style="color: #33FFFF;">胜利：</span>你知道吗，现在我们享受生活太容易了。获取任何信息也都很方便。无论是在YouTube、Facebook还是Twitter上，现在和大家分享生活都太容易了。所以我想说的是，我希望大家都能把自己的生活分享给世界。不要藏着掖着！
+          <button id="collapseBtn" class="toggle-btn" onclick="toggleList(this, false)" style="margin-left:10px;">收回</button></p>          
+        </ol>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="181104s.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="181104s1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="181104s2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@Anarchy__ 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115886304265254&bvid=BV162rzBUEru&cid=35356280102&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2018年11月12日</strong></p>
+        <p>胜酱100问 第五期</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="interview.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="interview2019.html">2019</a>
+    </nav>
+  </div>
+
+
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+  function toggleList(button, show) {
+  const listItem = button.closest('li');
+  
+  if (show) {
+    let nestedList = listItem.querySelector('ol');
+    if (!nestedList) {
+      nestedList = listItem.nextElementSibling;
+    }
+    
+    if (nestedList && nestedList.tagName === 'OL') {
+      nestedList.style.display = "block";
+      button.style.display = "none";
+      nestedList.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  } else {
+    const nestedList = button.closest('ol');
+    
+    if (nestedList) {
+      nestedList.style.display = "none";
+      
+      let parentLi = nestedList.parentElement.closest('li');
+      if (!parentLi) {
+        parentLi = nestedList.previousElementSibling;
+        while (parentLi && parentLi.tagName !== 'LI') {
+          parentLi = parentLi.previousElementSibling;
+        }
+      }
+      
+      if (parentLi) {
+        const expandBtns = parentLi.querySelectorAll('[onclick*="true"]');
+        expandBtns.forEach(btn => {
+          btn.style.display = "inline-block";
+        });
+        
+        parentLi.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  }
+}
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+
+  const counter = container.querySelector('.slide-counter');
+  counter.textContent = `${state + 1}/${slides.length}`;
+}
+
+document.querySelectorAll('.slider-container').forEach(container => {
+  const slides = container.querySelectorAll('.slide-item');
+  const counter = container.querySelector('.slide-counter');
+
+  counter.textContent = `1/${slides.length}`;
+});
+
+  </script>
+</body>
+</html>

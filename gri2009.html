@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+@media only screen and (max-width: 768px) {
+    .header-container {
+      height: auto;
+      min-height: 100px;
+      padding: 20px 0;
+      align-items: flex-start;
+    }
+
+    .title-group {
+      width: 100%;
+      padding: 0 120px;
+      text-align: center;
+    }
+
+    .title-group h1 {
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.3;
+      font-size: 42px;
+    }
+
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .right-side{
+    position: relative;
+    align-items:center;
+  }
+
+  .slide-counter{
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .nav-button{
+    background-color: rgba(255,255,255,0.7);
+    border:none;
+    padding:10px 15px;
+    font-size:24px;
+    cursor:pointer;
+    border-radius:10px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: calc(100% + 10px);
+  }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* 居中对齐 */
+      gap: 2px;
+      margin: 10px 0;
+    }
+
+    .tag-link {
+      color: #33FFFF;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 4px 8px;
+      white-space: nowrap;
+      transition: color 0.3s ease;
+    }
+
+    .tag-link:hover {
+      color: white;
+    }
+
+</style>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="gri.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>龙tory2009年</h1>
+    </div>
+    <nav class="right-nav">
+      <nav onclick="checkAnswer('gri2010.html', '如果GD不当艺人的话，他想当胜利的什么？（请输入一个职业）', '经纪人')" class="jump-button">2010</nav>  
+    </nav>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="gri2009-jan-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gri2009.html#gri2009-jan" class="jump-button">1月</a>
+    </div>
+    <div id="gri2009-feb-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gri2009.html#gri2009-feb" class="jump-button">2月</a>
+    </div>
+    <div id="gri2009-mar-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gri2009.html#gri2009-mar" class="jump-button">3月</a>
+    </div>
+    <div id="gri2009-apr-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gri2009.html#gri2009-apr" class="jump-button">4月</a>
+    </div>
+    <div id="gri2009-may-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gri2009.html#gri2009-may" class="jump-button">5月</a>
+    </div>
+    <div id="gri2009-june-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gri2009.html#gri2009-june" class="jump-button">6月</a>
+    </div>
+    <div id="gri2009-july-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gri2009.html#gri2009-july" class="jump-button">7月</a>
+    </div>
+    <div id="gri2009-aug-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gri2009.html#gri2009-aug" class="jump-button">8月</a>
+    </div>
+    <div id="gri2009-oct-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gri2009.html#gri2009-oct" class="jump-button">10月</a>
+    </div>
+    <div id="gri2009-nov-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gri2009.html#gri2009-nov" class="jump-button">11月</a>
+    </div>
+    <div id="gri2009-dec-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="gri2009.html#gri2009-dec" class="jump-button">12月</a>
+    </div>
+  </div>
+  <br/><br/>
+  <hr class="full-width-line" />
+
+    <div id="gri2009-jan" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gri2009.html#gri2009-jan-jump" class="jump-button">1月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="phone">
+        <a href="tag-phone.html#phone-jump" class="tag-link"># GD电话</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3455917&bvid=BV1os41197uj&cid=5504200&p=54" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年1月16日</strong></p>
+        <p>朴静林星光灿烂的夜晚</p>
+        <p>胜利专访</p>
+        <p>有中字</p>
+        <p>51:04 GD电话</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2009年1月21日</strong></p>
+        <p>粉丝：龙tory是real的吗？<br/>胜利：昨晚也搞得腰痛了……</p>
+      </div> 
+    </div>
+  </div>
+  <img src="090121.jpg" style="width: 400px;">
+  <hr class="full-width-line" />  
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="shengli16">
+        <a href="tag-shengli.html#shengli16-jump" class="tag-link"># 亲密接触</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@Maybeplayboy96 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=2661314&bvid=BV13s411m7AU&cid=4797018&p=152" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p>2009年1月30日</p>
+        <p>志龙胜利探秘生活</p>
+        <p>在Bigshow演唱会首次公开</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=2661314&bvid=BV13s411m7AU&cid=4797019&p=153" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p>花絮</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="shengli17">
+        <a href="tag-shengli.html#shengli17-jump" class="tag-link"># 生理性吸引</a>
+      </div>
+    </div>
+  </div><br/>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/GgrwqXJEKYo?si=MqYN5zIGE0fnOpHY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=2661314&bvid=BV13s411m7AU&cid=4913222&p=180" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p>贝多芬病毒 拍摄花絮</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@不在晚上吃瓜 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=71631310&bvid=BV1fE411r7xT&cid=124174017&p=9" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p>贝多芬病毒 短剧</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+    <div id="gri2009-feb" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gri2009.html#gri2009-feb-jump" class="jump-button">2月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="shengli28">
+        <a href="tag-shengli.html#shengli28-jump" class="tag-link"># 生理性吸引</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@筱柒柒w 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=37680172&bvid=BV1St411S7Pa&cid=66240034&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年2月13日</strong></p>
+        <p>至亲笔记</p>
+        <p>（建议看完整版）</p>
+        <ul>
+          <li>GD的手啊一直在摸胜利脸</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="stage">
+        <a href="tag-stage.html#stage-jump" class="tag-link"># 合作舞台</a>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/8DKIhi7nyQ8?si=dbxacmUevEFfd7EV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年2月27日 KBS Music Bank</strong></p>
+        <p>Strong Baby</p>
+        <p>胜利GD合作舞台</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="stage2">
+        <a href="tag-stage.html#stage2-jump" class="tag-link"># 合作舞台</a>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/tFVfaFUV86w?si=iMKHunrSSNXdSV59" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年2月28日 MBCkpop Music Core</strong></p>
+        <p>Strong Baby</p>
+        <p>胜利GD合作舞台</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+    <div id="gri2009-mar" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gri2009.html#gri2009-mar-jump" class="jump-button">3月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="stage3">
+        <a href="tag-stage.html#stage3-jump" class="tag-link"># 合作舞台</a>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/AoYmYJzNM3w?si=VXZnxzvFdN6nmP7y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年3月1日 SBS Inkigayo人气歌谣</strong></p>
+        <p>Strong Baby</p>
+        <p>胜利GD合作舞台</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@Maybeplayboy96 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=2661314&bvid=BV13s411m7AU&cid=5640221&p=243" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年3月20日</strong></p>
+        <p>Mnet Wide News采访视频</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+    <div id="gri2009-apr" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gri2009.html#gri2009-apr-jump" class="jump-button">4月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/5xXuKsUNvV0?si=LvBWhLX1KUV7i5UP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年4月10日</strong></p>
+        <p>Mnet Wide News采访视频</p>
+        <p>NII Photoshoot</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+    <div id="gri2009-may" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gri2009.html#gri2009-may-jump" class="jump-button">5月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="smile">
+        <a href="tag-smile.html#smile-jump" class="tag-link"># 笑脸</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@时光开到荼蘼 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113962158981400&bvid=BV1txN8eKEBR&cid=28261944983&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年5月11日</strong></p>
+        <p>Lotte World游乐园特辑<br/>Part1</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3716312&bvid=BV1is411X7Lf&cid=5954465&p=5" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年5月14日</strong></p>
+        <p>Mezamashi TV</p>
+        <p>送婴儿围巾</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="2">
+        <a href="tag-2.html#2-jump" class="tag-link"># 危险的爱情</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3548724&bvid=BV1xs411R7sX&cid=5653801&p=16" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年5月14日</strong></p>
+        <p>2% Drink</p>
+        <p>"危险的爱情"</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="dabaiya">
+        <a href="tag-dabaiya.html#dabaiya-jump" class="tag-link"># 大白牙</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3716312&bvid=BV1is411X7Lf&cid=5954468&p=8" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年5月18日</strong></p>
+        <p>Mnet Japan I Love BIGBANG</p>
+        <p>有中字</p>
+        <ul>
+          <li>27:15<br/>Q：你最生气的时候是？<br/>龙：提到胜利就笑</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+    <div id="gri2009-june" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gri2009.html#gri2009-june-jump" class="jump-button">6月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="shengli18">
+        <a href="tag-shengli.html#shengli18-jump" class="tag-link"># 生理性吸引</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@Maybeplayboy96 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=2661314&bvid=BV13s411m7AU&cid=5433584&p=230" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年6月10日</strong></p>
+        <p>Cyworld Digital Music Awards</p>
+        <p>采访视频</p>
+        <ul>
+          <li>龙哥你能不能稳重一点</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+    <div id="gri2009-july" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gri2009.html#gri2009-july-jump" class="jump-button">7月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="smile2">
+        <a href="tag-smile.html#smile2-jump" class="tag-link"># 笑脸</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@时光开到荼蘼 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113888775376512&bvid=BV1czffYtEXD&cid=28074642556&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年7月1日</strong></p>
+        <p>Lotte World游乐园特辑<br/>Part2</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/vgI5w1GTxc4?si=z2dqmc9qBq3ZoeQ_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年7月9日</strong></p>
+        <p>Gara Gara Go 幕后花絮</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="tomjerry">
+        <a href="tag-tomjerry.html#tomjerry-jump" class="tag-link"># Tom&Jerry</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@Kmio巛 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=20676282&bvid=BV1HW411s7WT&cid=33859612&p=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年7月29日</strong></p>
+        <p>BIGBANG TV cut</p>
+        <p>EP05</p>
+        <ul>
+          <li>21:09 Tom&Jerry</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+    <div id="gri2009-aug" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gri2009.html#gri2009-aug-jump" class="jump-button">8月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="tomjerry3">
+        <a href="tag-tomjerry.html#tomjerry3-jump" class="tag-link"># Tom&Jerry</a>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2009年8月8日 12:10</strong></p>
+        <p>GD me2day</p>
+        <p>굿모닝∼제가항상자고일어나는침대입니다ㅎㅎ신기하죠?자 그럼오늘도쥐투!스따트
+<br/>早上好~这就是我每天醒来的床哦 呵呵 是不是很神奇？好啦，那么今天也G2…start</p>
+        <p>详细资讯：<a href="https://tieba.baidu.com/p/1341216712?&share=9105&fr=sharewise&is_video=false&unique=0F2721D838CEAAC559C633573D54D191&st=1752073424&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+          唯权志龙吧</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="0908081.jpeg" style="width: 300px; height: 400px;"/>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="tomjerry4">
+        <a href="tag-tomjerry.html#tomjerry4-jump" class="tag-link"># Tom&Jerry</a>
+      </div>
+      <div id="sns-heying14">
+        <a href="tag-sns-heying.html#sns-heying14-jump" class="tag-link"># SNS合影</a>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2009年8月9日 19:46</strong></p>
+        <p>GD me2day</p>
+        <p>오늘의쥐투!!톰과제리라고들부르시지만글쎄..여기선톰이항상이긴답니다^^
+<br/>今天的G2!!虽然大家都叫我们汤姆和杰瑞..但是在这里汤姆才是天天赢的^^</p>
+        <p>「GD轮流单独拍其他成员、唯独和胜利是贴在一起合照」</p>
+        <p>详细资讯：<a href="https://tieba.baidu.com/p/2320770986?&share=9105&fr=sharewise&is_video=false&unique=2ED240DBA4E63342273A4C0CE513527A&st=1751967713&client_type=1&client_version=12.84.3.0&sfc=copy&share_from=post" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+          路过的一只吧</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="0908091.jpeg" style="width: 300px; height: 400px;"/>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2009年8月18日</strong></p>
+        <p>龙tory后记soulmate</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="090818g.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="090818g1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="hug">
+        <a href="tag-hug.html#hug-jump" class="tag-link"># 抱抱</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@Kmio巛 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=20676282&bvid=BV1HW411s7WT&cid=33869747&p=7" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年8月19日</strong></p>
+        <p>Bigbang TV cut</p>
+        <p>EP08</p>
+        <ul>
+          <li>02:15 抱抱</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="tomjerry2">
+        <a href="tag-tomjerry.html#tomjerry2-jump" class="tag-link"># Tom&Jerry</a>
+      </div>
+      <div id="youyu">
+        <a href="tag-youyu.html#youyu-jump" class="tag-link"># 怨念龙</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@Kmio巛 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=20676282&bvid=BV1HW411s7WT&cid=33869406&p=6" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年8月19日</strong></p>
+        <p>GD TV cut</p>
+        <p>EP08</p>
+        <ul>
+          <li>14:38 怨念龙</li>
+          <li>14:56 Tom&Laura</li>
+          <li>17:05 怨念龙</li>
+          <li>18:20 怨念龙</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="srphone">
+        <a href="tag-phone.html#srphone-jump" class="tag-link"># 胜利电话</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@Kmio巛 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=20676282&bvid=BV1HW411s7WT&cid=33870496&p=9" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年9月2日</strong></p>
+        <p>GD TV cut</p>
+        <p>EP10</p>
+        <ul>
+          <li>07:10 胜利电话</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+    <div id="gri2009-oct" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gri2009.html#gri2009-oct-jump" class="jump-button">10月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="jiabin2">
+        <a href="tag-jiabin.html#jiabin2-jump" class="tag-link"># 龙特嘉宾</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@铁罐的本命年 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=1323132&bvid=BV1ax411N7Vc&cid=2008092&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年10月6日</strong></p>
+        <p>强心脏</p>
+        <p>有中字</p>
+        <p>GD 胜利做嘉宾</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="091021">
+        <a href="tag-kk.html#091021-jump" class="tag-link"># kk</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@且-彳亍 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114625647480876&bvid=BV1QFTJzzEgt&cid=25806706479&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年10月21日</strong></p>
+        <p>Mnet Wide News采访视频</p>
+        <ul>
+          <li>04:06 我不是Chic，是KK</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+    <div id="gri2009-nov" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gri2009.html#gri2009-nov-jump" class="jump-button">11月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="bobo3">
+        <a href="tag-bobo.html#bobo3-jump" class="tag-link"># bobo</a>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ZObfc4CHApU?si=OErBcRDSXH9uTQ96" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年11月20日</strong></p>
+        <p>NII Winter Season 花絮</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+    <div id="gri2009-dec" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+      <a href="gri2009.html#gri2009-dec-jump" class="jump-button">12月</a>
+    </div><br/>
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="bobo4">
+        <a href="tag-bobo.html#bobo4-jump" class="tag-link"># bobo</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@xxgttop 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=3716312&bvid=BV1is411X7Lf&cid=5954481&p=22" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年12月5日</strong></p>
+        <p>TBS チャンネル BIGBANG 紧急来日 SP!</p>
+        <p>07:55 电梯之吻</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2009年12月11日</strong></p>
+        <p>GD给他放烟花庆生 （待证实）</p>
+      </div> 
+    </div>
+  </div>
+  <img src="091211.jpg" style="width: 300px;">
+  <hr class="full-width-line" />  
+
+  <div style="text-align: center;">
+    <div class="tag-container">
+      <div id="shengli19">
+        <a href="tag-shengli.html#shengli19-jump" class="tag-link"># 生理性吸引</a>
+      </div>
+    </div>
+    <p style="margin: 0;">下面的视频来自@啵儿加糖就很甜 点击进入观看完整视频</p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=22094443&bvid=BV1kW411L7tK&cid=36526952&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2009年12月16日</strong></p>
+        <p>3rd Japan Fanclub Event – Go Crazy!</p>
+        <p>首次在日本举办粉丝见面会</p>
+        <ul>
+          <li>31:54 GD尖叫（莫名其妙）<br/>拍脸</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="gri.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>        
+    <nav class="right-nav">
+      <nav onclick="checkAnswer('gri2010.html', '如果GD不当艺人的话，他想当胜利的什么？（请输入一个职业）', '经纪人')" class="jump-button">2010</nav>  
+    </nav>
+  </div>
+
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+<script>
+  function checkAnswer(targetPage, question, correctAnswer) {
+    const answer = prompt(question);
+    if (answer && answer.trim() === correctAnswer) {
+      window.location.href = targetPage;
+    } else {
+      alert("回答错误，请再试一次！");
+    }
+  }
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+    
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+
+  const counter = container.querySelector('.slide-counter');
+  counter.textContent = `${state + 1}/${slides.length}`;
+}
+
+document.querySelectorAll('.slider-container').forEach(container => {
+  const slides = container.querySelectorAll('.slide-item');
+  const counter = container.querySelector('.slide-counter');
+
+  counter.textContent = `1/${slides.length}`;
+});
+
+</script>
+</head>
+</html>
