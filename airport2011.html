@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.5);
+        transform-origin: top left;
+        width: 200%;
+        height: calc(100vh / 0.5);
+      }
+
+      .full-width-line {
+        transform: scaleX(2);
+        transform-origin: left;
+      }
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .filter-dropdown-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+    margin-top: -50px;
+  }
+
+  .filter-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .filter-button {
+    padding: 15px 25px;
+    background-color: #111;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px 18px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .member-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    margin-top: 5px;
+  }
+
+  .member-list button {
+    margin: 6px 0;
+  }
+
+  #noContentMessage {
+    padding: 15px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 30px auto 0;
+  }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .right-side{
+    position: relative;
+    align-items:center;
+  }
+
+  .slide-counter{
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .nav-button{
+    background-color: rgba(255,255,255,0.7);
+    border:none;
+    padding:10px 15px;
+    font-size:24px;
+    cursor:pointer;
+    border-radius:10px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: calc(100% + 10px);
+  }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="airport.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>机场照2011年</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="airport2012.html">2012</a>
+    </nav>
+  </div>
+
+  <div class="filter-dropdown-wrapper">
+    <div class="filter-dropdown" id="filterDropdown" onclick="toggleFilterLock()" onmouseenter="showMemberList()" onmouseleave="hideMemberList()">
+      <div class="filter-button">筛选</div>
+      <div class="member-list" id="memberList">
+        <button class="jump-button" onclick="filterSNS('all')">全部</button>
+        <button class="jump-button" onclick="filterSNS('gd')">G-Dragon</button>
+        <button class="jump-button" onclick="filterSNS('ty')">太阳</button>
+        <button class="jump-button" onclick="filterSNS('top')">TOP</button>
+        <button class="jump-button" onclick="filterSNS('ds')">大声</button>
+        <button class="jump-button" onclick="filterSNS('sr')">胜利</button>
+      </div>
+    </div>
+  </div><br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="airport2011-jan-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2011.html#airport2011-jan" class="jump-button">1月</a>
+    </div>
+    <div id="airport2011-feb-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2011.html#airport2011-feb" class="jump-button">2月</a>
+    </div>
+    <div id="airport2011-apr-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2011.html#airport2011-apr" class="jump-button">4月</a>
+    </div>
+    <div id="airport2011-may-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2011.html#airport2011-may" class="jump-button">5月</a>
+    </div>
+    <div id="airport2011-june-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2011.html#airport2011-june" class="jump-button">6月</a>
+    </div>
+    <div id="airport2011-july-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2011.html#airport2011-july" class="jump-button">7月</a>
+    </div>
+    <div id="airport2011-sept-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2011.html#airport2011-sept" class="jump-button">9月</a>
+    </div>
+    <div id="airport2011-oct-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2011.html#airport2011-oct" class="jump-button">10月</a>
+    </div>
+    <div id="airport2011-nov-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2011.html#airport2011-nov" class="jump-button">11月</a>
+    </div>
+  </div>
+  <br/><br/>
+  <hr class="full-width-line" />
+
+  <h1 id="currentFilter" style="text-align:center; margin-top: 30px; margin-bottom: 10px; color: #33FFFF; display: none;"></h1>
+
+    <div id="airport2011-jan" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2011.html#airport2011-jan-jump" class="jump-button">1月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年1月8日</strong></p>
+        <p><span style="color: #fc5353;">太阳</span></p>
+        <p>韩国仁川 ———— 美国</p>
+        <p>详细资讯：<a href="https://ygnatics.wordpress.com/2012/02/11/photos-taeyang-incheon-airport/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            ygnatics</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110108a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110108a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年1月19日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>泰国曼谷 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://onlybigbang.wordpress.com/2011/01/20/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            only bigbang</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110119a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110119a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2011-feb" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2011.html#airport2011-feb-jump" class="jump-button">2月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="gd ty top ds sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年2月7日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #fc5353;">太阳</span>、<span style="color: #00ff51;">TOP</span>、<span style="color: #fbff00;">大声</span>、<span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 美国拉斯维加斯</p>
+        <p>详细资讯：<a href="https://ygworldla.wordpress.com/2011/02/07/rumor-bigbang-en-el-aeropuerto-camino-a-america-para-grabar-un-mv/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            ygworldla</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110207a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110207a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="gd ty top ds sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年2月13日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #fc5353;">太阳</span>、<span style="color: #00ff51;">TOP</span>、<span style="color: #fbff00;">大声</span>、<span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— XXXX</p>
+        <p>详细资讯：<a href="https://annyeonghaseoo.blogspot.com/2011/02/photo-fantaken-photos-of-big-bang-at.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            annyeonghaseoo</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110213a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110213a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110213a2.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110213a3.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2011-apr" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2011.html#airport2011-apr-jump" class="jump-button">4月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="gd ty top ds sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年4月22日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #fc5353;">太阳</span>、<span style="color: #00ff51;">TOP</span>、<span style="color: #fbff00;">大声</span>、<span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 韩国济州岛</p>
+        <p>详细资讯：<a href="https://ameblo.jp/vipsbigbang/entry-10870527346.html?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Ameblo JP</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110422a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110422a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110422a2.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110422a3.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年4月23日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国济州岛 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://www.youtube.com/watch?v=Qef7BbgcH2o" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            choa9012</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="110423a.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="top">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年4月25日</strong></p>
+        <p><span style="color: #00ff51;">TOP</span></p>
+        <p>XXXX ———— 韩国金浦</p>
+        <p>详细资讯：<a href="https://yabigbang.blogspot.com/2011/04/110425-top-gimpo-airport.html?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            yabigbang</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110425a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110425a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2011-may" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2011.html#airport2011-may-jump" class="jump-button">5月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="gd ty top ds sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年5月20日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #fc5353;">太阳</span>、<span style="color: #00ff51;">TOP</span>、<span style="color: #fbff00;">大声</span>、<span style="color: #33FFFF;">胜利</span></p>
+        <p>日本名古屋 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://www.youtube.com/watch?v=hsDmiNRb5rA&t=8s" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            VNalVIP</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110520a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110520a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2011-june" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2011.html#airport2011-june-jump" class="jump-button">6月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年6月20日</strong></p>
+        <p><span style="color: #fc5353;">太阳</span></p>
+        <p>韩国金浦 ———— 日本</p>
+        <p>详细资讯：<a href="https://bigbangworldwide.blogspot.com/2011/06/photos-taeyang-gimpo-airport-110620.html#more" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bigbang worldwide</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110620a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110520a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2011-july" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2011.html#airport2011-july-jump" class="jump-button">7月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年7月3日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span></p>
+        <p>XXXX ———— 韩国金浦</p>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/yfHVY7w7D" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="110703a.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr ty top">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年7月14日</strong></p>
+        <p><span style="color: #fc5353;">太阳</span>、<span style="color: #00ff51;">TOP</span>、<span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 新加坡</p>
+        <p>详细资讯：<a href="https://www.dispatch.co.kr/2798?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Dispatch</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110714a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110714a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110714a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年7月16日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>XXXX ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://www.youtube.com/watch?v=h6zMGQ9tlNM" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            choa9012</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110716a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110716a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="top">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年7月18日</strong></p>
+        <p><span style="color: #00ff51;">TOP</span></p>
+        <p>XXXX ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/2167640574/14752567102" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBNUS</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110718a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110718a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="ty sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年7月19日</strong></p>
+        <p><span style="color: #fc5353;">太阳</span>、<span style="color: #33FFFF;">胜利</span></p>
+        <p>XXXX ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/2167640574/14752567102" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBNUS</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110719a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110719a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="gd ty top ds sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/uo8puzn0DCo?si=c-IGMYthp24Ts66h" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2011年7月21日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #fc5353;">太阳</span>、<span style="color: #00ff51;">TOP</span>、<span style="color: #fbff00;">大声</span>、<span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国金浦 ———— 日本</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="top">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年7月22日</strong></p>
+        <p><span style="color: #00ff51;">TOP</span></p>
+        <p>日本 ———— 韩国金浦</p>
+        <p>详细资讯：<a href="https://www.youtube.com/watch?v=npBh9ehnzXo" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            NKH1610</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110721a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110721a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="gd ty top">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年7月24日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #fc5353;">太阳</span>、<span style="color: #00ff51;">TOP</span></p>
+        <p>韩国仁川 ———— 新西兰</p>
+        <p>详细资讯：<a href="https://m.entertain.naver.com/article/081/0002213044" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Naver</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110724a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110724a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110724a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr ty top">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年7月30日</strong></p>
+        <p><span style="color: #fc5353;">太阳</span>、<span style="color: #00ff51;">TOP</span>、<span style="color: #33FFFF;">胜利</span></p>
+        <p>新西兰 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/2167640574/15714142570" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBNUS</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110730a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110724a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110724a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2011-sept" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2011.html#airport2011-sept-jump" class="jump-button">9月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="top">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年9月1日</strong></p>
+        <p><span style="color: #00ff51;">TOP</span></p>
+        <p>韩国仁川 ———— 美国纽约</p>
+        <p>详细资讯：<a href="https://hallyuism.wordpress.com/2011/09/01/fashionmagz-actress-yoon-eunhye-big-bang-top-flew-to-nyc-for-w-magazine-photoshoot-01-09-2011/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            hallyuism</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="110901a.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty top">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年9月15日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #fc5353;">太阳</span>、<span style="color: #00ff51;">TOP</span></p>
+        <p>韩国济州岛 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://ygfamilyy.tumblr.com/post/10246656711/gdtopyb-110915-gimpo-airport-back-from-jeju" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            ygfamilyy</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110915a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110915a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110915a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="gd top">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年9月18日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #00ff51;">TOP</span></p>
+        <p>韩国仁川 ———— 日本</p>
+        <p>详细资讯：<a href="https://ameblo.jp/bigban-go/entry-11022223757.html?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Ameblo JP</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110918a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110918a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110918a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="gd top sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年9月23日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #00ff51;">TOP</span>、<span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 新加坡</p>
+        <p>详细资讯：<a href="https://realway99.wordpress.com/2011/09/23/fanaccount-110923-gdtopvi-singapore-airport/?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            realway99</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110923a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110923a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110923a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="gd top sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年9月24日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #00ff51;">TOP</span>、<span style="color: #33FFFF;">胜利</span></p>
+        <p>新加坡 ———— 马来西亚吉隆坡</p>
+        <p>详细资讯：<a href="https://mycolorisland.wordpress.com/2011/09/24/more-gdtop-and-seungri-leaving-singapore-to-malaysia-110924-photos/?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            mycolorisland</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="110924a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110924a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="110924a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2011-oct" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2011.html#airport2011-oct-jump" class="jump-button">10月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="gd top sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/xLXOhRcfaak?si=xb_M3eA0nlXkHc4Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2011年10月1日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #00ff51;">TOP</span>、<span style="color: #33FFFF;">胜利</span></p>
+        <p>马来西亚吉隆坡 ———— 韩国金浦</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="gd top sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年10月2日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #00ff51;">TOP</span>、<span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国金浦 ———— 日本</p>
+        <p>详细资讯：<a href="https://ameblo.jp/bigban-go/entry-11035705406.html?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Ameblo JP</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="111002a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="111002a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="111002a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="gd top">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年10月3日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #00ff51;">TOP</span></p>
+        <p>日本 ———— 韩国金浦</p>
+        <p>详细资讯：<a href="https://ameblo.jp/bigban-go/entry-11036999125.html?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Ameblo JP</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="111003a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="111003a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年10月4日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>日本 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/2167640574/3365930399618692" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBNUS</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="111004a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="111004a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="top">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年10月9日</strong></p>
+        <p><span style="color: #00ff51;">TOP</span></p>
+        <p>韩国仁川 ———— 加拿大</p>
+        <p>详细资讯：<a href="https://weibo.com/2167640574/3366621922480529" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBNUS</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="111009a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="111009a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="top">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年10月14日</strong></p>
+        <p><span style="color: #00ff51;">TOP</span></p>
+        <p>加拿大 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/2167640574/3368455185767441" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBNUS</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="111014a.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年10月28日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>XXXX ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://www.youtube.com/watch?v=nP7qJAF4mbQ&pp=0gcJCa0JAYcqIYzv" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            choa9012</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="111028a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="111028a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2011-nov" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2011.html#airport2011-nov-jump" class="jump-button">11月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="gd ty top ds sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年11月3日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #fc5353;">太阳</span>、<span style="color: #00ff51;">TOP</span>、<span style="color: #fbff00;">大声</span>、<span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 北爱尔兰贝尔法斯特</p>
+        <p>详细资讯：<a href="https://yeppopo.wordpress.com/2011/11/03/photos-seungri-and-t-o-p-incheon-airport-111103/?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            yeppopo</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="111103a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="111103a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="111103a2.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="111103a3.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="111103a4.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="gd ty top ds sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/N3sDXHPo2VE?si=8YiXsIKWKkgKQFfQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2011年11月5日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #fc5353;">太阳</span>、<span style="color: #00ff51;">TOP</span>、<span style="color: #fbff00;">大声</span>、<span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 北爱尔兰贝尔法斯特</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="gd top ds ty">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年11月7日</strong></p>
+        <p><span style="color: #FF66CC;">GD</span>、<span style="color: #fc5353;">太阳</span>、<span style="color: #00ff51;">TOP</span>、<span style="color: #fbff00;">大声</span></p>
+        <p>英国伦敦希思罗 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://bigbangworldwide.blogspot.com/2011/11/photo-daesung-leaving-hotel-back-to.html?utm_source=chatgpt.com" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            bigbang worldwide</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="111107a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="111107a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="111107a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2011年11月12日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>英国伦敦希思罗 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://www.youtube.com/watch?v=Va_ZncFYy1w" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            choa9012</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="111112a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="111112a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="111112a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div id="noContentMessage" style="display:none; text-align:center; color: white; font-size: 40px; margin-top: 30px;">
+    暂无该成员的个人机场记录
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="airport.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="airport2012.html">2012</a>
+    </nav>
+  </div>
+
+
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+
+  let filterLocked = false;
+
+  function toggleFilterLock() {
+    filterLocked = !filterLocked;
+    updateMemberListDisplay();
+  }
+
+  function showMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'flex';
+    }
+  }
+
+  function hideMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'none';
+    }
+  }
+
+  function updateMemberListDisplay() {
+    const memberList = document.getElementById('memberList');
+    memberList.style.display = filterLocked ? 'flex' : 'none';
+  }
+
+function filterSNS(member) {
+  const entries = document.querySelectorAll('.sns-entry');
+  const message = document.getElementById('noContentMessage');
+  const backButton = document.getElementById('backButton');
+  const nextButton = document.getElementById('nextButton');
+  const footer = document.getElementById('footer');
+  const currentFilter = document.getElementById('currentFilter');
+
+  const memberNames = {
+    all: '全部',
+    gd: 'G-Dragon',
+    top: 'TOP',
+    ty: '太阳',
+    ds: '大声',
+    sr: '胜利'
+  };
+
+  if (memberNames[member]) {
+    currentFilter.textContent = `当前筛选：${memberNames[member]}`;
+    currentFilter.style.display = 'block';
+  } else {
+    currentFilter.style.display = 'none';
+  }
+
+  let hasContent = false;
+
+  entries.forEach(entry => {
+    const members = entry.dataset.member.split(' ');
+    if (member === 'all' || members.includes(member)) {
+      entry.style.display = 'block';
+      hasContent = true;
+    } else {
+      entry.style.display = 'none';
+    }
+  });
+
+  const monthContainers = document.querySelectorAll('div[id^="airport2011-"]');
+
+  monthContainers.forEach(el => {
+    if (!el.closest('.sns-entry')) {
+      el.style.display = (member === 'all') ? 'flex' : 'none';
+    }
+  });
+
+  if (!hasContent && member !== 'all') {
+    if (message) message.style.display = 'block';
+    if (backButton) backButton.style.display = 'none';
+    if (nextButton) nextButton.style.display = 'none';
+    if (footer) footer.style.display = 'none';
+  } else {
+    if (message) message.style.display = 'none';
+    if (backButton) backButton.style.display = 'inline-block';
+    if (nextButton) nextButton.style.display = 'inline-block';
+    if (footer) footer.style.display = 'block';
+  }
+}
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+
+  const counter = container.querySelector('.slide-counter');
+  counter.textContent = `${state + 1}/${slides.length}`;
+}
+
+document.querySelectorAll('.slider-container').forEach(container => {
+  const slides = container.querySelectorAll('.slide-item');
+  const counter = container.querySelector('.slide-counter');
+
+  counter.textContent = `1/${slides.length}`;
+});
+
+</script>
+</body>
+</html>

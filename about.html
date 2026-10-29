@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group { display: inline-block; }
+
+    .left-nav {
+      position: absolute;
+      left: 0;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+    }
+
+    .left-nav a:hover {
+      background-color: white;
+      color: #111;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px auto;
+    }
+
+@media only screen and (max-width: 768px) {
+    .header-container {
+      height: auto;
+      min-height: 100px;
+      padding: 20px 0;
+      align-items: flex-start;
+    }
+
+    .title-group {
+      width: 100%;
+      padding: 0 120px;
+      text-align: center;
+    }
+
+    .title-group h1 {
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.3;
+      font-size: 42px;
+    }
+
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .image-text-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .two-column-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 100px;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    .column {
+      width: 45%;
+      text-align: left;
+      color: white;
+    }
+
+main > p,
+main > h3,
+main > h1 {
+  text-align: left;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+  </style>
+</head>
+
+<body>
+<main>
+
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="index.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>About 关于</h1>
+    </div>
+  </div><br/>
+
+  <h3>bigbangri.com 是由个人粉丝独立建立的非官方资料整理型网站，
+        主要用于系统性整理与归档 BIGBANG 相关的历史资料、
+        公开视频与公开信息</h3>
+
+  <p style="max-width:900px;margin:30px auto;line-height:1.8;">
+    bigbangri.com 的定位并非即时资讯平台或社交媒体站点，
+    而是一个以长期资料整理与文化记录为核心目的的参考型网站。
+    网站内容围绕 BIGBANG 及其成员自出道以来的公开活动记录，
+    通过人工整理、分类与校对的方式进行系统性归档。
+  </p>
+
+  <p style="max-width:900px;margin:20px auto;line-height:1.8;">
+    本站内容更新不以频率或流量为导向，
+    而以资料完整性、时间顺序准确性与可长期查阅性为主要标准。
+    因此，部分页面更适合在桌面端或平板设备上进行系统浏览。
+  </p>
+
+  <p>本站不代表任何经纪公司、官方组织或艺人本人立场，亦不隶属于任何商业机构</p>
+
+  <br/><br/><br/>
+  <div style="text-align: center;">
+  <p style="color:#ffa3dc;">
+    所有内容均基于公开可查的网络资料进行整理、分类与说明，
+    仅用于个人兴趣向的信息汇总与粉丝向资料归档
+  </p>
+  <h3 style="color:#33FFFF;">
+    本站不提供会员制度或付费内容，所有页面均可免费浏览
+  </h3>
+  </div>
+  <br/>
+
+  <div class="image-text-row">
+    <img src="y3.jpg" style="width:350px;" />
+    <div>
+      <p>若你在页面中看到该图片作为视频封面</p>
+      <p style="color:#ffa3dc;">这属于正常展示情况，并非视频内容缺失</p>
+      <p style="color:#33FFFF;">点击后将跳转至原始视频页面进行观看</p>
+    </div>
+  </div><hr/>
+
+  <div style="max-width:900px;margin:40px auto;line-height:1.8;text-align:left;">
+    <p>
+      本站所整理的视频与图像内容，主要来源于官方公开视频平台
+      或原始发布者，并尽量采用嵌入或外部链接形式呈现，
+      以尊重原作者版权与平台使用规范。
+    </p>
+    <p>
+      在资料整理过程中，本站会优先保留原始出处与发布平台信息，
+      并对重复内容进行合并与标注说明。
+      若部分内容因地区或平台限制无法直接播放，
+      将引导访客前往原始页面进行观看。
+    </p>
+  </div>
+
+  <div class="two-column-wrapper">
+    <div class="column">
+      <h2 style="color:#ffa3dc;">为什么大部分视频都会使用 YouTube？</h2><br/>
+      <p>
+        YouTube 是全球用户规模最大的公开视频平台之一，
+        BIGBANG 出道时期正值其快速发展阶段，
+        因此大量早期公开视频集中于该平台。
+      </p>
+      <p>
+        本站在整理过程中会尽量保留原始出处与发布者信息，
+        并以嵌入或跳转方式呈现内容。
+      </p>
+    </div>
+
+    <div class="column">
+      <h2 style="color:#ffa3dc;">视频展示方式说明</h2><br/>
+      <p>
+        由于公开视频数量庞大，
+        本站主要采用官方嵌入或外部链接方式进行展示，
+        以降低服务器资源占用。
+      </p>
+      <p>
+        若因地区限制无法直接播放，
+        请按照页面提示前往原始平台观看。
+      </p>
+    </div>
+  </div>
+
+</main>
+
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

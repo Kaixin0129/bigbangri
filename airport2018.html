@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.5);
+        transform-origin: top left;
+        width: 200%;
+        height: calc(100vh / 0.5);
+      }
+
+      .full-width-line {
+        transform: scaleX(2);
+        transform-origin: left;
+      }
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .filter-dropdown-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+    margin-top: -50px;
+  }
+
+  .filter-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .filter-button {
+    padding: 15px 25px;
+    background-color: #111;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px 18px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .member-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    margin-top: 5px;
+  }
+
+  .member-list button {
+    margin: 6px 0;
+  }
+
+  #noContentMessage {
+    padding: 15px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 30px auto 0;
+  }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .right-side{
+    position: relative;
+    align-items:center;
+  }
+
+  .slide-counter{
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .nav-button{
+    background-color: rgba(255,255,255,0.7);
+    border:none;
+    padding:10px 15px;
+    font-size:24px;
+    cursor:pointer;
+    border-radius:10px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: calc(100% + 10px);
+  }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="airport.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>机场照2018年</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="airport2019.html">2019</a>
+    </nav>
+  </div>
+
+  <div class="filter-dropdown-wrapper">
+    <div class="filter-dropdown" id="filterDropdown" onclick="toggleFilterLock()" onmouseenter="showMemberList()" onmouseleave="hideMemberList()">
+      <div class="filter-button">筛选</div>
+      <div class="member-list" id="memberList">
+        <button class="jump-button" onclick="filterSNS('all')">全部</button>
+        <button class="jump-button" onclick="filterSNS('gd')">G-Dragon</button>
+        <button class="jump-button" onclick="filterSNS('ty')">太阳</button>
+        <button class="jump-button" onclick="filterSNS('top')">TOP</button>
+        <button class="jump-button" onclick="filterSNS('ds')">大声</button>
+        <button class="jump-button" onclick="filterSNS('sr')">胜利</button>
+      </div>
+    </div>
+  </div><br/>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="airport2018-jan-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2018.html#airport2018-jan" class="jump-button">1月</a>
+    </div>
+    <div id="airport2018-feb-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2018.html#airport2018-feb" class="jump-button">2月</a>
+    </div>
+    <div id="airport2018-mar-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2018.html#airport2018-mar" class="jump-button">3月</a>
+    </div>
+    <div id="airport2018-apr-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2018.html#airport2018-apr" class="jump-button">4月</a>
+    </div>
+    <div id="airport2018-may-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2018.html#airport2018-may" class="jump-button">5月</a>
+    </div>
+    <div id="airport2018-june-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2018.html#airport2018-june" class="jump-button">6月</a>
+    </div>
+    <div id="airport2018-july-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2018.html#airport2018-july" class="jump-button">7月</a>
+    </div>
+    <div id="airport2018-aug-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2018.html#airport2018-aug" class="jump-button">8月</a>
+    </div>
+    <div id="airport2018-sept-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2018.html#airport2018-sept" class="jump-button">9月</a>
+    </div>
+    <div id="airport2018-oct-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2018.html#airport2018-oct" class="jump-button">10月</a>
+    </div>
+    <div id="airport2018-nov-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2018.html#airport2018-nov" class="jump-button">11月</a>
+    </div>
+    <div id="airport2018-dec-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="airport2018.html#airport2018-dec" class="jump-button">12月</a>
+    </div>
+  </div>
+  <br/><br/>
+  <hr class="full-width-line" />
+
+  <h1 id="currentFilter" style="text-align:center; margin-top: 30px; margin-bottom: 10px; color: #33FFFF; display: none;"></h1>
+
+    <div id="airport2018-jan" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2018.html#airport2018-jan-jump" class="jump-button">1月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="ty ds">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年1月4日</strong></p>
+        <p><span style="color: #fc5353;">太阳</span>、<span style="color: #fbff00;">大声</span></p>
+        <p>韩国仁川 ———— 夏威夷</p>
+        <p>详细资讯：<a href="https://weibo.com/1818706192/FCQut6J8y" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BIGBANGbar</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180104a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180104a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年1月11日</strong></p>
+        <p><span style="color: #fc5353;">太阳</span></p>
+        <p>夏威夷 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/1818706192/FDTt8eDKn" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BIGBANGbar</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180111a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180111a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="ds">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年1月12日</strong></p>
+        <p><span style="color: #fbff00;">大声</span></p>
+        <p>夏威夷 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/1818706192/FE4jXo4E8" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BIGBANGbar</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180112a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180112a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年1月13日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>XXXX ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/HbMYZnTm2" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180113a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180113a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年1月30日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 中国香港</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/NlrqvgOpO" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180130a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180130a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180130a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2018-feb" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2018.html#airport2018-feb-jump" class="jump-button">2月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年2月3日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>马来西亚吉隆坡 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/PvbQasj3I" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180203a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180203a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180203a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年2月8日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 中国香港</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/PwyyQf7L0" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180208a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180208a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180208a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年2月9日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>中国香港 ———— 中国上海</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/N6QQCB7yb" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180209a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180209a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年2月10日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>中国上海 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/NbpOn42QP" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180210a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180210a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2018-mar" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2018.html#airport2018-mar-jump" class="jump-button">3月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年3月1日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>中国香港 ———— 越南河内</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/NbpCjbGE9" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180301a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180301a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2018-apr" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2018.html#airport2018-apr-jump" class="jump-button">4月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年4月3日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>俄罗斯 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/Oa3pHlQS3" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180403a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180403a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年4月22日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>日本福冈 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/PwHZRiBkK" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180422a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180422a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年4月30日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>印尼巴厘岛 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/PxM2SxX2n" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180430a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180430a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180430a4.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>韩国金浦 ———— 日本</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/PxM2SxX2n" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180430a2.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180430a3.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2018-may" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2018.html#airport2018-may-jump" class="jump-button">5月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年5月1日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>日本 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/PeV4Jif4s" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180501a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180501a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年5月17日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>日本 ———— 韩国金浦</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/Px0Ukoe9s" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180517a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180517a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2018-june" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2018.html#airport2018-june-jump" class="jump-button">6月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年6月1日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 菲律宾马尼拉</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/NfFjJ9AUZ" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180601a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180601a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180601a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年6月12日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国金浦 ———— 日本东京</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/NfP0vBIPO" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180612a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180612a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年6月14日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>日本 ———— 韩国金浦</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/Nrwwr5HMs" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180614a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180614a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年6月29日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 中国厦门</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/PwRww2RXN" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180629a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180629a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2018-july" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2018.html#airport2018-july-jump" class="jump-button">7月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年7月2日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>中国厦门 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/NmXPzyvuI" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180702a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180702a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年7月17日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国金浦 ———— 日本</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/Rfw4JmUr2" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180717a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180717a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年7月20日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>日本 ———— 韩国金浦</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/QnrpwdodX" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180720a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180720a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180720a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2018-aug" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2018.html#airport2018-aug-jump" class="jump-button">8月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年8月7日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国金浦 ———— 日本</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/NfFAeoC9q" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180807a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180807a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年8月18日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国金浦 ———— 日本</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/Npy6blVcM" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180818a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180818a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年8月19日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>日本大阪 ———— 韩国金海</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/NaX9bjOmM" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180819a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180819a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年8月24日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 中国上海</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/R2K6abo1h" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180824a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180824a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2018-sept" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2018.html#airport2018-sept-jump" class="jump-button">9月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年9月2日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国金浦 ———— 日本</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GxrNKvxi1" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180902a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180902a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年9月5日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 日本福冈</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/NsrtB5GkM" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180905a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180905a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年9月14日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>台湾台北 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/Px0Yyls9l" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="180914a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180914a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="180914a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2018-oct" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2018.html#airport2018-oct-jump" class="jump-button">10月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年10月3日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 中国香港</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/RgscqjFlc" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="181003a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="181003a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年10月4日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>中国香港 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/GCq23pFG2" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="181004a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="181004a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年10月30日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 马来西亚吉隆坡</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/Qom05y9x4" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="181030a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="181030a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2018-nov" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2018.html#airport2018-nov-jump" class="jump-button">11月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年11月16日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>XXXX ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/H2TYupFr4" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="181116a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="181116a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年11月27日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 美国洛杉矶</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/RliuDnctv" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="181127a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="181127a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年11月30日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 中国上海</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/R9r3ElEj5" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="181130a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="181130a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+    <div id="airport2018-dec" style="display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a href="airport2018.html#airport2018-dec-jump" class="jump-button">12月</a>
+    </div><br/>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月1日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>中国杭州 ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/QfegG35PB" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="181201a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="181201a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="181201a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月4日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— XXXX</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/H5HEsfWS3" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="181204a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="181201a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="181201a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月14日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>韩国仁川 ———— 日本</p>
+        <p>详细资讯：<a href="https://weibo.com/1881452591/Rctzk7HSm" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            没心没肺小左子</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="181214a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="181214a1.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="181214a2.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2018年12月27日</strong></p>
+        <p><span style="color: #33FFFF;">胜利</span></p>
+        <p>XXXX ———— 韩国仁川</p>
+        <p>详细资讯：<a href="https://weibo.com/2837351320/H9cceptb7" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            李昇炫Vworld</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="181227a.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="181227a1.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+</div>
+
+  <div id="noContentMessage" style="display:none; text-align:center; color: white; font-size: 40px; margin-top: 30px;">
+    暂无该成员的个人机场记录
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="airport.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="airport2019.html">2019</a>
+    </nav>
+  </div>
+
+
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+
+  let filterLocked = false;
+
+  function toggleFilterLock() {
+    filterLocked = !filterLocked;
+    updateMemberListDisplay();
+  }
+
+  function showMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'flex';
+    }
+  }
+
+  function hideMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'none';
+    }
+  }
+
+  function updateMemberListDisplay() {
+    const memberList = document.getElementById('memberList');
+    memberList.style.display = filterLocked ? 'flex' : 'none';
+  }
+
+function filterSNS(member) {
+  const entries = document.querySelectorAll('.sns-entry');
+  const message = document.getElementById('noContentMessage');
+  const backButton = document.getElementById('backButton');
+  const nextButton = document.getElementById('nextButton');
+  const footer = document.getElementById('footer');
+  const currentFilter = document.getElementById('currentFilter');
+
+  const memberNames = {
+    all: '全部',
+    gd: 'G-Dragon',
+    top: 'TOP',
+    ty: '太阳',
+    ds: '大声',
+    sr: '胜利'
+  };
+
+  if (memberNames[member]) {
+    currentFilter.textContent = `当前筛选：${memberNames[member]}`;
+    currentFilter.style.display = 'block';
+  } else {
+    currentFilter.style.display = 'none';
+  }
+
+  let hasContent = false;
+
+  entries.forEach(entry => {
+    const members = entry.dataset.member.split(' ');
+    if (member === 'all' || members.includes(member)) {
+      entry.style.display = 'block';
+      hasContent = true;
+    } else {
+      entry.style.display = 'none';
+    }
+  });
+
+  const monthContainers = document.querySelectorAll('div[id^="airport2018-"]');
+
+  monthContainers.forEach(el => {
+    if (!el.closest('.sns-entry')) {
+      el.style.display = (member === 'all') ? 'flex' : 'none';
+    }
+  });
+
+  if (!hasContent && member !== 'all') {
+    if (message) message.style.display = 'block';
+    if (backButton) backButton.style.display = 'none';
+    if (nextButton) nextButton.style.display = 'none';
+    if (footer) footer.style.display = 'none';
+  } else {
+    if (message) message.style.display = 'none';
+    if (backButton) backButton.style.display = 'inline-block';
+    if (nextButton) nextButton.style.display = 'inline-block';
+    if (footer) footer.style.display = 'block';
+  }
+}
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+
+  const counter = container.querySelector('.slide-counter');
+  counter.textContent = `${state + 1}/${slides.length}`;
+}
+
+document.querySelectorAll('.slider-container').forEach(container => {
+  const slides = container.querySelectorAll('.slide-item');
+  const counter = container.querySelector('.slide-counter');
+
+  counter.textContent = `1/${slides.length}`;
+});
+
+</script>
+</body>
+</html>
