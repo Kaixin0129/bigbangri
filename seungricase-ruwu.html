@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+@media only screen and (max-width: 768px) {
+    .header-container {
+      height: auto;
+      min-height: 100px;
+      padding: 20px 0;
+      align-items: flex-start;
+    }
+
+    .title-group {
+      width: 100%;
+      padding: 0 120px;
+      text-align: center;
+    }
+
+    .title-group h1 {
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.3;
+      font-size: 42px;
+    }
+
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .two-column-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 100px;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    .column {
+      width: 45%;
+      text-align: left;
+      color: white;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: white;
+      height: auto;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .right-side{
+    position: relative;
+    align-items:center;
+  }
+
+  .slide-counter{
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .nav-button{
+    background-color: rgba(255,255,255,0.7);
+    border:none;
+    padding:10px 15px;
+    font-size:24px;
+    cursor:pointer;
+    border-radius:10px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: calc(100% + 10px);
+  }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="seungri.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>胜利入伍</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年1月7日</strong></p>
+        <p>胜利向首尔地方警察厅报名参加了义务警察选拔考试</p>
+        <p>详细资讯：<a href="https://www.soompi.com/article/1308673wpp/yg-responds-to-conflicting-reports-of-seungris-enlistment-plans-and-confirms-date" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Soompi</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年3月8日</strong></p>
+        <p>今天公布第一轮的考试结果，胜利合格</p>
+        <p>《Edaily》报道胜利收到了征兵通知，将于3月25日在论山陆军训练中心入伍，但是胜利为了因为丑闻不引起误会，胜利主动退出选拔，以现役身份入伍</p>
+        <p>详细资讯：<a href="https://www.soompi.com/article/1308673wpp/yg-responds-to-conflicting-reports-of-seungris-enlistment-plans-and-confirms-date" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Soompi</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年3月18日</strong></p>
+        <p>MMA韩国兵务厅修改韩国法律防止嫌疑人逃往军队</p>
+        <p>兵务厅长基灿秀表示：兵务厅没有法定权力延缓入伍。以此次事件为鉴，我们计划修改法律，允许在引起社会骚动、以逃避现实为目的入伍或接到调查机关要求延缓入伍的情况下，兵务厅可以延缓入伍。虽然过去也发生过类似事件，但未能制定出这样的措施，我们深感抱歉。此次事件之后，我们一定会修改法律</p>
+        <p>国防部长郑庆斗表示：如果被检察机关起诉，虽然有法律依据可以推迟入伍，所以我们无法推迟胜利的入伍，我们将与警方合作，依法进行彻底调查</p>
+        <p>韩国军事人权中心正在敦促推迟胜利的入伍，表示：当一个涉及多人的案件由军队和警察同时调查时，调查将更加难以妥善进行。由于胜利将独自在军事法庭受审，因此很难确保最终判决与其他嫌疑人的判决一致。服兵役不是监禁，将入伍视为自我反省和赎罪的方式，是对为国家服务的军人的侮辱</p>
+        <p>详细资讯：<a href="https://www.soompi.com/article/1311095wpp/mma-to-amend-law-to-prevent-suspects-from-escaping-to-army-seungri-submits-request-to-delay-enlistment" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Soompi</a></p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>律师孙炳浩确认：胜利今天提交了推迟入伍申请，希望兵务厅能够批准</p>
+        <p>如果申请被拒绝，胜利将于3月25日按计划入伍</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-officially-requests-postpone-military-enlistment/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年3月19日</strong></p>
+        <p>胜利原定于3月25日以现役身份入伍，以胜利现在的入伍状态将于6月25日再次决定</p>
+        <p>针对胜利提出的推迟入伍日期的请求，兵务厅（奇灿秀厅长）基于以下理由决定推迟入伍日期：</p>
+        <p>- 申请人因面临调查而提交了延期申请<br/>
+- 调查机关为了对申请人进行彻底、持续的调查，向兵务厅申请推迟入伍日期<br/>
+- 因此，依据兵役法第61条及兵役法施行令第129条规定，申请人入伍日期予以延后
+缓征期满，其入伍日期将依兵役法规定重新安排<br/>
+- 兵役法兵役法施行令第60条、第128条：服刑期间缓服兵役<br/>
+- 兵役法第六十一条、兵役法施行令第一百二十九条：其他因必要不得已的情况</p>
+        <p>兵务厅计划修改法律，规定有兵役义务的人在引起社会骚乱后逃跑入伍，或侦查机关要求进行其他重要侦查时，可以根据兵务厅的权限延缓入伍</p>
+        <p>详细资讯：<a href="https://www.soompi.com/article/1311479wpp/seungris-military-enlistment-officially-postponed" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Soompi</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年5月15日</strong></p>
+        <p>鉴于胜利的拘捕令最近被驳回，兵务厅再次明确了胜利入伍后的安排</p>
+        <p>兵务管理局表示：虽然胜利的入伍日期已被推迟，但如果他有需要可以再次申请推迟。入伍日期与他的起诉案件无关。除非他被逮捕，依法无法入伍，否则没有任何关系</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/military-manpower-administration-seungri-military-enlistment/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2019年8月29日</strong></p>
+        <p>兵务厅表示，胜利再次入伍可能还需要一段时间</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-military-enlistment-date-still-unconfirmed/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年1月13日</strong></p>
+        <p>韩国军事人力协会计划在2月中旬安排他的正式入伍日期</p>
+        <p>高级军事官员表示：当胜利的缓刑期结束后，我们将会通知他服现役</p>
+        <p>胜利入伍后将接受为期五周的现役训练，然后移交给军事检察官进行调查和法庭审判</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-enlisting-military-duties-mid-february/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年2月4日</strong></p>
+        <p>胜利已正式被勒令入伍，兵务厅已向他发出了正式入伍通知书</p>
+        <p>兵务管理局表示：调查结束后我们已向胜利发出入伍通知，以使其承担公平的军事义务。我们将继续表明立场，将在调查结束后按照与公众相同的程序通知他入伍</p>
+        <p>胜利入伍后，将根据相关法律移交军事法庭管辖。我们将积极配合检察机关，确保判决的公正性和一致性</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-officially-ordered-enlist-in-military/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;" id="200309-jump">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/tScAeZhUaS4?si=z1oP421S4cBJ6RQJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2020年3月9日</strong></p>
+        <p>胜利在京畿道龙仁市的陆军第6补充队报到入伍</p>
+        <p>原定于2021年9月16日退伍</p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="200309.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2003091.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2003092.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <p>有趣的来了..！</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>斑点狗是柳惠媛养的狗，记者刚好在侧面拍到柳惠媛坐在车上</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/yoo-hye-won-dating-rumor-seungri/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="2003093.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2003094.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2003095.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年3月16日</strong></p>
+        <p>胜利在军队的合照</p>
+        <p>详细资讯：<a href="https://netizenbuzz.blogspot.com/2020/03/new-photo-of-seungri-in-army-after-his.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Netizen Buzz</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="200316.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2003161.png" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年3月20日</strong></p>
+        <p>胜利当队长</p>
+        <p>队长的选票是由其他士兵投票决定的，所以胜利是凭借士兵们的投票当选队长的</p>
+        <p>详细资讯：<a href="https://x.com/our_bigbang/status/1240973540280631296" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            X</a></p>
+      </div>
+    </div>
+    <p>胜利比别人壮n倍</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="200320.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2003201.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年3月23日</strong></p>
+        <p>胜利军队合照</p>
+        <p>详细资讯：<a href="https://x.com/our_bigbang/status/1242343572126433281" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            X</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="200323.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2003231.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年3月24日</strong></p>
+        <p>柳惠媛回应与胜利恋爱传闻：我已经收集了所有关于毫无根据的恶意评论的信息，并计划毫不留情地提起诉讼。我感谢许多人的关心和担忧，并恳请大家停止恶意评论</p>
+        <p>详细资讯：<a href="https://www.onepicknews.co.kr/news/articleView.html?idxno=3407" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            One Pick News</a></p>
+      </div>
+    </div>
+    <img src="200324.jpg" style="height: 300px; width: 400px;">
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年4月1日</strong></p>
+        <p>胜利在军队的合照</p>
+        <p><br/>图源来自：Pinterest</p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="200401.avif" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2004011.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <p>其他组合的合照里出现了胜酱的身影！Kawai~~</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="2004012.png" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2004013.png" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年4月4日</strong></p>
+        <p>胜利军队合照</p>
+        <p>据说是生化房训练</p>
+        <p>详细资讯：<a href="https://ameblo.jp/rrkt126/entry-12587229533.html" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Ameblo</a></p>
+      </div>
+    </div>
+    <p>煤气罐（bushi）</p>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="200404.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2004041.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2004042.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年4月14日</strong></p>
+        <p>新兵结业啦</p>
+        <p>详细资讯：<a href="https://www.facebook.com/bigbanguntilwhenevermy/posts/our-seungri-%EF%B8%8F/3328932273801491/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Facebook</a></p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="nav-button left" onclick="slide(this)">&#8592;</button>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slide-item">
+            <img src="200414.jpg" class="slide-img" />
+          </div>
+          <div class="slide-item">
+            <img src="2004141.jpg" class="slide-img" />
+          </div>
+        </div>
+      </div>
+      <div class="right-side"><p class="slide-counter"></p><button class="nav-button right" onclick="slide(this)">&#8594;</button></div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2020年12月1日</strong></p>
+        <p>胜利晋升，从一等兵升到了下士</p>
+        <p>详细资讯：<a href="https://www.starnewskorea.com/music/2020/12/09/2020120918341930624" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            StarNews Korea</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line">  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年8月19日</strong></p>
+        <p>胜利被转移到军事惩教所，等待二审</p>
+        <p>军方官员表示：我无法透露具体细节，但胜利的退伍目前被搁置。如果他在一审中以军人身份受审，并被判处拘禁，那么他的退伍将被搁置</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungris-military-discharge-currently-delayed-due-burning-sun-trials/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2021年9月30日</strong></p>
+        <p>等待二审期间，他的退伍手续被推迟</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungris-military-discharge-currently-delayed-due-burning-sun-trials/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2022年12月13日</strong></p>
+        <p>在临时服兵役之前，胜利已经服完了1.5年的部分刑期（2022年6月临时服兵役被暂停，以便他能够完成服刑期）</p>
+        <p>因此他只剩下8个月的刑期要服完，因此他将于2023年2月11日获释</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-netizens-stunned-realize-released-prison-months-now/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2023年2月9日</strong></p>
+        <p>胜利提前两天从骊州惩教所获释（原定2023年2月11日）</p>
+        <p>媒体似乎对发布日期进行了误导性报道，这可能是为了避免人群聚集和关注而故意为之</p>
+        <p>详细资讯：<a href="https://www.koreaboo.com/news/seungri-upcoming-release-prison-sparks-negative-reaction-netizens/" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Koreaboo</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="seungri.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+ 
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+
+  const counter = container.querySelector('.slide-counter');
+  counter.textContent = `${state + 1}/${slides.length}`;
+}
+
+document.querySelectorAll('.slider-container').forEach(container => {
+  const slides = container.querySelectorAll('.slide-item');
+  const counter = container.querySelector('.slide-counter');
+
+  counter.textContent = `1/${slides.length}`;
+});
+
+  </script>
+</body>
+</html>

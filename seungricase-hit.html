@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+@media only screen and (max-width: 768px) {
+    .header-container {
+      height: auto;
+      min-height: 100px;
+      padding: 20px 0;
+      align-items: flex-start;
+    }
+
+    .title-group {
+      width: 100%;
+      padding: 0 120px;
+      text-align: center;
+    }
+
+    .title-group h1 {
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.3;
+      font-size: 42px;
+    }
+
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .two-column-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 100px;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    .column {
+      width: 45%;
+      text-align: left;
+      color: white;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: white;
+      height: auto;
+    }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .right-side{
+    position: relative;
+    align-items:center;
+  }
+
+  .slide-counter{
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .nav-button{
+    background-color: rgba(255,255,255,0.7);
+    border:none;
+    padding:10px 15px;
+    font-size:24px;
+    cursor:pointer;
+    border-radius:10px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: calc(100% + 10px);
+  }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="seungricase.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>殴打事件</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+
+<div style="text-align: center;" id="260826">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年8月8日</strong> 早上6:00-6:40</p>
+        <p>胜利和两名朋友在首尔江南的一家血肠汤餐厅吃饭。另一桌有一个喝醉的30多岁男性 A</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年8月8日</strong> 15:37</p>
+        <p>双方在事发后仍有短信往来。</p>
+        <p>聊天记录中出现的消息包括：“胜利啊，下周见” “你今天可是拿起烧酒瓶了（笑）” 以及 “唉……真心希望这是一段缘分”</p>
+        <p>“胃肯定难受吧，好好解解酒。老弟，下周我带着商业计划书过去，周末愉快。”</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年8月9日</strong> 19:39</p>
+        <p>聊天记录中出现一条消息：“明天见吧，请定一下地点和时间。”</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年8月10日</strong> 10:28</p>
+        <p>A询问：“您上次说有明确的商业点子，能把提案书发给我看看吗？”</p>
+        <p>双方在事发后仍曾围绕商业计划书进行联系</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年8月18日</strong> 16:12</p>
+        <p>A再次向胜利发消息：“胜利啊，基本上，难道不是应该先真诚地道歉吗？二话不说就问能不能看商业提案书，这顺序对吗？”</p>
+        <p>截图显示，该联系人随后已被屏蔽</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年8月26日</strong></p>
+        <p>A向警方提出控告，控诉胜利在争执过程中实施了暴行，而且涉及危险物品，因此要求以“特殊暴行”处理</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年9月10日</strong></p>
+        <p>胜利接受《日刊体育》采访否认了这些指控</p><br/>
+        <p>当时我和两个熟人一起吃饭，隔壁桌一个喝醉的顾客（A先生）突然要求加入我们。我们之间确实发生了争执，我多次拒绝，并坚持要我听他讲讲他的商业想法，说他有想法。我的确在拒绝和他一起喝酒时拿着一瓶酒，我只是拿着而已；我没有挥舞酒瓶，也没有威胁任何人。之后，我们最终还是坐在一起聊天，气氛很活跃，大家互相搂着肩膀，喊着‘加油！’。我们交换了电话号码，并约定像兄弟一样相处，A先生甚至还想要送我回家（并没有）。当时我先离开，A送我，我们分开后，A立刻联系我说‘你一定是醉了’，让我吃点东西醒醒酒。A还祝我周末愉快，并建议下周见面。后来，A联系我约见面，我让他发一份商业计划书，他没有回复，第二天我就收到回复说他们要起诉我</p>
+        <p>我已保存了与A饮酒后互发的短信、餐厅内部的监控录像、目睹我们当时在餐厅氛围的员工证词，以及看到A送我离开的代客泊车员的证词。我将全力配合调查机关查明真相。当时与我在一起的熟人也被起诉了，我正在考虑提起反诉，控告他们诬告。我很抱歉再次因个人事务给大家带来不便，但我怀疑这场诉讼另有隐情。我会配合调查，以事实为依据，查明真相</p>
+        <p>详情资讯：<a href="https://v.isplus.com/article/view/isp202609100232" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            isplus</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年9月13日</strong></p>
+        <p>网上乱传这张图片是案发当天的照片</p>
+        <p>胜利否认：这是在别处和熟人一起拍的照片</p>
+        <p>详细资讯：<a href="https://v.daum.net/v/ZpOaDLx2GC" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Daum</a></p>
+      </div> 
+    </div>
+  </div>
+  <img src="260913.jpg" style="width: 400px;">
+  <hr class="full-width-line" />  
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/XWy8g0yIk4E?si=OW-fDJ6-2wRpG75f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2026年9月23日</strong></p>
+        <p>JTBC 公开8月8日事发当天的监控视频</p>
+        <ul>
+          <li>胜利手持烧酒瓶，在A面前举起手臂，附近有人试图制止他。虽然录像还拍到胜利似乎踢了什么东西，但仅凭这一画面无法确定是否发生了直接的肢体接触</li>
+        </ul>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+<p>A（控告男子）表示：胜利和三名同伴堵住通道阻止他离开，并对他进行威胁。胜利发表了与有组织犯罪有关的言论，并问道：“你也认为我是个失败者吗？”</p>
+<p>胜利方面表示：<span style="color: #33FFFF;">承认胜利当时确实拿起过烧酒瓶，但否认挥舞酒瓶攻击或威胁对方</span>。事件起因是A要求与他们同桌就餐，而胜利拒绝了这一要求。对于涉及黑社会的指控，胜利方面同样予以否认，并表示将配合警方调查</p>
+<p>胜利的同行友人接受《日刊体育》电话采访时表示：是A主动走到他们的桌旁，而他们当时是在让对方离开。胜利拿起烧酒瓶后，他和另一名同行者立即上前阻止。A反过来指控他们限制其人身自由，令他们感到难以理解。餐厅员工和代客泊车人员也了解当时的情况及事后经过</p>
+
+<br/><p>关于胜利一方是否主动挑衅，友人予以否认，他表示：看到隔壁桌的人一直看着他们并窃窃私语，于是在出去抽烟时询问对方是否拍了照片。对方回答没有后，他表示：“请多多关照胜利哥。”友人强调，<span style="color: #33FFFF;">自己没有突然质问对方为什么拍照，也没有主动挑衅</span></p>
+<p>对于A声称自己准备离开时遭到威胁一事，<span style="color: #33FFFF;">友人表示否认</span></p><br/>
+<p>A表示：对方曾说类似“涉及黑社会和中国朝鲜族，如果就这样离开会出大事”的话</p>
+<p>友人则认为这一说法令人难以接受，并表示这件事让他对人感到失望，认为此次事件存在不公平之处，并对媒体报道过于夸大感到遗憾</p>
+
+<br/><br/><p>上述所有内容均为当事人及其同行友人的陈述，警方尚需结合监控录像、目击者证词等资料核实，<span style="color: #33FFFF;">不能直接视为已经确认的事实</span></p>
+        <p>详细资讯：<a href="https://www.xportsnews.com/article/2199754" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            日刊体育</a></p>
+      </div> 
+    </div>
+    <hr class="full-width-line">
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年9月27日</strong></p>
+        <p>根据媒体公开的聊天记录，双方再次就事件后续处理进行沟通，谈及通话、律师介入、和解及赔偿等问题。</p><br/>
+        <p><strong>关于联系律师</strong></p>
+        <p>聊天记录显示，一方询问：“方便通电话吗？”对方则表示，原则上控告人与被控告人之间不应直接通话，并询问是否有紧急事项。</p>
+        <p>随后，对方询问是否需要与其律师通话。另一方回复称，自己不喜欢与律师交谈，有话可以直接说，并表示自己并没有什么恶意。该段消息后续内容在截图中被遮挡。</p><br/>
+
+        <p><strong>关于和解与赔偿</strong></p>
+        <p>下午4:19，一方表示：“我也不想再把事情闹得更大了，我也觉得双方一直这样吵下去不是办法。通过和解来解决这件事，您怎么看？”</p>
+        <p>另一方则回应：“现在受害者说想好好结束，加害者却只顾着提自己的要求。既然确实造成了损害，难道没有赔偿的打算吗？”</p>
+
+        <p>聊天记录还显示，下午5:02，对方再次询问是否有赔偿损失的意愿。</p><br/>
+
+        <p><strong>关于警方调查</strong></p>
+        <p>下午5:06，一方表示：“真是说不通啊。本来是想好好结束的，那就好好配合警方调查吧，那就干脆走到底吧。”</p>
+        <p>同一组截图还显示，部分消息已被删除，共6条。</p>
+      </div>
+    </div>
+
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年9月28日</strong> 10:03</p>
+        <p>A再次询问：“方便通电话吗？”</p>
+        <p>这表明双方在前一天讨论和解、赔偿及警方调查后，仍有继续联系的记录。</p>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><span style="color: #33FFFF;">说明：以上内容根据媒体公开的聊天记录截图整理。聊天记录中的说法属于相关人员的陈述，并不代表警方已经确认相关指控，也不能单凭这些截图认定任何一方的法律责任。</span></p>
+      </div>
+    </div>
+  </div>
+  <p><br/>聊天记录翻译来自 炫光_StrawberRI</p><br/>
+  <img src="261023.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/C_MaAJVX0Os?si=-AlIlFC7uGHYp4y2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2026年10月23日</strong></p>
+        <p>Graynews 胜利电话采访</p>
+        <p>胜利殴打事件</p>
+      </div>
+    </div>
+    <p><br/>以下图片为全程采访中文翻译</p><br/>
+  </div>
+  <img src="bigbang_1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年10月23日</strong></p>
+        <p>胜利的法律代理人尹在彬律师发表正式声明，针对8月8日发生的烧酒瓶事件作出回应</p><br/>
+
+        <p><strong>关于事发经过</strong></p>
+        <p>胜利方面表示，8月8日早上6点左右，胜利与两名熟人在首尔江南的一家餐厅吃饭。一名此前素不相识的30多岁男性A突然认出了胜利，并要求加入他们的饭局</p>
+        <p>胜利方面称，他们当时多次拒绝A加入，但A以有商业提案为由，继续留在现场，甚至未经允许便坐到了空位上。胜利一方多次要求A让出座位，后来为了结束双方的纠缠，胜利给A倒了一杯酒，并将自己的联系方式告诉了对方</p>
+        <p>然而，A仍然没有离开，双方的争执逐渐升级，谈话音量也越来越大</p><br/>
+
+        <p><strong>关于拿起烧酒瓶一事</strong></p>
+        <p>胜利方面承认，胜利当时确实拿起了桌上的烧酒瓶，但表示他并没有用烧酒瓶攻击A，也没有挥舞烧酒瓶威胁对方</p>
+        <p><span style="color: #33FFFF;">胜利方面承认拿起烧酒瓶的行为不恰当，并表示胜利对此深感反省，但否认用烧酒瓶殴打A，以及动用黑社会组织成员威胁A等指控</span></p><br/>
+
+        <p><strong>关于事发后的短信联系</strong></p>
+        <p>胜利方面表示，争执结束后，双方一起离开餐厅，彼此打了招呼，并在气氛融洽的情况下分别</p>
+        <p>胜利方面还提到，A在事发当天仍然通过短信联系胜利，表示下周再见，并提到会带着商业计划书前来</p>
+        <p>胜利方面称，A在事发后仍持续联系胜利，希望再次见面，但几天后，A的态度发生变化，开始提出特殊胁迫、非法拘禁等指控，并表示自己已经收集证据及诊断证明，之后正式提出刑事控告</p><br/>
+
+        <p><strong>关于和解一事</strong></p>
+        <p>胜利方面表示，在A提出刑事控告后，A一方曾主动联系他们，希望通过和解解决事件</p>
+        <p>然而，胜利方面认为，不能通过承认自己没有实施过的行为来结束事件，因此决定向调查机关提交相关资料，通过正式调查厘清事实</p><br/>
+
+        <p>胜利方面表示，胜利将继续配合调查，认真接受调查机关的询问，并希望通过正式调查查明事件真相</p>
+        <p>声明同时呼吁公众不要对胜利、同行人员或投诉者进行无根据的猜测和指责，也不要公开相关人员的个人身份信息</p>
+        <p>胜利方面再次对事件引起的担忧与影响表示歉意</p>
+
+        <p>详细资讯：<a href="https://sports.khan.co.kr/article/202610232030003"
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            Sports Kyunghyang</a></p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2026年10月26日</strong></p>
+        <p>胜利朋友发ig story疑似替胜利说话</p><br/>
+        <p>我说这些话，并不是因为他是我朋友，就要无条件地袒护他。但关于这次的事情，我确实有些话想说。<br/>
+说真的，一个素不相识的人喝醉酒后找上门来，说要提议投资，还不停地要求加入我们那桌，怎么想都让人无法理解。<br/>
+因为以前发生过的那些事，我们比谁都更不想惹上是非。听说那天也是为了把事情好好解决，最后大家还一起喝了酒，称兄道弟地结束了这件事。没想到几天后却看到了相关新闻，心里真的挺不是滋味的。<br/>
+说自己跟胜利关系好的人有很多，但真正认识他很多年的人应该都清楚。<br/>
+我们对别人的事根本没什么兴趣，就只是喜欢自己一群人聚在一起玩而已。错了就是错了，这点没什么好说的。但至少这次的事情，希望大家不要只听一面之词就下定论。
+</p>
+      </div>
+    </div>
+  </div>
+  <img src="261026seungri.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/m9pEQEp70-A?si=y3rSFYbGrcuztWu9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2026年10月27日</strong></p>
+        <p>Graynews 胜利电话采访</p>
+        <p>胜利殴打事件</p>
+      </div>
+    </div>
+    <p><br/>以下图片为全程采访中文翻译</p><br/>
+  </div>
+  <img src="bigbang_1(1).jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="seungricase.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+
+  const counter = container.querySelector('.slide-counter');
+  counter.textContent = `${state + 1}/${slides.length}`;
+}
+
+document.querySelectorAll('.slider-container').forEach(container => {
+  const slides = container.querySelectorAll('.slide-item');
+  const counter = container.querySelector('.slide-counter');
+
+  counter.textContent = `1/${slides.length}`;
+});
+
+  </script>
+</body>
+</html>
