@@ -1,0 +1,116 @@
+{
+    "users": [
+        {
+            "username": "Kai",
+            "password": "123"
+        }
+    ],
+    "profiles": {
+        "Kai": {
+            "career_goals": [
+                {
+                    "id": 1,
+                    "title": "H",
+                    "type": "Short-term",
+                    "target_date": "2025-12-01",
+                    "description": "",
+                    "priority": "High",
+                    "status": "Completed",
+                    "created_date": "2025-12-04"
+                },
+                {
+                    "id": 3,
+                    "title": "L",
+                    "type": "Short-term",
+                    "target_date": "2025-12-01",
+                    "description": "",
+                    "priority": "Low",
+                    "status": "Active",
+                    "created_date": "2025-12-04"
+                },
+                {
+                    "id": 4,
+                    "title": "High",
+                    "type": "Short-term",
+                    "target_date": "2025-12-01",
+                    "description": "",
+                    "priority": "High",
+                    "status": "Active",
+                    "created_date": "2025-12-04"
+                }
+            ],
+            "skills_log": [
+                {
+                    "id": 2,
+                    "name": "12344556",
+                    "type": "Certification",
+                    "completion_date": "2025-12-04",
+                    "provider": "121324214",
+                    "description": "",
+                    "added_date": "2025-12-04"
+                },
+                {
+                    "id": 3,
+                    "name": "111111",
+                    "type": "Course",
+                    "completion_date": "2025-12-04",
+                    "provider": "111",
+                    "description": "111111",
+                    "added_date": "2025-12-04"
+                }
+            ],
+            "daily_tasks": [
+                {
+                    "id": 1,
+                    "description": "Kai",
+                    "date": "2025-12-04",
+                    "category": "Learning",
+                    "time_estimate": "10000000",
+                    "completed": true,
+                    "created_date": "2025-12-04"
+                },
+                {
+                    "id": 3,
+                    "description": "12345",
+                    "date": "2025-12-05",
+                    "category": "Learning",
+                    "time_estimate": "5",
+                    "completed": false,
+                    "created_date": "2025-12-05"
+                }
+            ],
+            "achievements": [
+                {
+                    "id": 1,
+                    "title": "13545t67y45",
+                    "date": "2025-12-04",
+                    "category": "1324",
+                    "description": "`1",
+                    "added_date": "2025-12-04"
+                },
+                {
+                    "id": 2,
+                    "title": "123",
+                    "date": "2025-12-05",
+                    "category": "11",
+                    "description": "wwarzstedrhtjghkbjnk",
+                    "added_date": "2025-12-05"
+                }
+            ],
+            "interview_qas": [
+                {
+                    "id": 1,
+                    "question": "Why",
+                    "answer": "1",
+                    "added_date": "2025-12-04"
+                },
+                {
+                    "id": 2,
+                    "question": "Why people",
+                    "answer": "NBecpasjwq",
+                    "added_date": "2025-12-04"
+                }
+            ]
+        }
+    }
+}
