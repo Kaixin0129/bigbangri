@@ -1,0 +1,42 @@
+{
+  "dependencies": {
+    "axios": "^1.12.2",
+    "cheerio": "^1.1.2",
+    "cors": "^2.8.5",
+    "debug": "^4.3.4",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsdom": "^27.0.0",
+    "mysql2": "^3.15.2"
+  },
+  "name": "html",
+  "version": "1.0.0",
+  "description": "音乐应用",
+  "main": "build-search-index.js",
+  "scripts": {
+    "dev": "live-server --port=5500",
+    "start": "live-server --port=5500",
+    "server": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kaixin0129/bigbangri.git"
+  },
+  "keywords": [
+    "music",
+    "react",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kaixin0129/bigbangri/issues"
+  },
+  "homepage": "https://github.com/Kaixin0129/bigbangri#readme",
+  "devDependencies": {
+    "@ljharb/tsconfig": "^0.3.2",
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  }
+}

@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../PRACTICAL"
+		},
+		{
+			"path": "A:/bigbangvi"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "html"
+	}
+}
