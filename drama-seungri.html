@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BIGBANG OT5</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="bigbangri" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .content-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 10px;
+    }
+
+    .text-container {
+        max-width: 400px;
+        line-height: 1.6;
+        text-align: left;
+    }
+
+    .text-container li {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .text-container ul {
+        padding-left: 0;
+        margin-left: 0;
+        list-style-position: inside;
+    }  
+
+    .image-row {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin: 20px auto;
+        max-width: 1000px;
+    }
+
+    .image-row img {
+        width: 220px;
+        height: auto;
+        border-radius: 8px;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+@media only screen and (max-width: 768px) {
+    .header-container {
+      height: auto;
+      min-height: 100px;
+      padding: 20px 0;
+      align-items: flex-start;
+    }
+
+    .title-group {
+      width: 100%;
+      padding: 0 120px;
+      text-align: center;
+    }
+
+    .title-group h1 {
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.3;
+      font-size: 42px;
+    }
+
+    html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    body {
+        transform: scale(0.59);
+        transform-origin: top left;
+        width: 169.5%;
+        height: calc(100vh / 0.59);
+    }
+
+    .full-width-line {
+        transform: scaleX(1.6949);
+        transform-origin: left;
+    }
+
+    #global-player {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        z-index: 10000 !important;
+        background: #111 !important;
+        border-top: 1px solid #333 !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        box-sizing: border-box !important;
+        min-height: 35px !important;
+        transform: none !important;
+    }
+
+    #global-player * {
+        transform: none !important;
+    }
+
+    .container {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-detail {
+        padding-bottom: 45px !important;
+    }
+    
+    .album-grid {
+        padding-bottom: 45px !important;
+    }
+}
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="drama.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <h1>胜利电视剧</h1>
+    </div>
+    <nav class="right-nav">
+      <a href="movie.html">Home</a>
+    </nav>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div id="gyy-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="drama-seungri.html#gyy" class="jump-button">光与影</a>
+    </div>
+    <div id="jty-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="drama-seungri.html#jty" class="jump-button">金田一少年的事件簿</a>
+    </div>
+    <div id="zl-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="drama-seungri.html#zl" class="jump-button">指恋</a>
+    </div>
+    <div id="ts-jump" style="display: flex; align-items: center; gap: 10px;">
+      <a href="drama-seungri.html#ts" class="jump-button">天使之眼</a>
+    </div>
+  </div>
+  <br/>
+  <hr class="full-width-line" />
+  <br/>
+
+  <div id="gyy" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="drama-seungri.html#gyy-jump" class="jump-button">光与影</a>
+  </div><br/>
+
+  <div id="111227drama" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <p style="margin: 0;">	•	播出时间：2011年12月27日<br/>
+	•	胜利客串饰演角色：安在秀Cameo</p>
+    <a href="2011dec.html#111227drama-jump" class="jump-button">跳转到 2011 时间线</a>
+  </div>
+  <p style="margin: 0; font-size: 22px;"><br/>光与影</p><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@胜利广播站FM1212 点击进入观看完整视频</p><br/>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=19796044&bvid=BV1HW41177bX&cid=32281073&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p>客串9-10集</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div id="jty" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="drama-seungri.html#jty-jump" class="jump-button">金田一少年的事件簿</a>
+  </div><br/>
+
+  <div id="130112drama" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <p style="margin: 0;">	•	播出时间：2013年1月12日<br/>
+	•	胜利客串饰演角色：金龙东</p>
+    <a href="2013jan.html#130112drama-jump" class="jump-button">跳转到 2013 时间线</a>
+  </div>
+  <p style="margin: 0; font-size: 22px;"><br/>金田一少年的事件簿 NEO SP 1：香港九龙宝藏杀人事件</p><br/>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@凖劫芲 点击进入观看完整视频</p><br/>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114925892733603&bvid=BV1168GzzED5&cid=31308582624&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      </div>
+      <div class="text-container">
+        <p>有中字</p>
+        <p>注意分辨弹幕属性</p>
+        <ul>
+          <li>16:47 胜利说中文</li>
+          <li>25:50 萌我一大跳</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="full-width-line" />  
+  </div>
+
+  <div id="zl" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="drama-seungri.html#zl-jump" class="jump-button">指恋</a>
+  </div><br/>
+
+  <div id="131204drama" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <p style="margin: 0;">	•	播出时间：2013年12月4日-2014年1月11日<br/>
+	•	胜利饰演：韩升浩</p>
+    <a href="2013dec.html#131204drama-jump" class="jump-button">跳转到 2013 时间线</a>
+  </div>
+  <p style="margin: 0; font-size: 22px;"><br/>指恋〜君に贈るメッセージ〜</p><br/>
+
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/kcdbJBRzgvo?si=5ojQDOvdDSLHOFod" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p>空に描く思い Mv</p>
+        <p>Sorani Egaku Omoi HD</p>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <div style="text-align: center;">
+    <p style="margin: 0;">下面的视频来自@V-z-I 点击进入观看完整视频</p>
+  </div><br/>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=983590258&bvid=BV1Kt4y157BU&cid=777623278&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>2013年12月4日</p>
+        <p>EP01</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=983590258&bvid=BV1Kt4y157BU&cid=777629245&p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>2013年12月7日</p>
+        <p>EP02</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=983590258&bvid=BV1Kt4y157BU&cid=777630371&p=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>2013年12月11日</p>
+        <p>EP03</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=983590258&bvid=BV1Kt4y157BU&cid=777630892&p=4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>2013年12月14日</p>
+        <p>EP04</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=983590258&bvid=BV1Kt4y157BU&cid=777631493&p=5" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>2013年12月18日</p>
+        <p>EP05</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=983590258&bvid=BV1Kt4y157BU&cid=777632279&p=6" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>2013年12月21日</p>
+        <p>EP06</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=983590258&bvid=BV1Kt4y157BU&cid=777633216&p=7" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>2013年12月25日</p>
+        <p>EP07</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=983590258&bvid=BV1Kt4y157BU&cid=777634939&p=8" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>2013年12月28日</p>
+        <p>EP08</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=983590258&bvid=BV1Kt4y157BU&cid=777638002&p=9" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>2014年1月1日</p>
+        <p>EP09</p>
+      </div>
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=983590258&bvid=BV1Kt4y157BU&cid=777740547&p=10" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>2014年1月4日</p>
+        <p>EP10</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=983590258&bvid=BV1Kt4y157BU&cid=777684507&p=11" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>2014年1月8日</p>
+        <p>EP11</p>
+      </div>
+    </div>
+    <div class="video-box">
+      <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=983590258&bvid=BV1Kt4y157BU&cid=777685373&p=12" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+      <div class="video-description">
+        <p>2014年1月11日</p>
+        <p>EP12</p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />  
+
+  <div id="ts" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <a href="drama-seungri.html#ts-jump" class="jump-button">天使之眼</a>
+  </div><br/>
+
+  <div id="140412drama" style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <p style="margin: 0;">	•	播出时间：2014年4月5日<br/>
+	•	胜利饰演：Teddy徐</p>
+    <a href="2014apr.html#140412drama-jump" class="jump-button">跳转到 2014 时间线</a>
+  </div>
+  <p style="margin: 0; font-size: 22px;"><br/>天使之眼</p><br/>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px auto; flex-wrap: wrap;">
+    <div class="text-container" style="max-width: 400px; text-align: left;">
+      <p>播出时间汇总：</p>
+      <table style="text-align: left; border-collapse: collapse; table-layout: fixed;">
+        <colgroup>
+          <col style="width: 200px;" />
+          <col />
+        </colgroup>
+				<tr><td>2014年4月12日</td><td>EP03</td></tr>
+				<tr><td>2014年4月13日</td><td>EP04</td></tr>
+				<tr><td>2014年4月26日</td><td>EP05</td></tr>
+				<tr><td>2014年4月27日</td><td>EP06</td></tr>
+				<tr><td>2014年5月3日</td><td>EP07</td></tr>
+				<tr><td>2014年5月4日</td><td>EP08</td></tr>
+				<tr><td>2014年5月10日</td><td>EP09</td></tr>
+				<tr><td>2014年5月11日</td><td>EP10</td></tr>
+				<tr><td>2014年5月17日</td><td>EP11</td></tr>
+				<tr><td>2014年5月18日</td><td>EP12</td></tr>
+				<tr><td>2014年5月24日</td><td>EP13</td></tr>
+				<tr><td>2014年5月25日</td><td>EP14</td></tr>
+				<tr><td>2014年5月31日</td><td>EP15</td></tr>
+				<tr><td>2014年6月1日</td><td>EP16</td></tr>
+				<tr><td>2014年6月7日</td><td>EP17</td></tr>
+				<tr><td>2014年6月8日</td><td>EP18</td></tr>
+				<tr><td>2014年6月14日</td><td>EP19</td></tr>
+				<tr><td>2014年6月15日</td><td>EP20</td></tr>
+      </table><br/>
+      <p>第一二集没有胜利的part</p>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p>由于UP主太心细，有太多胜利的视频cut了</p>
+        <p>60多个分p：<a href="https://www.bilibili.com/video/BV1uT4y1H7Tt/?spm_id_from=333.337.search-card.all.click" 
+          target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            V-z-I</a></p>
+        </ol>
+      </div>
+    </div>
+    <hr class="full-width-line" />
+  </div>
+
+  <br/><br/><br/>
+  <div class="header-container">
+    <nav class="left-nav">
+      <a href="drama.html">Back</a>
+    </nav>
+    <div class="title-group">
+      <div id="footer"></div>
+    </div>    
+    <nav class="right-nav">
+      <a href="movie.html">Home</a>
+    </nav>
+  </div>
+
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+
+  const counter = container.querySelector('.slide-counter');
+  counter.textContent = `${state + 1}/${slides.length}`;
+}
+
+document.querySelectorAll('.slider-container').forEach(container => {
+  const slides = container.querySelectorAll('.slide-item');
+  const counter = container.querySelector('.slide-counter');
+
+  counter.textContent = `1/${slides.length}`;
+});
+
+  </script>
+</body>
+</html>
