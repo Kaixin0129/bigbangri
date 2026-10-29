@@ -1,0 +1,2480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BIGBANG OT5</title>
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="bigbangri" />
+<link rel="manifest" href="/site.webmanifest" />
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      background-color: none;
+      border-radius: 5px 18px;
+      border: 2px solid white;
+      transition: background 0.3s ease;
+    }
+
+    .jump-button {
+      padding: 15px 25px;
+      background-color: #111;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      min-width: 120px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .video-item video {
+      width: 480px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .video-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .video-box.horizontal {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .video-box iframe {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      border-radius: 8px;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      height: 100px;
+    }
+
+    .title-group {
+      display: inline-block;
+    } 
+
+    .left-nav,
+    .right-nav {
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+
+    .left-nav {
+      left: 0;
+    }
+
+    .right-nav {
+      right: 0;
+    }
+
+    .left-nav a,
+    .right-nav a {
+      padding: 18px 30px;
+      font-size: 18px;
+      border-radius: 5px 18px;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .left-nav a:hover,
+    .right-nav a:hover {
+      background-color: white;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .full-width-line {
+      width: 90vw;
+      border: none;
+      border-top: 1px solid white;
+      margin: 20px 0;
+    }
+
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        transform: scale(0.5);
+        transform-origin: top left;
+        width: 200%;
+        height: calc(100vh / 0.5);
+      }
+
+      .full-width-line {
+        transform: scaleX(2);
+        transform-origin: left;
+      }
+    }
+
+    .content-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin: 40px auto 0;
+      max-width: 1000px;
+    }
+
+    .video-container {
+      flex: 1 1 800px;
+      max-width: 500px;
+    }
+
+    .video-container iframe {
+        width: 450px;
+        height: 350px;
+        border-radius: 10px;
+    }
+
+    .video-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .video-box iframe {
+      width: 450px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+    }
+
+    .photo-container img {
+      height: 350px;
+      width: auto;
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .text-container {
+      flex: 1 1 400px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .button-container {
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+    .text-button-container {
+      flex-direction: column;
+      align-items: flex-start;
+      }
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+  .filter-dropdown-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+    margin-top: -50px;
+  }
+
+  .filter-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .filter-button {
+    padding: 15px 25px;
+    background-color: #111;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px 18px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .member-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    margin-top: 5px;
+  }
+
+  .member-list button {
+    margin: 6px 0;
+  }
+
+  #noContentMessage {
+    padding: 15px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 30px auto 0;
+  }
+
+  .slider {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .slide-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  .slide-item img {
+    max-width: calc(100% - 40px);
+    max-height: 100%;
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    max-width: fit-content;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+  }
+
+  .right-side{
+    position: relative;
+    align-items:center;
+  }
+
+  .slide-counter{
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .nav-button{
+    background-color: rgba(255,255,255,0.7);
+    border:none;
+    padding:10px 15px;
+    font-size:24px;
+    cursor:pointer;
+    border-radius:10px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-button.left {
+    right: calc(100% + 10px);
+  }
+
+</style>
+</head>
+<body>
+<main>
+<div class="header-container">
+  <nav class="left-nav">
+    <a href="sns2012.html">Back</a>
+  </nav>
+  <div class="title-group">
+    <h1>SNS 2012年12月</h1>
+  </div>
+  <nav class="right-nav">
+    <a href="sns2013.html">2013</a>
+  </nav>
+</div>
+
+<div class="filter-dropdown-wrapper">
+  <div class="filter-dropdown" id="filterDropdown" onclick="toggleFilterLock()" onmouseenter="showMemberList()" onmouseleave="hideMemberList()">
+    <div class="filter-button">筛选</div>
+    <div class="member-list" id="memberList">
+      <button class="jump-button" onclick="filterSNS('all')">全部</button>
+      <button class="jump-button" onclick="filterSNS('bigbang')">Bigbang官号</button>
+      <button class="jump-button" onclick="filterSNS('gd')">G-Dragon</button>
+      <button class="jump-button" onclick="filterSNS('ty')">太阳</button>
+      <button class="jump-button" onclick="filterSNS('top')">TOP</button>
+      <button class="jump-button" onclick="filterSNS('ds')">大声</button>
+      <button class="jump-button" onclick="filterSNS('sr')">胜利</button>
+    </div>
+  </div>
+</div>
+
+<h1 id="currentFilter" style="text-align:center; margin-top: 30px; margin-bottom: 10px; color: #33FFFF; display: none;"></h1>
+<p id="currentFilter1" style="text-align:center; margin-bottom: 30px; color: white; display: none;"></p>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@陈柏霖</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月1日</strong> Instagram</p>
+        <p>最佳男歌手！干嘛这么严肃，G-Dragon 48 恭喜！！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z7IFTrofj" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121201s.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd sr">
+  <div style="text-align: center;">
+    <p>@amber man</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月1日</strong> Twitter</p>
+        <p>后台</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z7JIzhGRQ" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121201s1.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月1日</strong> Twitter</p>
+        <p>到达韩国！成功结束MAMA回来了。谢谢颁给我们的所有奖项，明年也会继续努力的，我爱你们~~所有人都要幸福到最后哦~~~</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z7KMhwZlY" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121201s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty top sr ds">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月1日</strong> Twitter</p>
+        <p>安全回来了。今年非常感谢这么多人对我们的爱戴，明年不管有没有奖，都会一如既往开心地做音乐。爱你们！！<br/>@psy_oppa：MAMA之后的#SixBang 哈哈 “胜利者胜利者炸鸡晚餐！”<br/>太阳：和ROCK STAR一起</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z7Mclk4Cm" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121201s3.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty">
+  <div style="text-align: center;">
+    <p>@PSY</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月2日</strong> Twitter</p>
+        <p>安全回去了吗？？永裴昨天总共跳了两小时像村歌一样的舞 哈哈哈哈<br/>太阳回复：哥 要去吃参鸡汤~~<br/>GD回复：果然是Rock Star的命...哈哈 无论如何都辛苦了 哥 再次恭喜恭喜~~~！马上再见^^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z7Ueyzf6v" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121202s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月3日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z7WZijspA" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121203s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月3日</strong> Twitter</p>
+        <p>发懵 @Realtaeyang xxxinxx</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z85i7E42R" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121203s1.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty sr">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月3日</strong> Twitter</p>
+        <p>孤独的自我管理341篇！@ YG娱乐<br/>孤独的自我管理340篇！@ YG娱乐</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z85mDsk58" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121203s2.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="top">
+  <div style="text-align: center;">
+    <p>@李载汉</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月3日</strong> Instagram</p>
+        <p>惊喜探班电影《同窗》外景，和T.O.P一起</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z85MHdERO" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121203s3.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="top sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月5日</strong> Twitter</p>
+        <p>Top...你怎么能把自己变成一只青蛙？！莫非你是中了魔咒？？ 哈哈</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8jMC7V47" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121205s.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月5日</strong> Twitter</p>
+        <p>孤独的自我管理342篇！@ 东京</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8jNoyq4j" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121205s1.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月6日</strong> Twitter</p>
+        <p>GDYB<br/>我TM爱死音乐了<br/>转推@WhosBennie：明天未必会有以后，活在当下！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8pikzPEI" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121206s.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="bigbang gd ty top sr ds">
+  <div style="text-align: center;">
+    <p>@Bigbang官号</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月6日</strong> Facebook</p>
+        <p>Alive巡演日本 - 巨蛋特别终场（日本东京）</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8uakqKlb" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121206s1.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月6日</strong> Instagram</p>
+        <p>在东京AMBUSH展示厅 嗨翻全场<br/>“VVV”系列 gggg</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8xgOcEIo" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121206s2.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月6日</strong> Instagram</p>
+        <p>AMBUSH VVV骷髅包 想要</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8ya8xsQM" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121206s3.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月7日</strong> Twitter</p>
+        <p>这.... 这不是我.......如果这张照片流传开了..我就离开推特！！！！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8HLPdR7c" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121207s.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月7日</strong> Twitter</p>
+        <p>孤独的自我管理343篇！@ 星巴克</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8LDSh2q5" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121207s1.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月8日</strong> Twitter</p>
+        <p>孤独的自我管理344篇！@ 香港</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8NT3vLzR" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121208s.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月8日</strong> Twitter</p>
+        <p>孤独的自我管理345篇！@ 星巴克</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8OiiaabX" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121208s1.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@Diplo</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月8日</strong> Twitter</p>
+        <p>在去韩国的路上..今晚UMF<br/>GD回复：嗨翻全场吧！！！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8OyqF74I" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121208s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@Live Nation Asia</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月8日</strong> Twitter</p>
+        <p>你准备好今晚去见他了吗？#gdragon</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8OG957Ej" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121208s3.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ds">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月9日</strong> Instagram</p>
+        <p>大家好~！看到这条信息的话就该做伸展运动了。这是“黄师傅守则”！^____^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8VKx3qvG" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121209s.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月9日</strong> Twitter</p>
+        <p>我喜欢这张 哈哈哈哈哈</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8XaDe1xd" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121209s1.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月9日</strong> Twitter</p>
+        <p>孤独的自我管理346篇！@ 麦当劳</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8Xcwef88" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121209s2.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月9日</strong> Twitter</p>
+        <p>过来小可爱 好久不见了朱莉</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8XMNcFif" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121209s3.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月9日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z8XCXiQD2" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121209s4.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月10日</strong> Twitter</p>
+        <p>香港!感谢你们所做的一切 我们很快会再回来的!再见!<br/>香港 >>>>>>>> 首尔</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9gmhyBko" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121210s.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月10日</strong> Twitter</p>
+        <p>@Realtaeyang 你 ..... 和我.... ^_^ 晚安.. T -3- chu~<br/>@IBGDRGN 你和....我 ^^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9azB94bP" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121210s1.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月10日</strong> Twitter</p>
+        <p>天啊 这个太可爱了T.T RiRi kkkkkkkk 大笑</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9452oRPZ" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121210s2.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月12日</strong> Twitter</p>
+        <p>胜利呀~祝你生日快乐快乐！健康是最重要！要好好管理啊！^_^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9oE04zPO" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121212s.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@VERBAL</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月12日</strong> Twitter</p>
+        <p>我买的第一张韩国唱片... 徐太志和孩子们! 韩国的嘻哈元祖！ #classic #1992 #puredope #YG<br/>GD回复：我老板!!看起来好年轻!!哈哈 新奇~~~~~</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9oqshGew" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121212s1.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="bigbang gd ty top sr ds">
+  <div style="text-align: center;">
+    <p>@Bigbang官号</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月12日</strong> Facebook</p>
+        <p>[胜利生日快乐] BIGBANG官方Facebook祝胜利生日快乐！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9jyDEmjp" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121212s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@YG Family</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月12日</strong> Twitter</p>
+        <p>生日快乐 @ForvictoRi #121212VIday</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9jxxFGHw" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121212s3.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月13日</strong> Twitter</p>
+        <p>再见首尔...^^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9yxA0VLz" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121213s.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月14日</strong> Instagram</p>
+        <p>今晚见!</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9LEzCNvz" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121214s.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月14日</strong> Twitter</p>
+        <p>早安伦敦!!!^___^<br/>太阳：早安伦敦:)<br/>太阳：我 x 猫咪</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9KoMB68u" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121214s1.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月15日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9WDAccjp" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121215s.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@Mr.RED</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月15日</strong> Instagram</p>
+        <p>温布利 希望你们准备好了!!我们准备好了! @Realtaeyang @odubperv @guitarslayer24 #london</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9VX9r9mw" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121215s1.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="top ds">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月15日</strong> Twitter</p>
+        <p>孤独的自我管理351-352篇！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9VlHsfAh" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121215s2.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@赵成民</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月15日</strong> Twitter</p>
+        <p>与能把spicy kebab立刻吃掉的可爱的seung zzang一起</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9ULauBF1" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121215s3.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月15日</strong> Twitter</p>
+        <p>我们需要为圣诞准备.. 但是...我没有计划 :(<br/>太阳：今天很棒的经历!别担心 我现在感觉很好 谢谢你们的爱!!明天我会倾尽全力!! :b</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9QB76wUr" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121215s4.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月15日</strong> Instagram</p>
+        <p>妈咪 bububooooo</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/z9Q2SzQw9" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121215s5.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd sr">
+  <div style="text-align: center;">
+    <p>@赵成民</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月16日</strong> Instagram</p>
+        <p>和GD<br/>Ye~~~~~~~~<br/>@Hwangssabu黄师傅：和VI散步~</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/za87A44fU" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121216s.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月16日</strong> Instagram</p>
+        <p>可怜的小狗..#byelondon</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/za55Xpy9q" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121216s1.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月16日</strong> Instagram</p>
+        <p>圣诞小孩!:)<br/>在伦敦</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/za4QgDtNI" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121216s2.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月16日</strong> Instagram</p>
+        <p>嗨<br/>Alive巡演的回忆 #lovers #london</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/za4jntvhx" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121216s3.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月16日</strong> Instagram</p>
+        <p>带着酷黑的皮质snapback帽! 喜欢 #dope<br/>Alive巡演的回忆 #bigbangband #soulmate</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/za0PEA4GK" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121216s4.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月17日</strong> Instagram</p>
+        <p>我的纹身终于完成了.美极了!从Anil那获得纹身是一次有意义的经历.现在我的旅程结束了.“音乐就是国际语言 因为再强烈的情感都不需要言语” -anil gupta- #启示 #真正的艺术家</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zaiAprpKQ" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121217s.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月17日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zahE4kzrW" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121217s1.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty top sr ds">
+  <div style="text-align: center;">
+    <p>@Michelle Phan</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月18日</strong> Instagram</p>
+        <p>Big Bang请再回美国开一次世界巡演吧!!!!</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zajhfC4lE" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121218s.jpg" style="width: 350px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月19日</strong> Twitter</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zawL4m5jk" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121219s.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@李在旭</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月19日</strong> Twitter</p>
+        <p>好久才来 BOUTIQUE HO(HOTEL)<br/>GD回复：啊 这哥哥今天又....啊 不是..<br/>GD回复：今天又得出大事了..哎<br/>李在旭回复：— —;;现在已经出大事了 kkk 出大事了^_^<br/>GD回复：我们哥哥 可是很会玩的哥呢~</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zarJYpe16" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121219s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@Dante Inferno</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月19日</strong> Twitter</p>
+        <p>我哥们@IBGDRGN写的"That XX"是我的新共享...尤其是现在我知道了歌词!哈哈哈哈哈哈 我哥们G-Dragon是个人面兽心的人!<br/>GD回复：你看穿了?没错 兄弟~~!kkk</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zarJM0HXF" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121219s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月19日</strong> Twitter</p>
+        <p>伦敦 >>>>>>>> 首尔</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zaqTTzQVZ" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121219s3.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ds">
+  <div style="text-align: center;">
+    <p>@Rick Owens东京店</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月20日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zaFECbV4k" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121220s.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月20日</strong> Instagram</p>
+        <p>Orange</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zaED19uOv" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121220s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月20日</strong> Instagram</p>
+        <p>Jolie & @youngbeezzy<br/>给她吧</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zaDjGy3Fv" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121220s2.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月20日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zaAlKCFtO" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121220s3.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月21日</strong> Twitter</p>
+        <p>GD的眼睛丢了!不管谁捡了 请还回来! 大笑</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zaPxrr9MB" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121221s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty ds">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月22日</strong> Instagram</p>
+        <p>GD：向外张望<br/>GD：翻过来 翻过来 @youngbeezzy<br/>太阳：小可爱！！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zaXn9k3st" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121222s.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月22日</strong> Twitter</p>
+        <p>猜猜是谁？？？？^^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zaYXkbnkP" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121222s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd sr ds">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月22日</strong> Twitter</p>
+        <p>SR - GD - DS</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zaZCRmYi9" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121222s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月22日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zaUhA1FCt" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121222s3.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty sr">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月22日</strong> Instagram</p>
+        <p>向外张望<br/>噢宝贝你真是瞎了眼</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zaQcgBE73" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121222s4.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@VERBAL</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月23日</strong> Twitter</p>
+        <p>谢谢@IBGDRGN提前送的圣诞礼物！！！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zb3DJ5rDd" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121223s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/w2fTn1cJTmI?si=Xt--cN74OKgK6PFs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-container">
+        <p><strong>2012年12月23日</strong> me2day</p>
+        <p>圣诞老人胜利来向我最爱的粉丝们报到啦^^
+发这段消息是想让你们笑一笑～圣诞快乐！！
+你们心里是不是只有我..? ㅜㅜ 快跟我说，只有我哦！</p>
+      </div>
+    </div>
+  </div>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr gd">
+  <div style="text-align: center;">
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月23日</strong> Twitter</p>
+        <p>胜利：u and.... ME ^^<br/>GD：不要做这种事</p>
+        <p>胜利：哥你为什么对我那么冷漠？你变了.....<br/>GD：在我旁边的话就直说吧.....</p>
+        <br/>
+        <p>详细资讯：<a href="https://omonatheydidnt.livejournal.com/10303357.html" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            omonatheydidnt</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121223.png" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="bigbang gd ty top sr ds">
+  <div style="text-align: center;">
+    <p>@Bigbang官号</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月24日</strong> Facebook</p>
+        <p>Alive巡演日本 - 巨蛋特别终场（日本福冈）</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbd3iBWcu" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121224s.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty top sr ds">
+  <div style="text-align: center;">
+    <p>@LESLIE KEE</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月24日</strong> Facebook</p>
+        <p>BIGBANG 摄影：LESLIE KEE</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbedTyALX" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121224s1.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月24日</strong> Twitter</p>
+        <p>我只想对我的粉丝说声“谢谢”^^ 还有 圣诞快乐！！！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbeRmdLuY" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121224s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月24日</strong> Twitter</p>
+        <p>下雪了 砰砰砰砰 磅磅磅磅</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbhcy5PsI" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121224s3.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月25日</strong> Twitter</p>
+        <p>圣诞快乐 宝贝</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbhIOzQZn" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121225s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月25日</strong> Twitter</p>
+        <p>粉红圣诞快乐</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbpNKfSJA" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121225s1.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月25日</strong> Twitter</p>
+        <p>谢谢@kongkaroon的款待！！我和崔钟勋在曼谷玩得很开心 兄弟 感激不尽！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbqXM4hdX" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121225s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月26日</strong> Instagram</p>
+        <p>圣诞节结束了.. 晚安</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbuVteOXi" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121226s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty top sr ds">
+  <div style="text-align: center;">
+    <p>@YG Family</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月26日</strong> Twitter</p>
+        <p>祝所有@ygent_official的粉丝们圣诞快乐、新年快乐！！！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbwB7AvS1" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121226s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@CL</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月26日</strong> Instagram</p>
+        <p>耶耶耶耶耶 @youngbeezzy</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbA0fAkwK" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121226s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月27日</strong> Instagram</p>
+        <p>幕后花絮 @chaelin_cl</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbErpxcwM" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121227s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@SEAN</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月27日</strong> Twitter</p>
+        <p>这人气 哈哈哈 YG FAMILY 15周年演唱会 in JAPAN 结束后 ^^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbFyU8CmJ" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121227s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@SEAN</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月27日</strong> Twitter</p>
+        <p>志龙啊~所以是SEAN哥更好？还是JINU哥更好？</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbGhD15J6" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121227s2.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@pearbunnag</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月27日</strong> Instagram</p>
+        <p>和志龙 - G-Dragon！他好酷！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbHTV4nVB" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121227s3.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ds">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月28日</strong> Twitter</p>
+        <p>121227 魁！大赏2012后台</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbOnId1Iw" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121228s.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月28日</strong> Instagram</p>
+        <p>迟到的晒图，谢谢@verbal_ambush送的礼物 #VERBAL x #Reebok<br/>@Hwangssabu黄师傅：孤独的自我管理354篇！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbQTBaMzG" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121228s1.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty top sr ds">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月28日</strong> Instagram</p>
+        <p>Bigbang Gang</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbRSKBkeK" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121228s2.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月28日</strong> Twitter</p>
+        <p>GD爱RiRi 爱心 哈哈 ^_______^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbRTi30Zd" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121228s3.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p>@杨贤硕</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月28日</strong> Twitter</p>
+        <p>@realtaeyang CHECK是怎么接收的？现在还不熟练呢 呵呵<br/>@SBS导演：歌谣大战的舞台长这样^^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbYZVarZa" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121228s4.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月29日</strong> Twitter</p>
+        <p>和2NE1 DARA</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbYaq3vQg" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121229s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月29日</strong> Instagram</p>
+        <p>LED</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zbYMC9s5p" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121229s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月29日</strong> Twitter</p>
+        <p>今天 SBS歌谣大战！！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zc1s24pUi" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121229s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月29日</strong> Instagram</p>
+        <p>谢谢Yves Saint Laurent</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zc23AfycR" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121229s3.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月29日</strong> Twitter</p>
+        <p>粉红 粉红 粉红！！！！G粉红！！！！@IBGDRGN</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zc2Eq6wpF" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121229s4.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ty">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月29日</strong> Instagram</p>
+        <p>GD：“Popped a M*l*y and now we're sweatin' whoo!”<br/>太阳：我链子上都是金子</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zc3uEpyYL" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121229s5.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月30日</strong> Twitter</p>
+        <p>Darong~一起表演感觉很光荣</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zc3BlhgFY" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121230s.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="top sr">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月30日</strong> Instagram</p>
+        <p>Hwangting!^_^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zc8Kitcku" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121230s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月30日</strong> Instagram</p>
+        <p>SWAG~</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zcbhihOMG" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121230s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty sr">
+  <div style="text-align: center;">
+    <p><span style="color: #33FFFF;">胜利</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月30日</strong> Twitter</p>
+        <p>你在做什么？？？ :)<br/>@Hwangssabu黄师傅：SWAG~^^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zcbPsEOJr" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121230s3.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="sr">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月30日</strong> Instagram</p>
+        <p>SWAG~^-^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zcckId9G9" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121230s4.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd ds">
+  <div style="text-align: center;">
+    <p>@TABLO</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月31日</strong> Twitter</p>
+        <p>年末未公开照片整理 #2：GD & BLO in HK（Light It Up~）<br/>@Hwangssabu黄师傅：~~SWAG ^_^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zchc6eWgg" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121231s.jpg" style="width: 300px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月31日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zchTjtJw8" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121231s1.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="top">
+  <div style="text-align: center;">
+    <p>@Hwangssabu黄师傅</p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月31日</strong> Instagram</p>
+        <p>可爱~ SWAG^~^</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zchZi1Qxt" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121231s2.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月31日</strong> Instagram</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zckrrABTp" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121231s3.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月31日</strong> Twitter</p>
+        <p>新的一天，新的开始<br/>@DOK2：哥 新年快乐！<br/>太阳回复：新年快乐，保持真我</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zckPu5Iqi" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121231s4.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="ty">
+  <div style="text-align: center;">
+    <p><span style="color: #fc5353;">太阳</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月31日</strong> Twitter</p>
+        <p>过去已经过去，未来还没来，重要的是当下</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zckRXqZjg" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121231s5.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月31日</strong> Twitter</p>
+        <p>Fantastic Baby</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zclq2uLoq" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121231s6.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div class="sns-entry" data-member="gd">
+  <div style="text-align: center;">
+    <p><span style="color: #FF66CC;">GD</span></p>
+    <div class="content-wrap">
+      <div class="text-container">
+        <p><strong>2012年12月31日</strong> Twitter</p>
+        <p>2013 全部祝幸~~~~！</p>
+        <br/>
+        <p>详细资讯：<a href="https://weibo.com/1867744064/zclHY8vEM" 
+            target="_blank" style="color: #33FFFF; text-decoration: none;" onmouseover="this.style.color='#FF66CC';" onmouseout="this.style.color='#33FFFF';">
+            BBF论坛微博</a></p>
+      </div>
+    </div>
+  </div>
+  <img src="121231s7.jpg" style="width: 400px;"/>
+  <hr class="full-width-line" />
+</div>
+
+<div id="noContentMessage" style="display:none; text-align:center; color: white; font-size: 40px; margin-top: 30px;">
+    此成员没有发过贴文
+</div>
+
+<br/><br/><br/>
+<div class="header-container">
+  <nav class="left-nav">
+    <a href="sns2012.html" id="backButton">Back</a>
+  </nav>
+  <div class="title-group">
+    <div id="footer"></div>
+  </div>    
+  <nav class="right-nav">
+  <a href="sns2013.html" id="nextButton">2013</a>
+  </nav>
+</div>
+
+</main>
+<script src="player.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714244831616399"
+     crossorigin="anonymous"></script>
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+
+  let filterLocked = false;
+
+  function toggleFilterLock() {
+    filterLocked = !filterLocked;
+    updateMemberListDisplay();
+  }
+
+  function showMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'flex';
+    }
+  }
+
+  function hideMemberList() {
+    if (!filterLocked) {
+      document.getElementById('memberList').style.display = 'none';
+    }
+  }
+
+  function updateMemberListDisplay() {
+    const memberList = document.getElementById('memberList');
+    memberList.style.display = filterLocked ? 'flex' : 'none';
+  }
+
+  function filterSNS(member) {
+    const entries = document.querySelectorAll('.sns-entry');
+    const message = document.getElementById('noContentMessage');
+    const backButton = document.getElementById('backButton');
+    const nextButton = document.getElementById('nextButton');
+    const footer = document.getElementById('footer');
+    const currentFilter = document.getElementById('currentFilter');
+    const currentFilter1 = document.getElementById('currentFilter1');
+
+    const memberNames = {
+      all: '全部',
+      bigbang: 'Bigbang官号',
+      gd: 'G-Dragon',
+      top: 'TOP',
+      ty: '太阳',
+      ds: '大声',
+      sr: '胜利'
+    };
+
+    if (memberNames[member]) {
+      currentFilter.textContent = `当前筛选：${memberNames[member]}`;
+if (member === 'bigbang') {
+  currentFilter1.textContent = '只记录Bigbang官方账号仅发布成员们的照片，不记录宣传类内容等';
+} else {
+  currentFilter1.textContent = '筛选出来的图片也包括成员与别人的合照贴文 或 别人提到此成员';
+}      currentFilter.style.display = 'block';
+      currentFilter1.style.display = 'block';
+    } else {
+      currentFilter.style.display = 'none';
+      currentFilter1.style.display = 'none';
+    }
+
+    let hasContent = false;
+
+    entries.forEach(entry => {
+      const members = entry.dataset.member.split(' ');
+      if (member === 'all' || members.includes(member)) {
+        entry.style.display = 'block';
+        hasContent = true;
+      } else {
+        entry.style.display = 'none';
+      }
+    });
+
+    if (!hasContent && member !== 'all') {
+      if (message) message.style.display = 'block';
+      if (backButton) backButton.style.display = 'none';
+      if (nextButton) nextButton.style.display = 'none';
+      if (footer) footer.style.display = 'none';
+    } else {
+      if (message) message.style.display = 'none';
+      if (backButton) backButton.style.display = 'inline-block';
+      if (nextButton) nextButton.style.display = 'inline-block';
+      if (footer) footer.style.display = 'block';
+    }
+  }
+
+const sliderStates = new Map();
+
+function slide(button) {
+  const container = button.closest('.slider-container');
+  const slider = container.querySelector('.slider');
+  const slides = slider.querySelectorAll('.slide-item');
+  const isNext = button.classList.contains('right');
+  const slideWidth = 500;
+
+  let state = sliderStates.get(slider);
+  if (state === undefined) {
+    state = 0;
+  }
+
+  if (isNext) {
+    state = (state + 1) % slides.length;
+  } else {
+    state = (state - 1 + slides.length) % slides.length;
+  }
+
+  sliderStates.set(slider, state);
+
+  const offset = state * slideWidth;
+  slider.style.transform = `translateX(-${offset}px)`;
+
+  const counter = container.querySelector('.slide-counter');
+  counter.textContent = `${state + 1}/${slides.length}`;
+}
+
+document.querySelectorAll('.slider-container').forEach(container => {
+  const slides = container.querySelectorAll('.slide-item');
+  const counter = container.querySelector('.slide-counter');
+
+  counter.textContent = `1/${slides.length}`;
+});
+
+</script>
+</body>
+</html>
