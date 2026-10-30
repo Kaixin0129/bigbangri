@@ -1,4 +1,4 @@
-﻿name: Deploy to GitHub Pages
+Name: Deploy to GitHub Pages
 
 on:
   push:
@@ -26,6 +26,18 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      # 【关键新增步骤】在打包上传前，剔除非网页必需的大文件/大文件夹
+      - name: Remove non-essential large files before upload
+        run: |
+          # 1. 剔除 Git 内部历史体积
+          rm -rf .git
+          
+          # 2. 删除压缩包、高清视频等非网页直接展示的文件（如有）
+          find . -type f \( -name "*.zip" -o -name "*.rar" -o -name "*.7z" -o -name "*.mp4" -o -name "*.mov" \) -delete
+          
+          # 3. 如果你有不需要上线的备份文件夹或原图文件夹，取消下面这行的注释并填入文件夹名：
+          # rm -rf 你的大文件夹名称
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
