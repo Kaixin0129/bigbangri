@@ -27,6 +27,9 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Point image links to image repos (build copy only)
+        run: python3 .github/rewrite_img.py
+
       - name: Remove non-essential large files before upload
         run: |
           rm -rf .git
