@@ -23,6 +23,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !*.jpg
+            !*.JPG
+            !*.jpeg
+            !*.JPEG
+            !*.png
+            !*.PNG
+            !*.gif
+            !*.GIF
+            !*.webp
+            !*.mp4
+            !*.MP4
+            !*.mov
+            !*.zip
+            !*.rar
+            /favicon*
+            /apple-touch-icon.png
+            /web-app-manifest-*
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
