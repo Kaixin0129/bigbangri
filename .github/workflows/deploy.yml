@@ -31,6 +31,10 @@ jobs:
         run: |
           rm -rf .git
           find . -type f \( -name "*.zip" -o -name "*.rar" -o -name "*.7z" -o -name "*.mp4" -o -name "*.mov" \) -delete
+          rm -rf .history node_modules
+          # images are served from the Kaixin0129/bigbangri-* image repos
+          find . -type f -iregex '.*\.\(jpe?g\|png\|gif\|webp\|avif\|bmp\|svg\|ico\|mp3\|webm\)' ! -path './favicon*' ! -path './apple-touch-icon.png' ! -path './web-app-manifest-*' -delete
+          du -sh .
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
