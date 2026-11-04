@@ -24,7 +24,9 @@ const pages = [
   "2023jan.html","2023feb.html","2023mar.html","2023apr.html","2023may.html","2023june.html","2023july.html","2023aug.html","2023sept.html","2023oct.html","2023nov.html","2023dec.html",
   "2024jan.html","2024feb.html","2024mar.html","2024apr.html","2024may.html","2024june.html","2024july.html","2024aug.html","2024sept.html","2024oct.html","2024nov.html","2024dec.html",
   "2025jan.html","2025feb.html","2025mar.html","2025apr.html","2025may.html","2025june.html","2025july.html","2025aug.html","2025sept.html","2025oct.html","2025nov.html","2025dec.html",
-  "2026jan.html","2026feb.html","2026mar.html","2026apr.html","2026may.html","2026june.html","2026july.html","2026aug.html","2026sept.html","2026oct.html",
+  "2026jan.html","2026feb.html","2026mar.html","2026apr.html","2026may.html","2026june.html","2026july.html","2026aug.html","2026sept.html","2026oct.html","2026nov.html","2026dec.html",
+  "2027jan.html","2027feb.html","2027mar.html","2027apr.html","2027may.html","2027june.html","2027july.html","2027aug.html","2027sept.html","2027oct.html","2027nov.html","2027dec.html",
+  "2030jan.html"
 ];
 
 function buildIndex() {
